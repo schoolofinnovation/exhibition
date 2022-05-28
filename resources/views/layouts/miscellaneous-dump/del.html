@@ -1,0 +1,737 @@
+href="{{route('blog.details',['slug' => $post->slug])}}"
+href="{{route('blog.author',['slug' => $post->slug])}}"
+{{ Carbon\Carbon::parse($post->created_at)->diffForHumans()}}
+{{ Carbon\Carbon::parse($posts->created_at)->format('F d, Y ')}}
+src="{{url('Storage/mags/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}"
+
+href="{{route('blog.category',['category_slug'=> $post->slug])}}"
+href="{{route('blog.author',['slug' => $post->user->slug])}}"
+dropped
+<script src="{{asset('mag/jarallax.min.js')}}"></script>
+<script src="{{asset('mag/jarallax-video.min.js')}}"></script>
+<script src="https://kit.fontawesome.com/5f3d2e5623.js" crossorigin="anonymous"></script>
+<script src="{{asset('mag/iframe_api')}}"></script>
+
+
+<!---content for product list-->
+<main class="container-fluid px-0">
+    <!-- Row: Shop online (Search, Select, Buy online)-->
+    <section class="row g-0">
+      <div class="col-md-6 bg-position-center bg-size-cover bg-secondary" style="min-height: 15rem; background-image: url(img/about/01.jpg);"></div>
+      <div class="col-md-6 px-3 px-md-5 py-5">
+        <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+          <h2 class="h3 pb-3">Expand Your Franchise</h2>
+          <p class="fs-sm pb-3 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.</p><a class="btn btn-primary btn-shadow" href="shop-grid-ls.html">View products</a>
+        </div>
+      </div>
+    </section>
+    <!-- Row: Delivery (Fast delivery worldwide)-->
+    <section class="row g-0">
+      <div class="col-md-6 bg-position-center bg-size-cover bg-secondary order-md-2" style="min-height: 15rem; background-image: url(img/about/02.jpg);"></div>
+      <div class="col-md-6 px-3 px-md-5 py-5 order-md-1">
+        <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+          <h2 class="h3 pb-3">Insight & Growth Strategy</h2>
+          <p class="fs-sm pb-3 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.</p><a class="btn btn-accent btn-shadow" href="#">Shipping details</a>
+        </div>
+      </div>
+    </section>
+    <!-- Row: Mobile app (Great mobile app. Shop on the go)-->
+    <section class="row g-0">
+      <div class="col-md-6 bg-position-center bg-size-cover bg-secondary" style="min-height: 15rem; background-image: url(img/about/03.jpg);"></div>
+      <div class="col-md-6 px-3 px-md-5 py-5">
+        <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+          <h2 class="h3 pb-3">Sell Your Business</h2>
+          <p class="fs-sm pb-3 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod. Duis erat lectus, ultrices euismod sagittis at dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.</p><a class="btn-market btn-apple me-3 mb-3" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google mb-3" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Shopping outlets(Shop offline. Cozy outlet stores)-->
+    <section class="row g-0">
+      <div class="col-md-6 bg-position-center bg-size-cover bg-secondary order-md-2" style="min-height: 15rem; background-image: url(img/about/04.jpg);"></div>
+      <div class="col-md-6 px-3 px-md-5 py-5 order-md-1">
+        <div class="mx-auto py-lg-5" style="max-width: 35rem;">
+          <h2 class="h3 pb-3">Entrepreneur in Residence</h2>
+          <p class="fs-sm pb-3 text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.</p><a class="btn btn-warning btn-shadow" href="contacts.html">See outlet stores</a>
+        </div>
+      </div>
+    </section>
+    <hr>
+
+    <!-- Section: Teams-->
+    <section class="container py-3 py-lg-5 mt-4 mb-3">
+      <h2 class="h3 my-2">Business Strategy</h2>
+      <p class="fs-sm text-muted">People behind your great shopping experience</p>
+      <div class="row pt-3">
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/03.jpg" width="96" alt="Jonathan Doe">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Jonathan Doe</h6>
+              <p class="fs-ms text-muted mb-0">CEO, Co-founder</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:johndoe@example.com"><i class="ci-mail me-2"></i>johndoe@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/04.jpg" width="96" alt="Barbara Palson">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Barbara Palson</h6>
+              <p class="fs-ms text-muted mb-0">Chief of Marketing</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.palson@example.com"><i class="ci-mail me-2"></i>b.palson@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/06.jpg" width="96" alt="William Smith">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">William Smith</h6>
+              <p class="fs-ms text-muted mb-0">Financial director</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:w.smith@example.com"><i class="ci-mail me-2"></i>w.smith@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/02.jpg" width="96" alt="Amanda Gallaher">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Amanda Gallaher</h6>
+              <p class="fs-ms text-muted mb-0">Lead UX designer</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:a.gallaher@example.com"><i class="ci-mail me-2"></i>a.gallaher@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/01.jpg" width="96" alt="Benjamin Miller">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Benjamin Miller</h6>
+              <p class="fs-ms text-muted mb-0">Website development</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>b.miller@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/07.jpg" width="96" alt="Miguel Rodrigez">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Miguel Rodrigez</h6>
+              <p class="fs-ms text-muted mb-0">Content manager</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>m.rodrigez@example.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<hr>
+    <!-- Section: Team-->
+    <section class="container py-3 py-lg-5 mt-4 mb-3">
+      <h2 class="h3 my-2">Business Design</h2>
+      <p class="fs-sm text-muted">People behind your great shopping experience</p>
+      <div class="row pt-3">
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/03.jpg" width="96" alt="Jonathan Doe">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Jonathan Doe</h6>
+              <p class="fs-ms text-muted mb-0">CEO, Co-founder</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:johndoe@example.com"><i class="ci-mail me-2"></i>johndoe@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/04.jpg" width="96" alt="Barbara Palson">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Barbara Palson</h6>
+              <p class="fs-ms text-muted mb-0">Chief of Marketing</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.palson@example.com"><i class="ci-mail me-2"></i>b.palson@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/06.jpg" width="96" alt="William Smith">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">William Smith</h6>
+              <p class="fs-ms text-muted mb-0">Financial director</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:w.smith@example.com"><i class="ci-mail me-2"></i>w.smith@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/02.jpg" width="96" alt="Amanda Gallaher">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Amanda Gallaher</h6>
+              <p class="fs-ms text-muted mb-0">Lead UX designer</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:a.gallaher@example.com"><i class="ci-mail me-2"></i>a.gallaher@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/01.jpg" width="96" alt="Benjamin Miller">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Benjamin Miller</h6>
+              <p class="fs-ms text-muted mb-0">Website development</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>b.miller@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/07.jpg" width="96" alt="Miguel Rodrigez">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Miguel Rodrigez</h6>
+              <p class="fs-ms text-muted mb-0">Content manager</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>m.rodrigez@example.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Section: We are hiring-->
+    <hr>
+        <!-- Section: Team-->
+        <section class="container py-3 py-lg-5 mt-4 mb-3">
+      <h2 class="h3 my-2"> Our Leadership</h2>
+      <p class="fs-sm text-muted">People behind your great shopping experience</p>
+      <div class="row pt-3">
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">.M.K. Singal</h6>
+              <p class="fs-ms text-muted mb-0">CEO, Co-founder</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:johndoe@example.com"><i class="ci-mail me-2"></i>johndoe@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Simran</h6>
+              <p class="fs-ms text-muted mb-0">Chief of Marketing</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.palson@example.com"><i class="ci-mail me-2"></i>b.palson@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Anshul</h6>
+              <p class="fs-ms text-muted mb-0">Financial director</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:w.smith@example.com"><i class="ci-mail me-2"></i>w.smith@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Anshul</h6>
+              <p class="fs-ms text-muted mb-0">Lead UX designer</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:a.gallaher@example.com"><i class="ci-mail me-2"></i>a.gallaher@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Anshul</h6>
+              <p class="fs-ms text-muted mb-0">Website development</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>b.miller@example.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 mb-grid-gutter">
+          <div class="d-flex align-items-center">
+            <div class="ps-3">
+              <h6 class="fs-base pt-1 mb-1">Anshul</h6>
+              <p class="fs-ms text-muted mb-0">Content manager</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>m.rodrigez@example.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>    
+<hr>
+
+
+    <section class="row g-0">
+      <div class="col-md-6 bg-position-center bg-size-cover bg-secondary order-md-2" style="min-height: 15rem; background-image: url(img/about/05.jpg);">
+    </div>
+      
+     
+
+    </section>
+  </main>
+
+
+  <!--------seller franchise-->
+  <main> 
+
+    <!--<div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+      <div class="text-sm-end">
+      <a class="btn btn-primary" href="{{ route('seller.dashboard') }}" data-bs-toggle="modal">  Dashboard </a></div>
+        @if (Session::has('message'))
+        <h6 class="fs-base text-light mb-0">
+        {{Session::get('message')}}
+        </h6>
+        @endif
+        <a class="btn btn-primary btn-sm" href="#"><i class="ci-sign-out me-2"></i>Sign out</a>
+    </div>-->
+
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      @if($currentStep == 1)
+        <li class="nav-item"><a class="nav-link px-0 active" href="#franchise" data-bs-toggle="tab" role="tab">
+            <div class="d-none d-lg-block"><i class="ci-user opacity-60 me-2"></i>list your business</div>
+            <div class="d-lg-none text-center"><i class="ci-user opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Franchise</span></div></a></li>
+      @endif
+      @if($currentStep == 2)
+            <li class="nav-item"><a class="nav-link px-0 active" href="#social" data-bs-toggle="tab" role="tab">
+            <div class="d-none d-lg-block"><i class="ci-bell opacity-60 me-2"></i>Which type business model do you have?</div>
+            <div class="d-lg-none text-center"><i class="ci-bell opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Social</span></div></a></li>
+      @endif
+      @if($currentStep == 3)
+            <li class="nav-item"><a class="nav-link px-0 active" href="#team" data-bs-toggle="tab" role="tab">
+            <div class="d-none d-lg-block"><i class="ci-card opacity-60 me-2"></i> Which business location you want to do business? </div>
+            <div class="d-lg-none text-center"><i class="ci-card opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Team</span></div></a></li>
+      @endif
+      @if($currentStep == 4)  
+            <li class="nav-item"><a class="nav-link px-0 active" href="#user" data-bs-toggle="tab" role="tab">
+            <div class="d-none d-lg-block"><i class="ci-card opacity-60 me-2"></i>describe with upload about your business model</div>
+            <div class="d-lg-none text-center"><i class="ci-card opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">User</span></div></a></li>
+      @endif
+    </ul>
+
+<div class="row">  
+  @if($currentStep == 1)
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  @endif
+  @if($currentStep == 2)
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  @endif
+  @if($currentStep == 3)
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  @endif
+  @if($currentStep == 4)
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  @endif
+</div>
+
+    <form wire:submit.prevent="add" >
+      <div class="row mt-5" >
+              
+                @if($currentStep == 1)
+                     
+                      <div class="col-sm-4 mb-2 pb-2">
+                        <label class="form-label" >Brand</label>
+                          <div class="input-group">
+                            <select class="form-control" wire:model="brand_name" wire:keyup="generateSlug">
+                            <option selected >Choose...</option>  
+                                @foreach ($tryin as $cat)
+                               
+                              <option value="{{$cat->id}}" >{{$cat->brand_name}}</option>
+                                @endforeach
+                            </select>
+                          </div>
+                          <span class="text-danger">@error( 'brand_name' ){{ $message}}@enderror</span>
+                      </div>
+
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Property Type</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="property_type">
+                          <option selected >Choose...</option> 
+                            <option value="commercial">Commercial</option>
+                            <option value="nonCommercial">Non-Commercial </option>
+                          
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'property_type' ){{ $message}}@enderror</span>
+                        </div>
+
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Featured</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="featured">
+                          <option selected >Choose...</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            <option value="non-featured">Non Featured</option>
+                            <option value="featured">Featured</option>
+                            <option value="new">New</option>
+                            <option value="premium">Premium</option>
+                            <option value="demand">Demand</option>
+                          
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'featured' ){{ $message}}@enderror</span>
+                        </div>
+
+                        <div class="col-sm-3 mb-3">
+                              <label class="form-label">Min Investment (Lacs)</label>
+                              <div class="input-group">
+                              <select class="form-control" wire:model="min_investment">
+                              <option selected >Choose...</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="8">8</option>
+                              <option value="10">10</option>
+                              <option value="15">15</option>
+                              <option value="20">20</option>
+                              <option value="25">25</option>
+                              <option value="30">30</option>
+                              <option value="35">35</option>
+                              <option value="40">40</option>
+                              <option value="45">45</option>
+                              <option value="50">50</option>
+                              </select>
+                              <span class="text-danger">@error( 'min_investment' ){{ $message}}@enderror</span>
+                              </div>
+                        </div>
+
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Max Investment (Lacs)</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="max_investment">
+                          <option selected >Choose...</option>
+                            <option value="10 Cr">10 Cr</option>
+                            <option value="5 Cr">5 Cr</option>
+                            <option value="1 Cr">1 Cr</option>
+                            <option value="75">75</option>
+                            <option value="70">70</option>
+                            <option value="65">65</option>
+                            <option value="60">60</option>
+                            <option value="55">55</option>
+                            <option value="50">50</option>
+                            <option value="45">45</option>
+                            <option value="40">40</option>
+                            <option value="35">35</option>
+                            <option value="30">30</option>
+                            <option value="25">25</option>
+                            <option value="20">20</option>
+                            <option value="15">15</option>
+                            <option value="10">10</option>
+                            <option value="5">5</option>
+                            <option value="3">3</option>
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'max_investment' ){{ $message}}@enderror</span>
+                        </div>
+
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Max. Area (.sqm)</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="max_area">
+                          <option selected >Choose...</option>
+                            <option value="75">75</option>
+                            <option value="70">70</option>
+                            <option value="65">65</option>
+                            <option value="60">60</option>
+                            <option value="55">55</option>
+                            <option value="50">50</option>
+                            <option value="45">45</option>
+                            <option value="40">40</option>
+                            <option value="35">35</option>
+                            <option value="30">30</option>
+                            <option value="25">25</option>
+                            <option value="20">20</option>
+                            <option value="15">15</option>
+                            <option value="10">10</option>
+                            <option value="5">5</option>
+                            <option value="3">3</option>
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'youtube' ){{ $message}}@enderror</span>
+                        </div>
+                      
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Min. Area (.sqm)</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="min_area">
+                          <option selected >Choose...</option>
+                            <option value="75">75</option>
+                            <option value="70">70</option>
+                            <option value="65">65</option>
+                            <option value="60">60</option>
+                            <option value="55">55</option>
+                            <option value="50">50</option>
+                            <option value="45">45</option>
+                            <option value="40">40</option>
+                            <option value="35">35</option>
+                            <option value="30">30</option>
+                            <option value="25">25</option>
+                            <option value="20">20</option>
+                            <option value="15">15</option>
+                            <option value="10">10</option>
+                            <option value="5">5</option>
+                            <option value="3">3</option>
+                          
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'min_area' ){{ $message}}@enderror</span>
+                        </div>
+
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Min. Outlet</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="min_outlet">
+                          <option selected >Choose...</option>
+                            <option value="75">75</option>
+                            <option value="70">70</option>
+                            <option value="65">65</option>
+                            <option value="60">60</option>
+                            <option value="55">55</option>
+                            <option value="50">50</option>
+                            <option value="45">45</option>
+                            <option value="40">40</option>
+                            <option value="35">35</option>
+                            <option value="30">30</option>
+                            <option value="25">25</option>
+                            <option value="20">20</option>
+                            <option value="15">15</option>
+                            <option value="10">10</option>
+                            <option value="5">5</option>
+                            <option value="3">3</option>
+                          
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'min_outlet' ){{ $message}}@enderror</span>
+                        </div>
+                      
+                    
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Max. Outlet</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="max_outlet">
+                          <option selected >Choose...</option>
+                            <option value="75">75</option>
+                            <option value="70">70</option>
+                            <option value="65">65</option>
+                            <option value="60">60</option>
+                            <option value="55">55</option>
+                            <option value="50">50</option>
+                            <option value="45">45</option>
+                            <option value="40">40</option>
+                            <option value="35">35</option>
+                            <option value="30">30</option>
+                            <option value="25">25</option>
+                            <option value="20">20</option>
+                            <option value="15">15</option>
+                            <option value="10">10</option>
+                            <option value="5">5</option>
+                            <option value="3">3</option>
+                          
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'max_outlet' ){{ $message}}@enderror</span>
+                        </div>
+
+                        
+                @endif
+
+                @if($currentStep == 2)
+                <div class="col-sm-3  mb-3">
+                          <label class="form-label">Business Zone</label>
+                          <div class="input-group">
+                          <select class="form-control" wire:model="location">
+                          <option selected >Choose...</option>  
+                            <option value="east">East</option>
+                            <option value="west">West</option>
+                            <option value="north">North</option>
+                            <option value="south">South</option>
+                            <option value="central">Central</option>
+                          </select>
+                          </div>
+                          <span class="text-danger">@error( 'location' ){{ $message}}@enderror</span>
+                        </div>
+                        {{$location}}{{$state}}
+                    
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">State</label>
+                          <div class="input-group">
+                            <select class="form-control"   wire:model="state">
+                            <option selected >Choose...</option> 
+                            @foreach ($local as $cat)
+                               <option value="{{$cat->id}}" >{{$cat->state}}</option> 
+                                 @endforeach
+                            </select>
+                          </div>
+                          <span class="text-danger">@error( 'state' ){{ $message}}@enderror</span>
+                        </div>
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">Type of City</label>
+                          <div class="input-group">
+                            <select class="form-control"   wire:model="city">
+                            <option selected >Choose...</option> 
+                            @foreach ($city as $cat)
+                               <option value="{{$cat->id}}" >{{$cat->city}}</option>
+                                 @endforeach
+                            </select>
+                          </div>
+                          <span class="text-danger">@error( 'city' ){{ $message}}@enderror</span>
+                        </div>
+                        <div class="col-sm-3  mb-3">
+                          <label class="form-label">City</label>
+                          <div class="input-group">
+                            <select class="form-control"   wire:model="city">
+                            <option selected >Choose...</option> 
+                            @foreach ($city as $cat)
+                               <option value="{{$cat->id}}" >{{$cat->city}}</option>
+                                 @endforeach
+                            </select>
+                          </div>
+                          <span class="text-danger">@error( 'city' ){{ $message}}@enderror</span>
+                        </div>
+
+
+                        @foreach ($city as $cat)
+                        <div class="form-check col my-1 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="">
+                      <label class="form-check-label" for="inlineRadio1">{{$cat->city}}</label>
+                    </div>
+                    @endforeach
+
+                @endif
+
+                @if($currentStep == 3)
+                     <div>Choose type of business model...</div>
+                      <div class="row my-5">  
+                     <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="FOCO">
+                      <label class="form-check-label" for="inlineRadio1">FOCO</label>
+                    </div>
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="FOFO">
+                      <label class="form-check-label" for="inlineRadio2">FOFO</label>
+                    </div>
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="COFO" >
+                      <label class="form-check-label" for="inlineRadio3">COFO</label>
+                    </div>  
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="COCO">
+                      <label class="form-check-label" for="inlineRadio1">COCO</label>
+                    </div>
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="dealer_disribution">
+                      <label class="form-check-label" for="inlineRadio2">Dealer Disribution</label>
+                    </div>
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="master_franchise" >
+                      <label class="form-check-label" for="inlineRadio3">Master Franchise</label>
+                    </div>  
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="channel_partner">
+                      <label class="form-check-label" for="inlineRadio2">Channel Partner</label>
+                    </div>
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="management_partner" >
+                      <label class="form-check-label" for="inlineRadio3">Management Partner</label>
+                    </div>  
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="business_franchise" >
+                      <label class="form-check-label" for="inlineRadio3">Business Franchise</label>
+                    </div>  
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="channel_partner">
+                      <label class="form-check-label" for="inlineRadio2">Channel Partner</label>
+                    </div>
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="management_partner" >
+                      <label class="form-check-label" for="inlineRadio3">Supplier Partner</label>
+                    </div>   
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="state_partner" >
+                      <label class="form-check-label" for="inlineRadio3">State Partner</label>
+                    </div>  
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="city_partner">
+                      <label class="form-check-label" for="inlineRadio2">City Partner</label>
+                    </div>
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="district_partner" >
+                      <label class="form-check-label" for="inlineRadio3">District Partner</label>
+                    </div>  
+                    <div class="form-check col my-3 ">
+                      <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio3" value="unit_business" >
+                      <label class="form-check-label" for="inlineRadio3">Unit Business</label>
+                    </div>  
+                      
+            </div>
+                @endif
+
+                @if($currentStep == 4)
+                      
+                        <div class="col-sm-4 mb-1 pb-1">
+                          <label class="form-label" >Description</label>
+                          <textarea class="form-control" type="text" wire:model="description"  ></textarea>
+                          <span class="text-danger">@error( 'description' ){{ $message}}@enderror</span>
+                        </div>
+
+                        <div class="col-sm-4 mb-1 pb-1">
+                          <label class="form-label" >Short Description</label>
+                          <textarea class="form-control" type="text" wire:model="short_description"  ></textarea>
+                          <span class="text-danger">@error( 'short_description' ){{ $message}}@enderror</span>
+                        </div>
+
+                        <div class="col-sm-4 mb-2 pb-2">
+                          <label class="form-label" >Logo</label>
+                          <input class="form-control" type="file" wire:model=""  >
+                         <span class="text-danger">@error( 'co_logo' ){{ $message}}@enderror</span>
+                       </div>
+                       
+                       <div class="col-sm-4 mb-3 pb-2">
+                                <label class="form-label" >Name</label>
+                                <input class="form-control" type="text" wire:model="brand_head_name"  >
+                                <span class="text-danger">@error( 'brand_head_name' ){{ $message}}@enderror</span>
+                              </div>
+
+                              <div class="col-sm-4 mb-3 pb-2">
+                                <label class="form-label" >e-mail</label>
+                                <input class="form-control" type="text" wire:model="bh_email"  >
+                                <span class="text-danger">@error( 'bh_email' ){{ $message}}@enderror</span>
+                              </div>
+
+                              <div class="col-sm-4 mb-3 pb-2">
+                                <label class="form-label" >Contact</label>
+                                <input class="form-control" type="text" wire:model="bh_contact"  >
+                                <span class="text-danger">@error( 'bh_contact' ){{ $message}}@enderror</span>
+                              </div>
+        
+                              <h2>User Contact Details</h2>
+                              <div class="col-sm-4 mb-3 pb-2">
+                                <label class="form-label" >e-mail</label>
+                                <input class="form-control" type="text" wire:model="user_email"  >
+                                <span class="text-danger">@error( 'user_email' ){{ $message}}@enderror</span>
+                              </div>
+
+                              <div class="col-sm-4 mb-3 pb-2">
+                                <label class="form-label" >Contact</label>
+                                <input class="form-control" type="text" wire:model="user_contact"  >
+                                <span class="text-danger">@error( 'user_contact' ){{ $message}}@enderror</span>
+                              </div>
+
+
+                    <div class="form-check mb-1 pb-1">
+                    <input class="form-check-input" type="checkbox" value="" id="terms">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    You must agree with our <a href="#"> Terms & Conditions</a>
+                    </label>
+                  </div>
+
+                      
+                @endif  
+
+
+            <div class="row">
+             
+                @if($currentStep == 1)
+                <div></div>
+                @endif
+
+                @if($currentStep == 2 | $currentStep == 3 | $currentStep == 4)
+                  <button class=" col-sm-4 btn btn-primary d-block w-50 px-1" type="button" wire:click="decreaseStep()" ><i class=" bi bi-cloud-upload fs-lg me-2"></i>
+                      back
+                  </button>@endif
+                        
+                @if($currentStep == 1 | $currentStep == 2 | $currentStep == 3)
+                <button class=" col-sm-4 btn btn-primary d-block w-50 px-1 "  type="button" wire:click="increaseStep()" ><i class=" bi bi-cloud-upload fs-lg me-2"></i>
+                    Next
+                </button>@endif
+
+                @if($currentStep == 4)
+                <button class=" col-sm-4 btn btn-primary d-block w-50 px-1 "  type="submit"  wire:click="decreaseStep" ><i class=" bi bi-cloud-upload fs-lg me-2"></i>
+                    Submit
+                </button>@endif  
+                </div>
+              </div>
+            </form>
+</main>
+
