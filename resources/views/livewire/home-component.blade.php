@@ -29,7 +29,7 @@
                       <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-2">
                         <div class="card product-card">
                           <a class="card-img-top d-block overflow-hidden" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-                            <img src="{{url('Storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">
+                            <img src="{{url('storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">
                           </a> 
                         </div>
                       </div>
@@ -138,7 +138,7 @@
                     </div>
                     
                     <a class="card-img-top d-block overflow-hidden" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-                      <img src="{{url('Storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">
+                      <img src="{{url('storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">
                     </a>
                     <div class="card-body py-2">
                       <a class="product-meta d-block fs-xs pb-1" href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{$franchise->category->industry}}</a>
@@ -232,7 +232,7 @@
                         </div>
                         
                         <a class="card-img-top d-block overflow-hidden" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-                          <img src="{{url('Storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">-->
+                          <img src="{{url('storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">-->
                         </a>
                         <div class="card-body py-2">
                           <a class="product-meta d-block fs-xs pb-1" href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{ucwords(trans($franchise->category->industry))}}</a>
@@ -286,7 +286,7 @@
                         </div>-->
                         
                         <a class="card-img-top d-block overflow-hidden" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-                          <img src="{{url('Storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">
+                          <img src="{{url('storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}">
                         </a>
                         <div class="card-body py-2">
                           <a class="product-meta d-block fs-xs pb-1" href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{ucwords(trans($franchise->category->industry))}}</a>
@@ -365,7 +365,7 @@
               </div>
               
               <a class="card-img-top d-block overflow-hidden" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-              <img src="{{url('Storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
+              <img src="{{url('storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
               <div class="card-body py-2">
               <a class="product-meta d-block fs-xs pb-1" href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{$franchise->category->industry}}</a>
                 <!--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->brand_name, 24)}}</a></h3>-->
@@ -433,7 +433,7 @@
                 @foreach ($new as $franchise)<!--border-bottom-->
                   <div class="d-flex align-items-center pb-2 ">
                     <a class="d-block flex-shrink-0" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-                    <img src="{{url('Storage/brands/'.$franchise->image)}}" width="64" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
+                    <img src="{{url('storage/brands/'.$franchise->image)}}" width="64" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
                       <div class="ps-2">
                         <h6 class="widget-product-title"><a href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{Str::limit($franchise->brand_name, 24)}}</a></h6>
                         <div class="widget-product-meta"><span class="text-accent">{{$franchise->max_investment}} - {{$franchise->min_investment}} lacs.</span></div>
@@ -454,7 +454,7 @@
                   <div class="d-flex align-items-center pb-2 ">
                   <a class="d-block flex-shrink-0" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
                 
-                  <img src="{{url('Storage/brands/'.$franchise->image)}}" width="64" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
+                  <img src="{{url('storage/brands/'.$franchise->image)}}" width="64" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
                     <div class="ps-2">
                       <h6 class="widget-product-title"><a href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{Str::limit($franchise->brand_name, 24)}}</a></h6>
                       <div class="widget-product-meta"><span class="text-accent">{{$franchise->max_investment}} - {{$franchise->min_investment}} lacs.</span></div>
@@ -474,7 +474,7 @@
                   <div class="d-flex align-items-center pb-2 ">
                   <a class="d-block flex-shrink-0" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
                 
-                  <img src="{{url('Storage/brands/'.$franchise->image)}}" width="64" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
+                  <img src="{{url('storage/brands/'.$franchise->image)}}" width="64" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
                     <div class="ps-2">
                       <h6 class="widget-product-title"><a href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{Str::limit($franchise->brand_name, 24)}}</a></h6>
                       <div class="widget-product-meta"><span class="text-accent">{{$franchise->max_investment}} - {{$franchise->min_investment}} lacs.</span></div>
@@ -514,7 +514,7 @@
                   </div>
                   
                   <a class="card-img-top d-block overflow-hidden" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-                  <img src="{{url('Storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
+                  <img src="{{url('storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
 
                   <div class="card-body py-2">
                     <a class="product-meta d-block fs-xs pb-1" href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{$franchise->category->industry}}</a>
@@ -662,7 +662,7 @@
                         </div>
                       
                       <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
-                        <img src="http://127.0.0.1:8000/Storage/brands/digital_8.png" alt="in asperiores quod nam"></a>
+                        <img src="http://127.0.0.1:8000/storage/brands/digital_8.png" alt="in asperiores quod nam"></a>
 
                       <div class="card-body py-2">
                         <a class="product-meta d-block fs-xs pb-1" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"></a>
