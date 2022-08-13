@@ -213,6 +213,7 @@ Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)-
 Route::get('/award', AwardComponent::class)->name('business.award');
 Route::get('/exhibition', EventComponent::class)->name('business.exhibition');
 Route::get('/exhibition/d', EventDetailsComponent::class)->name('event.details');
+
 Route::get('/magazine', MagazineComponent::class)->name('business.magazine');
 Route::get('/partner', MembershipComponent::class)->name('business.membership');
 //track
@@ -328,9 +329,6 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     $site = App::make('sitemap');
     //$site->add(URL::to('/'),date("Y-m-d h:i:s"),1,'daily'); 
     $postie = Event::all();
-     foreach ($postie as $key => $pt){
-      $site->add(URL::to($pt->slug),$pt->created_at,1,'daily');
-     }
-
+     foreach ($postie as $key => $pt){$site->add(URL::to($pt->slug),$pt->created_at,1,'daily');}
     $site->store('xml', 'sitemap');
-    });
+  });
