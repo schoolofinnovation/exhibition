@@ -662,7 +662,7 @@
                         </div>
                       
                       <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
-                        <img src="http://127.0.0.1:8000/storage/brands/digital_8.png" alt="in asperiores quod nam"></a>
+                        <img src="/storage/brands/digital_8.png" alt="in asperiores quod nam"></a>
 
                       <div class="card-body py-2">
                         <a class="product-meta d-block fs-xs pb-1" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"></a>

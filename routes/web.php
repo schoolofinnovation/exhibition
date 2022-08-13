@@ -128,8 +128,10 @@ use App\Http\Livewire\User\UserProfileComponent;
 use App\Http\Livewire\User\UserReviewComponent;
 use App\Mail\ContactMail;
 use App\Mail\PostMail;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -320,3 +322,15 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     //trial
     Route::get('/seller/opportunity', SellerPostOpportunityComponent::class)->name('seller.opportunity');
   });
+
+  //sitemap
+  Route::get('sitemap',function(){
+    $site = App::make('sitemap');
+    //$site->add(URL::to('/'),date("Y-m-d h:i:s"),1,'daily'); 
+    $postie = Event::all();
+     foreach ($postie as $key => $pt){
+      $site->add(URL::to($pt->slug),$pt->created_at,1,'daily');
+     }
+
+    $site->store('xml', 'sitemap');
+    });
