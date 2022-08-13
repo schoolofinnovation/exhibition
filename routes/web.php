@@ -3,7 +3,7 @@
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Employee\EmployeeDashboardComponent;
-use App\Http\livewire\Employee\EmployeeAsideComponent;
+//use App\Http\livewire\Employee\EmployeeAsideComponent;
 use App\Http\Livewire\Master\MasterDashboardComponent;
 
 
@@ -301,7 +301,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/exhibitor/add/speaker' , EmployeeAddSpeakerComponent::class)->name('employee.addSpeaker');
     Route::get('/exhibitor/add/exhibitor' , EmployeeAddExhibitorComponent::class)->name('employee.addExhibitor');
     Route::get('/exhibitor/add/sponsership' , EmployeeAddSponsershipComponent::class)->name('employee.addSponsership');
-    Route::get('/aside', EmployeeAsideComponent::class)->name('aside');
+    //Route::get('/aside', EmployeeAsideComponent::class)->name('aside');
   });
 
   //Seller-SLR
