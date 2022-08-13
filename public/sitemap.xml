@@ -47,7 +47,7 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/international-production-&amp;-processing-expo</loc>
+	<loc>http://127.0.0.1:8000/international-production-processing-expo</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
@@ -82,17 +82,17 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/international-tourism-&amp;-travel-show</loc>
+	<loc>http://127.0.0.1:8000/international-tourism-travel-show</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/international-apparel-&amp;-textile-fair</loc>
+	<loc>http://127.0.0.1:8000/international-apparel-textile-fair</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/malaysian-international-food-&amp;-beverage-trade-fair</loc>
+	<loc>http://127.0.0.1:8000/malaysian-international-food-beverage-trade-fair</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
@@ -182,7 +182,7 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/china-international-agrochemical-&amp;-crop-protection-exhibition</loc>
+	<loc>http://127.0.0.1:8000/china-international-agrochemical-crop-protection-exhibition</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
@@ -248,7 +248,7 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/inflammation-chronic-illness-&amp;-the-brain</loc>
+	<loc>http://127.0.0.1:8000/inflammation-chronic-illness-the-brain</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
@@ -313,7 +313,7 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/international-gem-&amp;-jewelry-show</loc>
+	<loc>http://127.0.0.1:8000/international-gem-jewelry-show</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
@@ -363,7 +363,7 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/plastiworld-india-global-plastics-packaging-virtual-expo-&amp;-b2b-event</loc>
+	<loc>http://127.0.0.1:8000/plastiworld-india-global-plastics-packaging-virtual-expo-b2b-event</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
@@ -373,17 +373,17 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/korea-international-medical-&amp;-hospital-equipment-show</loc>
+	<loc>http://127.0.0.1:8000/korea-international-medical-hospital-equipment-show</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/jewellery-&amp;-gem-world-hong-kong</loc>
+	<loc>http://127.0.0.1:8000/jewellery-gem-world-hong-kong</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/vietnam-international-furniture-&amp;-home-accessories-fair</loc>
+	<loc>http://127.0.0.1:8000/vietnam-international-furniture-home-accessories-fair</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
@@ -453,7 +453,7 @@
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/canadian-international-conference-on-advances-in-education-teaching-&amp;-technology</loc>
+	<loc>http://127.0.0.1:8000/canadian-international-conference-on-advances-in-education-teaching-technology</loc>
 		<priority>1</priority>
 		<changefreq>daily</changefreq>
 	</url>
