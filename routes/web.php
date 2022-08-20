@@ -212,7 +212,7 @@ Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)-
 
 Route::get('/award', AwardComponent::class)->name('business.award');
 Route::get('/exhibition', EventComponent::class)->name('business.exhibition');
-Route::get('/exhibition/d', EventDetailsComponent::class)->name('event.details');
+Route::get('/exhibition/{slug}', EventDetailsComponent::class)->name('event.details');
 
 Route::get('/magazine', MagazineComponent::class)->name('business.magazine');
 Route::get('/partner', MembershipComponent::class)->name('business.membership');
