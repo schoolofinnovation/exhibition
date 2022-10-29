@@ -165,6 +165,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
@@ -236,6 +237,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Qrcode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
+        'Link' => Spatie\CalendarLinks\Link::class,
     ],
 
 ];

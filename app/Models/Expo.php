@@ -9,4 +9,17 @@ class Expo extends Model
 {
     use HasFactory;
     protected $table = "expos";
+
+    
+    public function search()
+    {
+    return $this->belongsTo(Expo::class, 'search_id');
+    }
+
+    public function expo()
+    {
+    return $this->belongsTo(Expo::class, 'expo_id');
+    }
+
+
 }

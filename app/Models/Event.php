@@ -25,5 +25,10 @@ class Event extends Model
     return $this->belongsTo(Expo::class, 'search_id');
     }
 
+    public function expo()
+    {
+    return $this->belongsTo(Expo::class, 'expo_id');
+    }
+
    
 }

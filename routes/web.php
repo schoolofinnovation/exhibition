@@ -118,6 +118,7 @@ use App\Http\Livewire\Employee\EmployeeAddSpeakerComponent;
 use App\Http\Livewire\Employee\EmployeeAddSponsershipComponent;
 
 use App\Http\Livewire\PaymentComponent;
+use App\Http\Livewire\ProductComponent;
 use App\Http\Livewire\Seller\SellerOrderComponent;
 use App\Http\Livewire\Seller\SellerOrderDetailsComponent;
 use App\Http\Livewire\Seller\SellerPostOpportunityComponent;
@@ -211,8 +212,9 @@ Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)-
 
 
 Route::get('/award', AwardComponent::class)->name('business.award');
-Route::get('/exhibition', EventComponent::class)->name('business.exhibition');
-Route::get('/exhibition/{slug}', EventDetailsComponent::class)->name('event.details');
+Route::get('/expo', EventComponent::class)->name('business.exhibition');
+Route::get('/{slug}', EventDetailsComponent::class)->name('event.details');
+Route::get('/pass/es/{slug}', ProductComponent::class)->name('event.product');
 
 Route::get('/magazine', MagazineComponent::class)->name('business.magazine');
 Route::get('/partner', MembershipComponent::class)->name('business.membership');

@@ -6,7 +6,9 @@ use App\Models\Award;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Franchise;
+use App\Models\Mag;
 use App\Models\Speaker;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -23,20 +25,22 @@ class EventComponent extends Component
 
     public function render()
     {   $industry = Category::get();
-        $evento = Event::where('eventype','expo')->paginate(4);
-        $awardo = Event::where('eventype','award')->get();
+        $mytime = Carbon::today()->format("Y-m-d");
+
+        $evento = Event::where('eventype','expo')->where('startdate', '>' , $mytime)->get();
+        $awardo = Event::where('eventype','expo')->where('startdate', '2023-03-27')->get();
         $newlead = Event::where('eventype','award')->latest()->paginate(1);
         
         //Network & Social & Speakers                
         $speaker = Speaker::where('entity','speaker')->get();
         $network = Speaker::where('entity','speaker')->get();
         $social = Speaker::where('entity','social')->get();
+        $magazine = Mag::where('type','a')->paginate(8);
         //$test = Franchise::where('id', '202')->get();
-        //dd($evento);
+        //dd($awardo);
         //DB::table('events')->insert([
-        //['admstatus' => '1', 'user_id' =>'1', 'status' =>'1', 'eventype' =>'expo', 'eventname' => 'Toy Fair - New York' , 'slug' => 'toy-fair-new-york' , 'city' => 'New York' , 'country' => ' USA' , 'enddate' => '0000-00-00' , 'startdate' => '0000-00-00' ],
-       
-
-        return view('livewire.event-component',['speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento]);
+        //['admstatus' => '1', 'user_id' =>'1', 'status' =>'1', 'eventype' =>'expo', 'eventname' => 'Buildings India' , 'image' => 'buildingsindia.png', 'organizer' => 'Exhibitions India Group', 'venue' => 'Pragati Maidan', 'slug' => 'buildings-india' , 'city' => 'New Delhi' , 'country' => 'India' , 'enddate' => '2023-03-29' , 'startdate' => '2023-03-27' ],
+        
+        return view('livewire.event-component',['magazine'=>$magazine, 'speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento]);
     }
 }
