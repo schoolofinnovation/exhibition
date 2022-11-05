@@ -358,11 +358,11 @@
                 <div class=" row card-group">
 
                   <!-- Card -->
-                  <div class="card">
+                  <div class="card ">
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Exhibition</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                       <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
                     </div>
                   </div>
@@ -382,17 +382,24 @@
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Sponsership</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                       <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
                     </div>
                   </div>
+
+                  
+                </div> 
+
+                <div class=" row card-group">
+
+                 
 
                   <!-- Card -->
                   <div class="card">
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Speaker</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                       <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
                     </div>
                   </div>
@@ -412,7 +419,7 @@
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Membership</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                       <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
                     </div>
                   </div>

@@ -18,9 +18,9 @@ class EventComponent extends Component
     public function store($event_id,$event_eventname,$event_eventype)
     {
         Cart::instance('cart')->add($event_id,$event_eventname,18000,$event_eventype)->associate('App\Models\Event');
-        //$this->emitTo('cart-component','refreshComponent');
+        $this->emitTo('cart-component','refreshComponent');
         session()->flash('success_message','Item has been added in cart');
-        //return redirect()->route('checkout');
+        return redirect()->route('checkout');
     }
 
     public function render()
@@ -33,13 +33,14 @@ class EventComponent extends Component
         
         //Network & Social & Speakers                
         $speaker = Speaker::where('entity','speaker')->get();
-        $network = Speaker::where('entity','speaker')->get();
+        $network = Speaker::where('entity','network')->get();
         $social = Speaker::where('entity','social')->get();
+
         $magazine = Mag::where('type','a')->paginate(8);
         //$test = Franchise::where('id', '202')->get();
         //dd($awardo);
-        //DB::table('events')->insert([
-        //['admstatus' => '1', 'user_id' =>'1', 'status' =>'1', 'eventype' =>'expo', 'eventname' => 'Buildings India' , 'image' => 'buildingsindia.png', 'organizer' => 'Exhibitions India Group', 'venue' => 'Pragati Maidan', 'slug' => 'buildings-india' , 'city' => 'New Delhi' , 'country' => 'India' , 'enddate' => '2023-03-29' , 'startdate' => '2023-03-27' ],
+        //DB::table('speakers')->insert([
+        //['admstatus' => '1','user_id' =>'1','status' =>'1','name' =>'expo', 'organisation' => 'Buildings India' , 'slug' => 'buildingsindia.png', 'image' => 'Exhibitions India Group' ],
         
         return view('livewire.event-component',['magazine'=>$magazine, 'speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento]);
     }

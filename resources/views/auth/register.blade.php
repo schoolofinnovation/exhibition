@@ -71,8 +71,10 @@ Everything you need to create amazing websites at scale.</p></div></div></div>
 <div class="col-sm-7 col-lg-6 col-xl-6 py-6 py-lg-0">
 <div class="row justify-content-center">
 <div class="col-11 col-lg-10 col-xl-7"><div>
-<div class="mb-2"><h6 class="h3 mb-1">Create your account</h6><p class="text-muted mb-0">
-Made with love for designers &amp; developers.</p></div>
+<div class="mb-2"><h6 class="h3 mb-1">Create your account</h6>
+<!--<p class="text-muted mb-0">
+Made with love for designers &amp; developers.</p>-->
+</div>
 <span class="clearfix"></span>
 <x-jet-validation-errors class="mb-4" />
 <form method="POST" action="{{ route('register') }}">

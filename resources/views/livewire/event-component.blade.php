@@ -214,12 +214,12 @@
                                   <i class=" bi bi-heart"></i></a> 
                               </div>
                               
-                              <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
+                              <a class="card-img-top d-block overflow-hidden" href="##">
                                 <img src="http://127.0.0.1:8000/Storage/brands/digital_8.png" alt="in asperiores quod nam"></a>-->
 
                               <div class="card-body py-2">
-                                <a class="product-meta d-block fs-xs pb-1" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"></a>
-                                <!--<h3 class="product-title fs-sm"><a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">in asperiores quod nam</a></h3>-->
+                                <a class="product-meta d-block fs-xs pb-1" href="##"></a>
+                                <!--<h3 class="product-title fs-sm"><a href="##">in asperiores quod nam</a></h3>-->
                                 <small class="fw-bold">
                                   @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
                                     {{Carbon\Carbon::parse ($eventoi->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('D, d M Y ')}}
@@ -231,7 +231,7 @@
                                 <div class="d-flex justify-content-between">
                                     <div class="product-price"><small>{{$eventoi -> edition}} Edition</small>
                                       <div class="product-title fs-sm h3 mb-0">
-                                      <a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">{{ucwords(trans($eventoi -> eventname))}}
+                                      <a href="##">{{ucwords(trans($eventoi -> eventname))}}
                                         </a></div>
                                     </div>
 
@@ -264,12 +264,12 @@
                               
                               <div class="card-body card-body-hidden">
                               <div class="d-flex justify-content-between mb-2">
-                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a>
-                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-cart fs-sm me-1"></i>test Exhibit</a>
+                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a>
+                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-cart fs-sm me-1"></i>test Exhibit</a>
                                 </div>
                               
                                 <div class="text-center"> 
-                                @guest<a class="nav-link-style fs-ms" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam" data-bs-toggle="modal">
+                                @guest<a class="nav-link-style fs-ms" href="##" data-bs-toggle="modal">
                                 <i class=" bi bi-eye align-middle me-1"></i>Contact</a>
                                 @endguest
                               </div>
@@ -282,7 +282,9 @@
                     @endguest
               <!--single lastest by new organiser contact-->
               @foreach($evento as $eventoi)
-                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4" href="{{route('event.details',['slug' => $eventoi->slug])}}">
+                
+
                   <div class="card product-card">
                     <div class="product-card-actions d-flex align-items-center">
                       <a class="btn-action nav-link-style me-2" href=""><i class="bi bi-shuffle me-1"></i>Compare</a>
@@ -290,11 +292,11 @@
                       <a class="btn-wishlist btn-sm" type="button" href="" wire:click.prevent="addtoWishlist(139,'in asperiores quod nam',79)" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
                         <i class="bi bi-heart"></i></a> 
                     </div>
-                    <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
+                    <a class="card-img-top d-block overflow-hidden" href="##">
                       <img src="{{url('exhibition/'.$eventoi->image)}}" alt="in asperiores quod nam"></a>
 
                     <div class="card-body py-2">
-                      <a class="product-meta d-block  pb-1" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
+                      
                         
                       
                       <div class="d-flex justify-content-between">
@@ -302,7 +304,7 @@
                             <i class="bi bi-shield-check" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="certified" aria-label="certified">
                               <i class="bi bi-lightning-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="upcoming" aria-label="upcoming"></i></i></small>
                             <div class="product-title fs-sm h3 mb-0">
-                            <a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">{{ucwords(trans($eventoi -> eventname))}}
+                            <a href="##">{{ucwords(trans($eventoi -> eventname))}}
                               </a></div>
                           </div>
 
@@ -331,12 +333,12 @@
                     
                     <div class="card-body card-body-hidden">
                       <div class="d-flex justify-content-between mb-2">
-                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-brush fs-sm me-1"></i>Exhibit</a>
-                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-cart fs-sm me-1"></i>Visit</a>
+                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-brush fs-sm me-1"></i>Exhibit</a>
+                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-cart fs-sm me-1"></i>Visit</a>
                       </div>
                     
                       <div class="text-center">
-                        @guest<a class="nav-link-style fs-ms" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam" data-bs-toggle="modal">
+                        @guest<a class="nav-link-style fs-ms" href="##" data-bs-toggle="modal">
                         <i class=" bi bi-eye align-middle me-1"></i>Contact</a>
                         @endguest
                      </div>
@@ -359,7 +361,7 @@
             <!--Award-->
             <div class="row pt-2 mx-n2 my-Slider5">
               @foreach($awardo as $eventoi)
-                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4" href="{{route('event.details',['slug' => $eventoi->slug])}}">
                   <div class="card product-card">
                     <div class="product-card-actions d-flex align-items-center">
                       <a class="btn-action nav-link-style me-2" href=""><i class="bi bi-shuffle me-1"></i>Compare</a>
@@ -367,11 +369,11 @@
                       <a class="btn-wishlist btn-sm" type="button" href="" wire:click.prevent="addtoWishlist(139,'in asperiores quod nam',79)" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
                         <i class="bi bi-heart"></i></a> 
                     </div>
-                    <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
+                    <a class="card-img-top d-block overflow-hidden" href="##">
                       <img src="{{url('exhibition/'.$eventoi->image)}}" alt="in asperiores quod nam"></a>
 
                     <div class="card-body py-2">
-                      <!--<h3 class="product-title fs-sm"><a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">in asperiores quod nam</a></h3>-->
+                      <!--<h3 class="product-title fs-sm"><a href="##">in asperiores quod nam</a></h3>-->
                      
                       
                       <div class="d-flex justify-content-between">
@@ -379,7 +381,7 @@
                             <i class="bi bi-shield-check" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="certified" aria-label="certified">
                               <i class="bi bi-lightning-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="upcoming" aria-label="upcoming"></i></i></small>
                             <div class="product-title fs-sm h3 mb-0">
-                            <a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">{{ucwords(trans($eventoi -> eventname))}}
+                            <a href="##">{{ucwords(trans($eventoi -> eventname))}}
                               </a></div>
                           </div>
 
@@ -414,12 +416,12 @@
                     
                     <div class="card-body card-body-hidden">
                       <div class="d-flex justify-content-between mb-2">
-                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-brush fs-sm me-1"></i>Exhibit</a>
-                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-cart fs-sm me-1"></i>Visit</a>
+                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-brush fs-sm me-1"></i>Exhibit</a>
+                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-cart fs-sm me-1"></i>Visit</a>
                       </div>
                     
                       <div class="text-center">
-                        @guest<a class="nav-link-style fs-ms" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam" data-bs-toggle="modal">
+                        @guest<a class="nav-link-style fs-ms" href="##" data-bs-toggle="modal">
                         <i class=" bi bi-eye align-middle me-1"></i>Contact</a>
                         @endguest
                      </div>
@@ -456,10 +458,10 @@
                   <div class="d-flex my-Slider7">
                       <!-- Product-->
                       @foreach ($evento as $franchise)
-                        <div class="col-lg-3 col-md-4 col-sm-6 pr-1 mb-1">
+                        <div class="col-lg-3 col-md-4 col-sm-6 pr-1 mb-1" href="{{route('event.details',['slug' => $franchise->slug])}}">
                           <div class="card product-card">
                             <div class="card-body py-2">
-                              <a class="product-meta d-block fs-xs pb-1" href="#">
+                              <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->slug])}}">
                                 <span class="text-bolder">
                                     @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
                                       {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y ')}}
@@ -543,12 +545,12 @@
                                   <i class=" bi bi-heart"></i></a> 
                               </div>
                               
-                              <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
+                              <a class="card-img-top d-block overflow-hidden" href="##">
                                 <img src="http://127.0.0.1:8000/Storage/brands/digital_8.png" alt="in asperiores quod nam"></a>-->
 
                               <div class="card-body py-2">
-                                <a class="product-meta d-block fs-xs pb-1" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"></a>
-                                <!--<h3 class="product-title fs-sm"><a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">in asperiores quod nam</a></h3>-->
+                                <a class="product-meta d-block fs-xs pb-1" href="##"></a>
+                                <!--<h3 class="product-title fs-sm"><a href="##">in asperiores quod nam</a></h3>-->
                                 <small class="fw-bold">
                                   @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
                                     {{Carbon\Carbon::parse ($eventoi->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('D, d M Y ')}}
@@ -560,7 +562,7 @@
                                 <div class="d-flex justify-content-between">
                                     <div class="product-price"><small>{{$eventoi -> edition}} Edition</small>
                                       <div class="product-title fs-sm h3 mb-0">
-                                      <a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">{{ucwords(trans($eventoi -> eventname))}}
+                                      <a href="##">{{ucwords(trans($eventoi -> eventname))}}
                                         </a></div>
                                     </div>
 
@@ -593,12 +595,12 @@
                               
                               <div class="card-body card-body-hidden">
                               <div class="d-flex justify-content-between mb-2">
-                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a>
-                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-cart fs-sm me-1"></i>test Exhibit</a>
+                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a>
+                                <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="##"><i class=" bi bi-cart fs-sm me-1"></i>test Exhibit</a>
                                 </div>
                               
                                 <div class="text-center"> 
-                                @guest<a class="nav-link-style fs-ms" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam" data-bs-toggle="modal">
+                                @guest<a class="nav-link-style fs-ms" href="##" data-bs-toggle="modal">
                                 <i class=" bi bi-eye align-middle me-1"></i>Contact</a>
                                 @endguest
                               </div>
@@ -612,7 +614,7 @@
               <!--single lastest by new organiser contact-->
               <!-- exhibition-->
               @foreach($evento as $eventoi)
-                <div class="col-lg-3 col-md-4 col-sm-6 px-2">
+                <div class="col-lg-3 col-md-4 col-sm-6 px-2" href="{{route('event.details',['slug' => $eventoi->slug])}}" >
                   <div class="card product-card">
                     <div class="product-card-actions d-flex align-items-center">
                       <!--<a class="btn-action nav-link-style me-2" href=""><i class="bi bi-shuffle me-1"></i>Compare</a>
@@ -620,12 +622,12 @@
                       <a class="btn-wishlist btn-sm" type="button" href="" wire:click.prevent="addtoWishlist(139,'in asperiores quod nam',79)" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
                         <i class="bi bi-heart"></i></a>-->
                     </div>
-                    <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
+                    <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
                       <img src="{{url('exhibition/'.$eventoi->image)}}" alt="in asperiores quod nam"></a>
                       
                     <div class="card-body py-2">
                      
-                      <!--<h3 class="product-title fs-sm"><a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">in asperiores quod nam</a></h3>-->
+                      <!--<h3 class="product-title fs-sm"><a href="##">in asperiores quod nam</a></h3>-->
                      
                       
                       <div class="d-flex justify-content-between">
@@ -734,20 +736,21 @@
                 <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo"> <i class="mr-1  bi bi-plus"></i>
                   Exhibit your Network<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>
               </div>
-          <div class="row my-Slider8">
+          <div class="row my-Slider23">
+
             <!-- Bestsellers-->
             <div class="col-md-4 col-sm-6 mb-2 py-3">
               <div class="widget">
                 <h3 class="widget-title fw-bolder">Network</h3>
               
                 @foreach ($network as $franchise)
-                  <div class="d-flex align-items-center justify-content-between w-100">
+                  <div class="d-flex align-items-center justify-content-between w-100 mb-2">
                     <div class="d-flex align-items-center position-relative">
                       
-                      <img class="rounded-circle ms-2" src="{{url('speaker/'.$franchise->image)}}"width="25%" height="35%" alt="Avatar">
+                      <img class="rounded-circle ms-2" src="{{url('speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
                       <div class="ms-2">
                         <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
-                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->businessteam->designation}} {{$franchise->organisation}}</a></h5>
+                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
                         <span class="fs-xs text-muted">730 followers</span>
                       </div>
                     </div>
@@ -762,14 +765,14 @@
             <div class="col-md-4 col-sm-6 mb-2 py-3">
               <div class="widget">
                 <h3 class="widget-title fw-bolder">Speaker</h3>
-                @foreach ($network as $franchise)
-                  <div class="d-flex align-items-center justify-content-between w-100">
+                @foreach ($speaker as $franchise)
+                  <div class="d-flex align-items-center justify-content-between w-100 mb-2">
                     <div class="d-flex align-items-center position-relative">
                       
-                      <img class="rounded-circle ms-2" src="{{url('speaker/'.$franchise->image)}}" width="25%" height="35%" alt="Avatar">
+                      <img class="rounded-circle ms-2" src="{{url('speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
                       <div class="ms-2">
                         <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
-                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->businessteam->designation}} {{$franchise->organisation}}</a></h5>
+                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
                         <span class="fs-xs text-muted">730 followers</span>
                       </div>
                     </div>
@@ -777,21 +780,21 @@
                   </div>
                   
                 @endforeach
-                            </div>
+              </div>
             </div>
 
             <!-- Top rated-->
             <div class="col-md-4 col-sm-6 mb-2 py-3">
               <div class="widget">
                 <h3 class="widget-title fw-bolder">Social</h3>
-                @foreach ($network as $franchise)
-                  <div class="d-flex align-items-center justify-content-between w-100">
+                @foreach ($social as $franchise)
+                  <div class="d-flex align-items-center justify-content-between w-100 mb-2">
                     <div class="d-flex align-items-center position-relative">
                       
-                      <img  src="{{url('speaker/'.$franchise->image)}}" width="25%" height="35%" alt="Avatar">
+                      <img class="rounded-circle ms-2" src="{{url('speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
                       <div class="ms-2">
                         <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->name}}</a></h4>
-                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->businessteam->designation}} {{$franchise->organisation}}</a></h5>
+                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
                         <span class="fs-xs text-muted">730 followers</span>
                       </div>
                     </div>
@@ -828,7 +831,7 @@
 
 
     
-     
+ 
 
 @push('scripts')
     <script>
@@ -1084,6 +1087,24 @@
             "autoplayHoverPause": true,
             "autoplay":true,
             "autoplayButtonOutput":false
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+
+<script>
+      var slider = tns({
+        "container": '.my-Slider23',            
+        "responsive": {
+          "300": {
+            "items": 1,
+            "controls": false,
+            "mouseDrag": true,
+            "autoplay": true,
+            "autoplayButtonOutput":false,
+            "autoplayHoverPause": true,
           },
           
         },

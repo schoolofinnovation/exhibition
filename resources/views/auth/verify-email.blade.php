@@ -54,7 +54,6 @@
 
 
     <div class="container my-5 py-5">
-
         <div class="mb-4 text-sm text-gray-600 items-center">
             {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
         </div>
@@ -84,7 +83,7 @@
                 </button>
             </form>
         </div>
-        </div>
+    </div>
     </main>
     @livewire('top-footer-component')
     

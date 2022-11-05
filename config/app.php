@@ -165,6 +165,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+        //Spatie\CalendarLinks\Link::class,
         
         /*
          * Package Service Providers...
@@ -180,6 +181,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        
 
     ],
 

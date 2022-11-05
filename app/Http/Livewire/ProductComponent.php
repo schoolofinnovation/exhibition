@@ -94,8 +94,6 @@ class ProductComponent extends Component
     {
         
         $event = Event::where('slug',$this->slug)->first();
-
-      
         return view('livewire.product-component',['event'=>$event])->layout('layouts.eblog');
     }
 }
