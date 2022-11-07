@@ -178,7 +178,7 @@ Route::get('/downloadSell', [SellyourbusinessComponent::class, 'index']);
 Route::get('/downloadBuy', [BuyabrandlicenseComponent::class, 'index']);
 Route::get('/downloadOpportunity', [UserOrderDetailsComponent::class, 'index'])->name('user.opportunity');
 
-Route::get('/', HomeComponent::class)->name('front.home');
+//Route::get('/', HomeComponent::class)->name('front.home');
 Route::get('/opportunities', shopComponent::class)->name('franchise.Coi');
 Route::get('/opportunity/{slug}', DetailsComponent::class)->name('franchise.details');
 Route::get('/opportunity-category/{category_slug}', CategoryComponent::class)->name('franchise.category');
@@ -211,7 +211,7 @@ Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)-
 
 
 Route::get('/award', AwardComponent::class)->name('business.award');
-Route::get('/expo', EventComponent::class)->name('business.exhibition');
+Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/{slug}', EventDetailsComponent::class)->name('event.details');
 Route::get('/pass/es/{slug}', ProductComponent::class)->name('event.product');
 

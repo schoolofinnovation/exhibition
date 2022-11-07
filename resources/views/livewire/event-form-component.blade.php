@@ -1,5 +1,5 @@
 
-        <div class="col-lg-6 px-4 px-xl-5 py-5 border-top" id="contact">
+        <div class="col-lg-6 px-4 px-xl-5 py-5 border-top" >
             <h2 class="h4 mb-1"> Contact us to see how we can help you.</h2>
             <div class="fs-sm text-primary mb-4">We’ll be in touch within 24 hours.</div>
                       
@@ -7,8 +7,8 @@
             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div> 
             @endif
             
-            <form wire:submit.prevent="newlist" >
-                <div class="row g-3">
+            <form wire:submit.prevent="newlist"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <div class="row g-3" id="collapseExample">
                     <div class="col-sm-4">
                         <label class="form-label" for="cf-name">Event Name: {{$slug}}
                     </label>
@@ -78,7 +78,7 @@
                         @error( 'phone' ){{ $message}}@enderror
                     </div>
                 
-                <button class="btn btn-primary mt-2" type="submit">Get in touch</button>
+                 <button class="btn btn-primary mt-2" type="submit">Get in touch</button>
                 </div>       
             </form>
         </div>

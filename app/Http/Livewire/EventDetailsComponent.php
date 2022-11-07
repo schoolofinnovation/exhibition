@@ -36,7 +36,8 @@ class EventDetailsComponent extends Component
     public function render()
     {   
         $event = Event::where('slug',$this->slug)->first();
-        $from =  DateTime::createFromFormat('Y-m-d', ($event->startdate));
+        $start=$event->startdate;
+        $from =  DateTime::createFromFormat('Y-m-d',$start);
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
         $name = $event->eventname;
         $venue = $event->venue;
@@ -52,11 +53,9 @@ class EventDetailsComponent extends Component
         
         $franchises = Franchise::get();
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
-        $speaker = Speaker::where('admstatus','0')->where('status','1')->get();
+        $speaker = Speaker::where('admstatus','0')->where('status','1')->where('entity','speaker')->get();
         $sponSer = Sponsership::where('admstatus','0')->where('status','1')->get();
         $premium = Franchise::where('status', 'active')->where('featured','premium')->limit(1);
-
-        
 
         return view('livewire.event-details-component',['link'=>$link,'premium'=>$premium,'event'=>$event,'sponSer'=>$sponSer,'speaker'=>$speaker,'awarde'=>$awarde,'franchises'=>$franchises]);
     }

@@ -70,6 +70,7 @@
           <div class="col-md-4">
             <div class="widget pb-2 mb-4">
               <h3 class="widget-title text-light pb-1">Stay informed</h3>
+
               <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
                 <div class="input-group flex-nowrap"><i class="bi bi-envelope position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
                   <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required="">
@@ -82,6 +83,7 @@
                 <div class="form-text text-light opacity-50">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</div>
                 <div class="subscription-status"></div>
               </form>
+
             </div>
             <div class="widget pb-2 mb-4">
               <h3 class="widget-title text-light pb-1">Download our app</h3>
@@ -96,12 +98,12 @@
           <hr class="hr-light mb-5">
           <div class="row  pb-2 ">
             <div class="col-md-6 text-center text-md-start mb-4">
-              <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 me-3" style="line-height:17px;" href="{{asset('/')}}">
-              <div class="fs-4 text-light" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
-                Council <small class="text-primary fw-normal">of</small><br>Innovation</div>
-                <!--<img class="d-block" src="./franciz_files/footer-logo-light.png" width="117" alt="Council of Innovation">-->
-              
-              </a>
+              <div class="text-nowrap mb-4">
+                <a class="d-inline-block align-middle mt-n1 me-3" style="line-height:17px;" href="{{asset('/')}}">
+                  <div class="fs-4 text-light" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
+                    Council <small class="text-primary fw-normal">of</small><br>Innovation</div>
+                    <!--<img class="d-block" src="./franciz_files/footer-logo-light.png" width="117" alt="Council of Innovation">-->
+                </a>
                 <div class="btn-group dropdown disable-autohide">
                   <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown">
                     <img class="me-2" src="./franciz_files/en.png" width="20" alt="English">Eng / $</button>
@@ -119,6 +121,7 @@
                     <li><a class="dropdown-item" href=""><img class="me-2" src="./franciz_files/it.png" width="20" alt="Italiano">Italiano</a></li>
                   </ul>
                 </div>
+
               </div>
               <div class="widget widget-links widget-light">
                 <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
@@ -160,7 +163,8 @@
         <span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span>
       <span class="handheld-toolbar-label">$265.00</span></a></div>
     </div>
+
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="{{asset('/#top')}}" data-scroll="">
-    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon  bi bi-chevron-up"></i></a>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>Browse by Venue</a>
 </main>

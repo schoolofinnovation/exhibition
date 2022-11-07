@@ -1,4 +1,4 @@
-    <main>
+<main>
       <!-- Navbar Electronics Store-->
       <header class="shadow-sm">
         <!-- Topbar
@@ -58,7 +58,7 @@
                 </a> 
               
                 <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
-                  <div class="fs-4" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> <i class="bi bi-globe2 mr-1"></i>COI </div>
+                  <div class="fs-4 border-end" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> <i class="bi bi-globe2 mr-1"></i>COI</div>
                     <!--<img src="{{asset('image/abc.png')}}" width="74" alt="COI">-->
                 </a>
            
@@ -276,7 +276,10 @@
 
               <!-- Toolbar-->
               <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                  <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    
+                
                       <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-tool navbar-stuck-toggler" href=""><span class="navbar-tool-tooltip">Toggle menu</span>
@@ -466,6 +469,7 @@
           <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
             <div class="container">
               <div class="collapse navbar-collapse" id="navbarCollapse">
+                  
                
               <!-- Search-->
                 <div class="input-group d-lg-none my-3"><i class=" bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
@@ -589,8 +593,7 @@
                     </li>
                   @endif
                        
-                  <li class=" nav-item dropdown">
-                  <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> offcanvas</button></li>
+                  
                 </ul>
               </div>
 
@@ -602,57 +605,77 @@
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
               <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <h5 id="offcanvasRightLabel">Add Event</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
-               <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle ps-lg-0" href="" data-bs-toggle="dropdown"><i class=" bi bi-list align-middle mt-n1 me-2"></i>Departments</a>
-                      <ul class="dropdown-menu">
-                        @foreach ($categories as $category)
-                          <li class="dropdown mega-dropdown">
-                              <a class="dropdown-item dropdown-toggle" href="#{{$category->id}}" data-bs-toggle="dropdown">
-                              <i class=" opacity-60 fs-lg mt-n1 me-2"></i> {{ucwords(trans($category->industry))}}</a>
-                              
-                            <div class="dropdown-menu p-0">
-                              <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                            
-                                <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
-                                  <div class="widget widget-links">                     
-                                    @foreach($category->sector as $seet)
-                                      <h6 class="fs-base my-1" >
-                                          <a href="{{route('franchise.sector',['sector_slug'=> $seet->slug])}}">{{ucwords(trans($seet->sector))}}</a>
-                                      </h6>
-                                    
-                                      <ul class="widget-list">
-                                          @foreach($seet->service as $soet)
-                                              <li class="widget-list-item py-0">
-                                                <a class="widget-list-link" href="{{route('franchise.sector',['sector_slug'=> $soet->slug])}}">
-                                              {{ucwords(trans($soet->business))}}</a></li> 
-                                          @endforeach
-                                      </ul>
-                                    @endforeach
-                                  </div>
-                                </div>
-                              
-                                <div class="mega-dropdown-column d-none d-lg-block py-4 text-center">
-                                  @foreach($category->franchise as $soet)
-                                    @if ($loop->first or $loop->iteration <= 3)
-                                      <a class="d-block mb-2" href="{{route('franchise.details',['slug' => $soet->slug])}}"><img src="{{url('Storage/brands/'.$soet->image)}}" width="150" alt=""></a>
-                                      <div class="fs-sm mb-3">Starting from <br><span class="fw-medium">{{$soet->min_investment}} Lac Investment </span></div>
-                                    @endif
-                                  @endforeach
-                                    <a class="btn btn-primary btn-shadow btn-sm" href="{{asset('/franchise')}}">See offers<i class=" bi bi-chevron-right fs-xs ms-1"></i></a>
-                                </div>
-                              
-                              </div>
-                            </div>
-
-                          </li>
-                        @endforeach 
-                      </ul>
+               <ul class="navbar-nav">
+                  <!--<li  class="nav-item {{'/' == request()->path() ? 'active' : '' }}">
+                  <a class="nav-link" href="{{asset('/') }}" >Home</a>
+                  </li>-->
+                  <li  class="nav-item {{'sell-your-business' == request()->path() ? 'active' : '' }}"">
+                  <a class="nav-link" href="{{route('sell.business')}}">Sell your Business</a>
                   </li>
+
+                  <li  class="nav-item {{'expand-your-business' == request()->path() ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('expand.business') }}" >Expand your Business</a>
+                  </li>
+
+                  <li  class="nav-item {{'buy-a-brand-license' == request()->path() ? 'active' : '' }}">
+                    <a class="nav-link" href="{{route('buy.license') }}" >Buy a Brand License</a>
+                  </li>
+
+                  <li  class=" nav-item dropdown {{'business-design-strategy' == request()->path() ? 'active' : '' }}">
+                    <a class="nav-link dropdown-toggle" href="{{asset('/checkout')}}" data-bs-toggle="dropdown">Business Design & Strategy</a>
+                     <ul class="dropdown-menu">
+                      <li class="dropdown {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Business Design</a>
+                        <ul class="dropdown-menu">
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="{{route('design.strategy')}}">Business Design Sprint</a></li>
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="innovation-accelerator">Innovation Accelerator</a></li>
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="product-&-service-go-to-market">Product & Service go to Market</a></li>
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="entrepreneur-in-residence">Entrepreneur in Residence</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Strategy Design</a>
+                        <ul class="dropdown-menu">
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Insights & growth strategy</a></li>
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Innovation & growth audit</a></li>
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Strategy sprint</a></li>
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Innovation transformation</a></li>
+                          <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Future exploration</a></li>
+                        </ul>
+                      </li>
+                      <li><a class="dropdown-item" href="">Franchise report</a></li>
+                     </ul>
+                  </li>
+
+                  @if('exhibition' == request()->path() ? 'active' : '')
+                    <li  class=" nav-item dropdown {{'exhibition' == request()->path() ? 'active' : '' }}">
+                      <a class="nav-link dropdown-toggle" href="{{asset('/')}}" data-bs-toggle="dropdown">Exhibition</a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Business Design</a>
+                          <ul class="dropdown-menu">
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="{{route('design.strategy')}}">Business Design Sprint</a></li>
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="innovation-accelerator">Innovation Accelerator</a></li>
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="product-&-service-go-to-market">Product & Service go to Market</a></li>
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="entrepreneur-in-residence">Entrepreneur in Residence</a></li>
+                          </ul>
+                        </li>
+                        <li class="dropdown {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Strategy</a>
+                          <ul class="dropdown-menu">
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Insights & growth strategy</a></li>
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Innovation & growth audit</a></li>
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Strategy sprint</a></li>
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Innovation transformation</a></li>
+                            <li class="nav-item {{'business-design-strategy' == request()->path() ? 'active' : '' }}"><a class="dropdown-item" href="">Future exploration</a></li>
+                          </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="">Franchise report</a></li>
+                      </ul>
+                    </li>
+                  @endif
+                       
+                 
                 </ul>
               </div>
             </div>

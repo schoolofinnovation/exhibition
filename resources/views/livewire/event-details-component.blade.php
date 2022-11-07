@@ -38,7 +38,7 @@
                       <div class="ps-1"></div>
                     </li>
                     <li class="d-flex">
-                      <a class="btn btn-primary btn-sm mx-2" type="button" 
+                      <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
                        href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
                       
                       <a class="btn btn-primary btn-sm" href="{{$link->ics()}}">Add to Calender</a>
@@ -665,11 +665,11 @@
       <section class="container pt-2 pt-md-5">
         <h6 class="text-left mb-2"> Speaker</h6>
         <div class="my-sliderSpeaker">
-              @foreach ($franchises as $franchise)
+              @foreach ($speaker as $speaker)
                 
                   <div class="card product-card">
                     <a class="d-flex align-items-center" href="#">
-                      <img class="rounded-circle" width="50%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                      <img class="rounded-circle ms-2" width="17%" src="{{url('speaker/'.$speaker->image)}}"  alt="{{Str::limit($speaker->name, 24)}}">
                     </a>
                   </div>
                
@@ -694,9 +694,10 @@
         </div>
       </section>
 
-      <section class="container py-5">
-                    <!-- Card group -->
-                    <div class="card-group">
+      <!-- Card group sec_last-->
+            <section class="container py-5">
+              <!-- Card group -->
+              <div class="card-group sec_last">
 
                   <!-- Card -->
                   <div class="card border-0">
@@ -727,21 +728,21 @@
                       <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
                     </div>
                   </div>
-                  </div>
-      </section>
+              </div>
+            </section>
 
-      <section class="card text-center py-5 border-0">
-      <div class="card-body">
-        <h5 class="card-title h2">Buy  your Expo 2022 Tickets Now </h5>
-        <p class="card-text fs-sm text-muted">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-sm btn-primary">Buy access pass</a>
-      </div>
-          
-      </section>
-
-      <section class="container py-5">
-                    <!-- Card group -->
-                    <div class="card-group">
+            <section class="card text-center py-5 border-0">
+              <div class="card-body">
+                <h5 class="card-title h2">Buy  your Expo 2022 Tickets Now </h5>
+                <p class="card-text fs-sm text-muted">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-sm btn-primary">Buy access pass</a>
+              </div>
+            </section>
+            
+      <!-- Card group last-->
+            <section class="container py-5">
+                
+                <div class="card-group last" >
 
                   <!-- Card -->
                   <div class="card border-0">
@@ -772,14 +773,14 @@
                       <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
                     </div>
                   </div>
-                  </div>
-      </section>
+                </div>
+            </section>
 
-      <div class="handheld-toolbar">
-        <div class="d-grid mx-2">
-          <a class="btn btn-primary btn-lg" href="#"><i class=" bi bi-cart fs-lg me-2"></i>Book Tickets</a>    
-        </div>
-      </div>
+            <div class="handheld-toolbar">
+              <div class="d-grid mx-2">
+                <a class="btn btn-primary btn-lg" href="#"><i class=" bi bi-cart fs-lg me-2"></i>Book Tickets</a>    
+              </div>
+            </div>
 
      
     </main>
@@ -1011,6 +1012,48 @@
               "controls": false,
               "swipeAngle": false,
               "speed": 400
+            });
+          </script>
+
+          <script>
+            var slider = tns({
+              "container": '.last',  
+              "responsive": {
+                "300": {
+                  "items": 1,
+                  "controls": false,
+                  "nav": false,
+                  "autoplay":false,
+                  "mouseDrag":true,
+                  "controls": false,
+                },
+                "500": {
+                  "items": 3,
+                  "nav": false,
+                }
+              },
+              
+            });
+          </script>
+
+          <script>
+            var slider = tns({
+              "container": '.sec_last',  
+              "responsive": {
+                "300": {
+                  "items": 1,
+                  "controls": false,
+                  "nav": false,
+                  "autoplay":false,
+                  "mouseDrag":true,
+                  "controls": false,
+                },
+                "500": {
+                  "items": 3,
+                  "nav": false,
+                }
+              },
+              
             });
           </script>
         @endpush

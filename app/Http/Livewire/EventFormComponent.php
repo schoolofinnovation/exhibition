@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Event;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use App\Mail\ContactMail;
 
 class EventFormComponent extends Component
 {
