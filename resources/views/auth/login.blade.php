@@ -55,7 +55,7 @@
 
 <section>
 <div class="bg-primary position-absolute h-100 top-0 left-0 zindex-100 col-lg-6 col-xl-6 zindex-100 d-none d-lg-flex flex-column justify-content-end" data-bg-size="cover" data-bg-position="center">
-<img src="{{asset ('images/img-v-2.jpg') }}" alt="Image" class="img-as-bg">
+<img src="{{asset ('public/images/img-v-2.jpg') }}" alt="Image" class="img-as-bg">
 
 <div class="row position-relative zindex-110 p-5"><div class="col-md-8 text-center mx-auto">
 <span class="badge badge-warning badge-pill">News</span><h5 class="h5 text-white mt-3">

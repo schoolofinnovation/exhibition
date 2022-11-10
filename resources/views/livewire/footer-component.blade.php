@@ -1,5 +1,5 @@
 <main>
-<footer class="footer bg-dark pt-5 ">
+  <footer class="footer bg-dark pt-5 ">
       <div class="container">
         <div class="row pb-2">
 
@@ -15,7 +15,7 @@
             <span class="fw-normal text-white">Members</span></h6>
             <h6 class="d-inline-block col-sm-3 me-3"><span class="text-primary">897 </span>
             <span class="fw-normal text-white">Vendors</span></h6>
-            <div class="widget mt-4 text-md-nowrap text-center text-md-start">
+          <div class="widget mt-4 text-md-nowrap text-center text-md-start">
             <a class="btn-social bs-light bs-twitter me-2 mb-2"  target="_blank" href="{{$infos->twitter}}"><i class=" bi bi-twitter"></i></a>
             <a class="btn-social bs-light bs-facebook me-2 mb-2"  target="_blank" href="{{$infos->facebook}}"><i class=" bi bi-facebook"></i></a>
             <a class="btn-social bs-light bs-instagram me-2 mb-2"  target="_blank" href="{{$infos->instagram}}"><i class=" bi bi-instagram"></i></a>
@@ -71,7 +71,7 @@
             <div class="widget pb-2 mb-4">
               <h3 class="widget-title text-light pb-1">Stay informed</h3>
 
-              <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
+              <form class="subscription-form validate" action="" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
                 <div class="input-group flex-nowrap"><i class="bi bi-envelope position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
                   <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required="">
                   <button class="btn btn-primary" type="submit" name="subscribe">Subscribe*</button>
@@ -149,19 +149,12 @@
        </div>
       </div>
   </footer>
-    <!-- Toolbar for handheld devices (Default)-->
-    <div class="handheld-toolbar d-none">
-      <div class="d-table table-layout-fixed w-100">
-        <a class="d-table-cell handheld-toolbar-item" href="">
-         <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
-         <span class="handheld-toolbar-label">Wishlist</span></a>
-        
-        <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)">
-        <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a>
-        
-        <a class="d-table-cell handheld-toolbar-item" href="">
-        <span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span>
-      <span class="handheld-toolbar-label">$265.00</span></a></div>
+
+
+   
+
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="https://cartzilla.createx.studio/shop-grid-rs.html#" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar"><span class="handheld-toolbar-icon"><i class="ci-filter-alt"></i></span><span class="handheld-toolbar-label">Filters</span></a><a class="d-table-cell handheld-toolbar-item" href="https://cartzilla.createx.studio/account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="https://cartzilla.createx.studio/shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">$265.00</span></a></div>
     </div>
 
     <!-- Back To Top Button-->

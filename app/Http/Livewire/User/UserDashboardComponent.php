@@ -208,7 +208,7 @@ class UserDashboardComponent extends Component
         $abc = Category::with('sector')->orderBy('industry','Asc')->get();
         $newuser = Want::where('user_id', Auth::user()->id)->get();
 
-        return view('livewire.user.user-dashboard-component',['appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.eblog');
+        return view('livewire.user.user-dashboard-component',['appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
         //dd($expadnuser);
     }
 }

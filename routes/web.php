@@ -231,13 +231,16 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
   //User
   Route::middleware(['auth:sanctum', 'verified'])->group( function () {
-    Route::get('/user/mybrand', MybrandComponent::class)->name('user.mybrand');
+    Route::get('/user/orders', UserOrdersComponent::class)->name('user.Orders');
+    Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
+    
+    Route::get('/user/mybrand', MybrandComponent::class)->name('user.mybrand');
+    
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/blog', UserBlogComponent::class)->name('user.blog');
     Route::get('/user/account', UserAccountComponent::class)->name('user.account');
-    Route::get('/user/orders', UserOrdersComponent::class)->name('user.Orders');
-    Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');
+   
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
   });
 

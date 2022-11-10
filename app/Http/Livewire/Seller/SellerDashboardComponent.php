@@ -111,7 +111,7 @@ class SellerDashboardComponent extends Component
                                                                 'totalsales'=> $totalsales,
                                                                 'totalrevenue'=> $totalrevenue,
                                                                 'todaysales'=> $todaysales,
-                                                                'todayrevenue'=> $todayrevenue ])->layout('layouts.eblog');
+                                                                'todayrevenue'=> $todayrevenue ])->layout('layouts.admin');
    
       }
 }

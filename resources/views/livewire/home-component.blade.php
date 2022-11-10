@@ -661,12 +661,12 @@
                             <i class=" bi bi-heart"></i></a> 
                         </div>
                       
-                      <a class="card-img-top d-block overflow-hidden" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">
+                      <a class="card-img-top d-block overflow-hidden" href="#">
                         <img src="/storage/brands/digital_8.png" alt="in asperiores quod nam"></a>
 
                       <div class="card-body py-2">
-                        <a class="product-meta d-block fs-xs pb-1" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"></a>
-                        <!--<h3 class="product-title fs-sm"><a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">in asperiores quod nam</a></h3>-->
+                        <a class="product-meta d-block fs-xs pb-1" href="#"></a>
+                        <!--<h3 class="product-title fs-sm"><a href="#">in asperiores quod nam</a></h3>-->
                         <small class="fw-bold">
                           @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
                               {{Carbon\Carbon::parse ($eventoi->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('D, d M Y ')}}
@@ -675,7 +675,7 @@
                           @endif 
                         </small>
                         <div class="product-title fs-sm h3 mb-0">
-                              <a href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam">{{ucwords(trans($eventoi->eventname))}}
+                              <a href="#">{{ucwords(trans($eventoi->eventname))}}
                                 </a></div>
                         <div class="d-flex justify-content-between">
                             <div class="product-price"><small>{{$eventoi->edition}} Edition <i class="bi bi-shield-fill-check"></i> <i class="bi bi-lightning-fill"></i></small>
@@ -711,12 +711,12 @@
                       
                       <div class="card-body card-body-hidden">
                         <div class="d-flex justify-content-between mb-2">
-                          <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a>
-                          <a class="btn btn-primary btn-sm d-block w-50 mx-0" type="button" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam"><!--<i class=" bi bi-cart fs-sm me-1">--></i>Request a Booth</a>
+                          <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="#"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a>
+                          <a class="btn btn-primary btn-sm d-block w-50 mx-0" type="button" href="#"><!--<i class=" bi bi-cart fs-sm me-1">--></i>Request a Booth</a>
                         </div>
                         
                           <div class="text-center">
-                          @guest<a class="nav-link-style fs-ms" href="http://127.0.0.1:8000/franchise/in-asperiores-quod-nam" data-bs-toggle="modal">
+                          @guest<a class="nav-link-style fs-ms" href="#" data-bs-toggle="modal">
                           <i class=" bi bi-eye align-middle me-1"></i>Contact</a>
                           @endguest
                         </div>

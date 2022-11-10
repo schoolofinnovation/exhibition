@@ -23,7 +23,7 @@
               <div class="text-light fs-base"> <a class="fs-ms text-light" href="{{route('user.Orders')}}"> Applies</a></div>
               <h3 class="text-light">
                   @if($appliedapplication == 0)
-                    <a class="fs-ms text-light" href="{{route('front.home')}}">Find Opportunity</a>
+                    <a class="fs-ms text-light" href="">Find Opportunity</a>
                   @else 
                       {{$appliedapplication}}
                   @endif

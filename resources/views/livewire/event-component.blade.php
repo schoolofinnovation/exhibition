@@ -38,7 +38,7 @@
                       </div>
                   </div>
                 </div>
-               
+                
                 <div class=" col-md-8 d-none d-sm-block pr-5">
                   <div class="d-flex my-Slider1">
                         <!-- Product-->
@@ -142,8 +142,21 @@
           <section class="container pt-2" id="exhibit"> 
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-2">
               <div class="fs-sm">Trending<h4 class="mb-0  me-2">Exhibition</h4></div>
-              <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo"> <i class="mr-1  bi bi-plus"></i>
-                Exhibit<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>
+              
+              <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo"> <i class="mr-1  bi bi-plus"></i>
+                Exhibit<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>-->
+
+                <div class="pt-3">
+                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      All
+                    </a>
+
+                    <ul class="dropdown-menu" width="auto">
+                    <li><a class="dropdown-item" href="#">More</a></li>
+                      <li><a class="dropdown-item" href="#">Speaker</a></li>
+                      <li><a class="dropdown-item" href="#">Subscribe</a></li>
+                    </ul>
+                  </div>
             </div>
 
             <!-- Grid-->
@@ -202,7 +215,6 @@
                     </div>
                   
                   </div>
-                  
                 </div>
               @endforeach
             </div>
@@ -212,8 +224,24 @@
           <section class="container pt-2" id="awards"> 
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-4">
               <h2 class="h3 mb-0 pt-3 me-2">COI Awards</h2>
-              <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="{{route('franchise.Coi')}}">
-                Nominate<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>
+              
+              <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="{{route('franchise.Coi')}}">
+                Nominate<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
+              </div>-->
+
+              <div class="pt-3">
+                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    All
+                    </a>
+
+                    <ul class="dropdown-menu" width="auto">
+                    <li><a class="dropdown-item" href="#">More</a></li>
+                      <li><a class="dropdown-item" href="#">Nominate</a></li>
+                      <li><a class="dropdown-item" href="#">Attend</a></li>
+                    </ul>
+              </div>
+
+
             </div>
             <!--Award-->
             <div class="row pt-2 mx-n2 my-Slider5">
@@ -372,8 +400,23 @@
           <section class="container pt-2" id="exhibit"> 
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-2">  
               <div class="fs-sm" >Trending<h4 class="mb-0 me-2">Conference</h4></div>
-                <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo"> <i class="mr-1  bi bi-plus"></i>
-                  Attend<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>
+
+                <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo">
+                  Attend<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>-->
+
+                  <div class="pt-3">
+                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      All
+                    </a>
+
+                    <ul class="dropdown-menu" width="auto">
+                    <li><a class="dropdown-item" href="#">More</a></li>
+                      <li><a class="dropdown-item" href="#">Attend</a></li>
+                      <li><a class="dropdown-item" href="#">Speaker</a></li>
+                    </ul>
+                  </div>
+
+
               </div>
             <!-- Grid-->
             <div class="row pt-2 mx-n2 my-Slider6"> 
@@ -452,8 +495,21 @@
           <section class="container pt-2" id="exhibit"> 
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-2">  
               <div class="fs-sm" >Trending Business<h4 class="mb-0 me-2">Magazine</h4></div>
-                <div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo"> <i class="mr-1  bi bi-plus"></i>
-                  Advertise<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>
+                
+              <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo">
+                  Advertise<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>-->
+
+                  <div class="pt-3">
+                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      All
+                    </a>
+
+                    <ul class="dropdown-menu" width="auto">
+                    <li><a class="dropdown-item" href="#">More</a></li>
+                      <li><a class="dropdown-item" href="#">Advertise</a></li>
+                      <li><a class="dropdown-item" href="#">Subscribe</a></li>
+                    </ul>
+                  </div>
             </div>
               
             <!-- Grid-->
@@ -478,18 +534,35 @@
       <section class="container py-3 pb-md-3">
         <!--<h2 class="h3 mb-4 pb-2">Top Creators</h2>-->
         <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-1 mb-1">  
-              <div class="fs-sm" >Business Community<h4 class="mb-0 me-2">Creators</h4></div>
-                <div class="pt-3">
+              <div class="fs-sm" >Business Community
+               
+                  <h4 class="mb-0 me-2">Speaker</h4>
+                  
+              </div>
+                <!--<div class="pt-3">
                   <a class="btn btn-outline-primary btn-sm" href="#listexpo"> 
                     Connect <i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
+                </div>-->
+
+                  <div class="pt-3">
+                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      All
+                    </a>
+
+                    <ul class="dropdown-menu" width="auto">
+                    <li><a class="dropdown-item" href="#">More</a></li>
+                      <li><a class="dropdown-item" href="#">Speaker</a></li>
+                      <li><a class="dropdown-item" href="#">Subscribe</a></li>
+                    </ul>
                   </div>
+                  
               </div>
           <div class="row my-Slider23">
 
             <!-- Bestsellers-->
             <div class="col-md-4 col-sm-6 mb-2 py-1">
               <div class="widget">
-                <h3 class="widget-title fw-bolder">Network</h3>
+                <!--<h3 class="widget-title fw-bolder">Network</h3>-->
               
                 @foreach ($network as $franchise)
                   <div class="d-flex align-items-center justify-content-between w-100 mb-2">
@@ -506,13 +579,13 @@
                   </div>
                   
                 @endforeach
-                            </div>
+              </div>
             </div>
 
             <!-- New arrivals-->
             <div class="col-md-4 col-sm-6 mb-2 py-3">
               <div class="widget">
-                <h3 class="widget-title fw-bolder">Speaker</h3>
+                <!--<h3 class="widget-title fw-bolder">Speaker</h3>-->
                 @foreach ($speaker as $franchise)
                   <div class="d-flex align-items-center justify-content-between w-100 mb-2">
                     <div class="d-flex align-items-center position-relative">
@@ -534,7 +607,7 @@
             <!-- Top rated-->
             <div class="col-md-4 col-sm-6 mb-2 py-3">
               <div class="widget">
-                <h3 class="widget-title fw-bolder">Social</h3>
+                <!--<h3 class="widget-title fw-bolder">Social</h3>-->
                 @foreach ($social as $franchise)
                   <div class="d-flex align-items-center justify-content-between w-100 mb-2">
                     <div class="d-flex align-items-center position-relative">
@@ -550,7 +623,7 @@
                   </div>
                   
                 @endforeach
-                              </div>
+              </div>
             </div>
 
           </div>
@@ -842,7 +915,6 @@
       });
     </script>
     
-    
     <script>
       var slider = tns({
         "container": '.my-Slider23',            
@@ -861,6 +933,32 @@
             "controls": false,
             "autoplayHoverPause": true,
             "autoplay":false,
+            "autoplayButtonOutput":false
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+
+    <script>
+      var slider = tns({
+        "container": '.tagse',            
+        "responsive": {
+          "300": {
+            "items": 1,
+            "controls": false,
+            "mouseDrag": true,
+            "autoplay": true,
+            "autoplayButtonOutput":false,
+            "autoplayHoverPause": true,
+          },
+          "500": {
+            "items": 1,
+            "nav": false,
+            "controls": false,
+            "autoplayHoverPause": true,
+            "autoplay":true,
             "autoplayButtonOutput":false
           },
           
