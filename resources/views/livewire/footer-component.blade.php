@@ -159,5 +159,5 @@
 
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="{{asset('/#top')}}" data-scroll="">
-    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>Browse by Venue</a>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="bi bi-funnel-fill"></i></a>
 </main>
