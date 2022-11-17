@@ -300,7 +300,7 @@
                     </div>
                   
                   </div>
-                  <hr class="d-sm-none">
+                  <!--<hr class="d-sm-none">-->
                 </div>
               @endforeach 
             </div>

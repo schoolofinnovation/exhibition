@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Seller;
 
 use App\Models\Brand;
 use App\Models\Coupon;
+use App\Models\Event;
 use App\Models\Franchise;
 use App\Models\Info;
 use App\Models\Mag;
@@ -85,7 +86,7 @@ class SellerDashboardComponent extends Component
       $todaysales = Order:: where('status','delivered')->whereDate('created_at',carbon::today())->count();
       $todayrevenue = Order:: where('status','delivered')->whereDate('created_at',carbon::today())->sum('total');
 
-        $franchises = Franchise::where('user_id', Auth::user()->id)->orderBy('created_at','ASC')->paginate(6);
+        $event = Event::where('user_id', Auth::user()->id)->orderBy('created_at','ASC')->paginate(6);
         $brands = Brand::where('user_id', Auth::user()->id)->get();
         $about = Sprofile::where('user_id', Auth::user()->id)->first();
         $new = Mag::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->paginate(4);
@@ -93,6 +94,7 @@ class SellerDashboardComponent extends Component
         $review = Review::where('user_id', Auth::user()->id)->get();
         $user = Auth::user();
         $likecoun = Mag::where('user_id',$user->id)->count();
+        $brands = Brand::where('user_id', Auth::user()->id)->get();
         //$likecount = Mag::where('user_id',$user->id)->count();
         $franch = Franchise::withcount('review')->where('user_id', Auth::user()->id)->orderBy('review_count','DESC')->paginate(6);
       
@@ -106,7 +108,7 @@ class SellerDashboardComponent extends Component
                                                                 'review'=> $review,
                                                                 'franchise'=> $franchise,
                                                                 'new'=> $new,
-                                                                'franchises'=> $franchises,
+                                                                'event'=> $event,
                                                                 'about'=> $about,
                                                                 'totalsales'=> $totalsales,
                                                                 'totalrevenue'=> $totalrevenue,

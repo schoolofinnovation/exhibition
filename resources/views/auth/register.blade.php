@@ -62,7 +62,7 @@
 <a href="/" class="btn btn-white btn-icon-only rounded-circle position-absolute zindex-101 left-4 top-4 d-none d-lg-inline-flex" data-toggle="tooltip" data-placement="right" title="" data-original-title="Go back"><span class="btn-inner--icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></span></a>
 
 <section><div class="bg-primary position-absolute h-100 top-0 left-0 zindex-100 col-lg-6 col-xl-6 zindex-100 d-none d-lg-flex flex-column justify-content-end" data-bg-size="cover" data-bg-position="center">
-<img src="{{asset ('images/img-v-2.jpg') }}" alt="Image" class="img-as-bg"><div class="row position-relative zindex-110 p-5">
+<img src="{{asset ('image/img-v-2.jpg') }}" alt="Image" class="img-as-bg"><div class="row position-relative zindex-110 p-5">
 <div class="col-md-8 text-center mx-auto"><span class="badge badge-warning badge-pill">News</span>
 <h5 class="h5 text-white mt-3">The all new Quick is here</h5><p class="text-white opacity-8">
 Everything you need to create amazing websites at scale.</p></div></div></div>
@@ -77,6 +77,7 @@ Made with love for designers &amp; developers.</p>-->
 </div>
 <span class="clearfix"></span>
 <x-jet-validation-errors class="mb-4" />
+
 <form method="POST" action="{{ route('register') }}">
 @csrf
 <div class="form-group">
@@ -122,16 +123,18 @@ Show password</a></div></div>
 
 <button type="submit" class="btn btn-block btn-primary">Create my account</button></div></form>
 
-<div class="py-1 text-center"><span class="text-xs text-uppercase">or</span></div><div class="row"><div class="col-sm-6"><a href="#" class="btn btn-block btn-neutral btn-icon mb-3 mb-sm-0"><span class="btn-inner--icon">
-<img src="{{asset ('images/github.svg') }}" alt="Image placeholder">
+<div class="py-1 text-center"><span class="text-xs text-uppercase">or</span></div>
+
+<div class="row"><div class="col-sm-6"><a href="#" class="btn btn-block btn-neutral btn-icon mb-3 mb-sm-0"><span class="btn-inner--icon">
+<img src="{{asset ('image/social/facebook-7fcb46c06e.svg') }}" alt="Image placeholder">
 </span>
-<span class="btn-inner--text">Github</span>
+<!--<span class="btn-inner--text">Github</span>-->
 </a>
 </div>
 <div class="col-sm-6">
 <a href="#" class="btn btn-block btn-neutral btn-icon"><span class="btn-inner--icon">
-<img src="{{asset ('images/google.svg') }}" alt="Image placeholder"></span>
-<span class="btn-inner--text">Google</span>
+<img src="{{asset ('image/social/google-213cd1c446.svg') }}" alt="Image placeholder"></span>
+<!--<span class="btn-inner--text">Google</span>-->
 </a>
 </div>
 </div>

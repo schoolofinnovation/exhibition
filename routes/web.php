@@ -119,6 +119,7 @@ use App\Http\Livewire\Employee\EmployeeAddSponsershipComponent;
 
 use App\Http\Livewire\PaymentComponent;
 use App\Http\Livewire\ProductComponent;
+use App\Http\Livewire\Seller\SellerEventComponent;
 use App\Http\Livewire\Seller\SellerOrderComponent;
 use App\Http\Livewire\Seller\SellerOrderDetailsComponent;
 use App\Http\Livewire\Seller\SellerPostOpportunityComponent;
@@ -313,14 +314,18 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
   //Seller-SLR
   Route::middleware(['auth:sanctum', 'verified', 'authseller'])->group( function () {
-    Route::get('/seller/account', SellerAccountComponent::class)->name('seller.account');
-    Route::get('/seller/dashboard', SellerDashboardComponent::class)->name('seller.dashboard');
+    Route::get('/partner/account', SellerAccountComponent::class)->name('seller.account');
+    
+    Route::get('/partner/dashboard', SellerDashboardComponent::class)->name('seller.dashboard');
+    Route::get('/partner/add', SellerEventComponent::class)->name('event.add');
+
     Route::get('/mybrand', SellerMybrandComponent::class)->name('seller.mybrand');
     Route::get('/seller/profile', SellerProfileComponent::class)->name('seller.profile');
     Route::get('/seller/brand', SellerBrandComponent::class)->name('seller.brand');
     Route::get('/seller/franchise', SellerFranchiseComponent::class)->name('seller.franchise');
     Route::get('/seller/contact', SellerContactComponent::class)->name('seller.contact');
     Route::get('/seller/blog', SellerBlogComponent::class)->name('seller.blog');
+
     Route::get('/seller/order', SellerOrderComponent::class)->name('seller.order');
     Route::get('/seller/order/{order_id}', SellerOrderDetailsComponent::class)->name('seller.orderDetails');
 

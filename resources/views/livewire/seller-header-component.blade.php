@@ -24,14 +24,12 @@
                 <div class="navbar-tool-icon-box"><i class="navbar-tool-icon  bi bi-search"></i></div></a><a class="navbar-tool d-none d-lg-flex" href="dashboard-favorites.html"><span class="navbar-tool-tooltip">Favorites</span>
                 <div class="navbar-tool-icon-box"><i class="navbar-tool-icon  bi bi-heart"></i></div></a>
 
-              <div class="navbar-tool dropdown ms-2"><a class="" href="dashboard-sales.html">
+              <div class="navbar-tool dropdown ms-2"><a class="" href="#">
                  <!-- <img src="{{url('Storage/') }}/{{Auth::user()->profile_photo_path}}" width="32" alt="{{Auth::user()->name}}">
                   <div class=" rounded-circle" style="width: 50%;">-->
                   <img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="" style="max-width: 50%;">
-                 
-                
                 </a>
-                  <a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>{{Auth::user()->name}}</small>$1,375.00</a>
+                  <a class="navbar-tool-text ms-n1" href="#"><small>{{Auth::user()->name}}</small>$1,375.00</a>
                   
                 <div class="dropdown-menu dropdown-menu-end">
                   <div style="min-width: 14rem;">
@@ -60,18 +58,18 @@
                     <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class="bi bi-box-arrow-right opacity-60 me-2"></i>Sign Out</a>
                   <form id="logout-form" action="{{route('logout')}}" method="POST">
-                  @csrf
-				   </form>
+                    @csrf
+				          </form>
                   
                   </div>
                 </div>
 
               </div>
               <div class="navbar-tool ms-4">
-                  <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="marketplace-cart.html">
+                  <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="#">
                       <span class="navbar-tool-label">3</span><i class="navbar-tool-icon  bi bi-cart"></i></a>
                       @livewire('wishlist-component')
-                    </div>
+              </div>
             </div>
            
 
@@ -85,92 +83,139 @@
               <!-- Categories dropdown-->
               <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown">
-                    <i class="  bi bi-menu align-middle mt-n1 me-2"></i>Product</a>
+                    <i class="  bi bi-menu align-middle mt-n1 me-2"></i>Guide</a>
                   <ul class="dropdown-menu py-1">
-                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Photos</a>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Certificate</a>
                       <ul class="dropdown-menu">
-                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">All Photos<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                        <li class="dropdown-item product-title fw-medium"><a href="#">All Photos<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Abstract</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Animals</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Architecture</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Beauty &amp; Fashion</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Business</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Education</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Food &amp; Drink</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Holidays</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Industrial</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">People</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Sports</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Technology</a></li>
+                        <li><a class="dropdown-item" href="#">Abstract</a></li>
+                        <li><a class="dropdown-item" href="#">Animals</a></li>
+                        <li><a class="dropdown-item" href="#">Architecture</a></li>
+                        <li><a class="dropdown-item" href="#">Beauty &amp; Fashion</a></li>
+                        <li><a class="dropdown-item" href="#">Business</a></li>
+                        <li><a class="dropdown-item" href="#">Education</a></li>
+                        <li><a class="dropdown-item" href="#">Food &amp; Drink</a></li>
+                        <li><a class="dropdown-item" href="#">Holidays</a></li>
+                        <li><a class="dropdown-item" href="#">Industrial</a></li>
+                        <li><a class="dropdown-item" href="#">People</a></li>
+                        <li><a class="dropdown-item" href="#">Sports</a></li>
+                        <li><a class="dropdown-item" href="#">Technology</a></li>
                       </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Graphics</a>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Volunteers + Staff</a>
                       <ul class="dropdown-menu">
                         <li class="dropdown-item product-title fw-medium"><a href="#">All Graphics<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Icons</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Illustartions</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Patterns</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Textures</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Web Elements</a></li>
+                        <li><a class="dropdown-item" href="#">Icons</a></li>
+                        <li><a class="dropdown-item" href="#">Illustartions</a></li>
+                        <li><a class="dropdown-item" href="#">Patterns</a></li>
+                        <li><a class="dropdown-item" href="#">Textures</a></li>
+                        <li><a class="dropdown-item" href="#">Web Elements</a></li>
                       </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">UI Design</a>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Venue + spaces</a>
                       <ul class="dropdown-menu">
-                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">All UI Design<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                        <li class="dropdown-item product-title fw-medium"><a href="#">All UI Design<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">PSD Templates</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Sketch Templates</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Adobe XD Templates</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Figma Templates</a></li>
+                        <li><a class="dropdown-item" href="#">PSD Templates</a></li>
+                        <li><a class="dropdown-item" href="#">Sketch Templates</a></li>
+                        <li><a class="dropdown-item" href="#">Adobe XD Templates</a></li>
+                        <li><a class="dropdown-item" href="#">Figma Templates</a></li>
                       </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Web Themes</a>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Speakers + program</a>
                       <ul class="dropdown-menu">
-                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">All Web Themes<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                        <li class="dropdown-item product-title fw-medium"><a href="#">All Web Themes<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">WordPress Themes</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Bootstrap Themes</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">eCommerce Templates</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Muse Templates</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Plugins</a></li>
+                        <li><a class="dropdown-item" href="#">WordPress Themes</a></li>
+                        <li><a class="dropdown-item" href="#">Bootstrap Themes</a></li>
+                        <li><a class="dropdown-item" href="#">eCommerce Templates</a></li>
+                        <li><a class="dropdown-item" href="#">Muse Templates</a></li>
+                        <li><a class="dropdown-item" href="#">Plugins</a></li>
                       </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Fonts</a>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Auidence + experience</a>
                       <ul class="dropdown-menu">
-                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">All Fonts<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                        <li class="dropdown-item product-title fw-medium"><a href="#">All Fonts<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Blackletter</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Display</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Non Western</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Sans Serif</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Script</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Serif</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Slab Serif</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Symbols</a></li>
+                        <li><a class="dropdown-item" href="#">Blackletter</a></li>
+                        <li><a class="dropdown-item" href="#">Display</a></li>
+                        <li><a class="dropdown-item" href="#">Non Western</a></li>
+                        <li><a class="dropdown-item" href="#">Sans Serif</a></li>
+                        <li><a class="dropdown-item" href="#">Script</a></li>
+                        <li><a class="dropdown-item" href="#">Serif</a></li>
+                        <li><a class="dropdown-item" href="#">Slab Serif</a></li>
+                        <li><a class="dropdown-item" href="#">Symbols</a></li>
                       </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Add-Ons</a>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Sponsors + finances</a>
                       <ul class="dropdown-menu">
-                        <li class="dropdown-item product-title fw-medium"><a href="marketplace-category.html">All Add-Ons<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                        <li class="dropdown-item product-title fw-medium"><a href="#">All Add-Ons<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Photoshop Add-Ons</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Illustrator Add-Ons</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Sketch Plugins</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Procreate Brushes</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">InDesign Palettes</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Lightroom Presets</a></li>
-                        <li><a class="dropdown-item" href="marketplace-category.html">Other Software</a></li>
+                        <li><a class="dropdown-item" href="#">Photoshop Add-Ons</a></li>
+                        <li><a class="dropdown-item" href="#">Illustrator Add-Ons</a></li>
+                        <li><a class="dropdown-item" href="#">Sketch Plugins</a></li>
+                        <li><a class="dropdown-item" href="#">Procreate Brushes</a></li>
+                        <li><a class="dropdown-item" href="#">InDesign Palettes</a></li>
+                        <li><a class="dropdown-item" href="#">Lightroom Presets</a></li>
+                        <li><a class="dropdown-item" href="#">Other Software</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Video + photography</a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-item product-title fw-medium"><a href="#">All Add-Ons<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Photoshop Add-Ons</a></li>
+                        <li><a class="dropdown-item" href="#">Illustrator Add-Ons</a></li>
+                        <li><a class="dropdown-item" href="#">Sketch Plugins</a></li>
+                        <li><a class="dropdown-item" href="#">Procreate Brushes</a></li>
+                        <li><a class="dropdown-item" href="#">InDesign Palettes</a></li>
+                        <li><a class="dropdown-item" href="#">Lightroom Presets</a></li>
+                        <li><a class="dropdown-item" href="#">Other Software</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Post-event + renewal</a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-item product-title fw-medium"><a href="#">All Add-Ons<i class="ci-arrow-right fs-xs ms-1"></i></a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Photoshop Add-Ons</a></li>
+                        <li><a class="dropdown-item" href="#">Illustrator Add-Ons</a></li>
+                        <li><a class="dropdown-item" href="#">Sketch Plugins</a></li>
+                        <li><a class="dropdown-item" href="#">Procreate Brushes</a></li>
+                        <li><a class="dropdown-item" href="#">InDesign Palettes</a></li>
+                        <li><a class="dropdown-item" href="#">Lightroom Presets</a></li>
+                        <li><a class="dropdown-item" href="#">Other Software</a></li>
                       </ul>
                     </li>
                   </ul>
                 </li>
               </ul>
+
               <!-- Primary menu-->
-              <ul class="navbar-nav">
-                <li class="nav-item"> <a class="nav-link" href="{{asset('/')}}"><i class=" bi bi-house mx-2"></i>Back to COI</a></li>
-              </ul>
+                <div class="navbar-tool ">
+                    <a class="navbar-tool-icon-box" style="max-width: 50%;" href="#">
+                      <span class="navbar-tool-label">@if($brands->count()>0) {{$brands->count()}} @endif</span>
+                      <i class="navbar-tool-icon  bi bi-cart"></i>
+                    </a>
+                
+                    <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
+                          <span class="navbar-tool-label">@if($likecoun > 0){{$likecoun}} @endif</span>
+                          <i class="navbar-tool-icon  bi bi-cart"></i>
+                        </a>
+                    <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
+                          <span class="navbar-tool-label">@if($review->count()>0){{$review->count()}} @endif</span>
+                          <i class="navbar-tool-icon  bi bi-cart"></i>
+                        </a>
+                    <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
+                          <span class="navbar-tool-label">@if($user->likedMags->count()>0){{$user->likedMags->count()}} @endif</span>
+                          <i class="navbar-tool-icon  bi bi-cart"></i>
+                        </a>
+                    <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
+                          <span class="navbar-tool-label">@if($franchise->count()>0){{$franchise->count()}} @endif</span>
+                          <i class="navbar-tool-icon  bi bi-cart"></i>
+                        </a>   
+             </div>
             </div>
           </div>
         </div>
@@ -185,3 +230,5 @@
           </div>
         </div>
       </header>
+
+      

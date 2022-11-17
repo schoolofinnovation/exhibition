@@ -55,7 +55,7 @@
 
 <section>
 <div class="bg-primary position-absolute h-100 top-0 left-0 zindex-100 col-lg-6 col-xl-6 zindex-100 d-none d-lg-flex flex-column justify-content-end" data-bg-size="cover" data-bg-position="center">
-<img src="{{asset ('public/images/img-v-2.jpg') }}" alt="Image" class="img-as-bg">
+<img src="{{asset ('image/img-v-2.jpg') }}" alt="Image" class="img-as-bg">
 
 <div class="row position-relative zindex-110 p-5"><div class="col-md-8 text-center mx-auto">
 <span class="badge badge-warning badge-pill">News</span><h5 class="h5 text-white mt-3">
@@ -65,43 +65,48 @@ The all new Quick is here</h5><p class="text-white opacity-8">Everything you nee
 <span class="clearfix"></span>
 
         <x-jet-validation-errors class="mb-4" />
-<form method="POST" action="{{route('login')}}">
-@csrf 
+    <form method="POST" action="{{route('login')}}">
+            @csrf 
 
-<div class="form-group">
-<label class="form-control-label">Email address</label>
-<div class="input-group"><div class="input-group-prepend">
-<span class="input-group-text">
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
-<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <div class="form-group">
+            <label class="form-control-label">Email address</label>
+            <div class="input-group"><div class="input-group-prepend">
+            <span class="input-group-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
 
-</span></div>
+            </span></div>
 
-<input type="email" class="form-control"  name="email" placeholder="name@example.com" :value="old('email')" required autofocus>
-</div></div>
+            <input type="email" class="form-control"  name="email" placeholder="name@example.com" :value="old('email')" required autofocus>
+            </div></div>
 
-<div class="form-group mb-0">
-<div class="d-flex align-items-center justify-content-between"><div>
+            <div class="form-group mb-0">
+            <div class="d-flex align-items-center justify-content-between"><div>
 
-<label class="form-control-label">Password</label></div>
-<div class="mb-2">
-<a href="{{ route('password.request') }}" class="small text-muted text-underline--dashed border-primary" data-toggle="password-text" data-target="#input-password">
-Forgot password</a></div></div>
+            <label class="form-control-label">Password</label></div>
+            <div class="mb-2">
+            <a href="{{ route('password.request') }}" class="small text-muted text-underline--dashed border-primary" data-toggle="password-text" data-target="#input-password">
+            Forgot password</a></div></div>
 
-<div class="input-group"><div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></span></div>
+            <div class="input-group"><div class="input-group-prepend"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></span></div>
 
-<input type="password" class="form-control"  name="password" required autocomplete="current-password" placeholder="Password">
-</div></div><div class="mt-4">
-<button type="submit" class="btn btn-block btn-primary">Sign in</button></div></form>
+            <input type="password" class="form-control"  name="password" required autocomplete="current-password" placeholder="Password">
+            </div></div><div class="mt-4">
+            <button type="submit" class="btn btn-block btn-primary">Sign in</button></div>
+
+    </form>
 
 
+<hr>
 
+<!--<div class="py-3 text-center"><span class="text-xs text-uppercase">or</span></div>-->
 
-<div class="py-3 text-center"><span class="text-xs text-uppercase">or</span></div><div class="row">
+<div class="row">
 <div class="col-sm-6"><a href="#" class="btn btn-block btn-neutral btn-icon mb-3 mb-sm-0"><span class="btn-inner--icon">
-<img src="{{asset ('images/github.svg') }}" alt="Image placeholder"></span><span class="btn-inner--text">Github</span></a></div>
+<img src="{{asset ('image/social/facebook-7fcb46c06e.svg') }}" alt="Image placeholder"></span>
+</a></div>
 <div class="col-sm-6"><a href="#" class="btn btn-block btn-neutral btn-icon"><span class="btn-inner--icon">
-<img src="{{asset ('images/google.svg') }}" alt="Image placeholder"></span><span class="btn-inner--text">Google</span></a></div></div>
+<img src="{{asset ('image/social/google-213cd1c446.svg') }}" alt="Image placeholder"></span><!--<span class="btn-inner--text">Google</span>--></a></div></div>
 
 <div class="mt-4"><small>Not registered?</small> <a href="{{route('register')}}" class="small font-weight-bold">Create account</a></div>
 
