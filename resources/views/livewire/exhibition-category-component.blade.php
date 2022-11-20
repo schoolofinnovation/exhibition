@@ -254,19 +254,31 @@
              <!-- Sidebar-->
             <div class="offcanvas offcanvas-collapse offcanvas-end bg-white w-100 rounded-3 shadow-lg ms-lg-auto py-1" id="shop-sidebar" style="max-width: 22rem;">
               <div class="offcanvas-header align-items-center shadow-sm">
-                <h2 class="h5 mb-0">Filters</h2>
+                <h2 class="h5 mb-0">{{$this->eventype}}</h2>
                 <button class="btn-close ms-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body py-grid-gutter px-lg-grid-gutter">
                 <!-- Categories-->
                 <div class="widget widget-categories mb-4 pb-4 border-bottom">
-                  <h3 class="widget-title">Categories</h3>
+                  <h3 class="widget-title d-none d-sm-block">{{$this->eventype}}</h3>
                   <div class="accordion mt-n1" id="shop-categories" wire:model="categ" >
                     @foreach ($catego as $category)
                     <!-- Shoes-->
                     <div class="accordion-item">
                       <h3 class="accordion-header">
-                      <a class="accordion-button collapsed" href="#" value="{{$category->id}}"  role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="{{$category->expoindustry}}">{{$category->expoindustry}}</a></h3>
+                      @if($this->eventype ==  'expo')
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->id])}}">
+                                {{$category->expoindustry}}
+                              </a>
+                              @elseif ($this->eventype ==  'award')
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $category->id])}}">
+                                {{$category->expoindustry}}
+                              </a>
+                              @elseif ($this->eventype ==  'conference')
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $category->id])}}">
+                                {{$category->expoindustry}}
+                              </a>
+                          @endif
                     </div>
                       @endforeach
                   </div>

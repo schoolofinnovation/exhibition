@@ -58,7 +58,7 @@ class ExhibitionCategoryComponent extends Component
 
     public function render()
     {
-        $catego = Expo::where('type','expo')->get();
+        $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
         $mytime = Carbon::now();
 
         if($this->sorting == 'date'){

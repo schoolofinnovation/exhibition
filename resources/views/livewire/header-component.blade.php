@@ -761,7 +761,7 @@
                                               </div>
                                               <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
                                             </a>
-
+                                          @if(Auth::check())
                                             <a href="{{route('user.Orders')}}" class="list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                               <div class="d-flex w-100 align-items-center justify-content-between">
                                                 <normal class="mb-1">Your Orders</normal>
@@ -776,7 +776,7 @@
                                               </div>
                                               <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
                                             </a>
-
+                                          @endif
                                             <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                               <div class="d-flex w-100 align-items-center justify-content-between">
                                                 <normal class="mb-1">COI Recommends</normal>
