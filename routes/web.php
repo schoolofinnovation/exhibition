@@ -108,6 +108,7 @@ use App\Http\Livewire\Admin\BlogDashboardComponent;
 use App\Http\Livewire\Admin\BlogCategoryEditComponent;
 use App\Http\Livewire\CoicartComponent;
 use App\Http\Livewire\CoiReviewComponent;
+use App\Http\Livewire\ConferenceComponent;
 use App\Http\Livewire\ContactusComponent;
 
 use App\Http\Livewire\Document\ExpandComponent;
@@ -116,10 +117,12 @@ use App\Http\Livewire\Employee\EmployeeAddExhibitorComponent;
 use App\Http\Livewire\Employee\EmployeeAddPartnerComponent;
 use App\Http\Livewire\Employee\EmployeeAddSpeakerComponent;
 use App\Http\Livewire\Employee\EmployeeAddSponsershipComponent;
-
+use App\Http\Livewire\ExhibitionCategoryComponent;
+use App\Http\Livewire\ExhibitionComponent;
 use App\Http\Livewire\PaymentComponent;
 use App\Http\Livewire\ProductComponent;
 use App\Http\Livewire\Seller\SellerEventComponent;
+use App\Http\Livewire\Seller\SellerEventTicketComponent;
 use App\Http\Livewire\Seller\SellerOrderComponent;
 use App\Http\Livewire\Seller\SellerOrderDetailsComponent;
 use App\Http\Livewire\Seller\SellerPostOpportunityComponent;
@@ -181,6 +184,7 @@ Route::get('/downloadOpportunity', [UserOrderDetailsComponent::class, 'index'])-
 
 //Route::get('/', HomeComponent::class)->name('front.home');
 Route::get('/opportunities', shopComponent::class)->name('franchise.Coi');
+
 Route::get('/opportunity/{slug}', DetailsComponent::class)->name('franchise.details');
 Route::get('/opportunity-category/{category_slug}', CategoryComponent::class)->name('franchise.category');
 Route::get('/opportunity-sector/{sector_slug}', SectorComponent::class)->name('franchise.sector');
@@ -205,18 +209,29 @@ Route::get('/author/{slug}', BlogAuthorComponent::class)->name('blog.author');
 
 Route::get('/leadership', TeamComponent::class)->name('team');
 Route::get('/career', CareerComponent::class)->name('career');
+
+//Start
 Route::get('/sell-your-business', SellyourbusinessComponent::class)->name('sell.business');
 Route::get('/expand-your-business', ExpandyourbusinessComponent::class)->name('expand.business');
 Route::get('/buy-a-brand-license', BuyabrandlicenseComponent::class)->name('buy.license');
 Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)->name('design.strategy');
 
 
-Route::get('/award', AwardComponent::class)->name('business.award');
+
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/{slug}', EventDetailsComponent::class)->name('event.details');
 Route::get('/pass/es/{slug}', ProductComponent::class)->name('event.product');
 
-Route::get('/magazine', MagazineComponent::class)->name('business.magazine');
+Route::get('/magazineo', MagazineComponent::class)->name('business.magazine');
+
+//need to delete
+Route::get('/award', AwardComponent::class)->name('business.award');
+Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
+
+Route::get('/exhibition/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
+Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
+
+
 Route::get('/partner', MembershipComponent::class)->name('business.membership');
 //track
 Route::get('/COIbusiness',TrackComponent::class)->name('admin.track');
@@ -318,7 +333,9 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     
     Route::get('/partner/dashboard', SellerDashboardComponent::class)->name('seller.dashboard');
     Route::get('/partner/add', SellerEventComponent::class)->name('event.add');
+    Route::get('/partner/ticket/add', SellerEventTicketComponent::class)->name('ticket.add');
 
+    
     Route::get('/mybrand', SellerMybrandComponent::class)->name('seller.mybrand');
     Route::get('/seller/profile', SellerProfileComponent::class)->name('seller.profile');
     Route::get('/seller/brand', SellerBrandComponent::class)->name('seller.brand');

@@ -152,7 +152,7 @@
                     </a>
 
                     <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="#">More</a></li>
+                      <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'expo'])}}">More</a></li>
                       <li><a class="dropdown-item" href="#">Speaker</a></li>
                       <li><a class="dropdown-item" href="#">Subscribe</a></li>
                     </ul>
@@ -235,7 +235,8 @@
                     </a>
 
                     <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="#">More</a></li>
+                    <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'award'])}}">More</a></li>
+                    'search' => 'rocket'
                       <li><a class="dropdown-item" href="#">Nominate</a></li>
                       <li><a class="dropdown-item" href="#">Attend</a></li>
                     </ul>
@@ -246,10 +247,10 @@
             <!--Award-->
             <div class="row pt-2 mx-n2 my-Slider5">
               @foreach($awardo as $eventoi)
-                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4" href="{{route('event.details',['slug' => $eventoi->slug])}}">
+                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
                   <div class="card product-card">
                     
-                    <a class="card-img-top d-block overflow-hidden" href="#">
+                    <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
                       <img src="{{url('exhibition/'.$eventoi->image)}}" alt="{{$eventoi -> eventname}}"></a>
 
                     <div class="card-body py-2">
@@ -410,7 +411,7 @@
                     </a>
 
                     <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="#">More</a></li>
+                    <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'conference'])}}">More</a></li>
                       <li><a class="dropdown-item" href="#">Attend</a></li>
                       <li><a class="dropdown-item" href="#">Speaker</a></li>
                     </ul>
@@ -505,7 +506,7 @@
                     </a>
 
                     <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="#">More</a></li>
+                    <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'magazine'])}}">More</a></li>
                       <li><a class="dropdown-item" href="#">Advertise</a></li>
                       <li><a class="dropdown-item" href="#">Subscribe</a></li>
                     </ul>

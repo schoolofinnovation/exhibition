@@ -1,6 +1,4 @@
-@section('page_title','exhibition')
-
-
+@section('page_title', ($this->eventype))
 @section('page_description','Job')
 @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 @section('page_author' , 'COI - CouncilofInnovation')
@@ -14,18 +12,18 @@
 <main>
       <div class="page-title-overlap bg-accent pt-4">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-          <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          <!--<div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
                 <li class="breadcrumb-item"><a class="text-nowrap" href="{{asset('/')}}"><i class=" bi bi-house-fill"></i>Home</a></li>
-                <li class="breadcrumb-item text-nowrap"><a href="{{asset('/')}}"><i class=" bi bi-chevron-right"></i>Opportunities</a>
+                <li class="breadcrumb-item text-nowrap"><a href="{{asset('/')}}"><i class=" bi bi-chevron-right"></i>Exhibition</a>
                 </li>
                 <li class="breadcrumb-item text-nowrap active" aria-current="page"><i class=" bi bi-chevron-right"></i>Business </li>
               </ol>
             </nav>
-          </div>
+          </div>-->
           <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-            <h1 class="h3 text-light mb-0">Opportunities</h1>
+            <h1 class="h3 text-light mb-0">{{$this->eventype}}</h1>
           </div>
         </div>
       </div>
@@ -40,19 +38,17 @@
                 <div class="d-flex align-items-center flex-nowrap me-3 me-sm-4 pb-3">
                   <label class="text-light fs-sm opacity-75 text-nowrap me-2 d-none d-sm-block" for="sorting">Sort by:</label>
                   <select class="form-select"  wire:model="sorting">
-                    <!--<option value="default" selected="selected">Popularity</option>-->
-                    <option value="area">High - Low Area</option>
-                    <!--<option value="">Average Rating</option>-->
-                    <option value="investment"  selected="selected">Low - Hight Investment</option>
-                   <!-- <option value="">High - Low Investment</option>-->
-                    <option value="date">Latest</option>
+                    <option value="today" selected="selected">Today</option>
+                    <option value="tomorrow"  >Tomorrow</option>
+                    <option value="weekend">This weekend</option>
                   </select>
-                  <span class="fs-sm text-light opacity-75 text-nowrap ms-2 d-none d-md-block">of {{$franchises->count()}} Opportunities </span>
+                  <span class="fs-sm text-light opacity-75 text-nowrap ms-2 d-none d-md-block">of {{$exhibition->count()}} {{$this->eventype}} </span>
                 </div>
 
                 <div class="d-flex pb-3">
                   <select class="form-select"  wire:model="pagesize">
-                    <option value="12" selected="selected">12 per page</option>
+                    <!--<option value="12" selected="selected">12 per page</option>-->
+                              <option value="12">12 per page</option>
                               <option value="16">16 per page</option>
                               <option value="18">18 per page</option>
                               <option value="21">21 per page</option>
@@ -62,16 +58,23 @@
                   </select>
                 </div>
               </div>
-              <div class="d-flex pb-3">
-              <a class="nav-link-style nav-link-light me-3" href="#"><i class=" bi bi-arrow-left"></i></a><span class="fs-md text-light">1 / 5</span><a class="nav-link-style nav-link-light ms-3" href="#"><i class="ci-arrow-right"></i></a></div>
-              <div class="d-none d-sm-flex pb-3">
-              <a class="btn btn-icon nav-link-style bg-light text-dark disabled opacity-100 me-2" href="#"><i class=" bi bi-view-grid"></i></a><a class="btn btn-icon nav-link-style nav-link-light" href="shop-list-rs.html"><i class="ci-view-list"></i></a></div>
+              <!--<div class="d-flex pb-3">
+                    <a class="nav-link-style nav-link-light me-3" href="#"><i class="bi bi-chevron-left"></i></a>
+                    <span class="fs-md text-light">1 / 5</span>
+                    <a class="nav-link-style nav-link-light ms-3" href="#"><i class="bi bi-chevron-right"></i></a></div>
+
+                    <div class="d-none d-sm-flex pb-3">
+                    <a class="btn btn-icon nav-link-style bg-light text-dark disabled opacity-100 me-2" href="#">
+                      <i class=" bi bi-view-grid"></i></a><a class="btn btn-icon nav-link-style nav-link-light" href="shop-list-rs.html">
+                        <i class="ci-view-list"></i></a>
+                  </div>--> 
+
             </div>
 
             <!-- Products grid-->
             <div class="row mx-n2">
             @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
-            @foreach ($franchises as $franchise)
+            @foreach ($exhibition as $franchise)
               <!-- Product-->
               <div class="col-md-4 col-sm-6 px-2 mb-4">
 
@@ -83,65 +86,59 @@
                           <i class=" bi bi-heart-fill"></i></button>
                       @else
                           <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
-                          <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->brand_name}}',{{$franchise->max_investment}})">
+                          <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->eventname}}',{{$franchise->max_pass}})">
                             <i class=" bi bi-heart"></i></a></button>
                       @endif
                   </div>
 
-                  <a class="card-img-top d-block overflow-hidden" href="{{route('franchise.details',['slug' => $franchise->slug])}}">
-                  <img src="{{url('Storage/brands/'.$franchise->image)}}" alt="{{Str::limit($franchise->brand_name, 24)}}"></a>
+                  <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                  <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                  
                   <div class="card-body py-2">
-                  <a class="product-meta d-block fs-xs pb-1" href="{{route('franchise.details',['slug' => $franchise->slug])}}">{{ucwords(trans($franchise->category->industry))}} | {{ucwords(trans($franchise->sector->sector))}}</a>
-                     <!--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->brand_name, 24)}}</a></h3>-->
-               
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><h3 class="product-title fs-sm"><a href="{{route('franchise.details',['slug' => $franchise->slug])}}"><strong>{{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</strong></a></h3></div>
-                  <div class="star-rating align-center">
-                  @php
-                       $avgrating = 0;
-                      @endphp
+                        <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                          </a>
+                          <!--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->brand_name, 24)}}</a></h3>-->
+                    
+                      <div class="d-flex justify-content-between">
+                        <div class="product-price"><h3 class="product-title fs-sm">
+                          <a href="{{route('event.details',['slug' => $franchise->slug])}}"><strong>{{$franchise->id}}{{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</strong></a></h3></div>
+                        <div class="star-rating align-center">
+                        <!--untitled-1 line 558 -574-->
+                        </div>
+                      </div>
 
-                      @foreach($franchise->orderItems->where('rstatus',1) as $orderItem)
-                        @php
-                         $avgrating = $avgrating + $orderItem->review->rating;
-                        @endphp
-                      @endforeach
+                          <div class="d-flex justify-content-between">
+                            <div class="product-price"><span class="text">
+                            <small> <i class="bi bi-calendar3"></i>
+                            @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y ')}}
+                              @else
+                                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y')}}
+                              @endif 
+                            </small></span>
+                              <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
+                            </div>
+                            
+                            <div class="star-rating">
+                            <span class="text">
+                            <small></small></span>
+                            </div>
+                          </div>
 
-                      @for($i=1;$i<=5;$i++)
-                        @if($i<=$avgrating)
-                          <i class="star-rating-icon bi bi-star-fill active" aria-hidden="true"></i>
-                         @else
-                          <i class="star-rating-icon bi bi-star" aria-hidden="true"></i>
-                        @endif
-                      @endfor
+                          <div class="d-flex justify-content-between">
+                            <div class="product-price"><span class="text">
+                            <small><i class="bi bi-geo-alt-fill fs-sm"></i>{{$franchise -> venue}}, {{$franchise -> city}}</small></span>
+                              <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
+                            </div>
+
+                            
+                            <div class="star-rating">
+                            <span class="text">
+                            <small></small></span>
+                            </div>
+                          </div>
                   </div>
-                </div>
 
-                    <div class="d-flex justify-content-between">
-                      <div class="product-price"><span class="text">
-                      <small>Investment (lacs.)</small></span>
-                        <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
-                      </div>
-                      
-                      <div class="star-rating">
-                      <span class="text">
-                      <small>{{$franchise->max_investment}} - {{$franchise->min_investment}}</small></span>
-                      </div>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                      <div class="product-price"><span class="text">
-                      <small>Area required (sqm.)</small></span>
-                        <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
-                      </div>
-
-                      
-                      <div class="star-rating">
-                      <span class="text">
-                      <small>{{$franchise->max_area}} - {{$franchise->min_area}} </small></span>
-                      </div>
-                    </div>
-                  </div>
                   <div class="card-body card-body-hidden">
                     <div class="text-center pb-2">
                       <!--<div class="form-check form-option form-check-inline mb-2">
@@ -164,13 +161,13 @@
 
                     <div class="d-flex mb-2">
                       
-                      <a class=" text-center btn btn-primary btn-sm mx-1" type="button" href="{{route('franchise.details',['slug' => $franchise->slug])}}"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a></li>
+                      <a class=" text-center btn btn-primary btn-sm mx-1" type="button" href="{{route('event.details',['slug' => $franchise->slug])}}"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a></li>
                       <a class=" text-center btn btn-primary btn-sm mx-1" type="button" 
-                      href="#" wire:click.prevent="store({{$franchise->id}},'{{$franchise->brand_name}}',{{$franchise->max_investment}})">
+                      href="#" wire:click.prevent="store({{$franchise->id}},'{{$franchise->eventname}}',{{$franchise->max_pass}})">
                       <i class=" bi bi-cart fs-sm me-1"></i>Apply</a></li>
                       
                       </div>
-                      <div class="text-center"><a class="nav-link-style fs-ms" href="{{route('franchise.details',['slug' => $franchise->slug])}}" data-bs-toggle="modal"><i class=" bi bi-eye align-middle me-1"></i>Contact details</a></div> 
+                      <div class="text-center"><a class="nav-link-style fs-ms" href="{{route('event.details',['slug' => $franchise->slug])}}" data-bs-toggle="modal"><i class=" bi bi-eye align-middle me-1"></i>Contact details</a></div> 
                    
                   </div>
                 
@@ -245,7 +242,7 @@
 
             </div>
             <hr class="my-3">
-            {{$franchises->links('pagination-links')}}
+            {{$exhibition->links('pagination-links')}}
 
            
           </section>
@@ -254,7 +251,42 @@
 
           <!-- Sidebar-->
           <aside class="col-lg-4">
-            @livewire('aside-component')
+             <!-- Sidebar-->
+            <div class="offcanvas offcanvas-collapse offcanvas-end bg-white w-100 rounded-3 shadow-lg ms-lg-auto py-1" id="shop-sidebar" style="max-width: 22rem;">
+              <div class="offcanvas-header align-items-center shadow-sm">
+                <h2 class="h5 mb-0">Filters</h2>
+                <button class="btn-close ms-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body py-grid-gutter px-lg-grid-gutter">
+                <!-- Categories-->
+                <div class="widget widget-categories mb-4 pb-4 border-bottom">
+                  <h3 class="widget-title">{{$this->eventype}}</h3>
+                  <div class="accordion mt-n1" id="shop-categories">
+                    @foreach ($catego as $category)
+                        <!-- Shoes-->
+                        <div class="accordion-item">
+                          <h3 class="accordion-header">
+
+                          @if($this->eventype ==  'expo')
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->id])}}">
+                                {{$category->expoindustry}}
+                              </a>
+                              @elseif ($this->eventype ==  'award')
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $category->id])}}">
+                                {{$category->expoindustry}}
+                              </a>
+                              @elseif ($this->eventype ==  'conference')
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $category->id])}}">
+                                {{$category->expoindustry}}
+                              </a>
+                          @endif
+                          </h3>
+                        </div>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            </div>
           </aside>
         </div>
       </div>

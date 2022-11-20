@@ -1,5 +1,5 @@
 <main>
-@section('page_title',($event->eventname))
+@section('page_title', ($event->eventname) )
 
 @section('content_description','Find your Industry Exhibition ')
 @section('content_keywords', 'Sell', 'Business', 'expansion')

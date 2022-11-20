@@ -7,7 +7,7 @@
                     <div class="py-2">
                         <select class="form-select me-2" wire:model.lazy="eventype">
                             <option>Select Event Type</option>
-                            <option value="exhibition">Exhibition</option>
+                            <option value="expo">Exhibition</option>
                             <option value="conference">Conference</option>
                             <option value="awards">Awards</option>
                             <option value="forum">Forum</option>
@@ -24,13 +24,15 @@
                         </div>
                         <div class="form-text">Average marketplace price for this category is $15.</div>
                     </div>
+
+                    <div class="mb-3 pb-2">
+                        <label class="form-label" for="unp-product-name">Event name</label>
+                        <input class="form-control" type="text" wire:model="eventname" wire:keyup="generateSlug">
+                        <div class="form-text">Maximum 100 characters. No HTML or emoji allowed.</div>
+                    </div>
                     
                 </div>
-                <div class="mb-3 pb-2">
-                    <label class="form-label" for="unp-product-name">Event name</label>
-                    <input class="form-control" type="text" wire:model="eventname" wire:keyup="generateSlug">
-                    <div class="form-text">Maximum 100 characters. No HTML or emoji allowed.</div>
-                </div>
+               
                 
                
 

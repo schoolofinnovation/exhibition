@@ -214,22 +214,29 @@
                                 <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href=""><i class=" bi bi-eye"></i></a>
                                   <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class=" bi bi-cart"></i></button>
                                 </div>
-                                <a class="product-thumb-overlay" href=""></a><img src="{{url('Storage/brands/'.$product->image)}}" alt="{{Str::limit($product->brand_name, 24)}}">
+                                <a class="product-thumb-overlay" href=""></a><img src="{{url('Storage/brands/'.$product->image)}}" alt="{{Str::limit($product->eventname, 24)}}">
                             </div>
                             <div class="card-body">
                                 <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
                                   <div class="text-muted fs-xs me-1">by <a class="product-meta fw-medium" href="#">
-                                  {{ucwords(trans($product->Co_name))}}  {{ucwords(trans($product->id))}}</a>in <a class="product-meta fw-medium" href="#">{{ucwords(trans($product->brand_name))}}</a></div>
+                                  {{ucwords(trans($product->eventname))}}  {{ucwords(trans($product->id))}}</a>in <a class="product-meta fw-medium" href="#">{{ucwords(trans($product->eventname))}}</a></div>
                                   <div class="star-rating"><i class="star-rating-icon bi bi-star-filled active"></i>
                                   <i class="star-rating-icon bi bi-star-filled active"></i><i class="star-rating-icon bi bi-star-filled active"></i><i class="star-rating-icon bi bi-star-filled active"></i><i class="star-rating-icon bi bi-star-filled active"></i>
                                   </div>
                                 </div>
-                                  <h3 class="product-title fs-sm mb-2"><a href="">{{ucwords(trans($product->brand_name))}} </a></h3>
+                                  <h3 class="product-title fs-sm mb-2"><a href="">{{ucwords(trans($product->eventname))}} </a></h3>
+                                  <h3 class="product-title fs-sm mb-2"><a href="">@if(Carbon\Carbon::parse ($product->startdate)->format('M') != Carbon\Carbon::parse ($product->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($product->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y ')}}
+                                  @else
+                                    {{Carbon\Carbon::parse ($product->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y')}}
+                                  @endif
+                                  </a></h3>
+                                  <h3 class="product-title fs-sm mb-2"><a href="">{{$product -> venue}}, {{$product -> city}}</a></h3>
                                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                                     <div class="fs-sm me-2">
-                                        <i class=" bi bi-download text-muted me-1"></i>{{$product->review_status}}<span class="fs-xs ms-1">Search Appearance</span>
-                                        <i class=" bi bi-download text-muted me-1"></i><span class=" text-primary">{{$product->orderItems->count()}}</span><span class="fs-xs ms-1">Application</span>
-                                        <i class=" bi bi-download text-muted me-1"></i>{{$product->review->count()}}<span class="fs-xs ms-1">Review</span>
+                                    <i class=" bi bi-download text-muted me-1"></i><span class="fs-xs ms-1">Search Appearance</span>
+                                    <i class=" bi bi-download text-muted me-1"></i><span class=" text-primary"></span><span class="fs-xs ms-1">Application</span>
+                                    <i class=" bi bi-download text-muted me-1"></i><span class="fs-xs ms-1">Review</span>
                                     </div>
                                     <div class=" dropdown">
                                         <a class="bg-faded-accent text-accent fs-ms rounded-1 py-1 px-2 dropdown-toggle"  role="button" id="dropdownMenuLink"  data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">@if($product->status == 'active') <small>Active</small> @elseif($product->status != 'active') <small>Deactive</small> @endif <span class="carat"></span></a>
@@ -240,7 +247,7 @@
                                                 <a class=" dropdown-item d-flex align-items-center py-1 " href="#" wire:click.prevent="updatestatus({{$product->id}},'active')" >Active</a>
                                             @endif
                                           <a class=" dropdown-item d-flex align-items-center py-1" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$product->id}})">Delete</a>
-                                          <a class=" dropdown-item d-flex align-items-center py-1" href="{{route('franchise.details',['slug' => $product->slug])}}">Details</a>
+                                          <a class=" dropdown-item d-flex align-items-center py-1" href="">Details</a>
                                       </div>
                                     </div>
                                 </div>
