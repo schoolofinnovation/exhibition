@@ -16,7 +16,7 @@
             </div>
               <h2 class="display-5 fw-normal">Do the Most Meaningful Work <br> of Your Career</h2>
             <p class="col-md-10 col-lg-8 mx-auto lead">
-            <a href="">Council of Innovation</a> is building a team with superpowers. <strong>How are we doing it? </strong>
+            <a href="">The Exhibition Network by COI</a> is building a team with superpowers. <strong>How are we doing it? </strong>
             <br> By hiring top talent and creating a unique work environment, built as their own extended career frameworks, 
             rich with new skills as components and plugins.
             </p>
@@ -64,10 +64,8 @@
           <div class="fs-sm text-primary">{{$job->location_country}}<i class=" bi bi-chevron-right align-middle ms-1"></i></div>
           </h2>
 
-          <h2 class="fs-5 text-center fw-light"  >
-          <a href="#apply">  
-          Apply
-          </a><small>here</small>
+          <h2 class="fs-5 text-center fw-light">
+          <a href="#apply">Apply</a><small>here</small>
           </h2>
 
           </div>

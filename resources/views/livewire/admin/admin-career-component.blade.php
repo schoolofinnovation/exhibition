@@ -4,7 +4,8 @@
 @section('page_name',' All Job')
 
 <main> 
- <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
+  <div class="container">
+        <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
           <div class="text-sm-end">
           <a class="btn btn-primary" href="{{route('admin.jobadd')}}" data-bs-toggle="modal">Add New Job Post </a>          
           </div>
@@ -14,7 +15,7 @@
             </h6>
             @endif
             <a class="btn btn-primary btn-sm" href="#"><i class="ci-sign-out me-2"></i>Sign out</a>
-          </div>
+        </div>
 
           <div class="table-responsive fs-md mb-4">
             <table class="table table-hover mb-0">
@@ -66,4 +67,5 @@
             </table>
           </div> 
           {{$jobs->links('pagination-links')}}
+  </div>
 </main>

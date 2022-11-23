@@ -826,7 +826,7 @@
                                             </a>
                                             
                                             
-                                          
+                                            @if(Auth::check())
                                             <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                               <div class="d-flex w-100 align-items-center justify-content-between">
                                                 <normal class="mb-1">Logout</normal>
@@ -837,6 +837,7 @@
                                             <form id="logout-form" action="{{route('logout')}}" method="POST">
                                               @csrf
                                             </form>
+                                            @endif
                                           
 
                                             <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">

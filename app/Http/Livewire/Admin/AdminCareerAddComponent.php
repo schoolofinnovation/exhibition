@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Job;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class AdminCareerAddComponent extends Component
 {
@@ -21,7 +22,10 @@ class AdminCareerAddComponent extends Component
     public $status;
     public $type;
 
-
+    public function generateSlug()
+    {
+        $this->slug = Str::slug($this->title,'-');
+    }
     
     public function add() {
     

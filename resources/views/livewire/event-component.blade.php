@@ -765,7 +765,7 @@
         "container": '.my-Slider5',            
         "responsive": {
           "300": {
-            "items": 1,
+            "items": 2,
             "controls": false,
             "mouseDrag": true,
             "autoplay": true,
