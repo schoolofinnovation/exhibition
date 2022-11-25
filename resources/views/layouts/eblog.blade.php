@@ -7,9 +7,7 @@
     <!-- SEO Meta Tags <link rel="canonical" href="{{url()->current()}}"/>-->
     <meta name="description" content="@yield('page_description')">
     <meta name="keywords" content="@yield('page_keywords')">
-    <meta name="author" content="@yield('page_author')">    
-    
-
+    <meta name="author" content="@yield('page_author')">   
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
@@ -22,19 +20,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('public/image/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('public/image/favicons/favicon-16x16.png')}}">
     <link rel="manifest" href="{{asset('public/image/favicons/site.webmanifest')}}">
-
-
-    
     <link rel="mask-icon" color="#fe6a6a" href="">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-    
-    
-
-   
-<!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
-
-
+    <meta name="theme-color" content="#ffffff">   
+    <!-- NOTE: prior to v2.2.1 tiny-slider.js need to be in <body> -->
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" media="screen" href="{{asset('css/simplebar.min.css')}}">
@@ -58,7 +47,7 @@
 
     {{$slot}}
 
-    <!-- Footer-->
+     <!-- Footer-->
      <!-- Blog + Instagram info cards-->
     @livewire('top-footer-component')
     
@@ -75,6 +64,40 @@
     <!-- Main theme script-->
     <script src="{{asset('js/theme.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "@yield('page_eventname')",
+      "startDate": "@yield('page_startdate')",
+      "endDate": "@yield('page_enddate')",
+      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": [{
+        "@type": "VirtualLocation",
+        "url": "@yield('page_description')"
+      },
+      {
+        "@type": "Place",
+        "name": "@yield('page_venue')",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "@yield('page_description')",
+          "addressLocality": "@yield('page_description')",
+          "postalCode": "@yield('page_eventCode')",
+          "addressRegion": "@yield('page_eventRegion')",
+          "addressCountry": "@yield('page_eventCountry')"
+        }
+      }],
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+       ],
+      "description": "@yield('page_description')",
+      
+    }
+    </script>
    
    @livewireScripts
    @stack('scripts')

@@ -69,3 +69,57 @@
           {{$jobs->links('pagination-links')}}
   </div>
 </main>
+
+
+
+
+<html>
+  <head>
+    <title>Software Engineer</title>
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "Software Engineer",
+      "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Google",
+        "value": "1234567"
+      },
+      "datePosted" : "2017-01-18",
+      "validThrough" : "2017-03-18T00:00",
+      "employmentType" : "CONTRACTOR",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "The Exhibition Network",
+        "sameAs" : "https://www.exhibition.org.in",
+        "logo" : "https://www.example.com/images/logo.png"
+      },
+      "jobLocation": {
+      "@type": "Place",
+        "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1600 Amphitheatre Pkwy",
+        "addressLocality": "Delhi",
+        "addressRegion": "Delhi NCR",
+        "postalCode": "110031",
+        "addressCountry": "India"
+        }
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "INR",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": 40000.00,
+          "unitText": "MONTH"
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+

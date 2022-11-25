@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Franchise;
 use App\Models\Speaker;
 use App\Models\Sponsership;
+use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\CalendarLinks\Link;
@@ -36,8 +37,8 @@ class EventDetailsComponent extends Component
     public function render()
     {   
         $event = Event::where('slug',$this->slug)->first();
-        $start = $event->startdate;
-        $from =  DateTime::createFromFormat('Y-m-d', $start);
+        //$start = $event->startdate;
+        $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
         $name = $event->eventname;
         $venue = $event->venue;
@@ -54,6 +55,6 @@ class EventDetailsComponent extends Component
         $sponSer = Sponsership::where('admstatus','0')->where('status','1')->get();
         $premium = Franchise::where('status', 'active')->where('featured','premium')->limit(1);
 
-        return view('livewire.event-details-component',['premium'=>$premium,'event'=>$event,'sponSer'=>$sponSer,'speaker'=>$speaker,'awarde'=>$awarde,'franchises'=>$franchises]);
+        return view('livewire.event-details-component',['link'=>$link,'premium'=>$premium,'event'=>$event,'sponSer'=>$sponSer,'speaker'=>$speaker,'awarde'=>$awarde,'franchises'=>$franchises]);
     }
 }

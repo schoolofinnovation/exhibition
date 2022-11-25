@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Seller;
 
+use App\Models\Event;
 use App\Models\Tickets;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+Use Illuminate\Support\Str;
 
 class SellerEventTicketComponent extends Component
 {
@@ -29,10 +31,14 @@ class SellerEventTicketComponent extends Component
     
     public function mount()
     {
-        $this->admstatus= 0;  
-        $this->status = 0; 
+        $this->admstatus= '0';  
+        $this->status = 1; 
+        $this->cart_value = 100;
     }
 
+    public function generateSlug(){
+        $this->slug = Str::slug($this->package,'-');
+    }
     public function add()
     {
         $newTicket = new Tickets();
@@ -45,6 +51,7 @@ class SellerEventTicketComponent extends Component
         $newTicket->cart_value = $this->cart_value;
         $newTicket->expiry_date = $this->expiry_date;
         $newTicket->start_date = $this->start_date;
+
         $newTicket->start_time = $this->start_time;
         $newTicket->expiry_time = $this->expiry_time;
         $newTicket->validity = $this->validity;
@@ -63,6 +70,8 @@ class SellerEventTicketComponent extends Component
 
     public function render()
     {
-        return view('livewire.seller.seller-event-ticket-component');
+        $event= Event:: where('user_id', Auth::user()->id)->get();
+        
+        return view('livewire.seller.seller-event-ticket-component',['event' => $event])->layout('layouts.admin');
     }
 }

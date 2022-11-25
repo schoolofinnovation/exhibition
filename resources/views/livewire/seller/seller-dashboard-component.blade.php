@@ -76,9 +76,9 @@
                     
                       <div class="collapse" id="home-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Event</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('event.add')}}"><i class="ci-basket opacity-60 me-2"></i>Add Event</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Attribute</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Ticket</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('ticket.add')}}"><i class="ci-basket opacity-60 me-2"></i>Add Ticket</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Participants</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Pavillion</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Count</a></li>

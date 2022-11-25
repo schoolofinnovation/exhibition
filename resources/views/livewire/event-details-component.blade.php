@@ -9,6 +9,21 @@
 @section('page_list',' addJob')
 @section('page_name',' All Job')
 
+@section('page_eventname', ($event->eventname))
+@section('page_startdate', ($event->startdate))
+@section('page_enddate', ($event->enddate))
+@section('page_description', ($event->eventname))
+@section('page_venue', ($event->venue))
+@section('page_description', ($event->eventname))
+@section('page_description', ($event->eventname))
+@section('page_eventCode', ($event->eventname))
+@section('page_eventRegion', ($event->city))
+@section('page_eventCountry', ($event->country))
+@section('page_description', ($event->eventname))
+
+
+
+
       <section class="bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
         <div class="container pt-4 mb-3 mb-lg-0">
           <div class="row gy-0">
@@ -1056,5 +1071,13 @@
               
             });
           </script>
+
+
+
+
+    
+    
+ 
+  
         @endpush
 </main>
