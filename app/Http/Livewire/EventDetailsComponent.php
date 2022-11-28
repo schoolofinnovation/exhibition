@@ -25,13 +25,7 @@ class EventDetailsComponent extends Component
     }
     use WithPagination;
 
-    public function store($event_id,$event_eventname,$event_max_pass)
-    {
-        Cart::instance('cart')->add($event_id,$event_eventname,1,$event_max_pass)->associate('App\Models\Event');
-        $this->emitTo('cart-component','refreshComponent');
-        session()->flash('success_message','Ticket has been booked in cart');
-        return redirect()->route('event.product');
-    }
+    
 
 
     public function render()

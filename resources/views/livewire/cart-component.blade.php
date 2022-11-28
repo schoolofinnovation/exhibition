@@ -29,13 +29,13 @@
                                     <div class="widget-cart-item pb-2 border-bottom">
                                       <button class="btn-close text-danger" wire:click="destroy('{{$item->rowId}}')" type="button" aria-label="Remove"><span aria-hidden="true">×</span></button>
                                       <div class="d-flex align-items-center">
-                                        <a class="d-block flex-shrink-0" href="{{route('franchise.details',['slug'=>$item->model->slug])}}">
-                                        <img src="{{asset ('Storage/brands')}}/{{$item->model->image}}" width="64" alt="{{$item->model->brand_name}}"></a>
+                                        <a class="d-block flex-shrink-0" href="{{route('event.details',['slug'=>$item->model->event->slug])}}">
+                                        <img src="{{asset ('exhibition')}}/{{$item->model->event->image}}" width="64" alt="{{$item->model->event->eventname}}"></a>
                                           <div class="ps-2">
                                             <h6 class="widget-product-title">
-                                            <a href="{{route ('franchise.details',['slug'=>$item->model->slug])}}">{{Str::limit($item->model->brand_name,28)}}</a></h6>
+                                            <a href="{{route ('event.details',['slug'=>$item->model->event->slug])}}">{{Str::limit($item->model->event->eventname,28)}}</a></h6>
                                             <div class="widget-product-meta">
-                                            <span class="text-accent me-2">{{$item->model->max_investment}} lac<small> - {{$item->model->min_investment}} lac</small></span>
+                                            <span class="text-accent me-2">{{$item->model->price}} </span>
                                             <span class="text-muted">x 1</span></div>
                                           </div>
                                       </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
               <div class="fs-sm me-2 py-2"><span class="text-muted">Subtotal:</span>
-              <span class="text-accent fs-base ms-1">$452 <small>00</small></span></div>
+              <span class="text-accent fs-base ms-1">{{Cart::instance('cart')->subtotal()}}</span></div>
               <a class="btn btn-outline-secondary btn-sm" href="{{route('franchise.wishlist')}}">
                 Compare<i class="bi bi-chevron-right ms-1 me-n1"></i></a>
             </div>

@@ -342,7 +342,7 @@
                         Rs. {{$item->model->regualar_price}}
                         @endif
 
-                        <span class="text-muted"> x {{$item->qty}}</span></span> 
+                        <span class="text-muted"> {{$item->model->price}} x {{$item->qty}}</span></span> 
                         <span class="fs-xs text">Standard license</span>
                         </div>
                       </div>

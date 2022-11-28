@@ -28,7 +28,7 @@
         <div class="container pt-4 mb-3 mb-lg-0">
           <div class="row gy-0">
           
-            <div class="col-lg-3 col-md-6 col-sm-8 px-0 ">
+            <div class="col-lg-3 col-md-6 col-sm-8 px-0 d-none d-sm-block">
                 <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
                     <img src="{{url('magazine/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
                 </a>

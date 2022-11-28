@@ -7,7 +7,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
               <li class="breadcrumb-item"><a class="text-nowrap" href="/"><i class="bi bi-house"></i>Home</a></li>
-              <li class="breadcrumb-item text-nowrap"><a href="{{route('franchise.Coi')}}">Opportunities</a>
+              <li class="breadcrumb-item text-nowrap"><a href="">Opportunities</a>
               </li>
               <li class="breadcrumb-item text-nowrap active" aria-current="page">Cart</li>
             </ol>
@@ -50,18 +50,18 @@
                   @foreach (Cart::instance('cart')->content() as $item)
                     <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
                       <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
-                        <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('franchise.details',['slug'=>$item->model->slug])}}"><img src="{{asset ('Storage/brands/') }}/{{$item->model->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" width="160"></a>
+                        <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                          <img src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->event->image, 24)}}" width="160"></a>
+                          
                           <div class="pt-2">
-                            <h3 class="product-title fs-base mb-2"><a href="{{route ('franchise.details',['slug'=>$item->model->slug])}}">{{$item->model->brand_name}}</a></h3>
-                            <div class="fs-sm"><span class="text-unmuted me-2">Investment:</span>
-                              <a class="btn btn-outline-danger btn-sm" href="#" wire:click.prevent="destroyAll()"><i class=" bi bi-x fs-xs me-1 ms-n1"></i>Clear cart</a>
+                            <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">{{$item->model->event->eventname}}</a></h3>
+                            <div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y ')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
+                                  @else
+                                    {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
+                                  @endif
                             </div>
-                            <div class="fs-sm"><span class="text-unmuted me-2">Location:</span>
-                              <a class="btn btn-outline-danger btn-sm" href="#" wire:click.prevent="destroyAll()"><i class=" bi bi-x fs-xs me-1 ms-n1"></i>Clear cart</a>
-                            </div>
-                            <div class="fs-sm"><span class="text-unmuted me-2">Opportunities:</span>
-                              <a class="btn btn-outline-danger btn-sm" href="#" wire:click.prevent="destroyAll()"><i class=" bi bi-x fs-xs me-1 ms-n1"></i>Clear cart</a>
-                            </div>
+                            
                               @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                                 <div class="fs-lg text-accent pt-2"><small>Rs. <span class="border-end pe-2 me-2"> <strong>{{$item->model->sale_price}}</strong></span> 
                                 <span class="fs-sm text-muted"> <del>{{$item->model->regualar_price}}</del></span></small></div>
@@ -69,8 +69,9 @@
                                 <div class="fs-lg text-accent pt-2">Rs. {{$item->model->sale_price}}<small></small></div>
                                 <del class="fs-lg text-accent pt-2">Rs. {{$item->model->regualar_price}}<small></small></del>
                                 @else
-                                <div class="fs-lg text-accent pt-2">Rs. {{$item->model->max_investment}}<small></small></div>
+                                <div class="fs-lg text-accent pt-2">Rs. {{$item->model->price}}<small></small></div>
                               @endif
+
                           </div>
                       </div>
 
@@ -105,22 +106,20 @@
                 @if(Cart::instance('cart')->count()>0)
                   @foreach (Cart::instance('cart')->content() as $item)
                     <div class="d-flex align-items-center pb-2 border-bottom">
-                    <a class="d-block flex-shrink-0 me-2" href="{{route ('franchise.details',['slug'=>$item->model->slug])}}">
-                    <img class="rounded-1" src="{{asset ('Storage/brands/') }}/{{$item->model->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" 
-                    
-                    alt="{{$item->model->name}}" width="64" ></a>
+                    <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                    <img class="rounded-1" src="{{asset ('exhibition') }}/{{$item->model->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                       <div class="ps-1">
-                        <h6 class="widget-product-title"><a href="{{route ('franchise.details',['slug'=>$item->model->slug])}}">
-                        {{$item->model->name}}</a></h6>
+                        <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                        {{$item->model->event->eventname}}</a></h6>
                         <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
 
                         @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                           Rs. {{$item->model->sale_price}}
                           @else
-                          Rs. {{$item->model->regualar_price}}
+                          Rs. {{$item->model->regular_price}}
                         @endif
 
-                        <span class="text-muted"> {{$item->model->max_investment}} x {{$item->qty}}</span></span> 
+                        <span class="text-muted">{{$item->model->price}} x {{$item->qty}}</span></span> 
                         <span class="fs-xs text">Standard license</span>
                         </div>
                       </div>
@@ -182,6 +181,7 @@
               </div>
             </div>
         </aside>
+
         </div>
         
       </div>
