@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
-use App\Models\Tickets;
+use App\Models\Ticket;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -96,7 +96,7 @@ class ProductComponent extends Component
         $event = Event::where('slug', $this->slug)->first();
         $test= $event->id;
         
-        $ticke = Tickets::where('admstatus','0')->where('status','1')->where('event_id', $test)->get();
+        $ticke = Ticket::where('admstatus','0')->where('status','1')->where('event_id', $test)->get();
         
         return view('livewire.product-component',['event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
     }

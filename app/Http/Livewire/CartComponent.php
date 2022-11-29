@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Ticket;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
+
 
 class CartComponent extends Component
 {
@@ -20,8 +22,9 @@ class CartComponent extends Component
 
     public function render()
     {
+        $tick = Ticket::get();
         //$sale = Sale::find(1);
        // return view('livewire.cartzilla-count-cart-component'
-        return view('livewire.cart-component');
+        return view('livewire.cart-component',['tick' => $tick]);
     }
 }

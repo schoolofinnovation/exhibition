@@ -1,14 +1,14 @@
 <main>
   <div class="navbar-tool dropdown ms-3">
     @if(Cart::instance('cart')->count() > 0)
-        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('franchise.wishlist')}}">
+        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('checkout')}}">
           @if(Cart::instance('cart')->count() > 0)
           <span class="navbar-tool-label"> {{Cart::instance('cart')->count()}}</span> 
           @endif
           <i class="navbar-tool-icon bi bi-cart"></i>
         </a>
         
-        <a class="navbar-tool-text" href="{{route('franchise.wishlist')}}"><small>My Cart</small></a>
+        <a class="navbar-tool-text" href="{{route('checkout')}}"><small>My Cart</small></a>
         
         <!-- Cart dropdown-->
         <div class="dropdown-menu dropdown-menu-end">

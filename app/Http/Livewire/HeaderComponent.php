@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Award;
 use App\Models\Category;
+use App\Models\Expo;
 use App\Models\Franchise;
 use App\Models\Sector;
 use App\Models\Service;
@@ -32,6 +33,7 @@ class HeaderComponent extends Component
     }
 
     public function render(){
+        $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
         $searchTerm = '%'.$this->searchTerm . '%';
         $franchise = Franchise::where('brand_name','like',$searchTerm)
                               ->orWhere('brand_name','like',$searchTerm)
@@ -47,7 +49,7 @@ class HeaderComponent extends Component
         $award = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
 
         if(Auth::check()){ Cart::instance('wishlist')->restore(Auth::user()->email);}
-        return view('livewire.header-component', [ 'award'=> $award,'abc'=>$abc,'secto'=>$secto,'categories'=>$categories,'franchise'=>$franchise]);
+        return view('livewire.header-component', [ 'catego'=> $catego,'award'=> $award,'abc'=>$abc,'secto'=>$secto,'categories'=>$categories,'franchise'=>$franchise]);
 
     }
 }

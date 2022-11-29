@@ -32,6 +32,7 @@ class EventDetailsComponent extends Component
     {   
         $event = Event::where('slug',$this->slug)->first();
         //$start = $event->startdate;
+        //dd($event);
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
         $name = $event->eventname;
@@ -41,7 +42,7 @@ class EventDetailsComponent extends Component
 
         $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
     
-        //dd($link);
+        //dd($event);
         
         $franchises = Franchise::get();
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();

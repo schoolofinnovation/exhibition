@@ -1,4 +1,4 @@
-@section('page_title', ($this->eventype))
+@section('page_title', ($this->eventype) )
 @section('page_description','Job')
 @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 @section('page_author' , 'COI - CouncilofInnovation')
@@ -266,7 +266,7 @@
                     <!-- Shoes-->
                     <div class="accordion-item">
                       <h3 class="accordion-header">
-                      @if($this->eventype ==  'expo')
+                          @if($this->eventype ==  'expo')
                               <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->id])}}">
                                 {{$category->expoindustry}}
                               </a>

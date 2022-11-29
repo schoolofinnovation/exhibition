@@ -3,9 +3,10 @@
     @if(Cart::instance('wishlist')->count() > 0)
                       <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('franchise.wishlist')}}">
                         @if(Cart::instance('wishlist')->count() > 0)
-                        <span class="navbar-tool-label"> {{Cart::instance('wishlist')->count()}}</span> 
+                          <span class="navbar-tool-label"> {{Cart::instance('wishlist')->count()}}</span> 
                         @endif
-                        <i class="navbar-tool-icon bi bi-heart"></i></a>
+                        <i class="navbar-tool-icon bi bi-heart"></i>
+                      </a>
                       
                       <a class="navbar-tool-text" href="{{route('franchise.wishlist')}}"><small>My Brand</small></a>
                       

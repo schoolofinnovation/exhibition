@@ -56,7 +56,7 @@
                       <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
                        href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
                       
-                      <a class="btn btn-primary btn-sm" href="{{$link->ics()}}">Add to Calender</a>
+                      <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
                     </li>
                   </ul>
               </div>    
@@ -793,7 +793,8 @@
 
             <div class="handheld-toolbar">
               <div class="d-grid mx-2">
-                <a class="btn btn-primary btn-lg" href="#"><i class=" bi bi-cart fs-lg me-2"></i>Book Tickets</a>    
+                <a class="btn btn-primary btn-md" href="#"><i class=" bi bi-cart fs-lg me-2"></i>500</a>
+                <a class="btn btn-primary btn-md" href="#"><i class=" bi bi-cart fs-lg me-2"></i>Book Ticket</a>    
               </div>
             </div>
 

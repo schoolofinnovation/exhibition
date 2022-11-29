@@ -1,4 +1,4 @@
-<section class="container-fluid pt-1 px-0">
+      <section class="container-fluid pt-1 px-0 d-none d-sm-block">
         <div class="row g-0">
           <div class="col-md-6">
           <a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-faded-primary" href="{{route('blog.Coi')}}">

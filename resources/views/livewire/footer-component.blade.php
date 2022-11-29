@@ -1,5 +1,6 @@
 <main>
-  <footer class="footer bg-dark pt-5 ">
+
+  <footer class="footer bg-dark pt-5 d-none d-sm-block">
       <div class="container">
         <div class="row pb-2">
 
@@ -149,10 +150,9 @@
        </div>
       </div>
   </footer>
-
-
+  
    
-
+  @if('/' == request()->path() ? 'active' : '')
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
         <a class="d-table-cell handheld-toolbar-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar">
@@ -169,15 +169,24 @@
             <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
             <span class="handheld-toolbar-label">Menu</span>
           </a>
-          
-          <a class="d-table-cell handheld-toolbar-item" href="#">
-            <span class="handheld-toolbar-icon"><i class="bi bi-cart"></i>
-            <span class="badge bg-primary rounded-pill ms-1">4</span></span>
-            <span class="handheld-toolbar-label">$265.00</span>
-          </a>
+          @if(Cart::instance('cart')->count() > 0)
+            <a class="d-table-cell handheld-toolbar-item" href="#">
+              <span class="handheld-toolbar-icon"><i class="bi bi-cart"></i>
+              @if(Cart::instance('cart')->count() > 0)
+              <span class="badge bg-primary rounded-pill ms-1">{{Cart::instance('cart')->count()}}</span></span>
+              
+                <span class="handheld-toolbar-label">{{Cart::instance('cart')->subtotal()}}</span>
+              @else
+              <span class="handheld-toolbar-label">Cart</span>
+              @endif  
+            </a>
+          @endif
         </div>
     </div>
+  @endif
 
+    <span class="navbar-tool-label"> </span> 
+          
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="{{asset('/#top')}}" data-scroll="">
     <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="bi bi-funnel-fill"></i></a>

@@ -544,8 +544,14 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle ps-lg-0" href="" data-bs-toggle="dropdown"><i class=" bi bi-list align-middle mt-n1 me-2"></i>Departments</a>
                       <ul class="dropdown-menu">
-                        @foreach ($categories as $category)
+                      @foreach ($catego as $category)
+                       
                           <li class="dropdown mega-dropdown">
+                              <a class="dropdown-item" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->id])}}">
+                              <i class=" opacity-60 fs-lg mt-n1 me-2"></i> {{ucwords(trans($category->expoindustry))}}</a>
+                              
+
+                        {{--<li class="dropdown mega-dropdown">
                               <a class="dropdown-item dropdown-toggle" href="#{{$category->id}}" data-bs-toggle="dropdown">
                               <i class=" opacity-60 fs-lg mt-n1 me-2"></i> {{ucwords(trans($category->industry))}}</a>
                               
@@ -556,13 +562,13 @@
                                   <div class="widget widget-links">                     
                                     @foreach($category->sector as $seet)
                                       <h6 class="fs-base my-1" >
-                                          <a href="{{route('franchise.sector',['sector_slug'=> $seet->slug])}}">{{ucwords(trans($seet->sector))}}</a>
+                                          <a href="{{route('coi.exhibitioncategory',['sector_slug'=> $seet->slug])}}">{{ucwords(trans($seet->sector))}}</a>
                                       </h6>
                                     
                                       <ul class="widget-list">
                                           @foreach($seet->service as $soet)
                                               <li class="widget-list-item py-0">
-                                                <a class="widget-list-link" href="{{route('franchise.sector',['sector_slug'=> $soet->slug])}}">
+                                                <a class="widget-list-link" href="{{route('coi.exhibitioncategory',['sector_slug'=> $soet->slug])}}">
                                               {{ucwords(trans($soet->business))}}</a></li> 
                                           @endforeach
                                       </ul>
@@ -581,7 +587,7 @@
                                 </div>
                               
                               </div>
-                            </div>
+                            </div>--}}
 
                           </li>
                         @endforeach 
@@ -664,8 +670,6 @@
           </div>
 
             <!--test-->
-            
-
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRig" aria-labelledby="offcanvasRigLabel">
               <div class="offcanvas-header">
                 <h5 id="offcanvasRightLabel">Add Event</h5>
