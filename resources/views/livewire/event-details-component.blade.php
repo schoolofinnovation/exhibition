@@ -791,11 +791,15 @@
                 </div>
             </section>
 
-            <div class="handheld-toolbar">
-              <div class="d-grid mx-2">
-                <a class="btn btn-primary btn-md" href="#"><i class=" bi bi-cart fs-lg me-2"></i>500</a>
-                <a class="btn btn-primary btn-md" href="#"><i class=" bi bi-cart fs-lg me-2"></i>Book Ticket</a>    
+            <div class="handheld-toolbar bg-secondary">
+              
+              <div class="d-flex justify-content-between py-2 px-2">
+               <div class="text-dark fw-medium fs-sm">  {{$productPrice}}  <br>
+              <span class=" fw-light fs-xs">Onwards</span></div>
+                <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm bg-light">Book your Ticket
+                </a>
               </div>
+              
             </div>
 
      
@@ -1073,12 +1077,5 @@
             });
           </script>
 
-
-
-
-    
-    
- 
-  
         @endpush
 </main>
