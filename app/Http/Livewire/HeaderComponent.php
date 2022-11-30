@@ -11,6 +11,7 @@ use App\Models\Service;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Facades\Route;
 
 
 class HeaderComponent extends Component
@@ -32,7 +33,10 @@ class HeaderComponent extends Component
         $this->ghi = Service::where('sector_id', $sector_id)->get();
     }
 
+    
     public function render(){
+        
+        
         $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
         $searchTerm = '%'.$this->searchTerm . '%';
         $franchise = Franchise::where('brand_name','like',$searchTerm)

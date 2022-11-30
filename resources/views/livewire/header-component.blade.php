@@ -1,6 +1,13 @@
-<main>
-      <!-- Navbar Electronics Store-->
-      <header class="shadow-sm">
+    <main>
+    
+    @if(Route::currentRouteName() === 'event.product')
+    
+    @elseif(Route::currentRouteName() === 'checkout')
+
+    @elseif(Route::currentRouteName() === 'coicart')
+
+    @else
+      <header class="shadow-sm ">
         <!-- Topbar
         <div class="topbar topbar-dark bg-dark">
           <div class="container">
@@ -857,4 +864,7 @@
                                     </div>
         </div>
       </header>
+    
+    @endif
+    
     </main>
