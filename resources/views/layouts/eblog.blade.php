@@ -37,13 +37,17 @@
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
     <!-- Sign in / sign up modal-->
-     <main class="page-wrapper">
+    @if(Route::currentRouteName() === 'event.product')
+    
+    @else
+    <main class="page-wrapper">
     
      @livewire('header-component')
     {{-- @if(Auth::user()->utype == 'ADM') 
        @livewire('seller-header-component')  
      @endif --}}
     </main>
+    @endif
 
     {{$slot}}
 

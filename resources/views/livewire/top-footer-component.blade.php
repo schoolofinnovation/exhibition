@@ -1,3 +1,6 @@
+@if(Route::currentRouteName() === 'event.product')
+
+@else
       <section class="container-fluid pt-1 px-0 d-none d-sm-block">
         <div class="row g-0">
           <div class="col-md-6">
@@ -18,3 +21,4 @@
               </div></div></div>
         </div>
       </section>
+  @endif

@@ -1,5 +1,7 @@
 <main>
+@if(Route::currentRouteName() === 'event.product')
 
+@else
   <footer class="footer bg-dark pt-5 d-none d-sm-block">
       <div class="container">
         <div class="row pb-2">
@@ -150,7 +152,7 @@
        </div>
       </div>
   </footer>
-  
+@endif
    
   @if('/' == request()->path() ? 'active' : '')
     <div class="handheld-toolbar">

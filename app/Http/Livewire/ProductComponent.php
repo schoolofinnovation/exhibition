@@ -15,10 +15,10 @@ class ProductComponent extends Component
     public $eventname;
     public $item;
     public $step;
-    public $totalSteps = 3;
+    public $totalSteps = 1;
     public $currentStep = 1;
     public $attributes_id = [];
-    
+    public $show = false;
     
     use WithPagination;
     public function mount($slug)
@@ -27,68 +27,30 @@ class ProductComponent extends Component
     }
 
 
-    public function increase($rowId)
+    public function increase($totalSteps)
     {
-        $product = Cart::get($rowId);
+        $product = Cart::get($totalSteps);
         $qty = $product->qty + 1;
-        Cart::update($rowId,$qty);
+        Cart::instance('cart')->update($totalSteps , $qty);
     }
 
     public function decrease($rowId)
     {
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
-        Cart::update($rowId,$qty);
+        
+        Cart::instance('cart')->update($rowId , $qty);
     }
-
-    
 
     public function store($edy_id,$edy_code,$edy_price)
     {
         Cart::instance('cart')->add($edy_id, $edy_code, 1, $edy_price)->associate('App\Models\Ticket');
         $this->emitTo('cart-component','refreshComponent');
         session()->flash('success_message','Item has been added in cart');
-        return redirect()->route('checkout');
-       
+        //return redirect()->route('checkout');       
     }
 
-    public function second($rowId, $event_dateTime)
-    {
-        Cart::instance('cart')->associate('App\Models\Event');
-        $product = Cart::instance('cart')->get($rowId,);
-        
-        $qty = $product->$event_dateTime;
-        Cart::instance('cart')->add($rowId , $qty);
-        $this->resetErrorBag();
-        $this->currentStep++;
-        if($this->currentStep > $this->totalSteps){
-        $this->currentStep = $this->totalSteps;
-       }
-
-    }
-
-
-    public function increaseStep(){
-        $this->resetErrorBag();
-        //$this->validateData();
-        $this->currentStep++;
-     if($this->currentStep > $this->totalSteps){
-        $this->currentStep = $this->totalSteps;
-       }}
-
-
-    public function decreaseStep(){
-        $this->resetErrorBag();
-        $this->currentStep--;
-      if($this->currentStep < 1){
-        $this->currentStep = 1;
-       }}
-
-    public function generateSlug(){
-        $this->slug = Str::slug($this->brand_name,'-');
-    }
     
-
     
     public function render()
     {
