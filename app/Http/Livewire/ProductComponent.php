@@ -15,42 +15,82 @@ class ProductComponent extends Component
     public $eventname;
     public $item;
     public $step;
-    public $totalSteps = 1;
+    public $totalSteps = 2;
     public $currentStep = 1;
     public $attributes_id = [];
-    public $show = false;
+    public $qqty = 0;
     
+    public function increment()
+    {
+        $this->qqty++;
+    }
+
+    public function decrement()
+    {
+        $this->qqty--;
+    }
+
     use WithPagination;
     public function mount($slug)
     {
        $this->slug = $slug;
     }
 
-
-    public function increase($totalSteps)
+    public function destroyAll()
     {
-        $product = Cart::get($totalSteps);
+       Cart::instance('cart')->destroy();
+       $this->emitTo('cart-component','refreshComponent');
+       session()->flash('success_message','All Items has been removed');
+    }
+
+    public function increase($qqty)
+    {
+        $product = Cart::get($qqty);
         $qty = $product->qty + 1;
-        Cart::instance('cart')->update($totalSteps , $qty);
+        Cart::instance('cart')->update($qqty, $qty);
     }
 
     public function decrease($rowId)
     {
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
-        
         Cart::instance('cart')->update($rowId , $qty);
     }
+
+    public function destroy($rowId)
+    {
+       $product = Cart::instance('cart')->get($rowId,);
+        $qty = $product->qty - 1;
+       Cart::instance('cart')->remove($rowId , $qty);
+       $this->emitTo('cart-component','refreshComponent');
+       session()->flash('success_message','Item has been removed');
+    }
+
 
     public function store($edy_id,$edy_code,$edy_price)
     {
         Cart::instance('cart')->add($edy_id, $edy_code, 1, $edy_price)->associate('App\Models\Ticket');
         $this->emitTo('cart-component','refreshComponent');
+        $this->qqty++;
         session()->flash('success_message','Item has been added in cart');
         //return redirect()->route('checkout');       
     }
 
-    
+    public function increaseStep(){
+        $this->resetErrorBag();
+        //$this->validateData();
+        $this->currentStep++;
+     if($this->currentStep > $this->totalSteps){
+        $this->currentStep = $this->totalSteps;
+       }}
+
+
+    public function decreaseStep(){
+        $this->resetErrorBag();
+        $this->currentStep--;
+      if($this->currentStep < 1){
+        $this->currentStep = 1;
+       }}
     
     public function render()
     {
