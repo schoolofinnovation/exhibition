@@ -38,7 +38,7 @@
   <body class="handheld-toolbar-enabled">
     <!-- Sign in / sign up modal-->
     @if(Route::currentRouteName() === 'event.product')
-    
+    @elseif(Route::currentRouteName() === 'event.productreview')
     @else
     <main class="page-wrapper">
     

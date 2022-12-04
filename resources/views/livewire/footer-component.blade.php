@@ -1,6 +1,6 @@
 <main>
 @if(Route::currentRouteName() === 'event.product')
-
+@elseif(Route::currentRouteName() === 'event.productreview')
 @else
   <footer class="footer bg-dark pt-5 d-none d-sm-block">
       <div class="container">

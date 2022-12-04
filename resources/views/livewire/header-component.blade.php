@@ -1,7 +1,10 @@
     <main>
     
-    @if(Route::currentRouteName() === 'event.product')
+    @if(Route::currentRouteName() === 'event.details')
     
+    @elseif(Route::currentRouteName() === 'event.product')
+    @elseif(Route::currentRouteName() === 'event.productreview')
+
     @elseif(Route::currentRouteName() === 'checkout')
 
     @elseif(Route::currentRouteName() === 'coicart')

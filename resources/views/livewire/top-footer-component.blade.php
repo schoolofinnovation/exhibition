@@ -1,5 +1,5 @@
 @if(Route::currentRouteName() === 'event.product')
-
+@elseif(Route::currentRouteName() === 'event.productreview')
 @else
       <section class="container-fluid pt-1 px-0 d-none d-sm-block">
         <div class="row g-0">

@@ -5,15 +5,17 @@
         <div class="row ">
           <div class="col-md-6 offset-md-3 d-flex justify-content-between ">
 
-                <div class="align-content-center pt-4 "><i class="bi bi-chevron-left"></i></div>
+                <div class="align-content-center pt-4 ">
+                <a href="{{$previous}}"><i class="bi bi-chevron-left"></i></a>  
+                </div>
           
                 <div class="text-center py-2">
                       <div>{{$event->eventname}}</div> 
                       <div class="fs-xs fw-light">
                       @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
-                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}} | {{ucwords(trans($event->venue))}} {{ucwords(trans($event->city))}} {{ucwords(trans($event->country))}}
+                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}} | {{ucwords(trans($event->venue))}} {{ucwords(trans($event->city))}}
                       @else
-                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}} | {{ucwords(trans($event->venue))}} {{ucwords(trans($event->city))}} {{ucwords(trans($event->country))}}
+                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}} | {{ucwords(trans($event->venue))}} {{ucwords(trans($event->city))}}
                       @endif
                       </div> 
                 </div>
@@ -28,18 +30,19 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           
-        <div class="container mb-4 mb-lg-5 ">
+        <div class="mb-4 mb-lg-5 ">
           <!-- Nav tabs-->
           <ul class="nav nav-tabs nav-fill" role="tablist">
-            <li class="nav-item"><a class="nav-link px-1 {{'pass/es/clean-india-2023' == request()->path() ? 'active' : '' }} fs-sm" href="#details" data-bs-toggle="tab" role="tab">Ticket</a></li>
-            <li class="nav-item"><a class="nav-link px-1 {{'pass/es/clean-india-2023#reviews' == request()->path() ? 'active' : '' }} fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Date & Time</a></li>
+            <li class="nav-item"><a class="nav-link px-1 {{ (request()->is('pass/es/'. $event->slug))  ? 'active' : '' }} fs-sm" href="#details" data-bs-toggle="tab" role="tab">Ticket</a></li>
+            <li class="nav-item"><a class="nav-link px-1 {{(request()->is('pass/es/'. $event->slug .'/reviews')) ? 'active' : '' }} fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Date & Time</a></li>
             {{--<li class="nav-item"><a class="nav-link px-1 {{'pass/es/($event->slug)#reviews' == request()->path() ? 'active' : '' }} fs-sm" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
             <li class="nav-item"><a class="nav-link px-1 {{'pass/es/($event->slug)#reviews' == request()->path() ? 'active' : '' }} fs-sm" href="#comments" data-bs-toggle="tab" role="tab">Add-on</a></li>--}}
           </ul>
 
           <div class="tab-content">
+          
               <!-- Product details tab-->
-              <div class="tab-pane fade {{'pass/es/clean-india-2023' == request()->path() ? 'show active' : '' }}" id="details" role="tabpanel">
+              <div class="tab-pane fade {{(request()->is('pass/es/'. $event->slug)) ? 'show active' : '' }}" id="details" role="tabpanel">
                 <!-- details test tickets-->
                   <div class="row">
                     
@@ -58,11 +61,9 @@
                               </div>
                               
                               <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 33;">
-                                  
                                       <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">
                                         Add
                                       </a> 
-                                    
                               </div>
                             </div>
                         @endforeach
@@ -73,15 +74,14 @@
                             <div class="container  bg-secondary">
                               <div class="d-flex  justify-content-between py-2 px-2">
                                 <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->subtotal()}} <br>
-                                
-                                @if(Cart::instance('cart')->count()>0)
-                                  <span class=" fw-light fs-xs">Onwards</span>
-                                  @else
-                                  <span class=" fw-light fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>
-                                @endif
-                              
+                                  @if(Cart::instance('cart')->count()>0)
+                                    <span class=" fw-normal fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>
+                                    @else
+                                    <span class=" fw-light fs-xs">Onwards</span>
+                                  @endif
                                 </div>
-                                <a href="#reviews" class="btn btn-primary btn-sm">Proceed</a>
+                                
+                                <a href="{{route('event.productreview',['slug' => $event->slug ,'id' => 'reviews'])}}" class="btn btn-primary btn-sm">Proceed</a>
                               </div>
                             </div>
                           </div>
@@ -98,7 +98,7 @@
               </div>
           
               <!-- Reviews tab-->
-              <div class="tab-pane fade {{'pass/es/clean-india-2023#reviews' == request()->path() ? 'show active' : '' }}" id="reviews" role="tabpanel">
+              <div class="tab-pane fade {{(request()->is('pass/es/'. $event->slug.'/reviews')) ? 'show active' : '' }}" id="reviews" role="tabpanel">
                 <div class="row">
                   <!-- details test tickets-->
                   <div class="fs-ms">SELECT YOUR TICKET
@@ -110,12 +110,12 @@
                             
                             <div class="pt-2">
                               <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">{{$item->model->event->eventname}}</a></h3>
-                              <div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
+                              {{--<div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
                                       {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y ')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
                                     @else
                                       {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
                                     @endif
-                              </div>
+                              </div>--}}
                               
                                 @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                                   <div class="fs-lg text-accent pt-2"><small>Rs. <span class="border-end pe-2 me-2"> <strong>{{$item->model->sale_price}}</strong></span> 
@@ -131,7 +131,7 @@
                         </div>
 
                         <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
-                          <div class="row">
+                          <div class="">
                             <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')">+</a>
                             {{$item->qty}} 
                             <a class="btn btn-decrease" href="#" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')">-</a>
@@ -150,11 +150,11 @@
                         <div class="container">
                           <div class="d-flex justify-content-between py-2 px-2">
                             <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->subtotal()}} <br>
-                              @if(Cart::instance('cart')->count()>0)
-                                  <span class=" fw-light fs-xs">Onwards</span>
+                            @if(Cart::instance('cart')->count()>0)
+                                  <span class=" fw-normal fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>
                                   @else
-                                  <span class=" fw-light fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>
-                              @endif
+                                  <span class=" fw-light fs-xs">Onwards</span>
+                                @endif
                           </div>
                             <a href="{{route('checkout')}}" class="btn btn-primary btn-sm">Proceed</a>
                           </div>
@@ -172,6 +172,7 @@
 
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -179,13 +180,24 @@
       </div>
     </div>
             
-    
+   
 
     <!-- bottom -->              
     <div class="handheld-toolbar bg-secondary">
       <div class="d-flex justify-content-between py-2 px-2">
-        <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i> {{Cart::instance('cart')->subtotal()}}<br><span class=" fw-light fs-xs">Onwards</span></div>
-        <a href="#reviews" class="btn btn-primary btn-sm">Proceed</a>
+        <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i> {{Cart::instance('cart')->subtotal()}}<br>
+        @if(Cart::instance('cart')->count()>0)
+            <span class=" fw-light fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>    
+            @else
+            <span class=" fw-light fs-xs">Onwards</span>    
+        @endif
+        </div>
+
+        @if(request()->is('pass/es/'. $event->slug)) 
+           <a href="#reviews" class="btn btn-primary btn-sm">Proceed</a>
+          @elseif(request()->is('pass/es/'. $event->slug .'/reviews'))
+            <a href="#reviews" class="btn btn-primary btn-sm">Proceed</a>
+        @endif
       </div>
     </div>
     

@@ -215,7 +215,10 @@ Route::get('/about-us', AboutComponent::class)->name('about');
 
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
+
 Route::get('/pass/es/{slug}', ProductComponent::class)->name('event.product');
+Route::get('/pass/es/{slug}/{id}', ProductComponent::class)->name('event.productreview');
+
 Route::get('/exhibition/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
 Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 

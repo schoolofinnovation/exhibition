@@ -5,9 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\Event;
 use App\Models\Ticket;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
+use PhpParser\Node\Expr\FuncCall;
 
 class ProductComponent extends Component
 {
@@ -71,7 +75,6 @@ class ProductComponent extends Component
     {
         Cart::instance('cart')->add($edy_id, $edy_code, 1, $edy_price)->associate('App\Models\Ticket');
         $this->emitTo('cart-component','refreshComponent');
-        $this->qqty++;
         session()->flash('success_message','Item has been added in cart');
         //return redirect()->route('checkout');       
     }
@@ -92,14 +95,22 @@ class ProductComponent extends Component
         $this->currentStep = 1;
        }}
     
+
+    public function nexttab(){
+        $url = URL::route('route',['#reviews']);
+        Redirect::to($url);
+
+        redirect::to(route('event.product').'#reviews');
+        //redirect()->route('event.product',['$slug']).'#reviews')
+    }
+
     public function render()
     {
-        
         $event = Event::where('slug', $this->slug)->first();
         $test= $event->id;
-        
+        $previous = url()->previous();
         $ticke = Ticket::where('admstatus','0')->where('status','1')->where('event_id', $test)->get();
         
-        return view('livewire.product-component',['event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
+        return view('livewire.product-component',['previous'=> $previous , 'event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
     }
 }
