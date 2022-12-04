@@ -194,9 +194,9 @@
         </div>
 
         @if(request()->is('pass/es/'. $event->slug)) 
-           <a href="#reviews" class="btn btn-primary btn-sm">Proceed</a>
+           <a href="{{route('event.productreview',['slug' => $event->slug ,'id' => 'reviews'])}}" class="btn btn-primary btn-sm">Proceed</a>
           @elseif(request()->is('pass/es/'. $event->slug .'/reviews'))
-            <a href="#reviews" class="btn btn-primary btn-sm">Proceed</a>
+            <a href="{{route('checkout')}}" class="btn btn-primary btn-sm">Proceed</a>
         @endif
       </div>
     </div>
