@@ -86,7 +86,6 @@ class CheckoutComponent extends Component
        }
     }
 
-
     public function applyCouponCode()
     {
        $coupon = Coupon::where('code', $this->couponCode)->where('expiry_date','>=',Carbon::today())->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();

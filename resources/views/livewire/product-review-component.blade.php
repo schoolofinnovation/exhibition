@@ -35,8 +35,8 @@
         <div class="mb-4 mb-lg-5 ">
           <!-- Nav tabs-->
           <ul class="nav nav-tabs nav-fill" role="tablist">
-            <li class="nav-item"><a class="nav-link px-1 active fs-sm" href="#details" data-bs-toggle="tab" role="tab">Ticket</a></li>
-            <li class="nav-item"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Date & Time</a></li>
+            <li class="nav-item"><a class="nav-link px-1 fs-sm" href="#details" data-bs-toggle="tab" role="tab">Ticket</a></li>
+            <li class="nav-item"><a class="nav-link px-1 active fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Date & Time</a></li>
             {{--<li class="nav-item"><a class="nav-link px-1 {{'pass/es/($event->slug)#reviews' == request()->path() ? 'active' : '' }} fs-sm" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
             <li class="nav-item"><a class="nav-link px-1 {{'pass/es/($event->slug)#reviews' == request()->path() ? 'active' : '' }} fs-sm" href="#comments" data-bs-toggle="tab" role="tab">Add-on</a></li>--}}
           </ul>
@@ -44,7 +44,7 @@
           <div class="tab-content">
           
               <!-- Product details tab-->
-              <div class="tab-pane fade show active" id="details" role="tabpanel">
+              <div class="tab-pane fade" id="details" role="tabpanel">
                 <!-- details test tickets-->
                   <div class="row">
                     
@@ -81,7 +81,7 @@
                                   @endif
                                 </div>
                                 
-                                <a href="{{route('event.productreview',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Proceed</a>
+                                <a href="{{route('event.productreview',['slug' => $event->slug ,'id' => 'reviews'])}}" class="btn btn-primary btn-sm">Proceed</a>
                               </div>
                             </div>
                           </div>
@@ -98,7 +98,7 @@
               </div>
           
               <!-- Reviews tab-->
-              <div class="tab-pane fade" id="reviews" role="tabpanel">
+              <div class="tab-pane fade show active" id="reviews" role="tabpanel">
                 <div class="row">
                   <!-- details test tickets-->
                   <div class="fs-ms">SELECT YOUR TICKET
@@ -190,7 +190,9 @@
         @endif
         </div>
 
-            <a href="{{route('event.productreview',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Proceed</a>
+        
+      <a href="{{route('checkout')}}" class="btn btn-primary btn-sm">Proceed</a>
+        
       </div>
     </div>
     

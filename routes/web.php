@@ -121,6 +121,7 @@ use App\Http\Livewire\ExhibitionCategoryComponent;
 use App\Http\Livewire\ExhibitionComponent;
 use App\Http\Livewire\PaymentComponent;
 use App\Http\Livewire\ProductComponent;
+use App\Http\Livewire\ProductReviewComponent;
 use App\Http\Livewire\Seller\SellerEventComponent;
 use App\Http\Livewire\Seller\SellerEventTicketComponent;
 use App\Http\Livewire\Seller\SellerOrderComponent;
@@ -216,8 +217,8 @@ Route::get('/about-us', AboutComponent::class)->name('about');
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
 
-Route::get('/pass/es/{slug}', ProductComponent::class)->name('event.product');
-Route::get('/pass/es/{slug}/{id}', ProductComponent::class)->name('event.productreview');
+Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
+Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
 
 Route::get('/exhibition/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
 Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
