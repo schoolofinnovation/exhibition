@@ -44,10 +44,10 @@ class EventDetailsComponent extends Component
         $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
     
         //dd($event);
-        $productPrice = Ticket::where('event_id', $event->id)->max('price');
+        $productPrice = Ticket::where('event_id', $event->id)->min('price');
         $franchises = Franchise::get();
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
-        $speaker = Speaker::where('admstatus','0')->where('status','1')->where('entity','speaker')->get();
+        $speaker = Speaker::where('admstatus','1')->where('status','1')->where('entity','speaker')->get();
         $sponSer = Sponsership::where('admstatus','0')->where('status','1')->get();
         $premium = Franchise::where('status', 'active')->where('featured','premium')->limit(1);
 

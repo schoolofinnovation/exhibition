@@ -91,32 +91,30 @@
       </div>  
 
       <div class="container d-none d-sm-block">
-              <ul class="list-unstyled fs-sm  py-4">
-                    
-                    <li class="d-flex justify-content-between p-0 m-0">
-                    
-                        <span>
-                          <span class="h3">{{$event->edition}}th {{$event->eventname}}</span> <br>
-                          @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
-                            {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
-                          @else
-                            {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M, Y')}}
-                          @endif 
-                          
-                          <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} 
+        <ul class="list-unstyled fs-sm  py-4">     
+          <li class="d-flex justify-content-between p-0 m-0">
+          
+              <span>
+                <span class="h3">{{$event->edition}}th {{$event->eventname}}</span> <br>
+                @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
+                @else
+                  {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M, Y')}}
+                @endif 
+                
+                <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} 
 
-                        </span>
-                        
-                        <span><a class="btn btn-primary btn-sm" type="button" 
-                      href="#" wire:click.prevent="store({{$event->id}},'{{$event->eventname}}',{{$event->max_pass}})"> Book your Tickets </a></span>
-                        
-                    </li>
-                    <li><hr class="mt-md-2 mb-2"></li>
-                    <li class="p1 fw-light">
-                      {{ucwords(trans($event->category->industry))}} | {{ucwords(trans($event->sector->sector))}} | + {{$event->exhibitors}} Exhibitors | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days | Rs. 599 Onwards
-                    </li>
-
-              </ul>
+              </span>
+              
+              <span><a class="btn btn-primary btn-sm" type="button" 
+            href="#" wire:click.prevent="store({{$event->id}},'{{$event->eventname}}',{{$event->max_pass}})"> Book your Tickets </a></span>
+              
+          </li>
+          <li><hr class="mt-md-2 mb-2"></li>
+          <li class="p1 fw-light">
+            {{ucwords(trans($event->category->industry))}} | {{ucwords(trans($event->sector->sector))}} | + {{$event->exhibitors}} Exhibitors | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days | Rs. 599 Onwards
+          </li>
+        </ul>
       </div> 
 
       <div class="container d-lg-none">
@@ -200,25 +198,23 @@
                 <li>
                   <div class="card ">
                   <div class="expo_Initiat">
-                  <div class="card-body ">
-                    <h5 class="card-title">Sustainability District</h5>
-                    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                  </div>
+                      <div class="card-body ">
+                        <h5 class="card-title">Sustainability District</h5>
+                        <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                      </div>
 
-                  <div class="card-body">
-                    <h5 class="card-title">Mobility District</h5>
-                    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                  </div>
+                      <div class="card-body">
+                        <h5 class="card-title">Mobility District</h5>
+                        <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                      </div>
 
-                  <div class="card-body">
-                    <h5 class="card-title">Opportunity District</h5>
-                    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                  </div>
-
-                  
+                      <div class="card-body">
+                        <h5 class="card-title">Opportunity District</h5>
+                        <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                      </div>                  
                   </div>
                 </div>
               </li>
@@ -351,29 +347,29 @@
               <li><!-- No image -->
                 <div class="card ">
                   <div class="expo_Initiatives">
-                  <div class="card-body ">
-                    <h5 class="card-title">Expo live</h5>
-                    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                  </div>
+                        <div class="card-body ">
+                          <h5 class="card-title">Expo live</h5>
+                          <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                        </div>
 
-                  <div class="card-body">
-                    <h5 class="card-title">Global Best Practice Programme</h5>
-                    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                  </div>
+                        <div class="card-body">
+                          <h5 class="card-title">Global Best Practice Programme</h5>
+                          <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                        </div>
 
-                  <div class="card-body">
-                    <h5 class="card-title">Sustainability at Expo</h5>
-                    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                  </div>
+                        <div class="card-body">
+                          <h5 class="card-title">Sustainability at Expo</h5>
+                          <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                        </div>
 
-                  <div class="card-body">
-                    <h5 class="card-title">World Majlis</h5>
-                    <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                  </div>
+                        <div class="card-body">
+                          <h5 class="card-title">World Majlis</h5>
+                          <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                        </div>
                   </div>
                 </div>
               </li>
@@ -684,7 +680,7 @@
                 
                   <div class="card product-card">
                     <a class="d-flex align-items-center" href="#">
-                      <img class="rounded-circle ms-2" width="17%" src="{{url('speaker/'.$speaker->image)}}"  alt="{{Str::limit($speaker->name, 24)}}">
+                      <img class="" width="70%" src="{{url('speaker/'.$speaker->image)}}"  alt="{{Str::limit($speaker->name, 24)}}">
                     </a>
                   </div>
                
@@ -701,7 +697,7 @@
                 
                   <div class="card product-card">
                     <a class="d-flex align-items-center" href="#">
-                      <img class="rounded-circle" width="50%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                      <img class="rounded-circle" width="70%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
                     </a>
                   </div>
                
@@ -926,8 +922,12 @@
               "responsive": {
                 "350": {
                   "items": 3,
-                  "controls": true,
-                  "edgePadding": 30
+                  "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": false,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
+                  "nav": false,
                 },
                 "500": {
                   "items": 4
@@ -936,7 +936,7 @@
               
               "nav": false,
               "mouseDrag": true,
-              "controls": true,
+              "controls": false,
               "swipeAngle": false,
               "speed": 400,
               "autoplay": true,
@@ -988,6 +988,7 @@
             });
           </script>
 
+<!--test 1-->
           <script>
             var slider = tns({
               "container": '.expo_Initiatives', 
@@ -995,19 +996,23 @@
                 "350": {
                   "items": 1,
                   "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": false,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
                   "nav": false,
                 },
                 "500": {
                   "items": 1,
+                  "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": false,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
                   "nav": false,
                 }
               },
-              "autoplay":true,
-              "nav":false,
-              "mouseDrag":true,
-              "controls": false,
-              "swipeAngle": false,
-              "speed": 400
+              
             });
           </script>
 
@@ -1033,6 +1038,7 @@
               "speed": 400
             });
           </script>
+<!_-test2-->
 
           <script>
             var slider = tns({
@@ -1070,9 +1076,7 @@
                 "500": {
                   "items": 3,
                   "nav": false,
-                }
-              },
-              
+                }},
             });
           </script>
 

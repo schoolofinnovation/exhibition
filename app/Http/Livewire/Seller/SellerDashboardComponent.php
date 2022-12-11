@@ -86,7 +86,7 @@ class SellerDashboardComponent extends Component
       $todaysales = Order:: where('status','delivered')->whereDate('created_at',carbon::today())->count();
       $todayrevenue = Order:: where('status','delivered')->whereDate('created_at',carbon::today())->sum('total');
 
-        $event = Event::where('user_id', Auth::user()->id)->orderBy('created_at','ASC')->paginate(6);
+        $event = Event::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->paginate(6);
         $brands = Brand::where('user_id', Auth::user()->id)->get();
         $about = Sprofile::where('user_id', Auth::user()->id)->first();
         $new = Mag::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->paginate(4);

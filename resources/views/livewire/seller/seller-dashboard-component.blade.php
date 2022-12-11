@@ -207,15 +207,23 @@
                     <div class="row pt-2">
                       <!-- Product-->
                       @foreach ($event as $product)
-                        <div class="col-sm-6 mb-grid-gutter">
+                        <div class="col-sm-3 mb-grid-gutter">
                           <div class="card product-card-alt">
+                            
                             <div class="product-thumb">
                               <button class="btn-wishlist btn-sm" type="button"><i class=" bi bi-heart"></i></button>
-                                <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href=""><i class=" bi bi-eye"></i></a>
+
+                                <div class="product-card-actions">
+                                  <a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href=""><i class=" bi bi-eye"></i></a>
                                   <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class=" bi bi-cart"></i></button>
+                                  <div class="fs-sm text-light" href="">Car & bar</div>
                                 </div>
-                                <a class="product-thumb-overlay" href=""></a><img src="{{url('Storage/brands/'.$product->image)}}" alt="{{Str::limit($product->eventname, 24)}}">
+
+                                <a class="product-thumb-overlay" href="{{route('event.details',['slug' => $product->eventname])}}"></a>
+
+                                <img src="{{url('assets/image/exhibition/'.$product->image)}}" height="25%" alt="{{Str::limit($product->eventname, 24)}}">
                             </div>
+
                             <div class="card-body">
                                 <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
                                   <div class="text-muted fs-xs me-1">by <a class="product-meta fw-medium" href="#">
@@ -225,10 +233,11 @@
                                   </div>
                                 </div>
                                   <h3 class="product-title fs-sm mb-2"><a href="">{{ucwords(trans($product->eventname))}} </a></h3>
-                                  <h3 class="product-title fs-sm mb-2"><a href="">@if(Carbon\Carbon::parse ($product->startdate)->format('M') != Carbon\Carbon::parse ($product->enddate)->format('M'))
-                                    {{Carbon\Carbon::parse ($product->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y ')}}
-                                  @else
-                                    {{Carbon\Carbon::parse ($product->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y')}}
+                                  <h3 class="product-title fs-sm mb-2"><a href="">
+                                  @if(Carbon\Carbon::parse ($product->startdate)->format('M') != Carbon\Carbon::parse ($product->enddate)->format('M'))
+                                      {{Carbon\Carbon::parse ($product->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y ')}}
+                                    @else
+                                      {{Carbon\Carbon::parse ($product->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y')}}
                                   @endif
                                   </a></h3>
                                   <h3 class="product-title fs-sm mb-2"><a href="">{{$product -> venue}}, {{$product -> city}}</a></h3>

@@ -127,6 +127,7 @@ use App\Http\Livewire\Seller\SellerEventTicketComponent;
 use App\Http\Livewire\Seller\SellerOrderComponent;
 use App\Http\Livewire\Seller\SellerOrderDetailsComponent;
 use App\Http\Livewire\Seller\SellerPostOpportunityComponent;
+use App\Http\Livewire\Seller\SellerSponsershipComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
@@ -337,6 +338,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/partner/dashboard', SellerDashboardComponent::class)->name('seller.dashboard');
     Route::get('/partner/add', SellerEventComponent::class)->name('event.add');
     Route::get('/partner/ticket/add', SellerEventTicketComponent::class)->name('ticket.add');
+    Route::get('/partner/sponser/add', SellerSponsershipComponent::class)->name('seller.sponser.add');
 
     
     Route::get('/mybrand', SellerMybrandComponent::class)->name('seller.mybrand');

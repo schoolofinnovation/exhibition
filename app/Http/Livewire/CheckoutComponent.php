@@ -17,6 +17,9 @@ class CheckoutComponent extends Component
    public $subtotalAfterDiscount;
    public $taxAfterDiscount;
    public $totalAfterDiscount;
+   public $basePrice;
+   public $bookingFee;
+   public $checkfee;
 
     public function destroy($rowId)
     {
@@ -71,6 +74,8 @@ class CheckoutComponent extends Component
           session()->put('checkout',[
              'discount' => $this->discount,
              'subtotal' => $this->subtotalAfterDiscount,
+             'basePrice' => $this->basePrice,
+             'bookingFee' => $this->bookingFee,
              'tax' => $this->taxAfterDiscount,
              'total' => $this->totalAfterDiscount
           ]);
@@ -80,8 +85,10 @@ class CheckoutComponent extends Component
          session()->put('checkout',[
             'discount' => 0,
             'subtotal' => Cart::instance('cart')->subtotal(),
+            'basePrice' => (Cart::instance('cart')->subtotal() * 7)/100,
             'tax' =>  Cart::instance('cart')->tax(),
-            'total' =>  Cart::instance('cart')->total()
+            'total' =>  Cart::instance('cart')->total(),
+            
          ]);
        }
     }
@@ -116,7 +123,9 @@ class CheckoutComponent extends Component
                $this->discount = (Cart::instance('cart')->subtotal() * session()->get('coupon')['value'])/100;  
             }
           $this->subtotalAfterDiscount = Cart::instance('cart')->subtotal() - $this->discount;
-          $this->taxAfterDiscount = ($this->subtotalAfterDiscount * config('cart.tax'))/100;
+          $this->basePrice = ($this->subtotalAfterDiscount * 7)/100;
+          $this->taxAfterDiscount = ($this->basePrice * config('cart.tax'))/100;
+          $this->bookingFee = $this->basePrice + $this->taxAfterDiscount;
           $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
        }
     }

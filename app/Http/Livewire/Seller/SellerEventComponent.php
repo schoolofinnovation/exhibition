@@ -59,45 +59,46 @@ class SellerEventComponent extends Component
 
     public function add()
     {
+        $this->validate([
+
+            'edition'=>'required', 
+            'eventype'=>'required',
+            'eventname'=>'required',
+            //'auidence'=>'required',
+            'image'=>'required',
+            'slug'=>'required',
+            'venue'=>'required',
+            'city'=>'required',
+            'country'=>'required',
+            'level'=>'required',
+            'startdate'=>'required',
+            'enddate'=>'required',
+            'status'=>'required',
+            'admstatus'=>'required',
+        ]);
+
         $newEvent = new Event();
         $newEvent->edition = $this->edition;
         $newEvent->eventype = $this->eventype;
-        //$newEvent->desc = $this->desc;
-        //$newEvent->tagline = $this->tagline;
         $newEvent->eventname = $this->eventname;
-        $newEvent->auidence = $this->auidence;
-        $newimage = Carbon::now()->timestamp . '.' . $this->image->extension();
+        //$newEvent->auidence = $this->auidence;
+        $newimage = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('exhibition', $newimage);
         $newEvent->image = $newimage;
-
         $newEvent->slug = $this->slug;
         $newEvent->venue = $this->venue;
         $newEvent->city = $this->city;
-
         $newEvent->country = $this->country;
-        //$newEvent->organizer = $this->organizer;
-        //$newEvent->email = $this->email;
-        //$newEvent->phone = $this->phone;
-
         $newEvent->level = $this->level;
         $newEvent->startdate = $this->startdate;
         $newEvent->enddate = $this->enddate;
-
         $newEvent->status = $this->status;
         $newEvent->admstatus = $this->admstatus;
         $newEvent->user_id = Auth::user()->id;
-
-        //$newEvent->category_id = $this->category_id;
-        //$newEvent->exhibitors = $this->exhibitors;
-        //$newEvent->sector_id = $this->sector_id;
-        //$newEvent->expo_id = $this->expo_id;
-        //$newEvent->search_id = $this->search_id;
-        //$newEvent->max_pass = $this->max_pass;
-        //$newEvent->min_pass = $this->min_pass; 
         $newEvent->save();
         return redirect()->route('seller.dashboard');
         session()->flash('message','Thanks for sharing your review.');
-
+        
     }
 
     public function render()

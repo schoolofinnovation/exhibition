@@ -9,9 +9,9 @@
 @section('page_path',' Job')
 @section('page_list',' addJob')
 
-<section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
+    <section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
         <div class="pt-2 px-4 ps-lg-0 pe-xl-5">            
-        <form wire:submit.prevent="add" >
+            <form wire:submit.prevent="add" enctype= "multipart/form-data">
                 <!-- Title-->
                 <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
                     <h2 class="h3 py-2 me-2 text-center text-sm-start">Add New Event</h2>

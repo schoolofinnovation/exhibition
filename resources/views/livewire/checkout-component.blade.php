@@ -1,9 +1,9 @@
 @section('page_title','Cart')
 
 <main>
-    <div class="page-title-overlap bg-accent pt-4">
+    <div class="page-title-overlap bg-accent pt-4 ">
       <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2 d-none">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
               <li class="breadcrumb-item"><a class="text-nowrap" href="/"><i class="bi bi-house"></i>Home</a></li>
@@ -13,7 +13,7 @@
             </ol>
           </nav>
         </div>
-        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start d-none">
           <h1 class="h3 text-light mb-0">Your Application</h1>
 
           @if(Session::has('success_message'))
@@ -30,70 +30,26 @@
           <!-- Content-->
           <section class="col-lg-8 pt-2 pt-lg-4 pb-4 mb-3">
             <div class="pt-2 px-4 pe-lg-0 ps-xl-5">
-              <!-- Header-->
-              <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-3">
-                <div class="py-1"><a class="btn btn-outline-accent btn-sm" href="{{route ('franchise.Coi')}}"><i class=" bi bi-Chevron-left me-1 ms-n1"></i>Back to Opportunities</a></div>
-                    <div class="d-none d-sm-block py-1 fs-sm">
-                      @if(Cart::instance('cart')->count()>0)
-                          <span class="index">You have <strong>{{Cart::instance('cart')->count()}} </strong>Opportunities in your cart</span>
-                        @else
-                          Looking for Business Opportunities
-                      @endif 
-                    </div>
-                <div class="py-1">
-                  <a class="btn btn-outline-danger btn-sm" href="#" wire:click.prevent="destroyAll()"><i class=" bi bi-x fs-xs me-1 ms-n1"></i>Clear cart</a>
-                </div>
-              </div>
+            <div class="pb-1">Please select from the following option(s)</div>
+          <div class="fw-light">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                 M-Ticket
+              </label>
+            </div>
+          </div> 
+          <div class="fs-xs pb-1">Login & save the planet. Use your phone as a ticket.</div>
+          
 
-              @if(Cart::instance('cart')->count()>0)
-                  <!-- Item-->
-                  @foreach (Cart::instance('cart')->content() as $item)
-                    <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
-                      <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
-                        <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                          <img src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->event->image, 24)}}" width="160"></a>
-                          
-                          <div class="pt-2">
-                            <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">{{$item->model->event->eventname}}</a></h3>
-                            <div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
-                                    {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y ')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
-                                  @else
-                                    {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
-                                  @endif
-                            </div>
-                            
-                              @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                                <div class="fs-lg text-accent pt-2"><small>Rs. <span class="border-end pe-2 me-2"> <strong>{{$item->model->sale_price}}</strong></span> 
-                                <span class="fs-sm text-muted"> <del>{{$item->model->regualar_price}}</del></span></small></div>
-                                @elseif($item->model->sale_price >0)
-                                <div class="fs-lg text-accent pt-2">Rs. {{$item->model->sale_price}}<small></small></div>
-                                <del class="fs-lg text-accent pt-2">Rs. {{$item->model->regualar_price}}<small></small></del>
-                                @else
-                                <div class="fs-lg text-accent pt-2">Rs. {{$item->model->price}}<small></small></div>
-                              @endif
-
-                          </div>
-                      </div>
-
-                      <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
-                        <div class="quantity-input">
-                          <input class="form-control" type="text"  min="1" value="{{$item->qty}}">
-                          <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')">+</a> 
-                          <a class="btn btn-decrease" href="#" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')">-</a>
-                        </div>
-
-                        <button class="btn btn-link px-0 text-danger" type="button" wire:click="destroy('{{$item->rowId}}')">
-                        <i class="bi bi-x"></i><span class="fs-sm">Remove</span></button>
-                      </div>
-                      
-                    </div>
-                  @endforeach	
-                  </div>
-              @else
-                    <div class="text-center d-block w-100 mt-4"><strong>Looking for Business Opportunities</strong></div>
-              @endif
-             <button class="btn btn-outline-accent d-block w-100 mt-4" type="button"><i class=" bi bi-loading fs-base me-2"></i>Update cart</button>
+        <ul class="bg-secondary py-3"> <span class="fw-bold"> M-Ticket Information</span> 
+          <li class="fs-sm">1. Customer(s) can access their ticket(s) from the 'My Profile' section on the app/mobile-web.</li>				
+          <li class="fs-sm">2. It is mandatory to present the ticket(s) in my profile section via app/mobile-web at the venue.</li>					
+          <li class="fs-sm">3. No physical ticket(s) are required to enter the venue.</li>
+        </ul>
+              
           </section>
+          
 
           <!-- Sidebar-->
         <aside class="col-lg-4 ps-xl-5">
@@ -107,49 +63,76 @@
                   @foreach (Cart::instance('cart')->content() as $item)
                     <div class="d-flex align-items-center pb-2 border-bottom">
                     <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                    <img class="rounded-1" src="{{asset ('exhibition') }}/{{$item->model->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
+                    <img class="rounded-1" src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                       <div class="ps-1">
                         <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
                         {{$item->model->event->eventname}}</a></h6>
+
                         <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
+                            @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+                              <i class="bi bi-currency-rupee"></i> {{$item->model->sale_price}}
+                              @else
+                              <i class="bi bi-currency-rupee"></i> {{$item->model->regular_price}}
+                            @endif
 
-                        @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                          Rs. {{$item->model->sale_price}}
-                          @else
-                          Rs. {{$item->model->regular_price}}
-                        @endif
-
-                        <span class="text-muted">{{$item->model->price}} x {{$item->qty}}</span></span> 
-                        <span class="fs-xs text">Standard license</span>
+                            <span class="text-muted">{{$item->model->price}} x {{$item->qty}}</span></span> 
+                            <span class="fs-xs text">Ticket</span>
                         </div>
+                        
                       </div>
                     </div>
                     @endforeach
+                    <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
+                      <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Date 
+                        </span>
+                        <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> @if(Carbon\Carbon::parse ($item->model->startdate)->format('M') != Carbon\Carbon::parse ($item->model->enddate)->format('M'))
+                            {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y ')}}
+                          @else
+                            {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y')}}
+                        @endif </span></li>
+                        <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Time 
+                      </span>
+                      <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> 10:00</span></li>
+                      <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Venue 
+                      </span>
+                      <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->event->venue}} : {{$item->model->event->city}}</span></li>
+                      
+                      <li class="align-items-center">
+                        
+                      <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->code}}({{$item->model->price}}): {{$item->qty}} ticket(s)</span></li>
+
+                    </ul>          
                       @if(session::has('coupon'))
                           <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
-                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Discount : ({{session::get('coupon')['code']}}) <a href="" wire:click.prevent="removeCoupon"><i class="bi bi-x"></i></a> </span><span class="text-end"><small>Rs.</small> {{$discount}}</span></li>
-                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Subtotal :</span><span class="text-end"><small>Rs.</small> {{$subtotalAfterDiscount}}</span></li>
-                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Shipping</span><span class="text-end"><small></small> Free Shipping</span></li>
-                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Tax : ({{config('cart.tax')}}%)</span><span class="text-end"><small>Rs.</small> {{$taxAfterDiscount}}</span></li>
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Discount : ({{session::get('coupon')['code']}}) <a href="" wire:click.prevent="removeCoupon"><i class="bi bi-x"></i></a> </span><span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$discount}}</span></li>
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Sub-total</span><span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$subtotalAfterDiscount}}</span></li>
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Booking Fee <input class="form-check-input" type="checkbox"   value="1"  wire:model="checkfee"></span>
+                            <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$bookingFee}}</span></li>
+                            @if($checkfee == 1)
+                              <li class="d-flex justify-content-between align-items-center"><small><span class="me-2">Base Price</span></small><small><span class="text-end"> {{$basePrice}}</span></small></li>
+                              <li class="d-flex justify-content-between align-items-center"><small><span class="me-2">Tax : ({{config('cart.tax')}}%)</span></small><small><span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$taxAfterDiscount}}</span></small></li>
+                            @endif 
                           </ul>
-                            <h3 class="fw-normal text-center my-4">Rs.{{$totalAfterDiscount}}</h3>
+                            {{--<h3 class="fw-normal text-center my-4"><i class="bi bi-currency-rupee"></i>{{$totalAfterDiscount}}</h3>--}}
+                            <div class="d-flex justify-content-between align-items-center "><span class="me-2 fw-bold">Total Amount</span><span class="text-end fw-bold fs-sm"><small></small> {{$totalAfterDiscount}}</span></div> 
                         @else
                           <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">
-                            <li class="d-flex justify-content-between align-items-center"><span class="me-2">Subtotal:</span><span class="text-end"><small>Rs.</small> {{Cart::instance('cart')->subtotal()}}</span></li>
-                            <li class="d-flex justify-content-between align-items-center"><span class="me-2">Taxes:</span><span class="text-end"><small>Rs.</small> {{Cart::instance('cart')->tax()}}</span></li>
-                            <li class="d-flex justify-content-between align-items-center"><span class="me-2">Shipping</span><span class="text-end"><small></small> Free Shipping</span></li>
+                            <li class="d-flex justify-content-between align-items-center"><span class="me-2">Sub-total</span><span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{Cart::instance('cart')->subtotal()}}</span></li>
+                            <li class="d-flex justify-content-between align-items-center"><span class="me-2">Booking Fee <input class="form-check-input" type="checkbox"   value="1" id="have-check" wire:model="checkfee"></span>
+                            <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{Cart::instance('cart')->tax()}}</span></li>
+                            @if($checkfee == 1)
+                            <li class="d-flex justify-content-between align-items-center"><small><span class="me-2">Base Price</span></small><span class="text-end"><small><i class="bi bi-currency-rupee"></i> {{$basePrice}}</small></span></li>
+                            <li class="d-flex justify-content-between align-items-center"><small><span class="me-2">Integrated GST (IGST) @ 18%</span></small><span class="text-end"><small><i class="bi bi-currency-rupee"></i> {{Cart::instance('cart')->subtotal()}}</small></span></li>
+                            @endif
+
                           </ul>
-                            <h3 class="fw-normal text-center my-4">Rs.{{Cart::instance('cart')->total()}}</h3>  
+                          <div class="d-flex justify-content-between align-items-center "><span class="me-2 fw-bold">Total Amount</span><span class="text-end fw-bold fs-sm"><small></small> {{Cart::instance('cart')->total()}}</span></div> 
+
+                          {{--<h3 class="fw-normal text-center my-4"><i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->total()}}</h3>--}}  
                       @endif
                   @else
                     <div>No item in cart</div>
-                @endif
-
-                 
-               
-                
-                <a class="btn btn-primary btn-shadow d-block w-100 mt-4" href="#" wire:click.prevent="checkout">
-                <i class=" bi bi-lock-fill fs-lg me-2"></i>Secure Checkout</a>
+                @endif 
               </div>
 
               <!--coupon-->
@@ -176,8 +159,13 @@
                     </div>
                   @endif
               @endif  
-
-                <div class="text-center pt-2 pb-3"><small class="text-form text-muted">100% money back guarantee</small></div>
+              
+                <div class="d-flex fs-sm pt-2 pb-1"> 
+                    <div class="px-1"><i class="bi bi-info-circle"></i></div>
+                    <div class="small text-form text-muted">By proceeding, I express my consent to complete this transaction.</div>
+                </div>
+                <a class="btn btn-primary btn-shadow d-block w-100 " href="#" wire:click.prevent="checkout">
+                Login to Proceed</a>
               </div>
             </div>
         </aside>
@@ -185,6 +173,6 @@
         </div>
         
       </div>
-    </div>
+    
 
     </main>
