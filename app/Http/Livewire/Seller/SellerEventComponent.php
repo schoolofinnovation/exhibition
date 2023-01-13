@@ -15,7 +15,7 @@ class SellerEventComponent extends Component
     public $edition;
     public $eventype;
     public $eventname;
-    public $auidence;
+    
     public $image;
     public $slug;
     public $venue;
@@ -30,15 +30,8 @@ class SellerEventComponent extends Component
     public $status;
     public $admstatus;
     public $user_id;
-    public $category_id;
-    public $exhibitors;
-    public $sector_id;
-    public $expo_id;
-    public $search_id;
-    public $max_pass;
-    public $min_pass;
-    public $desc;
-    public $tagline;
+
+    
     
     //public $abbrevation, $tag(Short desc),
     
@@ -77,6 +70,7 @@ class SellerEventComponent extends Component
             'admstatus'=>'required',
         ]);
 
+        
         $newEvent = new Event();
         $newEvent->edition = $this->edition;
         $newEvent->eventype = $this->eventype;

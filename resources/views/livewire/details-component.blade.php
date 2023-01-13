@@ -409,7 +409,7 @@
               <h2 class="h3 mb-4">{{$franchise->review->count() + $franchise->orderItems->where('rstatus',1)->count()}} Reviews</h2>
               
               <div class="star-rating me-2">
-              @php
+                      @php
                        $avgrating = 0;
                       @endphp
 

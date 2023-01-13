@@ -8,14 +8,14 @@
       <div class="page-title-overlap bg-accent pt-4">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
           <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-            <nav aria-label="breadcrumb">
+            {{--<nav aria-label="breadcrumb">
               <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
                 <li class="breadcrumb-item"><a class="text-nowrap" href="{{'/'}}"><i class="ci-home"></i>Home</a></li>
-                <li class="breadcrumb-item text-nowrap"><a href="{{route('franchise.Coi')}}">Opportunity</a>
+                <li class="breadcrumb-item text-nowrap"><a href="">Opportunity</a>
                 </li>
                 <li class="breadcrumb-item text-nowrap active" aria-current="page">Checkout</li>
               </ol>
-            </nav>
+            </nav>--}}
           </div>
             <!-- Steps
             <div class="steps steps-light pt-2 pb-3 mb-5"><a class="step-item active" href="shop-cart.html">
@@ -32,15 +32,16 @@
             </div>-->
 
           <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-            <h1 class="h3 text-light mb-0">Checkout</h1>
+            <h1 class="h3 text-light mb-0">Details</h1>
           </div>
         </div>
       </div>
+
       <div class="container pb-5 mb-2 mb-md-4">
         <div class="row">
           <section class="col-lg-8">
             <!-- Steps-->
-            <div class="steps steps-light pt-2 pb-3 mb-5"><a class="step-item active" href="shop-cart.html">
+            {{--<div class="steps steps-light pt-2 pb-3 mb-5"><a class="step-item active" href="shop-cart.html">
                 <div class="step-progress"><span class="step-count">1</span></div>
                 <div class="step-label"><i class="ci-cart"></i>Cart</div></a><a class="step-item active current" href="checkout-details.html">
                 <div class="step-progress"><span class="step-count">2</span></div>
@@ -51,10 +52,10 @@
                 <div class="step-label"><i class="ci-card"></i>Payment</div></a><a class="step-item {{'seller/account' == request()->path() ? 'active' : '' }}" href="checkout-review.html">
                 <div class="step-progress"><span class="step-count">5</span></div>
                 <div class="step-label"><i class="ci-check-circle"></i>Review</div></a>
-            </div>
+            </div>--}}
 
             <!-- Autor info-->
-            <div class="d-sm-flex justify-content-between align-items-center bg-secondary p-4 rounded-3 mb-grid-gutter">
+            {{--<div class="d-sm-flex justify-content-between align-items-center bg-secondary p-4 rounded-3 mb-grid-gutter">
               <div class="d-flex align-items-center">
                 <div class="img-thumbnail rounded-circle position-relative flex-shrink-0">
                   <span class="badge bg-warning position-absolute end-0 mt-n2" data-bs-toggle="tooltip" title="" data-bs-original-title="Reward points">
@@ -64,12 +65,12 @@
                 </div>
               </div><a class="btn btn-light btn-sm btn-shadow mt-3 mt-sm-0" href="{{route('user.profile')}}">
                 <i class="ci-edit me-2"></i>Edit profile</a>
-            </div>
+            </div>--}}
 
             <!-- Shipping address-->
-            <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Billing address</h2>
+            <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Details</h2>
             <form  wire:submit.prevent="placeOrder">
-              <div class="row">
+              {{--<div class="row">
                 <div class="col-sm-6">
                   <div class="mb-3">
                     <label class="form-label" for="checkout-fn">First Name</label>
@@ -84,7 +85,8 @@
                     @error('lastname') <span class="text-danger">{{$message}}</span> @enderror
                   </div>
                 </div>
-              </div>
+              </div>--}}
+
               <div class="row">
                 <div class="col-sm-6">
                   <div class="mb-3">
@@ -101,6 +103,7 @@
                   </div>
                 </div>
               </div>
+             {{--
               <div class="row">
                 <div class="col-sm-6">
                   <div class="mb-3">
@@ -171,10 +174,13 @@
                   </div>
                 </div>
               </div>
+
               <div class="form-check">
                 <input class="form-check-input" type="checkbox"  value="1"  wire:model="ship_to_different">
                 <label class="form-check-label" for="same-address">Shipping to Different Address</label>
-              </div>
+              </div>--}}
+
+              
               <h6 class="mb-3 py-3 border-bottom">Payment: {{$paymentmode}} <div class="fs-sm fw-light">Choose payment Mode</div></h6>
 
               
@@ -327,50 +333,103 @@
               <div class="py-2 px-xl-2">
                 <div class="widget mb-3">
                   <h2 class="widget-title text-center">Order summary</h2>
-                  @foreach (Cart::instance('cart')->content() as $item)
-                    <div class="d-flex align-items-center pb-2 border-bottom">
-                    <a class="d-block flex-shrink-0 me-2" href="{{route ('franchise.details',['slug'=>$item->model->slug])}}">
-                    <img class="rounded-1" src="{{asset ('assets/images/products') }}/{{$item->model->image}}" alt="{{$item->model->name}}" width="64" ></a>
-                      <div class="ps-1">
-                        <h6 class="widget-product-title"><a href="{{route ('franchise.details',['slug'=>$item->model->slug])}}">
-                        {{$item->model->name}}</a></h6>
-                        <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
+                      @if(Cart::instance('cart')->count()>0)
+                        @foreach (Cart::instance('cart')->content() as $item)
+                          <div class="d-flex align-items-center pb-2 border-bottom">
+                            <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                            <img class="rounded-1" src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
+                              <div class="ps-1">
+                                <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                                {{$item->model->event->eventname}}</a></h6>
 
-                        @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                        Rs. {{$item->model->sale_price}}
-                        @else
-                        Rs. {{$item->model->regualar_price}}
-                        @endif
+                                <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
+                                    @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+                                      <i class="bi bi-currency-rupee"></i> {{$item->model->sale_price}}
+                                      @else
+                                      <i class="bi bi-currency-rupee"></i> {{$item->model->regular_price}}
+                                    @endif
 
-                        <span class="text-muted"> {{$item->model->price}} x {{$item->qty}}</span></span> 
-                        <span class="fs-xs text">Standard license</span>
-                        </div>
+                                    <span class="text-muted">{{$item->model->price}} x {{$item->qty}}</span></span> 
+                                    <span class="fs-xs text">Ticket</span>
+                                </div>
+                                
+                              </div>
+                          </div>
+                        @endforeach
+                          <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
+                            <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Date 
+                              </span>
+                              <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> 
+                              @if(Carbon\Carbon::parse ($item->model->startdate)->format('M') != Carbon\Carbon::parse ($item->model->enddate)->format('M'))
+                                  {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y ')}}
+                                @else
+                                  {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y')}}
+                              @endif </span></li>
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Time 
+                            </span>
+                            <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> 10:00</span></li>
+                            <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Venue 
+                            </span>
+                            <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->event->venue}} : {{$item->model->event->city}}</span></li>
+                            
+                            <li class="align-items-center">
+                              
+                            <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->code}}({{$item->model->price}}): {{$item->qty}} ticket(s)</span></li>
+
+                          </ul>          
+                            <ul class="list-unstyled fs-sm pt-2 pb-2 border-bottom">
+                                  <li class="d-flex justify-content-between align-items-center"><span class="me-2">Sub-total</span><span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{Session::get('checkout')['subtotal']}}</span></li>
+                                  <li class="d-flex justify-content-between align-items-center"><span class="me-2">Booking Fee <input class="form-check-input" type="checkbox"   value="1" id="have-check" wire:model="checkfee"></span>
+                                  <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small>{{Session::get('checkout')['bookingFee']}}</span></li>
+                                  @if($checkfee == 1)
+                                  <li class="d-flex justify-content-between align-items-center"><small><span class="me-2">Base Price</span></small><span class="text-end"><small><i class="bi bi-currency-rupee"></i> {{Session::get('checkout')['basePrice']}}</small></span></li>
+                                  <li class="d-flex justify-content-between align-items-center"><small><span class="me-2">Integrated GST (IGST) @ 18%</span></small><span class="text-end"><small><i class="bi bi-currency-rupee"></i> {{Session::get('checkout')['tax']}}</small></span></li>
+                                  @endif
+
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center "><span class="me-2 fw-bold">Total Amount</span><span class="text-end fw-bold fs-sm"><small></small> {{Session::get('checkout')['total']}}</span></div>
+
+                                {{--<h3 class="fw-normal text-center my-4"><i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->total()}}</h3>--}}  
+                            
+                      @else
+                          <div>No item in cart</div>
+                      @endif 
+
+
+
+
+                    @if(Session::has('checkout'))
+                          <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Discount : ({{session::get('coupon')['code']}}) </span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['discount']}}</span></li>
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Subtotal :</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['subtotal']}}</span></li>
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Shipping</span><span class="text-end"><small></small> Free Shipping</span></li>
+                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Taxes : ({{config('cart.tax')}}%)</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['tax']}}</span></li>
+                          </ul>
+                        <h3 class="fw-normal text-center my-4">Rs. {{Session::get('checkout')['total']}}</h3>
+                  
+                    @endif
+
+                    <form class="needs-validation" method="post" novalidate="">
+                      <div class="mb-3">
+                        <input class="form-control" type="text" placeholder="Promo code" required="">
+                        <div class="invalid-feedback">Please provide promo code.</div>
                       </div>
-                    </div>
-                  @endforeach
+                      <button class="btn btn-outline-primary d-block w-100" type="submit">Apply promo code</button>
+                    </form>
 
-                @if(Session::has('checkout'))
-                      <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
-                          <li class="d-flex justify-content-between align-items-center"><span class="me-2">Discount : ({{session::get('coupon')['code']}}) </span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['discount']}}</span></li>
-                          <li class="d-flex justify-content-between align-items-center"><span class="me-2">Subtotal :</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['subtotal']}}</span></li>
-                          <li class="d-flex justify-content-between align-items-center"><span class="me-2">Shipping</span><span class="text-end"><small></small> Free Shipping</span></li>
-                          <li class="d-flex justify-content-between align-items-center"><span class="me-2">Taxes : ({{config('cart.tax')}}%)</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['tax']}}</span></li>
-                      </ul>
-                    <h3 class="fw-normal text-center my-4">Rs. {{Session::get('checkout')['total']}}</h3>
-               
-                @endif
+                     
 
-                <form class="needs-validation" method="post" novalidate="">
-                  <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Promo code" required="">
-                    <div class="invalid-feedback">Please provide promo code.</div>
-                  </div>
-                  <button class="btn btn-outline-primary d-block w-100" type="submit">Apply promo code</button>
-                </form>
+
+
               </div>
+              <div class="d-flex fs-sm pt-2 pb-1"> 
+                      <div class="px-1"><i class="bi bi-info-circle"></i></div>
+                      <div class="small text-form text-muted">By proceeding, I express my consent to complete this transaction.</div>
+                  </div>
             </div>
           </aside>
         </div>
+
         <!-- Navigation (mobile)-->
         <div class="row d-lg-none">
           <div class="col-lg-8">

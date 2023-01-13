@@ -116,18 +116,30 @@ use App\Http\Livewire\Document\ExpandComponent;
 use App\Http\Livewire\Employee\EmployeeAddExhibitorComponent;
 use App\Http\Livewire\Employee\EmployeeAddPartnerComponent;
 use App\Http\Livewire\Employee\EmployeeAddSpeakerComponent;
+
 use App\Http\Livewire\Employee\EmployeeAddSponsershipComponent;
+
+use App\Http\Livewire\EventRateNowComponent;
 use App\Http\Livewire\ExhibitionCategoryComponent;
 use App\Http\Livewire\ExhibitionComponent;
+use App\Http\Livewire\LeadComponent;
+use App\Http\Livewire\LeadOtherComponent;
 use App\Http\Livewire\PaymentComponent;
 use App\Http\Livewire\ProductComponent;
 use App\Http\Livewire\ProductReviewComponent;
+use App\Http\Livewire\Seller\HastagComponent;
+use App\Http\Livewire\Seller\LeadPoolComponent;
+use App\Http\Livewire\Seller\PavillionComponent;
+use App\Http\Livewire\Seller\SellerEventAttributeComponent;
 use App\Http\Livewire\Seller\SellerEventComponent;
+use App\Http\Livewire\Seller\SellerEventIdeComponent;
 use App\Http\Livewire\Seller\SellerEventTicketComponent;
 use App\Http\Livewire\Seller\SellerOrderComponent;
 use App\Http\Livewire\Seller\SellerOrderDetailsComponent;
 use App\Http\Livewire\Seller\SellerPostOpportunityComponent;
+
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
+
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
@@ -221,7 +233,7 @@ Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
 Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
 Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
 
-Route::get('/exhibition/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
+Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
 Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 
 Route::get('/magazineo', MagazineComponent::class)->name('business.magazine');
@@ -229,6 +241,12 @@ Route::get('/magazineo', MagazineComponent::class)->name('business.magazine');
 //need to delete
 Route::get('/award', AwardComponent::class)->name('business.award');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
+Route::get('/rate_now/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
+
+//lead
+Route::get('/coi/expand-your-business/{slug}', LeadComponent::class)->name('lead.business');
+Route::get('/coi/sell-your-business/{slug}/{type}', LeadOtherComponent::class)->name('lead.business.other');
+
 
 Route::get('/cart', CheckoutComponent::class)->name('checkout');
 Route::get('/checkout', CoicartComponent::class)->name('coicart');
@@ -240,6 +258,7 @@ Route::get('/partner', MembershipComponent::class)->name('business.membership');
 //track
 Route::get('/COIbusiness',TrackComponent::class)->name('admin.track');
 Route::get('/wishlist', WishlistDetailsComponent::class)->name('franchise.wishlist');
+
 
 //likesor dislikes
 Route::post('/like-post/{mag}', 'App\Http\Livewire\BlogComponent@likepost')->name('post.like')->middleware('auth');
@@ -339,9 +358,18 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/partner/add', SellerEventComponent::class)->name('event.add');
     Route::get('/partner/ticket/add', SellerEventTicketComponent::class)->name('ticket.add');
     Route::get('/partner/sponser/add', SellerSponsershipComponent::class)->name('seller.sponser.add');
-
+    Route::get('/partner/hastag/add', HastagComponent::class)->name('seller.hastag.add');
+    Route::get('/partner/pavillion/add', PavillionComponent::class)->name('seller.pavillion.add');
+    Route::get('/partner/portfolio/{slug}', SellerEventIdeComponent::class)->name('seller.portfolio');
+    Route::get('/partner/attribute', SellerEventAttributeComponent::class)->name('seller.event.attribute');
     
+    
+
+    //lead
+    Route::get('/partner/business/pool', LeadPoolComponent::class)->name('seller.business.pool');
+
     Route::get('/mybrand', SellerMybrandComponent::class)->name('seller.mybrand');
+
     Route::get('/seller/profile', SellerProfileComponent::class)->name('seller.profile');
     Route::get('/seller/brand', SellerBrandComponent::class)->name('seller.brand');
     Route::get('/seller/franchise', SellerFranchiseComponent::class)->name('seller.franchise');

@@ -194,15 +194,25 @@
 
               <!-- Primary menu-->
                 <div class="navbar-tool ">
-                    <a class="navbar-tool-icon-box" style="max-width: 50%;" href="#">
-                      <span class="navbar-tool-label">@if($brands->count()>0) {{$brands->count()}} @endif</span>
-                      <i class="navbar-tool-icon  bi bi-cart"></i>
-                    </a>
-                
-                    <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
-                          <span class="navbar-tool-label">@if($likecoun > 0){{$likecoun}} @endif</span>
-                          <i class="navbar-tool-icon  bi bi-cart"></i>
+                    @if($event->count()>0)
+                        <a class="navbar-tool-icon-box" style="max-width: 50%;" href="{{route('seller.dashboard')}}">
+                          <span class="navbar-tool-label"> {{$event->count()}} </span>
+                          Event
                         </a>
+                    @endif
+                    @if($rating->count()>0)
+                        <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
+                              <span class="navbar-tool-label"> {{$rating->count()}} </span>
+                              Review
+                        </a>
+                    @endif
+                    @if($lead->count()>0)
+                        <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
+                              <span class="navbar-tool-label"> {{$lead->count()}} </span>
+                              Lead
+                        </a>
+                    @endif
+
                     <a class="navbar-tool-icon-box  ms-1" style="max-width: 50%;" href="#">
                           <span class="navbar-tool-label">@if($review->count()>0){{$review->count()}} @endif</span>
                           <i class="navbar-tool-icon  bi bi-cart"></i>

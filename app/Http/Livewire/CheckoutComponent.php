@@ -20,6 +20,7 @@ class CheckoutComponent extends Component
    public $basePrice;
    public $bookingFee;
    public $checkfee;
+   
 
     public function destroy($rowId)
     {
@@ -84,11 +85,11 @@ class CheckoutComponent extends Component
        {
          session()->put('checkout',[
             'discount' => 0,
-            'subtotal' => Cart::instance('cart')->subtotal(),
-            'basePrice' => (Cart::instance('cart')->subtotal() * 7)/100,
-            'tax' =>  Cart::instance('cart')->tax(),
-            'total' =>  Cart::instance('cart')->total(),
-            
+            'subtotal' => $this->subtotal = Cart::instance('cart')->subtotal(),
+            'basePrice' => $this->basePrice = ($this->subtotal * 7)/100,
+            'tax' => $this->tax = ($this->basePrice * config('cart.tax'))/100,
+            'bookingFee' => $this->bookingFee = $this->basePrice + $this->tax,
+            'total' => $this->total = $this->subtotal + $this->bookingFee
          ]);
        }
     }
@@ -128,6 +129,7 @@ class CheckoutComponent extends Component
           $this->bookingFee = $this->basePrice + $this->taxAfterDiscount;
           $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
        }
+       
     }
 
     public function removeCoupon()

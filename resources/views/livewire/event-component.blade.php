@@ -19,15 +19,15 @@
                         <h5 class="mt-4 mb-1 text-body fw-light">Helping Businesses</h5>
                         <h2 class="mb-1"> Identify More <br> Prospects & Leads</h2>
                         <p class=" fw-light">Discover leads that have engaged<br> with your competitors</p>
-                        <a class="btn btn-accent" href="">Get Free COI Page <i class="bi bi-arrow-right fs-ms ms-1"></i></a>
+                        <a class="btn btn-accent" href="">Get Free Consultant <i class="bi bi-arrow-right fs-ms ms-1"></i></a>
                         
                       </div>
 
-                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get access</span>
-                        <h5 class="mt-4 mb-1 text-body fw-light">Helping Businesses</h5>
-                        <h2 class="mb-1"> Identify More <br> Prospects & Leads</h2>
-                        <p class=" fw-light">Discover leads that have engaged<br> with your competitors</p>
-                        <a class="btn btn-accent" href="">Get Free COI Page <i class="bi bi-arrow-right fs-ms ms-1"></i></a>
+                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get Certify</span>
+                        <h5 class="mt-4 mb-1 text-body fw-light">Best Place to Exhbit</h5>
+                        <h2 class="mb-1"> Brands More <br> Prospects & Leads</h2>
+                        <p class=" fw-light">Share your unique business, vistors, experience <br> with your competitors</p>
+                        <a class="btn btn-accent" href="">Join The exhibition Network <i class="bi bi-arrow-right fs-ms ms-1"></i></a>
                       </div>
 
                       <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get access</span>
@@ -239,7 +239,6 @@
 
                     <ul class="dropdown-menu" width="auto">
                     <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'award'])}}">More</a></li>
-                    'search' => 'rocket'
                       <li><a class="dropdown-item" href="#">Nominate</a></li>
                       <li><a class="dropdown-item" href="#">Attend</a></li>
                     </ul>
@@ -401,7 +400,7 @@
           </section>
 
         <!--Trending conference-->
-          <section class="container pt-2" id="exhibit"> 
+          <section class="container pt-2" id="conference"> 
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-2">  
               <div class="fs-sm" >Trending<h4 class="mb-0 me-2">Conference</h4></div>
                 <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo">
@@ -659,7 +658,7 @@
             "items": 1,
             "controls": false,
             "mouseDrag": true,
-            "autoplay": true,
+            "autoplay": false,
             "autoplayButtonOutput":false,
             "autoplayHoverPause": true,
           },
@@ -668,12 +667,12 @@
             "nav": false,
             "controls": false,
             "autoplayHoverPause": true,
-            "autoplay":true,
+            "autoplay":false,
             "autoplayButtonOutput":false
           },
           
         },
-        "autoplayButtonOutput":false
+        
       });
     </script>
 

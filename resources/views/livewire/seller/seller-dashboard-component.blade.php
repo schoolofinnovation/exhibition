@@ -76,28 +76,20 @@
                     
                       <div class="collapse" id="home-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('event.add')}}"><i class="ci-basket opacity-60 me-2"></i>Add Event</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Attribute</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('ticket.add')}}"><i class="ci-basket opacity-60 me-2"></i>Add Ticket</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('event.add')}}"><i class="bi bi-plus opacity-60 me-2"></i>Add Event</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Event Attribute</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('ticket.add')}}"><i class="bi bi-plus opacity-60 me-2"></i>Add Ticket Plan</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Participants</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Pavillion</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Count</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('seller.pavillion.add')}}"><i class="bi bi-plus opacity-60 me-2"></i>Add Pavillion</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('seller.sponser.add')}}"><i class="ci-basket opacity-60 me-2"></i>Add Sponsership</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('seller.hastag.add')}}"><i class="bi bi-hash opacity-60 me-2"></i>Add Hashtags</a></li>
                         </ul>
                       </div>
                     </li>
 
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 collapsed" href="#"  data-bs-toggle="collapse" data-bs-target="#Lead-collapse" aria-expanded="false">
-                      <i class="ci-basket opacity-60 me-2"></i>Lead</a>
-                      <div class="collapse" id="Lead-collapse" style="">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Event</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Attribute</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Ticket</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Participants</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Pavillion</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Count</a></li>
-                        </ul>
-                      </div>
+                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 collapsed" href="{{route('seller.business.pool')}}">
+                      <i class="ci-basket opacity-60 me-2"></i>Lead<span class="fs-sm text-muted ms-auto">{{$lead->count()}}</span></a>
+                      
                     </li>
 
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 collapsed" href="#"  data-bs-toggle="collapse" data-bs-target="#Tickets-collapse" aria-expanded="false">
@@ -199,72 +191,86 @@
                 @if($event->count() > 0)
                     
                     <div class="d-flex  border-bottom">
-                        <div class="h4  text-center text-sm-start "> Event 
-                            <a class="btn btn-outline-primary btn-sm " href="{{route('event.add')}}">Add</a>
+                        <div class="h4  text-center text-sm-start px-2">  
+                            <a class="btn btn-outline-primary btn-sm " href="{{route('event.add')}}">Add Event</a>
+                        </div>
+                        <div class="steps steps-light pt-2 pb-3 mb-0"><a class="step-item active" href="">
+                            <div class="step-progress"><span class="step-count"><i class="ci-cart"></i></span></div>
+                            <div class="step-label pt-3 fs-sm text-primary">Event</div></a><a class="step-item active current" href="checkout-details.html">
+                            <div class="step-progress"><span class="step-count"><i class="ci-user-circle"></i></span></div>
+                            <div class="step-label pt-3 fs-sm text-primary">Pavillion</div></a><a class="step-item {{'checkout' == request()->path() ? 'active' : '' }}" href="{{route('coicart')}}">
+                            <div class="step-progress"><span class="step-count"><i class="ci-package"></i></span></div>
+                            <div class="step-label pt-3 fs-sm text-primary">Ticket</div></a><a class="step-item {{'seller/account' == request()->path() ? 'active' : '' }}" href="checkout-payment.html">
+                            <div class="step-progress"><span class="step-count"><i class="ci-card"></i></span></div>
+                            <div class="step-label pt-3 fs-sm text-primary">Sponser</div></a><a class="step-item {{'seller/account' == request()->path() ? 'active' : '' }}" href="checkout-review.html">
+                            <div class="step-progress"><span class="step-count"><i class="ci-check-circle"></i></span></div>
+                            <div class="step-label pt-3 fs-sm text-primary">Start Business</div></a>
                         </div>
                     </div>
 
                     <div class="row pt-2">
                       <!-- Product-->
                       @foreach ($event as $product)
-                        <div class="col-sm-3 mb-grid-gutter">
+                        <div class="col-sm-3 mb-grid-gutter" > 
                           <div class="card product-card-alt">
                             
                             <div class="product-thumb">
                               <button class="btn-wishlist btn-sm" type="button"><i class=" bi bi-heart"></i></button>
 
                                 <div class="product-card-actions">
-                                  <a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href=""><i class=" bi bi-eye"></i></a>
+                                  <a class="btn btn-light btn-icon btn-shadow fs-base mx-2" href="{{route('seller.portfolio',['slug' => $product->slug])}}"><i class=" bi bi-eye"></i></a>
                                   <button class="btn btn-light btn-icon btn-shadow fs-base mx-2" type="button"><i class=" bi bi-cart"></i></button>
-                                  <div class="fs-sm text-light" href="">Car & bar</div>
+                                  <div class="text-light text-left lh-1 px-2 pt-5">
+                                      <h3 class=" fs-sm mb-2 text-light"><a href="{{route('event.details',['slug' => $product->slug])}}">{{ucwords(trans($product->eventname))}} </a></h3>
+                                      <h3 class=" fs-sm mb-2 text-light"><a href="{{route('event.details',['slug' => $product->slug])}}">
+                                      @if(Carbon\Carbon::parse ($product->startdate)->format('M') != Carbon\Carbon::parse ($product->enddate)->format('M'))
+                                          {{Carbon\Carbon::parse ($product->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y ')}}
+                                        @else
+                                          {{Carbon\Carbon::parse ($product->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y')}}
+                                      @endif
+                                      </a></h3>
+                                      <h3 class=" fs-sm mb-2 text-light"><a href="{{route('event.details',['slug' => $product->slug])}}">{{$product -> venue}}, {{$product -> city}}</a></h3>
+                                  </div>
                                 </div>
-
-                                <a class="product-thumb-overlay" href="{{route('event.details',['slug' => $product->eventname])}}"></a>
-
+                                <a class="product-thumb-overlay" href="{{route('event.details',['slug' => $product->slug])}}"></a>
                                 <img src="{{url('assets/image/exhibition/'.$product->image)}}" height="25%" alt="{{Str::limit($product->eventname, 24)}}">
                             </div>
 
                             <div class="card-body">
                                 <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
-                                  <div class="text-muted fs-xs me-1">by <a class="product-meta fw-medium" href="#">
-                                  {{ucwords(trans($product->eventname))}}  {{ucwords(trans($product->id))}}</a>in <a class="product-meta fw-medium" href="#">{{ucwords(trans($product->eventname))}}</a></div>
-                                  <div class="star-rating"><i class="star-rating-icon bi bi-star-filled active"></i>
-                                  <i class="star-rating-icon bi bi-star-filled active"></i><i class="star-rating-icon bi bi-star-filled active"></i><i class="star-rating-icon bi bi-star-filled active"></i><i class="star-rating-icon bi bi-star-filled active"></i>
+                                  <div class="text-muted fs-xs me-1">
+                                      <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                        <div class="fs-sm me-2">
+                                          <i class=" bi bi-download text-muted me-1"></i>@if($rating->where('event_id', $product->id)->count()>0) {{$rating->count()}} @endif
+                                          <span class="fs-xs ms-1">S</span>
+                                          <i class=" bi bi-download text-muted me-1"></i>@if($lead->whereIn('event_id', $product->id)->count()>0) {{$lead->whereIn('event_id', $product->id)->count()}}@endif
+                                          <span class=" text-primary">L</span>
+                                          
+                                          <span class="fs-xs ms-1">T</span>
+                                          <i class=" bi bi-download text-muted me-1"></i><span class="fs-xs ms-1">R</span>
+
+                                        </div>
+                                        <div class="dropdown">
+                                            <a class="bg-faded-accent text-accent fs-ms rounded-1 py-1 px-2 dropdown-toggle"  role="button" id="dropdownMenuLink"  data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">@if($product->status == 'active') <small>Active</small> @elseif($product->status != 'active') <small>Deactive</small> @endif <span class="carat"></span></a>
+                                          <div class="  dropdown-menu dropdown-menu-end" style="min-width:auto;" aria-labelledby="dropdownMenuLink">
+                                                @if($product->status == 'active')
+                                                    <a class=" dropdown-item d-flex align-items-center py-1"  href="#" wire:click.prevent="updatestatus({{$product->id}},'deactive')">Deactive</a>
+                                                  @else
+                                                    <a class=" dropdown-item d-flex align-items-center py-1 " href="#" wire:click.prevent="updatestatus({{$product->id}},'active')" >Active</a>
+                                                @endif
+                                              <a class=" dropdown-item d-flex align-items-center py-1" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$product->id}})">Delete</a>
+                                              <a class=" dropdown-item d-flex align-items-center py-1" href="">Details</a>
+                                          </div>
+                                        </div>
+                                      </div>
                                   </div>
                                 </div>
-                                  <h3 class="product-title fs-sm mb-2"><a href="">{{ucwords(trans($product->eventname))}} </a></h3>
-                                  <h3 class="product-title fs-sm mb-2"><a href="">
-                                  @if(Carbon\Carbon::parse ($product->startdate)->format('M') != Carbon\Carbon::parse ($product->enddate)->format('M'))
-                                      {{Carbon\Carbon::parse ($product->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y ')}}
-                                    @else
-                                      {{Carbon\Carbon::parse ($product->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($product->enddate)->format('D, d M Y')}}
-                                  @endif
-                                  </a></h3>
-                                  <h3 class="product-title fs-sm mb-2"><a href="">{{$product -> venue}}, {{$product -> city}}</a></h3>
-                                <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                    <div class="fs-sm me-2">
-                                    <i class=" bi bi-download text-muted me-1"></i><span class="fs-xs ms-1">Search Appearance</span>
-                                    <i class=" bi bi-download text-muted me-1"></i><span class=" text-primary"></span><span class="fs-xs ms-1">Application</span>
-                                    <i class=" bi bi-download text-muted me-1"></i><span class="fs-xs ms-1">Review</span>
-                                    </div>
-                                    <div class=" dropdown">
-                                        <a class="bg-faded-accent text-accent fs-ms rounded-1 py-1 px-2 dropdown-toggle"  role="button" id="dropdownMenuLink"  data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">@if($product->status == 'active') <small>Active</small> @elseif($product->status != 'active') <small>Deactive</small> @endif <span class="carat"></span></a>
-                                      <div class="  dropdown-menu dropdown-menu-end" style="min-width:auto;" aria-labelledby="dropdownMenuLink">
-                                            @if($product->status == 'active')
-                                                <a class=" dropdown-item d-flex align-items-center py-1"  href="#" wire:click.prevent="updatestatus({{$product->id}},'deactive')">Deactive</a>
-                                              @else
-                                                <a class=" dropdown-item d-flex align-items-center py-1 " href="#" wire:click.prevent="updatestatus({{$product->id}},'active')" >Active</a>
-                                            @endif
-                                          <a class=" dropdown-item d-flex align-items-center py-1" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$product->id}})">Delete</a>
-                                          <a class=" dropdown-item d-flex align-items-center py-1" href="">Details</a>
-                                      </div>
-                                    </div>
-                                </div>
                             </div>
+
                           </div>
                         </div>
                       @endforeach
-                        {{$event}}
+                        
                     </div>
                   @else
                     <!--second phase-->

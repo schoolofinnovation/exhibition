@@ -50,6 +50,8 @@ class CoicartComponent extends Component
     public $card_month;
     public $card_year;
     public $card_cvc;
+    public $checkfee;
+    public $basePrice;
 
     public function updated($fields)
     {

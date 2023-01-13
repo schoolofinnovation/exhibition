@@ -25,6 +25,7 @@ Inner intro START -->
           </li>
           <li class="nav-item">{{ Carbon\Carbon::parse($mag->created_at)->diffForHumans()}}</li>
           <li class="nav-item">5 min read</li>
+		  {{$mag}}
          
 		  <li class="nav-item">
 									

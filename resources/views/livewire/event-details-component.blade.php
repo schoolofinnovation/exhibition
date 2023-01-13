@@ -21,42 +21,141 @@
 @section('page_eventCountry', ($event->country))
 @section('page_description', ($event->eventname))
 
+    <section class=" position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" style="background-image: url('{{asset('/image/test.jpg')}}');">
+      
+        <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem;
+      padding-left: 0.625rem;
+      padding-right: 1rem;
+      padding-bottom: 0.425rem;
+      transform: translateY(-50%);
+      border-radius: 0.3125rem;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      font-size: .8125rem;">
+      <div class="h1 pt-5 text-light pb-0 mb-0" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">COI</div>  
+      <div class="fw-bold text-dark pb-2 lh-1">Exhibition</div> </div>
+     
+      <div class="container pt-4 mb-3 mb-lg-0 ">
+          <div class="row gy-0 ">
+          
+            <div class="col-lg-3 col-md-6 col-sm-8 px-1 d-none d-sm-block">
+                <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
+                    <img src="{{url('assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
+                </a>
+            </div>
 
+            <div class="col-lg-3 col-md-6 col-sm-8  border border-white border-1 px-3 py-5 ">
+              <div class="position-relative me-n4 mb-3 d-none d-sm-block">
+              <div class="product-badge product-available  lh-1 fs-sm" style="right: 19.25rem;">
+              <strong>Great <br>Place <br>To <br>Exhibit</strong></div>
+              </div>
+                <h5 class="text-light fw-normal pt-2 pb-0">
+                    @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}}
+                    @else
+                      {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
+                    @endif 
+                </h5>
+                <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
+                <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
+                <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
+                <div class="d-flex bg-transparent border-bottom"> 
+                
+                  @foreach($franchises as $franchise)
+                      <img class="p-1" width="24%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                  @endforeach
+                </div>
+                
+                <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
+                <ul class="list-unstyled text-light mb-0 mt-2">
+                    <!--  <li class="d-flex"><i class="ci-bluetooth-circle h5 fw-normal text-light me-2"></i>
+                        <span class="badge badge-primary">{{ucwords(trans($event->sector->sector))}}</span>
+                      </li>
+                      <li class="d-flex"><i class="ci-sound-waves h5 fw-normal text-light me-2"></i>
+                        <div class="ps-1"></div>
+                      </li>-->
+                      <li class="d-flex">
+                        <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                        href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
+                        
+                        <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                      </li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-8  px-3 py-5 d-none d-sm-block">
+            
+            
+            
+                  <h5 class="text-light fw-normal fs-sm pt-2 pb-0">
+                      Upcoming Expo
+                  </h5>
+                            
+                <h2 class="text-primary mb-3 lh-1"> <span class="fw-light"> MAKING</span> <br>BIG GROWTH <br>
+                <span class="fw-light">IN INDIA</span> <br>BUSINESS <br><span class="fw-light">A REALITY</span></h1>
+                
+                
+                    <ul class="list-unstyled text-light mb-0 mt-0 border-top">
+                          <li class="d-flex pt-1">
+                            <a class="fs-xs  text-center border-end px-0" href="{{$link->google()}}"> <span class="fw-bold">100 +</span> <br>Thought Leadership</a>
+                            <a class="fs-xs  text-center border-end px-2" href="{{$link->google()}}"><span class="fw-bold">> 800</span> <br>Business Matching Meetings</a>
+                            <a class="fs-xs  text-center  px-0" href="{{$link->google()}}"><span class="fw-bold">300 +</span> <br>Business Ideas Opportunities</a>
+                          </li>
+                    </ul>
+                  
+                
+                
+            </div>  
+              
+            <div class="col-lg-3 d-none d-sm-block">
+            
+            </div>
+          </div>
 
+          <div class="container d-none">
+            <div class="row text-light mb-0 mt-0">
+              <ul class="list-unstyled text-light mb-0 mt-5">
+                    <li class="d-flex">
+                      <a class="" href="{{$link->google()}}">4095+ <br>Exhibitors</a>
+                      <a class="" href="{{$link->google()}}">5500+ <br>Brands on Display</a>
+                      <a class="" href="{{$link->google()}}">4095+ <br>Exhibitors</a>
+                    </li>
+              </ul>
+            </div>
+          </div>
 
-      <section class="bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
+        </div>
+    </section>
+
+      <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-10" style="background-image: url('https://www.exhibition.org.in/image/test.jpg');">
         <div class="container pt-4 mb-3 mb-lg-0">
           <div class="row gy-0">
           
             <div class="col-lg-3 col-md-6 col-sm-8 px-0 d-none d-sm-block">
-                <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
-                    <img src="{{url('magazine/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
+                <a class="card-img-top d-block overflow-hidden" href="https://www.exhibition.org.in/pass/clean-india-2023">
+                    <img src="https://www.exhibition.org.in/magazine/clean-india.png" alt="Clean India 2023">
                 </a>
             </div>
 
             <div class="col-lg-7 col-md-6 col-sm-8">
               <div class="col-lg-6 col-md-6 border border-white border-1 px-3 py-5">
                   <h5 class="text-light fw-normal pt-2 pb-0">
-                      @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
-                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}}
-                      @else
-                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
-                      @endif 
+                                              Mon, 27  - Wed, 29 Mar 23
+                       
                   </h5>
-                  <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
-                  <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}} {{ucwords(trans($event->city))}} {{ucwords(trans($event->country))}} </h5>
+                  <h1 class="text-primary mb-3">Clean India 2023</h1>
+                  <h5 class="text-light fw-normal">Pragati Maidan Delhi India </h5>
                   <ul class="list-unstyled text-light mb-0 mt-5">
                     <li class="d-flex"><i class="ci-bluetooth-circle h5 fw-normal text-light me-2"></i>
-                      <span class="badge badge-primary">{{ucwords(trans($event->sector->sector))}}</span>
+                      <span class="badge badge-primary">Luxury/ Premium</span>
                     </li>
                     <li class="d-flex"><i class="ci-sound-waves h5 fw-normal text-light me-2"></i>
                       <div class="ps-1"></div>
                     </li>
                     <li class="d-flex">
-                      <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
-                       href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
+                      <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" href="https://www.exhibition.org.in/pass/clean-india-2023">Book Tickets</a>
                       
-                      <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                      <a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;dates=20230326T203607Z/20230328T203607Z&amp;text=Clean+India+2023&amp;details=Clean+India+2023&amp;location=Pragati+Maidan">Add to Calender</a>
                     </li>
                   </ul>
               </div>    
@@ -74,6 +173,8 @@
             <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
+            <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Engage</a></li>
+            <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
         </ul>
       </Section>
 
@@ -84,9 +185,22 @@
               </div>
 
               <ul class="list-unstyled fs-sm bg-secondary p-2">
+                
+              
+                      @php
+                      $event->id = $avgrating;
+                      @endphp
+
+                @if( $rate == $avgrating)
+                    <li class="d-flex justify-content-between p-0 m-0">
+                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br>
+                    <span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> {{$rating}} /10</a></span></li>
+                  @else
                     <li class="d-flex justify-content-between p-0 m-0">
                     <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Rate now</a></span></li>
+                    <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
+                @endif
               </ul>
       </div>  
 
@@ -94,8 +208,8 @@
         <ul class="list-unstyled fs-sm  py-4">     
           <li class="d-flex justify-content-between p-0 m-0">
           
-              <span>
-                <span class="h3">{{$event->edition}}th {{$event->eventname}}</span> <br>
+              <span> <span class="badge bg-primary">{{$event->edition}}th</span>
+                <span class="h3"> {{$event->eventname}}</span> <br>
                 @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
                   {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
                 @else
@@ -106,13 +220,15 @@
 
               </span>
               
+
               <span><a class="btn btn-primary btn-sm" type="button" 
-            href="#" wire:click.prevent="store({{$event->id}},'{{$event->eventname}}',{{$event->max_pass}})"> Book your Tickets </a></span>
+            href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a></span>
+            
               
           </li>
           <li><hr class="mt-md-2 mb-2"></li>
           <li class="p1 fw-light">
-            {{ucwords(trans($event->category->industry))}} | {{ucwords(trans($event->sector->sector))}} | + {{$event->exhibitors}} Exhibitors | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days | Rs. 599 Onwards
+            {{ucwords(trans($event->category->industry))}} | {{ucwords(trans($event->sector->sector))}} @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
           </li>
         </ul>
       </div> 
@@ -124,19 +240,19 @@
             <ul class="list-unstyled fs-sm  p-2">
                 <li class="d-flex justify-content-between p-0 m-0">
                 <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Rate now</a></span></li>
+                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
             </ul>
 
             <ul class="list-unstyled fs-sm  p-2">
                 <li class="d-flex justify-content-between p-0 m-0">
                 <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Rate now</a></span></li>
+                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
             </ul>
           
             <ul class="list-unstyled fs-sm  p-2">
               <li class="d-flex justify-content-between p-0 m-0">
               <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-              <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Rate now</a></span></li>
+              <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
             </ul>
         </div>
       </div>
@@ -153,23 +269,22 @@
                   <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
                     <li>Bespoke B2B forums that connect you with the people you really want to meet. </li>
                     <li>Our business partnered space events include participation in live Q&A and polls, plus access to the community where you can network with other attendees.</li>
-                    <li><a href="" class="btn btn-outline-primary btn-sm bg-light">Nominate a Speaker</a></li>
+                    <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'award' ])}}" class="btn btn-outline-primary btn-sm bg-light">Nominate a Speaker</a></li>
                   </ul>
                 </div>
-                <div>
-                <h5 class="mb-3">Business Directory</h5>
-                  <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                    
-                    <li>List business directory to educate with your business potential</li>
-                    <li> <a href="" class="btn btn-sm btn-primary">Expand your business</a> </li>
-                  </ul>
-                </div>
+                  <div>
+                    <h5 class="mb-3">Business Directory</h5>
+                    <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                      <li>List business directory to educate with your business potential</li>
+                      <li> <a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'directory' ])}}" class="btn btn-sm btn-primary">Expand your business</a> </li>
+                    </ul>
+                  </div>
               </div>
               <h5 class="mb-3">Attend a Space event</h5>
               
               <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
                 <li>Attend a Space event near you featuring live speakers and Talk business owners, sparking conversation and connections.</li>
-                <li><a href="" class="btn btn-outline-primary btn-sm bg-light">Find an event near you</a></li>
+                <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'find' ])}}" class="btn btn-outline-primary btn-sm bg-light">Find an event near you</a></li>
                 
               </ul>
               <h5 class="mb-3">Share this event</h5>
@@ -227,82 +342,114 @@
               
               <ul class="list-unstyled fs-sm bg-secondary p-2">
              <div class="fw-bold"> Click on interested to stay updated about this event.</div>
-                      <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                      <div class="py-2 me-2">
-                    <button class="btn btn-sm btn-outline-primary" type="button"><i class="ci-heart fs-lg me-2"></i>Add to Favorites</button>
-                  </div></li>
+                <li class="d-flex justify-content-between p-0 m-0">
+                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                
+
+               
+                @if( $rate == $event->id)
+                
+                <button class="btn btn-sm btn-outline-primary" type="button" > 
+                {{$rating}} /10</button>
+
+                @else
+                    <div class="py-2 me-2"> 
+                      <button class="btn btn-sm btn-outline-primary" type="button" ><i class="bi bi-star fs-lg me-2"></i> 
+                      <a href="{{route('coi.ratenow',['slug' => $event->slug])}}">Rate Now</a> </button>
+                    </div>
+                @endif
+                 
+                </li>
                 </ul>
            
             <h5 class="mb-3">Understanding Expo</h5>
-            <p class="fs-sm mb-3 mb-lg-4 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit animasurel. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="fs-sm mb-3 mb-lg-4 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+              deserunt mollit animasurel. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+              aliquip ex ea commodo consequat.</p>
             <span class="badge rounded-pill bg-primary">Participants</span>
             <h5 class="mb-3">Pavillion</h5>
 
             <!-- Card group -->
-              <div class="card-group">
+              
 
                   <!-- Card -->
-                  <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
-                    <div class="card-body">
+                  <div class="row">
+                  @foreach($pavillion as $pav)
+                    <div class="col-4 card border-0 px-2">
+                      <img src="{{url('assets/image/exhibition/'.$pav->image)}}" class="card-img-top" alt="Card image">
+                     
+                      <div class="card-image-overlay" >
+                        <h5 class="card-title text-light">{{$pav -> pavillion_name}}</h5>
+                        <p class="card-text fs-sm text-muted text-light">{{ $pav -> desc}}</p>
+                       
+                        <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary text-light">Learn more</a>
+                      </div>
+                    </div>
+                  @endforeach
+                  </div>
+                  <div class="row">
+                  <!-- Card -->
+                  <div class=" col-4 card border-0 px-0 hover-overlay shadow-1-strong">
+                    <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
+                    <div class="mask text-light">
                       <h5 class="card-title">Special Pavillions</h5>
                       <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="text-primary">Learn more</a>
+                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
                     </div>
                   </div>
 
                   <!-- Card -->
-                  <div class="card border-0">
+                  <div class="col-4 card border-0 px-0">
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Country Pavillions</h5>
                       <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="text-primary">Learn more</a>
+                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
                     </div>
                   </div>
 
                   <!-- Card -->
-                  <div class="card border-0">
+                  <div class="col-4 card border-0 px-0">
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Partner Pavillions</h5>
                       <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                      <a href="#" class="text-primary">Learn more</a>
+                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
                     </div>
                   </div>
-              </div>
-
-              <!-- Card group -->
-              <div class="card-group">
+              
+                
 
                   <!-- Card -->
-                  <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                  <div class="col-4 card border-0 px-0">
+                    <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Organisations Pavillions</h5>
                       <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="text-primary">Learn more</a>
+                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
                     </div>
                   </div>
 
                   <!-- Card -->
-                  <div class="card border-0">
+                  <div class="col-4 card border-0 px-0">
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Country Pavillions</h5>
                       <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="text-primary">Learn more</a>
+                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
                     </div>
                   </div>
 
                   <!-- Card -->
-                  <div class="card border-0">
+                  <div class="col-4 card border-0 px-0">
                     <img src="pat-to-image" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Partner Pavillions</h5>
                       <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                      <a href="#" class="text-primary">Learn more</a>
+                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
                     </div>
                   </div>
               </div>
@@ -319,7 +466,7 @@
                 <ul class="list-unstyled fs-sm bg-secondary p-2">
                     <li class="d-flex justify-content-between p-0 m-0">
                     <span class="text-dark fw-medium fs-sm">  Book direct with us. <br><span class="text-muted fw-light fs-xs" style ="line-height: 1;">and avail a special discount<br> of 25% along with special benefits. </span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> BOOK NOW</a></span></li>
+                    <span><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'startup' ])}}" class="btn btn-outline-primary btn-sm bg-light"> BOOK NOW</a></span></li>
               </ul>
               </div>
               <!--<div>
@@ -333,12 +480,12 @@
             <h5 class="mb-3">Meet-ups</h5>
             <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
               <li class="m-3 fs-sm fw-light">Conducts exhibitions, one-to-one meetings and discussions, experiences delivering maximum engagement.</li>
-              <li><a href="" class="btn btn-outline-primary btn-sm bg-light">BOOK NOW</a></li>
+              <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'meet' ])}}" class="btn btn-outline-primary btn-sm bg-light">BOOK NOW</a></li>
             </ul>
             <h5 class="mb-3">Partner with Space</h5>
             <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
               <li class="m-3 fs-sm fw-light">When you support the Space program, you enable our efforts to empower and grow the global Space community of volunteers.</li>
-              <li><a href="" class="btn btn-outline-primary btn-sm bg-light">Partner with Space</a></li>
+              <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'partner' ])}}" class="btn btn-outline-primary btn-sm bg-light">Partner with Space</a></li>
             </ul>
 
             <h5 class="mb-3">Expo Initiatives</h5>
@@ -384,20 +531,15 @@
       </section>
 
       <!-- Product description + Reviews + Comments-->
-      <section class="container mb-4 mb-lg-5 hidden">
-        <!-- Nav tabs-->
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Exhibit</a></li>
-          <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
-          <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
-          <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
-        </ul>
+      <section class="container mb-4 mb-lg-5">
+        
         <div class="tab-content pt-2">
           <!-- Product details tab-->
           <div class="tab-pane fade show active" id="details" role="tabpanel">
             <div class="row">
               <div class="col-lg-8">
-                <p class="fs-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              
+                <p class="fs-md"> {{Str::limit($event->eventname,289)}}...</p>
                 <h3 class="h5 pt-2">Main features</h3>
                 <ul class="fs-md">
                   <li>Nemo enim ipsam voluptatem quia voluptas sit</li>
@@ -558,49 +700,7 @@
                 </div>
               </div>
               <!-- Leave review form-->
-              <div class="col-md-5 mt-2 pt-4 mt-md-0 pt-md-0">
-                <div class="bg-secondary py-grid-gutter px-grid-gutter rounded-3">
-                  <h3 class="h4 pb-2">Write a review</h3>
-                  <form class="needs-validation" method="post" novalidate="">
-                    <div class="mb-3">
-                      <label class="form-label" for="review-name">Your name<span class="text-danger">*</span></label>
-                      <input class="form-control" type="text" required="" id="review-name">
-                      <div class="invalid-feedback">Please enter your name!</div><small class="form-text text-muted">Will be displayed on the comment.</small>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="review-email">Your email<span class="text-danger">*</span></label>
-                      <input class="form-control" type="email" required="" id="review-email">
-                      <div class="invalid-feedback">Please provide valid email address!</div><small class="form-text text-muted">Authentication only - we won't spam you.</small>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="review-rating">Rating<span class="text-danger">*</span></label>
-                      <select class="form-select" required="" id="review-rating">
-                        <option value="">Choose rating</option>
-                        <option value="5">5 stars</option>
-                        <option value="4">4 stars</option>
-                        <option value="3">3 stars</option>
-                        <option value="2">2 stars</option>
-                        <option value="1">1 star</option>
-                      </select>
-                      <div class="invalid-feedback">Please choose rating!</div>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="review-text">Review<span class="text-danger">*</span></label>
-                      <textarea class="form-control" rows="6" required="" id="review-text"></textarea>
-                      <div class="invalid-feedback">Please write a review!</div><small class="form-text text-muted">Your review must be at least 50 characters.</small>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="review-pros">Pros</label>
-                      <textarea class="form-control" rows="2" placeholder="Separated by commas" id="review-pros"></textarea>
-                    </div>
-                    <div class="mb-3 mb-4">
-                      <label class="form-label" for="review-cons">Cons</label>
-                      <textarea class="form-control" rows="2" placeholder="Separated by commas" id="review-cons"></textarea>
-                    </div>
-                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Submit a Review</button>
-                  </form>
-                </div>
-              </div>
+              
             </div>
           </div>
           <!-- Comments tab-->
@@ -635,7 +735,7 @@
                   </div>
                 </div>
                 <!-- Post comment form-->
-                <div class="card border-0 shadow my-2">
+                <div class="card border-0 px-0 shadow my-2">
                   <div class="card-body">
                     <div class="d-flex align-items-start"><img class="rounded-circle border p-2" src="#" width="50" alt="Createx Studio">
                       <form class="needs-validation w-100 ms-3" novalidate="">
@@ -658,35 +758,55 @@
       <!--exhibitor-->
       <section class="container pt-2 pt-md-5">
         <h6 class="text-left mb-2"> Participants</h6>
-        <div class="my-sliderexpo">
+        <div class="my-sliderexpo d-none d-sm-block">
               @foreach ($franchises as $franchise)
-                
-                  <div class="card product-card">
-                    <a class="d-flex align-items-center" href="#">
-                      <img class="rounded-circle" width="50%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
-                    </a>
+                  <div class="col-sm-3 mb-grid-gutter">
+                    <div class="card product-card-alt">
+                            
+                          <div class="product-thumb p-3">
+                            
+                            
+                              <div class="product-card-actions p-2">
+                               
+                                <div class="fs-sm text-light" href="">Booth 3</div>
+                                <div class="fs-sm text-light" href="">Elite Sponsor</div>
+                                <div class="fs-sm text-light" href="">View Website</div>
+                              </div>
+
+                              <a class="product-thumb-overlay" href=""></a>
+
+                              <img class="p-3" width="auto" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                          </div>  
+                    </div>
                   </div>
-               
               @endforeach
+        </div>
+        <div class="my-sliderexpo d-lg-none">
+            <a class="d-flex align-items-center" href="#">
+              <img class="rounded-circle" width="90%" src="https://www.exhibition.org.in/brands/digital_2.png" alt="qui nihil fugit sint">
+            </a>
         </div>
       </section>
 
-      <hr class="mt-md-2 mb-2">
-      <!-- Speaker-->
-      <section class="container pt-2 pt-md-5">
-        <h6 class="text-left mb-2"> Speaker</h6>
-        <div class="my-sliderSpeaker">
-              @foreach ($speaker as $speaker)
+      @if($speaker->count() > 0 )
+        <hr class="mt-md-2 mb-2">
+        <!-- Speaker-->
+        <section class="container pt-2 pt-md-5">
+          <h6 class="text-left mb-2"> Speaker</h6>
+          <div class="my-sliderSpeaker">
+                @foreach ($speaker as $speaker)
+                  
+                    <div class="card product-card">
+                      <a class=" align-items-center" href="#">
+                        <img class="" width="90%" src="{{url('speaker/'.$speaker->image)}}"  alt="{{Str::limit($speaker->name, 24)}}">
+                      </a>
+                      <div class="fs-sm text-center lh-1"> <small>{{$speaker->name}} <br><strong>{{$speaker->organisation}}</strong></small></div>
+                    </div>
                 
-                  <div class="card product-card">
-                    <a class="d-flex align-items-center" href="#">
-                      <img class="" width="70%" src="{{url('speaker/'.$speaker->image)}}"  alt="{{Str::limit($speaker->name, 24)}}">
-                    </a>
-                  </div>
-               
-              @endforeach
-        </div>
-      </section>
+                @endforeach
+          </div>
+        </section>
+      @endif
 
       <hr class="mt-md-2 mb-2">
       <!-- Partner-->
@@ -694,19 +814,26 @@
         <h6 class="text-left mb-2">Partner</h6>
         <div class="my-sliderPartner">
               @foreach ($franchises as $franchise)
-                
-                  <div class="card product-card">
-                    <a class="d-flex align-items-center" href="#">
-                      <img class="rounded-circle" width="70%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
-                    </a>
+              
+                <div class="card product-card-alt">
+                  <div class="product-thumb p-3">
+                    <div class="product-card-actions p-2">
+                      <div class="fs-sm text-light" href="">Booth 3</div>
+                      <div class="fs-sm text-light" href="">Elite Sponsor</div>
+                      <div class="fs-sm text-light" href="">View Website</div>
+                    </div>   
+                    <a class="product-thumb-overlay" href=""> </a>
+                    <img class="p-3" width="auto" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                   
                   </div>
-               
+                </div>
               @endforeach
         </div>
       </section>
 
       <!-- Card group sec_last-->
             <section class="container py-5">
+
               <!-- Card group -->
               <div class="card-group sec_last">
 
@@ -790,7 +917,7 @@
             <div class="handheld-toolbar bg-secondary">
               
               <div class="d-flex justify-content-between py-2 px-2">
-               <div class="text-dark fw-medium fs-sm pl-3 lh-3">  Rs. {{$productPrice}}<br><span class=" fw-light fs-xs">Onwards</span></div>
+               <div class="text-dark fw-medium fs-sm pl-3 lh-3">  Rs.{{$productPrice}}<br><span class=" fw-light fs-xs">Onwards</span></div>
                 <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket
                 </a>
               </div>
@@ -895,7 +1022,7 @@
                   "items": 1,
                   "controls": false,
                   "mouseDrag": true,
-                  "autoplay": true,
+                  "autoplay": false,
                   "autoplayButtonOutput":false,
                   "autoplayHoverPause": true,
                   "nav": false,
@@ -1023,19 +1150,22 @@
                 "350": {
                   "items": 1,
                   "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": false,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
                   "nav": false,
                 },
                 "500": {
                   "items": 1,
+                  "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": false,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
                   "nav": false,
                 }
               },
-              "autoplay":true,
-              "nav":false,
-              "mouseDrag":true,
-              "controls": false,
-              "swipeAngle": false,
-              "speed": 400
             });
           </script>
 <!_-test2-->
@@ -1075,6 +1205,25 @@
                 },
                 "500": {
                   "items": 3,
+                  "nav": false,
+                }},
+            });
+          </script>
+
+          <script>
+            var slider = tns({
+              "container": '.topp',  
+              "responsive": {
+                "300": {
+                  "items": 1,
+                  "controls": false,
+                  "nav": false,
+                  "autoplay":false,
+                  "mouseDrag":true,
+                  "controls": false,
+                },
+                "500": {
+                  "items": 4,
                   "nav": false,
                 }},
             });

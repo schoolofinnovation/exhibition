@@ -17,7 +17,7 @@ class EventComponent extends Component
 {
     public function store($event_id,$event_eventname,$event_eventype)
     {
-        Cart::instance('cart')->add($event_id,$event_eventname,18000,$event_eventype)->associate('App\Models\Event');
+        Cart::instance ('cart')-> add($event_id,$event_eventname,18000,$event_eventype)->associate('App\Models\Event');
         $this->emitTo('cart-component','refreshComponent');
         session()->flash('success_message','Item has been added in cart');
         return redirect()->route('checkout');
@@ -37,7 +37,7 @@ class EventComponent extends Component
         $network = Speaker::where('admstatus','1')->where('status','1')->where('entity','network')->get();
         $social = Speaker::where('admstatus','1')->where('status','1')->where('entity','social')->get();
 
-        $magazine = Mag::where('type','a')->paginate(8);
+        $magazine = Mag::where('type','a')->where('status','1')->paginate(8);
         //$test = Franchise::where('id', '202')->get();
         //dd($awardo);
         //DB::table('speakers')->insert([

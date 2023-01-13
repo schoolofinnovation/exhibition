@@ -7,8 +7,10 @@ use App\Models\Coupon;
 use App\Models\Event;
 use App\Models\Franchise;
 use App\Models\Info;
+use App\Models\Lead;
 use App\Models\Mag;
 use App\Models\Order;
+use App\Models\Rate;
 use App\Models\Review;
 use App\Models\Sprofile;
 use App\Models\User;
@@ -21,7 +23,7 @@ use Livewire\Component;
 class SellerDashboardComponent extends Component
 {
   public $haveCouponCode;
-
+  public $test;
 
     public function delete($id)
     { $franchise = Franchise::find($id);
@@ -86,7 +88,7 @@ class SellerDashboardComponent extends Component
       $todaysales = Order:: where('status','delivered')->whereDate('created_at',carbon::today())->count();
       $todayrevenue = Order:: where('status','delivered')->whereDate('created_at',carbon::today())->sum('total');
 
-        $event = Event::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->paginate(6);
+        $event = Event::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->get();
         $brands = Brand::where('user_id', Auth::user()->id)->get();
         $about = Sprofile::where('user_id', Auth::user()->id)->first();
         $new = Mag::where('user_id', Auth::user()->id)->orderBy('created_at','DESC')->paginate(4);
@@ -100,7 +102,12 @@ class SellerDashboardComponent extends Component
       
         //social link
         $infos = Info::get();
-       return view('livewire.seller.seller-dashboard-component',['infos'=> $infos,
+        $rating = Rate::where('user_id', Auth::user()->id)->get();
+        $evont = Event::where('user_id', Auth::user()->id)->pluck('id')->all();
+        $lead = Lead::whereIn('event_id', $evont)->orderBy('id','desc')->get();
+
+       return view('livewire.seller.seller-dashboard-component',['lead'=>$lead,'rating'=>$rating,
+                                                                'infos'=> $infos,
                                                                 'brands'=> $brands,
                                                                 'likecoun'=> $likecoun,
                                                                 'user'=> $user,

@@ -1,6 +1,9 @@
 <main>
 @if(Route::currentRouteName() === 'event.product')
 @elseif(Route::currentRouteName() === 'event.productreview')
+@elseif(Route::currentRouteName() === 'lead.business')
+@elseif(Route::currentRouteName() === 'lead.business.other')
+@elseif(Route::currentRouteName() === 'seller.dashboard')
 @else
   <footer class="footer bg-dark pt-5 d-none d-sm-block">
       <div class="container">
@@ -157,20 +160,30 @@
   @if('/' == request()->path() ? 'active' : '')
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
-        <a class="d-table-cell handheld-toolbar-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar">
-          <span class="handheld-toolbar-icon"><i class="bi bi-house-door"></i></span>
-          <span class="handheld-toolbar-label">Home</span
-        </a>
+          <a class="d-table-cell handheld-toolbar-item" href="#conference">
+            <span class="handheld-toolbar-icon"><i class="bi bi-house-door"></i></span>
+            <span class="handheld-toolbar-label">Conference</span>
+          </a>
 
-          <a class="d-table-cell handheld-toolbar-item" href="#">
+          <a class="d-table-cell handheld-toolbar-item" href="#awards">
             <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
-            <span class="handheld-toolbar-label">Wishlist</span>
+            <span class="handheld-toolbar-label">Awards</span>
           </a>
           
-          <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRight" onclick="window.scrollTo(0, 0)">
+          <a class="d-table-cell handheld-toolbar-item" href="#exhibit">
             <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
-            <span class="handheld-toolbar-label">Menu</span>
+            <span class="handheld-toolbar-label">Exhibition</span>
           </a>
+          @if(Cart::instance('cart')->count() < 0)
+          <a class="d-table-cell handheld-toolbar-item" href="#">
+            <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
+            <span class="handheld-toolbar-label">Add Event</span>
+          </a>
+          @endif
+
+          
+
+
           @if(Cart::instance('cart')->count() > 0)
             <a class="d-table-cell handheld-toolbar-item" href="#">
               <span class="handheld-toolbar-icon"><i class="bi bi-cart"></i>
@@ -183,6 +196,12 @@
               @endif  
             </a>
           @endif
+
+          <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRight" onclick="window.scrollTo(0, 0)">
+            <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
+            <span class="handheld-toolbar-label">Menu</span>
+          </a>
+
         </div>
     </div>
   @endif

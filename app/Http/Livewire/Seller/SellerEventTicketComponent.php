@@ -41,6 +41,24 @@ class SellerEventTicketComponent extends Component
     }
     public function add()
     {
+        $this->validate([
+
+            'code'=>'required', 
+            'package'=>'required', 
+            'desc'=>'required', 
+            'type'=>'required', 
+            'price'=>'required', 
+            'saleprice'=>'required', 
+            'cart_value'=>'required', 
+            'expiry_date'=>'required', 
+            'start_date'=>'required', 
+            'start_time'=>'required', 
+            'expiry_time'=>'required', 
+            'validity'=>'required', 
+            'number'=>'required', 
+            'terms'=>'required'
+        ]);
+
         $newTicket = new Tickets();
         $newTicket->code = $this->code;
         $newTicket->package = $this->package;
@@ -51,7 +69,6 @@ class SellerEventTicketComponent extends Component
         $newTicket->cart_value = $this->cart_value;
         $newTicket->expiry_date = $this->expiry_date;
         $newTicket->start_date = $this->start_date;
-
         $newTicket->start_time = $this->start_time;
         $newTicket->expiry_time = $this->expiry_time;
         $newTicket->validity = $this->validity;
