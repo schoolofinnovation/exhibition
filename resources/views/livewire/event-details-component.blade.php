@@ -21,7 +21,7 @@
 @section('page_eventCountry', ($event->country))
 @section('page_description', ($event->eventname))
 
-    <section class=" position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" style="background-image: url('{{asset('/image/test.jpg')}}');">
+    <section class=" d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" style="background-image: url('{{asset('/image/test.jpg')}}');">
       
         <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem;
       padding-left: 0.625rem;
@@ -58,6 +58,7 @@
                 </h5>
                 <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
                 <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
+                
                 <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
                 <div class="d-flex bg-transparent border-bottom"> 
                 
@@ -68,12 +69,6 @@
                 
                 <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
                 <ul class="list-unstyled text-light mb-0 mt-2">
-                    <!--  <li class="d-flex"><i class="ci-bluetooth-circle h5 fw-normal text-light me-2"></i>
-                        <span class="badge badge-primary">{{ucwords(trans($event->sector->sector))}}</span>
-                      </li>
-                      <li class="d-flex"><i class="ci-sound-waves h5 fw-normal text-light me-2"></i>
-                        <div class="ps-1"></div>
-                      </li>-->
                       <li class="d-flex">
                         <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
                         href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
@@ -127,53 +122,66 @@
         </div>
     </section>
 
-      <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-10" style="background-image: url('https://www.exhibition.org.in/image/test.jpg');">
-        <div class="container pt-4 mb-3 mb-lg-0">
-          <div class="row gy-0">
-          
-            <div class="col-lg-3 col-md-6 col-sm-8 px-0 d-none d-sm-block">
-                <a class="card-img-top d-block overflow-hidden" href="https://www.exhibition.org.in/pass/clean-india-2023">
-                    <img src="https://www.exhibition.org.in/magazine/clean-india.png" alt="Clean India 2023">
+    <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
+      <div class="container pt-4 mb-3 mb-lg-0">
+        <div class="row gy-0">
+        
+         
+          <div class="col-lg-3 col-md-6 col-sm-8 px-1 d-none d-sm-block">
+                <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
+                    <img src="{{url('assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
                 </a>
             </div>
+          <div class="col-lg-7 col-md-6 col-sm-8">
+            <div class="col-lg-6 col-md-6 border border-white border-1 px-3 py-5">
+                <h5 class="text-light fw-normal pt-2 pb-0">
+                @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}}
+                    @else
+                      {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
+                    @endif 
+                      
+                </h5>
+                
+                <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
+                <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
 
-            <div class="col-lg-7 col-md-6 col-sm-8">
-              <div class="col-lg-6 col-md-6 border border-white border-1 px-3 py-5">
-                  <h5 class="text-light fw-normal pt-2 pb-0">
-                                              Mon, 27  - Wed, 29 Mar 23
-                       
-                  </h5>
-                  <h1 class="text-primary mb-3">Clean India 2023</h1>
-                  <h5 class="text-light fw-normal">Pragati Maidan Delhi India </h5>
-                  <ul class="list-unstyled text-light mb-0 mt-5">
-                    <li class="d-flex"><i class="ci-bluetooth-circle h5 fw-normal text-light me-2"></i>
-                      <span class="badge badge-primary">Luxury/ Premium</span>
-                    </li>
-                    <li class="d-flex"><i class="ci-sound-waves h5 fw-normal text-light me-2"></i>
-                      <div class="ps-1"></div>
-                    </li>
-                    <li class="d-flex">
-                      <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" href="https://www.exhibition.org.in/pass/clean-india-2023">Book Tickets</a>
-                      
-                      <a class="btn btn-primary btn-sm" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;dates=20230326T203607Z/20230328T203607Z&amp;text=Clean+India+2023&amp;details=Clean+India+2023&amp;location=Pragati+Maidan">Add to Calender</a>
-                    </li>
-                  </ul>
-              </div>    
-            </div>
-          </div>
-          <div class="container">
-                      
+                <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
+                <div class="d-flex bg-transparent border-bottom"> 
+                
+                  @foreach($franchises as $franchise)
+                      <img class="p-1" width="24%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                  @endforeach
+                </div>
+                
+                <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
+                
+                
+
+                <ul class="list-unstyled text-light mb-0 mt-2">
+                      <li class="d-flex">
+                        <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                        href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
+                        
+                        <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                      </li>
+                </ul>
+
+
+            </div>    
           </div>
         </div>
-      </section>
+        <div class="container">
+                    
+        </div>
+      </div>
+    </section>
 
       <section class="container d-lg-none ">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Exhibit</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
-            <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
-            <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Engage</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
         </ul>
       </Section>
@@ -532,7 +540,6 @@
 
       <!-- Product description + Reviews + Comments-->
       <section class="container mb-4 mb-lg-5">
-        
         <div class="tab-content pt-2">
           <!-- Product details tab-->
           <div class="tab-pane fade show active" id="details" role="tabpanel">
@@ -783,7 +790,7 @@
         </div>
         <div class="my-sliderexpo d-lg-none">
             <a class="d-flex align-items-center" href="#">
-              <img class="rounded-circle" width="90%" src="https://www.exhibition.org.in/brands/digital_2.png" alt="qui nihil fugit sint">
+              <img class="rounded-circle" width="90%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
             </a>
         </div>
       </section>
