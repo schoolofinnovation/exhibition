@@ -36,7 +36,7 @@
           <!-- Nav tabs-->
           <ul class="nav nav-tabs nav-fill" role="tablist">
             <li class="nav-item"><a class="nav-link px-1 active fs-sm" href="#details" data-bs-toggle="tab" role="tab">Ticket</a></li>
-            <li class="nav-item"><a class="nav-link px-1 fs-sm"  data-bs-toggle="tab" role="tab">Date & Time</a></li>
+            <li class="nav-item"><a class="nav-link px-1 fs-sm" >Date & Time</a></li>
             {{--<li class="nav-item"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Date & Time</a></li>
             <li class="nav-item"><a class="nav-link px-1 {{'pass/es/($event->slug)#reviews' == request()->path() ? 'active' : '' }} fs-sm" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
             <li class="nav-item"><a class="nav-link px-1 {{'pass/es/($event->slug)#reviews' == request()->path() ? 'active' : '' }} fs-sm" href="#comments" data-bs-toggle="tab" role="tab">Add-on</a></li>--}}
@@ -52,8 +52,8 @@
                       <div class="fs-ms">SELECT YOUR CATEGORY
                         @foreach($ticke as $edy)
                             <div class="d-sm-flex justify-content-between align-items-center my-1 pb-3 border-bottom">
-                              <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
-                                <div class="pt-2 ">
+                              
+                                <div class="pt-1">
 
 
                                   <div class="d-flex">
@@ -65,15 +65,15 @@
                                       <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
                                       <div class="fs-md">Detail <i class="bi bi-chevron-right"></i> <br><span class="fs-xs fw-normal">{{$edy->desc}}</span></div>
                                     </div>
+
                                     <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 33;">
-                                <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a> 
-                              </div>
+                                      <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a> 
+                                    </div>
+
                                   </div>
+
                                 </div> 
-                              </div>
-                              
-                             
-                              
+                        
                             </div>
                         @endforeach
                       </div>
@@ -201,9 +201,11 @@
           </div>
 
               <a href="{{route('event.productreview',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Proceed</a>
-        @else
-       
-        <a href="{{route('event.productreview',['slug' => $event->slug])}}" class="btn btn-primary btn-sm" type="button" disabled>Proceed</a>
+          @else
+            <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i> {{Cart::instance('cart')->subtotal()}}<br>
+              
+            </div>
+          <a href="" class="btn btn-primary btn-sm" type="button" disabled>Proceed</a>
         @endif
       </div>
     </div>
