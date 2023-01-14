@@ -66,7 +66,7 @@
                                       <div class="fs-md">Detail <i class="bi bi-chevron-right"></i> <br><span class="fs-xs fw-normal">{{$edy->desc}}</span></div>
                                     </div>
 
-                                    <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 33;">
+                                    <div class="" style="max-width: 33;">
                                       <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a> 
                                     </div>
 

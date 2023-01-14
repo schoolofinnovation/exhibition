@@ -51,20 +51,22 @@
                       <div class="fs-ms">SELECT YOUR CATEGORY
                         @foreach($ticke as $edy)
                             <div class="d-sm-flex justify-content-between align-items-center my-1 pb-3 border-bottom">
-                              <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
+                             
                                 <div class="pt-2 ">
                                   <div class="d-flex">
                                     <div class="mr-auto p-2"><h3 class="product-title fs-base mb-2"><a href="#reviews">{{$edy->package}}</a></h3>
                                       <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
                                       <div class="fs-md">Detail <i class="bi bi-chevron-right"></i> <br><span class="fs-xs fw-normal">{{$edy->desc}}</span></div>
                                     </div>
+                                    <div class="" style="max-width: 33;">
+                                      <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a> 
+                                    </div>
+
                                   </div>
                                 </div> 
-                              </div>
+                            
                               
-                              <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 33;">
-                                <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a> 
-                              </div>
+                             
                             </div>
                         @endforeach
                       </div>
