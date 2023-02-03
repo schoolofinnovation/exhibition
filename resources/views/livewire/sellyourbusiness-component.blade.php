@@ -1,7 +1,7 @@
 @section('page_title','Sell Your Business')
 
-@section('content_description','Sell Your Business ')
-@section('content_keywords', 'Sell', 'Business', 'expansion')
+@section('page_description','Sell Your Business ')
+@section('page_keywords', 'Sell', 'Business', 'expansion')
 
 @section('page_name',' All Job')
 @section('page_path',' Job')

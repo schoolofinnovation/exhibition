@@ -42,17 +42,14 @@
                                 <option value="Executive Lounge A-Sponsor"> Executive Lounge A Sponsor</option>                                                
                                 <option value="Lanyard Sponsor"> Lanyard Sponsor</option>                                                
                                 <option value="Selfie-Bot Sponsor"> Selfie-Bot Sponsor</option>                                                
-                                <option value="Clean-&-Green"> Clean & Green Sponsor</option>                                         
-                                <option value="Candy Girl Sponsor"> Candy Girl Sponsor</option>                                                
+                                <option value="Clean-&-Green"> Clean & Green Sponsor</option> 
                                 <option value="Bar Lounge Sponsor"> Bar Lounge Sponsor</option>                                                
                                 <option value="Food Court Sponsor"> Food Court Sponsor</option>                                                
                                 <option value="Aqua Sponsor"> Aqua Sponsor</option>                                                
                                 <option value="Popcorn Sponsor"> Popcorn Sponsor</option>                                                
                                 <option value="Welcome Party Sponsor"> Welcome Party Sponsor</option>                                                
                                 <option value="Attendee Bag Sponsor"> Attendee Bag Sponsor</option>                                                
-                                <option value="Cloakroom Sponsor"> Cloakroom Sponsor</option>                                                
-                                <option value="Aqua Sponsor"> Aqua Sponsor</option>                                                
-                                <option value="Food Court Sponsor"> Food Court Sponsor</option>
+                                <option value="Cloakroom Sponsor"> Cloakroom Sponsor</option> 
                             </select>
                             @error('plan')
                                <div class="form-text">{{$message}}</div>

@@ -228,9 +228,9 @@
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-4">
               <h2 class="h3 mb-0 pt-3 me-2">COI Awards</h2>
               
-              <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="{{route('franchise.Coi')}}">
+              {{--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="{{route('franchise.Coi')}}">
                 Nominate<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
-              </div>-->
+              </div>--}}
 
               <div class="pt-3">
                     <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

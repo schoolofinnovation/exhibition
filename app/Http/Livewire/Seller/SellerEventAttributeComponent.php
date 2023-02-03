@@ -24,11 +24,10 @@ class SellerEventAttributeComponent extends Component
     public $shtdesc;
     public $eventna_id;
 
-    
 
-    public function mount($eventna_id)
+    public function mount($event_id)
     {
-        $fattribute = Event::find($eventna_id);
+        $fattribute = Event::find($event_id);
         //$this->eventna_id = $fattribute->id;
         $this->category_id = $fattribute->category_id;
         $this->auidence = $fattribute->auidence;
@@ -94,7 +93,8 @@ class SellerEventAttributeComponent extends Component
 
     public function render()
     {
-        $event = Event::where('user_id', Auth::user()->id)->where('status','1')->get();
+        $event = Event::where('id', $this->event)->first();
+        //$event = Event::where('user_id', Auth::user()->id)->where('status','1')->get();
         $expo = Expo::where('status','1')->where('type','expo')->get();
         $search = Expo::where('status','1')->where('type','tag')->get();
         $sector = Sector::get(); 

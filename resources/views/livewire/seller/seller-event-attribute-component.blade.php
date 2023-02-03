@@ -1,11 +1,11 @@
 <main>
         <section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
             <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
-           
+           {{$event_id}}
                 <form wire:submit.prevent="updateAttribute">
                     <!-- Title-->
                 
-                    <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
+                    {{--<div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
                         <h2 class="h3 py-2 me-2 text-center text-sm-start">Add New Event</h2>
                         <div class="py-2">
                             <select class="form-select me-2" wire:model.lazy="eventna_id">
@@ -21,7 +21,7 @@
                             @enderror
                         </div>
                         
-                    </div>
+                    </div>--}}
                     
                     <div class="row">
                         <div class="col-sm-6 mb-3">

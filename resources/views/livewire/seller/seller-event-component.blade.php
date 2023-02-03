@@ -16,7 +16,7 @@
                             </select>
                             @error('eventype')
                             <div class="form-text">Which Edition going to be organised?</div>
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                         </div>
                         
@@ -30,7 +30,7 @@
                             </div>
                             @error('edition')
                             <div class="form-text">Which Edition going to be organised?</div>
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                         </div>
 
@@ -39,7 +39,7 @@
                             <input class="form-control" type="text" wire:model="eventname" wire:keyup="generateSlug">
                             <div class="form-text">Maximum 100 characters. No HTML or emoji allowed.</div>
                             @error('eventname')
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                         </div>
                         
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-text">Average marketplace price for this category is $15.</div>
                             @error('startdate')
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                         </div>
                         <div class="col-sm-6 mb-3">
@@ -65,7 +65,7 @@
                             </div>
                             <div class="form-text">Typically 10x of the Standard license price.</div>
                             @error('enddate')
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="form-text">Average marketplace price for this category is $15.</div>
                             @error('venue')
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                         </div>
                         <div class="col-sm-6 mb-3">
@@ -86,7 +86,7 @@
                             <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
                             <input class="form-control" type="text" wire:model.lazy="city">
                             @error('city')
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                             </div>
                             <div class="form-text">Typically 10x of the Standard license price.</div>
@@ -96,10 +96,10 @@
 
                     <div class="mb-3 pb-2">
                         <label class="form-label" for="unp-product-files">Exhibition Poster</label>
-                        <input class="form-control" type="file" name="image" wire:model="image">
+                        <input class="form-control" type="file" name="image" wire:model.lazy="image">
                         <div class="form-text">Maximum file size is 1GB</div>
                             @error('image')
-                            <div class="form-text">{{$message}}</div>
+                            <div class="form-text text-primary">{{$message}}</div>
                             @enderror
                     </div>
 

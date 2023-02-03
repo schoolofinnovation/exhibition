@@ -73,8 +73,8 @@
                 </a> 
               
                 <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
-                 <div class="fs-4 border-end" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> <i class="bi bi-globe2 mr-1"></i>COI</div>
-                    <!--<img src="https://www.exhibition.org.in/image/abc.png" width="74" alt="COI">-->
+                
+                    <img src="{{asset('image/Yoyo.png')}}" width="174" alt="COI">
                 </a>
                
               <!-- Search-->

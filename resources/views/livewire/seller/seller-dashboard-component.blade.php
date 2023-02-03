@@ -77,7 +77,7 @@
                       <div class="collapse" id="home-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('event.add')}}"><i class="bi bi-plus opacity-60 me-2"></i>Add Event</a></li>
-                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Event Attribute</a></li>
+                        <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('seller.event.attribute')}}"><i class="ci-basket opacity-60 me-2"></i>Add Event Attribute</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('ticket.add')}}"><i class="bi bi-plus opacity-60 me-2"></i>Add Ticket Plan</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="#"><i class="ci-basket opacity-60 me-2"></i>Add Participants</a></li>
                         <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('seller.pavillion.add')}}"><i class="bi bi-plus opacity-60 me-2"></i>Add Pavillion</a></li>

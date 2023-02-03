@@ -6,8 +6,11 @@
     <title>@yield('page_title') | COI</title>
     <!-- SEO Meta Tags <link rel="canonical" href="{{url()->current()}}"/>-->
     <meta name="description" content="@yield('page_description')">
-    <meta name="keywords" content="@yield('page_keywords')">
-    <meta name="author" content="@yield('page_author')">   
+    <meta name="keywords" content="World's largest business event platform, find all upcoming events, business conferences, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in">
+    <meta name="author" content="theexhibition">  
+    
+    
+    
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
@@ -68,6 +71,7 @@
     <!-- Main theme script-->
     <script src="{{asset('js/theme.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -103,6 +107,14 @@
     }
     </script>
    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://www.exhibition.org.in",
+      "logo": "https://www.example.com/images/logo.png"
+    }
+    </script>
    @livewireScripts
    @stack('scripts')
 

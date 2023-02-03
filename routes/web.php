@@ -151,6 +151,7 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\App;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -197,12 +198,12 @@ Route::get('/downloadBuy', [BuyabrandlicenseComponent::class, 'index']);
 Route::get('/downloadOpportunity', [UserOrderDetailsComponent::class, 'index'])->name('user.opportunity');
 
 //Route::get('/', HomeComponent::class)->name('front.home');
-Route::get('/opportunities', shopComponent::class)->name('franchise.Coi');
+//Route::get('/opportunities', shopComponent::class)->name('franchise.Coi');
 
-Route::get('/opportunity/{slug}', DetailsComponent::class)->name('franchise.details');
-Route::get('/opportunity-category/{category_slug}', CategoryComponent::class)->name('franchise.category');
-Route::get('/opportunity-sector/{sector_slug}', SectorComponent::class)->name('franchise.sector');
-Route::get('/document/expand', ExpandComponent::class)->name('document.expand');
+//Route::get('/opportunity/{slug}', DetailsComponent::class)->name('franchise.details');
+//Route::get('/opportunity-category/{category_slug}', CategoryComponent::class)->name('franchise.category');
+//Route::get('/opportunity-sector/{sector_slug}', SectorComponent::class)->name('franchise.sector');
+//Route::get('/document/expand', ExpandComponent::class)->name('document.expand');
 
 
 //Route::get('/cartzilla-cart', CartzillaCartComponent::class)->name('product.cart');
@@ -223,9 +224,10 @@ Route::get('/sell-your-business', SellyourbusinessComponent::class)->name('sell.
 Route::get('/expand-your-business', ExpandyourbusinessComponent::class)->name('expand.business');
 Route::get('/buy-a-brand-license', BuyabrandlicenseComponent::class)->name('buy.license');
 Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)->name('design.strategy');
+
 Route::get('/career', CareerComponent::class)->name('career');
 Route::get('/contact-us', ContactComponent::class)->name('contact');
-Route::get('/about-us', AboutComponent::class)->name('about');
+Route::get('/about', AboutComponent::class)->name('about');
 
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
@@ -361,8 +363,9 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/partner/hastag/add', HastagComponent::class)->name('seller.hastag.add');
     Route::get('/partner/pavillion/add', PavillionComponent::class)->name('seller.pavillion.add');
     Route::get('/partner/portfolio/{slug}', SellerEventIdeComponent::class)->name('seller.portfolio');
+
     Route::get('/partner/attribute', SellerEventAttributeComponent::class)->name('seller.event.attribute');
-    
+    Route::get('/partner/attribute/{event_id}', SellerEventAttributeComponent::class)->name('seller.event');
     
 
     //lead
@@ -385,9 +388,10 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
   //sitemap
   Route::get('sitemap',function(){
+    $mytime = Carbon::today()->format("Y-m-d");
     $site = App::make('sitemap');
     //$site->add(URL::to('/'),date("Y-m-d h:i:s"),1,'daily'); 
-    $postie = Event::all();
+    $postie = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mytime)->get();
      foreach ($postie as $key => $pt){$site->add(URL::to($pt->slug),$pt->created_at,1,'daily');}
     $site->store('xml', 'sitemap');
   });
