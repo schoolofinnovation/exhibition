@@ -1,3 +1,9 @@
+@section('page_title', 'Login - The Exhibition Network')
+@section('page_description','Access your The Exhibition Network account and stay up to date with the latest exhibitions and conference updates.')
+@section('page_keywords','Login, The Exhibition Network, Sign In')
+
+
+
 <!--<x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">

@@ -1,3 +1,7 @@
+@section('page_title', 'Two-Factor Authentication challenge - The Exhibition Network')
+@section('page_description','Complete the two-factor authentication challenge to securely access your account on The Exhibition Network and stay up to date with the latest exhibitions and conferences.')
+@section('page_keywords','Two-factor Authentication, The Exhibition Network, Security Challenge')
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">

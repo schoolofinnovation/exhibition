@@ -3,13 +3,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css" class="drift-base-styles">.drift-bounding-box,.drift-zoom-pane{position:absolute;pointer-events:none}@keyframes noop{0%{zoom:1}}@-webkit-keyframes noop{0%{zoom:1}}.drift-zoom-pane.drift-open{display:block}.drift-zoom-pane.drift-closing,.drift-zoom-pane.drift-opening{animation:noop 1ms;-webkit-animation:noop 1ms}.drift-zoom-pane{overflow:hidden;width:100%;height:100%;top:0;left:0}.drift-zoom-pane-loader{display:none}.drift-zoom-pane img{position:absolute;display:block;max-width:none;max-height:none}</style>
     
-    <title>@yield('page_title') | COI</title>
+    
     <!-- SEO Meta Tags <link rel="canonical" href="{{url()->current()}}"/>-->
+    <title>@yield('page_title') | COI</title>
     <meta name="description" content="@yield('page_description')">
-    <meta name="keywords" content="World's largest business event platform, find all upcoming events, business conferences, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in">
-    <meta name="author" content="theexhibition">  
-    
-    
+    <meta name="keywords" content="@yield('page_keyword')">
+    <meta name="author" content = "TheExhibitionNetwork">  
     
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">

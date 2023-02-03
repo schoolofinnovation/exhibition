@@ -1,3 +1,7 @@
+@section('page_title', 'Confirm Password - The Exhibition Network')
+@section('page_description','Confirm your password for secure access to your account on The Exhibition Network. Stay up to date with the latest exhibitions and conferences.')
+@section('page_keywords','Confirm Password, The Exhibition Network, Password Reset')
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">

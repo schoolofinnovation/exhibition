@@ -1,3 +1,8 @@
+@section('page_title', 'Register - The Exhibition Network')
+@section('page_description','Join The Exhibtion Network community and stay up to date with the latest exhibitions and conferences updates. Register for an account now')
+@section('page_keywords',' The Exhibition Network, Sign up, Register')
+
+
 <!--<x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">

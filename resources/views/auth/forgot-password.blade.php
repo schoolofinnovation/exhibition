@@ -1,3 +1,7 @@
+@section('page_title', 'Forget Password - The Exhibition Network')
+@section('page_keywords','Forget Password, The Exhibition Network, Password Reset')
+@section('page_description','Forgot Your password? No Problem. Reset your password for the The Exhibition Network and regain access to your account and all the latest exhibitions and conference updates.')
+
 <!--<x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <!-- saved from url=(0041)https://blogzine.webestica.com/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Blogzine - Blog and Magazine Bootstrap 5 Theme</title>
+	
 
 	<!-- Meta Tags -->
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="CouncilofInnovation.com">
-	<meta name="description" content="Business News, Magazine and Blog!!">
-	
+	<meta name="author" content="The Exhibition Network">
+	<title>The Exhibition Network - Latest Blog Updates & Reviews</title>
+	<meta name="description" content="Stay up to date with the latest exhibitions  and conferences on The Exhibition Network's Blog. Read the latest updates, reviews by visitors and industry critics, and join the conversation.">
+	<meta name="keywords" content="Exhibition Business News, Exhibition Blog, Expo updates, Exhibition Reviews, Visitor Reviews Industry Critics, Exhibition Magazine and Blog!!">
+
+
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('/image/favicons/apple-touch-icon.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('/image/favicons/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/image/favicons/favicon-16x16.png')}}">

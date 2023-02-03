@@ -1,3 +1,7 @@
+@section('page_title', 'Reset Password - The Exhibition Network')
+@section('page_description','')
+@section('page_keywords','Reset Password, The Exhibition Network Password Recovery')
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">

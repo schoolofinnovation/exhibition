@@ -1,7 +1,6 @@
-@section('page_title','Career')
-
-@section('content_description','Job')
-@section('content_keywords',' Job')
+@section('page_title', 'Career - Join The Exhibition Network team')
+@section('page_description','Join the dynamic team at The Exhibition Network and make a difference in the world of exhibitions and conferences. Explore our current job opportunities and apply today.')
+@section('page_keywords','Careers, The Exhibition Network, Job Opportunities, Join Our Team ')
 
 @section('page_name',' All Job')
 @section('page_path',' Job')
