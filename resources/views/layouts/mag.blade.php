@@ -9,7 +9,7 @@
 	<meta name="author" content="The Exhibition Network">
 	<title>The Exhibition Network - Latest Blog Updates & Reviews</title>
 	<meta name="description" content="Stay up to date with the latest exhibitions  and conferences on The Exhibition Network's Blog. Read the latest updates, reviews by visitors and industry critics, and join the conversation.">
-	<meta name="keywords" content="Exhibition Business News, Exhibition Blog, Expo updates, Exhibition Reviews, Visitor Reviews Industry Critics, Exhibition Magazine and Blog!!">
+	<meta name="keywords" content="Exhibition Business News, Exhibition Blog, The Exhibition Network, Expo updates, Exhibition Reviews, Visitor Reviews Industry Critics, Exhibition Magazine and Blog!!">
 
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{asset('/image/favicons/apple-touch-icon.png')}}">

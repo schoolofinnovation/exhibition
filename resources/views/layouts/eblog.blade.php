@@ -5,7 +5,7 @@
     
     
     <!-- SEO Meta Tags <link rel="canonical" href="{{url()->current()}}"/>-->
-    <title>@yield('page_title') | COI</title>
+    <title> @yield('page_title') | COI</title>
     <meta name="description" content="@yield('page_description')">
     <meta name="keywords" content="@yield('page_keyword')">
     <meta name="author" content = "TheExhibitionNetwork">  
