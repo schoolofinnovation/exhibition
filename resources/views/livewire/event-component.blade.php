@@ -625,18 +625,18 @@
       </section>
       
       <!--contact-->        
-        <div class="container-fluid px-0" id="listexpo">
+        <div class="container-fluid px-0 d-none" id="listexpo">
           <div class="row g-0">
             <div class="col-lg-6 iframe-full-height-wrap">
-            <div class="mx-auto py-lg-5 my-5 text-dark text-center" style="max-width: 35rem;">
-                <p>BE SEEN</p>
-                <h2 class="display-5 text-dark mb-2 ">
-              Business profile
-                </h2>
-                <p class="fw-light  mx-auto lead text-dark pb-2">Create a business profile with helpful information for your business auidence like your Business Model, business description, email address, and website.
-                </p>
-                <a href="#opening" class="btn btn-lg  btn-outline-primary fw-bolder my-2">Learn more about</a>
-            </div>
+              <div class="mx-auto py-lg-5 my-5 text-dark text-center" style="max-width: 35rem;">
+                  <p>BE SEEN</p>
+                  <h2 class="display-5 text-dark mb-2 ">
+                Business profile
+                  </h2>
+                  <p class="fw-light  mx-auto lead text-dark pb-2">Create a business profile with helpful information for your business auidence like your Business Model, business description, email address, and website.
+                  </p>
+                  <a href="#opening" class="btn btn-lg  btn-outline-primary fw-bolder my-2">Learn more about</a>
+              </div>
             </div>
           
             @livewire('event-form-component')

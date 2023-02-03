@@ -79,14 +79,7 @@
 				<!-- Slider START -->
 				<div class="col-lg-7">
 					<div class="my-Slider3 arrow-hover arrow-blur arrow-round rounded-3">
-						<!--<div class="tns-outer" id="tns3-ow">
-							<div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">slide <span class="current">
-								3</span>  of 2</div>
-								<div id="tns3-mw" class="tns-ovh">
-								<div class="tns-inner" id="tns3-iw">
-									<div class="tiny-slider-inner  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" 
-									data-autoplay="true" data-hoverpause="true" data-gutter="0" data-arrow="true" data-dots="false" 
-									data-items="1" id="tns3" style="transition-duration: 0s; transform: translate3d(-33.3333%, 0px, 0px);">-->
+						
 						
 								@foreach($latest as $post)
 									<div class="card card-overlay-bottom card-bg-scale h-400 h-lg-560 rounded-0" 
@@ -255,7 +248,7 @@
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto" >
 													<!-- Card category -->
-													<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+													<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 												</div>
 											</div>
 										</div>
@@ -308,7 +301,7 @@
 							</div>
 							
 							<div class="col-md-6">
-											<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+											<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 											<h3><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset fw-bold">{{Str::limit($post->tittle,48)}}</a></h3>
 											<p>{{Str::limit($post->s_desc,241)}}</p>
 											<!-- Card info -->
@@ -484,7 +477,7 @@
 									@foreach($cag as $post)
 										<div class="d-flex justify-content-between align-items-center bg-warning-soft rounded p-2 position-relative">
 											<h6 class="m-0 text-warning">{{$post->tag}}</h6>
-											<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor text-dark stretched-link">{{$post->mag->count()}}</a>
+											<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor text-dark stretched-link">{{$post->mag->count()}}</a>
 										</div>
 									@endforeach
 						</div>
@@ -524,7 +517,7 @@
 							<!-- Card item big START -->
 							<div class="card mb-4">
 								<div class="card-body p-4 border rounded-3">	
-									<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+									<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 									<h4 class="card-title"><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset fw-bold">{{Str::limit($post->tittle,57)}}</a></h4>
 									<p class="card-text m-0">{{Str::limit($post->s_desc,90)}}</p>
 									<!-- Card info -->
@@ -569,7 +562,7 @@
 							<!-- Card item START -->
 							<div class="card mb-1">
 								<div class="card-body px-0 border-bottom">
-									<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+									<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 									<h5><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link stretched-link text-reset">{{Str::limit($post->tittle,36)}}</a></h5>
 									<!-- Card info -->
 									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block small">
@@ -652,7 +645,7 @@
 											<div class="card-img-overlay d-flex align-items-start flex-column p-3">
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto">
-													<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+													<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 												</div>
 											</div>
 										</div>

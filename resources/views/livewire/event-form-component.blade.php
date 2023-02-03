@@ -1,7 +1,9 @@
-
         <div class="col-lg-6 px-4 px-xl-5 py-5 border-top" >
             <h2 class="h4 mb-1"> Contact us to see how we can help you.</h2>
-            <div class="fs-sm text-primary mb-4" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">We’ll be in touch within 24 hours.</div>
+            
+            <div class="fs-sm text-primary mb-4" data-bs-toggle="collapse" 
+            href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            We’ll be in touch within 24 hours.</div>
                       
             @if(Session::has('message'))
             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div> 

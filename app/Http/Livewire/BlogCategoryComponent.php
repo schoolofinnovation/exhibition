@@ -24,11 +24,9 @@ class BlogCategoryComponent extends Component
 
     public function render()
     {
-        $cagg = Cag::where('slug',$this->category_slug)->first();
+        $cagg = Cag::where('slug', $this->category_slug)->first();
         $category_id = $cagg->id;
-        $mat = Mag::where('cag_id',$category_id)->get();
-       
-       
+        $mat = Mag::where('cag_id', $category_id)->get();
 
         //$cagg = Cag::get();
         //$category_industry = $category->industry;

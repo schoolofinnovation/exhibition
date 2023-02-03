@@ -392,6 +392,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     $site = App::make('sitemap');
     //$site->add(URL::to('/'),date("Y-m-d h:i:s"),1,'daily'); 
     $postie = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mytime)->get();
-     foreach ($postie as $key => $pt){$site->add(URL::to($pt->slug),$pt->created_at,1,'daily');}
-    $site->store('xml', 'sitemap');
+     foreach ($postie as $key => $pt)
+     {$site->add(URL::to($pt->slug), $pt->created_at,1,'daily');}
+     $site->store('xml', 'sitemap');
   });
