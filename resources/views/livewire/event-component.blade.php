@@ -1,6 +1,6 @@
-@section('page_title', 'India largest Exhibtion Netwrok')
+@section('page_title', 'The Exhibtion Netwrok')
 @section('page_description', '')
-@section('page_keywords', 'World's largest business event platform, find all upcoming events, business conferences, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
+@section('page_keywords', 'World largest business event platform, find all upcoming events, business conferences, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
 @section('page_name',' All Job')
 @section('page_path',' Job')
@@ -644,10 +644,6 @@
         </div>
 
 </main>
-
-
-    
-     
 
 @push('scripts')
     <script>

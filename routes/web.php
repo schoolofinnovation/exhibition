@@ -226,7 +226,7 @@ Route::get('/buy-a-brand-license', BuyabrandlicenseComponent::class)->name('buy.
 Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)->name('design.strategy');
 
 Route::get('/career', CareerComponent::class)->name('career');
-Route::get('/contact-us', ContactComponent::class)->name('contact');
+Route::get('/contact', ContactComponent::class)->name('contact');
 Route::get('/about', AboutComponent::class)->name('about');
 
 Route::get('/', EventComponent::class)->name('business.exhibition');
@@ -393,6 +393,6 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     //$site->add(URL::to('/'),date("Y-m-d h:i:s"),1,'daily'); 
     $postie = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mytime)->get();
      foreach ($postie as $key => $pt)
-     {$site->add(URL::to($pt->slug), $pt->created_at,1,'daily');}
+     {$site->add(URL::to($pt->slug), $pt->created_at,0.9,'daily');}
      $site->store('xml', 'sitemap');
   });
