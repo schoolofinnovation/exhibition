@@ -28,6 +28,7 @@ class SellerEventTicketComponent extends Component
     public $terms;
     public $status;
     public $admstatus;
+    public $slug;
     
     public function mount()
     {

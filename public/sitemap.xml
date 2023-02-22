@@ -3,14 +3,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
 	<url>
-	<loc>http://127.0.0.1:8000</loc>
+	<loc>https://exhbition.org.in</loc>
 		<priority>1</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 
 	<url>
-	<loc>http://127.0.0.1:8000/about</loc>
+	<loc>https://exhbition.org.in/login</loc>
+		<priority>1</priority>
+		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+	<loc>https://exhbition.org.in/register</loc>
+		<priority>1</priority>
+		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
+		<changefreq>daily</changefreq>
+	</url>
+
+	
+
+	<url>
+	<loc>https://exhbition.org.in/forgot-password</loc>
+		<priority>1</priority>
+		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
+		<changefreq>daily</changefreq>
+	</url>
+
+	<url>
+	<loc>https://exhbition.org.in/about</loc>
 		<priority>1</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
@@ -18,192 +41,190 @@
 
 
 	<url>
-	<loc>http://127.0.0.1:8000/career</loc>
+	<loc>https://exhbition.org.in/career</loc>
 		<priority>1</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 
 	<url>
-	<loc>http://127.0.0.1:8000/blog</loc>
+	<loc>https://exhbition.org.in/blog</loc>
 		<priority>1</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 
 	<url>
-	<loc>http://127.0.0.1:8000/sell-your-business</loc>
+	<loc>https://exhbition.org.in/sell-your-business</loc>
 		<priority>0.7</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 
 	<url>
-	<loc>http://127.0.0.1:8000/contact</loc>
+	<loc>https://exhbition.org.in/contact</loc>
 		<priority>1</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 
 	<url>
-	<loc>http://127.0.0.1:8000/expand-your-business</loc>
+	<loc>https://exhbition.org.in/expand-your-business</loc>
 		<priority>0.7</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 
 	<url>
-	<loc>http://127.0.0.1:8000/buy-a-brand-license</loc>
+	<loc>https://exhbition.org.in/buy-a-brand-license</loc>
 		<priority>0.7</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 
 	<url>
-	<loc>http://127.0.0.1:8000/business-design-strategy</loc>
+	<loc>https://exhbition.org.in/business-design-strategy</loc>
 		<priority>0.7</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
  
-
-
 	<url>
-	<loc>http://127.0.0.1:8000/ex/hgh-india</loc>
+	<loc>https://exhbition.org.in/ex/hgh-india</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/clean-india-2023</loc>
+	<loc>https://exhbition.org.in/ex/clean-india-2023</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/elecrama</loc>
+	<loc>https://exhbition.org.in/ex/elecrama</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/delhi-wood</loc>
+	<loc>https://exhbition.org.in/ex/delhi-wood</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/putech</loc>
+	<loc>https://exhbition.org.in/ex/putech</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/media-expo</loc>
+	<loc>https://exhbition.org.in/ex/media-expo</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/elecrama</loc>
+	<loc>https://exhbition.org.in/ex/elecrama</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/delhi-wood</loc>
+	<loc>https://exhbition.org.in/ex/delhi-wood</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/putech</loc>
+	<loc>https://exhbition.org.in/ex/putech</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/media-expo</loc>
+	<loc>https://exhbition.org.in/ex/media-expo</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/elecrama</loc>
+	<loc>https://exhbition.org.in/ex/elecrama</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/delhi-wood</loc>
+	<loc>https://exhbition.org.in/ex/delhi-wood</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/putech</loc>
+	<loc>https://exhbition.org.in/ex/putech</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/media-expo</loc>
+	<loc>https://exhbition.org.in/ex/media-expo</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-06-16T12:17:00+05:30</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/buildings-india</loc>
+	<loc>https://exhbition.org.in/ex/buildings-india</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/convergence-india</loc>
+	<loc>https://exhbition.org.in/ex/convergence-india</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/digital-gaming-india-expo</loc>
+	<loc>https://exhbition.org.in/ex/digital-gaming-india-expo</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/embedded-tech</loc>
+	<loc>https://exhbition.org.in/ex/embedded-tech</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/fintech-india-expo</loc>
+	<loc>https://exhbition.org.in/ex/fintech-india-expo</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/internet-of-thing</loc>
+	<loc>https://exhbition.org.in/ex/internet-of-thing</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/mobile-india-expo</loc>
+	<loc>https://exhbition.org.in/ex/mobile-india-expo</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/smart-cities-india</loc>
+	<loc>https://exhbition.org.in/ex/smart-cities-india</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/smart-energy-india</loc>
+	<loc>https://exhbition.org.in/ex/smart-energy-india</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/transport-india-expo</loc>
+	<loc>https://exhbition.org.in/ex/transport-india-expo</loc>
 		<priority>0.9</priority>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>http://127.0.0.1:8000/ex/jewellery-expo</loc>
+	<loc>https://exhbition.org.in/ex/jewellery-expo</loc>
 		<priority>0.9</priority>
 		<lastmod>2022-12-26T19:53:51+05:30</lastmod>
 		<changefreq>daily</changefreq>

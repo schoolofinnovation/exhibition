@@ -98,7 +98,7 @@
                         
                         <div class=" col-sm-12 mb-3 pb-2">
                             <label class="form-label" for="unp-product-name">Tag Line</label>
-                            <input class="form-control" type="text" wire:model="tagline">
+                            <input class="form-control" type="text" wire:model.lazy="tagline">
                             <div class="form-text">Maximum 100 characters. No HTML or emoji allowed.</div>
                             @error('tagline')
                             <div class="form-text">{{$message}}</div>
@@ -106,7 +106,7 @@
                         </div>
                         <div class=" col-sm-12 mb-3 pb-2">
                             <label class="form-label" for="unp-product-name">Short Desc</label>
-                            <textarea class="form-control" type="text" wire:model="shtdesc" row="2" ></textarea>
+                            <textarea class="form-control" type="text" wire:model.lazy="shtdesc" row="2" ></textarea>
                             <div class="form-text">Maximum 100 characters. No HTML or emoji allowed.</div>
                             @error('shtdesc')
                             <div class="form-text">{{$message}}</div>
@@ -114,7 +114,7 @@
                         </div>
                         <div class=" col-sm-12 mb-3 pb-2">
                             <label class="form-label" for="unp-product-name">Description</label>
-                            <textarea class="form-control" type="text" wire:model="desc" row="3" ></textarea>
+                            <textarea class="form-control" type="text" wire:model.lazy="desc" row="3" ></textarea>
                             <div class="form-text">Maximum 100 characters. No HTML or emoji allowed.</div>
                             @error('desc')
                             <div class="form-text">{{$message}}</div>

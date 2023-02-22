@@ -29,6 +29,8 @@ class EventComponent extends Component
         //where('admstatus','0')->where('status','1')->where('entity','speaker')
 
         $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mytime)->get();
+
+        //dd($evento);
         $awardo = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '2023-03-27')->get();
         $newlead = Event::where('admstatus','1')->where('status','1')->where('eventype','award')->latest()->paginate(1);
         
@@ -37,11 +39,13 @@ class EventComponent extends Component
         $network = Speaker::where('admstatus','1')->where('status','1')->where('entity','network')->get();
         $social = Speaker::where('admstatus','1')->where('status','1')->where('entity','social')->get();
 
-        $magazine = Mag::where('type','a')->where('status','1')->paginate(8);
+        $magazine = Mag::where('type','b')->where('status','1')->paginate(8);
         //$test = Franchise::where('id', '202')->get();
         //dd($awardo);
-        //DB::table('speakers')->insert([
+        //DB::table('cags')->insert([
         //['admstatus' => '1','user_id' =>'1','status' =>'1','name' =>'expo', 'organisation' => 'Buildings India' , 'slug' => 'buildingsindia.png', 'image' => 'Exhibitions India Group' ],
+        
+        
         
         return view('livewire.event-component',['magazine'=>$magazine, 'speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
     }

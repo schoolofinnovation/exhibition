@@ -72,7 +72,7 @@
                   
                   <ul class="list-unstyled mb-0">
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active collapsed" href="#"  data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                      <i class="ci-settings opacity-60 me-2"></i>Event<span class="fs-sm text-muted ms-auto">Add</span></a>
+                      <i class="ci-settings opacity-60 me-2"></i>Event<span class="fs-sm text-muted ms-auto">  Add</span></a>
                     
                       <div class="collapse" id="home-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">

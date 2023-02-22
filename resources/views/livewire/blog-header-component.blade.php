@@ -28,7 +28,7 @@
                   <div style="min-width: 14rem;">
                   <h6 class="dropdown-header">Account</h6>
                   <a class="dropdown-item d-flex align-items-center" href="{{route('user.dashboard')}}"><i class="ci-settings opacity-60 me-2"></i>Dashboard</a>
-                  <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.show') }}"><i class="ci-settings opacity-60 me-2"></i>Profile</a>
+                  <a class="dropdown-item d-flex align-items-center" href="{{--route('profile.show')--}}"><i class="ci-settings opacity-60 me-2"></i>Profile</a>
                   <a class="dropdown-item d-flex align-items-center" ><i class="ci-basket opacity-60 me-2"></i>Categories</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -38,7 +38,7 @@
 								 </form>
                 </div>
                 </div>
-						</ul>
+		        </ul>
 					</li>
 					    @elseif(Auth::user()->utype === 'SLR')
 					<li class="nav-item">
@@ -100,7 +100,7 @@
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="https://blogzine.webestica.com/index.html">
+			<a class="navbar-brand" href="#">
 				<img class="navbar-brand-item light-mode-item" src="{{asset('mag/logo.svg')}}"  alt="logo">			
 				<img class="navbar-brand-item dark-mode-item"  src="{{asset('mag/logo-light.svg')}}"  alt="logo">			
 			</a>
@@ -120,11 +120,11 @@
 					<li class="nav-item ">
 						<a class="nav-link  active" href="{{asset('/blog')}}" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
 						<!--<ul class="dropdown-menu" aria-labelledby="homeMenu">
-							<li> <a class="dropdown-item active" href="https://blogzine.webestica.com/index.html">Home default</a></li>
-							<li> <a class="dropdown-item" href="https://blogzine.webestica.com/index-2.html">Magazine classic</a></li>
-							<li> <a class="dropdown-item" href="https://blogzine.webestica.com/index-3.html">Magazine</a></li>
-							<li> <a class="dropdown-item" href="https://blogzine.webestica.com/index-4.html">Home cards</a></li>
-							<li> <a class="dropdown-item" href="https://blogzine.webestica.com/index-5.html">Blog classic</a></li>
+							<li> <a class="dropdown-item active" href="#">Home default</a></li>
+							<li> <a class="dropdown-item" href="#">Magazine classic</a></li>
+							<li> <a class="dropdown-item" href="#">Magazine</a></li>
+							<li> <a class="dropdown-item" href="#">Home cards</a></li>
+							<li> <a class="dropdown-item" href="#">Blog classic</a></li>
 						</ul>-->
 					</li>
 
@@ -166,7 +166,7 @@
 											<span>The Blogzine</span>
 											<h3>Premium Membership</h3>
 											<p>Become a Member Today!</p>
-											<a href="https://blogzine.webestica.com/index.html#" class="btn btn-warning">View pricing plans</a>
+											<a href="##" class="btn btn-warning">View pricing plans</a>
 										</div>
 									</div>
 									<!-- Card item END -->
@@ -178,14 +178,14 @@
 											<li class="list-inline-item">Trending tags:</li>
                                             @foreach($tag as $post)
 											<li class="list-inline-item"><a href="{{route('blog.category',['category_slug'=> $post->slug])}}" class="btn btn-sm btn-primary-soft">{{$post->tag}}</a></li>
-											<!--<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-warning-soft">Business</a></li>
-											<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-success-soft">Tech</a></li>
-											<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-danger-soft">Gadgets</a></li>
-											<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-info-soft">Lifestyle</a></li>
-											<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-primary-soft">Vaccine</a></li>
-											<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-success-soft">Sports</a></li>
-											<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-danger-soft">Covid-19</a></li>
-											<li class="list-inline-item"><a href="https://blogzine.webestica.com/index.html#" class="btn btn-sm btn-info-soft">Politics</a></li>-->
+											<!--<li class="list-inline-item"><a href="##" class="btn btn-sm btn-warning-soft">Business</a></li>
+											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-success-soft">Tech</a></li>
+											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-danger-soft">Gadgets</a></li>
+											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-info-soft">Lifestyle</a></li>
+											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-primary-soft">Vaccine</a></li>
+											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-success-soft">Sports</a></li>
+											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-danger-soft">Covid-19</a></li>
+											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-info-soft">Politics</a></li>-->
 										@endforeach
                                         </ul>
 									</div>
@@ -220,7 +220,7 @@
 				</div>
 				<!-- Offcanvas menu toggler -->
 				<div class="nav-item">
-					<a class="nav-link p-0" data-bs-toggle="offcanvas" href="https://blogzine.webestica.com/index.html#offcanvasMenu" role="button" aria-controls="offcanvasMenu">
+					<a class="nav-link p-0" data-bs-toggle="offcanvas" href="##offcanvasMenu" role="button" aria-controls="offcanvasMenu">
 						<i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>
 					</a>
 				</div>

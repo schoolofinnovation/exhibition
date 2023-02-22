@@ -117,8 +117,8 @@
               <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
                 <img src="image/banner-sm01.png" width="200 rem" alt="Banner">
                   <div class="py-4 pr-4">
-                    <h5 class="mb-2"><span class="fw-light">Next Gen</span><br>Video <span class="fw-light">with</span><br>360 Cam</h5>
-                      <div class="text-info fs-sm">Shop now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
+                    <h5 class="mb-2"><span class="fw-light">Gift World</span><br>Expo <span class="fw-light"></span><br>2023</h5>
+                      <div class="text-info fs-sm">Register Now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
                   </div>
               </a>
               <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
@@ -515,7 +515,7 @@
                   <div class="card product-card">
                     
                     <a class="card-img-top d-block overflow-hidden" href="">
-                      <img src="{{url('magazine/'.$eventoi->image)}}" class="img-thumbnail" alt="try">
+                      <img src="{{url('magazine/'.$eventoi->image)}}" class="img-thumbnail" alt="">
                     </a>
                   </div>
                 </div>
@@ -525,123 +525,123 @@
             
           </section>
        
-       <!-- Creators-->
-      <section class="container py-3 pb-md-3">
-        <!--<h2 class="h3 mb-4 pb-2">Top Creators</h2>-->
-        <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-1 mb-1">  
-              <div class="fs-sm" >Business Community
-               
-                  <h4 class="mb-0 me-2">Speaker</h4>
+        <!-- Creators-->
+          <section class="container py-3 pb-md-3">
+            <!--<h2 class="h3 mb-4 pb-2">Top Creators</h2>-->
+            <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-1 mb-1">  
+                  <div class="fs-sm" >Business Community
                   
-              </div>
-                <!--<div class="pt-3">
-                  <a class="btn btn-outline-primary btn-sm" href="#listexpo"> 
-                    Connect <i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
-                </div>-->
-
-                  <div class="pt-3">
-                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      All
-                    </a>
-
-                    <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="#">More</a></li>
-                      <li><a class="dropdown-item" href="#">Speaker</a></li>
-                      <li><a class="dropdown-item" href="#">Subscribe</a></li>
-                    </ul>
-                  </div>
-                  
-              </div>
-          <div class="row my-Slider23">
-
-            <!-- Bestsellers-->
-            <div class="col-md-4 col-sm-6 mb-2 py-1">
-              <div class="widget">
-                <!--<h3 class="widget-title fw-bolder">Network</h3>-->
-              
-                @foreach ($network as $franchise)
-                  <div class="d-flex align-items-center justify-content-between w-100 mb-2">
-                    <div class="d-flex align-items-center position-relative">
+                      <h4 class="mb-0 me-2">Speaker</h4>
                       
-                      <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
-                      <div class="ms-2">
-                        <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
-                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
-                       <!--<span class="fs-xs text-muted">730 followers</span>-->
-                      </div>
-                    </div>
-                    <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
                   </div>
-                  
-                @endforeach
-              </div>
-            </div>
+                    <!--<div class="pt-3">
+                      <a class="btn btn-outline-primary btn-sm" href="#listexpo"> 
+                        Connect <i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
+                    </div>-->
 
-            <!-- New arrivals-->
-            <div class="col-md-4 col-sm-6 mb-2 py-3">
-              <div class="widget">
-                <!--<h3 class="widget-title fw-bolder">Speaker</h3>-->
-                @foreach ($speaker as $franchise)
-                  <div class="d-flex align-items-center justify-content-between w-100 mb-2">
-                    <div class="d-flex align-items-center position-relative">
+                      <div class="pt-3">
+                        <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          All
+                        </a>
+
+                        <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                          <li><a class="dropdown-item" href="#">Speaker</a></li>
+                          <li><a class="dropdown-item" href="#">Subscribe</a></li>
+                        </ul>
+                      </div>
                       
-                      <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
-                      <div class="ms-2">
-                        <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
-                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
-                        <!--<span class="fs-xs text-muted">730 followers</span>-->
-                      </div>
-                    </div>
-                    <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
                   </div>
-                  
-                @endforeach
-              </div>
-            </div>
+              <div class="row my-Slider23">
 
-            <!-- Top rated-->
-            <div class="col-md-4 col-sm-6 mb-2 py-3">
-              <div class="widget">
-                <!--<h3 class="widget-title fw-bolder">Social</h3>-->
-                @foreach ($social as $franchise)
-                  <div class="d-flex align-items-center justify-content-between w-100 mb-2">
-                    <div class="d-flex align-items-center position-relative">
+                <!-- Bestsellers-->
+                <div class="col-md-4 col-sm-6 mb-2 py-1">
+                  <div class="widget">
+                    <!--<h3 class="widget-title fw-bolder">Network</h3>-->
+                  
+                    @foreach ($network as $franchise)
+                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center position-relative">
+                          
+                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
+                          <div class="ms-2">
+                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
+                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                          <!--<span class="fs-xs text-muted">730 followers</span>-->
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
+                      </div>
                       
-                      <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
-                      <div class="ms-2">
-                        <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->name}}</a></h4>
-                        <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
-                        <!--<span class="fs-xs text-muted">730 followers</span>-->
-                      </div>
-                    </div>
-                    <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
+                    @endforeach
                   </div>
-                  
-                @endforeach
-              </div>
-            </div>
+                </div>
 
+                <!-- New arrivals-->
+                <div class="col-md-4 col-sm-6 mb-2 py-3">
+                  <div class="widget">
+                    <!--<h3 class="widget-title fw-bolder">Speaker</h3>-->
+                    @foreach ($speaker as $franchise)
+                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center position-relative">
+                          
+                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
+                          <div class="ms-2">
+                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
+                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                            <!--<span class="fs-xs text-muted">730 followers</span>-->
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
+                      </div>
+                      
+                    @endforeach
+                  </div>
+                </div>
+
+                <!-- Top rated-->
+                <div class="col-md-4 col-sm-6 mb-2 py-3">
+                  <div class="widget">
+                    <!--<h3 class="widget-title fw-bolder">Social</h3>-->
+                    @foreach ($social as $franchise)
+                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center position-relative">
+                          
+                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
+                          <div class="ms-2">
+                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->name}}</a></h4>
+                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                            <!--<span class="fs-xs text-muted">730 followers</span>-->
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
+                      </div>
+                      
+                    @endforeach
+                  </div>
+                </div>
+
+              </div>
+          </section>
+        
+        <!--contact-->        
+          <div class="container-fluid px-0 d-none" id="listexpo">
+            <div class="row g-0">
+              <div class="col-lg-6 iframe-full-height-wrap">
+                <div class="mx-auto py-lg-5 my-5 text-dark text-center" style="max-width: 35rem;">
+                    <p>BE SEEN</p>
+                    <h2 class="display-5 text-dark mb-2 ">
+                  Business profile
+                    </h2>
+                    <p class="fw-light  mx-auto lead text-dark pb-2">Create a business profile with helpful information for your business auidence like your Business Model, business description, email address, and website.
+                    </p>
+                    <a href="#opening" class="btn btn-lg  btn-outline-primary fw-bolder my-2">Learn more about</a>
+                </div>
+              </div>
+            
+              @livewire('event-form-component')
+            </div>
           </div>
-      </section>
-      
-      <!--contact-->        
-        <div class="container-fluid px-0 d-none" id="listexpo">
-          <div class="row g-0">
-            <div class="col-lg-6 iframe-full-height-wrap">
-              <div class="mx-auto py-lg-5 my-5 text-dark text-center" style="max-width: 35rem;">
-                  <p>BE SEEN</p>
-                  <h2 class="display-5 text-dark mb-2 ">
-                Business profile
-                  </h2>
-                  <p class="fw-light  mx-auto lead text-dark pb-2">Create a business profile with helpful information for your business auidence like your Business Model, business description, email address, and website.
-                  </p>
-                  <a href="#opening" class="btn btn-lg  btn-outline-primary fw-bolder my-2">Learn more about</a>
-              </div>
-            </div>
-          
-            @livewire('event-form-component')
-          </div>
-        </div>
 
 </main>
 

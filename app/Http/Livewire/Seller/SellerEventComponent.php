@@ -91,7 +91,7 @@ class SellerEventComponent extends Component
         $newEvent->user_id = Auth::user()->id;
         $newEvent->save();
         $event_id = $newEvent->id;
-        return redirect()->route('seller.event.attribute', [$event_id]);
+        return redirect()->route('seller.event.attribute', [ $event_id]);
         session()->flash('message','Thanks for sharing your review.');
         
     }

@@ -90,7 +90,7 @@
 												<div class="w-100 mt-auto">
 													<div class="col">
 														<!-- Card category -->
-														<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge  badgecolor mb-2" style=" background-color : #ff0440;">
+														<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}" class="badge  badgecolor mb-2" style=" background-color : #ff0440;">
 														<i class="fas fa-circle me-2 small fw-bold"></i>check{{$post->tag}}</a>
 														<!-- Card title -->
 														<h2 class="text-white display-5">
@@ -148,7 +148,8 @@
 									<img class="rounded-3" src="{{url('Storage/mags/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 								</div>
 								<div class="col-8">
-									<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+									<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2">
+										<i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 									<h5><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset stretched-link fw-bold">{{Str::limit($post->tittle,36)}}</a></h5>
 									<!-- Card info -->
 									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block small">
@@ -203,7 +204,7 @@
 									<div class="card-img-overlay d-flex flex-column p-3 p-sm-4">
 										<div>
 											<!-- Card category -->
-											<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor fs-6 mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+											<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}" class="badge badgecolor fs-6 mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 										</div>
 										<div class="w-100 mt-auto">
 											<!-- Card title -->
@@ -248,7 +249,7 @@
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto" >
 													<!-- Card category -->
-													<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+													<a href="{{--route('blog.category', ['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 												</div>
 											</div>
 										</div>
@@ -301,7 +302,7 @@
 							</div>
 							
 							<div class="col-md-6">
-											<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+											<a href="{{--route('blog.category', ['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 											<h3><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset fw-bold">{{Str::limit($post->tittle,48)}}</a></h3>
 											<p>{{Str::limit($post->s_desc,241)}}</p>
 											<!-- Card info -->
@@ -477,7 +478,7 @@
 									@foreach($cag as $post)
 										<div class="d-flex justify-content-between align-items-center bg-warning-soft rounded p-2 position-relative">
 											<h6 class="m-0 text-warning">{{$post->tag}}</h6>
-											<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor text-dark stretched-link">{{$post->mag->count()}}</a>
+											<a href="{{--route('blog.category', ['category_slug'=> $post->tag])--}}" class="badge badgecolor text-dark stretched-link">{{$post->mag->count()}}</a>
 										</div>
 									@endforeach
 						</div>
@@ -517,7 +518,7 @@
 							<!-- Card item big START -->
 							<div class="card mb-4">
 								<div class="card-body p-4 border rounded-3">	
-									<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+									<a href="{{--route('blog.category', ['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 									<h4 class="card-title"><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset fw-bold">{{Str::limit($post->tittle,57)}}</a></h4>
 									<p class="card-text m-0">{{Str::limit($post->s_desc,90)}}</p>
 									<!-- Card info -->
@@ -562,7 +563,7 @@
 							<!-- Card item START -->
 							<div class="card mb-1">
 								<div class="card-body px-0 border-bottom">
-									<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+									<a href="{{--route('blog.category', ['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 									<h5><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link stretched-link text-reset">{{Str::limit($post->tittle,36)}}</a></h5>
 									<!-- Card info -->
 									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block small">
@@ -645,7 +646,7 @@
 											<div class="card-img-overlay d-flex align-items-start flex-column p-3">
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto">
-													<a href="{{route('blog.category', ['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
+													<a href="{{--route('blog.category', ['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 												</div>
 											</div>
 										</div>
@@ -705,7 +706,7 @@
 										<!-- Card overlay bottom -->
 										<div class="w-100 mt-auto">
 											<!-- Card category -->
-											<a href="{{route('blog.category',['category_slug'=> $post->tag])}}" class="badge badgecolor mb-2">
+											<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2">
 											<i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 										</div>
 									</div>
@@ -782,7 +783,7 @@
 							<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " 
 							style="background-image:url({{asset('Storage/mags/'.$post->image)}}); background-position: center left; background-size: cover;">
 								<div class="p-3">
-									<a href="{{route('blog.category',['category_slug'=> $post->tag])}}"   class="stretched-link btn-link fw-bold text-white h5">{{$post -> category}}</a>
+									<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}"   class="stretched-link btn-link fw-bold text-white h5">{{$post -> category}}</a>
 								</div>
 							</div>
 							@endforeach
@@ -856,7 +857,7 @@
 											<div class="card-img-overlay d-flex align-items-start flex-column p-3">
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto">
-													<a href="{{route('blog.category',['category_slug'=> $posts->slug])}}" class="badge badgecolor mb-2">
+													<a href="{{--route('blog.category',['category_slug'=> $posts->slug])--}}" class="badge badgecolor mb-2">
 														<i class="fas fa-circle me-2 small fw-bold"></i>{{$posts->tag}}</a>
 												</div>
 											</div>

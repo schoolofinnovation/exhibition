@@ -23,6 +23,9 @@
                             <option value="awards">Awards</option>
                             <option value="forum">Forum</option>
                         </select>
+                          @error('type')
+                            <div class="form-text">{{$message}}</div>
+                            @enderror
                     </div>
 
                     <div class="py-2">
@@ -32,6 +35,9 @@
                                <option value="{{$evento->id}}">{{$evento->eventname}}</option>
                             @endforeach
                         </select>
+                        @error('event_id')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
                     
                 </div>
@@ -41,42 +47,62 @@
                         <label class="form-label" for="unp-standard-price">Code</label>
                         <input class="form-control" type="text" wire:model.lazy="code">
                         <div class="form-text">It shoud be unique</div>
+                        @error('code')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
 
                     <div class="col-sm-6 mb-3">
                         <label class="form-label" for="unp-product-name">Ticket Name</label>
                         <input class="form-control" type="text" wire:model.lazy="package" wire:keyup="generateSlug">
                         <div class="form-text">Create unique ticket name</div>
+                        @error('package')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
 
                     <div class="col-sm-3 mb-3">
                         <label class="form-label" for="unp-product-name">Number of Tickets</label>
                         <input class="form-control" type="number" wire:model.lazy="number">
                         <div class="form-text">How many auidence can enter? </div>
+                        @error('number')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
 
                     <div class="col-sm-3 mb-3">
                         <label class="form-label" for="unp-product-name">Ticket Price </label>
                         <input class="form-control" type="number" wire:model.lazy="price">
                         <div class="form-text">Price of the ticket</div>
+                        @error('price')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
 
                     <div class="col-sm-3 mb-3">
                         <label class="form-label" for="unp-product-name">Discounted Price</label>
                         <input class="form-control" type="number" wire:model.lazy="saleprice">
                         <div class="form-text">Discounted Price to auidence </div>
+                        @error('saleprice')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>    
                     
                     <div class="col-sm-3 mb-3">
                         <label class="form-label" for="unp-standard-price">Start Date</label>
                         
                         <input class="form-control" type="date" wire:model.lazy="start_date">
-                        <div class="form-text">Average marketplace price for this category is $15.</div>
+                       
+                        @error('start_date')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="col-sm-3 mb-3">
                         <label class="form-label" for="unp-extended-price">Last Date</label>
                         <input class="form-control" type="date" wire:model.lazy="expiry_date">
-                        <div class="form-text">Typically 10x of the Standard license price.</div>
+                        @error('expiry_date')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
                 </div>
 
@@ -85,16 +111,21 @@
                         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" wire:model.lazy="desc"></textarea>
                         <div class="form-text">Describle your tickets plan</div>
+                        @error('desc')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
 
 
                 <div class="row">
                     <div class="col-sm-3 mb-3">
-                        <label class="form-label" for="unp-standard-price">Validaity</label>
+                        <label class="form-label" for="unp-standard-price">Validity</label>
                         
                         <input class="form-control" type="date" wire:model.lazy="validity">
                         
-                        <div class="form-text">Average marketplace price for this category is $15.</div>
+                        @error('validity')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
                     
                     <div class="col-sm-3 mb-3">
@@ -102,21 +133,27 @@
                         <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
                         <input class="form-control" type="date" wire:model.lazy="expiry_date">
                         </div>
-                        <div class="form-text">Typically 10x of the Standard license price.</div>
+                        @error('expiry_date')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="col-sm-3 mb-3">
                         <label class="form-label" for="unp-extended-price">Tickets Deactivation time</label>
                         <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
                         <input class="form-control" type="time" wire:model.lazy="start_time">
                         </div>
-                        <div class="form-text">Typically 10x of the Standard license price.</div>
+                        @error('start_time')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="col-sm-3 mb-3">
                         <label class="form-label" for="unp-extended-price">Tickets Deactivation time</label>
                         <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
                         <input class="form-control" type="time" wire:model.lazy="expiry_time">
                         </div>
-                        <div class="form-text">Typically 10x of the Standard license price.</div>
+                        @error('expiry_time')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                     </div>
 
                 </div>
@@ -126,6 +163,9 @@
                     <label class="form-check-label" for="flexCheckChecked">
                     By clicking "submit" you agree to our Terms of Service.
                     </label>
+                    @error('terms')
+                            <div class="form-text">{{$message}}</div>
+                        @enderror
                 </div>
                 <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
             </form>

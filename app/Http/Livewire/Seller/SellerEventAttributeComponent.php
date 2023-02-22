@@ -23,6 +23,7 @@ class SellerEventAttributeComponent extends Component
     public $tagline;
     public $shtdesc;
     public $eventna_id;
+    public $event_id;
 
 
     public function mount($event_id)
@@ -73,27 +74,28 @@ class SellerEventAttributeComponent extends Component
             //'eventna_id'=>'required'
         ]);
 
-        $fattribute = Event::find($this->attribute_id);
-        $fattribute->id = $this->eventna_id ;
+        $fattribute = Event::find($this->event_id);
+        //$fattribute->id = $this->eventna_id ;
         $fattribute->category_id = $this->category_id ;
         $fattribute->auidence = $this->auidence ;
         $fattribute->exhibitors = $this->exhibitors ;
         $fattribute->sector_id = $this->sector_id ;
         $fattribute->expo_id = $this->expo_id ;
         $fattribute->search_id = $this->search_id ;
+
         $fattribute->desc = $this->desc ;
         $fattribute->tagline = $this->tagline ;
         $fattribute->shtdesc = $this->shtdesc ;
-        $fattribute->eventna_id = $this->eventna_id ;
-        dd($fattribute);
+       // $fattribute->eventna_id = $this->eventna_id ;
+        //dd($fattribute);
         $fattribute->save();
         session()->flash('message','Attribute has been updated succesfully!!');
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('seller.dashboard');
     }
 
     public function render()
     {
-        $event = Event::where('id', $this->event)->first();
+        $event = Event::find($this->event_id)->first();
         //$event = Event::where('user_id', Auth::user()->id)->where('status','1')->get();
         $expo = Expo::where('status','1')->where('type','expo')->get();
         $search = Expo::where('status','1')->where('type','tag')->get();

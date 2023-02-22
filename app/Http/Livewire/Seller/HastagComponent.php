@@ -11,6 +11,8 @@ class HastagComponent extends Component
 {
     public $hastag;
     public $event_id;
+    public $admstatus;
+    public $status;
 
     public function mount()
     {
@@ -24,7 +26,6 @@ class HastagComponent extends Component
     public function add()
     {
         $this->validate([
-
             'hastag'=>'required', 
         ]);
 
