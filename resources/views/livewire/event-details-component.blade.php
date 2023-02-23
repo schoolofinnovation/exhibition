@@ -69,9 +69,13 @@
                 <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
                 <ul class="list-unstyled text-light mb-0 mt-2">
                       <li class="d-flex">
+                        @if( $ticketOrExhibit != 0 )
                         <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
                         href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
-                        
+                        @else ( $ticketOrExhibit == 0 )
+                        <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                        href="{{route('event.exhibit')}}">Exhibit</a>
+                        @endif
                         <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
                       </li>
                 </ul>
@@ -159,10 +163,14 @@
 
                 <ul class="list-unstyled text-light mb-0 mt-2">
                       <li class="d-flex">
+                      @if( $ticketOrExhibit != 0 )
                         <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
                         href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
-                        
-                        <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                      @else( $ticketOrExhibit == 0 )
+                      <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                        href="{{route('event.product',['slug' => $event->slug])}}">Exhibit</a>
+                      @endif
+                      <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
                       </li>
                 </ul>
 
@@ -228,8 +236,16 @@
               </span>
               
 
-              <span><a class="btn btn-primary btn-sm" type="button" 
-            href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a></span>
+              <span>
+              @if( $ticketOrExhibit != 0 )
+              <a class="btn btn-primary btn-sm" type="button" 
+            href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
+            @elseif( $ticketOrExhibit == 0 )
+            <a class="btn btn-primary btn-sm" type="button" 
+            href="{{route('event.exhibit')}}"> Book your space </a>
+            @endif
+          
+          </span>
             
               
           </li>

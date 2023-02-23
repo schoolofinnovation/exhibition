@@ -120,6 +120,7 @@ use App\Http\Livewire\Employee\EmployeeAddSpeakerComponent;
 use App\Http\Livewire\Employee\EmployeeAddSponsershipComponent;
 
 use App\Http\Livewire\EventRateNowComponent;
+use App\Http\Livewire\ExhibitComponent;
 use App\Http\Livewire\ExhibitionCategoryComponent;
 use App\Http\Livewire\ExhibitionComponent;
 use App\Http\Livewire\LeadComponent;
@@ -210,8 +211,6 @@ Route::get('/downloadOpportunity', [UserOrderDetailsComponent::class, 'index'])-
 //Route::get('/cartzilla-payment', CartzillaPaymentComponent::class)->name('payment');
 //Route::get('/cartzilla-transaction', CartzillaTransactionComponent::class)->name('transaction');
 
-
-
 Route::get('/blog', BlogComponent::class)->name('blog.Coi');
 Route::get('/blog/{slug}', BlogDetailComponent::class)->name('blog.details');
 Route::get('/blog-category/{category_slug}', BlogCategoryComponent::class)->name('blog.category');
@@ -231,6 +230,7 @@ Route::get('/about', AboutComponent::class)->name('about');
 
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
+Route::get('/exhibit', ExhibitComponent::class)->name('event.exhibit');
 
 Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
 Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');

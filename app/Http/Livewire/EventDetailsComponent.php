@@ -52,6 +52,8 @@ class EventDetailsComponent extends Component
         $premium = Franchise::where('status', 'active')->where('featured','premium')->limit(1);
         $pavillion = Pavillion::where('admstatus','0')->where('status','1')->where('event_id',$event->id)->get();
 
+        $ticketOrExhibit = Ticket::where('event_id', $event -> id)->count();
+//dd($ticketOrExhibit);
           if (Auth::check()) 
         {
             $rating = Rate::where('user_id', Auth::user()->id)->value('rate');
@@ -74,6 +76,7 @@ class EventDetailsComponent extends Component
                                                         'sponSer' => $sponSer,
                                                         'speaker' => $speaker,
                                                         'awarde' => $awarde,
-                                                        'franchises' => $franchises]);
+                                                        'franchises' => $franchises,'ticketOrExhibit' => $ticketOrExhibit
+                                                      ]);
     }
 }
