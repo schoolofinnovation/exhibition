@@ -238,12 +238,10 @@
 
               <span>
               @if( $ticketOrExhibit != 0 )
-              <a class="btn btn-primary btn-sm" type="button" 
-            href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
-            @elseif( $ticketOrExhibit == 0 )
-            <a class="btn btn-primary btn-sm" type="button" 
-            href="{{route('event.exhibit')}}"> Book your space </a>
-            @endif
+                <a class="btn btn-primary btn-sm" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
+                @elseif( $ticketOrExhibit == 0 )
+                <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit')}}"> Book your space </a>
+              @endif
           
           </span>
             
@@ -895,7 +893,7 @@
               </div>
             </section>
             
-      <!-- Card group last-->
+          <!-- Card group last-->
             <section class="container py-5">
                 
                 <div class="card-group last" >
@@ -936,8 +934,12 @@
               
               <div class="d-flex justify-content-between py-2 px-2">
                <div class="text-dark fw-medium fs-sm pl-3 lh-3">  Rs.{{$productPrice}}<br><span class=" fw-light fs-xs">Onwards</span></div>
-                <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket
-                </a>
+               @if( $ticketOrExhibit != 0 )
+                  <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket</a>
+                @elseif( $ticketOrExhibit == 0 )
+                  <a href="{{route('event.exhibit')}}" class="btn btn-primary btn-sm">Book your Space</a>
+               @endif
+              
               </div>
               
             </div>
