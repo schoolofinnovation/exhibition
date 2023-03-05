@@ -82,17 +82,12 @@
             </div>
             
             <div class="col-lg-3 col-md-6 col-sm-8  px-3 py-5 d-none d-sm-block">
-            
-            
-            
                   <h5 class="text-light fw-normal fs-sm pt-2 pb-0">
                       Upcoming Expo
                   </h5>
                             
                 <h2 class="text-primary mb-3 lh-1"> <span class="fw-light"> MAKING</span> <br>BIG GROWTH <br>
                 <span class="fw-light">IN INDIA</span> <br>BUSINESS <br><span class="fw-light">A REALITY</span></h1>
-                
-                
                     <ul class="list-unstyled text-light mb-0 mt-0 border-top">
                           <li class="d-flex pt-1">
                             <a class="fs-xs  text-center border-end px-0" href="{{$link->google()}}"> <span class="fw-bold">100 +</span> <br>Thought Leadership</a>
@@ -100,9 +95,6 @@
                             <a class="fs-xs  text-center  px-0" href="{{$link->google()}}"><span class="fw-bold">300 +</span> <br>Business Ideas Opportunities</a>
                           </li>
                     </ul>
-                  
-                
-                
             </div>  
               
             <div class="col-lg-3 d-none d-sm-block">
@@ -134,7 +126,7 @@
                 <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
                     <img src="{{url('assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
                 </a>
-            </div>
+          </div>
           <div class="col-lg-7 col-md-6 col-sm-8">
             <div class="col-lg-6 col-md-6 border border-white border-1 px-3 py-5">
                 <h5 class="text-light fw-normal pt-2 pb-0">
@@ -191,32 +183,45 @@
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
         </ul>
-      </Section>
+      </section>
 
       <div class="container d-lg-none">
-              <div class="col-lg-4 col-md-5 pt-2 pb-2">
-                <div class="star-rating me-2"><i class="ci-star-filled fs-sm text-accent me-1"></i>
-                <span class="h5">77% </span><span class="d-inline-block align-middle fs-sm"> 58K rating</span></div>        
+              <div class="col-lg-4 col-md-5 pt-2 pb-0">
+                <div class="star-rating me-2"><i class=" bi bi-star-filled fs-sm text-accent me-1"></i>
+                <span class="fs-md fw-bold">77% </span><span class="d-inline-block align-middle fs-sm"> 58K rating</span></div>        
               </div>
 
-              <ul class="list-unstyled fs-sm bg-secondary p-2">
-                
-              
+              <ul class="list-unstyled  bg-secondary py-2">
                       @php
                       $event->id = $avgrating;
                       @endphp
 
                 @if( $rate == $avgrating)
-                    <li class="d-flex justify-content-between p-0 m-0">
-                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br>
-                    <span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                    <li class="d-flex justify-content-between p-2 m-0">
+                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> {{$rating}} /10</a></span></li>
+                    
                   @else
                     <li class="d-flex justify-content-between p-0 m-0">
                     <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
                     <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
                 @endif
               </ul>
+
+            <span class="badge bg-secondary">{{ucwords(trans($event->category->industry))}} </span>
+            <span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>
+              <div class="fs-xs fw-normal">
+                @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
+                {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
+               </div>
+              <div class="fs-xs fw-normal pb-2 pt-2">
+              {{Str::limit($event->desc,130)}}  
+              </div> 
+              <div>
+
+              </div>
+
+              
       </div>  
 
       <div class="container d-none d-sm-block">
@@ -232,7 +237,6 @@
                 @endif 
                 
                 <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} 
-
               </span>
               
 
@@ -276,6 +280,7 @@
               <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
             </ul>
         </div>
+
       </div>
 
       <hr class="mt-md-2 mb-2">
@@ -555,6 +560,8 @@
               <div class="col-lg-8">
               
                 <p class="fs-md"> {{Str::limit($event->eventname,289)}}...</p>
+                <p class="fs-md"> {{Str::limit($event->desc,289)}}...</p>
+
                 <h3 class="h5 pt-2">Main features</h3>
                 <ul class="fs-md">
                   <li>Nemo enim ipsam voluptatem quia voluptas sit</li>
@@ -720,37 +727,55 @@
             </div>
           </div>
           <!-- Comments tab-->
-          <div class="tab-pane fade" id="comments" role="tabpanel">
+          <div class="tab-pane show" id="comments" role="tabpanel">
             <div class="row">
               <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h6 class="fs-md mb-0">Top reviews</h6>
+                      <a class="nav-link-style fs-xs fw-light text-primary" href="#"> 203K
+                      reviews<i class="bi bi-chevron-right me-2"></i></a>
+                </div>
+
+                 <div class="fs-xs fw-light">Summary of 203K reviews.</div> 
+                 <div class="badge"> #blockbuster  <span class="">2917</span></div>
+
                 <!-- comment-->
-                <div class="d-flex align-items-start py-4 border-bottom"><img class="rounded-circle" src="#" width="50" alt="Laura Willson">
+                <div class=" border-1 d-flex align-items-start py-4 border-bottom">
+                  <img class="rounded-circle" src="#" width="50" alt="">
+
                   <div class="ps-3">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                      <h6 class="fs-md mb-0">Laura Willson</h6><a class="nav-link-style fs-sm fw-medium" href="#"><i class="ci-reply me-2"></i>Reply</a>
+                      <p class="fs-md mb-0">User</p>
+                      <a class="nav-link-style fs-sm fw-medium" href="#">
+                        <i class="bi bi-star me-2"></i>10/10</a>
                     </div>
-                    <p class="fs-md mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cupidatat non proident, sunt in culpa qui.</p><span class="fs-ms text-muted"><i class="ci-time align-middle me-2"></i>Sep 7, 2019</span>
-                    <!-- comment reply-->
-                    <div class="d-flex align-items-start border-top pt-4 mt-4"><img class="rounded-circle" src="#" width="50" alt="Sara Palson">
+                    <h6 class="fs-md mb-1">Lorem ipsum dolor sit amet</h6>
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fs-ms text-muted">
+                      9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>
+                      12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i>
+                        </span>
+
+                      <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i>
+                        </span>
+                    </div>
+                    
+                    <!-- comment  insdie comment reply-->
+                    {{--<div class="d-flex align-items-start border-top pt-4 mt-4"><img class="rounded-circle" src="#" width="50" alt="Sara Palson">
                       <div class="ps-3">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                           <h6 class="fs-md mb-0">Sara Palson</h6>
                         </div>
                         <p class="fs-md mb-1">Egestas sed sed risus pretium quam vulputate dignissim. A diam sollicitudin tempor id eu nisl. Ut porttitor leo a diam. Bibendum at varius vel pharetra vel turpis nunc.</p><span class="fs-ms text-muted"><i class="ci-time align-middle me-2"></i>Sep 13, 2019</span>
                       </div>
-                    </div>
+                    </div>--}}
+
                   </div>
                 </div>
-                <!-- comment-->
-                <div class="d-flex align-items-start py-4"><img class="rounded-circle" src="#" width="50" alt="Benjamin Miller">
-                  <div class="ps-3">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                      <h6 class="fs-md mb-0">Benjamin Miller</h6><a class="nav-link-style fs-sm fw-medium" href="#"><i class="ci-reply me-2"></i>Reply</a>
-                    </div>
-                    <p class="fs-md mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cupidatat non proident, sunt in culpa qui.</p><span class="fs-ms text-muted"><i class="ci-time align-middle me-2"></i>Aug 15, 2019</span>
-                  </div>
-                </div>
-                <!-- Post comment form-->
+
+
+                <!-- Post comment form
                 <div class="card border-0 px-0 shadow my-2">
                   <div class="card-body">
                     <div class="d-flex align-items-start"><img class="rounded-circle border p-2" src="#" width="50" alt="Createx Studio">
@@ -763,7 +788,9 @@
                       </form>
                     </div>
                   </div>
-                </div>
+                </div>-->
+
+
               </div>
             </div>
           </div>
@@ -825,29 +852,29 @@
       @endif
 
       <hr class="mt-md-2 mb-2">
-      <!-- Partner-->
-      <section class="container py-2 pt-md-5">
-        <h6 class="text-left mb-2">Partner</h6>
-        <div class="my-sliderPartner">
-              @foreach ($franchises as $franchise)
-              
-                <div class="card product-card-alt">
-                  <div class="product-thumb p-3">
-                    <div class="product-card-actions p-2">
-                      <div class="fs-sm text-light" href="">Booth 3</div>
-                      <div class="fs-sm text-light" href="">Elite Sponsor</div>
-                      <div class="fs-sm text-light" href="">View Website</div>
-                    </div>   
-                    <a class="product-thumb-overlay" href=""> </a>
-                    <img class="p-3" width="auto" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
-                   
-                  </div>
-                </div>
-              @endforeach
-        </div>
-      </section>
+          <!-- Partner-->
+          <section class="container py-2 pt-md-5">
+            <h6 class="text-left mb-2">Partner</h6>
+            <div class="my-sliderPartner">
+                  @foreach ($franchises as $franchise)
+                  
+                    <div class="card product-card-alt">
+                      <div class="product-thumb p-3">
+                        <div class="product-card-actions p-2">
+                          <div class="fs-sm text-light" href="">Booth 3</div>
+                          <div class="fs-sm text-light" href="">Elite Sponsor</div>
+                          <div class="fs-sm text-light" href="">View Website</div>
+                        </div>   
+                        <a class="product-thumb-overlay" href=""> </a>
+                        <img class="p-3" width="auto" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                      
+                      </div>
+                    </div>
+                  @endforeach
+            </div>
+          </section>
 
-      <!-- Card group sec_last-->
+          <!-- Card group sec_last-->
             <section class="container py-5">
 
               <!-- Card group -->
@@ -944,11 +971,55 @@
               
             </div>
 
-     
     </main>
 
 
         @push('scripts')
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Event",
+              "name": "{{$event->eventname}}",
+              "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}",
+              "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('D, d M')}}",
+              "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+              "eventStatus": "https://schema.org/EventScheduled",
+              "location": {
+                "@type": "Place",
+                "name": "{{$event->venue}}",
+                "address": {
+                  "@type": "PostalAddress",
+                {{--"streetAddress": "100 West Snickerpark Dr",
+                  "addressLocality": "Snickertown",
+                  "postalCode": "19019",--}}
+                  "addressRegion": "{{$event->city}}",
+                  "addressCountry": "IN"
+                }
+              },
+              "image": [
+                "{{url('assets/image/exhibition/'.$event->image)}}"
+              ],
+              "description": "{{$event->desc}}",
+              {{--"offers": {
+                "@type": "Offer",
+                "url": "https://www.example.com/event_offer/12345_201803180430",
+                "price": "30",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2024-05-21T12:00"
+              },
+              "performer": {
+                "@type": "PerformingGroup",
+                "name": "Kira and Morrison"
+              },--}}
+              "organizer": {
+                "@type": "Organization",
+                "name": "The Exhibition Network",
+                "url": "https://exhibition.org.in"
+              }
+            }
+          </script>
+
           <script>
             var slider = tns({
               "container": '.my-sliderexpo',  

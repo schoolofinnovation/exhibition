@@ -161,17 +161,17 @@
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
           <a class="d-table-cell handheld-toolbar-item" href="#conference">
-            <span class="handheld-toolbar-icon"><i class="bi bi-house-door"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-house-border-style"></i></span>
             <span class="handheld-toolbar-label">Conference</span>
           </a>
 
           <a class="d-table-cell handheld-toolbar-item" href="#awards">
-            <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
+            <span class="handheld-toolbar-icon"><i class=" bi bi-trophy"></i></span>
             <span class="handheld-toolbar-label">Awards</span>
           </a>
           
           <a class="d-table-cell handheld-toolbar-item" href="#exhibit">
-            <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-caledndar4-week"></i></span>
             <span class="handheld-toolbar-label">Exhibition</span>
           </a>
           @if(Cart::instance('cart')->count() < 0)
@@ -197,7 +197,7 @@
             </a>
           @endif
 
-          <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRight" onclick="window.scrollTo(0, 0)">
+          <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRigh" onclick="window.scrollTo(0, 0)">
             <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
             <span class="handheld-toolbar-label">Menu</span>
           </a>

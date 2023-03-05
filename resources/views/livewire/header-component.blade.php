@@ -61,20 +61,17 @@
         <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
         <div class="navbar-sticky bg-light">
           <div class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
+            <div class="container p-0">
                 <a class="navbar-brand d-none d-sm-block  flex-shrink-0 mx-0" href="{{asset('/')}}"><i class="bi bi-globe2"></i></a>
 
                 <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0 ml-1" style="line-height:17px;" href="{{asset('/')}}">
                   <div class="fs-4 fw-normal" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
-                    The <br>Exhibition<br>Network</div>
-
-
+                    The<br>Exhibition<br>Network</div>
                     <!--<img src="{{asset('image/def.png')}}" width="142" alt="COI">-->
                 </a> 
               
                 <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
-                
-                    <img src="{{asset('image/Yoyo.png')}}" width="174" alt="COI">
+                    <img src="{{asset('image/Yoyo.png')}}" width="100" alt="COI">
                 </a>
                
               <!-- Search-->
@@ -303,9 +300,11 @@
                                     @if(Auth::user()->utype === 'ADM')
                                       <div class="navbar-tool dropdown ms-1">
                                           <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
-                                            <div class=" rounded-circle" >
+                                            
+                                          <div class=" rounded-circle" >
                                               <img  class="rounded-circle" src="{{Auth::user()->profile_photo_url }}"  alt="{{Auth::user()->name}}" style="max-width: 50%;">
                                             </div>
+                                            
                                             <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
                                           </a>
                                           <div class="dropdown-menu dropdown-menu-end">
@@ -422,7 +421,8 @@
                                       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
                                           
                                           <div class="offcanvas-header">
-                                            <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br><span class="fs-sm fw-lighter">Got an event? Partner with us</span></div>
+                                            <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br><span class="fs-sm fw-lighter">
+                                              Got an event? Partner with us</span></div>
                                             
                                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                           </div>
@@ -531,7 +531,7 @@
                                     @endif
                               @else
                                 <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="">
-                                  <div class="navbar-tool-icon-box"  ><i class="navbar-tool-icon bi bi-person-circle"></i></div>
+                                  <div class="navbar-tool-icon-box"><i class="navbar-tool-icon bi bi-person-circle"></i></div>
                                   <div class="navbar-tool-text ms-n3" ><small>Hello, Sign in</small>My Account</div>
                                 </a>
                             @endif
@@ -762,12 +762,15 @@
               </div>
             </div>
 
-            <!--stop-->
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 380px;">                  
-                <div class="offcanvas-header">
+            <!--down stop-->
+            <div class="offcanvas offcanvas-start" data-bs-toggle="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 380px;">                  
+            <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">    
+
+            <div class="offcanvas-header">
                   <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br><span class="fs-sm fw-lighter">Got an event? Partner with us</span></div>
                   
                   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  
                 </div>
               
                 <div class="list-group list-group-flush border-bottom scrollarea">
@@ -779,22 +782,22 @@
                       </div>
                       <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
                     </a>
-                  @if(Auth::check())
-                    <a href="{{route('user.Orders')}}" class="list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Your Orders</normal>
-                        <small>
-                        @if (Auth::check()) 
-                          <i class="bi bi-chevron-right"></i>
-                          @else
-                          <i class="bi bi-lock-fill"></i>
-                          
-                          @endif
-                        </small>
-                      </div>
-                      <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
-                    </a>
-                  @endif
+                    @if(Auth::check())
+                      <a href="{{route('user.Orders')}}" class="list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                          <normal class="mb-1">Your Orders</normal>
+                          <small>
+                          @if (Auth::check()) 
+                            <i class="bi bi-chevron-right"></i>
+                            @else
+                            <i class="bi bi-lock-fill"></i>
+                            
+                            @endif
+                          </small>
+                        </div>
+                        <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
+                      </a>
+                    @endif
                     <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
                         <normal class="mb-1">COI Recommends</normal>
@@ -868,6 +871,7 @@
 
                 </div>
             </div>
+            <!--stop-->
 
         </div>
       </header>
