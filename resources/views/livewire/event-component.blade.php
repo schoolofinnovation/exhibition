@@ -141,19 +141,26 @@
 
         <!--Trending Exhibition-->
           <section class="container pt-2" id="exhibit"> 
-            <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-2">
-              <div class="fs-sm">Trending<h4 class="mb-0  me-2">Exhibition</h4></div>
-              <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo"> <i class="mr-1  bi bi-plus"></i>
-                Exhibit<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>-->
-                <div class="pt-3">
-                  <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">See All</a>
-                  <ul class="dropdown-menu" width="auto">
+          <div class="list-unstyled py-2 px-0 pl-0">
+                    <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm"> Trending<br><span class="fw-medium h5">Exhibition</span></span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                    <ul class="dropdown-menu" width="auto">
                     <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'expo'])}}">More</a></li>
                     <li><a class="dropdown-item" href="#">Exhibit</a></li>
                     <li><a class="dropdown-item" href="#">Add Event</a></li>        
                   </ul>
-                </div>
+                    
+                    </span></div>
+              </div>
+
+            <div >
+              @foreach( $finder as $categ) 
+               <span class="badge bg-secondary">{{ucwords(trans($categ->expoindustry))}}</span>
+              @endforeach
             </div>
+
+
             <!-- Grid-->
             <div class="row pt-2 mx-n2 my-Slider3"> 
               @foreach($evento as $eventoi)
@@ -226,27 +233,18 @@
 
         <!--COI Awards-->
           <section class="container pt-2" id="awards"> 
-            <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-4">
-              <h2 class="h3 mb-0 pt-3 me-2">COI Awards</h2>
-              
-              {{--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="{{route('franchise.Coi')}}">
-                Nominate<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
-              </div>--}}
-
-              <div class="pt-3">
-                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    All
-                    </a>
-
+                <div class="list-unstyled border-bottom pt-2 pb-1 px-0 pl-0">
+                    <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm"> Trending<br><span class="fw-medium h5">Awards</span></span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
                     <ul class="dropdown-menu" width="auto">
                     <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'award'])}}">More</a></li>
                       <li><a class="dropdown-item" href="#">Nominate</a></li>
-                      <li><a class="dropdown-item" href="#">Attend</a></li>
-                    </ul>
-              </div>
-
-
-            </div>
+                      <li><a class="dropdown-item" href="#">Attend</a></li>   
+                  </ul>
+                    
+                    </span></div>
+                </div>
             <!--Award-->
             <div class="row pt-2 mx-n2 my-Slider5">
               @foreach($awardo as $eventoi)
@@ -402,22 +400,18 @@
 
         <!--Trending conference-->
           <section class="container pt-2" id="conference"> 
-            <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-2">  
-              <div class="fs-sm" >Trending<h4 class="mb-0 me-2">Conference</h4></div>
-                <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo">
-                  Attend<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>-->
-                  <div class="pt-3">
-                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                       See All
-                    </a>
-
+                <div class="list-unstyled border-bottom pt-2 pb-1 px-0 pl-0">
+                    <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm"> Trending<br><span class="fw-medium h5">Conference</span></span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
                     <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'conference'])}}">More</a></li>
+                      <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'conference'])}}">More</a></li>
                       <li><a class="dropdown-item" href="#">Attend</a></li>
-                      <li><a class="dropdown-item" href="#">Speaker</a></li>
-                    </ul>
-                  </div>
-              </div>
+                      <li><a class="dropdown-item" href="#">Speaker</a></li>  
+                  </ul>
+                    
+                    </span></div>
+                </div>
             <div class="row pt-2 mx-n2 my-Slider6"> 
               @foreach($evento as $eventoi)
               <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
@@ -489,23 +483,17 @@
 
         <!--Trending Magazine-->
           <section class="container pt-2" id="exhibit"> 
-            <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-2 mb-2">  
-              <div class="fs-sm" >Trending Business<h4 class="mb-0 me-2">Magazine</h4></div>
-                
-              <!--<div class="pt-3"><a class="btn btn-outline-primary btn-sm" href="#listexpo">
-                  Advertise<i class="bi bi-caret-down-fill ms-1 me-n1"></i></a></div>-->
-
-                  <div class="pt-3">
-                    <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      All
-                    </a>
-
-                    <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'magazine'])}}">More</a></li>
+           <div class="list-unstyled border-bottom pt-2 pb-1 px-0 pl-0">
+                <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm"> Trending Business<br><span class="fw-medium h5">Magazine</span></span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                     <ul class="dropdown-menu" width="auto">
+                      <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'magazine'])}}">More</a></li>
                       <li><a class="dropdown-item" href="#">Advertise</a></li>
-                      <li><a class="dropdown-item" href="#">Subscribe</a></li>
+                      <li><a class="dropdown-item" href="#">Subscribe</a></li>  
                     </ul>
-                  </div>
+                    </span>
+                </div>
             </div>
               
             <!-- Grid-->
@@ -952,6 +940,32 @@
             "autoplayHoverPause": true,
             "autoplay":true,
             "autoplayButtonOutput":false
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+
+    <script>
+      var slider = tns({
+        "container": '.badgese',            
+        "responsive": {
+          "300": {
+            "items": 3,
+            "controls": false,
+            "mouseDrag": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+            "autoplayHoverPause": true,
+          },
+          "500": {
+            "items": 1,
+            "nav": false,
+            "controls": false,
+            "autoplayHoverPause": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false
           },
           
         },

@@ -176,7 +176,8 @@
       </div>
     </section>
 
-      <section class="container d-lg-none ">
+    <!-- slider at next header-->  
+    <section class="container d-lg-none ">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Exhibit</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
@@ -186,10 +187,14 @@
       </section>
 
       <div class="container d-lg-none">
-              <div class="col-lg-4 col-md-5 pt-2 pb-0">
-                <div class="star-rating me-2"><i class=" bi bi-star-filled fs-sm text-accent me-1"></i>
+              <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
+                <div class="star-rating me-2"><i class="bi bi-star-filled text-accent me-1"></i>
                 <span class="fs-md fw-bold">77% </span><span class="d-inline-block align-middle fs-sm"> 58K rating</span></div>        
-              </div>
+              </div>-->
+              <div class="col-lg-4 col-md-5 pt-2 pb-0">
+                  <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
+                  <span class="fs-md fw-bold"> <i class="bi bi-star-fill text-primary me-1"></i> 7.1/10 </span><span class="d-inline-block align-middle fs-sm"> 34.7K votes</span> <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
+                </div>
 
               <ul class="list-unstyled  bg-secondary py-2">
                       @php
@@ -197,13 +202,13 @@
                       @endphp
 
                 @if( $rate == $avgrating)
-                    <li class="d-flex justify-content-between p-2 m-0">
-                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                    <li class="d-flex justify-content-between px-2 m-0">
+                    <span cass="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> {{$rating}} /10</a></span></li>
                     
                   @else
-                    <li class="d-flex justify-content-between p-0 m-0">
-                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                    <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
                     <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
                 @endif
               </ul>
@@ -728,72 +733,77 @@
           </div>
           <!-- Comments tab-->
           <div class="tab-pane show" id="comments" role="tabpanel">
-            <div class="row">
-              <div class="col-lg-8">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                      <h6 class="fs-md mb-0">Top reviews</h6>
-                      <a class="nav-link-style fs-xs fw-light text-primary" href="#"> 203K
-                      reviews<i class="bi bi-chevron-right me-2"></i></a>
-                </div>
-
-                 <div class="fs-xs fw-light">Summary of 203K reviews.</div> 
-                 <div class="badge"> #blockbuster  <span class="">2917</span></div>
-
-                <!-- comment-->
-                <div class=" border-1 d-flex align-items-start py-4 border-bottom">
-                  <img class="rounded-circle" src="#" width="50" alt="">
-
-                  <div class="ps-3">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                      <p class="fs-md mb-0">User</p>
-                      <a class="nav-link-style fs-sm fw-medium" href="#">
-                        <i class="bi bi-star me-2"></i>10/10</a>
-                    </div>
-                    <h6 class="fs-md mb-1">Lorem ipsum dolor sit amet</h6>
-                    
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span class="fs-ms text-muted">
-                      9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>
-                      12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i>
-                        </span>
-
-                      <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i>
-                        </span>
-                    </div>
-                    
-                    <!-- comment  insdie comment reply-->
-                    {{--<div class="d-flex align-items-start border-top pt-4 mt-4"><img class="rounded-circle" src="#" width="50" alt="Sara Palson">
-                      <div class="ps-3">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                          <h6 class="fs-md mb-0">Sara Palson</h6>
-                        </div>
-                        <p class="fs-md mb-1">Egestas sed sed risus pretium quam vulputate dignissim. A diam sollicitudin tempor id eu nisl. Ut porttitor leo a diam. Bibendum at varius vel pharetra vel turpis nunc.</p><span class="fs-ms text-muted"><i class="ci-time align-middle me-2"></i>Sep 13, 2019</span>
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6 class="fs-md mb-0">Top reviews</h6>
+                        <a class="nav-link-style fs-xs fw-normal text-primary" href="#"> 203K
+                        reviews<i class="bi bi-chevron-right me-2"></i></a>
+                  </div>
+  
+                   <div class="fs-xs fw-normal">Summary of 203K reviews.</div> 
+                   <div class="d-flex ">
+                   
+                          <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2917</span></div>
+                          <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2917</span></div>
+                          <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2917</span></div>
+                  
+                   </div>
+                  <!-- comment-->
+                  <div class=" border-1 d-flex align-items-start py-2 mt-2 border-bottom">
+                    <img class="rounded-circle" src="#" width="50" alt="">
+  
+                    <div class="ps-3">
+                      <div class="d-flex justify-content-between align-items-end mb-2">
+                        <p class="fs-md mb-0">User</p>
+                        <a class="nav-link-style fs-sm fw-medium" href="#">
+                          <i class="bi bi-star me-2"></i>10/10</a>
                       </div>
-                    </div>--}}
-
-                  </div>
-                </div>
-
-
-                <!-- Post comment form
-                <div class="card border-0 px-0 shadow my-2">
-                  <div class="card-body">
-                    <div class="d-flex align-items-start"><img class="rounded-circle border p-2" src="#" width="50" alt="Createx Studio">
-                      <form class="needs-validation w-100 ms-3" novalidate="">
-                        <div class="mb-3">
-                          <textarea class="form-control" rows="4" placeholder="Write comment..." required=""></textarea>
-                          <div class="invalid-feedback">Please write your comment.</div>
+                      <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
+                      
+                      <div class="d-flex justify-content-between align-items-center">
+                        <span class="fs-ms text-muted">
+                        9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>
+                        12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i>
+                          </span>
+  
+                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i>
+                          </span>
+                      </div>
+                      
+                      <!-- comment  insdie comment reply-->
+                      {{--<div class="d-flex align-items-start border-top pt-4 mt-4"><img class="rounded-circle" src="#" width="50" alt="Sara Palson">
+                        <div class="ps-3">
+                          <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="fs-md mb-0">Sara Palson</h6>
+                          </div>
+                          <p class="fs-md mb-1">Egestas sed sed risus pretium quam vulputate dignissim. A diam sollicitudin tempor id eu nisl. Ut porttitor leo a diam. Bibendum at varius vel pharetra vel turpis nunc.</p><span class="fs-ms text-muted"><i class="ci-time align-middle me-2"></i>Sep 13, 2019</span>
                         </div>
-                        <button class="btn btn-primary btn-sm" type="submit">Post comment</button>
-                      </form>
+                      </div>--}}
+  
                     </div>
                   </div>
-                </div>-->
-
-
+  
+  
+                  <!-- Post comment form
+                  <div class="card border-0 px-0 shadow my-2">
+                    <div class="card-body">
+                      <div class="d-flex align-items-start"><img class="rounded-circle border p-2" src="#" width="50" alt="Createx Studio">
+                        <form class="needs-validation w-100 ms-3" novalidate="">
+                          <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Write comment..." required=""></textarea>
+                            <div class="invalid-feedback">Please write your comment.</div>
+                          </div>
+                          <button class="btn btn-primary btn-sm" type="submit">Post comment</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>-->
+  
+  
+                </div>
               </div>
             </div>
-          </div>
         </div>
       </section>
 

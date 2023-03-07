@@ -1,28 +1,21 @@
-@section('page_title','About our Journey !!')
+@section('page_title','About The Exhibtion Network: Your Trusted Marketing Partner for Exhibtions and Trade Shows.')
 
-@section('page_description','Job')
-@section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
-@section('page_author' , 'COI - CouncilofInnovation')
-
-
-@section('page_name',' All Job')
-@section('page_path',' Job')
-@section('page_list',' addJob')
-@section('page_name',' All Job')
+@section('page_description','The Exhibition Network is a leading marketing partner for exhibitions and trade shows, providing comprehensive services to help exhibitors promote their businesses and expand thier reach. We offer certification and membership programs , as well as benefits for MSMEs. Our goal is to help exhibitors showcase thier products and services, while enhancing the overall experience for exhibitors and visitors alike.')
+@section('page_keywords', 'The Exhibtion Network, marketing partner,trade shows, exhibitors, certification, membership, programs, MSMES, marketing tools, resources, discounted rates, networking opportunities, industry experts, exhibition network magazine')
+@section('page_author' , 'The Exhibition Network')
 
 
-
-<section class="container-fluid py-3 py-lg-5  ">
+        <section class="container-fluid py-3 py-lg-5  ">
           <div class="text-center mt-4 mb-3">
             <div class="masthead-followup-icon d-inline-block mb-2 text-white ">
             <img src="{{asset('/image/logo-icon.png')}}" alt="">
 
             </div>
-            <h2 class="h5 fw-lighter">About COI</h2>
+            <h2 class="h5 fw-lighter">Expand Your Reach with The Exhibition Network: Your Trusted Marketing Partner </h2>
              
             <p class="col-md-10 col-lg-8 mx-auto lead">
             Welcome to <a href="">Council of Innovation</a> is an <strong>independant business strategy and design</strong>. We empowers entrepreneur around the world to share ideas, offer support and make a difference.
-            
+            The Exhibition Network is your comprehensive marketing partner for exhibitions and trade shows. We provide certification, membership, and MSME benefits to help you showcase your business and reach your target auidence. Join us today and expand your reach like never before.  
             </p>
             <a href="#opening" class="btn btn-lg btn-outline-primary mb-3">Browse our products</a>
           </div>
@@ -40,11 +33,11 @@
             </div>
               <h2 class="lead" id="opening">OUR MISSION</h2>
             <p class="col-md-10 col-lg-8 mx-auto  display-6 fw-normal">
-            Give <a href="{{asset('')}}">entrpreneurs</a>  the power to build Community  and bring the world closer togethor.<br>
+            <a href="{{asset('')}}">Empowering</a>Your Exhibition Success: Our Mission at The Exhibition Network<br>
              
               
             </p>
-            <a href="" class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
+            <a href="" class="btn btn-lg btn-outline-primary mb-3">Join us</a>
           </div>
         
         

@@ -161,7 +161,7 @@
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
           <a class="d-table-cell handheld-toolbar-item" href="#conference">
-            <span class="handheld-toolbar-icon"><i class="bi bi-house-border-style"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
             <span class="handheld-toolbar-label">Conference</span>
           </a>
 
@@ -171,7 +171,7 @@
           </a>
           
           <a class="d-table-cell handheld-toolbar-item" href="#exhibit">
-            <span class="handheld-toolbar-icon"><i class="bi bi-caledndar4-week"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
             <span class="handheld-toolbar-label">Exhibition</span>
           </a>
           @if(Cart::instance('cart')->count() < 0)

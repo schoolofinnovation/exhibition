@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Award;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Expo;
 use App\Models\Franchise;
 use App\Models\Mag;
 use App\Models\Speaker;
@@ -45,7 +46,8 @@ class EventComponent extends Component
         //DB::table('cags')->insert([
         //['admstatus' => '1','user_id' =>'1','status' =>'1','name' =>'expo', 'organisation' => 'Buildings India' , 'slug' => 'buildingsindia.png', 'image' => 'Exhibitions India Group' ],
         
+        $finder = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
         
-        return view('livewire.event-component',['magazine'=>$magazine, 'speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
+        return view('livewire.event-component',['finder' => $finder,'magazine'=>$magazine, 'speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
     }
 }

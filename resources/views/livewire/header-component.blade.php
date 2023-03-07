@@ -60,18 +60,18 @@
 
         <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
         <div class="navbar-sticky bg-light">
-          <div class="navbar navbar-expand-lg navbar-light">
+          <div class="navbar navbar-expand-lg navbar-light py-0">
             <div class="container p-0">
-                <a class="navbar-brand d-none d-sm-block  flex-shrink-0 mx-0" href="{{asset('/')}}"><i class="bi bi-globe2"></i></a>
+                <a class="navbar-brand d-none d-sm-block  flex-shrink-0 mx-0" href="{{asset('/')}}"></a>
+                
 
-                <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0 ml-1" style="line-height:17px;" href="{{asset('/')}}">
-                  <div class="fs-4 fw-normal" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
-                    The<br>Exhibition<br>Network</div>
-                    <!--<img src="{{asset('image/def.png')}}" width="142" alt="COI">-->
+                <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0 ml-1" href="{{asset('/')}}">
+                 
+                    <img src="{{asset('image/Yoyo.png')}}" width="142" alt="COI">
                 </a> 
               
                 <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
-                    <img src="{{asset('image/Yoyo.png')}}" width="100" alt="COI">
+                    <img src="{{asset('image/Yoyo.png')}}" width="110" alt="COI">
                 </a>
                
               <!-- Search-->
@@ -557,7 +557,8 @@
                 <!-- Departments menu-->
                 <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle ps-lg-0" href="" data-bs-toggle="dropdown"><i class=" bi bi-list align-middle mt-n1 me-2"></i>Departments</a>
+                    <a class="nav-link dropdown-toggle ps-lg-0" href="" data-bs-toggle="dropdown">
+                      <i class=" bi bi-list align-middle mt-n1 me-2"></i>Departments</a>
                       <ul class="dropdown-menu">
                       @foreach ($catego as $category)
                        
