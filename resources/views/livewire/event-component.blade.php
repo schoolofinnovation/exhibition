@@ -141,7 +141,7 @@
 
         <!--Trending Exhibition-->
           <section class="container pt-2" id="exhibit"> 
-          <div class="list-unstyled py-2 px-0 pl-0">
+             <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
                     <div class="d-flex justify-content-between px-0 m-0 lh-1">
                     <span class="fs-sm"> Trending<br><span class="fw-medium h5">Exhibition</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
@@ -154,15 +154,15 @@
                     </span></div>
               </div>
 
-            <div >
+            <div class="d-flex badgese">
               @foreach( $finder as $categ) 
-               <span class="badge bg-secondary">{{ucwords(trans($categ->expoindustry))}}</span>
+              <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
               @endforeach
             </div>
 
 
             <!-- Grid-->
-            <div class="row pt-2 mx-n2 my-Slider3"> 
+            <div class="row pt-1 mx-n2 my-Slider3"> 
               @foreach($evento as $eventoi)
                 <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
                   <div class="card product-card">
@@ -205,7 +205,7 @@
                         @else
                           {{Carbon\Carbon::parse ($eventoi->startdate)->format('d ')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('d M, y')}}
                         @endif 
-                      </small>
+                      </small><br>
                       <small class="d-lg-none"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> city))}}</small> 
                       <!--ucfirst-->
                     </div>
@@ -233,7 +233,7 @@
 
         <!--COI Awards-->
           <section class="container pt-2" id="awards"> 
-                <div class="list-unstyled border-bottom pt-2 pb-1 px-0 pl-0">
+                <div class="list-unstyled pt-2 pb-1 px-0 pl-0">
                     <div class="d-flex justify-content-between px-0 m-0 lh-1">
                     <span class="fs-sm"> Trending<br><span class="fw-medium h5">Awards</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
@@ -245,6 +245,13 @@
                     
                     </span></div>
                 </div>
+                
+                 <div class="d-flex badgeseaward my-0">
+                  @foreach( $finder as $categ) 
+                  <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
+                  @endforeach
+                </div>
+            
             <!--Award-->
             <div class="row pt-2 mx-n2 my-Slider5">
               @foreach($awardo as $eventoi)
@@ -276,15 +283,25 @@
                           </div>
                       </div>
                       <!--<small>World's best demanding business</small><br>-->
-                      <small> <i class="bi bi-calendar3"></i></small>
-                      <small class="text-bolder">
+                      <small class="text-bolder d-none d-sm-block"> <i class="bi bi-calendar3"></i>
                         @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
                           {{Carbon\Carbon::parse ($eventoi->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('D, d M Y ')}}
                         @else
                           {{Carbon\Carbon::parse ($eventoi->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('D, d M Y')}}
                         @endif 
+
+                      </small>
+                      <small  class="d-none d-sm-block"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> venue))}}, <br> {{ucwords(trans($eventoi -> city))}}</small>
+
+                      <small class="text-bolder d-lg-none"> <i class="bi bi-calendar3"></i>
+                        @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
+                          {{Carbon\Carbon::parse ($eventoi->startdate)->format('d M')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('d M, y')}}
+                        @else
+                          {{Carbon\Carbon::parse ($eventoi->startdate)->format('d ')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('d M, y')}}
+                        @endif 
                       </small><br>
-                      <small><i class="bi bi-geo-alt-fill fs-sm"></i> </small> <small>{{ucwords(trans($eventoi -> venue))}}, {{ucwords(trans($eventoi -> city))}}</small><!--ucfirst-->
+                      <small class="d-lg-none"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> city))}}</small> 
+                      <!--ucfirst-->
 
                     </div>
                     
@@ -400,7 +417,7 @@
 
         <!--Trending conference-->
           <section class="container pt-2" id="conference"> 
-                <div class="list-unstyled border-bottom pt-2 pb-1 px-0 pl-0">
+                <div class="list-unstyled pt-2 pb-1 px-0 pl-0">
                     <div class="d-flex justify-content-between px-0 m-0 lh-1">
                     <span class="fs-sm"> Trending<br><span class="fw-medium h5">Conference</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
@@ -412,6 +429,13 @@
                     
                     </span></div>
                 </div>
+                
+                <div class="d-flex badgeseconf">
+                      @foreach( $finder as $categ) 
+                      <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
+                      @endforeach
+                </div>
+                    
             <div class="row pt-2 mx-n2 my-Slider6"> 
               @foreach($evento as $eventoi)
               <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
@@ -447,7 +471,7 @@
                         @endif 
 
                       </small>
-                      <small  class="d-none d-sm-block"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> venue))}}, {{ucwords(trans($eventoi -> city))}}</small>
+                      <small  class="d-none d-sm-block"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> venue))}}, <br> {{ucwords(trans($eventoi -> city))}}</small>
 
                       <small class="text-bolder d-lg-none"> <i class="bi bi-calendar3"></i>
                         @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
@@ -455,7 +479,7 @@
                         @else
                           {{Carbon\Carbon::parse ($eventoi->startdate)->format('d ')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('d M, y')}}
                         @endif 
-                      </small>
+                      </small><br>
                       <small class="d-lg-none"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> city))}}</small> 
                       <!--ucfirst-->
                     </div>
@@ -482,8 +506,8 @@
           </section>
 
         <!--Trending Magazine-->
-          <section class="container pt-2" id="exhibit"> 
-           <div class="list-unstyled border-bottom pt-2 pb-1 px-0 pl-0">
+          <section class="container pt-2 " id="exhibit"> 
+           <div class="list-unstyled pt-2 pb-1 px-0 pl-0">
                 <div class="d-flex justify-content-between px-0 m-0 lh-1">
                     <span class="fs-sm"> Trending Business<br><span class="fw-medium h5">Magazine</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
@@ -494,6 +518,12 @@
                     </ul>
                     </span>
                 </div>
+            </div>
+            
+             <div class="d-flex badgeseMagaz">
+              @foreach( $finder as $categ) 
+              <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
+              @endforeach
             </div>
               
             <!-- Grid-->
@@ -515,7 +545,7 @@
           </section>
        
         <!-- Creators-->
-          <section class="container py-3 pb-md-3">
+          <section class="container pt-2 pb-5 pb-md-3">
             <!--<h2 class="h3 mb-4 pb-2">Top Creators</h2>-->
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-1 mb-1">  
                   <div class="fs-sm" >Business Community
@@ -721,8 +751,9 @@
             "items": 2,
             "controls": false,
             "mouseDrag": true,
-            "autoplay": true,
-            "autoplayButtonOutput":false,
+            "autoplay": false,
+             "fixedWidth": 150,
+            "autoplayButtonOutput": false,
             "autoplayHoverPause": true,
           },
           "500": {
@@ -730,8 +761,9 @@
             "nav": false,
             "controls": false,
             "autoplayHoverPause": true,
-            "autoplay":true,
-            "autoplayButtonOutput":false
+            "autoplay": false,
+             "fixedWidth": 300,
+            "autoplayButtonOutput": false
           },
           
         },
@@ -747,7 +779,8 @@
             "items": 2,
             "controls": false,
             "mouseDrag": true,
-            "autoplay": true,
+            "autoplay": false,
+            "fixedWidth": 150,
             "autoplayButtonOutput":false,
             "autoplayHoverPause": true,
           },
@@ -756,7 +789,8 @@
             "nav": false,
             "controls": false,
             "autoplayHoverPause": true,
-            "autoplay":true,
+            "autoplay": false,
+            "fixedWidth": 300,
             "autoplayButtonOutput":false
           },
           
@@ -773,7 +807,8 @@
             "items": 2,
             "controls": false,
             "mouseDrag": true,
-            "autoplay": true,
+            "autoplay": false,
+            "fixedWidth": 150,
             "autoplayButtonOutput":false,
             "autoplayHoverPause": true,
           },
@@ -782,7 +817,8 @@
             "nav": false,
             "controls": false,
             "autoplayHoverPause": true,
-            "autoplay":true,
+            "autoplay": false,
+            "fixedWidth": 300,
             "autoplayButtonOutput":false
           },
           
@@ -877,7 +913,8 @@
             "items": 2,
             "controls": false,
             "mouseDrag": true,
-            "autoplay": true,
+            "autoplay": false,
+            "fixedWidth": 150,
             "autoplayButtonOutput":false,
             "autoplayHoverPause": true,
           },
@@ -886,8 +923,9 @@
             "nav": false,
             "controls": false,
             "autoplayHoverPause": true,
-            "autoplay":true,
-            "autoplayButtonOutput":false
+            "autoplay": false,
+            "fixedWidth": 300,
+            "autoplayButtonOutput": false
           },
           
         },
@@ -904,6 +942,7 @@
             "controls": false,
             "mouseDrag": true,
             "autoplay": false,
+
             "autoplayButtonOutput":false,
             "autoplayHoverPause": true,
           },
@@ -949,11 +988,13 @@
 
     <script>
       var slider = tns({
-        "container": '.badgese',            
+        "container": '.badgese',   
+        
         "responsive": {
           "300": {
             "items": 3,
             "controls": false,
+            "fixedWidth": 100,
             "mouseDrag": true,
             "autoplay": false,
             "autoplayButtonOutput": false,
@@ -965,7 +1006,95 @@
             "controls": false,
             "autoplayHoverPause": true,
             "autoplay": false,
-            "autoplayButtonOutput": false
+            "autoplayButtonOutput": false,
+                     "fixedWidth": 100,
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+    
+    <script>
+      var slider = tns({
+        "container": '.badgeseaward',   
+        
+        "responsive": {
+          "300": {
+            "items": 3,
+            "controls": false,
+            "fixedWidth": 100,
+            "mouseDrag": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+            "autoplayHoverPause": true,
+          },
+          "500": {
+            "items": 1,
+            "nav": false,
+            "controls": false,
+            "autoplayHoverPause": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+                     "fixedWidth": 100,
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+    
+    <script>
+      var slider = tns({
+        "container": '.badgeseconf',   
+        
+        "responsive": {
+          "300": {
+            "items": 3,
+            "controls": false,
+            "fixedWidth": 100,
+            "mouseDrag": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+            "autoplayHoverPause": true,
+          },
+          "500": {
+            "items": 1,
+            "nav": false,
+            "controls": false,
+            "autoplayHoverPause": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+                     "fixedWidth": 100,
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+    
+    <script>
+      var slider = tns({
+        "container": '.badgeseMagaz',   
+        
+        "responsive": {
+          "300": {
+            "items": 3,
+            "controls": false,
+            "fixedWidth": 100,
+            "mouseDrag": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+            "autoplayHoverPause": true,
+          },
+          "500": {
+            "items": 1,
+            "nav": false,
+            "controls": false,
+            "autoplayHoverPause": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+                "fixedWidth": 100,
           },
           
         },

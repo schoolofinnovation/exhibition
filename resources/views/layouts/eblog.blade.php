@@ -69,49 +69,13 @@
     <script src="{{asset('js/lg-video.min.js')}}"></script>
     <!-- Main theme script-->
     <script src="{{asset('js/theme.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "@yield('page_eventname')",
-      "startDate": "@yield('page_startdate')",
-      "endDate": "@yield('page_enddate')",
-      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": [{
-        "@type": "VirtualLocation",
-        "url": "@yield('page_description')"
-      },
-      {
-        "@type": "Place",
-        "name": "@yield('page_venue')",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "@yield('page_description')",
-          "addressLocality": "@yield('page_description')",
-          "postalCode": "@yield('page_eventCode')",
-          "addressRegion": "@yield('page_eventRegion')",
-          "addressCountry": "@yield('page_eventCountry')"
-        }
-      }],
-      "image": [
-        "https://example.com/photos/1x1/photo.jpg",
-        "https://example.com/photos/4x3/photo.jpg",
-        "https://example.com/photos/16x9/photo.jpg"
-       ],
-      "description": "@yield('page_description')",
-      
-    }
-    </script>
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>   
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "url": "https://www.exhibition.org.in",
-      "logo": "https://www.example.com/images/logo.png"
+      "logo": "https://exhibition.org.in/image/Yoyo.png"
     }
     </script>
    @livewireScripts
