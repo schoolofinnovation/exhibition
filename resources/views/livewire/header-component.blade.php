@@ -64,17 +64,12 @@
           <div class="navbar navbar-expand-lg navbar-light py-0">
             <div class="container p-0">
                 <a class="navbar-brand d-none d-sm-block  flex-shrink-0 mx-0" href="{{asset('/')}}"></a>
-                
-
                 <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0 ml-1" href="{{asset('/')}}">
-                 
                     <img src="{{asset('image/Yoyo.png')}}" width="142" alt="COI">
                 </a> 
-              
                 <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
                     <img src="{{asset('image/Yoyo.png')}}" width="110" alt="COI">
                 </a>
-               
               <!-- Search-->
               <div class="input-group d-none d-lg-flex flex-nowrap mx-0">
                 <select class="form-select flex-shrink-0" style="width: 1 rem;" wire:model="searchoo">
@@ -548,8 +543,6 @@
           <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
             <div class="container">
               <div class="collapse navbar-collapse" id="navbarCollapse">
-                  
-               
               <!-- Search-->
                 <div class="input-group d-lg-none my-3"><i class=" bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                   <input class="form-control rounded-start" type="text" placeholder="Search for opportunity">

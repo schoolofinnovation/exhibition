@@ -42,7 +42,7 @@
           <!-- Nav tabs-->
           <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
             <li class="nav-item border-bottom"><a class="nav-link px-1 active fs-sm" href="#details" data-bs-toggle="tab" role="tab">Browse</a></li>
-            <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm"> Saved Events</a></li>
+            <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab"> Saved Events</a></li>
           </ul>
 
             <div class="d-flex badgese pb-2">
@@ -63,23 +63,24 @@
                 @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
                 <div class="row">
                   @foreach ($exhibition as $franchise)
-                    <div class="row text-center p-0 gx-0 mb-1  border border-1">
+                  <div class="container  ">
+                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                       <div class="col  pr-0">
                           @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                            <div class="h3 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
                             <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
                             
                           @else
 
-                            <div class="h3 fw-normal mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
                             <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
 
                           @endif 
-                            <div><i class="bi bi-bookmark"></i></div> 
+                            <div class="round-circle"><i class="bi bi-bookmark"></i></div> 
                       </div>
 
-                      <div class="col-6  p-0">
-                        <div class="fs-md fw-bold text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                      <div class="col-7  p-0">
+                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
                           {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
                         <div class="text-muted fs-sm text-start">
                           @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
@@ -91,11 +92,12 @@
                         <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
                       </div>
 
-                      <div class="col  p-0">
+                      <div class="col-3  p-0">
                         <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
                             <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
                       </div>
                     </div>
+                  </div>
                   @endforeach
                 </div>
               </div>
@@ -103,35 +105,10 @@
               <!-- Reviews tab-->
               <div class="tab-pane fade" id="reviews" role="tabpanel">
                 <div class="row">
-                  <!-- details test tickets-->
-                  <div class="fs-ms">SELECT YOUR TICKET
-                    	
-                  </div>
+                   <i class="bi bi-bookmark"></i>
+                   <p>Saving an event will add it to this tab so that you can find it later</p>
+                   <a href="" class="btn btn-primary text-capitalize">return to search results</a>
 
-                  @if(Cart::instance('cart')->count()>0)
-                      <div class="bg-secondary d-none d-sm-block">
-                        <div class="container">
-                          <div class="d-flex justify-content-between py-2 px-2">
-                            <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->subtotal()}} <br>
-                            @if(Cart::instance('cart')->count()>0)
-                                  <span class=" fw-normal fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>
-                                  @else
-                                  <span class=" fw-light fs-xs">Onwards</span>
-                                @endif
-                          </div>
-                            <a href="{{route('checkout')}}" class="btn btn-primary btn-sm">Proceed</a>
-                          </div>
-                        </div>
-                      </div>
-                    @else
-                      <div class="bg-secondary d-none d-sm-block">
-                        <div class="container">
-                          <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button" disabled >Proceed</button>
-                          </div>
-                        </div>
-                      </div>
-                  @endif
 
                 </div>
               </div>
