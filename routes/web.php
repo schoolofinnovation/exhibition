@@ -236,6 +236,7 @@ Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
 Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
 
 Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
+
 Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 
 Route::get('/magazineo', MagazineComponent::class)->name('business.magazine');

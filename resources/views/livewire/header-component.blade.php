@@ -1,4 +1,4 @@
-    <main>
+  <main>
     
     @if(Route::currentRouteName() === 'event.details')
     
@@ -10,6 +10,7 @@
     @elseif(Route::currentRouteName() === 'coicart')
     @elseif(Route::currentRouteName() === 'lead.business')
     @elseif(Route::currentRouteName() === 'lead.business.other')
+    @elseif(Route::currentRouteName() === 'coi.exhibition')
     @else
       <header class="shadow-sm ">
         <!-- Topbar
@@ -876,7 +877,5 @@
 
         </div>
       </header>
-    
-    @endif
-    
-    </main>
+    @endif  
+  </main>
