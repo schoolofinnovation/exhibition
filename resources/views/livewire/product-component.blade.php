@@ -51,35 +51,26 @@
                     
                       <div class="fs-ms">SELECT YOUR CATEGORY
                         @foreach($ticke as $edy)
-                            <div class="d-sm-flex justify-content-between align-items-center my-1 pb-3 border-bottom">
-                              
-                                <div class="pt-1">
 
+                        <div class="row">
 
-                                  <div class="d-flex">
-
-                                    <div class="mr-auto p-2">
-                                      <h3 class="product-title fs-base mb-2">
-                                        <a href="#reviews">{{$edy->package}}</a>
-                                      </h3>
-                                      <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
-                                      <div class="fs-md">Detail <i class="bi bi-chevron-right"></i> <br><span class="fs-xs fw-normal">{{$edy->desc}}</span></div>
-                                    </div>
-
-                                    <div class="" style="max-width: 33;">
-                                      <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a> 
-                                    </div>
-
-                                  </div>
-
-                                </div> 
-                        
+                            <div class="col-9">
+                              <h4 class="product-title fs-md mb-2"><a href="#reviews">{{$edy->package}}</a></h4>
+                              <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
+                              <div class="fs-xs fw-bold">Detail <i class="bi bi-chevron-right"></i> <br><span class="fs-xs fw-normal">{{$edy->desc}}</span></div>
                             </div>
+                            <div class="col-3">
+                            <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a>
+                            </div>
+
+                        </div>
+
+                            
                         @endforeach
                       </div>
                       
                       @if(Cart::instance('cart')->count()>0)
-                          <div class="bg-secondary d-none d-sm-block">
+                          <div class="bg-secondary position-bottom d-none d-sm-block">
                             <div class="container  bg-secondary">
                               <div class="d-flex  justify-content-between py-2 px-2">
                                 <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->subtotal()}} <br>

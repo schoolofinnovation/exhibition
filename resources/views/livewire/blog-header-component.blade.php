@@ -107,97 +107,86 @@
 			<!-- Logo END -->
 
 			<!-- Responsive navbar toggler -->
-			<button class="navbar-toggler ms-auto collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="text-body h6 d-none d-sm-inline-block">Menu</span>
-			  <span class="navbar-toggler-icon"></span>
-		  </button>
+				<button class="navbar-toggler ms-auto collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="text-body h6 d-none d-sm-inline-block">Menu</span>
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
 			<!-- Main navbar START -->
-			<div class="navbar-collapse collapse" id="navbarCollapse" style="">
-				<ul class="navbar-nav navbar-nav-scroll mx-auto">
-
-					<!-- Nav item 1 Demos -->
-					<li class="nav-item ">
-						<a class="nav-link  active" href="{{asset('/blog')}}" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
-						<!--<ul class="dropdown-menu" aria-labelledby="homeMenu">
-							<li> <a class="dropdown-item active" href="#">Home default</a></li>
-							<li> <a class="dropdown-item" href="#">Magazine classic</a></li>
-							<li> <a class="dropdown-item" href="#">Magazine</a></li>
-							<li> <a class="dropdown-item" href="#">Home cards</a></li>
-							<li> <a class="dropdown-item" href="#">Blog classic</a></li>
-						</ul>-->
-					</li>
-
-
-					<!-- Nav item 4 Mega menu -->
-					@foreach($cage as $post)
-					<li class="nav-item dropdown dropdown-fullwidth">
-						<a class="nav-link dropdown-toggle" href="{{route('blog.category',['category_slug'=> $post->slug])}}" id="megaMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-							{{$post->category}}</a>
-						<div class="dropdown-menu" aria-labelledby="megaMenu">
-							<div class="container">
-								<div class="row g-4 p-3 flex-fill">
-                                @foreach($post->mag as $post)
-                                     @if ($loop->first or $loop->iteration <= 3)
-                                    <!-- Card item START -->
-									<div class="col-sm-6 col-lg-3">
-										<div class="card bg-transparent">
-											<!-- Card img -->
-											<img class="card-img rounded" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('Storage/mags/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
-											<div class="card-body px-0 pt-3">
-												<h6 class="card-title mb-0"><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset fw-bold">{{str::limit($post -> tittle, 48)}}</a></h6>
-												<!-- Card info -->
-												<ul class="nav nav-divider align-items-center text-uppercase small mt-2">
-													<li class="nav-item">
-														<a href="{{route('blog.author',['slug' => $post->user->slug])}}" class="text-reset btn-link">{{$post->user->name}}</a>
-													</li>
-													<li class="nav-item">{{ Carbon\Carbon::parse($post->created_at)->format('F d, Y ')}}</li>
+				<div class="navbar-collapse collapse" id="navbarCollapse" style="">
+					<ul class="navbar-nav navbar-nav-scroll mx-auto">
+						<!-- Nav item 1 Demos -->
+						<li class="nav-item ">
+							<a class="nav-link  active" href="{{asset('/blog')}}" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+							<!--<ul class="dropdown-menu" aria-labelledby="homeMenu">
+								<li> <a class="dropdown-item active" href="#">Home default</a></li>
+								<li> <a class="dropdown-item" href="#">Magazine classic</a></li>
+								<li> <a class="dropdown-item" href="#">Magazine</a></li>
+								<li> <a class="dropdown-item" href="#">Home cards</a></li>
+								<li> <a class="dropdown-item" href="#">Blog classic</a></li>
+							</ul>-->
+						</li>
+						<!-- Nav item 4 Mega menu -->
+						@foreach($cage as $post)
+							<li class="nav-item dropdown dropdown-fullwidth">
+								<a class="nav-link dropdown-toggle" href="{{route('blog.category',['category_slug'=> $post->slug])}}" id="megaMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+									{{$post->category}}</a>
+								<div class="dropdown-menu" aria-labelledby="megaMenu">
+									<div class="container">
+										<div class="row g-4 p-3 flex-fill">
+											@foreach($post->mag as $post)
+												@if ($loop->first or $loop->iteration <= 3)
+													<!-- Card item START -->
+													<div class="col-sm-6 col-lg-3">
+														<div class="card bg-transparent">
+															<!-- Card img -->
+															<img class="card-img rounded" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('Storage/mags/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+															<div class="card-body px-0 pt-3">
+																<h6 class="card-title mb-0"><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset fw-bold">{{str::limit($post -> tittle, 48)}}</a></h6>
+																<!-- Card info -->
+																<ul class="nav nav-divider align-items-center text-uppercase small mt-2">
+																	<li class="nav-item">
+																		<a href="{{route('blog.author',['slug' => $post->user->slug])}}" class="text-reset btn-link">{{$post->user->name}}</a>
+																	</li>
+																	<li class="nav-item">{{ Carbon\Carbon::parse($post->created_at)->format('F d, Y ')}}</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												@endif
+											@endforeach
+											
+											<div class="col-sm-6 col-lg-3">
+												<div class="bg-primary-soft p-4 text-center h-100 w-100 rounded">
+													<span>The Blogzine</span>
+													<h3>Premium Membership</h3>
+													<p>Become a Member Today!</p>
+													<a href="##" class="btn btn-warning">View pricing plans</a>
+												</div>
+											</div>
+											<!-- Card item END -->
+										</div> <!-- Row END -->
+										<!-- Trending tags -->
+										<div class="row px-3">
+											<div class="col-12">
+												<ul class="list-inline mt-3">
+													<li class="list-inline-item">Trending tags:</li>
+														@foreach($tag as $post)
+															<li class="list-inline-item">
+																<a href="{{route('blog.category',['category_slug'=> $post->slug])}}" class="btn btn-sm btn-primary-soft">
+																	{{$post->tag}}
+																</a>
+															</li>
+														@endforeach
 												</ul>
 											</div>
-										</div>
+										</div> <!-- Row END -->
 									</div>
-									<!-- Card item END -->
-										
-										@endif
-                                    @endforeach
-									
-									<div class="col-sm-6 col-lg-3">
-										<div class="bg-primary-soft p-4 text-center h-100 w-100 rounded">
-											<span>The Blogzine</span>
-											<h3>Premium Membership</h3>
-											<p>Become a Member Today!</p>
-											<a href="##" class="btn btn-warning">View pricing plans</a>
-										</div>
-									</div>
-									<!-- Card item END -->
-								</div> <!-- Row END -->
-								<!-- Trending tags -->
-								<div class="row px-3">
-									<div class="col-12">
-										<ul class="list-inline mt-3">
-											<li class="list-inline-item">Trending tags:</li>
-                                            @foreach($tag as $post)
-											<li class="list-inline-item"><a href="{{route('blog.category',['category_slug'=> $post->slug])}}" class="btn btn-sm btn-primary-soft">{{$post->tag}}</a></li>
-											<!--<li class="list-inline-item"><a href="##" class="btn btn-sm btn-warning-soft">Business</a></li>
-											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-success-soft">Tech</a></li>
-											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-danger-soft">Gadgets</a></li>
-											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-info-soft">Lifestyle</a></li>
-											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-primary-soft">Vaccine</a></li>
-											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-success-soft">Sports</a></li>
-											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-danger-soft">Covid-19</a></li>
-											<li class="list-inline-item"><a href="##" class="btn btn-sm btn-info-soft">Politics</a></li>-->
-										@endforeach
-                                        </ul>
-									</div>
-								</div> <!-- Row END -->
-							</div>
-						</div>
-					</li>
-                    @endforeach
-					
-					
-				</ul>
-			</div>
+								</div>
+							</li>
+						@endforeach
+					</ul>
+				</div>
 			<!-- Main navbar END -->
 
 			<!-- Nav right START -->

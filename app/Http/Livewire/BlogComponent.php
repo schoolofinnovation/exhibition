@@ -43,16 +43,16 @@ class BlogComponent extends Component
         
 
         $recent = Mag::orderBy('created_at','desc')->paginate(4);
-        $posts = Mag::where('type','a')->paginate(6);
-        $a = Mag::where('type','a')->paginate(1);
+        $posts = Mag::where('type','f')->paginate(6);
+        $a = Mag::where('type','f')->paginate(1);
         $b = Mag::where('type','b')->paginate(1);
         $c = Mag::where('type','c')->paginate(2);
-        $trending = Mag::where('type','a')->paginate(5);
+        $trending = Mag::where('type','f')->paginate(5);
         $poste = Mag::all();
         $cag = Cag::with('mag')->paginate(5);
 
         //new 
-        $recomend = Mag::where('type','a')->paginate(3);
+        $recomend = Mag::where('type','f')->paginate(3);
         $podcast = Mag::where('status','1')->paginate(3);
         $handpicked = Mag::where('status','1')->paginate(4);
         $handpick = Mag::where('status','1')->paginate(2);

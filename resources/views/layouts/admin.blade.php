@@ -3,11 +3,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css" class="drift-base-styles">.drift-bounding-box,.drift-zoom-pane{position:absolute;pointer-events:none}@keyframes noop{0%{zoom:1}}@-webkit-keyframes noop{0%{zoom:1}}.drift-zoom-pane.drift-open{display:block}.drift-zoom-pane.drift-closing,.drift-zoom-pane.drift-opening{animation:noop 1ms;-webkit-animation:noop 1ms}.drift-zoom-pane{overflow:hidden;width:100%;height:100%;top:0;left:0}.drift-zoom-pane-loader{display:none}.drift-zoom-pane img{position:absolute;display:block;max-width:none;max-height:none}</style>
     
-<title>@yield('page_title') | COI</title>
+<title>@yield('page_title') | The Exhibition Network</title>
     <!-- SEO Meta Tags <link rel="canonical" href="{{url()->current()}}"/>-->
     <meta name="description" content="@yield('page_description')">
     <meta name="keywords" content="@yield('page_keywords')">
-    <meta name="author" content="@yield('page_author')">    
+    <meta name="author" content="The Exhibtion Network">    
     
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,10 +75,7 @@
       </div>-->
 
 
-      <div class=" pb-5 mb-2 mb-md-4">
-        
-        {{$slot}}
-      </div>
+      <div class=" pb-5 mb-2 mb-md-4">{{$slot}}</div>
 
    
 
@@ -97,9 +94,8 @@
     <script src="{{asset('js/theme.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
    
-   @livewireScripts
+    @livewireScripts
    @stack('scripts')
 
 </body>

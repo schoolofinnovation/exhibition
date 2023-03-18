@@ -824,9 +824,9 @@
                   
                    </div>
 
-                <div class="d-flex abced gx-1">
+                <div class="d-flex abced gx-2">
                  
-                  <div class=" border-1 d-flex align-items-end py-2 mt-2 border-bottom rounded shadow-sm">
+                  <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
                     <img class="rounded-circle" src="#" width="50" alt="">
   
                     <div class="ps-0">
@@ -845,7 +845,7 @@
                     </div>
                   </div>
 
-                  <div class=" border-1 d-flex align-items-end py-2 mt-2 border-bottom">
+                  <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
                     <img class="rounded-circle" src="#" width="50" alt="">
   
                     <div class="ps-0">
@@ -864,7 +864,7 @@
                     </div>
                   </div>
 
-                  <div class=" border-1 d-flex align-items-end py-2 mt-2 border-bottom">
+                  <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
                     <img class="rounded-circle" src="#" width="50" alt="">
   
                     <div class="ps-0">
@@ -1480,7 +1480,7 @@
             "300": {
               "items": 1,
               "controls": false,
-              "fixedWidth": 220,
+              "fixedWidth": 250,
               "mouseDrag": true,
               "autoplay": false,
               "autoplayButtonOutput": false,
