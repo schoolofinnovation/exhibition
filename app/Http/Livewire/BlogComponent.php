@@ -39,15 +39,15 @@ class BlogComponent extends Component
 
     public function render()
     {
-        $try = Mag::where('user_id','3')->get();
-        
+        $trending = Mag::orderBy('views_count', 'desc')->where('type','f')->get();
 
+        $try = Mag::where('user_id','3')->get();
         $recent = Mag::orderBy('created_at','desc')->paginate(4);
         $posts = Mag::where('type','f')->paginate(6);
         $a = Mag::where('type','f')->paginate(1);
         $b = Mag::where('type','b')->paginate(1);
         $c = Mag::where('type','c')->paginate(2);
-        $trending = Mag::where('type','f')->paginate(5);
+        
         $poste = Mag::all();
         $cag = Cag::with('mag')->paginate(5);
 

@@ -5,12 +5,8 @@
 		<div class="container">
 			<div class="row g-0">
 				<div class="col-12 bg-primary-soft p-2 rounded">
-					<div class="d-sm-flex align-items-center text-center text-sm-start">
-						<!-- Title -->
-						<div class="me-3">
-							<span class="badge bg p-2 px-3 badgecolor" >Trending:</span>
-						</div>
-						<!-- Slider1 -->
+					<div class="d-sm-flex align-items-center  text-sm-start">
+						<div class="me-3"><span class="badge bg p-2 px-3 badgecolor" >Trending:</span></div>
 						<div class="my-Slider1 arrow-end arrow-xs arrow-white arrow-round arrow-md-none">
 							@foreach($trending as $post)
 								<a href="{{route('blog.details',['slug' => $post->slug])}}" class="text-reset btn-link">{{$post->s_desc}}</a>
@@ -31,9 +27,9 @@
 					<div class="my-Slider2">
 						@foreach($try as $post)
 								<div class="card" >
-										<div class="row mx-1">
-											<div class="col-4 px-1">
-												<img class="rounded-3" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 25)}}">
+									<div class="row mx-1">
+										<div class="col-4 px-1">
+											<img class="rounded-3" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 25)}}">
 											</div>
 											<div class="col-8 px-1">
 												<a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link stretched-link px-1 text-reset fw-normal">{{Str::limit($post->tittle, 35)}}</a>
@@ -187,38 +183,37 @@
 	<!-- (4) Feature News slider START -->
 	<section class="py-0">
 		<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="my-Slider4 arrow-blur arrow-round rounded-3 overflow-hidden">
-							
-							@foreach($try as $post)
-								<div class="card card-overlay-bottom card-img-scale">
-									<!-- Card Image -->
-									<img class="card-img" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
-									<!-- Card Image overlay -->
-									<div class="card-img-overlay d-flex flex-column p-3 p-sm-4">
-										<div>
-											<!-- Card category -->
-											<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}" class="badge badgecolor fs-6 mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
-										</div>
-										<div class="w-100 mt-auto">
-											<!-- Card title -->
-											<h4 class="text-white"><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset stretched-link">{{Str::limit($post->tittle,38)}}</a></h4>
-											<!-- Card info -->
-											<ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block small">
-												<li class="nav-item position-relative">
-													<div class="nav-link">by <a href="{{route('blog.author',['slug' => $post->user->slug])}}" class="stretched-link text-reset btn-link">{{$post->user->name}} </a>
-													</div>
-												</li>
-												<li class="nav-item">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans()}}</li>
-											</ul>
-										</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="my-Slider4 arrow-blur arrow-round rounded-3 overflow-hidden">
+						@foreach($try as $post)
+							<div class="card card-overlay-bottom card-img-scale">
+								<!-- Card Image -->
+								<img class="card-img" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+								<!-- Card Image overlay -->
+								<div class="card-img-overlay d-flex flex-column p-3 p-sm-4">
+									<div>
+										<!-- Card category -->
+										<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}" class="badge badgecolor fs-6 mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->tag}}</a>
 									</div>
-								</div>						   
-							@endforeach
-						</div>
+									<div class="w-100 mt-auto">
+										<!-- Card title -->
+										<h4 class="text-white"><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link text-reset stretched-link">{{Str::limit($post->tittle,38)}}</a></h4>
+										<!-- Card info -->
+										<ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block small">
+											<li class="nav-item position-relative">
+												<div class="nav-link">by <a href="{{route('blog.author',['slug' => $post->user->slug])}}" class="stretched-link text-reset btn-link">{{$post->user->name}} </a>
+												</div>
+											</li>
+											<li class="nav-item">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans()}}</li>
+										</ul>
+									</div>
+								</div>
+							</div>						   
+						@endforeach
 					</div>
-				</div>			
+				</div>
+			</div>			
 		</div>
 	</section>
 	<!--Feature News slider END -->
@@ -887,191 +882,234 @@
 
     @push('scripts')
 	    
-	<script>
-      var slider = tns({
-        "container": '.my-Slider1',            
-        "responsive": {
-          "300": {
-            "items": 1,
-            "controls": false,
-            "mouseDrag": true,
-            "autoplay": true,
-            "autoplayButtonOutput":false,
-            "autoplayHoverPause": true,
-			"fixedWidth": 100,
-          },
-          "500": {
-            "items": 4,
-            "nav": false,
-            "controls": false,
-            "autoplayHoverPause": true,
-            "autoplay":true,
-            "autoplayButtonOutput":false,
-			"fixedWidth": auto,
-          },
-          
-        },
-        "autoplayButtonOutput":false
-      });
-    </script>
-
+		<script>
+		var slider = tns({
+			"container": '.my-Slider1',            
+			"responsive": {
+			"300": {
+				"items": 2,
+				"controls": false,
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+			},
+			"500": {
+				"items": 4,
+				"nav": false,
+				"controls": false,
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
+		});
+		</script>
 
 		<script>
 			var slider = tns({
 				"container": '.my-Slider2',            
 				"responsive": {
-				"350": {
-					"items": 1,
-					"controls": true,
-					"edgePadding": 30
-				},
-				"500": {
-					"items": 4
-				}
-				},
-				"swipeAngle": false,
-				"speed": 400,
-				"nav": false,
-				"mouseDrag":true,
+					"300": {
+				"items": 2,
 				"controls": false,
-				"swipeAngle": false,
-				"autoplay" : true,
-				"autoplayHoverPause" : true,
-				"gutter" : 1,
-				"autoplayButton":false,
-				"arrow" : false, 
-				"dots" : false, 
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+					},
+			"500": {
+				"items": 4,
+				"nav": false,
+				"controls": false,
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
 			});
 		</script>
-          
-		  <script>
-            var slider = tns({
-                "container": '.my-Slider3',
-				"autoplay" : true,
-				"autoplayHoverPause" : true, 
-				"gutter" : 0,
-				"arrow" : false, 
-				"dots" : false, 
-				"items" : 1,
+			
+		<script>
+			var slider = tns({
+				"container": '.my-Slider3',
+				"responsive": {
+					"300": {
+				"items": 2,
+				"controls": false,
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+					},
+			"500": {
+				"items": 4,
 				"nav": false,
 				"controls": false,
-				"swipeAngle": false,
-				"autoplayButton":false,
-            });
-          </script>
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
+			});
+		</script>
 
 		<script>
 			var slider = tns({
-				"container": '.my-Slider2',            
+				"container": '.my-Slider4',
 				"responsive": {
-				"350": {
-					"items": 1,
-					"controls": true,
-					"edgePadding": 30
-				},
-				"500": {
-					"items": 4
-				}
-				},
-				
-			    "container": '.my-Slider4',
-				"autoplay" : true,
-				"hoverpause" : true, 
-				"gutter" : 0,
-				"arrow" : false, 
-				"dots" : false, 
-				"items" : 4,
+					"300": {
+				"items": 2,
+				"controls": false,
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+					},
+			"500": {
+				"items": 4,
 				"nav": false,
 				"controls": false,
-
-				
-				"gutter" : 2, 
-				"arrow" : false, 
-				"dots" : false, 		
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
 			});
 		</script>
+
+		<script>
+			
+			var slider = tns({
+				"container": '.my-Slider5',
+				"responsive": {
+					"300": {
+				"items": 2,
+				"controls": false,
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+					},
+			"500": {
+				"items": 4,
+				"nav": false,
+				"controls": false,
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
+			});
+		</script>
+			
+
+		<script>
+			
+			var slider = tns({
+				"container": '.my-Slider6',
+				"responsive": {
+					"300": {
+				"items": 2,
+				"controls": false,
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+					},
+			"500": {
+				"items": 4,
+				"nav": false,
+				"controls": false,
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
+			});
+		</script>
+			
+
+		<script>
+			var slider = tns({
+				"container": '.my-SliderRe',
+				"responsive": {
+					"300": {
+				"items": 2,
+				"controls": false,
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+					},
+			"500": {
+				"items": 4,
+				"nav": false,
+				"controls": false,
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
+			});
+		</script>
+			
 		
-        <script>
-            var slider = tns({
-              "container": '.my-Slider5',
-				"autoplay" : true,
-				"hoverpause" : true, 
-				"gutter" : 1,
-				"arrow" : false, 
-				"dots" : false, 
-				"items" : 2,
+		<script>
+			var slider = tns({
+				"container": '.my-SliderL',
+				"responsive": {
+					"300": {
+				"items": 2,
+				"controls": false,
+				"mouseDrag": true,
+				"autoplay": false,
+				"autoplayButtonOutput": false,
+				"autoplayHoverPause": false,
+				"fixedWidth": 100,
+					},
+			"500": {
+				"items": 4,
 				"nav": false,
 				"controls": false,
-            });
-        </script>
-
-          <script>
-            var slider = tns({
-              "container": '.my-Slider6',            
-              "responsive": {
-                "350": {
-                  "items": 1,
-                  "controls": true,
-                  "edgePadding": 30
-                },
-                "500": {
-                  "items": 3
-                }
-              },
-              "swipeAngle": false,
-              "speed": 400,
-              "nav":false,
-              "mouseDrag":true,
-              "controls": false,
-              "swipeAngle": false,
-              "gutter" : 10,
-            });
-          </script>
-          <script>
-            var slider = tns({
-              "container": '.my-SliderRe',            
-              "responsive": {
-                "350": {
-                  "items": 1,
-                  "controls": true,
-                  "edgePadding": 30
-                },
-                "500": {
-                  "items": 1
-                }
-              },
-              "swipeAngle": false,
-              "speed": 400,
-              "nav":false,
-              "mouseDrag":true,
-              "controls": false,
-              "swipeAngle": false,
-              "gutter" : 10,
-            });
-          </script>
-          <script>
-            var slider = tns({
-              "container": '.my-SliderL',            
-              "responsive": {
-                "350": {
-                  "items": 1,
-                  "controls": true,
-                  "edgePadding": 30
-                },
-                "500": {
-                  "items": 4
-                }
-              },
-              "swipeAngle": false,
-              "speed": 400,
-              "nav":false,
-              "mouseDrag":true,
-              "controls": false,
-              "swipeAngle": false,
-              "gutter" : 10,
-            });
-          </script>
-
-         
+				"autoplayHoverPause": true,
+				"autoplay":true,
+				"autoplayButtonOutput":false,
+				"fixedWidth": auto,
+			},
+			
+			},
+			"autoplayButtonOutput":false
+			});
+		</script>
     @endpush  
+
 </main>
