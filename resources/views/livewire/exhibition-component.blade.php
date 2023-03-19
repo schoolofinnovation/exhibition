@@ -74,7 +74,7 @@
                             <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
 
                           @endif 
-                            <div class="round-circle" wire><i class="bi bi-bookmark"></i></div> 
+                            <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
                       </div>
 
                       <div class="col-7  p-0">

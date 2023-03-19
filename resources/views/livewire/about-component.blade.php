@@ -3,7 +3,7 @@
 @section('page_keywords', 'The Exhibtion Network, marketing partner,trade shows, exhibitors, certification, membership, programs, MSMES, marketing tools, resources, discounted rates, networking opportunities, industry experts, exhibition network magazine')
 @section('page_author' , 'The Exhibition Network')
 
-
+  <main>
         <section class="container py-5 py-lg-5 mt-4 mb-3">
           <div class="text-center mb-5">
             <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger"></div>
@@ -67,7 +67,7 @@
 
           </div>
 
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="row row-cols-1 row-cols-md-3 g-4 badgeseMagaz">
                     <div class="col col-md-4">
                       <div class="card h-100  border-0">
                         <div class="card-body">
@@ -111,7 +111,7 @@
         <section class="container py-3 py-lg-5 mt-4 mb-3">
           <h2 class="display-5 text-center my-2">We are</h2>
           <p class="fs-md  text-center">For more information about our company:</p>
-          <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="row row-cols-1 row-cols-md-3 g-4 badgese">
               <div class="col col-md-4">
                 <div class="card h-100  border-0">
                   <div class="card-body">
@@ -270,4 +270,46 @@
           </div>
         </section>
 
+  </main>
+
+  @push('scripts') 
+    <script>
+      var slider = tns({
+        "container": '.badgeseMagaz',   
         
+        "responsive": {
+          "300": {
+            "items": 3,
+            "controls": false,
+            "fixedWidth": 100,
+            "mouseDrag": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+            "autoplayHoverPause": true,
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+
+    <script>
+      var slider = tns({
+        "container": '.badgese',   
+        
+        "responsive": {
+          "300": {
+            "items": 3,
+            "controls": false,
+            "fixedWidth": 100,
+            "mouseDrag": true,
+            "autoplay": false,
+            "autoplayButtonOutput": false,
+            "autoplayHoverPause": true,
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+  @endpush
