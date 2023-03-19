@@ -69,14 +69,12 @@
                           @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
                             <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
                             <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                            
                           @else
-
                             <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
                             <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
 
                           @endif 
-                            <div class="round-circle"><i class="bi bi-bookmark"></i></div> 
+                            <div class="round-circle" wire><i class="bi bi-bookmark"></i></div> 
                       </div>
 
                       <div class="col-7  p-0">
