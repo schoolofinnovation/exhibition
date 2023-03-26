@@ -1,4 +1,4 @@
-home<main>
+<main>
 
 <!-- =======================
 Inner intro START -->
@@ -17,7 +17,7 @@ Inner intro START -->
             <div class="text-center mt-n3 position-relative">
               <span class="badge bg-danger fs-sm">{{$author->mag->count()}} Posts</span>
 			  <span class="badge bg-danger fs-sm">{{$author->review->count()}} Review</span>
-			  <span class="badge bg-danger fs-sm">{{$user->likedMags->count()}} Likes</span>
+			  <span class="badge bg-danger fs-sm">{{--$user->likedMags->count()--}} Likes</span>
 			  <span class="badge bg-danger fs-sm">{{$likecoun}} Subscribers</span>
             </div>
           </div><!-- Info -->

@@ -156,7 +156,8 @@
 
             <div class="d-flex badgese">
               @foreach( $finder as $categ) 
-              <span class="badge text-right  bg-faded-info mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
+              <a class="badge  border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $categ->id])}}">
+                {{ucwords(trans($categ->expoindustry))}}</a>
               @endforeach
             </div>
             
@@ -246,7 +247,7 @@
                 
                  <div class="d-flex badgeseaward my-0">
                   @foreach( $finder as $categ) 
-                  <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
+                  <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $categ->id])}}">{{ucwords(trans($categ->expoindustry))}}</a>
                   @endforeach
                 </div>
             
@@ -430,7 +431,7 @@
                 
                 <div class="d-flex badgeseconf">
                       @foreach( $finder as $categ) 
-                      <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
+                      <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $categ->id])}}">{{ucwords(trans($categ->expoindustry))}}</a>
                       @endforeach
                 </div>
                     

@@ -301,7 +301,7 @@
           "300": {
             "items": 3,
             "controls": false,
-            "fixedWidth": 100,
+            "fixedWidth": 400,
             "mouseDrag": true,
             "autoplay": false,
             "autoplayButtonOutput": false,

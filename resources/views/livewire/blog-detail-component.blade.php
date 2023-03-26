@@ -25,26 +25,18 @@ Inner intro START -->
           </li>
           <li class="nav-item">{{ Carbon\Carbon::parse($mag->created_at)->diffForHumans()}}</li>
           <li class="nav-item">5 min read</li>
-		  {{$mag}}
-         
+		  
 		  <li class="nav-item">
-									
-									@guest
-									<a href="{{asset('/login')}}"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> {{$mag->likedUsers->count()}} likes</a>
-										
-									@else
-										<a href="#" onclick="document.getElementById('like-form-{{$mag->id}}').submit();">	
-										{{$mag->likedUsers->count()}} 
-										<i class="bi bi-hand-thumbs-up-fill"  aria-hidden="true" style = "color:{{Auth::user()->likedMags()->where('mag_id','$mag->id')->count() > 0 ? 'red' : ''}}"></i>
-										 
-										</a>
-										<form action="{{route('postdetail.like',$mag->user->id)}}" method="POST" style="display:none" id="like-form-{{$mag->id}}">
-											@csrf
-										</form>
-										
-									@endguest
-								
-									</li>
+			@guest
+				<a href="{{asset('/login')}}"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> {{$mag->likedUsers->count()}} likes</a>
+				
+			@else
+				<a href="#" onclick="document.getElementById('like-form-{{$mag->id}}').submit();">{{$mag->likedUsers->count()}} <i class="bi bi-hand-thumbs-up-fill"  aria-hidden="true" style = "color:{{Auth::user()->likedMags()->where('mag_id','$mag->id')->count() > 0 ? 'red' : ''}}"></i></a>
+				<form action="{{route('postdetail.like',$mag->user->id)}}" method="POST" style="display:none" id="like-form-{{$mag->id}}">
+					@csrf
+				</form>
+			@endguest
+          </li>
           <li class="nav-item"><a href="#"><i class="fas fa-heart me-1 text-danger"></i></a>{{$mag->review->count()}} Reviews</li>
 		  <li class="nav-item"><a href="#"><i class="fas fa-heart me-1 text-danger"></i></a>{{$mag->views_count}} Views</li>
         </ul>
@@ -89,10 +81,10 @@ Inner intro END -->
 
 <!-- =======================
 Main START -->
+
 <section>
 	<div class="container position-relative" data-sticky-container="">
 		<div class="row">
-			<!-- Main Content START -->
 			<div class="col-lg-9 mb-5">
       	<p><span class="dropcap">A</span>light newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed laughing although the material does the exercise of. Up attempt offered ye civilly so sitting to. She new course gets living within Elinor joy. She rapturous suffering concealed. </p>
 				<p>Demesne far hearted suppose venture excited see had has. Dependent on so extremely delivered by. Yet no jokes worse her why. Bed one supposing breakfast day fulfilled off depending questions. Whatever boy her exertion his extended. Ecstatic followed handsome drawings entirely Mrs one yet outweigh. Of acceptance insipidity remarkably is an invitation. </p>
