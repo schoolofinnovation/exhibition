@@ -38,7 +38,7 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           
-        <div class="mb-4 mb-lg-5 ">
+        <div class="mb-4 mb-lg-5">
           <!-- Nav tabs-->
           <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
             <li class="nav-item border-bottom"><a class="nav-link px-1 active fs-sm" href="#details" data-bs-toggle="tab" role="tab">Browse</a></li>
@@ -55,61 +55,59 @@
               <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
             </div>
 
-          <div class="tab-content pt-1">
-          
-              <!-- Product details tab-->
-              <div class="tab-pane fade show active" id="details" role="tabpanel">
-                <!-- details test tickets-->
-                @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
-                <div class="row">
-                  @foreach ($exhibition as $franchise)
-                  <div class="container  ">
-                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                      <div class="col  pr-0">
-                          @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                            <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                          @else
-                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                            <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+            <div class="tab-content pt-1">
+            
+                <!-- Product details tab-->
+                <div class="tab-pane fade show active" id="details" role="tabpanel">
+                  <!-- details test tickets-->
+                  @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
+                  <div class="row mb-5 pb-2">
+                    @foreach ($exhibition as $franchise)
+                      <div class="container  ">
+                        <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                          <div class="col  pr-0">
+                              @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                              @else
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
 
-                          @endif 
-                            <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                      </div>
+                              @endif 
+                                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                          </div>
 
-                      <div class="col-7  p-0">
-                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                          {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
-                        <div class="text-muted fs-sm text-start">
-                          @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                            {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                          @else
-                            {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                          @endif 
-                        </div>  
-                        <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
-                      </div>
+                          <div class="col-7  p-0">
+                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                              {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                            <div class="text-muted fs-sm text-start">
+                              @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                              @else
+                                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                              @endif 
+                            </div>  
+                            <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                          </div>
 
-                      <div class="col-3  p-0">
-                        <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                            <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                          <div class="col-3  p-0">
+                            <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    @endforeach
                   </div>
-                  @endforeach
                 </div>
-              </div>
-          
-              <!-- Reviews tab-->
-              <div class="tab-pane fade" id="reviews" role="tabpanel">
-                <div class="row">
-                   <i class="bi bi-bookmark"></i>
-                   <p>Saving an event will add it to this tab so that you can find it later</p>
-                   <a href="" class="btn btn-primary text-capitalize">return to search results</a>
-
-
+            
+                <!-- Reviews tab-->
+                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                  <div class="row">
+                    <i class="bi bi-bookmark"></i>
+                    <p>Saving an event will add it to this tab so that you can find it later</p>
+                    <a href="" class="btn btn-primary text-capitalize">return to search results</a>
+                  </div>
                 </div>
-              </div>
 
             </div>
           </div>
@@ -398,6 +396,131 @@
               </div>
             </div>
           </aside>
+
+            <div class="offcanvas offcanvas-start" data-bs-toggle="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 380px;">                  
+              <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">    
+
+                <div class="offcanvas-header">
+                  <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br><span class="fs-sm fw-lighter">Got an event? Partner with us</span></div>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> 
+                </div>
+              
+                <div class="list-group list-group-flush scrollarea">
+
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Products</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
+                    </a>
+                    @if(Auth::check())
+                      <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                          <normal class="mb-1">Your Orders</normal>
+                          <small>
+                          @if (Auth::check()) 
+                            <i class="bi bi-chevron-right"></i>
+                            @else
+                            <i class="bi bi-lock-fill"></i>
+                            
+                            @endif
+                          </small>
+                        </div>
+                        <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
+                      </a>
+                    @endif
+                    {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">COI Recommends</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
+                    </a>--}}
+
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Resources</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      {{--<div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>--}}
+                    </a>
+
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Inspiration</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      {{--<div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>--}}
+                    </a>
+                                                                  
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Pricing</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                     
+                    </a>
+
+                    <a href="#" class=" list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Talk to Sales</normal>
+                      </div>
+                    </a>
+
+
+                    {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Offers</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                    </a>
+
+                    <a href="{{route('user.profile')}}" class=" border-0 list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Accounts & Settings</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
+                    </a>--}}
+                    
+                    
+                    @if(Auth::check())
+                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Logout</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                    </a>
+                    <form id="logout-form" action="{{route('logout')}}" method="POST">
+                      @csrf
+                    </form>
+                    @endif
+                  
+
+                    {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Help & Support</normal>
+                        <small><i class="bi bi-chevron-right"></i></small>
+                      </div>
+                      <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                    </a>--}}
+
+                </div>
+                
+                
+
+                <div class="offcanvas-header position-absolute bottom-0">
+                <hr class="border-1">
+                  <div class="offcanvas-title h5" id="offcanvasExampleLabel">Log In<br><span class="fs-sm fw-lighter">Got an event? Partner with us</span></div>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> 
+                </div>
+
+
+              </div>
+            </div>
           
         </div>
       </div>

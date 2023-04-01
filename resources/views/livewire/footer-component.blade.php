@@ -209,30 +209,27 @@
   @if(Route::currentRouteName() === 'coi.exhibition')
   <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
-          <a class="d-table-cell handheld-toolbar-item" href="#conference">
+          <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
             <span class="handheld-toolbar-label">Home</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item" href="#awards">
+          {{--<a class="d-table-cell handheld-toolbar-item" href="#awards">
             <span class="handheld-toolbar-icon"><i class=" bi bi-trophy"></i></span>
             <span class="handheld-toolbar-label">Awards</span>
-          </a>
+          </a>--}}
           
-          <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar">
+          <a class="d-table-cell handheld-toolbar-item" href="#offcanvasRight">
             <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
             <span class="handheld-toolbar-label">Filter</span>
           </a>
 
           @if(Cart::instance('cart')->count() < 0)
-            <a class="d-table-cell handheld-toolbar-item" href="#">
+            <a class="d-table-cell handheld-toolbar-item" href="#offcanvasRight">
               <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
               <span class="handheld-toolbar-label">Add Event</span>
             </a>
           @endif
-
-          
-
 
           @if(Cart::instance('cart')->count() > 0)
             <a class="d-table-cell handheld-toolbar-item" href="#">

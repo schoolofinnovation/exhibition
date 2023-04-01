@@ -21,6 +21,6 @@ class ContactComponent extends Component
                                                   'email'=>$email,
                                                   'toll'=>$toll,
                                                   'head'=>$head,
-                                                  'branch'=>$branch ])->layout('layouts.eblog');
+                                                  'branch'=>$branch, ])->layout('layouts.eblog');
     }
 }

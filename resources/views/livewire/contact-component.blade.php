@@ -1,14 +1,11 @@
-@section('page_title','Contact')
+@section('page_title','Contact The Exhibtion Network | Exhibtions | Promotions')
+@section('page_description','Contact The Exhibition Network to learn more about our world-leading exhibition Promoting platform, and our large number of exhibition awards.')
+@section('page_keywords', 'Exhibition promoting platform, Exhibtion awards, Events and promotions, Trade shows, Business conferences, Industry events, contact form, email address, phone number, physical address, Customer servce, Contact information, Sales inquiries, Partnership opportunities ')
+@section('page_author' , 'The Exhibition Netwrok')
 
-@section('page_description','Job')
-@section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
-@section('page_author' , 'COI - CouncilofInnovation')
 
 
-@section('page_name',' All Job')
-@section('page_path',' Job')
-@section('page_list',' addJob')
-@section('page_name',' All Job')
+
       <div class="bg-secondary py-4">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
           <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
@@ -39,8 +36,7 @@
               <div class="card-body text-center"><i class="bi bi-clock h3 mt-2 mb-4 text-primary"></i>
                 <h3 class="h6 mb-3">Working hours</h3>
                 <ul class="list-unstyled fs-sm text-muted mb-0">
-                  <li>Mon - Fri: 10AM - 7PM</li>
-                  <li class="mb-0">Sta: 11AM - 5PM</li>
+                  <li>Mon - Fri: 10 AM - 5 PM</li>
                 </ul>
               </div>
             </div>
@@ -50,7 +46,8 @@
               <div class="card-body text-center"><i class=" bi bi-telephone h3 mt-2 mb-4 text-primary"></i>
                 <h3 class="h6 mb-3">Phone numbers</h3>
                 <ul class="list-unstyled fs-sm mb-0">
-                  <li><span class="text-muted me-1">Toll-free-number</span><br><a class="nav-link-style" href="tel:+108044357260">{{$toll->phone}} </a></li>
+                  <li><span class="text-muted me-1">Toll-free-number</span><br><a class="nav-link-style" href="tel:+108044357260">
+                    {{$toll->phone}} </a></li>
                   <!--<li class="mb-0"><span class="text-muted me-1">Tech support:</span><a class="nav-link-style" href="tel:+100331697720">+1 00 33 169 7720</a></li>-->
                 </ul>
               </div>
@@ -72,11 +69,10 @@
 
       <section class="container py-3 py-lg-5 mt-4 mb-3">
           
-          <h2 class="h1 text-center mb-2">
-          Our core team</h2>
-        <p class="fs-sm text-muted text-center">People behind your great shopping experience at</p>
-                <div class="fs-sm text-primary text-center">Connect with us<i class=" bi bi-chevron-right align-middle ms-1"></i></div>
-                <p class="fs-sm  text-center">Board of Innovation is building a team with superpowers. How are we doing it? By hiring top talent and creating a unique work environment.</p>
+          <h2 class="h1 text-center mb-2">The Exhibtiion Network</h2>
+          <p class="fs-sm text-muted text-center">Meet the peaple behind our award-winning exhibitions, conference and awards</p>
+          <div class="fs-sm text-primary text-center">Connect with us<i class=" bi bi-chevron-right align-middle ms-1"></i></div>
+          <p class="fs-sm  text-center">Our team is made up of talented individuals from diverse backgrounds, each bringing thier own unique skills and perspectives to the table. We are united by our passion for creating world-leading events that leave a lasting impression.</p>
 
           <div class="row pt-3">
             <div class="col-lg-4 col-sm-6 mb-grid-gutter">
@@ -128,7 +124,8 @@
               </div>
             </div>
           </div>
-        </section>
+
+      </section>
 
       <section class="container pt-4 mt-md-4 mb-5">
         <h2 class="h1 text-center mb-2">

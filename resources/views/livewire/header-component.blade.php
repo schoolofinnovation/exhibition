@@ -425,7 +425,7 @@
                                       
                                           <div class="list-group list-group-flush border-bottom scrollarea">
 
-                                              <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                                   <normal class="mb-1">Notifications</normal>
                                                   <small><i class="bi bi-chevron-right"></i></small>
@@ -433,7 +433,7 @@
                                                 <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
                                               </a>
 
-                                              <a href="{{route('user.Orders')}}" class="list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                              <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                                   <normal class="mb-1">Your Orders</normal>
                                                   <small>
@@ -448,7 +448,7 @@
                                                 <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
                                               </a>
 
-                                              <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                                   <normal class="mb-1">COI Recommends</normal>
                                                   <small><i class="bi bi-chevron-right"></i></small>
@@ -456,7 +456,7 @@
                                                 <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
                                               </a>
 
-                                              <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                                   <normal class="mb-1">Food & Beverages</normal>
                                                   <small><i class="bi bi-chevron-right"></i></small>
@@ -464,7 +464,7 @@
                                                 <div class="col-10 mb-1 small fw-lighter ">Satisfy your palates</div>
                                               </a>
 
-                                              <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                                   <normal class="mb-1">Luggage, Travel & Stay</normal>
                                                   <small><i class="bi bi-chevron-right"></i></small>
@@ -472,7 +472,7 @@
                                                 <div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>
                                               </a>
                                                                                             
-                                              <a href="#" class="list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                                   <normal class="mb-1">Rewards</normal>
                                                   <small><i class="bi bi-chevron-right"></i></small>
@@ -759,26 +759,24 @@
 
             <!--down stop-->
             <div class="offcanvas offcanvas-start" data-bs-toggle="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 380px;">                  
-            <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">    
+              <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">    
 
-            <div class="offcanvas-header">
-                  <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br><span class="fs-sm fw-lighter">Got an event? Partner with us</span></div>
-                  
-                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                  
+                <div class="offcanvas-header">
+                  <div class="offcanvas-title fs-sm" id="offcanvasExampleLabel">List your Show <br><span class="fs-sm fw-lighter">Got an event? Partner with us</span></div>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> 
                 </div>
               
-                <div class="list-group list-group-flush border-bottom scrollarea">
+                <div class="list-group list-group-flush scrollarea">
 
-                    <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Notifications</normal>
+                        <normal class="mb-1">Products</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
                       </div>
                       <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
                     </a>
                     @if(Auth::check())
-                      <a href="{{route('user.Orders')}}" class="list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                         <div class="d-flex w-100 align-items-center justify-content-between">
                           <normal class="mb-1">Your Orders</normal>
                           <small>
@@ -793,39 +791,46 @@
                         <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
                       </a>
                     @endif
-                    <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
                         <normal class="mb-1">COI Recommends</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
                       </div>
                       <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
-                    </a>
+                    </a>--}}
 
-                    <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Food & Beverages</normal>
+                        <normal class="mb-1">Resources</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
                       </div>
-                      <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                      {{--<div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>--}}
                     </a>
 
-                    <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Luggage, Travel & Stay</normal>
+                        <normal class="mb-1">Inspiration</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
                       </div>
-                      <div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>
+                      {{--<div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>--}}
                     </a>
                                                                   
-                    <a href="#" class="list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Rewards</normal>
+                        <normal class="mb-1">Pricing</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
                       </div>
-                      <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                     
                     </a>
 
-                    <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    <a href="#" class=" list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <div class="d-flex w-100 align-items-center justify-content-between">
+                        <normal class="mb-1">Talk to Sales</normal>
+                      </div>
+                    </a>
+
+
+                    {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
                         <normal class="mb-1">Offers</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
@@ -833,17 +838,17 @@
                       <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
                     </a>
 
-                    <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    <a href="{{route('user.profile')}}" class=" border-0 list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
                         <normal class="mb-1">Accounts & Settings</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
                       </div>
                       <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
-                    </a>
+                    </a>--}}
                     
                     
                     @if(Auth::check())
-                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
                         <normal class="mb-1">Logout</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
@@ -856,15 +861,35 @@
                     @endif
                   
 
-                    <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                    {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
                         <normal class="mb-1">Help & Support</normal>
                         <small><i class="bi bi-chevron-right"></i></small>
                       </div>
                       <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
-                    </a>
+                    </a>--}}
 
                 </div>
+                
+                
+
+                <div class="offcanvas-header fixed-bottom">
+                
+                   <div class="col-sm-12 py-4">
+                      <div class="small bold">Product updates</div>
+                      <small class="lh-1">Get the latest on new features, product improvement, and other announcements.</small>
+                      <div class="bold text-primary fs-sm"> See what's new</div> 
+                    </div>
+                    <hr class="py-1"> 
+                    <div class="row  py-3">
+                      <div class="col-6 fs-md" id="offcanvasExampleLabel">Log In</div>
+                      <div class="col-6 fs-md" id="offcanvasExampleLabel">Start Free Trail</div>
+                    </div>
+                </div>
+                    
+
+
+              </div>
             </div>
             <!--stop-->
 

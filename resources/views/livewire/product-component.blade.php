@@ -177,8 +177,6 @@
       </div>
     </div>
             
-   
-
     <!-- bottom -->              
     <div class="handheld-toolbar bg-secondary">
       <div class="d-flex justify-content-between py-2 px-2">

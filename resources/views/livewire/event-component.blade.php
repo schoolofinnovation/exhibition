@@ -1006,7 +1006,7 @@
             "autoplayHoverPause": true,
             "autoplay": false,
             "autoplayButtonOutput": false,
-                     "fixedWidth": auto,
+                     "fixedWidth": 100,
           },
           
         },
