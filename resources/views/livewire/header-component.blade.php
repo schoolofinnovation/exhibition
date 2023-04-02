@@ -417,8 +417,8 @@
                                       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
                                           
                                           <div class="offcanvas-header">
-                                            <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br><span class="fs-sm fw-lighter">
-                                              Got an event? Partner with us</span></div>
+                                            <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br>
+                                            <span class="fs-xs fw-lighter">Got an event? Partner with us</span></div>
                                             
                                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                           </div>
@@ -872,19 +872,18 @@
                 </div>
                 
                 
-
-                <div class="offcanvas-header fixed-bottom">
+                <div class="offcanvas-footer">
                 
                    <div class="col-sm-12 py-4">
                       <div class="small bold">Product updates</div>
                       <small class="lh-1">Get the latest on new features, product improvement, and other announcements.</small>
                       <div class="bold text-primary fs-sm"> See what's new</div> 
                     </div>
-                    <hr class="py-1"> 
-                    <div class="row  py-3">
-                      <div class="col-6 fs-md" id="offcanvasExampleLabel">Log In</div>
-                      <div class="col-6 fs-md" id="offcanvasExampleLabel">Start Free Trail</div>
-                    </div>
+                    
+                    
+                      <div class="offcanvas-title fs-sm" id="offcanvasExampleLabel">Log In</div>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    
                 </div>
                     
 

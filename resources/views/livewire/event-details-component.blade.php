@@ -1074,7 +1074,7 @@
               "@context": "https://schema.org",
               "@type": "Event",
               "name": "{{$event->eventname}}",
-              "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}",
+              "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('mm dd, yyyy')}}",
               "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('D, d M')}}",
               "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
               "eventStatus": "https://schema.org/EventScheduled",

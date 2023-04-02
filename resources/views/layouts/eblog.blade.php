@@ -41,13 +41,14 @@
     <!-- Sign in / sign up modal-->
     @if(Route::currentRouteName() === 'event.product')
     @elseif(Route::currentRouteName() === 'event.productreview')
+    @elseif(Route::currentRouteName() === 'coi.exhibition')
     @else
     <main class="page-wrapper">
     
-     @livewire('header-component')
-    {{-- @if(Auth::user()->utype == 'ADM') 
-       @livewire('seller-header-component')  
-     @endif --}}
+      @livewire('header-component')
+      {{-- @if(Auth::user()->utype == 'ADM') 
+        @livewire('seller-header-component')  
+      @endif --}}
     </main>
     @endif
 

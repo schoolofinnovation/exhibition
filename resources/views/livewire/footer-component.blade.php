@@ -174,15 +174,13 @@
             <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
             <span class="handheld-toolbar-label">Exhibition</span>
           </a>
+
           @if(Cart::instance('cart')->count() < 0)
-          <a class="d-table-cell handheld-toolbar-item" href="#">
-            <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
-            <span class="handheld-toolbar-label">Add Event</span>
-          </a>
+            <a class="d-table-cell handheld-toolbar-item" href="#">
+              <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
+              <span class="handheld-toolbar-label">Add Event</span>
+            </a>
           @endif
-
-          
-
 
           @if(Cart::instance('cart')->count() > 0)
             <a class="d-table-cell handheld-toolbar-item" href="#">
@@ -197,7 +195,7 @@
             </a>
           @endif
 
-          <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRigh" onclick="window.scrollTo(0, 0)">
+          <a class="d-table-cell handheld-toolbar-item"   data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
             <span class="handheld-toolbar-label">Menu</span>
           </a>
@@ -219,12 +217,12 @@
             <span class="handheld-toolbar-label">Awards</span>
           </a>--}}
           
-          <a class="d-table-cell handheld-toolbar-item" href="#offcanvasRight">
+          <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
             <span class="handheld-toolbar-label">Filter</span>
           </a>
 
-          @if(Cart::instance('cart')->count() < 0)
+          @if(Cart::instance('cart')->count() > 0)
             <a class="d-table-cell handheld-toolbar-item" href="#offcanvasRight">
               <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
               <span class="handheld-toolbar-label">Add Event</span>
@@ -243,11 +241,17 @@
               @endif  
             </a>
           @endif
-
-          <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRigh" onclick="window.scrollTo(0, 0)">
+          
+          <a class="d-table-cell handheld-toolbar-item"  href="#offcanvasRight" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
-            <span class="handheld-toolbar-label">Menu</span>
+            <span class="handheld-toolbar-label">Me0nu</span>
           </a>
+
+          {{-- for sample
+             <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRigh" onclick="window.scrollTo(0, 0)">
+            <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
+            <span class="handheld-toolbar-label">Meu1</span>
+          </a>--}}
 
         </div>
     </div>
