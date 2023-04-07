@@ -74,8 +74,6 @@ class ExhibitionCategoryComponent extends Component
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry_id)->paginate($this->pagesize); 
         }
         
-       
-
         if(Auth::check())
         {
                Cart::instance('wishlist')->store(Auth::user()->email);

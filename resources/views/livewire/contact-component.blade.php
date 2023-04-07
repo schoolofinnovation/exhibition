@@ -1,6 +1,6 @@
 @section('page_title','Contact The Exhibtion Network | Exhibtions | Promotions')
-@section('page_description','Contact The Exhibition Network to learn more about our world-leading exhibition Promoting platform, and our large number of exhibition awards.')
-@section('page_keywords', 'Exhibition promoting platform, Exhibtion awards, Events and promotions, Trade shows, Business conferences, Industry events, contact form, email address, phone number, physical address, Customer servce, Contact information, Sales inquiries, Partnership opportunities ')
+@section('page_description','Contact The Exhibition Network to learn more about our world-leading exhibition promoting platform, and our large number of exhibition awards.')
+@section('page_keyword', 'Exhibition promoting platform, Exhibtion awards, Events and promotions, Trade shows, Business conferences, Industry events, contact form, email address, phone number, physical address, Customer servce, Contact information, Sales inquiries, Partnership opportunities ')
 @section('page_author' , 'The Exhibition Netwrok')
 
 

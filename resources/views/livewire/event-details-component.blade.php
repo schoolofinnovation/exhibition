@@ -1,24 +1,12 @@
 <main>
 @section('page_title', ($event->eventname) )
 @section('page_description','Find your Industry Exhibition ')
-@section('page_keywords', 'Sell', 'Business', 'expansion')
+@section('page_keywords', Exhibition promoting platform, Exhibtion awards, Events and promotions, Trade shows, Business conferences, Industry events, contact form, email address, phone number, physical address, Customer servce, Contact information, Sales inquiries, Partnership opportunities )
 
 @section('page_name',' All Job')
 @section('page_path',' Job')
 @section('page_list',' addJob')
 @section('page_name',' All Job')
-
-@section('page_eventname', ($event->eventname))
-@section('page_startdate', ($event->startdate))
-@section('page_enddate', ($event->enddate))
-@section('page_description', ($event->eventname))
-@section('page_venue', ($event->venue))
-@section('page_description', ($event->eventname))
-@section('page_description', ($event->eventname))
-@section('page_eventCode', ($event->eventname))
-@section('page_eventRegion', ($event->city))
-@section('page_eventCountry', ($event->country))
-@section('page_description', ($event->eventname))
 
     <section class=" d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" style="background-image: url('{{asset('/image/test.jpg')}}');">
       
@@ -1074,8 +1062,8 @@
               "@context": "https://schema.org",
               "@type": "Event",
               "name": "{{$event->eventname}}",
-              "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('mm dd, yyyy')}}",
-              "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('D, d M')}}",
+              "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('YY-m-dd')}}",
+              "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('D, d M yy')}}",
               "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
               "eventStatus": "https://schema.org/EventScheduled",
               "location": {

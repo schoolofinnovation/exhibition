@@ -138,6 +138,7 @@ use App\Http\Livewire\Seller\SellerEventTicketComponent;
 use App\Http\Livewire\Seller\SellerOrderComponent;
 use App\Http\Livewire\Seller\SellerOrderDetailsComponent;
 use App\Http\Livewire\Seller\SellerPostOpportunityComponent;
+use App\Http\Controllers\SitemapController;
 
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
 
@@ -261,7 +262,6 @@ Route::get('/partner', MembershipComponent::class)->name('business.membership');
 //track
 Route::get('/COIbusiness',TrackComponent::class)->name('admin.track');
 Route::get('/wishlist', WishlistDetailsComponent::class)->name('franchise.wishlist');
-
 
 //likesor dislikes
 Route::post('/like-post/{mag}', 'App\Http\Livewire\BlogComponent@likepost')->name('post.like')->middleware('auth');
@@ -388,12 +388,6 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
   });
 
   //sitemap
-  Route::get('sitemap',function(){
-    $mytime = Carbon::today()->format("Y-m-d");
-    $site = App::make('sitemap');
-    //$site->add(URL::to('/'),date("Y-m-d h:i:s"),1,'daily'); 
-    $postie = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mytime)->get();
-     foreach ($postie as $key => $pt)
-     {$site->add(URL::to($pt->slug), $pt->created_at,0.9,'daily');}
-     $site->store('xml', 'sitemap');
-  });
+  Route::get('siteemap.xml', 'App\Http\Controllers\SitemapController@index');
+  
+  
