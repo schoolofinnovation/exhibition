@@ -226,31 +226,31 @@
             {
               "@context": "https://schema.org",
               "@type": "JobPosting",
-              "title": "{{$job->eventname}}",
-              "description":"<p></p>"
+              "title": "{{$job->title}}",
+              "description":"<p>{{$job->description}}</p>"
               "identifier":{
                 "@type":"PropertyValue",
-                "name":"",
-                "value":"",
+                "name":"The Exhibition Network",
+                "value":"785789",
               },
-              "datePosted" : "",
+              "datePosted" : "{{$job->description}}",
               "validThrough" : "",
-              "employmentType" : "" ,
+              "employmentType" : "PERMANENT" ,
               "hiringOrganization" : {
                 "@type" : "Organization",
-                "name" : "Google",
-                "sameAs" : "",
-                "logo" : ""
+                "name" : "The Exhibtion Network",
+                "sameAs" : "https://exhibition.org.in/",
+                "logo" : "https://exhibition.org.in/image/Yoyo.png"
               },
               
               "jobLocation": {
                 "@type": "Place",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "100 West Snickerpark Dr",
-                  "addressLocality": "Snickertown",
-                  "postalCode": "19019",
-                  "addressRegion": "",
+                  "streetAddress": "Rue de la Terrassière 58, 1207 Genève, Switzerland",
+                  "addressLocality": "Rue de la Terrassière",
+                  "postalCode": "1207 ",
+                  "addressRegion": "Genève",
                   "addressCountry": "IN"
                 }
               },
@@ -259,12 +259,11 @@
                 "currency" : "USD",
                 "value":{
                   "@type":"QuantitativeValue",
-                  "value": 40.00,
+                  "value": 10.00,
                   "unitText":"Hour"
                 }
               }
             }
 
-              
           </script>
         @endpush

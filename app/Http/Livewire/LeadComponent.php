@@ -15,6 +15,7 @@ class LeadComponent extends Component
     public $phone;
     public $user_id;
     public $event_id;
+    public $slug;
     public $type;
     public $admstatus;
     public $status;

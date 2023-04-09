@@ -76,7 +76,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "url": "https://www.exhibition.org.in",
+      "url": "https://exhibition.org.in",
       "logo": "https://exhibition.org.in/image/Yoyo.png"
     }
     </script>
