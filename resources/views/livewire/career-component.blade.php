@@ -1,6 +1,6 @@
 @section('page_title', 'Career - Join The Exhibition Network team')
 @section('page_description','Join the dynamic team at The Exhibition Network and make a difference in the world of exhibitions and conferences. Explore our current job opportunities and apply today.')
-@section('page_keywords','Careers, The Exhibition Network, Job Opportunities, Join Our Team, Employment opportunities, Careers at The Exhibition Network, Work with us, Job Openings, Open Positions, Current job listings, Career development, Employee benefits, Workplace culture, Company values, Professional growth, Interships, Diversity and inclusion')
+@section('page_keyword','Careers, The Exhibition Network, Job Opportunities, Join Our Team, Employment opportunities, Careers at The Exhibition Network, Work with us, Job Openings, Open Positions, Current job listings, Career development, Employee benefits, Workplace culture, Company values, Professional growth, Interships, Diversity and inclusion')
 
 
       <section class="container-fluid py-3 py-lg-5  ">

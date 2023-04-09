@@ -205,7 +205,7 @@
   @endif
 
   @if(Route::currentRouteName() === 'coi.exhibition')
-  <div class="handheld-toolbar">
+    <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
           <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>

@@ -77,6 +77,6 @@ class EventDetailsComponent extends Component
                                                         'speaker' => $speaker,
                                                         'awarde' => $awarde,
                                                         'franchises' => $franchises,'ticketOrExhibit' => $ticketOrExhibit
-                                                      ]);
+                                                      ])->layout('layouts.eblog');
     }
 }

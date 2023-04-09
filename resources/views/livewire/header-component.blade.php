@@ -1,16 +1,14 @@
   <main>
     
     @if(Route::currentRouteName() === 'event.details')
-    
     @elseif(Route::currentRouteName() === 'event.product')
     @elseif(Route::currentRouteName() === 'event.productreview')
-
     @elseif(Route::currentRouteName() === 'checkout')
-
     @elseif(Route::currentRouteName() === 'coicart')
     @elseif(Route::currentRouteName() === 'lead.business')
     @elseif(Route::currentRouteName() === 'lead.business.other')
     @elseif(Route::currentRouteName() === 'coi.exhibition')
+    @elseif(Route::currentRouteName() === 'coi.ratenow')
     @else
       <header class="shadow-sm ">
         <!-- Topbar

@@ -42,6 +42,7 @@
     @if(Route::currentRouteName() === 'event.product')
     @elseif(Route::currentRouteName() === 'event.productreview')
     @elseif(Route::currentRouteName() === 'coi.exhibition')
+    @elseif(Route::currentRouteName() === 'coi.ratenow')
     @else
     <main class="page-wrapper">
     

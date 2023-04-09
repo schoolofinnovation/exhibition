@@ -64,7 +64,8 @@ class EventRateNowComponent extends Component
     {
         $event = Event::where('slug',$this->slug)->first();  
         $hashtag = Hashtag:: where('event_id', $event->id)->get();
+        $previous = url()->previous();
 
-        return view('livewire.event-rate-now-component',['event'=>$event, 'hashtag'=>$hashtag]);
+        return view('livewire.event-rate-now-component',['previous'=>$previous,'event'=>$event, 'hashtag'=>$hashtag])->layout('layouts.eblog');
     }
 }

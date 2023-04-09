@@ -1,7 +1,7 @@
 @section('page_title','dashboard')
 
 @section('content_description','Find your Industry Exhibition ')
-@section('content_keywords', 'Sell', 'Business', 'expansion')
+@section('content_keyword', 'Sell', 'Business', 'expansion')
 
 <main>
       <!--header-->
@@ -24,7 +24,7 @@
               <h3 class="text-light">
                   @if($appliedapplication == 0)
                     <a class="fs-ms text-light" href="">Find Opportunity</a>
-                  @else 
+                    @else 
                       {{$appliedapplication}}
                   @endif
             </h3>

@@ -1,26 +1,22 @@
+@section('page_title', ($event->eventname))
+@section('page_description', ($event->description))
+@section('page_keyword', '($event->eventname), World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
+
+
 <main>
-@section('page_title', ($event->eventname) )
-@section('page_description','Find your Industry Exhibition ')
-@section('page_keywords', Exhibition promoting platform, Exhibtion awards, Events and promotions, Trade shows, Business conferences, Industry events, contact form, email address, phone number, physical address, Customer servce, Contact information, Sales inquiries, Partnership opportunities )
-
-@section('page_name',' All Job')
-@section('page_path',' Job')
-@section('page_list',' addJob')
-@section('page_name',' All Job')
-
-    <section class=" d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" style="background-image: url('{{asset('/image/test.jpg')}}');">
+    <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
+     style="background-image: url('{{('/image/test.jpg')}}');">
       
-        <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem;
-      padding-left: 0.625rem;
-      padding-right: 1rem;
+    <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem; padding-left: 0.625rem; padding-right: 1rem;
       padding-bottom: 0.425rem;
       transform: translateY(-50%);
       border-radius: 0.3125rem;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       font-size: .8125rem;">
-      <div class="h1 pt-5 text-light pb-0 mb-0" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">COI</div>  
-      <div class="fw-bold text-dark pb-2 lh-1">Exhibition</div> </div>
+      <div class = "h1 pt-5 text-light pb-0 mb-0" style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;">COI</div>  
+      <div class = "fw-bold text-dark pb-2 lh-1">Exhibition</div> 
+    </div>
      
       <div class="container pt-4 mb-3 mb-lg-0 ">
           <div class="row gy-0 ">
@@ -172,7 +168,7 @@
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
         </ul>
-      </section>
+    </section>
 
       <div class="container d-lg-none">
               <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">

@@ -251,7 +251,6 @@ Route::get('/rate_now/{slug}', EventRateNowComponent::class)->name('coi.ratenow'
 Route::get('/coi/expand-your-business/{slug}', LeadComponent::class)->name('lead.business');
 Route::get('/coi/sell-your-business/{slug}/{type}', LeadOtherComponent::class)->name('lead.business.other');
 
-
 Route::get('/cart', CheckoutComponent::class)->name('checkout');
 Route::get('/checkout', CoicartComponent::class)->name('coicart');
 Route::get('/payment', PaymentComponent::class)->name('payment');
@@ -276,13 +275,10 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.Orders');
     Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
-    
     Route::get('/user/mybrand', MybrandComponent::class)->name('user.mybrand');
-    
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/blog', UserBlogComponent::class)->name('user.blog');
     Route::get('/user/account', UserAccountComponent::class)->name('user.account');
-   
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
   });
 

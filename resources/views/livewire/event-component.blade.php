@@ -1,12 +1,6 @@
 @section('page_title', 'The Exhibtion Network - Connecting the World of Exhibitions & Conferences')
 @section('page_description', 'Join the Swiss-based Exhibition Network and connect with the world of exhibitions and conferences. Stay up to date with the latest updates and news, and be a part of the dynamic exhibition industry')
-@section('page_keywords', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
-
-@section('page_name',' All Job')
-@section('page_path',' Job')
-@section('page_list',' addJob')
-@section('page_name',' All Job')
-
+@section('page_keyword', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
 <main>    
           <section class="container bg-faded-info mt-1">
@@ -436,7 +430,7 @@
                 </div>
                     
             <div class="row pt-2 mx-n2 my-Slider6"> 
-              @foreach($evento as $eventoi)
+              @foreach($conference as $eventoi)
               <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
                   <div class="card product-card">
                     
