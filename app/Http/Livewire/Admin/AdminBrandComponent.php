@@ -12,7 +12,6 @@ class AdminBrandComponent extends Component
     public function render()
     {
         $brands = Brand::orderBy('id','DESC')->paginate(5);
-        
         return view('livewire.admin.admin-brand-component',['brands'=>$brands])->layout('layouts.eblog');
     }
 }

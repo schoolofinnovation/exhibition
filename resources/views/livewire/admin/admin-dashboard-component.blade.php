@@ -3,7 +3,7 @@
 @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 @section('page_author' , 'COI - CouncilofInnovation')
 <main>
-      <div class="page-title-overlap bg-accent pt-4">
+      {{--<div class="page-title-overlap bg-accent pt-4">
         <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
           <div class="d-flex align-items-center pb-3">
             <div class="img-thumbnail rounded-circle position-relative flex-shrink-0" style="max-width: 50%;">
@@ -17,9 +17,30 @@
           </div>
           <div class="d-flex">
             <div class="text-sm-end me-5">
-              <div class="text-light fs-base">Total sales</div>
-              <h3 class="text-light">426</h3>
+              <div class="text-light fs-base">Total Event</div>
+              <h3 class="text-light"> {{$events}}</h3>
             </div>
+            <div class="text-sm-end me-5">
+              <div class="text-light fs-base">Today</div>
+              <h3 class="text-light"> {{$evento->count()}}</h3>
+            </div>
+            <div class="text-sm-end me-5">
+              <div class="text-light fs-base">Tomorrow</div>
+              <h3 class="text-light"> {{$eventomorrow->count()}}</h3>
+            </div>
+            <div class="text-sm-end me-5">
+              <div class="text-light fs-base">Next Week</div>
+              <h3 class="text-light"> {{$eventweek->count()}}</h3>
+            </div>
+            <div class="text-sm-end me-5">
+              <div class="text-light fs-base">Next Month</div>
+              <h3 class="text-light"> {{$eventmonth->count()}}</h3>
+            </div>
+            <div class="text-sm-end me-5">
+              <div class="text-light fs-base">Three Month</div>
+              <h3 class="text-light"> {{$eventthreemonth->count()}}</h3>
+            </div>
+
             <div class="text-sm-end">
               <div class="text-light fs-base">Seller rating</div>
               <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
@@ -28,9 +49,10 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="container mb-5 pb-3">
-        <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+      </div>--}}
+
+      <div class="container">
+       
           <div class="row">
             <!-- Sidebar
             <aside class="col-lg-4 pe-xl-5">-->
@@ -62,7 +84,7 @@
               </div>
             </aside>-->
 
-            <aside class="col-lg-4 pe-xl-5">
+            {{--<aside class="col-lg-4 pe-xl-5">
               <div class="bg-white h-100 border-end p-4">
                 <div class="p-2">
                 <ul class="list-unstyled fs-sm">
@@ -114,13 +136,13 @@
                   </form>
                 </div>
               </div>
-            </aside>
+            </aside>--}}
 
             <!-- Content-->
-            <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+            <section class="col-lg-12 pt-lg-4">
               <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                 <!-- Title-->
-                <div class="d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
+                {{--<div class="d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
                   <h2 class="h5 py-2 me-2 text-center text-sm-start">
                     All Orders
                         
@@ -206,11 +228,11 @@
                       <label class="form-label fw-normal text-nowrap mb-0 me-2">Sort by:</label>
                       <select class="form-select form-select-sm me-2"  wire:model="board">
                         <option>Choose...</option>
-                        <option value="order" selected >Order</option>
+                        <option value="order"  >Order</option>
                         <option value="coupons">Coupons</option>
                         <option value="job">Jobs</option>
                         <option value="response">Response</option>
-                        <option value="event">Events</option>
+                        <option value="event" selected>Events</option>
                         <option value="user">Users</option>
                         <option value="shop">Shops</option>
                         <option value="contact">Contacts</option>
@@ -223,8 +245,9 @@
                       <button class="btn btn-outline-secondary btn-sm px-2" type="button"><i class="bi bi-arrow-up"></i></button>
                     </div>        
                   </div>
-                </div>
+                </div>--}}
                 <!-- edit page,  active deactive-->
+                
                 @if($board == 'job')
                   <div class="table-responsive fs-md mb-4">
                     <table class="table table-hover mb-0">
@@ -367,7 +390,7 @@
                 @endif
                 
                 @if($board == 'event')
-                  <div class="table-responsive fs-md mb-4">
+                  <div class="table-responsive fs-md">
                     <table class="table table-hover mb-0">
                         <thead>
                           <tr> <th>#</th>
@@ -409,7 +432,7 @@
                                           @else    
                                               <li><a class="dropdown-item" href="#" wire:click.prevent="updateJobstatus({{$info->id}},'deactive')">Active</a></li>
                                           @endif
-                                          <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                          <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
                                           <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
                                           <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
                                       </ul>
@@ -421,6 +444,82 @@
                     </table>
                   </div>
                   {{$expoaward->links('pagination-links')}}
+
+                  {{$mymonth}} {{$month}}  Count{{$monthwise->count()}}
+                 
+                    <div class="d-flex flex-nowrap align-items-center pb-3">
+                      <label class="form-label fw-normal text-nowrap mb-0 me-2">Sort by:</label>
+                      <select class="form-select form-select-sm me-2"  wire:model="month">
+                        <option>Choose...</option>
+                        <option value="01">Jan-01</option>
+                        <option value="02">Feb-02</option>
+                        <option value="03">Mar-03</option>
+                        <option value="04">Apr-04</option>
+                        <option value="05">May-05</option>
+                        <option value="06">Jun-06</option>
+                        <option value="07">Jul-07</option>
+                        <option value="08">Aug-08</option>
+                        <option value="09">Sep-09</option>
+                        <option value="10">Oct-10</option>
+                        <option value="11">Nov-11</option>
+                        <option value="12">Dec-12</option>
+                      </select>
+                    
+                    </div>        
+                  
+                  <div class="table-responsive fs-md">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                          <tr> <th>#</th>
+                          <th><small>edition| type |event name| Venue</small></th>
+                          <th><small>Auidence| Exhibitor</small> </th>
+                          <th><small>Category| Pavillion</small></th>
+                          <th><small>Contact</small></th>
+                          <th>Action</th></tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($monthwise as $info)
+                            <tr>
+                              <td class="py-1 align-middle">{{$info->id}}</td>
+                              <td class="py-1 align-middle"><span class="align-middle badge bg-info ms-2">
+                                {{$info->edition}},{{$info->eventname}}, {{$info->eventype}},
+                                <br><span class="align-middle badge bg-info ms-2">visitors {{($info->auidence)}} | exhibitors +300 </span></span></td>
+
+                              <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M Y')}}</span>
+                              <span class="align-middle badge bg-info ms-2">{{$info->venue}},{{$info->city}}</span>{{$info->category_id}}</td>
+                              
+                              <td class="py-1 align-middle fw-sm">
+                                <span class="align-middle badge  bg-info ms-2">
+                                
+                                </span></td>
+                              <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
+                                {{Str::limit($info->organizer, 25)}}<br>{{($info->email)}}</span></td>
+                                  
+                                <td class="py-2 align-middle">
+                                  <div class="dropdown">
+                                    <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                      @if($info->status == '1')
+                                          Active
+                                        @else
+                                          Deactive
+                                      @endif</a>
+                                      <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
+                                          @if(($info->status) === '1')
+                                              <li><a class="dropdown-item" href="#" wire:click.prevent="updateJobstatus({{$info->id}},'active')">Deactive</a></li>
+                                          @else    
+                                              <li><a class="dropdown-item" href="#" wire:click.prevent="updateJobstatus({{$info->id}},'deactive')">Active</a></li>
+                                          @endif
+                                          <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                          <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                          <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
+                                      </ul>
+                                  </div>      
+                                </td>
+                            </tr>
+                          @endforeach          
+                        </tbody>
+                    </table>
+                  </div>
                 @endif
 
                 @if($board == 'user')
@@ -1004,7 +1103,8 @@
                   {{$orders->links('pagination-links')}}
                 @endif
             </section>
-          </div>
+
+
         </div>
       </div>
 </main>

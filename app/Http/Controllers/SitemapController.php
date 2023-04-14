@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 class SitemapController extends Controller
 {
     public function index(Request $r)
-    {   $mytime = Carbon::today()->format("Y-m-d");
-        $postie = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mytime)->get();
+    {   //$mytime = Carbon::today()->format("Y-m-d");
+        $postie = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->get();
 
         return response()->view('sitemap',compact('postie'))->header('Content-Type','text/xml');
     }

@@ -79,6 +79,7 @@ class ExhibitionCategoryComponent extends Component
                Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
-        return view('livewire.exhibition-category-component' ,['exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
+        $previous = url()->previous();
+        return view('livewire.exhibition-category-component' ,['previous'=>$previous ,'exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
     }
 }

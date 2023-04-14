@@ -6,7 +6,7 @@
 <title>@yield('page_title') | The Exhibition Network</title>
     <!-- SEO Meta Tags <link rel="canonical" href="{{url()->current()}}"/>-->
     <meta name="description" content="@yield('page_description')">
-    <meta name="keywords" content="@yield('page_keywords')">
+    <meta name="keyword" content="@yield('page_keyword')">
     <meta name="author" content="The Exhibtion Network">    
     
     <!-- Viewport-->
@@ -80,7 +80,7 @@
    
 
     <!-- Footer-->
-    @livewire('footer-component') 
+    {{--@livewire('footer-component')--}} 
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/simplebar.min.js')}}"></script>

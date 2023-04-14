@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Award;
 use App\Models\Event;
 use App\Models\Expo;
 use Carbon\Carbon;
@@ -60,6 +61,11 @@ class ExhibitionComponent extends Component
     public function render()
     {
         $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
+        $counttype = Event::select('expo_id')->selectRaw('count(expo_id) as qty')->groupBy('expo_id')->orderBy('qty','DESC')->get();
+        $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
+        //$testies = Expo::where('type','expo')->where('id', $counttype->id)->get();
+        //dd($testies);
+
         $mytime = Carbon::now();
 
         if($this->sorting == 'date'){
@@ -84,6 +90,6 @@ class ExhibitionComponent extends Component
 
         $previous = url()->previous();
 
-        return view('livewire.exhibition-component',['previous'=>$previous, 'exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
+        return view('livewire.exhibition-component',['awarde' => $awarde,'counttype'=>$counttype ,'previous'=>$previous, 'exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
     }
 }

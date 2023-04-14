@@ -3,7 +3,7 @@
    @foreach ($postie as $sitemap)
       <url>
          <loc>{{url('/ex/'.$sitemap->slug)}}</loc>
-         <priority>9</priority>
+         <priority>1.0</priority>
          <lastmod>{{gmdate('Y-m-d\TH:i:s\Z',strtotime($sitemap->updated_at))}}</lastmod>
          <changefreq>daily</changefreq>
       </url>

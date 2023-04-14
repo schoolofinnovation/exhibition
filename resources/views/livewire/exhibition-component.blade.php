@@ -3,8 +3,15 @@
 @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 
   <main>
+   
+    
+    {{--<div>
+      @foreach ($counttype as $category)
+        {{$category->expo->expoindustry}} ({{$category->qty}})
+      @endforeach
+    </div>--}}
     <!--google-->
-        <div class="bg-secondary">
+        <div class="bg-secondary d-lg-none">
           <div class=" container">
             <div class="row ">
               <div class="col-md-6 offset-md-3 d-flex justify-content-between ">
@@ -25,7 +32,7 @@
           </div>
         </div>
         
-        <div class="container">
+        <div class="container d-lg-none">
           <div class="row">
             <div class="col-md-6 offset-md-3">
               
@@ -93,10 +100,10 @@
                 
                     <!-- Reviews tab-->
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
-                      <div class="row">
+                      <div class="row my-5 py-5 col-md-10 col-lg-8 mx-auto ">
                         <i class="bi bi-bookmark"></i>
                         <p>Saving an event will add it to this tab so that you can find it later</p>
-                        <a href="" class="btn btn-primary text-capitalize">return to search results</a>
+                        <a href="" class="btn btn-primary btn-sm text-capitalize">return to search results</a>
                       </div>
                     </div>
 
@@ -200,7 +207,7 @@
                         
                           <div class="d-flex justify-content-between">
                             <div class="product-price"><h3 class="product-title fs-sm">
-                              <a href="{{route('event.details',['slug' => $franchise->slug])}}"><strong>{{$franchise->id}}{{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</strong></a></h3></div>
+                              <a href="{{route('event.details',['slug' => $franchise->slug])}}"><strong>{{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</strong></a></h3></div>
                             <div class="star-rating align-center">
                             <!--untitled-1 line 558 -574-->
                             </div>
@@ -366,7 +373,7 @@
 
                           @if($this->eventype ==  'expo')
                               <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->id])}}">
-                                {{$category->expoindustry}}
+                                {{$category->expoindustry}} 
                               </a>
                               @elseif ($this->eventype ==  'award')
                               <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $category->id])}}">

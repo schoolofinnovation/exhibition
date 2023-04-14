@@ -10,9 +10,112 @@
 @section('page_name',' All Job')
 
     <main>
-      
+      <!--google-->
+        <div class="bg-secondary d-lg-none">
+          <div class=" container">
+            <div class="row ">
+              <div class="col-md-6 offset-md-3 d-flex justify-content-between ">
 
-      <div class="page-title-overlap bg-accent pt-4">
+                    <div class="align-content-center py-2 ">
+                    <a href="{{$previous}}"><i class="bi bi-chevron-left"></i></a>  
+                    </div>
+              
+                    <div class="text-center py-2">
+                          <div>Upcoming {{$this->eventype}}</div> 
+                    </div>
+
+                    <div class="align-content-center py-2">
+                    <a href="" ><i class="bi bi-search"></i></a>    
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container d-lg-none">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              
+            <div class="mb-4 mb-lg-5">
+              <!-- Nav tabs-->
+              <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
+                <li class="nav-item border-bottom"><a class="nav-link px-1 active fs-sm" href="#details" data-bs-toggle="tab" role="tab">Browse</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab"> Saved Events</a></li>
+              </ul>
+
+                <div class="d-flex badgese pb-2">
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
+                </div>
+
+                <div class="tab-content pt-1">
+                
+                    <!-- Product details tab-->
+                    <div class="tab-pane fade show active" id="details" role="tabpanel">
+                      <!-- details test tickets-->
+                      @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
+                      <div class="row mb-5 pb-2">
+                        @foreach ($exhibition as $franchise)
+                          <div class="container  ">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                  @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+
+                                  @endif 
+                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                              </div>
+
+                              <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                  {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                  @else
+                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                  @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                              </div>
+
+                              <div class="col-3  p-0">
+                                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                    <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                              </div>
+                            </div>
+                          </div>
+                        @endforeach
+                      </div>
+                    </div>
+                
+                    <!-- Reviews tab-->
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                      <div class="row">
+                        <i class="bi bi-bookmark"></i>
+                        <p>Saving an event will add it to this tab so that you can find it later</p>
+                        <a href="" class="btn btn-primary text-capitalize">return to search results</a>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+    <!--end Google-->  
+
+      <div class="page-title-overlap bg-accent pt-4 d-none d-sm-block">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
           <!--<div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
             <nav aria-label="breadcrumb">
@@ -30,7 +133,7 @@
         </div>
       </div>
 
-      <div class="container pb-5 mb-2 mb-md-4">
+      <div class="container pb-5 mb-2 mb-md-4 d-none d-sm-block">
         <div class="row">
           <!-- Content  -->
           <section class="col-lg-8">
@@ -292,3 +395,34 @@
       </div>
 
     </main>
+
+    @push('scripts')
+      <script>
+        var slider = tns({
+          "container": '.badgese',   
+          
+          "responsive": {
+            "300": {
+              "items": 3,
+              "controls": false,
+              "fixedWidth": 100,
+              "mouseDrag": true,
+              "autoplay": false,
+              "autoplayButtonOutput": false,
+              "autoplayHoverPause": true,
+            },
+            "500": {
+              "items": 1,
+              "nav": false,
+              "controls": false,
+              "autoplayHoverPause": true,
+              "autoplay": false,
+              "autoplayButtonOutput": false,
+              "fixedWidth": 100,
+            },
+            
+          },
+          "autoplayButtonOutput":false
+        });
+      </script>
+    @endpush
