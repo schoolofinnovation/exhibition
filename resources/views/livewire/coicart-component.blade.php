@@ -2,7 +2,6 @@
     @section('page_title','Business Opportunity')
     @section('page_description','Job')
     @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
-    @section('page_author' , 'COI - CouncilofInnovation')
     <main>     
       <!-- Page Title-->
       <div class="page-title-overlap bg-accent pt-4">

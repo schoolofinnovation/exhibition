@@ -8,6 +8,7 @@
     @elseif(Route::currentRouteName() === 'lead.business')
     @elseif(Route::currentRouteName() === 'lead.business.other')
     @elseif(Route::currentRouteName() === 'coi.exhibition')
+                             
     @elseif(Route::currentRouteName() === 'coi.ratenow')
     @else
       <header class="shadow-sm ">
@@ -289,246 +290,351 @@
                 <a class="navbar-tool navbar-stuck-toggler" href=""><span class="navbar-tool-tooltip">Toggle menu</span>
                   <div class="navbar-tool-icon-box"><i class="navbar-tool-icon bi bi-list"></i></div>
                 </a>
-                            @if(Route::has('login'))
-                                  @auth
-                                    @if(Auth::user()->utype === 'ADM')
-                                      <div class="navbar-tool dropdown ms-1">
-                                          <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
-                                            
-                                          <div class=" rounded-circle" >
-                                              <img  class="rounded-circle" src="{{Auth::user()->profile_photo_url }}"  alt="{{Auth::user()->name}}" style="max-width: 50%;">
-                                            </div>
-                                            
-                                            <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
-                                          </a>
-                                          <div class="dropdown-menu dropdown-menu-end">
-                                            <div style="min-width: 14rem;">
-                                              <h6 class="dropdown-header">Settings</h6>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-dashboard opacity-60 me-2"></i>Dashboard</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href=""><i class="ci-settings opacity-60 me-2"></i>Profile</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/entity' == request()->path() ? 'active' : '' }}" href="{{route('admin.info') }}"><i class="bi bi-sliders opacity-60 me-2"></i>Setting</a>
-                                              <div class="dropdown-divider"></div>
-                                              <h6 class="dropdown-header">Dashboard</h6>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-people opacity-60 me-2"></i>Event<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.user')}}"><i class="bi bi-people opacity-60 me-2"></i>User<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/categories' == request()->path() ? 'active' : '' }}" href="{{route('admin.categories')}}"><i class="bi bi-bookmark opacity-60 me-2"></i>Category<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/brands' == request()->path() ? 'active' : '' }}" href="{{route('admin.brand')}}"><i class="ci-dollar opacity-60 me-2"></i>Brand<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="ci-dollar opacity-60 me-2"></i>Franchise<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/contacts' == request()->path() ? 'active' : '' }}" href="{{route('admin.contact')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Contact<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                              <a class="dropdown-item d-flex align-items-center {{'admin/job/applicat' == request()->path() ? 'active' : '' }}" href="{{route('admin.resume')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Resume<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                              <div class="dropdown-divider"></div>
-                                              <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                              <i class="bi bi-box-arrow-right opacity-60 me-2"></i>Sign Out</a>
-                                              <form id="logout-form" action="{{route('logout')}}" method="POST">
-                                                @csrf
-                                              </form>
-                                            </div>
-                                          </div>
-                                      </div>
-                                    @elseif(Auth::user()->utype === 'SLR')
-                                      <div class="navbar-tool dropdown ms-1">
-                                          <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
-                                              <div class=" rounded-circle" style="width: 50%;">
-                                                <img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="{{Auth::user()->name}}" style="max-width: 50%;">
-                                              </div>
-                                            <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
-                                          </a>
+                    @if(Route::has('login'))
+                          @auth
+                            @if(Auth::user()->utype === 'ADM')
+                              <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                <div class="navbar-tool ms-1">
+                                    <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
+
+                                    <div class="rounded-circle"><img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->name}}" style="max-width: 50%;"></div>
                                       
-                                          <div class="dropdown-menu dropdown-menu-end">
-                                            <div style="min-width: 14rem;">
-                                                <h6 class="dropdown-header">Business Account</h6>
-                                              <!-- <a class="dropdown-item d-flex align-items-center" href=""><i class="ci-settings opacity-60 me-2"></i>Account</a>-->
-                                              <a class="dropdown-item d-flex align-items-center {{'seller/account' == request()->path() ? 'active' : '' }}" href="{{ route('seller.account') }}"><i class="ci-settings opacity-60 me-2"></i>Account</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'seller/dashboard' == request()->path() ? 'active' : '' }}" href="{{ route('seller.dashboard') }}"><i class="ci-settings opacity-60 me-2"></i>Dashboard</a>
-                                                  
-                                              <div class="dropdown-divider"></div>
-                                              <h6 class="dropdown-header">Dashboard</h6>
-                                              <a class="dropdown-item d-flex align-items-center {{'seller/profile' == request()->path() ? 'active' : '' }}" href="{{ route('seller.profile') }}"><i class="ci-settings opacity-60 me-2"></i>Profile</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'seller/brand' == request()->path() ? 'active' : '' }}" href="{{ route('seller.brand') }}"><i class="ci-settings opacity-60 me-2"></i>Brand</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'seller/franchise' == request()->path() ? 'active' : '' }}" href="{{ route('seller.franchise') }}"><i class="ci-settings opacity-60 me-2"></i>Franchise</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'seller/contact' == request()->path() ? 'active' : '' }}" href="{{ route('seller.contact') }}"><i class="ci-settings opacity-60 me-2"></i>Contact</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'seller/blog' == request()->path() ? 'active' : '' }}" href="{{ route('seller.blog') }}"><i class="ci-settings opacity-60 me-2"></i>Blog</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{ route('seller.dashboard') }}"><i class="ci-settings opacity-60 me-2"></i>Search</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{ route('seller.dashboard') }}"><i class="ci-settings opacity-60 me-2"></i>Actions</a>
-                                              <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                              <i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
-                                              <form id="logout-form" action="{{route('logout')}}" method="POST">
-                                                @csrf
-                                              </form>
-                                            </div>
-                                          </div>
+                                      <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
+                                    </a>
+                                    {{--<div class="dropdown-menu dropdown-menu-end">
+                                      <div style="min-width: 14rem;">
+                                        <h6 class="dropdown-header">Settings</h6>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-dashboard opacity-60 me-2"></i>Dashboard</a>
+                                        <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href=""><i class="ci-settings opacity-60 me-2"></i>Profile</a>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/entity' == request()->path() ? 'active' : '' }}" href="{{route('admin.info') }}"><i class="bi bi-sliders opacity-60 me-2"></i>Setting</a>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="dropdown-header">Dashboard</h6>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-people opacity-60 me-2"></i>Event<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.user')}}"><i class="bi bi-people opacity-60 me-2"></i>User<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/categories' == request()->path() ? 'active' : '' }}" href="{{route('admin.categories')}}"><i class="bi bi-bookmark opacity-60 me-2"></i>Category<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/brands' == request()->path() ? 'active' : '' }}" href="{{route('admin.brand')}}"><i class="ci-dollar opacity-60 me-2"></i>Brand<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="ci-dollar opacity-60 me-2"></i>Franchise<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/contacts' == request()->path() ? 'active' : '' }}" href="{{route('admin.contact')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Contact<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                        <a class="dropdown-item d-flex align-items-center {{'admin/job/applicat' == request()->path() ? 'active' : '' }}" href="{{route('admin.resume')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Resume<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="bi bi-box-arrow-right opacity-60 me-2"></i>Sign Out</a>
+                                        <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                          @csrf
+                                        </form>
                                       </div>
-                                    @elseif(Auth::user()->utype === 'MSR')
-                                      <div class="navbar-tool dropdown ms-1">
-                                        <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
-                                            <div class=" rounded-circle" style="width: 50%;">
-                                              <img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="" style="max-width: 50%;">
+                                    </div>--}}
+                                </div>
+                              </div>
+
+                              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
+                                  
+                                  <div class="offcanvas-header">
+                                    <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br>
+                                    <span class="fs-xs fw-lighter">Got an event? Partner with us</span></div>
+                                    
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                  </div>
+                              
+                                  <div class="list-group list-group-flush border-bottom scrollarea">
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Notifications</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
+                                      </a>
+
+                                      <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Your Orders</normal>
+                                          <small>
+                                          @if (Auth::check()) 
+                                            <i class="bi bi-chevron-right"></i>
+                                            @else
+                                            <i class="bi bi-lock-fill"></i>
+                                            
+                                            @endif
+                                          </small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">COI Recommends</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Food & Beverages</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Satisfy your palates</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Luggage, Travel & Stay</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>
+                                      </a>
+                                                                                    
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Rewards</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                                      </a>
+
+                                      <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Offers</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                                      </a>
+
+                                      <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Accounts & Settings</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
+                                      </a>
+                                      
+                                      <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Help & Support</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                                      </a>
+                                    
+                                      <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Logout</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                                      </a>
+                                      <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                      </form>
+                                    
+
+                                  </div>
+                                    
+                              </div>
+                            @elseif(Auth::user()->utype === 'SLR')
+                              <div class="navbar-tool dropdown ms-1">
+                                  <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
+                                      <div class=" rounded-circle" style="width: 50%;">
+                                        <img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="{{Auth::user()->name}}" style="max-width: 50%;">
+                                      </div>
+                                    <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
+                                  </a>
+                              
+                                  <div class="dropdown-menu dropdown-menu-end">
+                                    <div style="min-width: 14rem;">
+                                        <h6 class="dropdown-header">Business Account</h6>
+                                      <!-- <a class="dropdown-item d-flex align-items-center" href=""><i class="ci-settings opacity-60 me-2"></i>Account</a>-->
+                                      <a class="dropdown-item d-flex align-items-center {{'seller/account' == request()->path() ? 'active' : '' }}" href="{{ route('seller.account') }}"><i class="ci-settings opacity-60 me-2"></i>Account</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'seller/dashboard' == request()->path() ? 'active' : '' }}" href="{{ route('seller.dashboard') }}"><i class="ci-settings opacity-60 me-2"></i>Dashboard</a>
                                           
-                                            </div>
-                                            <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
-                                        </a>
-                                        
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                          <div style="min-width: 14rem;">
-                                            <h6 class="dropdown-header">Basic Account</h6>
-                                            <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('master.dashboard')}}"><i class="ci-settings opacity-60 me-2"></i>Dashboard</a>
-                                            <!--<a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{ route('profile.show') }}"><i class="ci-settings opacity-60 me-2"></i>Profile</a>-->
-                                            <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" ><i class="ci-basket opacity-60 me-2"></i>Categories</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
-                                            <form id="logout-form" action="{{route('logout')}}" method="POST">
-                                              @csrf
-                                            </form>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    @elseif(Auth::user()->utype === 'EMP')
-                                      <div class="navbar-tool dropdown ms-1">
-                                        <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
-                                            <div class=" rounded-circle" style="width: 50%;"><img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="" style="max-width: 50%;"></div>
-                                            <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
-                                        </a>
-                                          <div class="dropdown-menu dropdown-menu-end">
-                                            <div style="min-width: 14rem;">
-                                            <h6 class="dropdown-header">Account</h6>
-                                            <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('user.account')}}"><i class="ci-settings opacity-60 me-2"></i>Account</a>
-                                            <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('employee.dashboard')}}"><i class="ci-settings opacity-60 me-2"></i>Mybrand</a>
-                                            <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" ><i class="ci-basket opacity-60 me-2"></i>Categories</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
-                                            <form id="logout-form" action="{{route('logout')}}" method="POST">@csrf</form>
-                                            </div>
-                                          </div>
-                                      </div>
-                                    @elseif(Auth::user()->utype === 'USR')
-                                      <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                                        <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2">
-                                          <div class=" rounded-circle px-2" style="width: 35%;">
-                                            <img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="{{ Auth::user()->name }}" style="max-width: auto;">
-                                          </div>
-                                          <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
-                                        </a>
-                                      </div>
-                                      
-                                      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
-                                          
-                                          <div class="offcanvas-header">
-                                            <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br>
-                                            <span class="fs-xs fw-lighter">Got an event? Partner with us</span></div>
-                                            
-                                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                          </div>
-                                      
-                                          <div class="list-group list-group-flush border-bottom scrollarea">
-
-                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Notifications</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
-                                              </a>
-
-                                              <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Your Orders</normal>
-                                                  <small>
-                                                  @if (Auth::check()) 
-                                                    <i class="bi bi-chevron-right"></i>
-                                                    @else
-                                                    <i class="bi bi-lock-fill"></i>
-                                                    
-                                                    @endif
-                                                  </small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
-                                              </a>
-
-                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">COI Recommends</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
-                                              </a>
-
-                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Food & Beverages</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter ">Satisfy your palates</div>
-                                              </a>
-
-                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Luggage, Travel & Stay</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>
-                                              </a>
-                                                                                            
-                                              <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Rewards</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
-                                              </a>
-
-                                              <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Offers</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
-                                              </a>
-
-                                              <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Accounts & Settings</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
-                                              </a>
-                                              
-                                              <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Help & Support</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
-                                              </a>
-                                            
-                                              <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                                  <normal class="mb-1">Logout</normal>
-                                                  <small><i class="bi bi-chevron-right"></i></small>
-                                                </div>
-                                                <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
-                                              </a>
-                                              <form id="logout-form" action="{{route('logout')}}" method="POST">
-                                                @csrf
-                                              </form>
-                                            
-
-                                          </div>
-                                            
-                                      </div>
-
-                                      
-                                        </div>
-                                        </div>
-                                      </div>
-                                    @endif
-                              @else
-                                <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="">
-                                  <div class="navbar-tool-icon-box"><i class="navbar-tool-icon bi bi-person-circle"></i></div>
-                                  <div class="navbar-tool-text ms-n3" ><small>Hello, Sign in</small>My Account</div>
+                                      <div class="dropdown-divider"></div>
+                                      <h6 class="dropdown-header">Dashboard</h6>
+                                      <a class="dropdown-item d-flex align-items-center {{'seller/profile' == request()->path() ? 'active' : '' }}" href="{{ route('seller.profile') }}"><i class="ci-settings opacity-60 me-2"></i>Profile</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'seller/brand' == request()->path() ? 'active' : '' }}" href="{{ route('seller.brand') }}"><i class="ci-settings opacity-60 me-2"></i>Brand</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'seller/franchise' == request()->path() ? 'active' : '' }}" href="{{ route('seller.franchise') }}"><i class="ci-settings opacity-60 me-2"></i>Franchise</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'seller/contact' == request()->path() ? 'active' : '' }}" href="{{ route('seller.contact') }}"><i class="ci-settings opacity-60 me-2"></i>Contact</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'seller/blog' == request()->path() ? 'active' : '' }}" href="{{ route('seller.blog') }}"><i class="ci-settings opacity-60 me-2"></i>Blog</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{ route('seller.dashboard') }}"><i class="ci-settings opacity-60 me-2"></i>Search</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{ route('seller.dashboard') }}"><i class="ci-settings opacity-60 me-2"></i>Actions</a>
+                                      <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                      <i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
+                                      <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                      </form>
+                                    </div>
+                                  </div>
+                              </div>
+                            @elseif(Auth::user()->utype === 'MSR')
+                              <div class="navbar-tool dropdown ms-1">
+                                <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
+                                    <div class=" rounded-circle" style="width: 50%;">
+                                      <img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="" style="max-width: 50%;">
+                                  
+                                    </div>
+                                    <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
                                 </a>
+                                
+                                <div class="dropdown-menu dropdown-menu-end">
+                                  <div style="min-width: 14rem;">
+                                    <h6 class="dropdown-header">Basic Account</h6>
+                                    <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('master.dashboard')}}"><i class="ci-settings opacity-60 me-2"></i>Dashboard</a>
+                                    <!--<a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{ route('profile.show') }}"><i class="ci-settings opacity-60 me-2"></i>Profile</a>-->
+                                    <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" ><i class="ci-basket opacity-60 me-2"></i>Categories</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
+                                    <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                      @csrf
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            @elseif(Auth::user()->utype === 'EMP')
+                              <div class="navbar-tool dropdown ms-1">
+                                <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
+                                    <div class=" rounded-circle" style="width: 50%;"><img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="" style="max-width: 50%;"></div>
+                                    <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
+                                </a>
+                                  <div class="dropdown-menu dropdown-menu-end">
+                                    <div style="min-width: 14rem;">
+                                    <h6 class="dropdown-header">Account</h6>
+                                    <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('user.account')}}"><i class="ci-settings opacity-60 me-2"></i>Account</a>
+                                    <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href="{{route('employee.dashboard')}}"><i class="ci-settings opacity-60 me-2"></i>Mybrand</a>
+                                    <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" ><i class="ci-basket opacity-60 me-2"></i>Categories</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
+                                    <form id="logout-form" action="{{route('logout')}}" method="POST">@csrf</form>
+                                    </div>
+                                  </div>
+                              </div>
+                            @elseif(Auth::user()->utype === 'USR')
+                              <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2">
+                                  <div class=" rounded-circle px-2" style="width: 35%;">
+                                    <img  class="rounded-circle" src="{{ Auth::user()->profile_photo_url }}"  alt="{{ Auth::user()->name }}" style="max-width: auto;">
+                                  </div>
+                                  <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
+                                </a>
+                              </div>
+                              
+                              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
+                                  
+                                  <div class="offcanvas-header">
+                                    <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br>
+                                    <span class="fs-xs fw-lighter">Got an event? Partner with us</span></div>
+                                    
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                  </div>
+                              
+                                  <div class="list-group list-group-flush border-bottom scrollarea">
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Notifications</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
+                                      </a>
+
+                                      <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Your Orders</normal>
+                                          <small>
+                                          @if (Auth::check()) 
+                                            <i class="bi bi-chevron-right"></i>
+                                            @else
+                                            <i class="bi bi-lock-fill"></i>
+                                            
+                                            @endif
+                                          </small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">COI Recommends</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Food & Beverages</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Satisfy your palates</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Luggage, Travel & Stay</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>
+                                      </a>
+                                                                                    
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Rewards</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                                      </a>
+
+                                      <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Offers</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                                      </a>
+
+                                      <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Accounts & Settings</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
+                                      </a>
+                                      
+                                      <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Help & Support</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                                      </a>
+                                    
+                                      <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Logout</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                                      </a>
+                                      <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                      </form>
+                                    
+
+                                  </div>
+                                    
+                              </div>
+
+                                </div>
+                                </div>
+                              </div>
                             @endif
+                      @else
+                        <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="">
+                          <div class="navbar-tool-icon-box"><i class="navbar-tool-icon bi bi-person-circle"></i></div>
+                          <div class="navbar-tool-text ms-n3" ><small>Hello, Sign in</small>My Account</div>
+                        </a>
+                    @endif
                   @endif       
                   @livewire('wishlist-component')
                   @livewire('cart-component')

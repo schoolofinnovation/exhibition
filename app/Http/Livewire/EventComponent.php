@@ -28,12 +28,11 @@ class EventComponent extends Component
 
     {   $industry = Category::get();
         $mytime = Carbon::today()->format("Y-m-d");
-        $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mytime)->orderBy('startdate','ASC')->get();
-        $awardo = Event::where('admstatus','1')->where('status','1')->where('eventype','award')->where('startdate', '>' , 'mytime')->get();
-        $conference = Event::where('admstatus','1')->where('status','1')->where('eventype','conference')->where('startdate', '>' ,'mytime')->get();
+        $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
+        $awardo = Event::where('admstatus','1')->where('status','1')->where('eventype','award')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
+        $conference = Event::where('admstatus','1')->where('status','1')->where('eventype','conference','summit')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
         
         $newlead = Event::where('admstatus','1')->where('status','1')->where('eventype','award')->latest()->paginate(1);
-        
 
         //Network & Social & Speakers   
         //$mytime = Carbon::tomorrow()->format("Y-m-d");
@@ -52,6 +51,6 @@ class EventComponent extends Component
         $finder = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
 
        
-        return view('livewire.event-component',['conference' => $conference ,'finder' => $finder,'magazine'=>$magazine, 'speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
+        return view('livewire.event-component', ['conference' => $conference ,'finder' => $finder,'magazine'=>$magazine, 'speaker'=>$speaker,'network'=>$network,'social'=>$social,'newlead'=>$newlead,'awardo'=>$awardo,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
     }
 }

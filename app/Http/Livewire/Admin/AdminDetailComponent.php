@@ -3,13 +3,11 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Event;
-use App\Models\Ticket;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminTicketComponent extends Component
-{
-    public $slug;
+class AdminDetailComponent extends Component
+{   public $slug;
     public function mount($slug)
     {
        $this->slug = $slug;
@@ -18,8 +16,7 @@ class AdminTicketComponent extends Component
     use WithPagination;
     public function render()
     {
-        $tickets = Ticket::orderBy('id','DESC')->paginate(5);
         $event = Event::where('slug', $this->slug)->first();
-        return view('livewire.admin.admin-ticket-component',['tickets'=>$tickets, 'event'=>$event])->layout('layouts.eblog');
+        return view('livewire.admin.admin-detail-component',['event'=>$event])->layout('layouts.eblog');
     }
 }

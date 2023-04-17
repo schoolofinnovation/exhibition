@@ -36,6 +36,8 @@ class AdminEventAddComponent extends Component
     public $email;
     public $phone;
     public $image;
+
+    public $details;
     
 
     Use WithFileUploads;

@@ -8,7 +8,7 @@
     <title> @yield('page_title') | The Exhibition Network</title>
     <meta name="description" content="@yield('page_description')">
     <meta name="keyword" content="@yield('page_keyword')">
-    <meta name="author" content = "TheExhibitionNetwork">  
+    <meta name="author" content = "The Exhibition Network">  
     
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,8 +43,9 @@
     @elseif(Route::currentRouteName() === 'event.productreview')
     @elseif(Route::currentRouteName() === 'coi.exhibition')
     @elseif(Route::currentRouteName() === 'coi.ratenow')
+    @elseif(Route::currentRouteName() === 'coi.exhibitioncategory')
     @else
-    <main class="page-wrapper">
+    <main class="page-wrapper" style="flex: 0 0 auto;">
     
       @livewire('header-component')
       {{-- @if(Auth::user()->utype == 'ADM') 

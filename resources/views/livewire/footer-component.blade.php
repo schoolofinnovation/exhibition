@@ -13,10 +13,10 @@
             <div class="widget widget-links widget-light pb-2 mb-4">
               <h3 class="widget-title text-light" style="font-weight: 720; font-size: 39px;">One step closer to meaningful innovation</h3>
               
-            <p class="fs-sm text-white opacity-70 pb-1">High quality items created by our global community.</p>
+            <p class="fs-sm text-white opacity-70 pb-1">High quality events created by our global community.</p>
 
             <h6 class="d-inline-block col-sm-3 pe-3 me-3 border-end border-light"><span class="text-primary">65,478 </span>
-            <span class="fw-normal text-white">Products</span></h6>
+            <span class="fw-normal text-white">Events</span></h6>
             <h6 class="d-inline-block col-sm-3 pe-3 me-3 border-end border-light"><span class="text-primary">2,521 </span>
             <span class="fw-normal text-white">Members</span></h6>
             <h6 class="d-inline-block col-sm-3 me-3"><span class="text-primary">897 </span>
@@ -106,13 +106,13 @@
             <div class="col-md-6 text-center text-md-start mb-4">
               <div class="text-nowrap mb-4">
                 <a class="d-inline-block align-middle mt-n1 me-3" style="line-height:17px;" href="{{asset('/')}}">
-                  <div class="fs-4 text-light" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
-                    Council <small class="text-primary fw-normal">of</small><br>Innovation</div>
+                  <div class="fs-4 text-light lh-1" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
+                    The<br>Exhibition<br>Network</div>
                     <!--<img class="d-block" src="./franciz_files/footer-logo-light.png" width="117" alt="Council of Innovation">-->
                 </a>
                 <div class="btn-group dropdown disable-autohide">
                   <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown">
-                    <img class="me-2" src="./franciz_files/en.png" width="20" alt="English">Eng / $</button>
+                    <img class="me-2" src="" width="20" alt="English">Eng / $</button>
                   <ul class="dropdown-menu my-1">
                     <li class="dropdown-item">
                       <select class="form-select form-select-sm">
@@ -122,9 +122,9 @@
                         <option value="jpy">¥ JPY</option>
                       </select>
                     </li>
-                    <li><a class="dropdown-item pb-1" href=""><img class="me-2" src="./franciz_files/fr.png" width="20" alt="Français">Français</a></li>
-                    <li><a class="dropdown-item pb-1" href=""><img class="me-2" src="./franciz_files/de.png" width="20" alt="Deutsch">Deutsch</a></li>
-                    <li><a class="dropdown-item" href=""><img class="me-2" src="./franciz_files/it.png" width="20" alt="Italiano">Italiano</a></li>
+                    <li><a class="dropdown-item pb-1" href=""><img class="me-2" src="" width="20" alt="Français">Français</a></li>
+                    <li><a class="dropdown-item pb-1" href=""><img class="me-2" src="" width="20" alt="Deutsch">Deutsch</a></li>
+                    <li><a class="dropdown-item" href=""><img class="me-2" src="" width="20" alt="Italiano">Italiano</a></li>
                   </ul>
                 </div>
 
@@ -149,7 +149,7 @@
               </div><img class="d-inline-block" src="./franciz_files/cards-alt.png" width="187" alt="Payment methods">
             </div>
           </div>
-          <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="{{asset('/')}}" target="_blank" rel="noopener">COI | Council of Innovation</a></div>
+          <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="{{asset('/')}}" target="_blank" rel="noopener">COI | The Exhibition Network</a></div>
         </div>
         </div>
        </div>
@@ -157,9 +157,11 @@
   </footer>
 @endif
    
-  @if('/' == request()->path() ? 'active' : '')
+  
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
+
+      @if('/' == request()->path() ? 'active' : '')
           <a class="d-table-cell handheld-toolbar-item" href="#conference">
             <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
             <span class="handheld-toolbar-label">Conference</span>
@@ -174,13 +176,42 @@
             <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
             <span class="handheld-toolbar-label">Exhibition</span>
           </a>
+      @elseif(Route::currentRouteName() === 'coi.exhibition' )
+          <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
+            <span class="handheld-toolbar-label">Home</span>
+          </a>
 
-          @if(Cart::instance('cart')->count() < 0)
-            <a class="d-table-cell handheld-toolbar-item" href="#">
-              <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
-              <span class="handheld-toolbar-label">Add Event</span>
-            </a>
-          @endif
+          <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar" aria-controls="offcanvasRight">
+            <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
+            <span class="handheld-toolbar-label">Filter</span>
+          </a>
+
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('coievent.add')}}">
+              <span class="handheld-toolbar-icon"><i class="bi bi-heart"></i></span>
+              <span class="handheld-toolbar-label">Add</span>
+          </a>
+
+      @elseif(Route::currentRouteName() === 'coi.exhibitioncategory')
+
+          <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
+            <span class="handheld-toolbar-label">Home</span>
+          </a>
+
+          <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar" aria-controls="offcanvasRight">
+            <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
+            <span class="handheld-toolbar-label">Filter</span>
+          </a>
+
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('coievent.add')}}">
+              <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+              <span class="handheld-toolbar-label">Add</span>
+          </a>
+      @endif
+          
+           
+         
 
           @if(Cart::instance('cart')->count() > 0)
             <a class="d-table-cell handheld-toolbar-item" href="#">
@@ -194,72 +225,34 @@
               @endif  
             </a>
           @endif
+          @if(Route::currentRouteName() === 'coievent.add')
+          <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
+            <span class="handheld-toolbar-label">Home</span>
+          </a>
 
-          <a class="d-table-cell handheld-toolbar-item"   data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
+            <span class="handheld-toolbar-label">Advertise</span>
+          </a>
+          @endif
+          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
             <span class="handheld-toolbar-label">Menu</span>
           </a>
 
         </div>
     </div>
-  @endif
+ 
 
-  @if(Route::currentRouteName() === 'coi.exhibition')
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100">
-          <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
-            <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
-            <span class="handheld-toolbar-label">Home</span>
-          </a>
-
-          {{--<a class="d-table-cell handheld-toolbar-item" href="#awards">
-            <span class="handheld-toolbar-icon"><i class=" bi bi-trophy"></i></span>
-            <span class="handheld-toolbar-label">Awards</span>
-          </a>--}}
-          
-          <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
-            <span class="handheld-toolbar-label">Filter</span>
-          </a>
-
-          @if(Cart::instance('cart')->count() > 0)
-            <a class="d-table-cell handheld-toolbar-item" href="#offcanvasRight">
-              <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
-              <span class="handheld-toolbar-label">Add Event</span>
-            </a>
-          @endif
-
-          @if(Cart::instance('cart')->count() > 0)
-            <a class="d-table-cell handheld-toolbar-item" href="#">
-              <span class="handheld-toolbar-icon"><i class="bi bi-cart"></i>
-              @if(Cart::instance('cart')->count() > 0)
-              <span class="badge bg-primary rounded-pill ms-1">{{Cart::instance('cart')->count()}}</span></span>
-              
-                <span class="handheld-toolbar-label">{{Cart::instance('cart')->subtotal()}}</span>
-              @else
-              <span class="handheld-toolbar-label">Cart</span>
-              @endif  
-            </a>
-          @endif
-          
-          <a class="d-table-cell handheld-toolbar-item"  href="#offcanvasRight" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
-            <span class="handheld-toolbar-label">Me0nu</span>
-          </a>
-
-          {{-- for sample
-             <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#offcanvasRigh" onclick="window.scrollTo(0, 0)">
-            <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
-            <span class="handheld-toolbar-label">Meu1</span>
-          </a>--}}
-
-        </div>
-    </div>
-   
-  @endif
+  
     <span class="navbar-tool-label"> </span> 
           
     <!-- Back To Top Button-->
     <a class="btn-scroll-top" href="{{asset('/#top')}}" data-scroll="">
     <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="bi bi-funnel-fill"></i></a>
+
+
+
+                      
 </main>

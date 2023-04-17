@@ -20,10 +20,12 @@ class ExhibitionComponent extends Component
     public $eventype;
     public $categ;
     
+    
     public function mount($eventype)
     {
        $this->eventype = $eventype;
-       $this->sorting="default";
+       //$this->motiontime = "all";
+       $this->sorting = "default";
        $this->pagesize= 24;
        //$this->categ= $categ;
     }
@@ -77,8 +79,9 @@ class ExhibitionComponent extends Component
         elseif ($this->sorting =='area'){
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
+        
         else{
-            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->paginate($this->pagesize); 
+            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('startdate', '>=',$mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
         
        

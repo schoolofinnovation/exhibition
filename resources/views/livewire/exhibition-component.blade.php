@@ -44,15 +44,15 @@
               </ul>
 
                 <div class="d-flex badgese pb-2">
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="today"> Today </a></span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="tomorrow"> Tomorrow </a></span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="this-weekend">  This weekend </a></span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-week">  Next Week </a></span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-weekend">  Next weekend </a></span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="this-month">  This Month </a></span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-month">  Next Month </a></span>
                 </div>
-
+                
                 <div class="tab-content pt-1">
                 
                     <!-- Product details tab-->
@@ -60,7 +60,7 @@
                       <!-- details test tickets-->
                       @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
                       <div class="row mb-5 pb-2">
-                        @foreach ($exhibition as $franchise)
+                        @foreach ($exhibition as $franchise) 
                           <div class="container  ">
                             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                               <div class="col  pr-0">

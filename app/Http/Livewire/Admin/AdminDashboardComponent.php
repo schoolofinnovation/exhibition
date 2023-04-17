@@ -125,6 +125,14 @@ class AdminDashboardComponent extends Component
         session()->flash('message','info has been deleted Successfully');
     }
 
+    public function updateEventstatus($id, $status) 
+    {
+      $eVent = Event::find($id);
+      $eVent->admstatus = $status;
+      $eVent->save();
+      session()->flash('message',' Status Successfully Changed');
+    } 
+
     public function delet($id)
     { $user = User::find($id);
       $user->delete();
@@ -155,7 +163,7 @@ class AdminDashboardComponent extends Component
       $business = Service::paginate(5);
       $fattributes = ProductAttribute::paginate(10);
 
-      $expoaward = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->orderBy('startdate','ASC')->paginate(10);
+      $expoaward = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','0')->orderBy('created_at','ASC')->paginate(10);
      
       
       //total event

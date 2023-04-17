@@ -19,6 +19,10 @@ class EventFormComponent extends Component
     public $phone;
     public $eventype;
     public $slug;
+    public $edition;
+    public $level;
+    public $status;
+    public $admstatus;
 
     public function generateSlug()
     {
