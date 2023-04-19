@@ -51,11 +51,12 @@ class AwardsComponent extends Component
         $event->save();
 
         $this-> sendEmail($event);
-        $this->reset();
+       // $this->reset();
         session()->flash('message','Thanks, We are sending an email!! '); 
         //return back()->withinput();
     }
 
+    {{$event}}
 
     public function sendEmail($event)
     {

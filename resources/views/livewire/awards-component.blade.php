@@ -10,7 +10,7 @@
         <p>Search your Event</p>
         <div class="col-md-6 col-sm-6">
         <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
-        <div class="col-md-6 col-sm-6"> <a href="" type="submit" class="btn btn-primary"><i class="bi bi-search"></i></a></div>
+        <div class="col-md-6 col-sm-6"> <a href="" class="btn btn-primary"><i class="bi bi-search"></i></a></div>
     </div>
     
     </div>

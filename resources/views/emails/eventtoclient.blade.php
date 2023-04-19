@@ -7,9 +7,29 @@
     <title>The Exhbition Network</title>
 </head>
 <body>
-    
-{{$email}}
 
-{{$monthwise}}
+
+As you requested us to promote your event. We are suggesting simple 7 question  segment to review your event with your prospective
+
+You can choose any five question to answer.
+
+{{$event->email}}
+
+
+@component('mail::message')
+# Introduction
+
+The body of your message.
+
+@component('mail::button', ['url' => ''])
+Button Text
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
+
+
+
 </body>
 </html>
