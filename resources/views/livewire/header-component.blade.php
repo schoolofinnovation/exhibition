@@ -66,8 +66,8 @@
                 <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0 ml-1" href="{{asset('/')}}">
                     <img src="{{asset('image/Yoyo.png')}}" width="142" alt="COI">
                 </a> 
-                <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
-                    <img src="{{asset('image/Yoyo.png')}}" width="110" alt="COI">
+                <a class="navbar-brand d-sm-none me-0 py-0 mr-0" href="{{asset('/')}}"> 
+                    <img src="{{asset('image/Yoyo.png')}}" width="130" alt="COI">
                 </a>
               <!-- Search-->
               <div class="input-group d-none d-lg-flex flex-nowrap mx-0">

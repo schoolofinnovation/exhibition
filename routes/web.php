@@ -189,7 +189,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
  })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Route for Mailing
-    Route::get('/email', function() {
+    Route::get('/enco/emal', function() {
     return new PostMail();
     });
 
@@ -293,7 +293,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
     Route::get('/admin/event/edit/{slug}', AdminEventEditComponent::class)->name('admin.eventEdit');
-
+    //Route::get('/oemail', 'App\Http\Controllers\AdminDashboardComponent')->name('admin.email');
 
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
 

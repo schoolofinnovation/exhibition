@@ -91,7 +91,6 @@
                       </select>
                   </div> 
                 <div class="tab-content pt-1">
-                
                     <!-- Product details tab-->
                     <div class="tab-pane fade show active" id="details" role="tabpanel">
                       <!-- details test tickets-->
@@ -136,7 +135,7 @@
                 
                     <!-- Reviews tab-->
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
-                    <div class="row mb-5 pb-2">
+                      <div class="row mb-5 pb-2">
                         @foreach ($expoaward as $franchise) 
                           <div class="container  ">
                             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
@@ -174,13 +173,24 @@
                         @endforeach
                       </div>
                     </div>
-
                 </div>
             </div>
 
             </div>
           </div>
+
+          <form wire:submit.prevent="newlist">
+            <div class="row">  
+              <input type="text" class="form-control" placeholder="month..." wire:model.lazy="month">
+              <input type="text" class="form-control" placeholder="share your email..." wire:model.lazy="emailClient">
+              <a class="btn btn-primary" href="#" wire:click.prevent="emailSend">Email</a>
+              
+            </div>
+          </form>
+
         </div>
+
+
       @endif
 
 

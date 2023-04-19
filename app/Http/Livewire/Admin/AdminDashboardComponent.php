@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Mail\EventToClient;
 use App\Models\Appliedjob;
 use App\Models\Category;
 use App\Models\Coupon;
@@ -18,6 +19,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Cartalyst\Stripe\Api\Orders;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -25,6 +27,7 @@ class AdminDashboardComponent extends Component
 {
   public $board;
   public $month;
+  public $emailClient;
     
     //career
     use WithPagination;
@@ -100,7 +103,6 @@ class AdminDashboardComponent extends Component
       session()->flash('order_message','Order has been canceled');
     }
     
-
     public function Fdelete($id)
     {   $franchise = Franchise::find($id);
         $franchise ->delete();
@@ -139,6 +141,16 @@ class AdminDashboardComponent extends Component
       session()->flash('message','User  has been  deleted successfully');
     }
     
+
+    public function emailSend($month, $email)
+    { 
+      $monthwise = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $month)->orderBy('startdate','ASC')->get();
+      $email = $this->emailClient;
+
+      Mail::to("$email")->send(new EventToClient($monthwise, $email));
+      return "email Sent";
+    }
+
     public function render()
     {
       //order

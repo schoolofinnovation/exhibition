@@ -7,6 +7,8 @@ use App\Models\Expo;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Mail\ContactMail;
+use App\Mail\EventToClient;
+use Illuminate\Support\Facades\Mail;
 
 class AwardsComponent extends Component
 {
@@ -15,7 +17,6 @@ class AwardsComponent extends Component
     public $enddate;
     public $venue;
     public $city;
-    public $organizer;
     public $email;
     public $phone;
     public $eventype;
@@ -33,11 +34,7 @@ class AwardsComponent extends Component
     
     public function mount()
     {
-        $this->edition = 1;
-        $this->organizer = "lead";
-        $this->level = 3;
-        $this->status = 1;
-        $this->admstatus = 0;
+       
     }
 
     public function newlist(){   
@@ -45,27 +42,25 @@ class AwardsComponent extends Component
         $event->eventname = $this->eventname;
         $event->slug = $this->slug;
         $event->startdate = $this->startdate;
-        $event->enddate = $this->enddate;
         $event->venue = $this->venue;
         $event->city = $this->city;
-        $event->organizer = $this->organizer;
-        $event->email = $this->email;
-        $event->phone = $this->phone;
-        $event->image = null;
-        $event->edition  = null;
         $event->eventype = $this->eventype;
         $event->level  = 3;
-        $event->status  = 1;
-        $event->admstatus  = 0;
+        $event->email = $this->email;
+        $event->phone = $this->phone;
         $event->save();
-        $this-> sendEmail($event->email);
+
+        $this-> sendEmail($event);
         $this->reset();
         session()->flash('message','Thanks, We are sending an email!! '); 
-        return back()->withinput();
+        //return back()->withinput();
     }
 
 
-    
+    public function sendEmail($event)
+    {
+       Mail::to($event->email)->send(new EventToClient ($event));
+    }
 
     public function render()
     {

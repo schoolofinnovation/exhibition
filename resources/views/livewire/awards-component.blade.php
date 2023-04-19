@@ -5,12 +5,21 @@
 <main>
 
  <div class="container mx-auto my-5">
+    
+    <div class="row">
+    <p>Search your Event</p>
+    <div class="col-md-6">
     <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
+    <button class="btn btn-primary" type="submit"> <i class="bi bi-search"></i> </button> 
+    </div>
+    
+    </div>
  
             @if(empty($searchTerm))
             @else
                 
                 @if(count($monthwise) > 0)
+                <p>We have listed your event already.</p>
                     <div class="row mb-5 pb-2 d-lg-none">
                         @foreach ($monthwise as $franchise) 
                             <div class="container  ">
@@ -107,9 +116,9 @@
                     </div>
                 @else
                     <div class="container py-5 my-5 mx-auto">
-                        <form wire:submit.prevent="newlist">
-                            
+                    <p>Add your Event</p>
 
+                        <form wire:submit.prevent="newlist">
                                 <div class="col-sm-4">
                                     <label class="form-label" for="cf-name"></label>
                                     <input class="form-control" type="text" placeholder="Event Name"   wire:model="eventname" wire:keyup="generateSlug" required="">
@@ -150,10 +159,7 @@
                                 </div>
                             
                                 
-                            <button class="btn btn-primary mt-2" type="submit">Next</button> 
-                        </form>
-
-                        <form wire:submit.prevent="updatenewlist">
+                           
                             <div class="col-sm-6">
                                 <label class="form-label" for="cf-name">Email</label>
                                 <input class="form-control" type="email"  
