@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Event;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -20,11 +21,9 @@ class EventToClient extends Mailable
      *
      * @return void
      */
-    public function __construct($event, $monthwise, $email)
+    public function __construct( Event $event)
     {
-        $this->event = $event;
-        $this->monthwise = $monthwise;
-        $this->email = $email;
+       $this->event = $event;
     }
 
     /**
@@ -34,6 +33,6 @@ class EventToClient extends Mailable
      */
     public function build()
     {
-        return $this->subject('Detail about upcoming Exhbition')->view('emails.EventToClient');
+        return $this->subject('Detail about upcoming Exhbition')->view('emails.eventtoclient');
     }
 }

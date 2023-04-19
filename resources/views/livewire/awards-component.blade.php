@@ -7,10 +7,10 @@
  <div class="container mx-auto my-5">
     
     <div class="row">
-    <p>Search your Event</p>
-    <div class="col-md-6">
-    <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
-    <button class="btn btn-primary" type="submit"> <i class="bi bi-search"></i> </button> 
+        <p>Search your Event</p>
+        <div class="col-md-6 col-sm-6">
+        <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
+        <div class="col-md-6 col-sm-6"> <a href="" type="submit" class="btn btn-primary"><i class="bi bi-search"></i></a></div>
     </div>
     
     </div>
@@ -19,7 +19,7 @@
             @else
                 
                 @if(count($monthwise) > 0)
-                <p>We have listed your event already.</p>
+                <p class="py-2">Find your listed event.</p>
                     <div class="row mb-5 pb-2 d-lg-none">
                         @foreach ($monthwise as $franchise) 
                             <div class="container  ">
@@ -170,7 +170,7 @@
                             <div class="col-sm-6">
                                 <label class="form-label" for="cf-name">Phone</label>
                                 <input class="form-control" type="text"  
-                                placeholder="Official Contact"   wire:model="phone" required="">
+                                placeholder="Official Contact"   wire:model.lazy="phone" required="">
                                 @error( 'phone' ){{ $message}}@enderror
                             </div>
                         
