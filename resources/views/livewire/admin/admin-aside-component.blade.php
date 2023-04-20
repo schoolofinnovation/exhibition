@@ -35,7 +35,7 @@
                 <h3 class="fs-sm mb-0 text-muted">Account settings</h3>
               </div>
               <ul class="list-unstyled mb-0">
-                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('admin.ticket')}}">
+                <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="">
                 <i class="ci-user opacity-60 me-2"></i>Ticket</a></li>
                 <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="">
                 <i class="ci-location opacity-60 me-2"></i>Franchise</a></li>

@@ -139,6 +139,8 @@ use App\Http\Livewire\Seller\SellerOrderComponent;
 use App\Http\Livewire\Seller\SellerOrderDetailsComponent;
 use App\Http\Livewire\Seller\SellerPostOpportunityComponent;
 use App\Http\Controllers\SitemapController;
+use App\Http\Livewire\Admin\AdminAccountComponent;
+use App\Http\Livewire\Admin\AdminClientComponent;
 use App\Http\Livewire\Admin\AdminDetailComponent;
 use App\Http\Livewire\Admin\AdminEventEditComponent;
 use App\Http\Livewire\AwardsComponent;
@@ -294,6 +296,8 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
     Route::get('/admin/event/edit/{slug}', AdminEventEditComponent::class)->name('admin.eventEdit');
     //Route::get('/oemail', 'App\Http\Controllers\AdminDashboardComponent')->name('admin.email');
+    Route::get('/admin/account', AdminAccountComponent::class)->name('admin.account');
+    Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
 
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
 

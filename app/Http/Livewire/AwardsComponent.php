@@ -25,7 +25,9 @@ class AwardsComponent extends Component
     public $level;
     public $status;
     public $admstatus;
-    public $searchTerm ;
+    public $searchTerm;
+    public $moreUsers;
+    public $EvenmoreUsers;
 
     public function generateSlug()
     {
@@ -49,18 +51,17 @@ class AwardsComponent extends Component
         $event->email = $this->email;
         $event->phone = $this->phone;
         $event->save();
-
         $this-> sendEmail($event);
-       // $this->reset();
+        $this->reset();
         session()->flash('message','Thanks, We are sending an email!! '); 
         //return back()->withinput();
     }
 
-    {{$event}}
+   
 
     public function sendEmail($event)
     {
-       Mail::to($event->email)->send(new EventToClient ($event));
+       Mail::to($event->email)->bcc('exhibitionnetwork@gmail.com')->send(new EventToClient ($event));
     }
 
     public function render()

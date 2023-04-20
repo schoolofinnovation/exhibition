@@ -8,14 +8,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EventToClient extends Mailable
+class MonthlyEvent extends Mailable
 {
     use Queueable, SerializesModels;
-
     public $email;
     public $monthwise;
     public $event;
-    
+
     /**
      * Create a new message instance.
      *
@@ -23,7 +22,7 @@ class EventToClient extends Mailable
      */
     public function __construct( Event $event)
     {
-       $this->event = $event;
+        $this->event = $event;
     }
 
     /**
@@ -33,6 +32,6 @@ class EventToClient extends Mailable
      */
     public function build()
     {
-        return $this->subject('Detail about upcoming Exhbition')->markdown('emails.eventtoclient');
+        return $this->subject('The Exhibition Network Find Expo for your success')->markdown('emails.monthlyevent');
     }
 }

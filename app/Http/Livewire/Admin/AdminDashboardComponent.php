@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Mail\EventToClient;
+use App\Mail\MonthlyEvent;
 use App\Models\Appliedjob;
 use App\Models\Category;
 use App\Models\Coupon;
@@ -10,6 +11,7 @@ use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Franchise;
 use App\Models\Job;
+use App\Models\Lead;
 use App\Models\Optio;
 use App\Models\Order;
 use App\Models\ProductAttribute;
@@ -18,6 +20,7 @@ use App\Models\Service;
 use App\Models\User;
 use Carbon\Carbon;
 use Cartalyst\Stripe\Api\Orders;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -28,6 +31,7 @@ class AdminDashboardComponent extends Component
   public $board;
   public $month;
   public $emailClient;
+  public $emaill;
     
     //career
     use WithPagination;
@@ -140,16 +144,7 @@ class AdminDashboardComponent extends Component
       $user->delete();
       session()->flash('message','User  has been  deleted successfully');
     }
-    
 
-    public function emailSend($month, $email)
-    { 
-      $monthwise = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $month)->orderBy('startdate','ASC')->get();
-      $email = $this->emailClient;
-
-      Mail::to("$email")->send(new EventToClient($monthwise, $email));
-      return "email Sent";
-    }
 
     public function render()
     {
