@@ -10,7 +10,7 @@
 
                     <div class="col-sm-1">
                         <label class="form-label" for="seniority">Month</label>
-                            <select class="form-control" type="text" wire:model.lazy="month">
+                            <select class="form-control" type="text" wire:model.lazy="pincode">
                                 <option selected>Choose</option>
                                 <option value="01">01</option>
                                 <option value="02">02</option>

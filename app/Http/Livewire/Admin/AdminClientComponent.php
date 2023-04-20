@@ -16,6 +16,7 @@ class AdminClientComponent extends Component
     public $month;
     public $tyevent;
     public $user_id;
+    public $pincode;
 
 
     public function sharetoCleint(){   
@@ -23,9 +24,10 @@ class AdminClientComponent extends Component
         $event->name = $this->name;
         $event->email = $this->email;
         $event->phone = $this->phone;
-        $event->month = $this->month;
-        $event->tyevent = $this->tyevent;
+        $event->pincode = $this->pincode;
+        //$event->tyevent = $this->tyevent;
         $event->user_id = Auth::user()->id;
+        $event->save();
         $this->emailSend($event);
         session()->flash('message','Thanks, We are sending an email!! '); 
     }
