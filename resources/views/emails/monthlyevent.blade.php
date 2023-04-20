@@ -9,7 +9,7 @@
 
     <body>
             @php
-            {{$event->whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $event->month)->get()}}
+              {{$event->whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $event->month)->get()}}
             @endphp
 
             <div class="row mb-5 pb-2 d-lg-none">

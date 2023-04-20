@@ -16,16 +16,18 @@ class MonthlyEvent extends Mailable
     public $monthwise;
     //public $event;
     public $lead;
+    public $event;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct( Lead $lead)
+    public function __construct( Lead $lead, Event $event)
     {
         
         $this->lead = $lead;
+        $this->event = $event;
     }
 
     

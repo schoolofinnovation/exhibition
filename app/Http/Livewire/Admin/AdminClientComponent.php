@@ -40,6 +40,6 @@ class AdminClientComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-client-component');
+        return view('livewire.admin.admin-client-component')->layout('layouts.eblog');
     }
 }
