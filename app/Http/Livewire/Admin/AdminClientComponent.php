@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Mail\MonthlyEvent;
+use App\Models\Event;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -28,13 +29,15 @@ class AdminClientComponent extends Component
         //$event->tyevent = $this->tyevent;
         $event->user_id = Auth::user()->id;
         $event->save();
-        $this->emailSend($event);
+
+        $xyz = Event::whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $event->pincode)->get();
+        $this->emailSend($xyz, $event);
         session()->flash('message','Thanks, We are sending an email!! '); 
     }
 
-    public function emailSend($event)
+    public function emailSend($xyz, $event)
     { 
-      Mail::to($event->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent($event));
+      Mail::to($event->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($xyz, $event) );
     }
 
 

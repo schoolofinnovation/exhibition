@@ -9,11 +9,11 @@
 
     <body>
             @php
-              {{$event->whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $event->month)->get()}}
+              $xyz->whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $event->month)->get();
             @endphp
 
             <div class="row mb-5 pb-2 d-lg-none">
-                            @foreach ($event as $franchise) 
+                            @foreach ($xyz as $franchise) 
                                 <div class="container  ">
                                 <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                     <div class="col  pr-0">
@@ -64,7 +64,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($event as $info)
+                                    @foreach ($xyz as $info)
                                     <tr>
                                     
                                         <td class="py-1 align-middle">

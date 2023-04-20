@@ -12,25 +12,20 @@ use Illuminate\Queue\SerializesModels;
 class MonthlyEvent extends Mailable
 {
     use Queueable, SerializesModels;
-    public $email;
-    public $monthwise;
-    //public $event;
-    public $lead;
+   
+    public $xyz;
     public $event;
-
+    
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct( Lead $lead, Event $event)
+    public function __construct( Event $event, $xyz)
     {
-        
-        $this->lead = $lead;
         $this->event = $event;
+        $this->xyz = $xyz;
     }
-
-    
 
     /**
      * Build the message.
