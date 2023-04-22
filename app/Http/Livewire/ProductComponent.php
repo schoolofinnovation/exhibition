@@ -38,7 +38,7 @@ class ProductComponent extends Component
         $event = Event::where('slug', $this->slug)->first();
         $test= $event->id;
         $previous = url()->previous();
-        $ticke = Ticket::where('admstatus','0')->where('status','1')->where('event_id', $test)->get();
+        $ticke = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $test)->get();
         
         return view('livewire.product-component',['previous'=> $previous , 'event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
     }

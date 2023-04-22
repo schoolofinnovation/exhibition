@@ -4,23 +4,24 @@
 
 <main>
 
- <div class="container mx-auto my-5">
-    
-    <div class="row">
-        <p>Search your Event</p>
-        <div class=" row col-md-6 col-sm-6">
-        <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
-        <a href="" class="btn btn-primary">Search</a>
-        
+    <div class="container mx-auto my-5"> 
+        <div class=" d-flex row">
+            <p >Let's Create Event Together</p>
+
+            <div class="col-lg-8 col-sm-7">
+            <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
+            </div>
+            <div class="col-lg-4 col-sm-5"><a  class="btn btn-primary">Search</a></div>
+        </div>
     </div>
+
     
-    </div>
- 
+ <div class="container">
             @if(empty($searchTerm))
             @else
                 
                 @if(count($monthwise) > 0)
-                <p class="py-2">Find your listed event.</p>
+                <p class="py-2 display-4 fw-light">Find your listed event.</p>
                     <div class="row mb-5 pb-2 d-lg-none">
                         @foreach ($monthwise as $franchise) 
                             <div class="container  ">

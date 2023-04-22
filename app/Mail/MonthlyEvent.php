@@ -13,7 +13,7 @@ class MonthlyEvent extends Mailable
 {
     use Queueable, SerializesModels;
    
-    public $xyz;
+    
     public $event;
     
     /**
@@ -21,10 +21,10 @@ class MonthlyEvent extends Mailable
      *
      * @return void
      */
-    public function __construct( Event $event, $xyz)
+    public function __construct( Event $event)
     {
         $this->event = $event;
-        $this->xyz = $xyz;
+      
     }
 
     /**

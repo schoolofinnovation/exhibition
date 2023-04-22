@@ -43,6 +43,8 @@ class EventDetailsComponent extends Component
         $city = $event->city;
         $country = $event->country;
         $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+
+        
         //dd($event);
         $productPrice = Ticket::where('event_id', $event->id)->min('price');
         $franchises = Franchise::paginate(4);

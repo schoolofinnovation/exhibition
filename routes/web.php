@@ -143,7 +143,9 @@ use App\Http\Livewire\Admin\AdminAccountComponent;
 use App\Http\Livewire\Admin\AdminClientComponent;
 use App\Http\Livewire\Admin\AdminDetailComponent;
 use App\Http\Livewire\Admin\AdminEventEditComponent;
+use App\Http\Livewire\Admin\AdminLandingComponent;
 use App\Http\Livewire\AwardsComponent;
+use App\Http\Livewire\ExhibitionTimeComponent;
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
 
 use App\Http\Livewire\ThankyouComponent;
@@ -241,7 +243,7 @@ Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
 Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
 
 Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
-
+Route::get('/schedule/{eventype}/{time}', ExhibitionTimeComponent::class)->name('coi.exhibitiontime');
 Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 
 Route::get('/magazineo', MagazineComponent::class)->name('business.magazine');
@@ -253,7 +255,7 @@ Route::get('/add-your-event', AwardsComponent::class)->name('coievent.add');
 //need to delete
 Route::get('/award', AwardComponent::class)->name('business.award');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
-Route::get('/rate_now/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
+Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
 
 //lead
 Route::get('/coi/expand-your-business/{slug}', LeadComponent::class)->name('lead.business');
@@ -292,12 +294,19 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
   //Admin-ADM
   Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group( function () {
-    Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/global', AdminLandingComponent::class)->name('admin.global');
+    Route::get('/admin/dashboard/{board}', AdminDashboardComponent::class)->name('admin.dashboard');
+
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
-    Route::get('/admin/event/edit/{slug}', AdminEventEditComponent::class)->name('admin.eventEdit');
+    Route::get('/admin/event/edit/{event_id}', AdminEventEditComponent::class)->name('admin.eventEdit');
+    Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
+
+    
+    Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
+    
     //Route::get('/oemail', 'App\Http\Controllers\AdminDashboardComponent')->name('admin.email');
     Route::get('/admin/account', AdminAccountComponent::class)->name('admin.account');
-    Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
+    
 
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
 
@@ -307,13 +316,12 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
     Route::get('/admin/brands', AdminBrandComponent::class)->name('admin.brand');
     Route::get('/admin/ticketo', AdminTicketComponent::class)->name('admincheck.ticket');
-    Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
+    
 
     Route::get('/admin/users', AdminUserComponent::class)->name('admin.user');
 
     //Route::get('/admin/franchises', AdminFranchiseComponent::class)->name('admin.franchise');
     Route::get('/admin/franchises/add', AdminFranchiseAddComponent::class)->name('admin.addfranchise');
-
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
     
     

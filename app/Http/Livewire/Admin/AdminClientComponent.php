@@ -12,32 +12,32 @@ use Livewire\Component;
 class AdminClientComponent extends Component
 {
     public $name;
-    public $email;
+    public $email = 'callslot250@gmail.com';
     public $phone;
     public $month;
     public $tyevent;
     public $user_id;
-    public $pincode;
+    public $pincode = '05';
 
 
-    public function sharetoCleint(){   
-        $event = new Lead();
-        $event->name = $this->name;
+    public function sharetoCleint($pincode){   
+        $event = Event::whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $this->pincode)->get();
+        //$event->name = $this->name;
         $event->email = $this->email;
-        $event->phone = $this->phone;
-        $event->pincode = $this->pincode;
+        //$event->phone = $this->phone;
+        //$event->pincode = $this->pincode;
         //$event->tyevent = $this->tyevent;
-        $event->user_id = Auth::user()->id;
-        $event->save();
+        //$event->user_id = Auth::user()->id;
+        //$event->save();
 
-        $xyz = Event::whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $event->pincode)->get();
-        $this->emailSend($xyz, $event);
+        //$xyz = Event::whereYear('startdate', 2023)->where('status', 1)->where('admstatus', 1)->whereMonth('startdate', $event->pincode)->get();
+        $this->emailSend($event);
         session()->flash('message','Thanks, We are sending an email!! '); 
     }
 
-    public function emailSend($xyz, $event)
+    public function emailSend($event)
     { 
-      Mail::to($event->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($xyz, $event) );
+      Mail::to($event->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($event) );
     }
 
 

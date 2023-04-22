@@ -51,7 +51,7 @@
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
     <!-- Sign in / sign up modal-->
-     <main class="page-wrapper">
+     <main class="page-wrapper" style="flex: 0 0 auto;">
       
      @livewire('seller-header-component')
      
@@ -80,7 +80,7 @@
    
 
     <!-- Footer-->
-    {{--@livewire('footer-component')--}} 
+   
     <!-- Vendor scrits: js libraries and plugins-->
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/simplebar.min.js')}}"></script>

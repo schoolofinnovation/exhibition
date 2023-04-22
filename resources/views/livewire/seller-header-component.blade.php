@@ -14,13 +14,15 @@
             <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> <i class="bi bi-globe2"></i>
               <!--<img src="{{asset('image/abc.png')}}" width="74" alt="COI">--></a>
             <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
-            <div class="fs-4" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> 
-              COI </div>
+            <div class="fs-4" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> COI </div>
             <!--<img src="{{asset('image/abc.png')}}" width="74" alt="COI">--></a>
 
             <!-- Toolbar-->
             <div class="navbar-toolbar d-flex align-items-center order-lg-3">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span></button>
+                
+                <a class="navbar-tool d-none d-lg-flex" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#searchBox" role="button" aria-expanded="false" aria-controls="searchBox"><span class="navbar-tool-tooltip">Search</span>
                 <div class="navbar-tool-icon-box"><i class="navbar-tool-icon  bi bi-search"></i></div></a><a class="navbar-tool d-none d-lg-flex" href="dashboard-favorites.html"><span class="navbar-tool-tooltip">Favorites</span>
                 <div class="navbar-tool-icon-box"><i class="navbar-tool-icon  bi bi-heart"></i></div></a>
 
@@ -229,6 +231,8 @@
             </div>
           </div>
         </div>
+
+
         <!-- Search collapse-->
         <div class="search-box collapse" id="searchBox">
           <div class="card pt-2 pb-4 border-0 rounded-0">

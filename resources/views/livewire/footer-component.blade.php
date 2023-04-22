@@ -199,7 +199,7 @@
             <span class="handheld-toolbar-label">Home</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar" aria-controls="offcanvasRight">
+          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="shop-sidebar" data-bs-target="#shop-sidebar" aria-controls="offcanvasRight">
             <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
             <span class="handheld-toolbar-label">Filter</span>
           </a>

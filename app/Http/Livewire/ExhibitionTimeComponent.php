@@ -6,27 +6,25 @@ use App\Models\Award;
 use App\Models\Event;
 use App\Models\Expo;
 use Carbon\Carbon;
-use DateTime;
-use Spatie\CalendarLinks\Link;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ExhibitionComponent extends Component
+class ExhibitionTimeComponent extends Component
 {
     use WithPagination;
     public $pagesize;
     public $sorting;
-    public $time;
+    public $time = 'all';
     public $eventype;
     public $categ;
     
     
-    public function mount($eventype)
+    public function mount($eventype, $time)
     {
        $this->eventype = $eventype;
-       //$this->time = $time;
+       $this->time = $time;
        //$this->motiontime = "all";
        $this->sorting = "default";
        $this->pagesize = 24;
@@ -62,7 +60,6 @@ class ExhibitionComponent extends Component
         }
     }
 
-    
 
     public function render()
     {
@@ -83,10 +80,30 @@ class ExhibitionComponent extends Component
         elseif ($this->sorting =='area'){
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
+        elseif ($this->time == 'today'){
+            $exhibition = Event::whereYear('startdate', '2023')->whereDate('startdate', '>=', $mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+        }
+        elseif ($this->time == 'tomorrow'){
+            $exhibition = Event::whereYear('startdate', '2023')->whereDate('startdate', '>=', $mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+        }
+        elseif ($this->time == 'this-weekend'){
+            $exhibition = Event::whereYear('startdate', '2023')->whereDate('startdate', '>=', $mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+        }
+        elseif ($this->time == 'next-week'){
+            $exhibition = Event::whereYear('startdate', '2023')->whereDate('startdate', '>=', $mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+        }
+        elseif ($this->time == 'next-weekend'){
+            $exhibition = Event::whereYear('startdate', '2023')->whereDate('startdate', '>=', $mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+        }
+        elseif ($this->time == 'this-month'){
+            $exhibition = Event::whereYear('startdate', '2023')->whereDate('startdate', '>=', $mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+        }
+        elseif ($this->time == 'next-month'){
+            $exhibition = Event::whereYear('startdate', '2023')->whereDate('startdate', '>=', $mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+        }
         else{
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('startdate', '>=',$mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
-        
         
        
 
@@ -97,6 +114,6 @@ class ExhibitionComponent extends Component
 
         $previous = url()->previous();
 
-        return view ('livewire.exhibition-component', ['awarde' => $awarde,'counttype'=>$counttype ,'previous'=>$previous, 'exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
+        return view('livewire.exhibition-time-component', ['awarde' => $awarde,'counttype'=>$counttype ,'previous'=>$previous, 'exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
     }
 }

@@ -36,10 +36,10 @@ class AdminDashboardComponent extends Component
     //career
     use WithPagination;
 
-    public function mount()
+    public function mount($board)
     {
-        $this ->board = "event";
-        $this -> month = Carbon::today()->format("m");
+        $this->board = $board;
+        $this->month = Carbon::today()->format("m");
     }
     
     public function updateJobstatus($id, $status) 
@@ -149,6 +149,7 @@ class AdminDashboardComponent extends Component
     public function render()
     {
       //order
+      
       $optios = Optio:: get();
       $orders = Order::orderBy('created_at','DESC')->paginate(9);
       $franchises = Franchise::with('sector')->orderBy('id','DESC')->paginate(7);
