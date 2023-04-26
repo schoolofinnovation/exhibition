@@ -672,21 +672,21 @@
                 </td>
             
                 <td class="py-1 align-middle fw-sm">
-                  
-                
                   @if(is_null($info->shtdesc))
                     <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
                   @else
-                      
                   @php
                       $sht = json_decode($info->shtdesc)
+                      
                   @endphp
 
                     @foreach ($sht as $newtre)
+                      @php
+                          $findoutId = App/Model/Expo::where('id', $newtre)
+                      @endphp
                       {{$newtre}}
+                      {{$findoutId}}
                     @endforeach
-                     
-
                   @endif
                 </td>
                 <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
@@ -784,10 +784,14 @@
                                 @if(is_null($info->shtdesc))
                                   <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
                                 @else
-                                    
-                                  
-                                    {{$info->shtdesc}}
-                                  
+                                   
+                                    @php
+                                        $sht = json_decode($info->shtdesc)
+                                    @endphp
+
+                                      @foreach ($sht as $newtre)
+                                        {{$newtre}}
+                                      @endforeach
 
 
                                 @endif

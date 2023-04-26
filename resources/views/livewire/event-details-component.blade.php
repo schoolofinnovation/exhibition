@@ -197,8 +197,8 @@
                 @endif
               </ul>
 
-            <span class="badge bg-secondary">{{ucwords(trans($event->expo->tag))}} </span>
-            {{--<span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>--}}
+              {{--<span class="badge bg-secondary">{{ucwords(trans($event->expo->tag))}} </span>
+            <span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>--}}
               <div class="fs-xs fw-normal">
                 @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
                 {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days

@@ -137,99 +137,7 @@
         @livewire('trending-exhibition-component')
 
         <!--COI Awards-->
-          <section class="container pt-2" id="awards"> 
-                <div class="list-unstyled pt-2 pb-1 px-0 pl-0">
-                    <div class="d-flex justify-content-between px-0 m-0 lh-1">
-                    <span class="fs-sm"> Trending<br><span class="fw-medium h5">Awards</span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-                    <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'award'])}}">More</a></li>
-                      <li><a class="dropdown-item" href="#">Nominate</a></li>
-                      <li><a class="dropdown-item" href="#">Attend</a></li>
-                      <li><a class="dropdown-item" href="{{route('coievent.add')}}">Add</a></li>
-                  </ul>
-                    
-                    </span></div>
-                </div>
-                
-                 <div class="d-flex badgeseaward my-0">
-                  @foreach( $finder as $categ) 
-                  <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $categ->id])}}">{{ucwords(trans($categ->expoindustry))}}</a>
-                  @endforeach
-                </div>
-            
-            <!--Award-->
-            <div class="row pt-2 mx-n2 my-Slider5">
-              @foreach($awardo as $eventoi)
-                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
-                  <div class="card product-card">
-                    
-                    <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
-                      <img src="{{url('exhibition/'.$eventoi->image)}}" alt="{{$eventoi -> eventname}}"></a>
-
-                    <div class="card-body p-1">
-                      <!--<h3 class="product-title fs-sm"><a href="#">in asperiores quod nam</a></h3>-->
-                     
-                      
-                      <div class="d-flex justify-content-between">
-                          <div class="product-price"><small>{{$eventoi -> edition}} Edition  
-                            <i class="bi bi-shield-check" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="certified" aria-label="certified">
-                              <i class="bi bi-lightning-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="upcoming" aria-label="upcoming"></i></i></small>
-                            <div class="product-title fs-sm h3 mb-0">
-                            <a href="{{route('event.details',['slug' => $eventoi->slug])}}">{{ucwords(trans($eventoi -> eventname))}}
-                              </a></div>
-                          </div>
-
-                          <div class="star-rating d-none d-sm-block"> 
-                            <small> <span class="badge bg-primary opacity-75" style="position: unset;"> Visitor</span> | <span class="badge bg-primary opacity-75" style="position: unset;"> Exhibit</span></small>       
-                            <div class=" align-center fs-sm py-1"> 
-                              <small class="mx-0" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Visitor" aria-label="Visitor"> + {{$eventoi -> auidence}} <i class="bi bi-people-fill"></i></small> 
-                              <small class="mx-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Exhibitor" aria-label="Exhibior">+ {{$eventoi -> exhibitors}}K <i class="bi bi-person-workspace"></i></small>
-                            </div>
-                          </div>
-                      </div>
-                      <!--<small>World's best demanding business</small><br>-->
-                      <small class="text-bolder d-none d-sm-block"> <i class="bi bi-calendar3"></i>
-                        @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
-                          {{Carbon\Carbon::parse ($eventoi->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('D, d M Y ')}}
-                        @else
-                          {{Carbon\Carbon::parse ($eventoi->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('D, d M Y')}}
-                        @endif 
-
-                      </small>
-                      <small  class="d-none d-sm-block"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> venue))}}, <br> {{ucwords(trans($eventoi -> city))}}</small>
-
-                      <small class="text-bolder d-lg-none"> <i class="bi bi-calendar3"></i>
-                        @if(Carbon\Carbon::parse ($eventoi->startdate)->format('M') != Carbon\Carbon::parse ($eventoi->enddate)->format('M'))
-                          {{Carbon\Carbon::parse ($eventoi->startdate)->format('d M')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('d M, y')}}
-                        @else
-                          {{Carbon\Carbon::parse ($eventoi->startdate)->format('d ')}} - {{Carbon\Carbon::parse ($eventoi->enddate)->format('d M, y')}}
-                        @endif 
-                      </small><br>
-                      <small class="d-lg-none"><i class="bi bi-geo-alt-fill fs-sm"></i>{{ucwords(trans($eventoi -> city))}}</small> 
-                      <!--ucfirst-->
-
-                    </div>
-                    
-                    <div class="card-body card-body-hidden">
-                      <div class="d-flex justify-content-between mb-2">
-                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="#"><i class=" bi bi-brush fs-sm me-1"></i>Exhibit</a>
-                        <a class="btn btn-primary btn-sm d-block w-50 mx-1" type="button" href="#"><i class=" bi bi-cart fs-sm me-1"></i>Visit</a>
-                      </div>
-                    
-                      <div class="text-center">
-                        @guest<a class="nav-link-style fs-ms" href="#" data-bs-toggle="modal">
-                        <i class=" bi bi-eye align-middle me-1"></i>Contact</a>
-                        @endguest
-                     </div>
-                    </div>
-                  
-                  </div>
-                  <!--<hr class="d-sm-none">-->
-                </div>
-              @endforeach 
-            </div>
-          </section>
+          @livewire('trending-award-component')
 
         <!-- Promo banner-->
           <section class="container mt-4 mb-grid-gutter">
@@ -322,149 +230,13 @@
           </section>
 
         <!--Trending conference-->
-          
-
           @livewire('conference-component')
 
-
         <!--Trending Magazine-->
-          <section class="container pt-2 " id="exhibit"> 
-           <div class="list-unstyled pt-2 pb-1 px-0 pl-0">
-                <div class="d-flex justify-content-between px-0 m-0 lh-1">
-                    <span class="fs-sm"> Trending Business<br><span class="fw-medium h5">Magazine</span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-                     <ul class="dropdown-menu" width="auto">
-                      <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'magazine'])}}">More</a></li>
-                      <li><a class="dropdown-item" href="#">Advertise</a></li>
-                      <li><a class="dropdown-item" href="#">Subscribe</a></li>
-                      <li><a class="dropdown-item" href="{{route('coievent.add')}}">Add</a></li>
-                    </ul>
-                    </span>
-                </div>
-            </div>
-            
-             <div class="d-flex badgeseMagaz">
-              @foreach( $finder as $categ) 
-              <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
-              @endforeach
-            </div>
-              
-            <!-- Grid-->
-            <div class="row mx-n2 my-Slider10 g-0 py-0"> 
-              <!-- magazine-->
-              @foreach($magazine as $eventoi)
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                  <div class="card product-card">
-                    
-                    <a class="card-img-top d-block overflow-hidden" href="">
-                      <img src="{{url('magazine/'.$eventoi->image)}}" class="img-thumbnail" alt="">
-                    </a>
-                  </div>
-                </div>
-              @endforeach  
-            </div>
-
-            
-          </section>
+          @livewire('trending-magazine-component')
        
         <!-- Creators-->
-          <section class="container pt-2 pb-5 pb-md-3">
-            <!--<h2 class="h3 mb-4 pb-2">Top Creators</h2>-->
-            <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-1 mb-1">  
-                  <div class="fs-sm" >Business Community
-                  
-                      <h4 class="mb-0 me-2">Speaker</h4>
-                      
-                  </div>
-                    <!--<div class="pt-3">
-                      <a class="btn btn-outline-primary btn-sm" href="#listexpo"> 
-                        Connect <i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
-                    </div>-->
-
-                      <div class="pt-3">
-                        <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          All
-                        </a>
-
-                        <ul class="dropdown-menu" width="auto">
-                        <li><a class="dropdown-item" href="#">More</a></li>
-                          <li><a class="dropdown-item" href="#">Speaker</a></li>
-                          <li><a class="dropdown-item" href="#">Subscribe</a></li>
-                        </ul>
-                      </div>
-                      
-                  </div>
-              <div class="row my-Slider23">
-
-                <!-- Bestsellers-->
-                <div class="col-md-4 col-sm-6 mb-2 py-1">
-                  <div class="widget">
-                    <!--<h3 class="widget-title fw-bolder">Network</h3>-->
-                  
-                    @foreach ($network as $franchise)
-                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
-                        <div class="d-flex align-items-center position-relative">
-                          
-                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
-                          <div class="ms-2">
-                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
-                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
-                          <!--<span class="fs-xs text-muted">730 followers</span>-->
-                          </div>
-                        </div>
-                        <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
-                      </div>
-                      
-                    @endforeach
-                  </div>
-                </div>
-
-                <!-- New arrivals-->
-                <div class="col-md-4 col-sm-6 mb-2 py-3">
-                  <div class="widget">
-                    <!--<h3 class="widget-title fw-bolder">Speaker</h3>-->
-                    @foreach ($speaker as $franchise)
-                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
-                        <div class="d-flex align-items-center position-relative">
-                          
-                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
-                          <div class="ms-2">
-                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
-                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
-                            <!--<span class="fs-xs text-muted">730 followers</span>-->
-                          </div>
-                        </div>
-                        <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
-                      </div>
-                      
-                    @endforeach
-                  </div>
-                </div>
-
-                <!-- Top rated-->
-                <div class="col-md-4 col-sm-6 mb-2 py-3">
-                  <div class="widget">
-                    <!--<h3 class="widget-title fw-bolder">Social</h3>-->
-                    @foreach ($social as $franchise)
-                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
-                        <div class="d-flex align-items-center position-relative">
-                          
-                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
-                          <div class="ms-2">
-                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->name}}</a></h4>
-                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
-                            <!--<span class="fs-xs text-muted">730 followers</span>-->
-                          </div>
-                        </div>
-                        <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
-                      </div>
-                      
-                    @endforeach
-                  </div>
-                </div>
-
-              </div>
-          </section>
+         @livewire('trending-creator-component')
         
         <!--contact-->        
           <div class="container-fluid px-0 d-none" id="listexpo">
@@ -566,33 +338,7 @@
       });
     </script>
 
-    <script>
-      var slider = tns({
-        "container": '.my-Slider5',            
-        "responsive": {
-          "300": {
-            "items": 2,
-            "controls": false,
-            "mouseDrag": true,
-            "autoplay": false,
-            "fixedWidth": 150,
-            "autoplayButtonOutput":false,
-            "autoplayHoverPause": true,
-          },
-          "500": {
-            "items": 4,
-            "nav": false,
-            "controls": false,
-            "autoplayHoverPause": true,
-            "autoplay": false,
-            "fixedWidth": 300,
-            "autoplayButtonOutput":false
-          },
-          
-        },
-        "autoplayButtonOutput":false
-      });
-    </script>
+  
 
     <script>
       var slider = tns({
@@ -672,60 +418,9 @@
       });
     </script>
 
-    <script>
-      var slider = tns({
-        "container": '.my-Slider10',            
-        "responsive": {
-          "300": {
-            "items": 2,
-            "controls": false,
-            "mouseDrag": true,
-            "autoplay": false,
-            "fixedWidth": 150,
-            "autoplayButtonOutput":false,
-            "autoplayHoverPause": true,
-          },
-          "500": {
-            "items": 7,
-            "nav": false,
-            "controls": false,
-            "autoplayHoverPause": true,
-            "autoplay": false,
-            "fixedWidth": 300,
-            "autoplayButtonOutput": false
-          },
-          
-        },
-        "autoplayButtonOutput":false
-      });
-    </script>
+   
     
-    <script>
-      var slider = tns({
-        "container": '.my-Slider23',            
-        "responsive": {
-          "300": {
-            "items": 1,
-            "controls": false,
-            "mouseDrag": true,
-            "autoplay": false,
-
-            "autoplayButtonOutput":false,
-            "autoplayHoverPause": true,
-          },
-          "500": {
-            "items": 3,
-            "nav": false,
-            "controls": false,
-            "autoplayHoverPause": true,
-            "autoplay":false,
-            "autoplayButtonOutput":false
-          },
-          
-        },
-        "autoplayButtonOutput":false
-      });
-    </script>
+    
 
     <script>
       var slider = tns({
@@ -755,62 +450,8 @@
 
    
     
-    <script>
-      var slider = tns({
-        "container": '.badgeseaward',   
-        
-        "responsive": {
-          "300": {
-            "items": 3,
-            "controls": false,
-            "fixedWidth": 100,
-            "mouseDrag": true,
-            "autoplay": false,
-            "autoplayButtonOutput": false,
-            "autoplayHoverPause": true,
-          },
-          "500": {
-            "items": 1,
-            "nav": false,
-            "controls": false,
-            "autoplayHoverPause": true,
-            "autoplay": false,
-            "autoplayButtonOutput": false,
-                     "fixedWidth": 100,
-          },
-          
-        },
-        "autoplayButtonOutput":false
-      });
-    </script>
+  
     
     
-    <script>
-      var slider = tns({
-        "container": '.badgeseMagaz',   
-        
-        "responsive": {
-          "300": {
-            "items": 3,
-            "controls": false,
-            "fixedWidth": 100,
-            "mouseDrag": true,
-            "autoplay": false,
-            "autoplayButtonOutput": false,
-            "autoplayHoverPause": true,
-          },
-          "500": {
-            "items": 1,
-            "nav": false,
-            "controls": false,
-            "autoplayHoverPause": true,
-            "autoplay": false,
-            "autoplayButtonOutput": false,
-                "fixedWidth": 100,
-          },
-          
-        },
-        "autoplayButtonOutput":false
-      });
-    </script>
+   
 @endpush
