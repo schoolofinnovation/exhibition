@@ -197,12 +197,12 @@
                 @endif
               </ul>
 
-            <span class="badge bg-secondary">{{ucwords(trans($event->category->industry))}} </span>
-            <span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>
+            <span class="badge bg-secondary">{{ucwords(trans($event->expo->tag))}} </span>
+            {{--<span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>--}}
               <div class="fs-xs fw-normal">
                 @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
                 {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
-               </div>
+              </div>
               <div class="fs-xs fw-normal pb-2 pt-2">
               {{Str::limit($event->desc,130)}}  
               </div> 
@@ -242,7 +242,7 @@
           </li>
           <li><hr class="mt-md-2 mb-2"></li>
           <li class="p1 fw-light">
-            {{ucwords(trans($event->category->industry))}} | {{ucwords(trans($event->sector->sector))}} @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
+            {{ucwords(trans($event->expo->tag))}} | @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
           </li>
         </ul>
       </div> 

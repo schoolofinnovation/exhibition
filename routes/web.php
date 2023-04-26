@@ -300,6 +300,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
     Route::get('/admin/event/edit/{event_id}', AdminEventEditComponent::class)->name('admin.eventEdit');
     Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
+    Route::get('/admin/category/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
 
     
     Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
@@ -312,7 +313,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
     Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
     Route::get('/admin/category/add', AdminCategoryAddComponent::class)->name('admin.addcategories');
-    Route::get('/admin/category/edit', AdminCategoryEditComponent::class)->name('admin.editcategories');
+    
 
     Route::get('/admin/brands', AdminBrandComponent::class)->name('admin.brand');
     Route::get('/admin/ticketo', AdminTicketComponent::class)->name('admincheck.ticket');

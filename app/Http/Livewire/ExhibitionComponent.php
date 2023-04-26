@@ -84,7 +84,7 @@ class ExhibitionComponent extends Component
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
         else{
-            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('startdate', '>=',$mytime)->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
+            $exhibition = Event ::where('eventype', $this->eventype)->where('eventname','BLECH INDIA 2023')->where('admstatus','1')->where('status','1')->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
         
         

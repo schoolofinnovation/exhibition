@@ -7,11 +7,11 @@
         <div class="container">
             <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
                 <div class="text-sm-end">
-                <a class="btn btn-primary" href="" data-bs-toggle="modal">  All Event </a></div>
+                <a class="btn btn-primary" href="{{route('admin.dashboard', ['board' => 'event'])}}" data-bs-toggle="modal">  All Event </a></div>
                     @if (Session::has('message'))<h6 class="fs-base text-light mb-0">{{Session::get('message')}}</h6>@endif
                 <a class="btn btn-primary btn-sm" href="#"><i class="ci-sign-out me-2"></i>Sign out</a>
             </div>
-         
+            
             <form wire:submit.prevent="updateEvent">
                 <div class="row g-1">
 
@@ -52,50 +52,6 @@
                         @error( 'enddate' ){{ $message}}@enderror
                     </div>
 
-                    <div class="col-sm-3">
-                    <label class="form-label" for="seniority">Industry</label>
-                    <select class="form-control" type="text"   wire:model.lazy="category_id" placeholder="Provide short title of your request">
-                        <option selected>Choose...</option>
-                            @foreach($cat as $category)
-                              <option value="{{$category->id}}">{{ucwords(trans($category->industry))}}</option>
-                            @endforeach
-                        </select>
-                        @error('industry') <div class="invalid-feedback"> {{$message}} </div> @enderror
-                    </div>
-
-                
-                    <div class="col-sm-3">
-                    <label class="form-label" for="seniority">Sector</label>
-                    <select class="form-control" type="text"   wire:model.lazy="sector_id">
-                        <option selected>Choose...</option>
-                        @foreach($sec as $sectors)
-                        <option value="{{$sectors->id}}">{{ucwords(trans($sectors->sector))}}</option>
-                        @endforeach
-                        </select>
-                        @error('sector') <div class="invalid-feedback"> {{$message}} </div> @enderror
-                    </div>
-
-                    <div class="col-sm-2">
-                    <label class="form-label" for="seniority">Business Industry</label>
-                    <select class="form-control" type="text"   wire:model.lazy="expo_id">
-                        <option selected>Choose...</option>
-                        @foreach($pavillion as $pav)
-                        <option value="{{$pav->id}}">{{$pav->expoindustry}}</option>
-                        @endforeach
-                        </select>
-                        @error('expo_id') <div class="invalid-feedback"> {{$message}} </div> @enderror
-                    </div>
-    
-                    <div class="col-sm-3">
-                    <label class="form-label" for="seniority">Search Tag</label>
-                    <select class="form-control" type="text"   wire:model.lazy="search_id">
-                        <option selected>Choose...</option>
-                        @foreach($searchtag as $pav)
-                        <option value="{{$pav->id}}">{{$pav->tag}}</option>
-                        @endforeach
-                        </select>
-                        @error('') <div class="invalid-feedback"> {{$message}} </div> @enderror
-                    </div>
                     
                     <div class="col-sm-3">
                         <label class="form-label" for="cf-name">Venue</label>

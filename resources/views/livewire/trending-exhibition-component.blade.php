@@ -1,27 +1,27 @@
-  <main>
-    <section class="container pt-2" id="conference"> 
-          <div class="list-unstyled pt-2 pb-1 px-0 pl-0">
-              <div class="d-flex justify-content-between px-0 m-0 lh-1">
-              <span class="fs-sm"> Trending<br><span class="fw-medium h5">Conference</span></span>
-              <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-              <ul class="dropdown-menu" width="auto">
-                <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'conference'])}}">More</a></li>
-                <li><a class="dropdown-item" href="#">Attend</a></li>
-                <li><a class="dropdown-item" href="#">Speaker</a></li>  
-                <li><a class="dropdown-item" href="{{route('coievent.add')}}">Add</a></li>
+<main>
+    <section class="container pt-2" id="exhibit"> 
+      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+        <div class="d-flex justify-content-between px-0 m-0 lh-1">
+          <span class="fs-sm"> Trending<br><span class="fw-medium h5">Exhibition</span></span>
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+            <ul class="dropdown-menu" width="auto">
+              <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'expo'])}}">More</a></li>
+              <li><a class="dropdown-item" href="#">Exhibit</a></li>
+              <li><a class="dropdown-item" href="{{route('coievent.add')}}">Add Event</a></li>        
             </ul>
-              
-              </span></div>
-          </div>
-          
-      <div class="d-flex badgeseconf">
-            @foreach( $finder as $categ) 
-            <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $categ->id])}}">{{ucwords(trans($categ->expoindustry))}}</a>
-            @endforeach
+          </span>
+        </div>
       </div>
-              
-      <div class="row pt-2 mx-n2 my-Slider6"> 
-        @foreach($conference as $eventoi)
+
+      <div class="d-flex badgese">
+        @foreach( $finder as $categ) 
+        <a class="badge  border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $categ->id])}}">
+          {{ucwords(trans($categ->expoindustry))}}</a>
+        @endforeach
+      </div>
+      
+      <div class="row pt-1 mx-n2 my-Slider3"> 
+        @foreach($evento as $eventoi)
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
             <div class="card product-card">
               
@@ -85,15 +85,15 @@
             
             </div>
           </div>
-        @endforeach  
+        @endforeach
       </div>
     </section>
-  </main>
+</main>
 
-  @push('scripts')
+@push('scripts')
     <script>
       var slider = tns({
-        "container": '.badgeseconf',   
+        "container": '.badgese',   
         
         "responsive": {
           "300": {
@@ -122,15 +122,15 @@
 
     <script>
       var slider = tns({
-        "container": '.my-Slider6',            
+        "container": '.my-Slider3',          
         "responsive": {
           "300": {
             "items": 2,
             "controls": false,
             "mouseDrag": true,
             "autoplay": false,
-            "fixedWidth": 150,
-            "autoplayButtonOutput":false,
+             "fixedWidth": 150,
+            "autoplayButtonOutput": false,
             "autoplayHoverPause": true,
           },
           "500": {
@@ -139,12 +139,12 @@
             "controls": false,
             "autoplayHoverPause": true,
             "autoplay": false,
-            "fixedWidth": 300,
-            "autoplayButtonOutput":false
+             "fixedWidth": 300,
+            "autoplayButtonOutput": false
           },
           
         },
         "autoplayButtonOutput":false
       });
     </script>
-  @endpush
+@endpush

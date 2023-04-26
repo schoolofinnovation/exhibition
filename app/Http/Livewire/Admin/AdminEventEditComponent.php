@@ -16,8 +16,6 @@ class AdminEventEditComponent extends Component
     public $eventname;
     public $slug ;
    
-
-
     public $category_id;
     public $sector_id;
     public $expo_id;
@@ -58,12 +56,7 @@ class AdminEventEditComponent extends Component
         $this->venue = $fattribute->venue;
 
         $this->startdate = $fattribute->startdate;
-        $this->enddate = $fattribute->enddate;
-
-        $this->category_id = $fattribute->category_id;
-        $this->sector_id = $fattribute->sector_id;
-        $this->expo_id = $fattribute->expo_id;
-        $this->search_id = $fattribute->search_id;
+        $this->enddate = $fattribute->enddate;        
 
         $this->shtdesc = $fattribute->shtdesc;
         $this->tagline = $fattribute->tagline;
@@ -76,7 +69,6 @@ class AdminEventEditComponent extends Component
         
     }
 
-    
 
     public function updateEvent()
     {
@@ -87,10 +79,7 @@ class AdminEventEditComponent extends Component
         $fattribute->city =  $this->city;
         $fattribute->venue =  $this->venue;
 
-        $fattribute->category_id =  $this->category_id;
-        $fattribute->sector_id=  $this->sector_id;
-        $fattribute->expo_id =  $this->expo_id;
-        $fattribute->search_id =  $this->search_id;
+        
 
         $fattribute->shtdesc =  $this->shtdesc;
         $fattribute->tagline =  $this->tagline;
@@ -107,7 +96,7 @@ class AdminEventEditComponent extends Component
         $fattribute->enddate =  $this->enddate;
         $fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
-        //return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.dashboard', ['board' => 'event']);
     }
 
     public function render()

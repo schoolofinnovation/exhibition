@@ -15,7 +15,6 @@ use Illuminate\Support\Str;
 
 class AdminEventAddComponent extends Component
 {
-    public $organizer;
     public $slug;
     public $eventype;
     public $eventname;
@@ -24,19 +23,14 @@ class AdminEventAddComponent extends Component
     public $startdate;
     public $venue;
     public $city;
-    //public $industry;
-    //public $sector;
-    public $expo_id;
-    public $search_id;
-    public $category_id;
-    public $sector_id;
     public $user_id;
     public $auidence;
     public $exhibitors;
     public $email;
     public $phone;
-    public $image;
-
+    public $level;
+    public $status;
+    public $admstatus;
     public $details;
     
 
@@ -57,7 +51,7 @@ class AdminEventAddComponent extends Component
     {
         $this->level = 4;
         $this->status = 1;
-        $this->admstatus = 1;
+        $this->admstatus = 0;
     }
 
     public function generateSlug()
@@ -73,27 +67,21 @@ class AdminEventAddComponent extends Component
         $event->enddate = $this->enddate;
         $event->venue = $this->venue;
         $event->city = $this->city;
-        $event->organizer = $this->organizer;
         $event->email = $this->email;
         $event->phone = $this->phone;
         $event->auidence = $this->auidence;
         $event->exhibitors = $this->exhibitors;    
-        $event->category_id = $this->category_id;
-        $event->sector_id = $this->sector_id;
-        $event->search_id = $this->search_id;
-        $event->expo_id = json_encode ($this->expo_id);
         $event->edition  = $this->edition;
         $event->eventype = $this->eventype;
         $event->user_id = Auth::user()->id;
-        $event->level  = 3;
-        $event->status  = 1;
-        $event->admstatus  = 1;
+        $event->level  = $this->level;
+        $event->status  = $this->status;
+        $event->admstatus  =  $this->admstatus;
         $event->save();
         $this->sendEmail($event);
-        //$this-> sendEmail($shop);
         $this->reset();
         session()->flash('message','Thanks, Your details has been uploaded.'); 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.dashboard', ['board' => 'event']);
     }
 
     public function render()

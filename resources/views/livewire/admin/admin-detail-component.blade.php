@@ -59,51 +59,15 @@
                 {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
             </div>
 
-            <div class="col-2  p-0">
-              <div class="fs-md fw-normal text-start">
-               @if(is_null($evento->category_id)) 
-                  <a value="1" href="" wire:click="$categ" class="btn-sm btn-primary btn">ADD</a>
-               @else
-                  {{$evento->category->industry}}
-               @endif
-              </div>
-              <div class="text-muted fs-sm text-start">
-                Category 
-              </div>
-            </div>
+           
 
             <div class="col-2  p-0">
               <div class="fs-md fw-normal text-start">
-               @if(is_null($evento->search_id)) 
-                  <a href="" class="btn-sm btn-primary btn">ADD</a>
+               @if(is_null($evento->shtdesc)) 
+                  <a href="{{route('admin.editcategories' , ['event_id' => $evento->id])}}" class="btn-sm btn-primary btn">ADD</a>
                @else
-                  {{$evento->search_id}}  <a href="" class="btn-sm btn-primary btn">Edit</a>
-               @endif
-              </div>
-              <div class="text-muted fs-sm text-start">
-                Search 
-              </div>
-            </div>
-
-            <div class="col-2  p-0">
-              <div class="fs-md fw-normal text-start">
-               @if(is_null($evento->sector_id)) 
-                  <a href="" class="btn-sm btn-primary btn">ADD</a>
-               @else
-                  {{$evento->sector_id}}  <a href="" class="btn-sm btn-primary btn">Edit</a>
-               @endif
-              </div>
-              <div class="text-muted fs-sm text-start">
-                Sector 
-              </div>
-            </div>
-
-            <div class="col-2  p-0">
-              <div class="fs-md fw-normal text-start">
-               @if(is_null($evento->expo_id)) 
-                  <a href="" class="btn-sm btn-primary btn">ADD</a>
-               @else
-                  {{$evento->expo_id}}  <a href="" class="btn-sm btn-primary btn">Edit</a>
+                 {{$evento->shtdesc}}
+                  {{$evento->expo_id}}  <a href="{{route('admin.editcategories' , ['event_id' => $evento->id])}}" class="btn-sm btn-primary btn">Edit</a>
                @endif
               </div>
               <div class="text-muted fs-sm text-start">

@@ -35,13 +35,16 @@ class EventDetailsComponent extends Component
     {   
         $event = Event::where('slug', $this->slug)->first();
         //$start = $event->startdate;
-        //dd($event);
+        
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
         $name = $event->eventname;
         $venue = $event->venue;
         $city = $event->city;
         $country = $event->country;
+       // dd($from);
+        //dd($to);
+
         $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
 
         
