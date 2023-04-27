@@ -8,7 +8,7 @@
               <div class="row align-items-center ">
 
                 <div class="col-md-4">
-                  <div class="row my-Slider4">
+                  <div class="row">
                       <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get access</span>
                         <h5 class="mt-4 mb-1 text-body fw-light">Helping Businesses</h5>
                         <h2 class="mb-1"> Identify More <br> Prospects & Leads</h2>
@@ -17,7 +17,7 @@
                         
                       </div>
 
-                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get Certify</span>
+                      {{--<div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get Certify</span>
                         <h5 class="mt-4 mb-1 text-body fw-light">Best Place to Exhbit</h5>
                         <h2 class="mb-1"> Brands More <br> Prospects & Leads</h2>
                         <p class=" fw-light">Share your unique business, vistors, experience <br> with your competitors</p>
@@ -29,7 +29,7 @@
                         <h2 class="mb-1"> Identify More <br> Prospects & Leads</h2>
                         <p class=" fw-light">Discover leads that have engaged<br> with your competitors</p>
                         <a class="btn btn-accent" href="">Get Free COI Page <i class="bi bi-arrow-right fs-ms ms-1"></i></a>
-                      </div>
+                      </div>--}}
                   </div>
                 </div>
                 
@@ -107,31 +107,31 @@
           </section>
 
         <!--list-->
-          <section class="d-sm-none">
-            <div class="d-flex  align-items-center my-Slider9">
-              <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
-                <img src="image/banner-sm01.png" width="200 rem" alt="Banner">
-                  <div class="py-4 pr-4">
-                    <h5 class="mb-2"><span class="fw-light">Gift World</span><br>Expo <span class="fw-light"></span><br>2023</h5>
-                      <div class="text-info fs-sm">Register Now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
-                  </div>
-              </a>
-              <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
-                <img src="image/banner-sm01.png" width="200 rem" alt="Banner">
-                  <div class="py-4 pr-4">
-                    <h5 class="mb-2"><span class="fw-light">Next Gen</span><br>Video <span class="fw-light">with</span><br>360 Cam</h5>
-                      <div class="text-info fs-sm">Shop now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
-                  </div>
-              </a>
-              <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
-                <img src="image/banner-sm01.png" width="200 rem" alt="Banner">
-                  <div class="py-4 pr-4">
-                    <h5 class="mb-2"><span class="fw-light">Next Gen</span><br>Video <span class="fw-light">with</span><br>360 Cam</h5>
-                      <div class="text-info fs-sm">Shop now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
-                  </div>
-              </a>
-            </div>
-          </section>
+          {{--<section class="d-sm-none">
+                <div class="d-flex  align-items-center my-Slider9">
+                  <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
+                    <img src="image/banner-sm01.png" width="200 rem" alt="Banner">
+                      <div class="py-4 pr-4">
+                        <h5 class="mb-2"><span class="fw-light">Gift World</span><br>Expo <span class="fw-light"></span><br>2023</h5>
+                          <div class="text-info fs-sm">Register Now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
+                      </div>
+                  </a>
+                  <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
+                    <img src="image/banner-sm01.png" width="200 rem" alt="Banner">
+                      <div class="py-4 pr-4">
+                        <h5 class="mb-2"><span class="fw-light">Next Gen</span><br>Video <span class="fw-light">with</span><br>360 Cam</h5>
+                          <div class="text-info fs-sm">Shop now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
+                      </div>
+                  </a>
+                  <a class="d-flex align-items-center bg-faded-info rounded-3  ps-1 mb-1 me-xl-0" href="#" style="min-width: auto;">
+                    <img src="image/banner-sm01.png" width="200 rem" alt="Banner">
+                      <div class="py-4 pr-4">
+                        <h5 class="mb-2"><span class="fw-light">Next Gen</span><br>Video <span class="fw-light">with</span><br>360 Cam</h5>
+                          <div class="text-info fs-sm">Shop now<i class=" bi bi-arrow-right fs-xs ms-1"></i></div>
+                      </div>
+                  </a>
+                </div>
+              </section>--}}
 
         <!--Trending Exhibition-->
         @livewire('trending-exhibition-component')
