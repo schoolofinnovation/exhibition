@@ -49,20 +49,22 @@
           </div>
         </div>
       </div>--}}
-          
-      @if($board == 'event')           
-        <div class="container d-lg-none">
-          <div class="row">
-            <div class="col-md-6 offset-md-3">
-              
+       
+<!--event start-->      
+    @if($board == 'event')           
+      <div class="container d-lg-none">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            
             <div class="mb-4 mb-lg-5">
               <!-- Nav tabs-->
               <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
-                <li class="nav-item border-bottom"><a class="nav-link px-1 active fs-sm" href="#details" data-bs-toggle="tab" role="tab">Browse</a></li>
-                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab"> Monthly Events</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 active fs-sm" href="#requuest" data-bs-toggle="tab" role="tab">Request</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#details" data-bs-toggle="tab" role="tab">Monthly</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Search</a></li>
               </ul>
 
-                <div class="d-flex badgese pb-2">
+                {{--<div class="d-flex badgese pb-2">
                   <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="today"> Today </a></span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="tomorrow"> Tomorrow </a></span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="this-weekend">  This weekend </a></span>
@@ -70,10 +72,712 @@
                   <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-weekend">  Next weekend </a></span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="this-month">  This Month </a></span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-month">  Next Month </a></span>
+                </div>--}}
+
+                  
+                <div class="tab-content pt-1">
+                  <!-- Request tab-->
+                    <div class="tab-pane fade" id="requuest" role="tabpanel">
+                      <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
+                        <div class="row mb-5 pb-2">
+                          @foreach ($expoaward as $franchise) 
+                            <div class="container  ">
+                              <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                    @else
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+
+                                    @endif 
+                                      <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                </div>
+
+                                <div class="col-7  p-0">
+                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                    {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                  <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @else
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @endif 
+                                  </div>  
+                                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                  <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                      <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                </div>
+                              </div>
+                            </div>
+                          @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Product details tab-->
+                    <div class="tab-pane fade show active" id="details" role="tabpanel">
+                      <!-- details test tickets-->
+                      <div class="d-flex flex-nowrap align-items-center pb-3">
+                          <select class="form-select form-select-sm me-2"  wire:model="month">
+                            <option>Choose...</option>
+                            <option value="01">Jan-01</option>
+                            <option value="02">Feb-02</option>
+                            <option value="03">Mar-03</option>
+                            <option value="04">Apr-04</option>
+                            <option value="05">May-05</option>
+                            <option value="06">Jun-06</option>
+                            <option value="07">Jul-07</option>
+                            <option value="08">Aug-08</option>
+                            <option value="09">Sep-09</option>
+                            <option value="10">Oct-10</option>
+                            <option value="11">Nov-11</option>
+                            <option value="12">Dec-12</option>
+                          </select>
+                      </div> 
+                      <div class="row mb-5 pb-2">
+                        @foreach ($monthwise as $franchise) 
+                          
+                        <div class="container">
+                                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                  <div class="col  pr-0">
+                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                      @else
+                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+
+                                      @endif 
+                                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                        {{--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">try</button>--}}
+                                  </div>
+
+                                  <div class="col-7  p-0">
+                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                                      {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                    <div class="text-muted fs-sm text-start">
+                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                      @else
+                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                      @endif 
+                                    </div>  
+                                    <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                                  </div>
+
+                                  <div class="col-3  p-0">
+                                    <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                                        <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                  </div>
+                                </div>
+                              </div>
+                        
+                        
+                        <div class="accordion">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                              
+                              
+
+
+                              
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                  <li>Details</li>
+                                  <li>Edit</li>
+                                  <li>update</li>
+                                  <li></li>
+                                </ul>
+                            </div>
+                          </div>
+                            </div>
+                          </div>
+                        
+                          
+
+                          
+
+
+                        @endforeach
+                      </div>
+                    </div>
+                
+                    <!-- Reviews tab-->
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                      <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
+                        <div class="row mb-5 pb-2">
+                          @foreach ($expoaward as $franchise) 
+                            <div class="container  ">
+                              <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                    @else
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+
+                                    @endif 
+                                      <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                </div>
+
+                                <div class="col-7  p-0">
+                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                    {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                  <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @else
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @endif 
+                                  </div>  
+                                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                  <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                      <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                </div>
+                              </div>
+                            </div>
+                          @endforeach
+                        </div>
+                    </div>
+
                 </div>
-                  <div class="d-flex flex-nowrap align-items-center pb-3">
-                    <label class="form-label fw-normal text-nowrap mb-0 me-2">Sort by:</label>
-                      <select class="form-select form-select-sm me-2"  wire:model="month">
+            </div>
+          </div>
+        </div>
+      </div>
+    @endif
+
+    @if($board == 'event')
+        {{$mymonth}} Current Month{{$month}}  Count{{$monthwise->count()}}
+          
+          <div class="d-none d-sm-block">
+            <div class="row g-1 ">
+
+              <div class="col-sm-3">
+                <select class="form-control" type="text"   wire:model.lazy="month"  placeholder="Provide short title of your request">
+                  <option >Choose</option>
+                  <option value="01">Jan-01</option>
+                  <option value="02">Feb-02</option>
+                  <option value="03">Mar-03</option>
+                  <option value="04">Apr-04</option>
+                  <option value="05">May-05</option>
+                  <option value="06">Jun-06</option>
+                  <option value="07">Jul-07</option>
+                  <option value="08">Aug-08</option>
+                  <option value="09">Sep-09</option>
+                  <option value="10">Oct-10</option>
+                  <option value="11">Nov-11</option>
+                  <option value="12">Dec-12</option>
+                </select>
+              </div>
+
+              <div class="col-sm-4">
+                  <input class="form-control" type="text" placeholder="Search ID" wire:model.lazy="searchTerm">
+              </div>
+            </div>
+          </div>
+
+          @if($expoaward->count() > 0)
+            <div class="table-responsive fs-md">New Request
+              <table class="table table-hover mb-0">
+                  <thead>
+                    <tr> <th>#</th>
+                    <th><small>Basic {{$expoaward->count()}}</small></th>
+                  
+                    <th><small>Category</small></th>
+                    <th><small>Contact</small></th>
+                    <th>Action</th></tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($expoaward as $info)
+                    <tr>
+                          
+                          <td class="py-1 align-middle">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                    <div class="h4 fw-light mb-0">{{$info->edition}}</div> 
+                                    <div class="small text-muted text-capitalize">{{$info->auidence}}</div>
+                                    <div class="round-circle"> ID {{$info->id}}</div> 
+                              </div>
+                            </div>
+                          </td>
+
+                          <td class="py-1 align-middle">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                  @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+                                  @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+
+                                  @endif 
+                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                              </div>
+
+                              <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                  {{ucwords(trans(Str::limit($info->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                  @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                  @else
+                                    {{Carbon\Carbon::parse ($info->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                  @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start">{{$info -> venue}}, {{$info -> city}}</div>
+                              </div>
+
+                              <div class="col-3  p-0">
+                                <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                    <img src="{{url('exhibition/'.$info->image)}}" alt="{{Str::limit($info->eventname, 24)}}"></a>
+                              </div>
+                            </div>
+                          </td>
+                      
+                          <td class="py-1 align-middle fw-sm">
+                            @if(is_null($info->shtdesc))
+                              <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
+                            @else
+                            @php
+                                $sht = json_decode($info->shtdesc)
+                                
+                            @endphp
+
+                              @foreach ($sht as $newtre)
+                                
+                                {{$newtre}}
+                              
+                              @endforeach
+                            @endif
+                          </td>
+                          <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
+                          <br>{{($info->email)}}</span></td>
+                              
+                            <td class="py-2 align-middle">
+                              <div class="dropdown">
+                                <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                  @if($info->admstatus == '1')
+                                      Active
+                                    @else
+                                      Deactive
+                                  @endif</a>
+                                  <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
+                                      @if(($info->admstatus) === '1')
+                                          <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
+                                      @else    
+                                          <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
+                                      @endif
+                                      <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                      <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
+                                  </ul>
+                              </div>        
+                            </td>
+                        </tr>
+                    @endforeach          
+                  </tbody>
+              </table>
+            </div>
+            {{$expoaward->links('pagination-links')}}
+          @endif
+
+          
+          @if($expireplan->count() > 0)
+            @else
+              <div class="table-responsive fs-md d-none d-sm-block">
+                <table class="table table-hover mb-0">
+                    <thead>
+                      <tr> <th>#</th>
+                      <th><small>Basic {{$expireplan->count()}} </small></th>
+                      <th><small>Category</small></th>
+                      <th><small>Contact</small></th>
+                      <th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($expireplan as $info)
+                      <tr>
+                          
+                          <td class="py-1 align-middle">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                    <div class="h4 fw-light mb-0">{{$info->edition}}</div> 
+                                    <div class="small text-muted text-capitalize">{{$info->auidence}}</div>
+                                    <div class="round-circle"> ID {{$info->id}}</div> 
+                              </div>
+                            </div>
+                          </td>
+
+                          <td class="py-1 align-middle">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                  @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+                                  @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+
+                                  @endif 
+                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                              </div>
+
+                              <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                  {{ucwords(trans(Str::limit($info->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                  @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                  @else
+                                    {{Carbon\Carbon::parse ($info->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                  @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start">{{$info -> venue}}, {{$info -> city}}</div>
+                              </div>
+
+                              <div class="col-3  p-0">
+                                <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                    <img src="{{url('exhibition/'.$info->image)}}" alt="{{Str::limit($info->eventname, 24)}}"></a>
+                              </div>
+                            </div>
+                          </td>
+                      
+                          <td class="py-1 align-middle fw-sm">
+                            @if(is_null($info->shtdesc))
+                              <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
+                            @else
+                            @php
+                                $sht = json_decode($info->shtdesc)
+                                
+                            @endphp
+
+                              @foreach ($sht as $newtre)
+                                
+                                {{$newtre}}
+                              
+                              @endforeach
+                            @endif
+                          </td>
+                          <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
+                          <br>{{($info->email)}}</span></td>
+                              
+                            <td class="py-2 align-middle">
+                              <div class="dropdown">
+                                <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                  @if($info->admstatus == '1')
+                                      Active
+                                    @else
+                                      Deactive
+                                  @endif</a>
+                                  <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
+                                      @if(($info->admstatus) === '1')
+                                          <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
+                                      @else    
+                                          <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
+                                      @endif
+                                      <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                      <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
+                                  </ul>
+                              </div>        
+                            </td>
+                        </tr>
+                      @endforeach          
+                    </tbody>
+                </table>
+              </div>
+          @endif  
+        
+          @if(is_null($searchTerm))
+            @else
+                <div class="table-responsive fs-md d-none d-sm-block"> Search Result
+                  <table class="table table-hover mb-0">
+                      <thead>
+                        <tr> <th>#</th>
+                        <th><small>Basic {{$searchcat->count()}}</small></th>
+                        <th><small>Category</small></th>
+                        <th><small>Contact</small></th>
+                        <th>Action</th></tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($searchcat as $info)
+                          <tr>
+                          
+                            <td class="py-1 align-middle">
+                              <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                      <div class="h4 fw-light mb-0">{{$info->edition}}</div> 
+                                      <div class="small text-muted text-capitalize">{{$info->auidence}}</div>
+                                      <div class="round-circle"> ID {{$info->id}}</div> 
+                                </div>
+                              </div>
+                            </td>
+
+                            <td class="py-1 align-middle">
+                              <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+                                    @else
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+
+                                    @endif 
+                                      <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                </div>
+
+                                <div class="col-7  p-0">
+                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                    {{ucwords(trans(Str::limit($info->eventname, 24)))}}</a></div>
+                                  <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                      {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                    @else
+                                      {{Carbon\Carbon::parse ($info->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                    @endif 
+                                  </div>  
+                                  <div class="text-muted fs-sm text-start">{{$info -> venue}}, {{$info -> city}}</div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                  <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                      <img src="{{url('exhibition/'.$info->image)}}" alt="{{Str::limit($info->eventname, 24)}}"></a>
+                                </div>
+                              </div>
+                            </td>
+                        
+                            <td class="py-1 align-middle fw-sm">
+                              @if(is_null($info->shtdesc))
+                                <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
+                              @else
+                              @php
+                                  $sht = json_decode($info->shtdesc)
+                                  
+                              @endphp
+
+                                @foreach ($sht as $newtre)
+                                  
+                                  {{$newtre}}
+                                
+                                @endforeach
+                              @endif
+                            </td>
+                            <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
+                            <br>{{($info->email)}}</span></td>
+                                
+                              <td class="py-2 align-middle">
+                                <div class="dropdown">
+                                  <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    @if($info->admstatus == '1')
+                                        Active
+                                      @else
+                                        Deactive
+                                    @endif</a>
+                                    <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
+                                        @if(($info->admstatus) === '1')
+                                            <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
+                                        @else    
+                                            <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
+                                        @endif
+                                        <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                        <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
+                                    </ul>
+                                </div>        
+                              </td>
+                          </tr>
+                        @endforeach          
+                      </tbody>
+                  </table>
+                </div>  
+          @endif             
+
+          @if(is_null($month))
+            @else
+              <div class="table-responsive fs-md d-none d-sm-block">
+                <table class="table table-hover mb-0">
+                    <thead>
+                      <tr> <th>#</th>
+                      <th><small>Basic {{$monthwise->count()}} </small></th>
+                      <th><small>Category</small></th>
+                      <th><small>Contact</small></th>
+                      <th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($monthwise as $info)
+                        <tr>
+                          
+                          <td class="py-1 align-middle">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                    <div class="h4 fw-light mb-0">{{$info->edition}}</div> 
+                                    <div class="small text-muted text-capitalize">{{$info->visitors}}</div>
+                                    <div class="round-circle"> ID {{$info->id}}</div> 
+                              </div>
+                            </div>
+                          </td>
+
+                          <td class="py-1 align-middle">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                  @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+                                  @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
+
+                                  @endif 
+                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                              </div>
+
+                              <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                  {{ucwords(trans(Str::limit($info->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                  @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                  @else
+                                    {{Carbon\Carbon::parse ($info->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
+                                  @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($info -> venue))}}, {{ucfirst(trans($info -> city))}}</div>
+                              </div>
+
+                              <div class="col-3  p-0">
+                                <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
+                                    <img src="{{url('exhibition/'.$info->image)}}" alt="{{Str::limit($info->eventname, 24)}}"></a>
+                              </div>
+                            </div>
+                          </td>
+                      
+                          <td class="py-1 align-middle fw-sm">
+                            
+                            @if(is_null($info->shtdesc))
+                              <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
+                            @else
+                              
+                                @php
+                                    $sht = json_decode($info->shtdesc)
+                                @endphp
+
+                                  @foreach ($sht as $newtre)
+                                    {{$newtre}}
+                                  @endforeach
+
+
+                            @endif
+                            </td>
+                          <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
+                            <br>{{($info->email)}}</span></td>
+                              
+                            <td class="py-2 align-middle">
+                              <div class="dropdown">
+                                <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                  @if($info->admstatus == '1')
+                                      Active
+                                    @else
+                                      Deactive
+                                  @endif</a>
+                                  <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
+                                      @if(($info->admstatus) === '1')
+                                          <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
+                                      @else    
+                                          <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
+                                      @endif
+                                      <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                      <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
+                                  </ul>
+                              </div>        
+                            </td>
+                        </tr>
+                      @endforeach          
+                    </tbody>
+                </table>
+              </div>
+          @endif                  
+
+          {{--<div class="table-responsive fs-md d-lg-none">
+            <table class="table table-hover mb-0">
+                <thead>
+                  <tr> <th>#</th>
+                  <th><small>edition| type |event name| Venue</small></th>
+                  <th><small>Auidence| Exhibitor</small> </th>
+                  <th><small>Category| Pavillion</small></th>
+                  <th><small>Contact</small></th>
+                  <th>Action</th></tr>
+                </thead>
+                <tbody>
+                  @foreach ($monthwise as $info)
+                    <tr>
+                      <td class="py-1 align-middle">{{$info->id}}</td>
+                      <td class="py-1 align-middle"><span class="align-middle badge bg-info ms-2">
+                        {{$info->edition}},{{$info->eventname}}, {{$info->eventype}}, <span class="align-middle badge bg-info ms-2">{{$info->venue}},{{$info->city}} </span>
+                        <br>
+                        <span class="align-middle badge bg-info ms-2">
+                        {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M Y')}}</span>
+                        </span></td>
+
+                      <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M Y')}}</span>
+                      <span class="align-middle badge bg-info ms-2">visitors {{($info->auidence)}} | exhibitors +300 </span>{{$info->category_id}}</td>
+                      
+                      <td class="py-1 align-middle fw-sm">
+                        <span class="align-middle badge  bg-info ms-2">
+                        
+                        </span></td>
+                      <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
+                        {{Str::limit($info->organizer, 25)}}<br>{{($info->email)}}</span></td>
+                          
+                        <td class="py-2 align-middle">
+                          <div class="dropdown">
+                            <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
+                              @if($info->admstatus == '1')
+                                  Active
+                                @else
+                                  Deactive
+                              @endif</a>
+                              <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
+                                  @if(($info->admstatus) === '1')
+                                      <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
+                                  @else    
+                                      <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
+                                  @endif
+                                  <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                  <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                  <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
+                              </ul>
+                          </div>        
+                        </td>
+                    </tr>
+                  @endforeach          
+                </tbody>
+            </table>
+          </div>--}}
+    @endif
+<!--event stop--> 
+
+
+<!-- Start Cleint-->
+      @if($board == 'client')
+        <div class="container">
+          <form wire:submit.prevent="emailSend">
+             
+              <div class="col-lg-4 col-md-4 ">
+                      <label class="form-label fw-normal text-nowrap mb-0 me-2">Sort by:</label>
+                      <select class="form-select form-select-sm me-2"  wire:model.lazy="month">
                         <option>Choose...</option>
                         <option value="01">Jan-01</option>
                         <option value="02">Feb-02</option>
@@ -88,107 +792,151 @@
                         <option value="11">Nov-11</option>
                         <option value="12">Dec-12</option>
                       </select>
-                  </div> 
-                <div class="tab-content pt-1">
-                    <!-- Product details tab-->
-                    <div class="tab-pane fade show active" id="details" role="tabpanel">
-                      <!-- details test tickets-->
-                      <div class="row mb-5 pb-2">
-                        @foreach ($monthwise as $franchise) 
-                          <div class="container">
-                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                              <div class="col  pr-0">
-                                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                                  @else
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-
-                                  @endif 
-                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                              </div>
-
-                              <div class="col-7  p-0">
-                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                  {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
-                                <div class="text-muted fs-sm text-start">
-                                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                  @else
-                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                  @endif 
-                                </div>  
-                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
-                              </div>
-
-                              <div class="col-3  p-0">
-                                <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                    <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
-                              </div>
-                            </div>
-                          </div>
-                        @endforeach
-                      </div>
-                    </div>
-                
-                    <!-- Reviews tab-->
-                    <div class="tab-pane fade" id="reviews" role="tabpanel">
-                      <div class="row mb-5 pb-2">
-                        @foreach ($expoaward as $franchise) 
-                          <div class="container  ">
-                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                              <div class="col  pr-0">
-                                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                                  @else
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-
-                                  @endif 
-                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                              </div>
-
-                              <div class="col-7  p-0">
-                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                  {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
-                                <div class="text-muted fs-sm text-start">
-                                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                  @else
-                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                  @endif 
-                                </div>  
-                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
-                              </div>
-
-                              <div class="col-3  p-0">
-                                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                    <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
-                              </div>
-                            </div>
-                          </div>
-                        @endforeach
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-          </div>
-
-          <form wire:submit.prevent="newlist">
-            <div class="row">  
-              <input type="text" class="form-control" placeholder="month..." wire:model.lazy="month">
+                    </div> 
               <input type="text" class="form-control" placeholder="share your email..." wire:model.lazy="emailClient">
-              <a class="btn btn-primary" href="#" wire:click.prevent="emailSend">Email</a>
-              
+             
+             <button type="submit"></button>
             </div>
           </form>
-
         </div>
       @endif
+<!--Stop Client-->
+
+
+<!--Start job -->
+      @if($board == 'contact')
+        <div class="table-responsive fs-md mb-4">
+          <table class="table table-hover mb-0">
+                  <thead>
+                    <tr> <th>#</th>
+                    <th>title:slug:type</th>
+                    <th>skills:level</th>
+                    <th>desc:req</th>
+                    <th>qual:exp.</th>
+                    <th>Status</th>
+                    <th>Action</th></tr>
+                  </thead>
+                  <tbody>
+                    <!--<tr>
+                      <td class="py-3"><a class="nav-link-style fw-medium" href="account-single-ticket.html">My new ticket</a></td>
+                      <td class="py-3">09/27/2019 | 09/30/2019</td>
+                      <td class="py-3">Website problem</td>
+                      <td class="py-3"><span class="badge bg-warning m-0">High</span></td>
+                      <td class="py-3"><span class="badge bg-success m-0">Open</span></td>
+                    </tr>--> 
+                  
+                      @foreach ($jobs as $info)
+                        <tr><td class="py-3 align-middle">{{$info->id}}</td>
+                          <td class="py-3 align-middle"><span class="align-middle badge bg-info ms-2">{{$info->title}},{{$info->department}}<br>{{$info->experience}},{{$info->type}}<br>{{$info->location_state}},{{$info->location_country}}</span></td>
+                          <td class="py-3 align-middle fw-sm">{{Str::limit($info->skills, 25)}}<br>{{$info->level}}</td>
+                          <td class="py-3 align-middle fw-sm">{{Str::limit($info->description, 25)}}<br>{{Str::limit($info->requirement, 25)}}</td>
+                          <td class="py-3 align-middle fw-sm"><span class="align-middle badge  bg-info ms-2">{{$info->qualification}}<br></span></td>
+                          <td class="py-3 align-middle">
+                            @if($info->status == 'active')
+                              <span class="badge bg-success m-0">Active</span>
+                              @else
+                              <span class="badge bg-danger m-0">Deactive</span>
+                            @endif </td>
+                          <td class="py-3 align-middle"><a class=" nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit"><i class="bi bi-pencil"></i></a><a class="nav-link-style  me-2 text-danger" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
+                              <div class=" bi bi-x"></div></a> </td></tr>
+                      @endforeach          
+                  
+                  </tbody>
+          </table>
+        </div>
+        <div class="text-end">
+          <button class="btn btn-primary" >Submit new ticket</button>
+        </div>
+      @endif
+
+      @if($board == 'job')
+        <div class="table-responsive fs-md mb-4">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr> <th>#</th>
+              <th>title:slug:type</th>
+              <th>skills:level</th>
+              <th>desc:req</th>
+              <th>qual:exp.</th>
+              <th>Action</th></tr>
+            </thead>
+            <tbody>
+                @foreach ($jobs as $info)
+                  <tr><td class="py-3 align-middle">{{$info->id}}</td>
+                    <td class="py-2 align-middle"><span class="align-middle badge bg-info ms-2">{{$info->title}},{{$info->department}}<br>{{$info->experience}},{{$info->type}}<br>{{$info->location_state}},{{$info->location_country}}</span></td>
+                    <td class="py-2 align-middle fw-sm"></td>
+                    <td class="py-2 align-middle fw-sm">{{Str::limit($info->description, 25)}}<br>{{Str::limit($info->requirement, 25)}}</td>
+                    <td class="py-2 align-middle fw-sm"><span class="align-middle badge  bg-info ms-2">{{$info->qualification}}<br></span></td>
+                    <td class="py-2 align-middle">
+                        <div class="dropdown">
+                          <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Choose</a>
+                            <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
+                                @if(($info->status) === '1')
+                                    <li><a class="dropdown-item" href="#" wire:click.prevent="updateJobstatus({{$info->id}},'active')">Deactive</a></li>
+                                @else    
+                                    <li><a class="dropdown-item" href="#" wire:click.prevent="updateJobstatus({{$info->id}},'deactive')">Active</a></li>
+                                @endif
+                                <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
+                            </ul>
+                        </div>      
+                    </td>
+                  </tr>
+                @endforeach          
+            </tbody>
+          </table>
+          {{$jobs->links('pagination-links')}}
+        </div>
+      @endif
+<!--Stop job -->
+
+<!--Stop blog -->
+      @if($board == 'blog')
+        <div class="table-responsive fs-md mb-4">
+          <table class="table table-hover mb-0">
+                  <thead>
+                    <tr> <th>#</th>
+                    <th>title:slug:type</th>
+                    <th>skills:level</th>
+                    <th>desc:req</th>
+                    <th>qual:exp.</th>
+                    <th>Status</th>
+                    <th>Action</th></tr>
+                  </thead>
+                  <tbody>
+                    <!--<tr>
+                      <td class="py-3"><a class="nav-link-style fw-medium" href="account-single-ticket.html">My new ticket</a></td>
+                      <td class="py-3">09/27/2019 | 09/30/2019</td>
+                      <td class="py-3">Website problem</td>
+                      <td class="py-3"><span class="badge bg-warning m-0">High</span></td>
+                      <td class="py-3"><span class="badge bg-success m-0">Open</span></td>
+                    </tr>--> 
+                  
+                      @foreach ($jobs as $info)
+                        <tr><td class="py-3 align-middle">{{$info->id}}</td>
+                          <td class="py-3 align-middle"><span class="align-middle badge bg-info ms-2">{{$info->title}},{{$info->department}}<br>{{$info->experience}},{{$info->type}}<br>{{$info->location_state}},{{$info->location_country}}</span></td>
+                          <td class="py-3 align-middle fw-sm">{{Str::limit($info->skills, 25)}}<br>{{$info->level}}</td>
+                          <td class="py-3 align-middle fw-sm">{{Str::limit($info->description, 25)}}<br>{{Str::limit($info->requirement, 25)}}</td>
+                          <td class="py-3 align-middle fw-sm"><span class="align-middle badge  bg-info ms-2">{{$info->qualification}}<br></span></td>
+                          <td class="py-3 align-middle">
+                            @if($info->status == 'active')
+                              <span class="badge bg-success m-0">Active</span>
+                              @else
+                              <span class="badge bg-danger m-0">Deactive</span>
+                            @endif </td>
+                          <td class="py-3 align-middle"><a class=" nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit"><i class="bi bi-pencil"></i></a><a class="nav-link-style  me-2 text-danger" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
+                              <div class=" bi bi-x"></div></a> </td></tr>
+                      @endforeach          
+                  
+                  </tbody>
+          </table>
+        </div>
+        <div class="text-end">
+          <button class="btn btn-primary" >Submit new ticket</button>
+        </div>
+      @endif
+<!--Stop blog-->
 
 
       <div class="container">
@@ -276,9 +1024,6 @@
                 </div>
               </div>
             </aside>--}}
-
-
-
 
             <!-- Content-->
             <section class="col-lg-12 pt-lg-4">
@@ -530,361 +1275,8 @@
                   </div>
                   {{$coupons->links('pagination-links')}}
                 @endif
-                
-                @if($board == 'event')
-                  
-                  @if($expoaward->count() > 0)
-                    <div class="table-responsive fs-md">
-                      <table class="table table-hover mb-0">
-                          <thead>
-                            <tr> <th>#</th>
-                            <th><small>edition| type |event name| Venue</small></th>
-                            <th><small>Auidence| Exhibitor</small> </th>
-                            <th><small>Category| Pavillion</small></th>
-                            <th><small>Contact</small></th>
-                            <th>Action</th></tr>
-                          </thead>
-                          <tbody>
-                            @foreach ($expoaward as $info)
-                              <tr>
-                                <td class="py-1 align-middle">{{$info->id}}</td>
-                                <td class="py-1 align-middle"><span class="align-middle badge bg-info ms-2">
-                                  {{$info->edition}},{{$info->eventname}}, {{$info->eventype}},
-                                  <br><span class="align-middle badge bg-info ms-2">visitors {{($info->auidence)}} | exhibitors +300 </span></span></td>
 
-                                <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{Carbon\Carbon::parse ($info->startdate)->format('D, M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M Y')}}</span>
-                                <span class="align-middle badge bg-info ms-2">{{$info->venue}},{{$info->city}}</span>{{$info->category_id}}</td>
-                                
-                                <td class="py-1 align-middle fw-sm">
-                                  <span class="align-middle badge  bg-info ms-2">
-                                  
-                                  </span></td>
-                                <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
-                                  {{Str::limit($info->organizer, 25)}}<br>{{($info->email)}}</span></td>
-                                    
-                                  <td class="py-2 align-middle">
-                                    <div class="dropdown">
-                                      <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
-                                        @if($info->admstatus == '1')
-                                            Active
-                                          @else
-                                            Deactive
-                                        @endif</a>
-                                        <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
-                                            @if(($info->admstatus) === '1')
-                                                <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
-                                            @else    
-                                                <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
-                                            @endif
-                                            <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                            <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
-                                            <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
-                                        </ul>
-                                    </div>      
-                                  </td>
-                              </tr>
-                            @endforeach          
-                          </tbody>
-                      </table>
-                    </div>
-                    {{$expoaward->links('pagination-links')}}
-                  @endif
-                  {{$mymonth}} Current Month{{$month}}  Count{{$monthwise->count()}}
-                 
-                    <div class="d-flex flex-nowrap align-items-center pb-3">
-                      <label class="form-label fw-normal text-nowrap mb-0 me-2">Sort by:</label>
-                      <select class="form-select form-select-sm me-2"  wire:model="month">
-                        <option>Choose...</option>
-                        <option value="01">Jan-01</option>
-                        <option value="02">Feb-02</option>
-                        <option value="03">Mar-03</option>
-                        <option value="04">Apr-04</option>
-                        <option value="05">May-05</option>
-                        <option value="06">Jun-06</option>
-                        <option value="07">Jul-07</option>
-                        <option value="08">Aug-08</option>
-                        <option value="09">Sep-09</option>
-                        <option value="10">Oct-10</option>
-                        <option value="11">Nov-11</option>
-                        <option value="12">Dec-12</option>
-                      </select>
-                    <input type="text" wire:model.lazy="searchTerm">
-                    </div>    
-                    
-@if(is_null($searchTerm))
-@else
-    <div class="table-responsive fs-md d-none d-sm-block"> Search Result
-      <table class="table table-hover mb-0">
-          <thead>
-            <tr> <th>#</th>
-            <th><small>Basic </small></th>
-            <th><small>Auidence| Exhibitor</small> </th>
-            <th><small>Category</small></th>
-            <th><small>Sector</small></th>
-            <th>Action</th></tr>
-          </thead>
-          <tbody>
-            @foreach ($searchcat as $info)
-              <tr>
-              
-                <td class="py-1 align-middle">
-                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                    <div class="col  pr-0">
-                          <div class="h4 fw-light mb-0">{{$info->edition}}</div> 
-                          <div class="small text-muted text-capitalize">{{$info->visitors}}</div>
-                          <div class="round-circle"> ID {{$info->id}}</div> 
-                    </div>
-                  </div>
-                </td>
-
-                <td class="py-1 align-middle">
-                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                    <div class="col  pr-0">
-                        @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
-                          <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
-                          <div class="small text-muted">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
-                        @else
-                          <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
-                          <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
-
-                        @endif 
-                          <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                    </div>
-
-                    <div class="col-7  p-0">
-                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
-                        {{ucwords(trans(Str::limit($info->eventname, 24)))}}</a></div>
-                      <div class="text-muted fs-sm text-start">
-                        @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
-                          {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
-                        @else
-                          {{Carbon\Carbon::parse ($info->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
-                        @endif 
-                      </div>  
-                      <div class="text-muted fs-sm text-start">{{$info -> venue}}, {{$info -> city}}</div>
-                    </div>
-
-                    <div class="col-3  p-0">
-                      <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
-                          <img src="{{url('exhibition/'.$info->image)}}" alt="{{Str::limit($info->eventname, 24)}}"></a>
-                    </div>
-                  </div>
-                </td>
-            
-                <td class="py-1 align-middle fw-sm">
-                  @if(is_null($info->shtdesc))
-                    <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
-                  @else
-                  @php
-                      $sht = json_decode($info->shtdesc)
-                      
-                  @endphp
-
-                    @foreach ($sht as $newtre)
-                      @php
-                          $findoutId = App/Model/Expo::where('id', $newtre)
-                      @endphp
-                      {{$newtre}}
-                      {{$findoutId}}
-                    @endforeach
-                  @endif
-                </td>
-                <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
-                <br>{{($info->email)}}</span></td>
-                    
-                  <td class="py-2 align-middle">
-                    <div class="dropdown">
-                      <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
-                        @if($info->admstatus == '1')
-                            Active
-                          @else
-                            Deactive
-                        @endif</a>
-                        <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
-                            @if(($info->admstatus) === '1')
-                                <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
-                            @else    
-                                <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
-                            @endif
-                            <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                            <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
-                            <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
-                        </ul>
-                    </div>        
-                  </td>
-              </tr>
-            @endforeach          
-          </tbody>
-      </table>
-    </div>  
-@endif             
-
-                @if(is_null($month))
-                @else
-                  <div class="table-responsive fs-md d-none d-sm-block">
-                    <table class="table table-hover mb-0">
-                        <thead>
-                          <tr> <th>#</th>
-                          <th><small>Basic </small></th>
-                          <th><small>Auidence| Exhibitor</small> </th>
-                          <th><small>Category</small></th>
-                          <th><small>Sector</small></th>
-                          <th>Action</th></tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($monthwise as $info)
-                            <tr>
-                              
-                              <td class="py-1 align-middle">
-                                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                  <div class="col  pr-0">
-                                        <div class="h4 fw-light mb-0">{{$info->edition}}</div> 
-                                        <div class="small text-muted text-capitalize">{{$info->visitors}}</div>
-                                        <div class="round-circle"> ID {{$info->id}}</div> 
-                                  </div>
-                                </div>
-                              </td>
-
-                              <td class="py-1 align-middle">
-                                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                  <div class="col  pr-0">
-                                      @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
-                                      @else
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($info->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($info->startdate)->format('M')}} </div>
-
-                                      @endif 
-                                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                                  </div>
-
-                                  <div class="col-7  p-0">
-                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
-                                      {{ucwords(trans(Str::limit($info->eventname, 24)))}}</a></div>
-                                    <div class="text-muted fs-sm text-start">
-                                      @if(Carbon\Carbon::parse ($info->startdate)->format('M') != Carbon\Carbon::parse ($info->enddate)->format('M'))
-                                        {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
-                                      @else
-                                        {{Carbon\Carbon::parse ($info->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M')}}
-                                      @endif 
-                                    </div>  
-                                    <div class="text-muted fs-sm text-start">{{ucfirst(trans($info -> venue))}}, {{ucfirst(trans($info -> city))}}</div>
-                                  </div>
-
-                                  <div class="col-3  p-0">
-                                    <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $info->slug])}}">
-                                        <img src="{{url('exhibition/'.$info->image)}}" alt="{{Str::limit($info->eventname, 24)}}"></a>
-                                  </div>
-                                </div>
-                              </td>
-                          
-                              <td class="py-1 align-middle fw-sm">
-                                
-                                @if(is_null($info->shtdesc))
-                                  <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
-                                @else
-                                   
-                                    @php
-                                        $sht = json_decode($info->shtdesc)
-                                    @endphp
-
-                                      @foreach ($sht as $newtre)
-                                        {{$newtre}}
-                                      @endforeach
-
-
-                                @endif
-                                </td>
-                              <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
-                                <br>{{($info->email)}}</span></td>
-                                  
-                                <td class="py-2 align-middle">
-                                  <div class="dropdown">
-                                    <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
-                                      @if($info->admstatus == '1')
-                                          Active
-                                        @else
-                                          Deactive
-                                      @endif</a>
-                                      <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
-                                          @if(($info->admstatus) === '1')
-                                              <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
-                                          @else    
-                                              <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
-                                          @endif
-                                          <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                          <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
-                                          <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
-                                      </ul>
-                                  </div>        
-                                </td>
-                            </tr>
-                          @endforeach          
-                        </tbody>
-                    </table>
-                  </div>
-                @endif                  
-
-                  {{--<div class="table-responsive fs-md d-lg-none">
-                    <table class="table table-hover mb-0">
-                        <thead>
-                          <tr> <th>#</th>
-                          <th><small>edition| type |event name| Venue</small></th>
-                          <th><small>Auidence| Exhibitor</small> </th>
-                          <th><small>Category| Pavillion</small></th>
-                          <th><small>Contact</small></th>
-                          <th>Action</th></tr>
-                        </thead>
-                        <tbody>
-                          @foreach ($monthwise as $info)
-                            <tr>
-                              <td class="py-1 align-middle">{{$info->id}}</td>
-                              <td class="py-1 align-middle"><span class="align-middle badge bg-info ms-2">
-                                {{$info->edition}},{{$info->eventname}}, {{$info->eventype}}, <span class="align-middle badge bg-info ms-2">{{$info->venue}},{{$info->city}} </span>
-                                <br>
-                                <span class="align-middle badge bg-info ms-2">
-                                {{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M Y')}}</span>
-                                </span></td>
-
-                              <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{Carbon\Carbon::parse ($info->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($info->enddate)->format('D, d M Y')}}</span>
-                              <span class="align-middle badge bg-info ms-2">visitors {{($info->auidence)}} | exhibitors +300 </span>{{$info->category_id}}</td>
-                              
-                              <td class="py-1 align-middle fw-sm">
-                                <span class="align-middle badge  bg-info ms-2">
-                                
-                                </span></td>
-                              <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
-                                {{Str::limit($info->organizer, 25)}}<br>{{($info->email)}}</span></td>
-                                  
-                                <td class="py-2 align-middle">
-                                  <div class="dropdown">
-                                    <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
-                                      @if($info->admstatus == '1')
-                                          Active
-                                        @else
-                                          Deactive
-                                      @endif</a>
-                                      <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
-                                          @if(($info->admstatus) === '1')
-                                              <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'0')">Deactive</a></li>
-                                          @else    
-                                              <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
-                                          @endif
-                                          <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                          <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
-                                          <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
-                                      </ul>
-                                  </div>        
-                                </td>
-                            </tr>
-                          @endforeach          
-                        </tbody>
-                    </table>
-                  </div>--}}
-
-                 
-                @endif
+                     
 
                 @if($board == 'user')
                   <div class="table-responsive fs-md mb-4">
@@ -952,141 +1344,6 @@
                     {{$users->links('pagination-links')}}
                   </div>
                   
-                @endif
-
-                @if($board == 'shop')
-                  <div class="table-responsive fs-md mb-4">
-                    <table class="table table-hover mb-0">
-                            <thead>
-                              <tr> <th>#</th>
-                              <th>title:slug:type</th>
-                              <th>skills:level</th>
-                              <th>desc:req</th>
-                              <th>qual:exp.</th>
-                              <th>Status</th>
-                              <th>Action</th></tr>
-                            </thead>
-                            <tbody>
-                              <!--<tr>
-                                <td class="py-3"><a class="nav-link-style fw-medium" href="account-single-ticket.html">My new ticket</a></td>
-                                <td class="py-3">09/27/2019 | 09/30/2019</td>
-                                <td class="py-3">Website problem</td>
-                                <td class="py-3"><span class="badge bg-warning m-0">High</span></td>
-                                <td class="py-3"><span class="badge bg-success m-0">Open</span></td>
-                              </tr>--> 
-                            
-                                @foreach ($jobs as $info)
-                                  <tr><td class="py-3 align-middle">{{$info->id}}</td>
-                                    <td class="py-3 align-middle"><span class="align-middle badge bg-info ms-2">{{$info->title}},{{$info->department}}<br>{{$info->experience}},{{$info->type}}<br>{{$info->location_state}},{{$info->location_country}}</span></td>
-                                    <td class="py-3 align-middle fw-sm">{{Str::limit($info->skills, 25)}}<br>{{$info->level}}</td>
-                                    <td class="py-3 align-middle fw-sm">{{Str::limit($info->description, 25)}}<br>{{Str::limit($info->requirement, 25)}}</td>
-                                    <td class="py-3 align-middle fw-sm"><span class="align-middle badge  bg-info ms-2">{{$info->qualification}}<br></span></td>
-                                    <td class="py-3 align-middle">
-                                      @if($info->status == 'active')
-                                        <span class="badge bg-success m-0">Active</span>
-                                        @else
-                                        <span class="badge bg-danger m-0">Deactive</span>
-                                      @endif </td>
-                                    <td class="py-3 align-middle"><a class=" nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit"><i class="bi bi-pencil"></i></a><a class="nav-link-style  me-2 text-danger" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
-                                        <div class=" bi bi-x"></div></a> </td></tr>
-                                @endforeach          
-                            
-                            </tbody>
-                    </table>
-                  </div>
-                  <div class="text-end">
-                    <button class="btn btn-primary" >Submit new ticket</button>
-                  </div>
-                @endif
-
-                @if($board == 'contact')
-                  <div class="table-responsive fs-md mb-4">
-                    <table class="table table-hover mb-0">
-                            <thead>
-                              <tr> <th>#</th>
-                              <th>title:slug:type</th>
-                              <th>skills:level</th>
-                              <th>desc:req</th>
-                              <th>qual:exp.</th>
-                              <th>Status</th>
-                              <th>Action</th></tr>
-                            </thead>
-                            <tbody>
-                              <!--<tr>
-                                <td class="py-3"><a class="nav-link-style fw-medium" href="account-single-ticket.html">My new ticket</a></td>
-                                <td class="py-3">09/27/2019 | 09/30/2019</td>
-                                <td class="py-3">Website problem</td>
-                                <td class="py-3"><span class="badge bg-warning m-0">High</span></td>
-                                <td class="py-3"><span class="badge bg-success m-0">Open</span></td>
-                              </tr>--> 
-                            
-                                @foreach ($jobs as $info)
-                                  <tr><td class="py-3 align-middle">{{$info->id}}</td>
-                                    <td class="py-3 align-middle"><span class="align-middle badge bg-info ms-2">{{$info->title}},{{$info->department}}<br>{{$info->experience}},{{$info->type}}<br>{{$info->location_state}},{{$info->location_country}}</span></td>
-                                    <td class="py-3 align-middle fw-sm">{{Str::limit($info->skills, 25)}}<br>{{$info->level}}</td>
-                                    <td class="py-3 align-middle fw-sm">{{Str::limit($info->description, 25)}}<br>{{Str::limit($info->requirement, 25)}}</td>
-                                    <td class="py-3 align-middle fw-sm"><span class="align-middle badge  bg-info ms-2">{{$info->qualification}}<br></span></td>
-                                    <td class="py-3 align-middle">
-                                      @if($info->status == 'active')
-                                        <span class="badge bg-success m-0">Active</span>
-                                        @else
-                                        <span class="badge bg-danger m-0">Deactive</span>
-                                      @endif </td>
-                                    <td class="py-3 align-middle"><a class=" nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit"><i class="bi bi-pencil"></i></a><a class="nav-link-style  me-2 text-danger" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
-                                        <div class=" bi bi-x"></div></a> </td></tr>
-                                @endforeach          
-                            
-                            </tbody>
-                    </table>
-                  </div>
-                  <div class="text-end">
-                    <button class="btn btn-primary" >Submit new ticket</button>
-                  </div>
-                @endif
-
-                @if($board == 'blog')
-                  <div class="table-responsive fs-md mb-4">
-                    <table class="table table-hover mb-0">
-                            <thead>
-                              <tr> <th>#</th>
-                              <th>title:slug:type</th>
-                              <th>skills:level</th>
-                              <th>desc:req</th>
-                              <th>qual:exp.</th>
-                              <th>Status</th>
-                              <th>Action</th></tr>
-                            </thead>
-                            <tbody>
-                              <!--<tr>
-                                <td class="py-3"><a class="nav-link-style fw-medium" href="account-single-ticket.html">My new ticket</a></td>
-                                <td class="py-3">09/27/2019 | 09/30/2019</td>
-                                <td class="py-3">Website problem</td>
-                                <td class="py-3"><span class="badge bg-warning m-0">High</span></td>
-                                <td class="py-3"><span class="badge bg-success m-0">Open</span></td>
-                              </tr>--> 
-                            
-                                @foreach ($jobs as $info)
-                                  <tr><td class="py-3 align-middle">{{$info->id}}</td>
-                                    <td class="py-3 align-middle"><span class="align-middle badge bg-info ms-2">{{$info->title}},{{$info->department}}<br>{{$info->experience}},{{$info->type}}<br>{{$info->location_state}},{{$info->location_country}}</span></td>
-                                    <td class="py-3 align-middle fw-sm">{{Str::limit($info->skills, 25)}}<br>{{$info->level}}</td>
-                                    <td class="py-3 align-middle fw-sm">{{Str::limit($info->description, 25)}}<br>{{Str::limit($info->requirement, 25)}}</td>
-                                    <td class="py-3 align-middle fw-sm"><span class="align-middle badge  bg-info ms-2">{{$info->qualification}}<br></span></td>
-                                    <td class="py-3 align-middle">
-                                      @if($info->status == 'active')
-                                        <span class="badge bg-success m-0">Active</span>
-                                        @else
-                                        <span class="badge bg-danger m-0">Deactive</span>
-                                      @endif </td>
-                                    <td class="py-3 align-middle"><a class=" nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit"><i class="bi bi-pencil"></i></a><a class="nav-link-style  me-2 text-danger" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
-                                        <div class=" bi bi-x"></div></a> </td></tr>
-                                @endforeach          
-                            
-                            </tbody>
-                    </table>
-                  </div>
-                  <div class="text-end">
-                    <button class="btn btn-primary" >Submit new ticket</button>
-                  </div>
                 @endif
 
                 @if($board == 'franchise')
@@ -1467,13 +1724,13 @@
                   {{$orders->links('pagination-links')}}
                 @endif
             </section>
-
-
         </div>
       </div>
+
+      
 </main>
 
-@push('scripts')
+    @push('scripts')
       <script>
         var slider = tns({
           "container": '.badgese',   

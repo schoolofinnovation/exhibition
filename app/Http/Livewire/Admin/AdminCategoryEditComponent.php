@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Event;
 use App\Models\Expo;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class AdminCategoryEditComponent extends Component
 {
@@ -14,6 +15,10 @@ class AdminCategoryEditComponent extends Component
     public $event_id;
     public $checkvalue = [];
 
+    public $tag;
+    public $type;
+    public $slug;
+
     
     public function mount($event_id)
     {
@@ -21,6 +26,7 @@ class AdminCategoryEditComponent extends Component
         //dd($fattribute);
         $this->event_id = $fattribute->id;
         $this->expo_id = $fattribute->expo_id;
+        $this->type = 'tag';
     }
 
 
@@ -28,6 +34,22 @@ class AdminCategoryEditComponent extends Component
     {
         $fattribute = Event::find($this->event_id);
         $fattribute->shtdesc =  json_encode($this->checkvalue);
+        $fattribute->save();
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->route('admin.dashboard', ['board' => 'event']);
+    }
+
+    public function generateSlug()
+    {
+        $this->slug = Str::slug($this->tag,'-');
+    }
+
+    public function updatetag()
+    {
+        $fattribute = new Expo();
+        $fattribute->tag =  $this->tag;
+        $fattribute->slug =  $this->slug;
+        $fattribute->type =  $this->type;
         $fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('admin.dashboard', ['board' => 'event']);

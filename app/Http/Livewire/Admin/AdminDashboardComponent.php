@@ -150,6 +150,12 @@ class AdminDashboardComponent extends Component
 
     public function render()
     {
+      //current Event
+      $mytime = Carbon::today()->format("Y-m-d");
+      $mytomorrow = Carbon::tomorrow()->format("Y-m-d");
+      $myweek = Carbon::now()->addDays(7)->format("Y-m-d");
+      $mymonth = Carbon::now()->addDays(30)->format("m");
+
       //order
       
       $optios = Optio:: get();
@@ -173,18 +179,12 @@ class AdminDashboardComponent extends Component
       $business = Service::paginate(5);
       $fattributes = ProductAttribute::paginate(10);
 
-      $expoaward = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','0')->orderBy('created_at','ASC')->paginate(10);
-     
+      $expoaward = Event::where('status','1')->where('admstatus','0')->orderBy('created_at','ASC')->paginate(10);
+      $expireplan = Event::whereDate('enddate','<=',  $mytime)->where('status','1')->where('admstatus','1')->orderBy('enddate','DESC')->get();
       
       //total event
       $events = Event::count();
-     
-      //current Event
-      $mytime = Carbon::today()->format("Y-m-d");
-      $mytomorrow = Carbon::tomorrow()->format("Y-m-d");
-      $myweek = Carbon::now()->addDays(7)->format("Y-m-d");
-      $mymonth = Carbon::now()->addDays(30)->format("m");
-
+  
       $monthwise = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $this->month)->orderBy('startdate','ASC')->get();
       
       $mythreemonth = Carbon::now()->addDays(90)->format("Y-m-d");
@@ -196,15 +196,12 @@ class AdminDashboardComponent extends Component
       $eventthreemonth = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mythreemonth)->orderBy('startdate','ASC')->get();
 
       $searchTerm = '%'.$this->searchTerm. '%';
-      $searchcat = Event::where('id','LIKE', $searchTerm)
+      $searchcat = Event::where('id','LIKE', $searchTerm)->orWhere('eventname','LIKE', $searchTerm)
+                                                         ->orWhere('city','LIKE', $searchTerm)
+                                                         ->orWhere('venue','LIKE', $searchTerm)->
+                  where('status','1')->orderBy('eventname','ASC')->get();
 
-                  ->where('status','1')->orderBy('eventname','ASC')->get();
-      
-
-
-
-      
-        return view('livewire.admin.admin-dashboard-component',['searchcat' => $searchcat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',['expireplan' => $expireplan,'searchcat' => $searchcat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         

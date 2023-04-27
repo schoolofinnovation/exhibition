@@ -4,7 +4,7 @@
 @section('page_name',' Add event')
 
     <main> 
-        <div class="container">
+        <div class="container mb-5">
             <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
                 <div class="text-sm-end">
                 <a class="btn btn-primary" href="{{route('admin.dashboard', ['board' => 'event'])}}" data-bs-toggle="modal">  All Event </a></div>

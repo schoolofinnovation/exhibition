@@ -3,17 +3,18 @@
 @section('page_keyword', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
 <main>    
-          <section class="container bg-faded-info py-4 mt-0">
+          <section class="container bg-faded-info py-5 mt-0">
             <div class=" rounded-3 py-5" >
               <div class="row align-items-center ">
 
                 <div class="col-md-4">
                   <div class="row">
-                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get access</span>
-                        <h5 class="mt-4 mb-1 text-body fw-light">Helping Businesses</h5>
-                        <h2 class="mb-1"> Identify More <br> Prospects & Leads</h2>
-                        <p class=" fw-light">Discover leads that have engaged<br> with your competitors</p>
-                        <a class="btn btn-accent" href="">Get your button <i class="bi bi-arrow-right fs-ms ms-1"></i></a>
+                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Free</span>
+                        {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
+                        <h2 class="mb-1"> Add to calender <br> button</h2>
+                        <p class=" fw-light">Share your events with the #1 add to calender button on the internet.</p>
+                        <a class="btn btn-accent" href="">Get your button <i class="bi bi-chevron-right fs-ms ms-1"></i></a>
+
                       </div>
 
                       {{--<div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Get Certify</span>

@@ -26,12 +26,20 @@ class AdminDetailComponent extends Component
         $updateDetials->save();
     }
 
+    public function updateEventstatus($id, $status) 
+    {
+      $eVent = Event::find($id);
+      $eVent->admstatus = $status;
+      $eVent->save();
+      session()->flash('message',' Status Successfully Changed');
+    } 
+
     use WithPagination;
     public function render()
     {
         $evento = Event::where('slug', $this->slug)->first();
         $pendingDetails = $evento;
         $catevent = Category::get();
-        return view('livewire.admin.admin-detail-component',['catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento]);
+        return view('livewire.admin.admin-detail-component',['catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
     }
 }
