@@ -76,7 +76,29 @@
                         <input class="form-control" type="text" placeholder="Your Exhibitor" wire:model.lazy="exhibitors" required="">
                         @error('exhibitors'){{ $message}}@enderror
                     </div>
+                
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Tag Line</label>
+                        <textarea class="form-control" type="text" row="2" placeholder="Your Tagline" wire:model.lazy="tagline" required=""></textarea>
+                        @error('tagline'){{ $message}}@enderror
                     </div>
+
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Desc</label>
+                        <textarea class="form-control" type="text" placeholder="Your Desc" rows="2" wire:model.lazy="desc" required=""></textarea>
+                        @error('desc'){{ $message}}@enderror
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Short Description</label>
+                        <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shortdesc" required=""></textarea>
+                        @error('shortdesc'){{ $message}}@enderror
+                    </div>    
+                
+                </div>
+
+
+                    
                 <hr class="my-2">
                     <div class="row">
                         <div class="col-sm-4">

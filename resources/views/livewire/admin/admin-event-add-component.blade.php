@@ -79,7 +79,7 @@
 
                     <div class="col-sm-2">
                         <label class="form-label" for="cf-name">Tag Line</label>
-                        <textarea class="form-control" type="text" placeholder="Your Tagline" wire:model.lazy="tagline" required=""></textarea>
+                        <textarea class="form-control" type="text" row="2" placeholder="Your Tagline" wire:model.lazy="tagline" required=""></textarea>
                         @error('tagline'){{ $message}}@enderror
                     </div>
 

@@ -96,7 +96,7 @@
                                 </div>
 
                                 <div class="col-7  p-0">
-                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
                                     {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
                                   <div class="text-muted fs-sm text-start">
                                     @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
@@ -109,7 +109,7 @@
                                 </div>
 
                                 <div class="col-3  p-0">
-                                  <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                  <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
                                       <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
                                 </div>
                               </div>
@@ -223,7 +223,7 @@
                                 </div>
 
                                 <div class="col-7  p-0">
-                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
                                     {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
                                   <div class="text-muted fs-sm text-start">
                                     @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
@@ -236,7 +236,7 @@
                                 </div>
 
                                 <div class="col-3  p-0">
-                                  <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                  <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
                                       <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
                                 </div>
                               </div>
@@ -253,7 +253,7 @@
     @endif
 
     @if($board == 'event')
-        {{$mymonth}} Current Month{{$month}}  Count{{$monthwise->count()}}
+        
         <div class="container">
           <div class="d-none d-sm-block">
             <div class="row g-1 ">

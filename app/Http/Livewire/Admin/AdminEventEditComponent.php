@@ -25,6 +25,7 @@ class AdminEventEditComponent extends Component
     public $tagline;
     
     public $desc;
+    
     public $email;
     public $phone;
     
@@ -60,6 +61,7 @@ class AdminEventEditComponent extends Component
 
         $this->shtdesc = $fattribute->shtdesc;
         $this->tagline = $fattribute->tagline;
+
         $this->exhibitors = $fattribute->exhibitors;
         $this->desc = $fattribute->desc;
         $this->email = $fattribute->email;
