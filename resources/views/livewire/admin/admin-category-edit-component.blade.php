@@ -2,7 +2,7 @@
 
 <main>
 
-    <div class="container my-9 mx-auto">
+    <div class="container my-5 mx-auto">
 
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">

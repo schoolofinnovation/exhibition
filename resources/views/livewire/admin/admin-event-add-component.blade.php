@@ -91,7 +91,7 @@
 
                     <div class="col-sm-2">
                         <label class="form-label" for="cf-name">Short Description</label>
-                        <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shortdesc" required=""></textarea>
+                        <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shtdesc" required=""></textarea>
                         @error('shortdesc'){{ $message}}@enderror
                     </div>                    
 

@@ -76,8 +76,8 @@
 
                   
                 <div class="tab-content pt-1">
-                  <!-- Request tab-->
-                    <div class="tab-pane fade show active" id="requuest" role="tabpanel">
+                    <!-- Request tab-->
+                    <div class="tab-pane fade" id="requuest" role="tabpanel">
                       <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
                         <div class="row mb-5 pb-2">
                           @foreach ($expoaward as $franchise) 
@@ -232,7 +232,7 @@
                                       {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
                                     @endif 
                                   </div>  
-                                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                                  <div class="text-muted fs-sm text-start">{{$franchise -> venue}}, {{$franchise -> city}}</div>
                                 </div>
 
                                 <div class="col-3  p-0">
@@ -244,8 +244,8 @@
                           @endforeach
                         </div>
                     </div>
-
                 </div>
+
             </div>
           </div>
         </div>
@@ -500,7 +500,7 @@
                   <table class="table table-hover mb-0">
                       <thead>
                         <tr> <th>#</th>
-                        <th><small>Basic {{$searchcat->count()}}</small></th>
+                        <th><small>Search Term {{$searchcat->count()}}</small></th>
                         <th><small>Category</small></th>
                         <th><small>Contact</small></th>
                         <th>Action</th></tr>
@@ -605,7 +605,7 @@
                 <table class="table table-hover mb-0">
                     <thead>
                       <tr> <th>#</th>
-                      <th><small>Basic {{$monthwise->count()}} </small></th>
+                      <th><small>Monthly {{$monthwise->count()}} </small></th>
                       <th><small>Category</small></th>
                       <th><small>Contact</small></th>
                       <th>Action</th></tr>
