@@ -11,9 +11,9 @@
                   <div class="row">
                       <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Free</span>
                         {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
-                        <h2 class="mb-1"> Add to calender <br> button</h2>
-                        <p class=" fw-light">Share your events with the #1 add to calender button on the internet.</p>
-                        <a class="btn btn-accent" href="">Get your button <i class="bi bi-chevron-right fs-ms ms-1"></i></a>
+                        <h1 class="mb-1"> Add to calender <br> button</h1>
+                        <p class=" fw-light lh-1">Share your events with the #1 add to calender button on the internet.</p>
+                        <a class="btn btn-accent mt-4" href="{{route('coievent.add')}}">Get your button <i class="bi bi-chevron-right fs-ms ms-1"></i></a>
 
                       </div>
 

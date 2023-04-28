@@ -42,13 +42,13 @@
 
                     <div class="col-sm-2">
                         <label class="form-label" for="cf-name">From</label>
-                        <input class="form-control" type="date" placeholder="Your Name"   wire:model="startdate" required="">
+                        <input class="form-control" type="date" placeholder="Your Name"   wire:model.lazy="startdate" required="">
                         @error('startdate' ){{ $message}}@enderror
                     </div>
 
                     <div class="col-sm-2">
                         <label class="form-label" for="cf-name">To</label>
-                        <input class="form-control" type="date" placeholder="Your Name"   wire:model="enddate" required="">
+                        <input class="form-control" type="date" placeholder="Your Name"   wire:model.lazy="enddate" required="">
                         @error( 'enddate' ){{ $message}}@enderror
                     </div>
 
@@ -61,7 +61,7 @@
 
                     <div class="col-sm-2">
                     <label class="form-label" for="cf-name">City</label>
-                    <input class="form-control" type="text" placeholder="Event City" wire:model="city" required="">
+                    <input class="form-control" type="text" placeholder="Event City" wire:model.lazy="city" required="">
                     @error('city'){{ $message}}@enderror
                     </div>
                     
@@ -76,7 +76,28 @@
                         <input class="form-control" type="text" placeholder="Your Exhibitor" wire:model.lazy="exhibitors" required="">
                         @error('exhibitors'){{ $message}}@enderror
                     </div>
+
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Tag Line</label>
+                        <textarea class="form-control" type="text" placeholder="Your Tagline" wire:model.lazy="tagline" required=""></textarea>
+                        @error('tagline'){{ $message}}@enderror
                     </div>
+
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Desc</label>
+                        <textarea class="form-control" type="text" placeholder="Your Desc" rows="2" wire:model.lazy="desc" required=""></textarea>
+                        @error('desc'){{ $message}}@enderror
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Short Description</label>
+                        <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shortdesc" required=""></textarea>
+                        @error('shortdesc'){{ $message}}@enderror
+                    </div>                    
+
+                   
+
+                </div>
                 <hr class="my-2">
                     <div class="row">
                         <div class="col-sm-4">

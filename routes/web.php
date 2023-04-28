@@ -304,6 +304,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
     
     Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
+
     
     //Route::get('/oemail', 'App\Http\Controllers\AdminDashboardComponent')->name('admin.email');
     Route::get('/admin/account', AdminAccountComponent::class)->name('admin.account');
@@ -343,6 +344,8 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contact');  
     Route::get('/admin/entity', AdminInfoComponent::class)->name('admin.info');
     Route::get('/admin/entity/add', AdminInfoAddComponent::class)->name('admin.infoadd');
+
+    
     Route::get('/admin/jobs', AdminCareerComponent::class)->name('admin.job');
     Route::get('/admin/job/applicat', AdminJobApplicationComponent::class)->name('admin.resume');
     Route::get('/admin/job/add', AdminCareerAddComponent::class)->name('admin.jobadd'); 

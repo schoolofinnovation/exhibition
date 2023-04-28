@@ -32,21 +32,13 @@ class AdminEventAddComponent extends Component
     public $status;
     public $admstatus;
     public $details;
+
+    public $desc;
+    public $shtdesc;
+    public $tagline;
     
 
     Use WithFileUploads;
-
-    public function sendEmail($contact){
-    $details = [
-        'title' => 'contact us ',
-        'body' => 'thanks for doing'
-    ];
-    Mail::to($contact->email)
-         ->cc('laravel8coi@gmail.com')
-         ->bcc('laravel8coi@gmail.com')
-         ->send(new ContactMail($contact));
-    }
-
     public function mount()
     {
         $this->level = 4;
@@ -69,8 +61,14 @@ class AdminEventAddComponent extends Component
         $event->city = $this->city;
         $event->email = $this->email;
         $event->phone = $this->phone;
+
         $event->auidence = $this->auidence;
-        $event->exhibitors = $this->exhibitors;    
+        $event->exhibitors = $this->exhibitors; 
+
+        $event->tagline = $this->tagline;
+        $event->shortdesc = $this->shortdesc;
+        $event->desc = $this->desc;
+
         $event->edition  = $this->edition;
         $event->eventype = $this->eventype;
         $event->user_id = Auth::user()->id;
@@ -78,11 +76,23 @@ class AdminEventAddComponent extends Component
         $event->status  = $this->status;
         $event->admstatus  =  $this->admstatus;
         $event->save();
+
         $this->sendEmail($event);
         $this->reset();
         session()->flash('message','Thanks, Your details has been uploaded.'); 
         return redirect()->route('admin.dashboard', ['board' => 'event']);
     }
+
+    public function sendEmail($contact){
+        $details = [
+            'title' => 'contact us ',
+            'body' => 'thanks for doing'
+        ];
+        Mail::to($contact->email)
+             ->cc('laravel8coi@gmail.com')
+             ->bcc('laravel8coi@gmail.com')
+             ->send(new ContactMail($contact));
+        }
 
     public function render()
     {
