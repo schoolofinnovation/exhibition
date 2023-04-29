@@ -30,7 +30,8 @@
                         <input class="form-check-input" type="checkbox"   value="{{$franchise->id}}"  wire:model="checkvalue">{{$franchise->tag}}
                         </div>
                         @endforeach
-                        {{--<div>@json($checkvalue)</div>--}}
+                        <div>@json($checkvalue)</div>
+                        
                     </div>
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
                 </form>
@@ -38,7 +39,7 @@
                 <div class="small bold">Sorry, we could found relevant industry. You can upload </div>
 
                 <form wire:submit.prevent="updatetag">
-                    <input type="text" placeholder="tag" wire:model="tag" wire:keyup="generateSlug">
+                    <input type="text" placeholder="tag" wire:model="tag">
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
                 </form>
             @endif

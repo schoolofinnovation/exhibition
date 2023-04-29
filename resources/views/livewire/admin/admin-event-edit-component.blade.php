@@ -4,7 +4,7 @@
 @section('page_name',' Add event')
 
     <main> 
-        <div class="container mb-5">
+        <div class="container mb-5 pb-5">
             <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
                 <div class="text-sm-end">
                 <a class="btn btn-primary" href="{{route('admin.dashboard', ['board' => 'event'])}}" data-bs-toggle="modal">  All Event </a></div>
@@ -30,7 +30,7 @@
 
                     <div class="col-sm-4">
                         <label class="form-label" for="cf-name">Event Name</label>
-                        <input class="form-control" type="text" placeholder="Your Event"   wire:model.lazy="eventname" wire:keyup="generateSlug" required="">
+                        <input class="form-control" type="text" placeholder="Your Event"   wire:model="eventname" wire:keyup="generateSlug" required="">
                         @error( 'eventname' ){{ $message}}@enderror
                     </div>
 
@@ -92,7 +92,7 @@
                     <div class="col-sm-2">
                         <label class="form-label" for="cf-name">Short Description</label>
                         <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shtdesc" required=""></textarea>
-                        @error('shortdesc'){{ $message}}@enderror
+                        @error('shtdesc'){{ $message}}@enderror
                     </div>    
                 
                 </div>
@@ -101,6 +101,11 @@
                     
                 <hr class="my-2">
                     <div class="row">
+                        <div class="col-sm-4">
+                            <label class="form-label" for="cf-name">Organizer</label>
+                            <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="organizer" required="">
+                            @error( 'organizer' ){{ $message}}@enderror
+                        </div>
                         <div class="col-sm-4">
                             <label class="form-label" for="cf-name">Email</label>
                             <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="email" required="">

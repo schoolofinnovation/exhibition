@@ -33,6 +33,7 @@ class AdminEventAddComponent extends Component
     public $admstatus;
     public $details;
 
+    public $organizer;
     public $desc;
     public $shtdesc;
     public $tagline;
@@ -59,6 +60,8 @@ class AdminEventAddComponent extends Component
         $event->enddate = $this->enddate;
         $event->venue = $this->venue;
         $event->city = $this->city;
+
+        $event->organizer = $this->organizer;
         $event->email = $this->email;
         $event->phone = $this->phone;
 

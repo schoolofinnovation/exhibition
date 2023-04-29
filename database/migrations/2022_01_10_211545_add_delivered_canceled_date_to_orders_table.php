@@ -18,6 +18,7 @@ class AddDeliveredCanceledDateToOrdersTable extends Migration
             $table->date('canceled_date')->nullable();
         });
     }
+    
 
     /**
      * Reverse the migrations.

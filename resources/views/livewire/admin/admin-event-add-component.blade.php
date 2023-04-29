@@ -101,6 +101,11 @@
                 <hr class="my-2">
                     <div class="row">
                         <div class="col-sm-4">
+                            <label class="form-label" for="cf-name">Organizer</label>
+                            <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="organizer" required="">
+                            @error( 'organizer' ){{ $message}}@enderror
+                        </div>
+                        <div class="col-sm-4">
                             <label class="form-label" for="cf-name">Email</label>
                             <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="email" required="">
                             @error( 'email' ){{ $message}}@enderror

@@ -32,6 +32,7 @@ class AdminEventEditComponent extends Component
     public $auidence;
     public $exhibitors;
 
+    public $organizer;
     public $edition;
     public $startdate;
     public $enddate;
@@ -51,6 +52,7 @@ class AdminEventEditComponent extends Component
         $fattribute = Event::find($event_id);
         $this->event_id = $fattribute->id;
         $this->eventname = $fattribute->eventname;
+        $this->slug = $fattribute->slug;
         $this->eventype = $fattribute->eventype;
        
         $this->city = $fattribute->city;
@@ -61,6 +63,7 @@ class AdminEventEditComponent extends Component
 
         $this->shtdesc = $fattribute->shtdesc;
         $this->tagline = $fattribute->tagline;
+        $this->organizer = $fattribute->organizer;
 
         $this->exhibitors = $fattribute->exhibitors;
         $this->desc = $fattribute->desc;
@@ -76,12 +79,12 @@ class AdminEventEditComponent extends Component
     {
         $fattribute = Event::find($this->event_id);
         $fattribute->eventname =  $this->eventname;
+        $fattribute->slug = $this->slug;
         $fattribute->eventype =  $this->eventype;
       
         $fattribute->city =  $this->city;
         $fattribute->venue =  $this->venue;
-
-        
+        $fattribute->organizer = $this->organizer;
 
         $fattribute->shtdesc =  $this->shtdesc;
         $fattribute->tagline =  $this->tagline;

@@ -29,8 +29,6 @@
               <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
             </div>
 
-          
-
             <div class="col-3  p-0">
             <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
                 <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
@@ -39,19 +37,32 @@
     </div>
 
     <div class="container">
-      <div class="col  p-0">
-        <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-            Last update: {{$evento->updated_at}}</a></div>
+      <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+      <div class="col-8 p-0">
+        <div class="fs-md fw-normal text-start">
+          <a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+            Last update: <br>{{$evento->updated_at}}</a>
+        </div>
         
             @if(is_null($evento->created_at))
-            <div class="text-muted fs-sm text-start">Created by: Admin</div>
-                
+              <div class="text-muted fs-sm text-start">Created by: <br>Admin</div>
             @else
-            <div class="text-muted fs-sm text-start">Created at: {{$evento->created_at}}</div>
+              <div class="text-muted fs-sm text-start">Created at: <br>{{$evento->created_at}}</div>
             @endif
         
-        <div class="text-muted fs-sm text-start">{{$evento->edition}} </div>
+        <div class="text-muted fs-sm text-start"> Edition: {{$evento->edition}} </div>
       </div>
+
+      <div class="col-4 p-0">
+          @if(is_null($evento->admstatus))
+               <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')" class="btn btn-primary btn-sm">Active</a>
+          @elseif($evento->admstatus == 1)
+               <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')" class="btn btn-primary btn-sm">Deactive</a>
+          @else
+               <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'0')" class="btn btn-primary btn-sm">Deactive</a>
+          @endif
+      </div>
+     </div>
     </div>
 
     <div class="container my-3">
@@ -162,6 +173,34 @@
         </div>
     </div>
     
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0">Web</div> 
+               
+                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                <a class="btn btn-primary btn-sm" href="{{$evento->link}}">{{$evento->link}}</a>
+            </div>
+
+            <div class="col-7  p-0">
+              @if(is_null($evento->link))
+                <div class="text-muted fs-sm text-start">Website</div>
+              @else
+                <div class="fs-md fw-normal text-start">
+                <a class="btn btn-primary btn-sm" href="{{$evento->link}}">{{$evento->link}}</a></div>
+              @endif
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($evento->desc))
+                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
+
     {{--<div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
         <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar">
@@ -185,6 +224,7 @@
       </div>
     </div>--}}
 
+    
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
         <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'event'])}}">
@@ -198,12 +238,12 @@
             <span class="handheld-toolbar-label">Status</span>
           </a>
           @elseif ($evento->admstatus = '1')
-          <a class="d-table-cell handheld-toolbar-item" href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'0')"
+          <a class="d-table-cell handheld-toolbar-item" href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'0')">
             <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
             <span class="handheld-toolbar-label">DeActive</span>
           </a>
           @else ($evento->admstatus = '0')
-          <a class="d-table-cell handheld-toolbar-item" href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')"
+          <a class="d-table-cell handheld-toolbar-item" href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')">
             <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
             <span class="handheld-toolbar-label">Active</span>
           </a>
