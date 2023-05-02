@@ -448,20 +448,16 @@
                             </div>
                           </td>
                       
+
+                            @php
+                                $sht = DB::table('dencos')->where('id', $info->id)->get()
+                            @endphp
+                           
                           <td class="py-1 align-middle fw-sm">
                             @if(is_null($info->shtdesc))
                               <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
                             @else
-                            @php
-                                $sht = json_decode($info->shtdesc)
-                                
-                            @endphp
-
-                              @foreach ($sht as $newtre)
-                                
-                                {{$newtre}}
-                              
-                              @endforeach
+                              {{$sht}}
                             @endif
                           </td>
                           <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
@@ -501,7 +497,7 @@
                       <thead>
                         <tr> <th>#</th>
                         <th><small>Search Term {{$searchcat->count()}}</small></th>
-                        <th><small>Category</small></th>
+                        
                         <th><small>Contact</small></th>
                         <th>Action</th></tr>
                       </thead>
@@ -553,22 +549,7 @@
                               </div>
                             </td>
                         
-                            <td class="py-1 align-middle fw-sm">
-                              @if(is_null($info->shtdesc))
-                                <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
-                              @else
-                              @php
-                                  $sht = json_decode($info->shtdesc)
-                                  
-                              @endphp
-
-                                @foreach ($sht as $newtre)
-                                  
-                                  {{$newtre}}
-                                
-                                @endforeach
-                              @endif
-                            </td>
+                            
                             <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
                             <br>{{($info->email)}}</span></td>
                                 
@@ -606,7 +587,6 @@
                     <thead>
                       <tr> <th>#</th>
                       <th><small>Monthly {{$monthwise->count()}} </small></th>
-                      <th><small>Category</small></th>
                       <th><small>Contact</small></th>
                       <th>Action</th></tr>
                     </thead>
@@ -658,23 +638,7 @@
                             </div>
                           </td>
                       
-                          <td class="py-1 align-middle fw-sm">
-                            
-                            @if(is_null($info->shtdesc))
-                              <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
-                            @else
-                              
-                                @php
-                                    $sht = json_decode($info->shtdesc)
-                                @endphp
-
-                                  @foreach ($sht as $newtre)
-                                    {{$newtre}}
-                                  @endforeach
-
-
-                            @endif
-                            </td>
+                      
                           <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
                             <br>{{($info->email)}}</span></td>
                               

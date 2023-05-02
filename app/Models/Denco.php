@@ -9,4 +9,9 @@ class Denco extends Model
 {
     use HasFactory;
     protected $table = "dencos";
+
+    public function expo()
+    {
+    return $this->belongsTo(Expo::class, 'expo_id');
+    }
 }

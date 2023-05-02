@@ -7,6 +7,7 @@ use App\Mail\MonthlyEvent;
 use App\Models\Appliedjob;
 use App\Models\Category;
 use App\Models\Coupon;
+use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Franchise;
@@ -196,9 +197,8 @@ class AdminDashboardComponent extends Component
       $eventthreemonth = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mythreemonth)->orderBy('startdate','ASC')->get();
 
       $searchTerm = '%'.$this->searchTerm. '%';
-      $searchcat = Event::Where('eventname','LIKE', $searchTerm)
-                                                         ->
-                  where('status','1')->orderBy('eventname','ASC')->get();
+      $searchcat = Event::Where('id','LIKE', $searchTerm)->where('status','1')->orderBy('eventname','ASC')->get();
+     
 
         return view('livewire.admin.admin-dashboard-component',['expireplan' => $expireplan,'searchcat' => $searchcat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,

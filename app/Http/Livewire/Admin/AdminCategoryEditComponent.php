@@ -7,6 +7,8 @@ use App\Models\Event;
 use App\Models\Expo;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\support\Squish;
+
 
 class AdminCategoryEditComponent extends Component
 {
@@ -59,8 +61,8 @@ class AdminCategoryEditComponent extends Component
     }
 
     public function updatetag()
-    {   
-        $ret = explode(",", $this->tag);
+    {   $rti = Str::replace('  ',' ',$this->tag);
+        $ret = explode(",", $rti);
        
         foreach($ret as $tre)
         {

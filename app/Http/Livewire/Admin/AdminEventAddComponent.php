@@ -32,6 +32,7 @@ class AdminEventAddComponent extends Component
     public $status;
     public $admstatus;
     public $details;
+    public $link;
 
     public $organizer;
     public $desc;
@@ -77,6 +78,7 @@ class AdminEventAddComponent extends Component
         $event->user_id = Auth::user()->id;
         $event->level  = $this->level;
         $event->status  = $this->status;
+        $event->link  = $this->link;
         $event->admstatus  =  $this->admstatus;
         $event->save();
 

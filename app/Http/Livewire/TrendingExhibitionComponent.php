@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use Carbon\Carbon;
@@ -13,7 +14,7 @@ class TrendingExhibitionComponent extends Component
     {
         $mytime = Carbon::today()->format("Y-m-d");
         $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
-        $finder = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
+        $finder = Denco::select('expo_id')->groupBy('expo_id')->get();
 
         return view('livewire.trending-exhibition-component',['evento'=>$evento, 'finder'=>$finder]);
     }

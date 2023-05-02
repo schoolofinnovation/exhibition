@@ -94,6 +94,12 @@
                         <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shtdesc" required=""></textarea>
                         @error('shtdesc'){{ $message}}@enderror
                     </div>    
+
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Web Link</label>
+                        <input class="form-control" type="text"  wire:model.lazy="link" required=""></input>
+                        @error('link'){{ $message}}@enderror
+                    </div>
                 
                 </div>
 
@@ -103,7 +109,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <label class="form-label" for="cf-name">Organizer</label>
-                            <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="organizer" required="">
+                            <input class="form-control" type="text" placeholder="Your email"   wire:model.lazy="organizer" required="">
                             @error( 'organizer' ){{ $message}}@enderror
                         </div>
                         <div class="col-sm-4">

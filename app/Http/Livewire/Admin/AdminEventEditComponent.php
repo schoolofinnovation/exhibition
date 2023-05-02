@@ -37,6 +37,7 @@ class AdminEventEditComponent extends Component
     public $startdate;
     public $enddate;
     public $event_id;
+    public $link;
 
     public $eventype;
     public $city;
@@ -71,6 +72,7 @@ class AdminEventEditComponent extends Component
         $this->phone = $fattribute->phone;
         $this->auidence = $fattribute->auidence;
         $this->edition = $fattribute->edition;
+        $this->link = $fattribute->link;
         
     }
 
@@ -99,6 +101,7 @@ class AdminEventEditComponent extends Component
         $fattribute->edition =  $this->edition;
         $fattribute->startdate =  $this->startdate;
         $fattribute->enddate =  $this->enddate;
+        $fattribute->link =  $this->link;
         $fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('admin.dashboard', ['board' => 'event']);

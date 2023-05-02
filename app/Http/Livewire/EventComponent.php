@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Award;
 use App\Models\Category;
+use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Franchise;
@@ -37,8 +38,11 @@ class EventComponent extends Component
         //DB::table('cags')->insert([
         //['admstatus' => '1','user_id' =>'1','status' =>'1','name' =>'expo', 'organisation' => 'Buildings India' , 'slug' => 'buildingsindia.png', 'image' => 'Exhibitions India Group' ],
     
-        $finder = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
-
+        $finder = Denco::select('expo_id')->groupBy('expo_id')->get();
+        //$categoryo = Denco::select('expo_id')->groupBy('expo_id')->get();
+        //$categoryo = Denco::all()->groupBy('expo_id')->count('expo_id');
+        //$cate = $categoryo->count();
+        //dd($categoryo);
        
         return view('livewire.event-component', ['finder' => $finder, 'newlead'=>$newlead,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
     }

@@ -76,15 +76,19 @@
             </div>
 
             <div class="col-7  p-0">
-              <div class="fs-md fw-normal text-start">{{$evento->shtdesc}}</div>
+              <div class="fs-md fw-normal text-start">
+                @foreach($category as $cat)
+                    {{$cat->expo->tag}}
+                @endforeach
+              </div>
               <div class="text-muted fs-sm text-start">Category</div>
             </div>
 
             <div class="col-3 p-0">
-               @if(is_null($evento->shortdesc))
+               @if(is_null($category))
                 <a  href="{{route('admin.editcategories',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="" class="btn btn-primary btn-sm">Edit</a>
+                <a  href="{{route('admin.editcategories',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
@@ -177,12 +181,10 @@
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
                 <div class="h4 fw-light mb-0">Web</div> 
-               
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                <a class="btn btn-primary btn-sm" href="{{$evento->link}}">{{$evento->link}}</a>
+                <div class="round-circle" ><a class="btn btn-primary btn-sm" href="{{$evento->link}}"><i class="bi bi-bookmark"></i></a></div> 
             </div>
 
-            <div class="col-7  p-0">
+            <div class="col-7  p-0"> 
               @if(is_null($evento->link))
                 <div class="text-muted fs-sm text-start">Website</div>
               @else
@@ -192,13 +194,15 @@
             </div>
 
             <div class="col-3 p-0">
-               @if(is_null($evento->desc))
+               @if(is_null($evento->link))
                 <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
                @else
                 <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
+
+       
     </div>
 
     {{--<div class="handheld-toolbar">
@@ -232,22 +236,7 @@
           <i class="ci-filter-alt"></i></span>
           <span class="handheld-toolbar-label">Admin</span>
         </a>
-        @if(is_null($evento->admstatus))
-          <a class="d-table-cell handheld-toolbar-item" href="">
-            <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
-            <span class="handheld-toolbar-label">Status</span>
-          </a>
-          @elseif ($evento->admstatus = '1')
-          <a class="d-table-cell handheld-toolbar-item" href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'0')">
-            <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
-            <span class="handheld-toolbar-label">DeActive</span>
-          </a>
-          @else ($evento->admstatus = '0')
-          <a class="d-table-cell handheld-toolbar-item" href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')">
-            <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
-            <span class="handheld-toolbar-label">Active</span>
-          </a>
-        @endif
+       
 
         <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventEdit',['event_id' => $evento->id])}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Category;
+use App\Models\Denco;
 use App\Models\Event;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -10,6 +11,8 @@ use Livewire\WithPagination;
 class AdminDetailComponent extends Component
 {   public $slug;
     public $category_id;
+    public $webo;
+    public $link;
 
 
     public function mount($slug)
@@ -34,12 +37,22 @@ class AdminDetailComponent extends Component
       session()->flash('message',' Status Successfully Changed');
     } 
 
+    public function EventLink($id, $webo) 
+    {
+      $eVent = Event::find($id);
+      $eVent->link = $webo;
+
+      $eVent->save();
+      session()->flash('message',' Status Successfully Changed');
+    } 
+
     use WithPagination;
     public function render()
     {
         $evento = Event::where('slug', $this->slug)->first();
         $pendingDetails = $evento;
         $catevent = Category::get();
-        return view('livewire.admin.admin-detail-component',['catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
+        $category = Denco::where('event_id', $evento->id)->get();
+        return view('livewire.admin.admin-detail-component',['category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
     }
 }
