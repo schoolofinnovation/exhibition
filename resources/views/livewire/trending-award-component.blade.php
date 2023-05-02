@@ -4,22 +4,22 @@
                     <div class="d-flex justify-content-between px-0 m-0 lh-1">
                     <span class="fs-sm"> Trending<br><span class="fw-medium h5">Awards</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-                    <ul class="dropdown-menu" width="auto">
-                    <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'award'])}}">More</a></li>
-                      <li><a class="dropdown-item" href="#">Nominate</a></li>
-                      <li><a class="dropdown-item" href="#">Attend</a></li>
-                      <li><a class="dropdown-item" href="{{route('coievent.add')}}">Add</a></li>
-                  </ul>
-                    
-                    </span></div>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'award'])}}">More</a></li>
+                        <li><a class="dropdown-item" href="#">Nominate</a></li>
+                        <li><a class="dropdown-item" href="#">Attend</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add')}}">Add</a></li>
+                      </ul>  
+                    </span>
+                  </div>
                 </div>
                 
                  <div class="d-flex badgeseaward my-0">
                   @foreach( $finder as $categ) 
-                  <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $categ->id])}}">{{ucwords(trans($categ->expoindustry))}}</a>
+                  <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $categ->expo_id])}}">{{ucwords(trans($categ->expo->tag))}}</a>
                   @endforeach
                 </div>
-            
+
             <!--Award-->
             <div class="row pt-2 mx-n2 my-Slider5">
               @foreach($awardo as $eventoi)

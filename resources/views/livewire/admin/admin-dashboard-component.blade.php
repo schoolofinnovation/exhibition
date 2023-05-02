@@ -60,7 +60,7 @@
               <!-- Nav tabs-->
               <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#requuest" data-bs-toggle="tab" role="tab">Request</a></li>
-                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#details" data-bs-toggle="tab" role="tab">Monthly</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm active" href="#details" data-bs-toggle="tab" role="tab">Monthly</a></li>
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Search</a></li>
               </ul>
 
@@ -119,7 +119,7 @@
                     </div>
 
                     <!-- Product details tab-->
-                    <div class="tab-pane fade " id="details" role="tabpanel">
+                    <div class="tab-pane fade active" id="details" role="tabpanel">
                       <!-- details test tickets-->
                       <div class="d-flex flex-nowrap align-items-center pb-3">
                           <select class="form-select form-select-sm me-2"  wire:model="month">

@@ -42,7 +42,7 @@ class AdminDashboardComponent extends Component
     public function mount($board)
     {
         $this->board = $board;
-        //$this->month = Carbon::today()->format("m");
+        $this->month = Carbon::today()->format("m");
     }
     
     public function updateJobstatus($id, $status) 

@@ -104,7 +104,7 @@ class AdminEventEditComponent extends Component
         $fattribute->link =  $this->link;
         $fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
-        return redirect()->route('admin.dashboard', ['board' => 'event']);
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
     }
 
     public function render()
@@ -113,6 +113,6 @@ class AdminEventEditComponent extends Component
         $sec = Sector::get();
         $pavillion = Expo::get();
         $searchtag = Expo::get();
-        return view('livewire.admin.admin-event-edit-component',['searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat]);
+        return view('livewire.admin.admin-event-edit-component',['searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
     }
 }

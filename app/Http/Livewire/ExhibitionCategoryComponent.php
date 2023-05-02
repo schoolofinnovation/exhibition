@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use Carbon\Carbon;
@@ -71,7 +72,9 @@ class ExhibitionCategoryComponent extends Component
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry_id)->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
         else{
-            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry_id)->paginate($this->pagesize); 
+            $exhibition = Denco :: where('expo_id', $this->categry_id)->get(); 
+           // $exhibition = Event::where('id', [$seco->event_id])->where('eventype', $this->eventype)->paginate($this->pagesize); 
+        //dd($seco);
         }
         
         if(Auth::check())

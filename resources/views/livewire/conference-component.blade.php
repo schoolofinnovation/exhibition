@@ -16,9 +16,12 @@
           
       <div class="d-flex badgeseconf">
             @foreach( $finder as $categ) 
-            <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $categ->id])}}">{{ucwords(trans($categ->expoindustry))}}</a>
+            <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $categ->expo_id])}}">
+              {{ucwords(trans($categ->expo->tag))}}</a>
             @endforeach
       </div>
+
+      
               
       <div class="row pt-2 mx-n2 my-Slider6"> 
         @foreach($conference as $eventoi)

@@ -128,4 +128,30 @@
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
             </form>
         </div>
+
+
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100">
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('event.details',['slug' => $evento->slug])}}">
+          <span class="handheld-toolbar-icon">
+          <i class="ci-filter-alt"></i></span>
+          <span class="handheld-toolbar-label">Admin</span>
+        </a>
+       
+
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventEdit',['event_id' => $evento->id])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Edit</span></a>
+        
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.editcategories',['event_id' => $evento->id])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+          <span class="handheld-toolbar-label">category</span>
+        </a>
+
+        <a class="d-table-cell handheld-toolbar-item" href="">
+          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+          <span class="handheld-toolbar-label">Menu</span>
+        </a>
+      </div>
+    </div>
     </main>

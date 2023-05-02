@@ -14,4 +14,9 @@ class Denco extends Model
     {
     return $this->belongsTo(Expo::class, 'expo_id');
     }
+
+    public function event()
+    {
+    return $this->belongsTo(Event::class, 'event_id');
+    }
 }
