@@ -119,7 +119,7 @@
                     </div>
 
                     <!-- Product details tab-->
-                    <div class="tab-pane fade active" id="details" role="tabpanel">
+                    <div class="tab-pane fade show active" id="details" role="tabpanel">
                       <!-- details test tickets-->
                       <div class="d-flex flex-nowrap align-items-center pb-3">
                           <select class="form-select form-select-sm me-2"  wire:model="month">

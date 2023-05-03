@@ -109,10 +109,11 @@ class AdminEventEditComponent extends Component
 
     public function render()
     {
+        $evento = Event::find($this->event_id)->first();
         $cat = Category::get();
         $sec = Sector::get();
         $pavillion = Expo::get();
         $searchtag = Expo::get();
-        return view('livewire.admin.admin-event-edit-component',['searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
+        return view('livewire.admin.admin-event-edit-component',['evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
     }
 }

@@ -7,16 +7,16 @@
     <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
      style="background-image: url('{{('/image/test.jpg')}}');">
       
-    <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem; padding-left: 0.625rem; padding-right: 1rem;
-      padding-bottom: 0.425rem;
-      transform: translateY(-50%);
-      border-radius: 0.3125rem;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      font-size: .8125rem;">
-      <div class = "h1 pt-5 text-light pb-0 mb-0" style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;">COI</div>  
-      <div class = "fw-bold text-dark pb-2 lh-1">Exhibition</div> 
-    </div>
+      <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem; padding-left: 0.625rem; padding-right: 1rem;
+        padding-bottom: 0.425rem;
+        transform: translateY(-50%);
+        border-radius: 0.3125rem;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        font-size: .8125rem;">
+        <div class = "h1 pt-5 text-light pb-0 mb-0" style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;">COI</div>  
+        <div class = "fw-bold text-dark pb-2 lh-1">Exhibition</div> 
+      </div>
      
       <div class="container pt-4 mb-3 mb-lg-0 ">
           <div class="row gy-0 ">
