@@ -34,6 +34,7 @@ class AdminDashboardComponent extends Component
   public $emailClient;
   public $emaill;
   public $searchTerm;
+  public $findIDs = null;
   //public $shtdesc;
     
     //career
@@ -197,10 +198,13 @@ class AdminDashboardComponent extends Component
       $eventthreemonth = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>' , $mythreemonth)->orderBy('startdate','ASC')->get();
 
       $searchTerm = '%'.$this->searchTerm. '%';
-      $searchcat = Event::Where('id','LIKE', $searchTerm)->where('status','1')->orderBy('eventname','ASC')->get();
+      $findID =   '%'.$this->findIDs. '%';
+
+      $searchCat = Event::Where('eventname','LIKE', $searchTerm)->where('status','1')->orderBy('eventname','ASC')->get();
+      $searchId = Event::Where('id','LIKE', $findID)->where('status','1')->orderBy('eventname','ASC')->get();
      
 
-        return view('livewire.admin.admin-dashboard-component',['expireplan' => $expireplan,'searchcat' => $searchcat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',['searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         

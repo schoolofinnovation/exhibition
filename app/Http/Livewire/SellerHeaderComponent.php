@@ -15,6 +15,9 @@ use Livewire\Component;
 
 class SellerHeaderComponent extends Component
 {
+  
+    public $board;
+
     public function render()
     {
         $franchise = Franchise::with('review')->where('user_id', Auth::user()->id)->get();

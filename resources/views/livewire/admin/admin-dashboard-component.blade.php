@@ -59,9 +59,10 @@
             <div class="mb-4 mb-lg-5">
               <!-- Nav tabs-->
               <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
-                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#requuest" data-bs-toggle="tab" role="tab">Request</a></li>
-                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm active" href="#details" data-bs-toggle="tab" role="tab">Monthly</a></li>
-                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Search</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#requuest" data-bs-toggle="tab" role="tab">Request {{$expoaward->count()}}</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm active" href="#details" data-bs-toggle="tab" role="tab">Monthly {{$monthwise->count()}}</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Search {{$searchCat->count()}}</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviewID" data-bs-toggle="tab" role="tab">ID {{$searchId->count()}}</a></li>
               </ul>
 
                 {{--<div class="d-flex badgese pb-2">
@@ -205,9 +206,9 @@
                 
                     <!-- Reviews tab-->
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
-                      <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
+                      <input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
                         <div class="row mb-5 pb-2">
-                          @foreach ($searchcat as $franchise) 
+                          @foreach ($searchCat as $franchise) 
                             <div class="container  ">
                               <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                 <div class="col  pr-0">
@@ -243,6 +244,57 @@
                             </div>
                           @endforeach
                         </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="reviewID" role="tabpanel">
+                      
+                        <div class="input-group">
+                        <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="findIDs" aria-label="search with ID" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">  <i class="bi bi-search"></i> </button>
+                        </div>
+
+                        <div class="row mb-5 pb-2">
+
+                        @if(is_null($findIDs))
+                           <div class=" text-center small"> Not found</div>
+                        @else
+                          @foreach ($searchId as $franchise) 
+                            <div class="container  ">
+                              <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+
+                                    
+                                      <div class="h5 fw-light mb-0">{{$franchise->id}}</div> 
+                                      <div class="small text-muted">ID </div>
+                                    
+                                      <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                </div>
+
+                                <div class="col-7  p-0">
+                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                                    {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                  <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @else
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @endif 
+                                  </div>  
+                                  <div class="text-muted fs-sm text-start">{{$franchise -> venue}}, {{$franchise -> city}}</div>
+                                </div>
+
+                                <div class="col-3 p-0">
+                                  
+                                    <a href="{{route('admin.eventEdit',['event_id' => $franchise->id])}}" class="btn btn-primary btn-sm"> <i class="bi bi-x"></i> </a>
+                                 
+                                </div>
+                              </div>
+                            </div>
+                          @endforeach
+                        @endif
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -496,13 +548,13 @@
                   <table class="table table-hover mb-0">
                       <thead>
                         <tr> <th>#</th>
-                        <th><small>Search Term {{$searchcat->count()}}</small></th>
+                        <th><small>Search Term {{$searchCat->count()}}</small></th>
                         
                         <th><small>Contact</small></th>
                         <th>Action</th></tr>
                       </thead>
                       <tbody>
-                        @foreach ($searchcat as $info)
+                        @foreach ($searchCat as $info)
                           <tr>
                           
                             <td class="py-1 align-middle">
@@ -1835,7 +1887,7 @@
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
       @if($board == 'job')
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'job'])}}">
+        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
           <span class="handheld-toolbar-icon">
           <i class="ci-filter-alt"></i></span>
           <span class="handheld-toolbar-label">Admin</span>
@@ -1847,10 +1899,10 @@
         </a>
      
       @else
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'event'])}}">
+        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
-            <span class="handheld-toolbar-label">Admin</span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Admin</span>
           </a>
           
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
@@ -1859,7 +1911,7 @@
           </a>
       @endif
 
-        <a class="d-table-cell handheld-toolbar-item" href="">
+        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
           <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
           <span class="handheld-toolbar-label">Menu</span>
         </a>

@@ -68,9 +68,126 @@
 
               </div>
               <div class="navbar-tool ms-4">
-                  <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="#">
+                  <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                       <span class="navbar-tool-label">3</span><i class="navbar-tool-icon  bi bi-cart"></i></a>
                       @livewire('wishlist-component')
+                      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
+                                  
+                                  <div class="offcanvas-header">
+                                    <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br>
+                                    <span class="fs-xs fw-lighter">Got an event? Partner with us</span></div>
+                                    
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                  </div>
+                              
+                                  <div class="list-group list-group-flush border-bottom scrollarea">
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Notifications</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
+                                      </a>
+
+                                      <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Your Orders</normal>
+                                          <small>
+                                          @if (Auth::check()) 
+                                            <i class="bi bi-chevron-right"></i>
+                                            @else
+                                            <i class="bi bi-lock-fill"></i>
+                                            
+                                            @endif
+                                          </small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1"></normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
+                                      </a>
+
+                                      <a href="{{route('admin.global')}}" class=" border-0 list-group-item list-group-item-action {{'admin/global' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Global</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Satisfy your palates</div>
+                                      </a>
+
+                                     
+
+                                      <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Accounts & Settings</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
+                                      </a>
+                                      
+                                      <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Help & Support</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                                      </a>
+                                    
+                                      <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Logout</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                                      </a>
+                                      <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                      </form>
+                                    
+
+                                  </div>
+                                    
+                                  <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100">
+      @if($board == 'job')
+        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
+          <span class="handheld-toolbar-icon">
+          <i class="ci-filter-alt"></i></span>
+          <span class="handheld-toolbar-label">Admin</span>
+        </a>
+         
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobadd')}}">
+          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+          <span class="handheld-toolbar-label">Add</span>
+        </a>
+     
+      @else
+        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+            <span class="handheld-toolbar-icon">
+            <i class="ci-filter-alt"></i></span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Admin</span>
+          </a>
+          
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
+            <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+            <span class="handheld-toolbar-label">Add</span>
+          </a>
+      @endif
+
+        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+          <span class="handheld-toolbar-label">Menu</span>
+        </a>
+
+      </div>
+    </div>
+                              </div>
               </div>
             </div>
            

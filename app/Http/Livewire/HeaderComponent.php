@@ -18,6 +18,7 @@ class HeaderComponent extends Component
 {
     public $searchTerm;
    
+    public $board;
     public $searchoo;
     public $Industry = null;
     public $Sector = null;

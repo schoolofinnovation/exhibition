@@ -297,33 +297,35 @@
                                 <div class="navbar-tool ms-1">
                                     <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
 
-                                    <div class="rounded-circle"><img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->name}}" style="max-width: 50%;"></div>
+                                    <div class="rounded-circle">
+                                      <img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->name}}" style="max-width: 50%;">
+                                    </div>
                                       
                                       <div class="navbar-tool-text ms-n3" ><small>Hello, </small>{{Auth::user()->name}}</div>
                                     </a>
                                     {{--<div class="dropdown-menu dropdown-menu-end">
-                                      <div style="min-width: 14rem;">
-                                        <h6 class="dropdown-header">Settings</h6>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-dashboard opacity-60 me-2"></i>Dashboard</a>
-                                        <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href=""><i class="ci-settings opacity-60 me-2"></i>Profile</a>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/entity' == request()->path() ? 'active' : '' }}" href="{{route('admin.info') }}"><i class="bi bi-sliders opacity-60 me-2"></i>Setting</a>
-                                        <div class="dropdown-divider"></div>
-                                        <h6 class="dropdown-header">Dashboard</h6>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-people opacity-60 me-2"></i>Event<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.user')}}"><i class="bi bi-people opacity-60 me-2"></i>User<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/categories' == request()->path() ? 'active' : '' }}" href="{{route('admin.categories')}}"><i class="bi bi-bookmark opacity-60 me-2"></i>Category<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/brands' == request()->path() ? 'active' : '' }}" href="{{route('admin.brand')}}"><i class="ci-dollar opacity-60 me-2"></i>Brand<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="ci-dollar opacity-60 me-2"></i>Franchise<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/contacts' == request()->path() ? 'active' : '' }}" href="{{route('admin.contact')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Contact<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                        <a class="dropdown-item d-flex align-items-center {{'admin/job/applicat' == request()->path() ? 'active' : '' }}" href="{{route('admin.resume')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Resume<span class="fs-xs text-muted ms-auto">Active</span></a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="bi bi-box-arrow-right opacity-60 me-2"></i>Sign Out</a>
-                                        <form id="logout-form" action="{{route('logout')}}" method="POST">
-                                          @csrf
-                                        </form>
-                                      </div>
-                                    </div>--}}
+                                          <div style="min-width: 14rem;">
+                                            <h6 class="dropdown-header">Settings</h6>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-dashboard opacity-60 me-2"></i>Dashboard</a>
+                                            <a class="dropdown-item d-flex align-items-center {{'user/account' == request()->path() ? 'active' : '' }}" href=""><i class="ci-settings opacity-60 me-2"></i>Profile</a>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/entity' == request()->path() ? 'active' : '' }}" href="{{route('admin.info') }}"><i class="bi bi-sliders opacity-60 me-2"></i>Setting</a>
+                                            <div class="dropdown-divider"></div>
+                                            <h6 class="dropdown-header">Dashboard</h6>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="bi bi-people opacity-60 me-2"></i>Event<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/users' == request()->path() ? 'active' : '' }}" href="{{route('admin.user')}}"><i class="bi bi-people opacity-60 me-2"></i>User<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/categories' == request()->path() ? 'active' : '' }}" href="{{route('admin.categories')}}"><i class="bi bi-bookmark opacity-60 me-2"></i>Category<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/brands' == request()->path() ? 'active' : '' }}" href="{{route('admin.brand')}}"><i class="ci-dollar opacity-60 me-2"></i>Brand<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/dashboard' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><i class="ci-dollar opacity-60 me-2"></i>Franchise<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/contacts' == request()->path() ? 'active' : '' }}" href="{{route('admin.contact')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Contact<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                            <a class="dropdown-item d-flex align-items-center {{'admin/job/applicat' == request()->path() ? 'active' : '' }}" href="{{route('admin.resume')}}"><i class="bi bi-envelope opacity-60 me-2"></i>Resume<span class="fs-xs text-muted ms-auto">Active</span></a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item d-flex align-items-center" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="bi bi-box-arrow-right opacity-60 me-2"></i>Sign Out</a>
+                                            <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                              @csrf
+                                            </form>
+                                          </div>
+                                        </div>--}}
                                 </div>
                               </div>
 
@@ -369,9 +371,9 @@
                                         <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
                                       </a>
 
-                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                      <a href="{{route('admin.global')}}" class=" border-0 list-group-item list-group-item-action {{'admin/global' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                                         <div class="d-flex w-100 align-items-center justify-content-between">
-                                          <normal class="mb-1">Food & Beverages</normal>
+                                          <normal class="mb-1">Global</normal>
                                           <small><i class="bi bi-chevron-right"></i></small>
                                         </div>
                                         <div class="col-10 mb-1 small fw-lighter ">Satisfy your palates</div>
@@ -432,6 +434,7 @@
                                   </div>
                                     
                               </div>
+
                             @elseif(Auth::user()->utype === 'SLR')
                               <div class="navbar-tool dropdown ms-1">
                                   <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
@@ -621,6 +624,41 @@
                                       </form>
                                     
 
+                                  </div>
+
+                                  <div class="handheld-toolbar">
+                                    <div class="d-table table-layout-fixed w-100">
+                                    @if($board == 'job')
+                                      <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
+                                        <span class="handheld-toolbar-icon">
+                                        <i class="ci-filter-alt"></i></span>
+                                        <span class="handheld-toolbar-label">Admin</span>
+                                      </a>
+                                      
+                                      <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobadd')}}">
+                                        <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                                        <span class="handheld-toolbar-label">Add</span>
+                                      </a>
+                                  
+                                    @else
+                                      <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                                          <span class="handheld-toolbar-icon">
+                                          <i class="ci-filter-alt"></i></span>
+                                          <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Admin</span>
+                                        </a>
+                                        
+                                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
+                                          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                                          <span class="handheld-toolbar-label">Add</span>
+                                        </a>
+                                    @endif
+
+                                      <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                        <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+                                        <span class="handheld-toolbar-label">Menu</span>
+                                      </a>
+
+                                    </div>
                                   </div>
                                     
                               </div>
@@ -978,18 +1016,30 @@
                 
                 <div class="offcanvas-footer">
                 
-                   <div class="col-sm-12 py-4">
-                      <div class="small bold">Product updates</div>
-                      <small class="lh-1">Get the latest on new features, product improvement, and other announcements.</small>
-                      <div class="bold text-primary fs-sm"> See what's new</div> 
-                    </div>
+                   
                     
                     
                       <div class="offcanvas-title fs-sm" id="offcanvasExampleLabel">Log In</div>
-                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                 
                     
                 </div>
-                    
+                  
+                <div class="handheld-toolbar border border-top-0">
+                  <div class="container py-4">
+                    <div class="col-sm-12 ">
+                      <div class="small fw-lighter">Product updates</div>
+                      <small class="lh-1">Get the latest on new features, product improvement, and other announcements.</small>
+                      <div class="bold text-primary fs-sm"> See what's new</div> 
+                    </div>
+                    <div class="col-sm-12 py-3">
+                      
+                      <div class="fw-light fs-md lh-1">Start free Trial</div>
+                      
+                    </div>
+                  </div>
+                 
+                  
+                </div>
 
 
               </div>
