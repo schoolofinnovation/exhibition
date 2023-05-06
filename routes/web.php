@@ -143,6 +143,7 @@ use App\Http\Livewire\Admin\AdminAccountComponent;
 use App\Http\Livewire\Admin\AdminClientComponent;
 use App\Http\Livewire\Admin\AdminDetailComponent;
 use App\Http\Livewire\Admin\AdminEventEditComponent;
+use App\Http\Livewire\Admin\AdminEventMultipleAddComponent;
 use App\Http\Livewire\Admin\AdminLandingComponent;
 use App\Http\Livewire\AwardsComponent;
 use App\Http\Livewire\ExhibitionTimeComponent;
@@ -298,9 +299,13 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/dashboard/{board}', AdminDashboardComponent::class)->name('admin.dashboard');
 
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
-    Route::get('/admin/event/edit/{event_id}', AdminEventEditComponent::class)->name('admin.eventEdit');
+    Route::get('/admin/event/{event_id}/edit', AdminEventEditComponent::class)->name('admin.eventEdit');
+    Route::get('/admin/event/{event_id}/edit/{formm}', AdminEventMultipleAddComponent::class)->name('admin.eventMultiEdit');
+
+
+
     Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
-    Route::get('/admin/category/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
+    Route::get('/admin/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
 
     
     Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');

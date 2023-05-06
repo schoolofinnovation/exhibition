@@ -973,72 +973,55 @@
 
 
                     {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Offers</normal>
-                        <small><i class="bi bi-chevron-right"></i></small>
-                      </div>
-                      <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
-                    </a>
+                          <div class="d-flex w-100 align-items-center justify-content-between">
+                            <normal class="mb-1">Offers</normal>
+                            <small><i class="bi bi-chevron-right"></i></small>
+                          </div>
+                          <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                        </a>
 
-                    <a href="{{route('user.profile')}}" class=" border-0 list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Accounts & Settings</normal>
-                        <small><i class="bi bi-chevron-right"></i></small>
-                      </div>
-                      <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
+                        <a href="{{route('user.profile')}}" class=" border-0 list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                          <div class="d-flex w-100 align-items-center justify-content-between">
+                            <normal class="mb-1">Accounts & Settings</normal>
+                            <small><i class="bi bi-chevron-right"></i></small>
+                          </div>
+                          <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
                     </a>--}}
-                    
                     
                     @if(Auth::check())
-                    <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Logout</normal>
-                        <small><i class="bi bi-chevron-right"></i></small>
-                      </div>
-                      <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
-                    </a>
-                    <form id="logout-form" action="{{route('logout')}}" method="POST">
-                      @csrf
-                    </form>
+                      <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                          <normal class="mb-1">Logout</normal>
+                          <small><i class="bi bi-chevron-right"></i></small>
+                        </div>
+                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                      </a>
+                      <form id="logout-form" action="{{route('logout')}}" method="POST">
+                        @csrf
+                      </form>
                     @endif
-                  
 
                     {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                      <div class="d-flex w-100 align-items-center justify-content-between">
-                        <normal class="mb-1">Help & Support</normal>
-                        <small><i class="bi bi-chevron-right"></i></small>
-                      </div>
-                      <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
-                    </a>--}}
-
+                          <div class="d-flex w-100 align-items-center justify-content-between">
+                            <normal class="mb-1">Help & Support</normal>
+                            <small><i class="bi bi-chevron-right"></i></small>
+                          </div>
+                          <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                        </a>--}}
                 </div>
                 
-                
-                <div class="offcanvas-footer">
-                
-                   
-                    
-                    
-                      <div class="offcanvas-title fs-sm" id="offcanvasExampleLabel">Log In</div>
-                 
-                    
-                </div>
-                  
-                <div class="handheld-toolbar border border-top-0">
+                <div class="handheld-toolbar border-top-0">
                   <div class="container py-4">
                     <div class="col-sm-12 ">
                       <div class="small fw-lighter">Product updates</div>
                       <small class="lh-1">Get the latest on new features, product improvement, and other announcements.</small>
                       <div class="bold text-primary fs-sm"> See what's new</div> 
                     </div>
+
                     <div class="col-sm-12 py-3">
-                      
-                      <div class="fw-light fs-md lh-1">Start free Trial</div>
-                      
+                      <div class="fw-normal text-accent fs-md lh-1">Start Free Trial  <i class="bi bi-right-chevron"></i> </div>
                     </div>
                   </div>
-                 
-                  
                 </div>
 
 

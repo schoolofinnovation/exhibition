@@ -5,13 +5,11 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Expo;
-use App\Models\Pavillion;
 use App\Models\Sector;
-use App\Models\Service;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
-class AdminEventEditComponent extends Component
+class AdminEventMultipleAddComponent extends Component
 {
     public $eventname;
     public $slug ;
@@ -166,7 +164,6 @@ class AdminEventEditComponent extends Component
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
     }
-    
 
 
     public function render()
@@ -176,6 +173,7 @@ class AdminEventEditComponent extends Component
         $sec = Sector::get();
         $pavillion = Expo::get();
         $searchtag = Expo::get();
-        return view('livewire.admin.admin-event-edit-component',['evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
+        return view('livewire.admin.admin-event-multiple-add-component',['evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
+        
     }
 }

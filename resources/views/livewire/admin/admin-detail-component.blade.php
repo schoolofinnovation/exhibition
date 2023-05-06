@@ -116,9 +116,9 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->tagline))
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'tag'])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'tag'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
@@ -143,9 +143,9 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->shtdesc))
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'short'])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'short'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
@@ -171,14 +171,15 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->desc))
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'desc' ])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'desc'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
     </div>
     
+    {{--webo--}}
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
@@ -197,10 +198,11 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->link))
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'webo' ])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventEdit',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'webo' ])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
+
             </div>
         </div>
 
@@ -249,7 +251,7 @@
           <span class="handheld-toolbar-label">View</span>
         </a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="">
+        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
           <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
           <span class="handheld-toolbar-label">Menu</span>
         </a>
