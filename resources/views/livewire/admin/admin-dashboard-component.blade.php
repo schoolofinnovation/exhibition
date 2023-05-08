@@ -110,8 +110,13 @@
                                 </div>
 
                                 <div class="col-3  p-0">
+                                @if(is_null($franchise->image))
+                                  <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $franchise->id, 'formm' => 'desc' ])}}">
+                                      Add</a>
+                                @else
                                   <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                      <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                  <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                @endif
                                 </div>
                               </div>
                             </div>

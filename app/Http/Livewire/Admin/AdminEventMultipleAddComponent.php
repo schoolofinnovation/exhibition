@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Sector;
+use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -43,6 +44,8 @@ class AdminEventMultipleAddComponent extends Component
 
     public $formm;
 
+    public $image;
+
     public function generateSlug()
     {
         $this->slug = Str::slug($this->eventname,'-');
@@ -74,6 +77,8 @@ class AdminEventMultipleAddComponent extends Component
         $this->edition = $fattribute->edition;
         $this->link = $fattribute->link;
 
+        $this->image = $fattribute->image;
+
         $this->formm = $formm;
         
     }
@@ -97,6 +102,10 @@ class AdminEventMultipleAddComponent extends Component
         $fattribute->exhibitors =  $this->exhibitors;
         $fattribute->auidence =  $this->auidence;
       
+        $newimage = Carbon::now()->timestamp.'.'.$this->image->extension();
+        $this->image->storeAs('exhibition', $newimage);
+        $fattribute->image = $newimage;
+
         $fattribute->email =  $this->email;
         $fattribute->phone =  $this->phone;
 

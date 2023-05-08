@@ -21,7 +21,7 @@
                         <div class="col-sm-3">
                         <label class="form-label" for="seniority">Type</label>
                         <select class="form-control" type="text"   wire:model.lazy="eventype"  placeholder="Provide short title of your request">
-                            <option >Choose</option>
+                            <option> Choose</option>
                             <option value="award">Award</option>
                             <option value="conference">Conference</option>
                             <option value="expo">Exhibition</option>
@@ -132,6 +132,21 @@
                 </form>
             @endif
 
+
+            @if($formm == 'image')
+
+                <form  wire:submit.prevent="updateEvent">
+                        <div class="col-sm-2">
+                            <label class="form-label" for="cf-name">Image</label>
+                            <input class="form-control" type="file"   wire:model.lazy="image" required=""></textarea>
+                            @error('image'){{ $message}}@enderror
+                        </div>
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                </form>  
+
+            @endif
+
+
             @if($formm == 'tag')
                 <form  wire:submit.prevent="updateEvent">
                         <div class="col-sm-2">
@@ -147,7 +162,7 @@
                 <form  wire:submit.prevent="updateEvent">
                         <div class="col-sm-2">
                             <label class="form-label" for="cf-name">Desc</label>
-                            <textarea class="form-control" type="text" placeholder="Your Desc" rows="2" wire:model.lazy="desc" required=""></textarea>
+                            <textarea class="form-control" type="text" placeholder="Your Desc" rows="5" wire:model.lazy="desc" required=""></textarea>
                             @error('desc'){{ $message}}@enderror
                         </div>
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
@@ -158,7 +173,7 @@
                 <form  wire:submit.prevent="updateEvent">
                         <div class="col-sm-2">
                             <label class="form-label" for="cf-name">Short Description</label>
-                            <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shtdesc" required=""></textarea>
+                            <textarea class="form-control" type="text" placeholder="Your Short desc" rows="5" wire:model.lazy="shtdesc" required=""></textarea>
                             @error('shtdesc'){{ $message}}@enderror
                         </div>    
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>

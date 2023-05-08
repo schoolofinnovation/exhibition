@@ -14,7 +14,7 @@
                 <a class="btn btn-primary btn-sm" href="#"><i class="ci-sign-out me-2"></i>Sign out</a>
             </div>
            
-            @if($formm == 'event' )
+            
                 <form wire:submit.prevent="updateEvent">
                     <div class="row g-1">
 
@@ -130,52 +130,7 @@
 
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
                 </form>
-            @endif
-
-            @if($formm == 'tag')
-                <form  wire:submit.prevent="updateEvent">
-                        <div class="col-sm-2">
-                            <label class="form-label" for="cf-name">Tag Line</label>
-                            <textarea class="form-control" type="text" row="2" placeholder="Your Tagline" wire:model.lazy="tagline" required=""></textarea>
-                            @error('tagline'){{ $message}}@enderror
-                        </div>
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                </form>
-            @endif
-
-            @if($formm == 'desc')
-                <form  wire:submit.prevent="updateEvent">
-                        <div class="col-sm-2">
-                            <label class="form-label" for="cf-name">Desc</label>
-                            <textarea class="form-control" type="text" placeholder="Your Desc" rows="2" wire:model.lazy="desc" required=""></textarea>
-                            @error('desc'){{ $message}}@enderror
-                        </div>
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                </form>
-            @endif
-
-            @if($formm == 'short')
-                <form  wire:submit.prevent="updateEvent">
-                        <div class="col-sm-2">
-                            <label class="form-label" for="cf-name">Short Description</label>
-                            <textarea class="form-control" type="text" placeholder="Your Short desc" rows="2" wire:model.lazy="shtdesc" required=""></textarea>
-                            @error('shtdesc'){{ $message}}@enderror
-                        </div>    
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                </form>
-            @endif
-
-            @if($formm == 'webo')
-                <form  wire:submit.prevent="updateEvent">
-                    
-                        <div class="col-sm-2">
-                            <label class="form-label" for="cf-name">Web Link</label>
-                            <input class="form-control" type="text"  wire:model.lazy="link" required=""></input>
-                            @error('link'){{ $message}}@enderror
-                        </div>
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                </form>
-            @endif
+           
         </div>
 
     <div class="handheld-toolbar">
@@ -196,7 +151,7 @@
           <span class="handheld-toolbar-label">category</span>
         </a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="">
+        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
           <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
           <span class="handheld-toolbar-label">Menu</span>
         </a>

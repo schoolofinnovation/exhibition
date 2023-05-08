@@ -76,6 +76,35 @@ class AdminEventEditComponent extends Component
         $this->link = $fattribute->link;        
     }
 
+    public function updateEvent()
+    {
+        $fattribute = Event::find($this->event_id);
+        $fattribute->eventname =  $this->eventname;
+        $fattribute->slug = $this->slug;
+        $fattribute->eventype =  $this->eventype;
+      
+        $fattribute->city =  $this->city;
+        $fattribute->venue =  $this->venue;
+        $fattribute->organizer = $this->organizer;
+
+        $fattribute->shtdesc =  $this->shtdesc;
+        $fattribute->tagline =  $this->tagline;
+        $fattribute->desc =  $this->desc;
+
+        $fattribute->exhibitors =  $this->exhibitors;
+        $fattribute->auidence =  $this->auidence;
+      
+        $fattribute->email =  $this->email;
+        $fattribute->phone =  $this->phone;
+
+        $fattribute->edition =  $this->edition;
+        $fattribute->startdate =  $this->startdate;
+        $fattribute->enddate =  $this->enddate;
+        $fattribute->link =  $this->link;
+        $fattribute->save();
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
+    }
 
     public function render()
     {
