@@ -9,6 +9,7 @@ use App\Models\Sector;
 use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
 
 class AdminEventMultipleAddComponent extends Component
 {
@@ -50,6 +51,8 @@ class AdminEventMultipleAddComponent extends Component
     {
         $this->slug = Str::slug($this->eventname,'-');
     }
+
+    Use WithFileUploads;
 
     public function mount($event_id, $formm )
     {
