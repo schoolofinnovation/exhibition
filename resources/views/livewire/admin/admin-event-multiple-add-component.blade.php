@@ -135,7 +135,7 @@
 
             @if($formm == 'image')
 
-                <form  wire:submit.prevent="updateEvent">
+                <form  wire:submit.prevent="dateImage">
                         <div class="col-sm-2">
                             <label class="form-label" for="cf-name">Image</label>
                             <input class="form-control" type="file"   wire:model.lazy="image" required=""></textarea>
@@ -145,7 +145,6 @@
                 </form>  
 
             @endif
-
 
             @if($formm == 'tag')
                 <form  wire:submit.prevent="updateEvent">
@@ -191,11 +190,38 @@
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
                 </form>
             @endif
+
+            @if($formm == 'organiser' )
+                <form wire:submit.prevent="updateEvent">
+                    
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label" for="cf-name">Organizer</label>
+                                <input class="form-control" type="text" placeholder="Your email"   wire:model.lazy="organizer" required="">
+                                @error( 'organizer' ){{ $message}}@enderror
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="form-label" for="cf-name">Email</label>
+                                <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="email" required="">
+                                @error( 'email' ){{ $message}}@enderror
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label class="form-label" for="cf-name">Phone</label>
+                                <input class="form-control" type="number" placeholder="Your Phone"   wire:model.lazy="phone" required="">
+                                @error( 'phone' ){{ $message}}@enderror
+                            </div>
+                        </div>
+
+                    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                </form>
+            @endif
+
         </div>
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('event.details',['slug' => $evento->slug])}}">
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail',['slug' => $evento->slug])}}">
           <span class="handheld-toolbar-icon">
           <i class="ci-filter-alt"></i></span>
           <span class="handheld-toolbar-label">Admin</span>

@@ -62,7 +62,7 @@
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#requuest" data-bs-toggle="tab" role="tab">Request {{$expoaward->count()}}</a></li>
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm active" href="#details" data-bs-toggle="tab" role="tab">Monthly {{$monthwise->count()}}</a></li>
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Search {{$searchCat->count()}}</a></li>
-                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviewID" data-bs-toggle="tab" role="tab">ID {{$findIDs->count()}}</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviewID" data-bs-toggle="tab" role="tab">ID </a></li>
               </ul>
 
                 {{--<div class="d-flex badgese pb-2">
@@ -254,8 +254,10 @@
                                   </div>
 
                                   <div class="col-3  p-0">
-                                    <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                        <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                   
+                                  <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> 
+                                  <i class="bi bi-x me-2"></i> Delete</a>
+
                                   </div>
                                 </div>
                               </div>
@@ -416,16 +418,7 @@
                             @if(is_null($info->shtdesc))
                               <a href="{{route('admin.editcategories' , ['event_id' => $info->id])}}" class="btn btn-primary btn-sm">Category</a>
                             @else
-                            @php
-                                $sht = json_decode($info->shtdesc)
-                                
-                            @endphp
-
-                              @foreach ($sht as $newtre)
-                                
-                                {{$newtre}}
-                              
-                              @endforeach
+                            
                             @endif
                           </td>
                           <td class="py-1 align-middle fw-sm"><span class="align-middle badge bg-info ms-2">{{($info->phone)}}
