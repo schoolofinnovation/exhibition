@@ -217,9 +217,7 @@
                 </form>
             @endif
 
-            {{$evento}}
-
-            {{$event_id}}
+           
         </div>
 
     <div class="handheld-toolbar">

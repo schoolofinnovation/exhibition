@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Event;
 use App\Models\Pavillion;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -23,8 +24,23 @@ class AdminEventMultiParticipantsComponent extends Component
     public $user_id;
     public $status;
     public $admstatus;
+    public $formm;
+    public $eventname;
+    public $eventype;
+
     
     Use WithFileUploads;
+
+    public function mount($event_id, $formm )
+    {
+        $fattribute = Event::find($event_id);
+        $this->event_id = $fattribute->id;
+        $this->eventname = $fattribute->eventname;
+        $this->slug = $fattribute->slug;
+        $this->eventype = $fattribute->eventype;
+        $this->formm = $formm;
+
+    }
 
     public function generateSlug()
     {
@@ -60,7 +76,6 @@ class AdminEventMultiParticipantsComponent extends Component
         $newEvent->save();
         return redirect()->route('seller.dashboard');
         session()->flash('message','Thanks for sharing your review.');
-        
     }
 
 

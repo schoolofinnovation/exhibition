@@ -297,9 +297,9 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->organiser))
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'organiser' ])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'pavillion' ])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'organiser'])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'pavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>

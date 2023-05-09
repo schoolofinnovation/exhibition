@@ -108,7 +108,7 @@ class AdminEventEditComponent extends Component
 
     public function render()
     {
-        $evento = Event::find($this->event_id)->first();
+        $evento = Event::find($this->event_id);
         $cat = Category::get();
         $sec = Sector::get();
         $pavillion = Expo::get();

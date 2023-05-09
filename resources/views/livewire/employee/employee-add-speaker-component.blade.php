@@ -9,7 +9,7 @@
 @section('page_list',' addJob')
 
 
-<main>
+            <main>
                 
                 <!-- Title-->
                 <form  wire:submit.prevent="newSpeaker">

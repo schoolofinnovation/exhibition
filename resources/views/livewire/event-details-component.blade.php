@@ -170,6 +170,7 @@
         </ul>
     </section>
 
+    {{--details--}}
       <div class="container d-lg-none">
               <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
                 <div class="star-rating me-2"><i class="bi bi-star-filled text-accent me-1"></i>
@@ -178,23 +179,23 @@
               <div class="col-lg-4 col-md-5 pt-2 pb-0">
                   <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
                   <span class="fs-md fw-bold"> <i class="bi bi-star-fill text-primary me-1"></i> 7.1/10 </span><span class="d-inline-block align-middle fs-sm"> 34.7K votes</span> <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
-                </div>
+              </div>
 
               <ul class="list-unstyled  bg-secondary py-2">
                       @php
-                      $event->id = $avgrating;
+                        $event->id = $avgrating;
                       @endphp
 
-                @if( $rate == $avgrating)
-                    <li class="d-flex justify-content-between px-2 m-0">
-                    <span cass="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> {{$rating}} /10</a></span></li>
-                    
-                  @else
-                    <li class="d-flex justify-content-between px-2 m-0 lh-1">
-                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                    <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
-                @endif
+                    @if( $rate == $avgrating)
+                        <li class="d-flex justify-content-between px-2 m-0">
+                        <span cass="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                        <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> {{$rating}} /10</a></span></li>
+                        
+                      @else
+                        <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                        <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                        <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
+                    @endif
               </ul>
 
               <span class="badge bg-secondary">{{ucwords(trans($event->shtdesc))}} </span>
@@ -203,14 +204,9 @@
                 @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
                 {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
               </div>
-              <div class="fs-xs fw-normal pb-2 pt-2">
-              {{Str::limit($event->desc,130)}}  
-              </div> 
+              <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->desc,130)}}</div> 
               <div>
-
               </div>
-
-              
       </div>  
 
       <div class="container d-none d-sm-block">
@@ -227,26 +223,25 @@
                 
                 <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} 
               </span>
-              
 
               <span>
-              @if( $ticketOrExhibit != 0 )
-                <a class="btn btn-primary btn-sm" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
-                @elseif( $ticketOrExhibit == 0 )
-                <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit')}}"> Book your space </a>
-              @endif
-          
-          </span>
+                @if( $ticketOrExhibit != 0 )
+                  <a class="btn btn-primary btn-sm" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
+                  @elseif( $ticketOrExhibit == 0 )
+                  <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit')}}"> Book your space </a>
+                @endif
+              </span>
             
               
           </li>
           <li><hr class="mt-md-2 mb-2"></li>
           <li class="p1 fw-light">
-            {{json_decode($event->shortdesc)}} | @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
+            {{($event->shortdesc)}} | @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
           </li>
         </ul>
       </div> 
 
+      <!--Applicable Offers-->
       <div class="container d-lg-none">
            <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
            

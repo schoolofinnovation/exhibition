@@ -77,7 +77,7 @@ class AdminCategoryEditComponent extends Component
         }
         //dd($fattribute);
         session()->flash('message','Event has been updated succesfully!!');
-        return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
+        return redirect()->back();
     }
 
     public function render()

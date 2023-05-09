@@ -152,7 +152,7 @@
         </a>
 
         <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+          <span class="handheld-toolbar-icon"><i class=" bi bi-list"></i></span>
           <span class="handheld-toolbar-label">Menu</span>
         </a>
       </div>
