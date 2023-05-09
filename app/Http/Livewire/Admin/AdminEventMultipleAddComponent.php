@@ -105,9 +105,7 @@ class AdminEventMultipleAddComponent extends Component
         $fattribute->exhibitors =  $this->exhibitors;
         $fattribute->auidence =  $this->auidence;
       
-        $newimage = Carbon::now()->timestamp.'.'.$this->image->extension();
-        $this->image->storeAs('exhibition', $newimage);
-        $fattribute->image = $newimage;
+        
 
         $fattribute->email =  $this->email;
         $fattribute->phone =  $this->phone;
@@ -193,7 +191,8 @@ class AdminEventMultipleAddComponent extends Component
 
     public function render()
     {
-        $evento = Event::find($this->event_id)->first();
+        $evento = Event::find($this->event_id);
+
         $cat = Category::get();
         $sec = Sector::get();
         $pavillion = Expo::get();
