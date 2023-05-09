@@ -199,10 +199,12 @@
               </ul>
 
               
-
-                @foreach($category as $cat)
-                    <span class="badge bg-secondary">{{$cat->expo->tag}}</span>
-                @endforeach
+                <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
+                <div class="d-flex badgeseTag pb-2">
+                  @foreach($category as $cat)
+                    <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                  @endforeach
+                </div>
 
               {{--<span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>--}}
               <div class="fs-xs fw-normal">
@@ -552,7 +554,7 @@
                    
                    
 
-                   <div class="d-flex badgese pb-2">
+                   <div class="d-flex badgese pb-2">badgeseTag
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">Today  <span class="bg-"> 2935</span> </span>
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
@@ -560,7 +562,7 @@
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
-                  </div>
+                   </div>
                   <!-- comment-->
                   <div class=" border-1 d-flex align-items-start py-2 mt-2 border-bottom">
                     <img class="rounded-circle" src="#" width="50" alt="">
@@ -615,12 +617,12 @@
       <section class="container mb-4 mb-lg-5">
         <div class="tab-content pt-2">
 
-          <!-- Product details tab-->
+          {{-- Product details tab
           <div class="tab-pane fade show active" id="details" role="tabpanel">
             <div class="row">
               <div class="col-lg-8">
               
-                <p class="fs-md"> {{Str::limit($event->eventname,289)}}...</p>
+                
                 <p class="fs-md"> {{Str::limit($event->desc,289)}}...</p>
 
                 <h3 class="h5 pt-2">Main features</h3>
@@ -637,7 +639,7 @@
 
       
 
-          </div>
+          </div>--}}
 
           <!-- Reviews tab-->
           <div class="tab-pane fade" id="reviews" role="tabpanel">
@@ -1429,6 +1431,35 @@
 
       <script>
         var slider = tns({
+          "container": '.badgeseTag',   
+          
+          "responsive": {
+            "300": {
+              "items": 2,
+              "controls": false,
+              "fixedWidth": 100,
+              "mouseDrag": true,
+              "autoplay": false,
+              "autoplayButtonOutput": false,
+              "autoplayHoverPause": true,
+            },
+            "500": {
+              "items": 1,
+              "nav": false,
+              "controls": false,
+              "autoplayHoverPause": true,
+              "autoplay": false,
+              "autoplayButtonOutput": false,
+              "fixedWidth": 100,
+            },
+            
+          },
+          "autoplayButtonOutput":false
+        });
+      </script>
+
+      <script>
+        var slider = tns({
           "container": '.badgses',   
           
           "responsive": {
@@ -1456,7 +1487,7 @@
         });
       </script>
 
-<script>
+      <script>
         var slider = tns({
           "container": '.abced',   
           
@@ -1485,5 +1516,5 @@
         });
       </script>
     
-        @endpush
+    @endpush
 </main>
