@@ -303,7 +303,6 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/event/{event_id}/edit/{formm}', AdminEventMultipleAddComponent::class)->name('admin.eventMultiEdit');
 
 
-
     Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
     Route::get('/admin/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
 

@@ -52,8 +52,7 @@ class AdminCategoryEditComponent extends Component
         //dd($sectry, $expoo, $tryi);
        
         session()->flash('message','Event has been updated succesfully!!');
-        //return redirect()->route('admin.dashboard', ['board' => 'event']);
-        return redirect()->url()->previous();
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
     }
 
     //$previous = url()->previous();
@@ -78,8 +77,7 @@ class AdminCategoryEditComponent extends Component
         }
         //dd($fattribute);
         session()->flash('message','Event has been updated succesfully!!');
-        //return redirect()->route('admin.dashboard', ['board' => 'event']);
-        return redirect()->url()->previous();
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
     }
 
     public function render()
