@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Award;
+use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Franchise;
 use App\Models\Pavillion;
@@ -69,9 +70,9 @@ class EventDetailsComponent extends Component
           $rate = Rate::get();
           $rating = Rate::get();
         }
-
+        $category = Denco::where('event_id', $event->id)->get();
          //dd($event);
-        return view('livewire.event-details-component',['pavillion'=>$pavillion,
+        return view('livewire.event-details-component',['pavillion'=>$pavillion,'category'=>$category,
                                                         'rating'=> $rating,
                                                         'rate'=> $rate,
                                                         'productPrice' => $productPrice,

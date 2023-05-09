@@ -198,13 +198,18 @@
                     @endif
               </ul>
 
-              <span class="badge bg-secondary">{{ucwords(trans($event->shtdesc))}} </span>
+              
+
+                @foreach($category as $cat)
+                    <span class="badge bg-secondary">{{$cat->expo->tag}}</span>
+                @endforeach
+
               {{--<span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>--}}
               <div class="fs-xs fw-normal">
                 @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
                 {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
               </div>
-              <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->desc,130)}}</div> 
+              <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->desc,170)}}</div> 
               <div>
               </div>
       </div>  
