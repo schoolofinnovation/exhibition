@@ -302,7 +302,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
     Route::get('/admin/event/{event_id}/edit', AdminEventEditComponent::class)->name('admin.eventEdit');
     Route::get('/admin/event/{event_id}/edit/{formm}', AdminEventMultipleAddComponent::class)->name('admin.eventMultiEdit');
-    Route::get('/admin/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
+    Route::get('/admin/participants/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
 
     Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
     Route::get('/admin/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
@@ -405,7 +405,6 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/partner/attribute', SellerEventAttributeComponent::class)->name('seller.event.attribute');
     Route::get('/partner/attribute/{event_id}', SellerEventAttributeComponent::class)->name('seller.event');
     
-
     //lead
     Route::get('/partner/business/pool', LeadPoolComponent::class)->name('seller.business.pool');
 

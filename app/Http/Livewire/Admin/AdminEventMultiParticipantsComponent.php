@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Brand;
 use App\Models\Event;
 use App\Models\Pavillion;
+use App\Models\Speaker;
+use App\Models\Sponsership;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -22,12 +25,16 @@ class AdminEventMultiParticipantsComponent extends Component
     public $lastdate;
     public $event_id;
     public $user_id;
-    public $status;
+    //public $status;
     public $admstatus;
     public $formm;
     public $eventname;
     public $eventype;
-
+    public $status;
+    public $brand_name;
+    public $plan;
+    public $name;
+    
     
     Use WithFileUploads;
 
@@ -39,7 +46,7 @@ class AdminEventMultiParticipantsComponent extends Component
         $this->slug = $fattribute->slug;
         $this->eventype = $fattribute->eventype;
         $this->formm = $formm;
-
+        $this->status = '1';
     }
 
     public function generateSlug()
@@ -78,9 +85,87 @@ class AdminEventMultiParticipantsComponent extends Component
         session()->flash('message','Thanks for sharing your review.');
     }
 
+    public function updateBrand()
+    {
+        $rti = Str::replace('  ',' ',$this->brand_name);
+        $ret = explode(",", $rti);
+
+        foreach($ret as $tre)
+        {
+            $brand = new Brand();
+            //$bran = Event::find($this->event_id);
+            $brand->brand_name = $tre;
+            $brand->slug = str::slug($tre,'-');
+            $brand->status = $this->status;
+            $brand->user_id = Auth::user()->id;
+            $brand->save();
+        }
+
+    }
+
+    public function updatePavillion()
+    {
+        $rti = Str::replace('  ',' ',$this->pavillion_name);
+        $ret = explode(",", $rti);
+
+        foreach($ret as $tre)
+        {
+            $brand = new Pavillion();
+            $bran = Event::find($this->event_id);
+            $brand->event_id = $bran->id;
+            $brand->pavillion_name = $tre;
+            $brand->slug = str::slug($tre,'-');
+            $brand->status = $this->status;
+            $brand->user_id = Auth::user()->id;
+            $brand->save();
+        }
+
+    }
+
+    public function updateSponsership()
+    {
+        $rti = Str::replace('  ',' ',$this->plan);
+        $ret = explode(",", $rti);
+
+        foreach($ret as $tre)
+        {
+            $brand = new Sponsership();
+            $bran = Event::find($this->event_id);
+            $brand->event_id = $bran->id;
+            $brand->plan = $tre;
+            $brand->slug = str::slug($tre,'-');
+            $brand->status = $this->status;
+            $brand->user_id = Auth::user()->id;
+            $brand->save();
+        }
+
+    }
+
+
+    public function updateSpeaker()
+    {
+        $rti = Str::replace('  ',' ',$this->name);
+        $ret = explode(",", $rti);
+
+        foreach($ret as $tre)
+        {
+            $brand = new Speaker();
+            $bran = Event::find($this->event_id);
+            $brand->event_id = $bran->id;
+            $brand->name = $tre;
+            $brand->slug = str::slug($tre,'-');
+            $brand->status = $this->status;
+            $brand->user_id = Auth::user()->id;
+            $brand->save();
+        }
+
+    }
 
     public function render()
     {
-        return view('livewire.admin.admin-event-multi-participants-component');
+        $evento = Event::find($this->event_id);
+        $pavillion = Pavillion::where('event_id', $evento->id)->get();
+        //dd($pavillion);
+        return view('livewire.admin.admin-event-multi-participants-component',['evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

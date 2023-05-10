@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Category;
 use App\Models\Denco;
 use App\Models\Event;
+use App\Models\Pavillion;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -53,6 +54,8 @@ class AdminDetailComponent extends Component
         $pendingDetails = $evento;
         $catevent = Category::get();
         $category = Denco::where('event_id', $evento->id)->get();
-        return view('livewire.admin.admin-detail-component',['category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
+        $event = Event::where('slug', $this->slug)->value('id');
+        $pavillion = Pavillion::where('event_id',  $event)->get();
+        return view('livewire.admin.admin-detail-component',['pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
     }
 }

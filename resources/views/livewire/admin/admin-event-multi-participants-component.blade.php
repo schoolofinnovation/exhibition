@@ -1,38 +1,202 @@
     <main>
+        @if($formm == 'pavilliondashboard')
+            @foreach($pavillion as $pav)
+                <div class="container my-3">
+            
+                <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                    <div class="col  pr-0">
+                        <div class="h4 fw-light mb-0">Pav</div> 
+                    
+                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                        {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                    </div>
+
+                    <div class="col-7  p-0">
+                    @if(is_null($pav->desc))
+                        <div class="text-muted fs-sm text-start">{{$evento->pavillion_name}} </div>
+                    @else
+                        <div class="fs-md fw-normal text-start">
+                        {{$evento->business}}<br>
+                        
+                        {{$evento->startdate}}
+                        </div>
+                    @endif
+                    </div>
+
+                    <div class="col-3 p-0">
+                    @if(is_null($pav->desc))
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                    @else
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                    @endif
+                    </div>
+                </div>
+                
+                </div>
+            @endforeach
+        @endif
+
+        @if($formm == 'sponsershipdashboard')
+            @foreach($pavillion as $pav)
+                <div class="container my-3">
+            
+                <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                    <div class="col  pr-0">
+                        <div class="h4 fw-light mb-0">Pav</div> 
+                    
+                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                        {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                    </div>
+
+                    <div class="col-7  p-0">
+                    @if(is_null($pav->desc))
+                        <div class="text-muted fs-sm text-start">{{$evento->pavillion_name}} </div>
+                    @else
+                        <div class="fs-md fw-normal text-start">
+                        {{$evento->business}}<br>
+                        
+                        {{$evento->startdate}}
+                        </div>
+                    @endif
+                    </div>
+
+                    <div class="col-3 p-0">
+                    @if(is_null($pav->desc))
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                    @else
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                    @endif
+                    </div>
+                </div>
+                
+                </div>
+            @endforeach
+        @endif
+
+        @if($formm == 'participantsdashboard')
+            @foreach($pavillion as $pav)
+                <div class="container my-3">
+            
+                <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                    <div class="col  pr-0">
+                        <div class="h4 fw-light mb-0">Pav</div> 
+                    
+                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                        {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                    </div>
+
+                    <div class="col-7  p-0">
+                    @if(is_null($pav->desc))
+                        <div class="text-muted fs-sm text-start">{{$evento->pavillion_name}} </div>
+                    @else
+                        <div class="fs-md fw-normal text-start">
+                        {{$evento->business}}<br>
+                        
+                        {{$evento->startdate}}
+                        </div>
+                    @endif
+                    </div>
+
+                    <div class="col-3 p-0">
+                    @if(is_null($pav->desc))
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                    @else
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                    @endif
+                    </div>
+                </div>
+                
+                </div>
+            @endforeach
+        @endif
+
+        @if($formm == 'speakerdashboard')
+            @foreach($pavillion as $pav)
+                <div class="container my-3">
+            
+                <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                    <div class="col  pr-0">
+                        <div class="h4 fw-light mb-0">Pav</div> 
+                    
+                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                        {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                    </div>
+
+                    <div class="col-7  p-0">
+                    @if(is_null($pav->desc))
+                        <div class="text-muted fs-sm text-start">{{$evento->pavillion_name}} </div>
+                    @else
+                        <div class="fs-md fw-normal text-start">
+                        {{$evento->business}}<br>
+                        
+                        {{$evento->startdate}}
+                        </div>
+                    @endif
+                    </div>
+
+                    <div class="col-3 p-0">
+                    @if(is_null($pav->desc))
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                    @else
+                        <a href="{{route('admin.multipartners',['event_id' => $pav->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                    @endif
+                    </div>
+                </div>
+                
+                </div>
+            @endforeach
+        @endif
+
+
+
+
         <section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
             <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
            
-                @if($formm = 'detailPavillion')
+            
+                @if($formm == 'addParticipants')
+                    <form wire:submit.prevent="updateBrand">
+                        <input type="text" placeholder="participants" wire:model="brand_name">
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                @endif
+
+
+                @if($formm == 'addPavillion')
+                    <form wire:submit.prevent="updatePavillion">
+                        <input type="text" placeholder="pavillion" wire:model="pavillion_name">
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                @endif
+
+
+                @if($formm == 'addSponsership')
+                    <form wire:submit.prevent="updateSponsership">
+                        <input type="text" placeholder="plan" wire:model="plan">
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                @endif
+
+                @if($formm == 'addSpeaker')
+                    <form wire:submit.prevent="updateSpeaker">
+                        <input type="text" placeholder="Speaker" wire:model="name">
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                @endif
+
+                
+
+                @if($formm == 'detailPavillion')
+
                     <form wire:submit.prevent="add">
                         <!-- Title-->
                         <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
-                            <h2 class="h3 py-2 me-2 text-center text-sm-start">Your Event</h2>
-                            <div class="py-2">
-                                <select class="form-select me-2" wire:model.lazy="event_id">
-                                    <option>Select Event Type</option>
-                                    @foreach($event as $even)
-                                    <option value="{{$even->id}}">{{$even->eventname}}</option>
-                                    @endforeach
-                                </select>
-                                @error('event_id')
-                                <div class="form-text">Which Edition going to be organised?</div>
-                                <div class="form-text">{{$message}}</div>
-                                @enderror
-                            </div>
+                            <h2 class="h3 py-2 me-2 text-center text-sm-start">Your Pavillion</h2>
                             
                         </div>
                         
                         <div class="row">
-                            <div class="col-sm-6 mb-3">
-                                <label class="form-label" for="unp-standard-price">Pavillion Name</label>
-                                <div class="input-group">
-                                <input class="form-control" type="text" wire:model="pavillion_name" wire:keyup="generateSlug">
-                                </div>
-                                @error('pavillion_name')
-                                <div class="form-text">Which Edition going to be organised?</div>
-                                <div class="form-text">{{$message}}</div>
-                                @enderror
-                            </div>
+                            
 
                             <div class=" col-sm-6 mb-3 pb-2">
                                 <label class="form-label" for="unp-product-name">Business Industry</label>
@@ -108,30 +272,21 @@
 
                         <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
                     </form>
-                @elseif($formm == 'addPavillion')
-                    <form wire:submit.prevent="updatetag">
-                        <input type="text" placeholder="tag" wire:model="tag">
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                    </form>
-                
-                @elseif($formm == 'addParticipants')
-                    <form wire:submit.prevent="updatetag">
-                        <input type="text" placeholder="tag" wire:model="tag">
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                    </form>
 
-                @elseif($formm == 'detailParticipants')
+                @endif
+
+
+                
+
+                @if($formm == 'detailParticipants')
 
                     <form action="">
 
                     </form>
 
-                @elseif($formm == 'addSpeaker')
+              
 
-                    <form wire:submit.prevent="updatetag">
-                        <input type="text" placeholder="tag" wire:model="tag">
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                    </form>  
+                   
 
                 @elseif($formm == 'detailSpeaker') 
 
@@ -230,7 +385,7 @@
                         <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
                     </form>
     
-                @elseif($formm == 'addSponsership')
+                
 
                 @elseif($formm == 'planSponsership')
                 
@@ -238,4 +393,30 @@
 
             </div>
         </section>
-    </main>
+
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100">
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail',['slug' => $evento->slug])}}">
+          <span class="handheld-toolbar-icon">
+          <i class="ci-filter-alt"></i></span>
+          <span class="handheld-toolbar-label">Admin</span>
+        </a>
+       
+
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventEdit',['event_id' => $evento->id])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Edit</span></a>
+        
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.editcategories',['event_id' => $evento->id])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+          <span class="handheld-toolbar-label">category</span>
+        </a>
+
+        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+          <span class="handheld-toolbar-label">Menu</span>
+        </a>
+      </div>
+    </div>
+    
+</main>
