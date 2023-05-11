@@ -148,8 +148,6 @@
         @endif
 
 
-
-
         <section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
             <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
            

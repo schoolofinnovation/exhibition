@@ -233,9 +233,9 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->organiser))
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'addParticipants' ])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addParticipants' ])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'participantsdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'participantsdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
@@ -265,9 +265,9 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->organiser))
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'addSpeaker' ])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSpeaker' ])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'speakerdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'speakerdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
@@ -329,9 +329,9 @@
 
             <div class="col-3 p-0">
                @if(is_null($evento->organiser))
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}" class="btn btn-primary btn-sm">Add</a>
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'sponsershipdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'sponsershipdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
