@@ -51,8 +51,8 @@ class AwardsComponent extends Component
         $event->email = $this->email;
         $event->phone = $this->phone;
         $event->save();
-        $this-> sendEmail($event);
-        $this->reset();
+        //$this-> sendEmail($event);
+        //$this->reset();
         session()->flash('message','Thanks, We are sending an email!! '); 
         //return back()->withinput();
     }

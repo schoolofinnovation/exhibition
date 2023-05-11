@@ -183,7 +183,7 @@
 
                                 <div class="col-sm-6">
                                     <label class="form-label" for="cf-name">Phone</label>
-                                    <input class="form-control" type="text"  
+                                    <input class="form-control" type="number"  
                                     placeholder="Official Contact"   wire:model.lazy="phone" required="">
                                     @error( 'phone' ){{ $message}}@enderror
                                 </div>

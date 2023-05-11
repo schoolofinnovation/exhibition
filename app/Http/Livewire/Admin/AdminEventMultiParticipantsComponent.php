@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
+use App\Models\Denco;
 use App\Models\Event;
+use App\Models\Expo;
 use App\Models\Pavillion;
 use App\Models\Speaker;
 use App\Models\Sponsership;
@@ -34,6 +36,8 @@ class AdminEventMultiParticipantsComponent extends Component
     public $brand_name;
     public $plan;
     public $name;
+    public $searchTerm;
+    public $checkvalue;
     
     
     Use WithFileUploads;
@@ -161,11 +165,60 @@ class AdminEventMultiParticipantsComponent extends Component
 
     }
 
+    
+
+    public function updateEvent()
+    {
+        $sectry = json_encode($this->checkvalue);
+        $tryi = json_decode($sectry);
+        //$expoo = explode("," , $sectry );
+        foreach($tryi as $trey)
+        {
+            $fattribute = new Denco();
+            $fattribut = Event::find($this->event_id);
+            $fattribute->expo_id = $trey;
+            $fattribute->event_id = $fattribut->id;
+            $fattribute->save();
+        }
+        
+        //dd($sectry, $expoo, $tryi);
+       
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
+    }
+
+    //$previous = url()->previous();
+
+    
+
+    public function updatetag()
+    {   $rti = Str::replace('  ',' ',$this->tag);
+        $ret = explode(",", $rti);
+       
+        foreach($ret as $tre)
+        {
+            $fattribute = new Expo();
+            $fattribute->tag =    $tre;
+            $fattribute->slug =   Str::slug($tre,'-');
+            $fattribute->type =  $this->type;
+            $fattribute->status =  $this->status;
+            $fattribute->save();
+        }
+        //dd($fattribute);
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->back();
+    }
+
     public function render()
     {
         $evento = Event::find($this->event_id);
+        $searchTerm = '%'.$this->searchTerm. '%';
+        $searchcat = Expo::where('tag','LIKE', $searchTerm)
+                    ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
         $pavillion = Pavillion::where('event_id', $evento->id)->get();
+        $sponser = Sponsership::where('event_id', $evento->id)->get();
+        $speaker = Speaker::where('event_id', $evento->id)->get();
         //dd($pavillion);
-        return view('livewire.admin.admin-event-multi-participants-component',['evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
+        return view('livewire.admin.admin-event-multi-participants-component',['speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

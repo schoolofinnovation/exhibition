@@ -149,14 +149,16 @@
 
 
         <section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
-            <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+            <div class=" ps-lg-0 pe-xl-5">
            
             
                 @if($formm == 'addParticipants')
                     <form wire:submit.prevent="updateBrand">
                         <input type="text" placeholder="participants" wire:model="brand_name">
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
+
+                    
                 @endif
 
 
@@ -165,6 +167,40 @@
                         <input type="text" placeholder="pavillion" wire:model="pavillion_name">
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
                     </form>
+
+                    @foreach($pavillion as $pav)
+                        
+                    
+                        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                            <div class="col  pr-0">
+                                <div class="h4 fw-light mb-0">Pav</div> 
+                            
+                                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                            </div>
+
+                            <div class="col-7  p-0">
+                            @if(is_null($pav->desc))
+                                <div class="text-muted fs-sm text-start">{{$pav->pavillion_name}} </div>
+                            @else
+                                <div class="fs-md fw-normal text-start">
+                                {{$evento->pavillion_name}}<br>
+                                
+                                {{$evento->desc}}
+                                </div>
+                            @endif
+                            </div>
+
+                            <div class="col-3 p-0">
+                            @if(is_null($pav->desc))
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                            @else
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                            @endif
+                            </div>
+                        </div>
+                        
+                    @endforeach
                 @endif
 
 
@@ -173,6 +209,41 @@
                         <input type="text" placeholder="plan" wire:model="plan">
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
                     </form>
+                    @foreach($sponser as $pav)
+                        
+                    
+                        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                            <div class="col  pr-0">
+                                <div class="h4 fw-light mb-0">Pav</div> 
+                            
+                                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                            </div>
+
+                            <div class="col-7  p-0">
+                            @if(is_null($pav->desc))
+                                <div class="text-muted fs-sm text-start">{{$pav->plan}} </div>
+                            @else
+                                <div class="fs-md fw-normal text-start">
+                                {{$evento->pavillion_name}}<br>
+                                
+                                {{$evento->desc}}
+                                </div>
+                            @endif
+                            </div>
+
+                            <div class="col-3 p-0">
+                            @if(is_null($pav->desc))
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                            @else
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                            @endif
+                            </div>
+                        </div>
+                        
+                    @endforeach
+
+
                 @endif
 
                 @if($formm == 'addSpeaker')
@@ -180,6 +251,40 @@
                         <input type="text" placeholder="Speaker" wire:model="name">
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
                     </form>
+
+                    @foreach($speaker as $pav)
+                        
+                    
+                        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                            <div class="col  pr-0">
+                                <div class="h4 fw-light mb-0">Pav</div> 
+                            
+                                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                            </div>
+
+                            <div class="col-7  p-0">
+                            @if(is_null($pav->desc))
+                                <div class="text-muted fs-sm text-start">{{$pav->name}} </div>
+                            @else
+                                <div class="fs-md fw-normal text-start">
+                                {{$evento->name}}<br>
+                                
+                                {{$evento->organisation}}
+                                </div>
+                            @endif
+                            </div>
+
+                            <div class="col-3 p-0">
+                            @if(is_null($pav->desc))
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Add</a>
+                            @else
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Edit</a>
+                            @endif
+                            </div>
+                        </div>
+                        
+                    @endforeach
                 @endif
 
                 
@@ -204,7 +309,7 @@
                                 <div class="form-text">{{$message}}</div>
                                 @enderror
                             </div>
-                            
+                        
                         </div>
                     
                 
@@ -273,7 +378,89 @@
 
                 @endif
 
+                @if($formm == 'detailSponsership')
+                   <form wire:submit.prevent="">
+                        <div class="row">
+                            <div class="col-sm-4 mb-3">
+                                <label class="form-label" for="unp-standard-price">Audience</label>
+                                <div class="input-group">
+                                <input class="form-control" type="number" wire:model.lazy="auidence">
+                                </div>
+                                <div class="form-text">Average marketplace price for this category is $15.</div>
+                                @error('auidence')
+                                <div class="form-text">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <label class="form-label" for="unp-standard-price">Start Date</label>
+                                <div class="input-group">
+                                <input class="form-control" type="date" wire:model.lazy="startdate" placeholder="DD-MM-YYYY">
+                                </div>
+                                <div class="form-text">Average marketplace price for this category is $15.</div>
+                                @error('startdate')
+                                <div class="form-text">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <label class="form-label" for="unp-extended-price">Last Date</label>
+                                <div class="input-group">
+                                <input class="form-control" type="date" wire:model.lazy="lastdate">
+                                </div>
+                                <div class="form-text">Typically 10x of the Standard license price.</div>
+                                @error('lastdate')
+                                <div class="form-text">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <label class="form-label" for="unp-standard-price">Standard Cost</label>
+                                <div class="input-group">
+                                <input class="form-control" type="date" wire:model.lazy="stdcost" placeholder="DD-MM-YYYY">
+                                </div>
+                                <div class="form-text">Average marketplace price for this category is $15.</div>
+                                @error('stdcost')
+                                <div class="form-text">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-4 mb-3">
+                                <label class="form-label" for="unp-extended-price">Actuall Cost</label>
+                                <div class="input-group">
+                                <input class="form-control" type="date" wire:model.lazy="extcost">
+                                </div>
+                                <div class="form-text">Typically 10x of the Standard license price.</div>
+                                @error('extcost')
+                                <div class="form-text">{{$message}}</div>
+                                @enderror
+                            </div>
 
+                            <div class="col-sm-4 mb-3">
+        
+                                <label class="form-label" for="unp-standard-price">Sponser Coverage</label>
+                                <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
+                                <input class="form-control" type="number" wire:model.lazy="sponsercoverage">
+                                </div>
+                                <div class="form-text">Average marketplace price for this category is $15.</div>
+                                @error('nostall')
+                                <div class="form-text">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-4 mb-3">
+        
+                                <label class="form-label" for="unp-standard-price">Media Coverage</label>
+                                <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
+                                <input class="form-control" type="number" wire:model.lazy="mediacoverage">
+                                </div>
+                                <div class="form-text">Average marketplace price for this category is $15.</div>
+                                @error('nostall')
+                                <div class="form-text">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
+                   </form>
+                @endif
+
+
+                @if($formm == 'detailSpeaker')
+                @endif
                 
 
                 @if($formm == 'detailParticipants')

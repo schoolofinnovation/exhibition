@@ -70,7 +70,7 @@ class AdminEventAddComponent extends Component
         $event->exhibitors = $this->exhibitors; 
 
         $event->tagline = $this->tagline;
-        $event->shortdesc = $this->shortdesc;
+        $event->shtdesc = $this->shtdesc;
         $event->desc = $this->desc;
 
         $event->edition  = $this->edition;
