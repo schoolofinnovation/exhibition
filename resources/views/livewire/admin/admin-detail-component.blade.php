@@ -299,7 +299,7 @@
                @if(count($pavillion) > 0)
                 <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
                @else
-                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'pavilliondashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>

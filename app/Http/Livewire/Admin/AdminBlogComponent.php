@@ -21,11 +21,12 @@ class AdminBlogComponent extends Component
     public $type;
     public $image;
     public $user_id;
+    public $board;
 
     public function mount()
     {
         $this->type="e";  
-        $this->status = "0"; 
+        $this->status = "1"; 
     }
 
     public function generateSlug()
@@ -39,11 +40,9 @@ class AdminBlogComponent extends Component
         $blog = new Mag();
         $blog->tittle = $this->tittle;
         $blog->slug = $this->slug;
-        //$blog->image = $this->image;
+        
         $blog->desc = $this->desc;
         $blog->s_desc = $this->s_desc;
-        $blog->cag_id = $this->cag_id;
-        $blog->tag = $this->tag;
         $blog->user_id = Auth::user()->id;
         $blog->type = $this->type;
         $blog->status = $this->status;

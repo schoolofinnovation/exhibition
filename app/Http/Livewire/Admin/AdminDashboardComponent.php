@@ -13,6 +13,7 @@ use App\Models\Expo;
 use App\Models\Franchise;
 use App\Models\Job;
 use App\Models\Lead;
+use App\Models\Mag;
 use App\Models\Optio;
 use App\Models\Order;
 use App\Models\ProductAttribute;
@@ -203,8 +204,9 @@ class AdminDashboardComponent extends Component
       $searchCat = Event::Where('eventname','LIKE', $searchTerm)->where('status','1')->orderBy('eventname','ASC')->get();
       $searchId = Event::Where('id','LIKE', $findID)->where('status','1')->orderBy('eventname','ASC')->get();
      
+      $blogfindo = Mag::get();
 
-        return view('livewire.admin.admin-dashboard-component',['searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',[ 'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         

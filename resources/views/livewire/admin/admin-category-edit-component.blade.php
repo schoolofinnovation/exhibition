@@ -2,15 +2,28 @@
 
 <main>
 
+
+
+
+
+
     <div class="container my-5 mx-auto">
 
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">
                 <p >Let's Create Event Together</p>
                 <small">{{$evento->eventname}}</small>
-                <small class="mb-2">{{$evento->desc}}</small>
-                <div class="col-lg-8 col-sm-7">
-                <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
+      
+        @foreach($selectedcategory as $catego)
+            <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
+            {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
+            </a>
+        @endforeach
+
+                
+
+                <div class="col-lg-8 col-sm-7 ">
+                    <input type="text" class="form-control" placeholder="Search your Category..." wire:model.lazy="searchTerm">
                 </div>
                 <div class="col-lg-4 col-sm-5"><a  class="btn btn-primary">Search</a></div>
             </div>

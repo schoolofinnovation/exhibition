@@ -80,15 +80,22 @@ class AdminCategoryEditComponent extends Component
         return redirect()->back();
     }
 
+    public function eventdelete($id)
+    {   $job = Denco::find($id);
+        $job->delete();
+        session()->flash('message','info has been deleted Successfully');
+    }
+
     public function render()
     {
         $evento = Event::find($this->event_id);
+        $selectedcategory = Denco::where('event_id', $evento->id)->get();
         $searchTerm = '%'.$this->searchTerm. '%';
         $searchcat = Expo::where('tag','LIKE', $searchTerm)
                     ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
          $expoon = Expo::where('type','tag')->get();
 
 
-        return view('livewire.admin.admin-category-edit-component',['evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat])->layout('layouts.eblog');
+        return view('livewire.admin.admin-category-edit-component',['selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat])->layout('layouts.eblog');
     }
 }

@@ -97,7 +97,8 @@ class AdminEventMultiParticipantsComponent extends Component
         foreach($ret as $tre)
         {
             $brand = new Brand();
-            //$bran = Event::find($this->event_id);
+            $bran = Event::find($this->event_id);
+            $brand->event_id = $bran->id;
             $brand->brand_name = $tre;
             $brand->slug = str::slug($tre,'-');
             $brand->status = $this->status;
