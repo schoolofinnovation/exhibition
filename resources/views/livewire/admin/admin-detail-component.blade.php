@@ -137,7 +137,7 @@
               @if(is_null($evento->shtdesc))
                 <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
               @else
-                <div class="fs-md fw-normal text-start">{{$evento->shtdesc}}</div>
+                <div class="fs-md fw-normal text-start">{{Str::limit($evento->shtdesc,170)}}</div>
               @endif
             </div>
 
@@ -165,7 +165,7 @@
               @if(is_null($evento->desc))
                 <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
               @else
-                <div class="fs-md fw-normal text-start">{{$evento->desc}}</div>
+                <div class="fs-md fw-normal text-start">{{Str::limit($evento->desc,170)}}</div>
               @endif
             </div>
 
@@ -220,15 +220,7 @@
             </div>
 
             <div class="col-7  p-0">
-              @if(is_null($evento->organizer))
-                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
-              @else
-                <div class="fs-md fw-normal text-start">
-                  {{$evento->organizer}}<br>
-                  {{$evento->email}}<br>
-                  {{$evento->phone}}
-                </div>
-              @endif
+              {{$participants->count()}}
             </div>
 
             <div class="col-3 p-0">
@@ -252,15 +244,7 @@
             </div>
 
             <div class="col-7  p-0">
-              @if(is_null($evento->organizer))
-                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
-              @else
-                <div class="fs-md fw-normal text-start">
-                  {{$evento->organizer}}<br>
-                  {{$evento->email}}<br>
-                  {{$evento->phone}}
-                </div>
-              @endif
+             {{$speaker->count()}}
             </div>
 
             <div class="col-3 p-0">
@@ -284,15 +268,7 @@
             </div>
 
             <div class="col-7  p-0">
-              @if(is_null($pavillion->count() > '0'))
-                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
-              @else
-                <div class="fs-md fw-normal text-start">
-                  {{$evento->organizer}}<br>
-                  {{$evento->email}}<br>
-                  {{$evento->phone}}
-                </div>
-              @endif
+              {{$pavillion->count()}}
             </div>
 
             <div class="col-3 p-0">
@@ -316,15 +292,7 @@
             </div>
 
             <div class="col-7  p-0">
-              @if(is_null($evento->organizer))
-                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
-              @else
-                <div class="fs-md fw-normal text-start">
-                  {{$evento->organizer}}<br>
-                  {{$evento->email}}<br>
-                  {{$evento->phone}}
-                </div>
-              @endif
+            {{$sponsership->count()}}
             </div>
 
             <div class="col-3 p-0">

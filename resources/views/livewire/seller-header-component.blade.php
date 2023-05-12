@@ -13,9 +13,9 @@
           
             <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> <i class="bi bi-globe2"></i>
               <!--<img src="{{asset('image/abc.png')}}" width="74" alt="COI">--></a>
-            <a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
+            {{--<a class="navbar-brand d-sm-none me-2" href="{{asset('/')}}"> 
             <div class="fs-4" style=" font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> COI </div>
-            <!--<img src="{{asset('image/abc.png')}}" width="74" alt="COI">--></a>
+            <!--<img src="{{asset('image/abc.png')}}" width="74" alt="COI">--></a>--}}
 
             <!-- Toolbar-->
             <div class="navbar-toolbar d-flex align-items-center order-lg-3">

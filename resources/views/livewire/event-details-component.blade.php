@@ -554,7 +554,7 @@
                    
                    
 
-                   <div class="d-flex badgese pb-2">badgeseTag
+                   <div class="d-flex badgese pb-2">
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">Today  <span class="bg-"> 2935</span> </span>
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
                     <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
@@ -1442,6 +1442,7 @@
               "autoplay": false,
               "autoplayButtonOutput": false,
               "autoplayHoverPause": true,
+              "navPosition": bottom,
             },
             "500": {
               "items": 1,

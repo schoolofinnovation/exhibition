@@ -2,10 +2,13 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Pavillion;
+use App\Models\Speaker;
+use App\Models\Sponsership;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -42,7 +45,6 @@ class AdminDetailComponent extends Component
     {
       $eVent = Event::find($id);
       $eVent->link = $webo;
-
       $eVent->save();
       session()->flash('message',' Status Successfully Changed');
     } 
@@ -55,7 +57,12 @@ class AdminDetailComponent extends Component
         $catevent = Category::get();
         $category = Denco::where('event_id', $evento->id)->get();
         $event = Event::where('slug', $this->slug)->value('id');
+
+        $speaker = Speaker::where('event_id',  $event)->get();
         $pavillion = Pavillion::where('event_id',  $event)->get();
-        return view('livewire.admin.admin-detail-component',['pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
+        $sponsership = Sponsership::where('event_id' , $event)->get();
+        $participants = Brand::where('event_id' , $event)->get();
+
+        return view('livewire.admin.admin-detail-component',['participants'=>$participants,'speaker'=>$speaker,'sponsership'=>$sponsership,'pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
     }
 }

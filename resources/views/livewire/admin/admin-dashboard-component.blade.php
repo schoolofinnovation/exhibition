@@ -1042,8 +1042,8 @@
                                   </div>
 
                                   <div class="col-3  p-0">
-                                    <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                        <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->tittle, 24)}}"></a>
+                                  <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="bloGdelete({{$franchise->id}})"> 
+                                  <i class="bi bi-x me-2"></i> Delete</a>
                                   </div>
                                 </div>
                               </div>
@@ -1780,17 +1780,20 @@
         </a>
      
       @elseif($board == 'blog')
-          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'blog'])}}">
+
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/blog' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'blog'])}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
-            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Blog</span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/blog' == request()->path() ? 'active' : '' }}">Blog</span>
           </a>
           
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.blogpost')}}">
             <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
             <span class="handheld-toolbar-label">Add</span>
           </a>
+
       @elseif($board == 'event')
+          
           <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
