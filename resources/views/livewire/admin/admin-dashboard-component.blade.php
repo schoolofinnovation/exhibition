@@ -1771,7 +1771,7 @@
         <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
           <span class="handheld-toolbar-icon">
           <i class="ci-filter-alt"></i></span>
-          <span class="handheld-toolbar-label">Admin</span>
+          <span class="handheld-toolbar-label">Job</span>
         </a>
          
         <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobadd')}}">
@@ -1779,8 +1779,8 @@
           <span class="handheld-toolbar-label">Add</span>
         </a>
      
-      @else
-        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+      @elseif($board == 'blog')
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'blog'])}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
             <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Blog</span>
@@ -1790,6 +1790,18 @@
             <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
             <span class="handheld-toolbar-label">Add</span>
           </a>
+      @elseif($board == 'event')
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+            <span class="handheld-toolbar-icon">
+            <i class="ci-filter-alt"></i></span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Event</span>
+          </a>
+          
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.blogpost')}}">
+            <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+            <span class="handheld-toolbar-label">Add</span>
+          </a>
+
       @endif
 
         <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
