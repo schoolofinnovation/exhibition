@@ -28,6 +28,7 @@ class AwardsComponent extends Component
     public $searchTerm;
     public $moreUsers;
     public $EvenmoreUsers;
+    public $board;
 
     public function generateSlug()
     {
@@ -54,7 +55,7 @@ class AwardsComponent extends Component
         //$this-> sendEmail($event);
         //$this->reset();
         session()->flash('message','Thanks, We are sending an email!! '); 
-        //return back()->withinput();
+        return redirect()->route('coievent.add', ['board' => 'thank-you']);
     }
 
    

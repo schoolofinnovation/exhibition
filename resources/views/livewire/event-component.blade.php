@@ -13,7 +13,7 @@
                         {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
                         <h1 class="mb-1"> Add to calender <br> button</h1>
                         <p class=" fw-light lh-1">Share your events with the #1 add to calender button on the internet.</p>
-                        <a class="btn btn-accent mt-4" href="{{route('coievent.add')}}">Get your button <i class="bi bi-chevron-right fs-ms ms-1"></i></a>
+                        <a class="btn btn-accent mt-4" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Get your button <i class="bi bi-chevron-right fs-ms ms-1"></i></a>
 
                       </div>
 

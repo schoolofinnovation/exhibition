@@ -8,7 +8,7 @@
                       <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'magazine'])}}">More</a></li>
                       <li><a class="dropdown-item" href="#">Advertise</a></li>
                       <li><a class="dropdown-item" href="#">Subscribe</a></li>
-                      <li><a class="dropdown-item" href="{{route('coievent.add')}}">Add</a></li>
+                      <li><a class="dropdown-item" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Add</a></li>
                     </ul>
                     </span>
                 </div>

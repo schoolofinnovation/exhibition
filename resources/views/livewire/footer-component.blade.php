@@ -194,7 +194,7 @@
             <span class="handheld-toolbar-label">Filter</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item" href="{{route('coievent.add')}}">
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('coievent.add',['board' => 'add-your-event'])}}">
               <span class="handheld-toolbar-icon"><i class="bi bi-heart"></i></span>
               <span class="handheld-toolbar-label">Add</span>
           </a>
@@ -218,7 +218,7 @@
             <span class="handheld-toolbar-label">Filter</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item" href="{{route('coievent.add')}}">
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('coievent.add',['board' =>'add-your-event'])}}">
               <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
               <span class="handheld-toolbar-label">Add</span>
           </a>

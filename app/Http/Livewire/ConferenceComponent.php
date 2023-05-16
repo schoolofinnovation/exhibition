@@ -10,6 +10,7 @@ use Livewire\Component;
 
 class ConferenceComponent extends Component
 {
+    public $board;
     public function render()
     {
         $mytime = Carbon::today()->format("Y-m-d");

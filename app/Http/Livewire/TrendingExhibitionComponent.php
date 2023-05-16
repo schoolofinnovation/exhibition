@@ -10,12 +10,14 @@ use Livewire\Component;
 
 class TrendingExhibitionComponent extends Component
 {
+    public $board;
+
     public function render()
     {
         $mytime = Carbon::today()->format ("Y-m-d");
         //$lasttime = Carbon::today()->addDays(90)->format ("Y-m-d");
         //dd($lasttime);
-        $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
+        $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
        
         $finder = Denco::select('expo_id')->groupBy('expo_id')->get();
 

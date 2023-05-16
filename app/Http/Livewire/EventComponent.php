@@ -17,6 +17,8 @@ use Livewire\Component;
 
 class EventComponent extends Component
 {
+    public $board;
+    
     public function store($event_id,$event_eventname,$event_eventype)
     {
         Cart::instance ('cart')-> add($event_id,$event_eventname,18000,$event_eventype)->associate('App\Models\Event');
@@ -26,8 +28,8 @@ class EventComponent extends Component
     }
 
     public function render()
-
-    {   $industry = Category::get();
+    {   
+        $industry = Category::get();
         $mytime = Carbon::today()->format("Y-m-d");
         $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
         

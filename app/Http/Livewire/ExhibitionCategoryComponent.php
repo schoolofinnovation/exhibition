@@ -19,6 +19,7 @@ class ExhibitionCategoryComponent extends Component
     public  $pagesize;
     public  $sorting;
     //public  $category_slug;
+    public $board;
 
     public function mount($eventype, $categry_id)
     {
