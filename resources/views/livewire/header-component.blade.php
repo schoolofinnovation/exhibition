@@ -912,7 +912,7 @@
 
                       @if(Auth::check())
                       <div class="col-sm-12 py-3">
-                        <a class="fw-normal text-accent fs-md lh-1" href="{{route('user.dashboard')}}">Dashboard<i class="bi bi-right-chevron"></i> </a>
+                        <a class="fw-normal text-accent fs-md lh-1" href="{{route('user.dashboard',['board'=> 'dashboard'])}}">Dashboard<i class="bi bi-right-chevron"></i> </a>
                       </div>
                       @else
                       

@@ -3,6 +3,10 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\Category;
+use App\Models\Coupon;
+use App\Models\Denco;
+use App\Models\Event;
+use App\Models\Expo;
 use App\Models\Franchise;
 use App\Models\Info;
 use App\Models\Look;
@@ -12,9 +16,13 @@ use App\Models\Service;
 use App\Models\Shop;
 use App\Models\Usage;
 use App\Models\Want;
+use Carbon\Carbon;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+
+use Illuminate\Support\Str;
 
 class UserDashboardComponent extends Component
 {   public $haveCouponCode;
@@ -53,6 +61,8 @@ class UserDashboardComponent extends Component
     public $ghi = null;
     public $Sector=null;
     public $Service=null;
+    public $board;
+    public $searchTerm;
 
     public function mount()
     {   $this->currentStep = 1;
@@ -201,6 +211,31 @@ class UserDashboardComponent extends Component
     }
 
 
+
+    public function updatetag()
+    {   $rti = Str::replace('  ',' ',$this->tag);
+        $ret = explode(",", $rti);
+       
+        foreach($ret as $tre)
+        {
+            $fattribute = new Expo();
+            $fattribute->tag =    $tre;
+            $fattribute->slug =   Str::slug($tre,'-');
+            $fattribute->type =  $this->type;
+            $fattribute->status =  $this->status;
+            $fattribute->save();
+        }
+        //dd($fattribute);
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->back();
+    }
+
+    public function eventdelete($id)
+    {   $job = Denco::find($id);
+        $job->delete();
+        session()->flash('message','info has been deleted Successfully');
+    }
+
     public function render()
     {
         $appliedapplication = Order::where('user_id', Auth::user()->id)->count();
@@ -208,7 +243,12 @@ class UserDashboardComponent extends Component
         $abc = Category::with('sector')->orderBy('industry','Asc')->get();
         $newuser = Want::where('user_id', Auth::user()->id)->get();
 
-        return view('livewire.user.user-dashboard-component',['appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
-        //dd($expadnuser);
+        $today = Carbon::today()->format('Y-m-d');
+        $eventoo = Event::whereDate('startdate', $today)->get();
+        
+        $selectedcategory = Denco::where('user_id', Auth::user()->id)->get();
+        //dd($today, $evento);
+        return view('livewire.user.user-dashboard-component',['selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
+        
     }
 }

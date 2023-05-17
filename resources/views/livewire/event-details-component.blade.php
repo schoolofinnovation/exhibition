@@ -1080,18 +1080,18 @@
                 "{{url('assets/image/exhibition/'.$event->image)}}"
               ],
               "description": "{{$event->desc}}",
-              {{--"offers": {
+              "offers": {
                 "@type": "Offer",
-                "url": "https://www.example.com/event_offer/12345_201803180430",
+                {{--"url": "https://www.example.com/event_offer/12345_201803180430",
                 "price": "30",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
-                "validFrom": "2024-05-21T12:00"
+                "validFrom": "2024-05-21T12:00"--}}
               },
               "performer": {
-                "@type": "PerformingGroup",
-                "name": "Kira and Morrison"
-              },--}}
+                {{--"@type": "PerformingGroup",
+                "name": "Kira and Morrison"--}}
+              },
               "organizer": {
                 "@type": "Organization",
                 "name": "The Exhibition Network",

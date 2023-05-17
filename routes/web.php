@@ -284,7 +284,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
   //User
   Route::middleware(['auth:sanctum', 'verified'])->group( function () {
-    Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('/user/dashboard/{board}', UserDashboardComponent::class)->name('user.dashboard');
     
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.Orders');
     Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');

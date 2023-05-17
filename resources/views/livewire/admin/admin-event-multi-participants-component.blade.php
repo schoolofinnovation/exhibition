@@ -165,7 +165,7 @@
                 @if($formm == 'addPavillion')
                     <form wire:submit.prevent="updatePavillion">
                         <input type="text" placeholder="pavillion" wire:model="pavillion_name">
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
 
                     @foreach($pavillion as $pav)

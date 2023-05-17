@@ -4,6 +4,71 @@
 @section('content_keyword', 'Sell', 'Business', 'expansion')
 
     <main>
+   
+  @if($board == 'dashboard')   
+    @foreach($eventoo as $evento)
+        <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                      @else
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                    @endif 
+                    <div class="round-circle">{{$evento->edition}}</div> 
+                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @else
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @endif 
+                  </div>  
+                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                </div>
+
+                <div class="col-3  p-0">
+                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <div class="container d-lg-none">
+           <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
+           
+        <div class=" my-sliderOffers">
+            <ul class="list-unstyled fs-sm  p-2">
+                <li class="d-flex justify-content-between p-0 m-0">
+                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+            </ul>
+
+            <ul class="list-unstyled fs-sm  p-2">
+                <li class="d-flex justify-content-between p-0 m-0">
+                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+            </ul>
+          
+            <ul class="list-unstyled fs-sm  p-2">
+              <li class="d-flex justify-content-between p-0 m-0">
+              <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+              <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+            </ul>
+        </div>
+
+      </div>
+  @endif
+
       <!--header-->
       <div class="page-title-overlap bg-accent pt-4 d-none d-sm-block">
         <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
@@ -433,7 +498,53 @@
         </div>
       </div>
 
-      <div class="offcanvas offcanvas-start show" data-bs-toggle="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 140px;">                  
+      {{--<div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 4.5rem;">
+        <a href="/" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+          <svg class="bi pe-none" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          <span class="visually-hidden">Icon-only</span>
+        </a>
+        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+          <li class="nav-item">
+            <a href="#" class="nav-link active py-3 border-bottom rounded-0" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Home" data-bs-original-title="Home">
+              <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Home"><use xlink:href="#home"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
+              <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#speedometer2"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
+              <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#table"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
+              <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"></use></svg>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
+              <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"></use></svg>
+            </a>
+          </li>
+        </ul>
+        <div class="dropdown border-top">
+          <a href="#" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>--}}
+
+              <div class="offcanvas offcanvas-start show" data-bs-toggle="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"  style="width: 4.5rem;">                  
                 <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">    
 
                   
@@ -442,109 +553,43 @@
 
                       <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                         <div class="d-flex w-100 align-items-center justify-content-between">
-                          <normal class="mb-1">Products</normal>
+                          
                           <small><i class="bi bi-chevron-right"></i></small>
                         </div>
-                        <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
+                      <div class="col-10 mb-1 small fw-lighter">Search</div>
                       </a>
-                      @if(Auth::check())
-                        <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                          <div class="d-flex w-100 align-items-center justify-content-between">
-                            <normal class="mb-1">Your Orders</normal>
-                            <small>
-                            @if (Auth::check()) 
-                              <i class="bi bi-chevron-right"></i>
-                              @else
-                              <i class="bi bi-lock-fill"></i>
-                              
-                              @endif
-                            </small>
-                          </div>
-                          <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
-                        </a>
-                      @endif
-                      {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                          <normal class="mb-1">COI Recommends</normal>
-                          <small><i class="bi bi-chevron-right"></i></small>
-                        </div>
-                        <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
-                      </a>--}}
+                     
+                     
 
-                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <a href="#" class=" border-0 list-group-item px-1 list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                         <div class="d-flex w-100 align-items-center justify-content-between">
-                          <normal class="mb-1">Resources</normal>
+                          
                           <small><i class="bi bi-chevron-right"></i></small>
                         </div>
-                        {{--<div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>--}}
+                        <div class="col-10 mb-1 fs-sm fw-lighter d-flex w-100 align-items-center justify-content-between">Add Event</div>
                       </a>
 
-                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <a href="#" class=" border-0 list-group-item px-1 list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                         <div class="d-flex w-100 align-items-center justify-content-between">
-                          <normal class="mb-1">Inspiration</normal>
                           <small><i class="bi bi-chevron-right"></i></small>
                         </div>
-                        {{--<div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>--}}
+                        <div class="col-10 mb-1 fs-sm fw-lighter ">Advertise</div>
                       </a>
                                                                     
-                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <a href="#" class=" border-0 list-group-item px-1 list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                         <div class="d-flex w-100 align-items-center justify-content-between">
-                          <normal class="mb-1">Pricing</normal>
                           <small><i class="bi bi-chevron-right"></i></small>
                         </div>
-                      
+                        <div class="col-10 mb-1 fs-sm fw-lighter ">Profile</div>
                       </a>
 
-                      <a href="#" class=" list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                          <normal class="mb-1">Talk to Sales</normal>
-                        </div>
-                      </a>
-
-
-                      {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                              <normal class="mb-1">Offers</normal>
-                              <small><i class="bi bi-chevron-right"></i></small>
-                            </div>
-                            <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
-                          </a>
-
-                          <a href="{{route('user.profile')}}" class=" border-0 list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                              <normal class="mb-1">Accounts & Settings</normal>
-                              <small><i class="bi bi-chevron-right"></i></small>
-                            </div>
-                            <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
-                      </a>--}}
-                      
-                      @if(Auth::check())
-                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                          <div class="d-flex w-100 align-items-center justify-content-between">
-                            <normal class="mb-1">Logout</normal>
-                            <small><i class="bi bi-chevron-right"></i></small>
-                          </div>
-                          <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
-                        </a>
-                        <form id="logout-form" action="{{route('logout')}}" method="POST">
-                          @csrf
-                        </form>
-                      @endif
-
-                      {{--<a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                              <normal class="mb-1">Help & Support</normal>
-                              <small><i class="bi bi-chevron-right"></i></small>
-                            </div>
-                            <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
-                          </a>--}}
                   </div>
 
                 </div>
               </div>
 
 
-                  <div class="handheld-toolbar border-top-0">
+                  {{--<div class="handheld-toolbar border-top-0">
                     <div class="container py-4">
                       <div class="col-sm-12 ">
                         <div class="small fw-lighter">Product updates</div>
@@ -567,6 +612,109 @@
 
 
                     </div>
-                  </div>
+                  </div>--}}
+
+
+  @if( $board == 'search')        
+    <div class="container my-5 mx-auto">
+        <div class="mx-auto my-5"> 
+            <div class=" d-flex row">
+                <p >Let's Create Event Together</p>
+               
+      
+                @foreach($selectedcategory as $catego)
+                    <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
+                    {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
+                    </a>
+                @endforeach
+
+                <div class="col-lg-8 col-sm-7 ">
+                    <input type="text" class="form-control" placeholder="Search your Category..." wire:model.lazy="searchTerm">
+                    <a class="btn btn-primary">Search</a>
+                </div>
+               
+            </div>
+        
+            @if(is_null($searchTerm))
+            @else
+
+                @if($searchcat->count() > 0)
+                    <form wire:submit.prevent="updateEvent">      
+                        <div class="row mb-5 pb-2" wire:model="checkvalue">
+
+                            @foreach ($searchcat as $franchise) 
+                            {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                            <div class=" col col-auto my-1 px-2"> 
+                            <input class="form-check-input" type="checkbox"   value="{{$franchise->id}}"  wire:model="checkvalue">{{$franchise->tag}}
+                            </div>
+                            @endforeach
+                            <div>@json($checkvalue)</div>
+                            
+                        </div>
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                @else
+                    <div class="small bold">Sorry, we could found relevant industry. You can upload </div>
+
+                    <form wire:submit.prevent="updatetag">
+                        <input type="text" placeholder="tag" wire:model="tag">
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                @endif
+
+            @endif
+        </div>
+    </div>
+  @endif
+
+  @if( $board == 'profile')
+     <form wire:submit.prevent="likesUser">
+      <input type="email"  placeholder="email" wire:model="email">
+      <input type="text" placeholder="name" wire:model="name">
+      <input type="number" placeholder="phone" wire:model="phone">
+      <input type="number" placeholder="exp" wire:model="exp">
+      <input type="text" placeholder="designation" wire:model="designation">
+      <input type="text" placeholder="industry" wire:model="industry">
+      <button type="submit">Submit</button>
+     </form>
+  @endif
+
+
+  @if($board == 'searchEvent')
+     <form wire:submit.prevent="searchEvent">
+      <input type="text" placeholder="tag" wire:model="tag">
+      <input type="text" placeholder="edition" wire:model="edition">
+      <input type="text" placeholder="city" wire:model="city">
+      <button type="submit">Search</button>
+     </form>
+  @endif                  
 
     </main>
+    @push('scripts')
+          <script>
+            var slider = tns({
+              "container": '.my-sliderOffers',  
+              "responsive": {
+                "300": {
+                  "items": 2,
+                  "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": false,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
+                  "nav": false,
+                  "fixedWidth": 200,
+                },
+                "500": {
+                  "items": 3,
+                  "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": true,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
+                }
+              },
+              
+            });
+          </script>
+    @endpush
