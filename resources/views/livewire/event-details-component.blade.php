@@ -390,19 +390,20 @@
 
                   <!-- Card -->
                   <div class="row">
-                  @foreach($pavillion as $pav)
-                    <div class="col-4 card border-0 px-2">
-                      <img src="{{url('assets/image/exhibition/'.$pav->image)}}" class="card-img-top" alt="Card image">
-                     
-                      <div class="card-image-overlay" >
-                        <h5 class="card-title text-light">{{$pav -> pavillion_name}}</h5>
-                        <p class="card-text fs-sm text-muted text-light">{{ $pav -> desc}}</p>
-                       
-                        <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary text-light">Learn more</a>
+                    @foreach($pavillion as $pav)
+                      <div class="col-4 card border-0 px-2">
+                        <img src="{{url('assets/image/exhibition/'.$pav->image)}}" class="card-img-top" alt="Card image">
+                      
+                        <div class="card-image-overlay" >
+                          <h5 class="card-title text-light">{{$pav -> pavillion_name}}</h5>
+                          <p class="card-text fs-sm text-muted text-light">{{ $pav -> desc}}</p>
+                        
+                          <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary text-light">Learn more</a>
+                        </div>
                       </div>
-                    </div>
-                  @endforeach
+                    @endforeach
                   </div>
+                  
                   <div class="row">
                   <!-- Card -->
                   <div class=" col-4 card border-0 px-0 hover-overlay shadow-1-strong">

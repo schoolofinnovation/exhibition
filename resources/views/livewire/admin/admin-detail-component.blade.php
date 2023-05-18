@@ -305,6 +305,29 @@
         </div>
     </div>
 
+{{--hastags--}}
+<div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0">#</div> 
+               
+                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+            </div>
+
+            <div class="col-7  p-0">
+              {{$hastag->count()}}
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($hastag->organiser))
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag' ])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag'])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
 
     {{--organiser--}}
     <div class="container my-3">

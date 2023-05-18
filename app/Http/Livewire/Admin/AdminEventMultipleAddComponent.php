@@ -5,8 +5,10 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Expo;
+use App\Models\Hashtag;
 use App\Models\Sector;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -44,8 +46,9 @@ class AdminEventMultipleAddComponent extends Component
     public $venue;
 
     public $formm;
-
     public $image;
+    public $status;
+    public $admstatus;
 
     public function generateSlug()
     {
@@ -83,6 +86,8 @@ class AdminEventMultipleAddComponent extends Component
         $this->image = $fattribute->image;
 
         $this->formm = $formm;
+        $this->status = '1';
+        $this->admstatus = '0';
         
     }
 
@@ -131,6 +136,8 @@ class AdminEventMultipleAddComponent extends Component
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
     }
+
+    
 
     public function updateWeb()
     {

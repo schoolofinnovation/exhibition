@@ -287,6 +287,32 @@
                     @endforeach
                 @endif
 
+                @if($formm == 'add-hastag')
+                    <form wire:submit.prevent="addHastag">
+                        <div class="col-sm-6 mb-3">
+                            <label class="form-label" for="unp-standard-price">Create Hashtag 
+                            </label>
+                            <div class="input-group">
+                            <input class="form-control" type="text" wire:model.lazy="hastag">
+                            </div>
+                            @error('hastag')
+                            <div class="form-text">Create hashtag, separate with comma </div>
+                            <div class="form-text">{{$message}}</div>
+                            @enderror
+                        </div>
+                        <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
+                    </form>
+
+                    <div>
+                       <span class="badge">#{{$hastag}}</span> 
+                    </div>
+
+                    <div class="d-flex badgeseTag pb-2">
+                        @foreach($hastag as $cat)
+                            <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}</span>
+                        @endforeach
+                    </div>
+                @endif
                 
 
                 @if($formm == 'detailPavillion')

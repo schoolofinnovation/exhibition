@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Http\Livewire\Seller\HastagComponent;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Denco;
 use App\Models\Event;
+use App\Models\Hashtag;
 use App\Models\Pavillion;
 use App\Models\Speaker;
 use App\Models\Sponsership;
@@ -62,7 +64,8 @@ class AdminDetailComponent extends Component
         $pavillion = Pavillion::where('event_id',  $event)->get();
         $sponsership = Sponsership::where('event_id' , $event)->get();
         $participants = Brand::where('event_id' , $event)->get();
+        $hastag = Hashtag::where('event_id' , $event)->get();
 
-        return view('livewire.admin.admin-detail-component',['participants'=>$participants,'speaker'=>$speaker,'sponsership'=>$sponsership,'pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
+        return view('livewire.admin.admin-detail-component',['hastag'=>$hastag,'participants'=>$participants,'speaker'=>$speaker,'sponsership'=>$sponsership,'pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
     }
 }
