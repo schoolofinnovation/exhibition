@@ -39,6 +39,7 @@ class AdminEventMultiParticipantsComponent extends Component
     public $name;
     public $searchTerm;
     public $checkvalue;
+    public $hastag;
     
     
     Use WithFileUploads;
@@ -215,20 +216,27 @@ class AdminEventMultiParticipantsComponent extends Component
 
     public function addHastag()
     {
-        $this->validate([
-            'hastag'=>'required', 
-        ]);
-
-        $newEvent = new Hashtag();
-        $newEvent->hastag = $this->hastag;
-        $newEvent->event_id = $this->event_id;
-        $newEvent->user_id = Auth::user()->id;
-        $newEvent->status = $this->status;
-        $newEvent->admstatus = $this->admstatus;
-        $newEvent->save();
+        $rti = Str::replace('  ',' ',$this->hastag);
+        $ret = explode(",", $rti);
+        foreach($ret as $tre)
+        {
+            $newEvent = new Hashtag();
+            $newEvent->hastag = $tre;
+            $newEvent->event_id = $this->event_id;
+            $newEvent->user_id = Auth::user()->id;
+            $newEvent->status = $this->status;
+            $newEvent->admstatus = $this->admstatus;
+            $newEvent->save();
+        }
         return redirect()->back();
         session()->flash('message','Thanks for sharing your review.');
         
+    }
+
+    public function Hashdelete($id)
+    {   $job = Hashtag::find($id);
+        $job->delete();
+        session()->flash('message','info has been deleted Successfully');
     }
 
     public function render()
@@ -240,8 +248,8 @@ class AdminEventMultiParticipantsComponent extends Component
         $pavillion = Pavillion::where('event_id', $evento->id)->get();
         $sponser = Sponsership::where('event_id', $evento->id)->get();
         $speaker = Speaker::where('event_id', $evento->id)->get();
-        $hastag = Hashtag::where('event_id', $evento->id)->get();
-        //dd($pavillion);
-        return view('livewire.admin.admin-event-multi-participants-component',['hastag' => $hastag,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
+        $hastago = Hashtag::where('event_id', $evento->id)->get();
+        //dd($hastag);
+        return view('livewire.admin.admin-event-multi-participants-component',['hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

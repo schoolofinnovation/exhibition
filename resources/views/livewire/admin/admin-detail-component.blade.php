@@ -320,7 +320,7 @@
             </div>
 
             <div class="col-3 p-0">
-               @if(is_null($hastag->organiser))
+               @if(is_null($hastag))
                 <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag' ])}}" class="btn btn-primary btn-sm">Add</a>
                @else
                 <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag'])}}" class="btn btn-primary btn-sm">Edit</a>

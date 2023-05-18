@@ -65,7 +65,8 @@ class AdminDetailComponent extends Component
         $sponsership = Sponsership::where('event_id' , $event)->get();
         $participants = Brand::where('event_id' , $event)->get();
         $hastag = Hashtag::where('event_id' , $event)->get();
-
+        dd($hastag);
+        
         return view('livewire.admin.admin-detail-component',['hastag'=>$hastag,'participants'=>$participants,'speaker'=>$speaker,'sponsership'=>$sponsership,'pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
     }
 }

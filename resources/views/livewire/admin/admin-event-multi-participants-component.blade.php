@@ -308,9 +308,13 @@
                     </div>
 
                     <div class="d-flex badgeseTag pb-2">
-                        @foreach($hastag as $cat)
-                            <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}</span>
+                        @foreach($hastago as $cat)
+                            <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}
+                                <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Hashdelete({{$cat->id}})"> <i class="bi bi-x me-2"></i> </a> 
+                            
+                            </span>
                         @endforeach
+                        
                     </div>
                 @endif
                 
