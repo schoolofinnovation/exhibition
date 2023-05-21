@@ -43,6 +43,8 @@ class AdminEventEditComponent extends Component
     public $city;
     public $venue;
 
+    public $board;
+
 
     public function generateSlug()
     {

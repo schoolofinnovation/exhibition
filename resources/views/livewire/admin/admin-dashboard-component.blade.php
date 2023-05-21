@@ -306,7 +306,7 @@
 
                                 <div class="col-3 p-0">
                                   
-                                    <a href="{{route('admin.eventEdit',['event_id' => $franchise->id])}}" class="btn btn-primary btn-sm"> <i class="bi bi-x"></i> </a>
+                                    <a href="{{route('admin.eventEdit',['event_id' => $franchise->id, 'board' => 'edit'])}}" class="btn btn-primary btn-sm"> <i class="bi bi-x"></i> </a>
                                  
                                 </div>
                               </div>
@@ -439,7 +439,7 @@
                                           <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
                                       @endif
                                       <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $evento->id , 'board' => 'edit'])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id  , 'board' => 'edit'])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
                                       <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
                                   </ul>
                               </div>        
@@ -542,7 +542,7 @@
                                           <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
                                       @endif
                                       <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id,'board' => 'edit'])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
                                       <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
                                   </ul>
                               </div>        
@@ -632,7 +632,7 @@
                                             <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
                                         @endif
                                         <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                        <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id, 'board' => 'edit'])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
                                         <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
                                     </ul>
                                 </div>        
@@ -721,7 +721,7 @@
                                           <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
                                       @endif
                                       <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                      <li><a class="dropdown-item" href="{{route('admin.eventEdit',['event_id' => $info->id, 'board' => 'edit'])}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
                                       <li><a class="dropdown-item" href="{{route('adminevent.detail',['slug' => $info->slug])}}"><i class="bi bi-note me-2"></i>Details</a></li>
                                   </ul>
                               </div>        
