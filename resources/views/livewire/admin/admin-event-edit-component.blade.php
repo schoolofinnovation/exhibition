@@ -14,7 +14,81 @@
                 <a class="btn btn-primary btn-sm" href="#"><i class="ci-sign-out me-2"></i>Sign out</a>
             </div>
            
-            
+            @if($board == 'basic')
+                <form wire:submit.prevent="updateBasicEvent">
+                    <div class="row g-1">
+
+                        <div class="col-sm-3">
+                        <label class="form-label" for="seniority">Type</label>
+                        <select class="form-control" type="text"   wire:model.lazy="eventype"  placeholder="Provide short title of your request">
+                            <option >Choose</option>
+                            <option value="award">Award</option>
+                            <option value="conference">Conference</option>
+                            <option value="expo">Exhibition</option>
+                            <option value="festival">Festival</option>
+                            <option value="network">Network</option>
+                            </select>
+                            @error('eventype') <div class="invalid-feedback"> {{$message}} </div> @enderror
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label class="form-label" for="cf-name">Event Name</label>
+                            <input class="form-control" type="text" placeholder="Your Event"   wire:model="eventname" wire:keyup="generateSlug" required="">
+                            @error( 'eventname' ){{ $message}}@enderror
+                        </div>
+
+                        <div class="col-sm-1">
+                            <label class="form-label" for="cf-name">Edition</label>
+                            <input class="form-control" type="text" placeholder="Your Edition" wire:model.lazy="edition" required="">
+                            @error( 'edition' ){{ $message}}@enderror
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label class="form-label" for="cf-name">Start Date</label>
+                            <input class="form-control" type="date"  wire:model.lazy="startdate" required="">
+                            @error('startdate' ){{ $message}}@enderror
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label class="form-label" for="cf-name">End Date</label>
+                            <input class="form-control" type="date"  wire:model.lazy="enddate" required="">
+                            @error( 'enddate' ){{ $message}}@enderror
+                        </div>
+
+                        
+                        <div class="col-sm-3">
+                            <label class="form-label" for="cf-name">Venue</label>
+                            <input class="form-control" type="text" placeholder="Your City" wire:model.lazy="venue" required="">
+                            @error( 'venue' ){{ $message}}@enderror
+                        </div>
+
+                        <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">City</label>
+                        <input class="form-control" type="text" placeholder="Event City" wire:model="city" required="">
+                        @error('city'){{ $message}}@enderror
+                        </div>
+                        
+                        <div class="col-sm-2">
+                            <label class="form-label" for="cf-name">Visitor</label>
+                            <input class="form-control" type="text" placeholder="Your Visitor" wire:model.lazy="auidence" required="">
+                            @error('auidence'){{ $message}}@enderror
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label class="form-label" for="cf-name">Exhibitor</label>
+                            <input class="form-control" type="text" placeholder="Your Exhibitor" wire:model.lazy="exhibitors" required="">
+                            @error('exhibitors'){{ $message}}@enderror
+                        </div>
+                    
+                    </div>
+                    
+                    
+
+                    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                </form>
+            @endif
+
+            @if($board == 'edit')
                 <form wire:submit.prevent="updateEvent">
                     <div class="row g-1">
 
@@ -130,7 +204,8 @@
 
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
                 </form>
-           
+            @endif
+
         </div>
 
     <div class="handheld-toolbar">
