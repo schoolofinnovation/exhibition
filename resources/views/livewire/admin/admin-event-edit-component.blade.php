@@ -217,7 +217,7 @@
         </a>
        
 
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventEdit',['event_id' => $evento->id])}}">
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventEdit',['event_id' => $evento->id,'board' => 'edit'])}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
         <span class="handheld-toolbar-label">Edit</span></a>
         

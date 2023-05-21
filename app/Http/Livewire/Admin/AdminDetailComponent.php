@@ -19,6 +19,7 @@ class AdminDetailComponent extends Component
     public $category_id;
     public $webo;
     public $link;
+    public $formm;
 
 
     public function mount($slug)
