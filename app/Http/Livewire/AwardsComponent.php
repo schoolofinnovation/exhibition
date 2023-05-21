@@ -29,6 +29,7 @@ class AwardsComponent extends Component
     public $moreUsers;
     public $EvenmoreUsers;
     public $board;
+    public $country;
 
     public function generateSlug()
     {
@@ -47,6 +48,7 @@ class AwardsComponent extends Component
         $event->startdate = $this->startdate;
         $event->venue = $this->venue;
         $event->city = $this->city;
+        $event->country = 'india';
         $event->eventype = $this->eventype;
         $event->level  = 3;
         $event->email = $this->email;

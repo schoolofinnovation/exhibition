@@ -67,7 +67,7 @@ class AdminEventMultiParticipantsComponent extends Component
             'business'=>'required',
             'nostall'=>'required',
             'desc'=>'required',
-            'image'=>'required',
+            //'image'=>'required',
             'startdate'=>'required',
             'lastdate'=>'required',
         ]);
@@ -88,7 +88,7 @@ class AdminEventMultiParticipantsComponent extends Component
         $newEvent->status = $this->status;
         $newEvent->admstatus = $this->admstatus;
         $newEvent->save();
-        return redirect()->route('seller.dashboard');
+        //return redirect()->route('seller.dashboard');
         session()->flash('message','Thanks for sharing your review.');
     }
 
@@ -216,8 +216,9 @@ class AdminEventMultiParticipantsComponent extends Component
 
     public function addHastag()
     {
-        $rti = Str::replace('  ',' ',$this->hastag);
-        $ret = explode(",", $rti);
+        $rti = Str::replace(' ','', $this->hastag);
+        $rtoi = Str::replace('#',',',$rti);
+        $ret = explode("," , $rtoi);
         foreach($ret as $tre)
         {
             $newEvent = new Hashtag();

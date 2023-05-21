@@ -18,6 +18,7 @@ use Spatie\CalendarLinks\Link;
 use DateTime;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class EventDetailsComponent extends Component
 {
@@ -25,6 +26,9 @@ class EventDetailsComponent extends Component
     public $eventname;
     public $event_id;
     public $avgrating;
+    //public $producStartdate;
+    public $productExpiryDate;
+
     
     public function mount($slug)
     {
@@ -48,9 +52,10 @@ class EventDetailsComponent extends Component
 
         $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
 
+        $detailProductprice = Ticket::where('event_id', '555')->get();
+        $productPrice = $detailProductprice->min('price');
+       
         
-        //dd($event);
-        $productPrice = Ticket::where('event_id', $event->id)->min('price');
         $franchises = Franchise::paginate(4);
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
         $speaker = Speaker::where('admstatus','1')->where('status','1')->where('event_id',$event->id)->where('entity','speaker')->get();
@@ -60,6 +65,7 @@ class EventDetailsComponent extends Component
 
         $ticketOrExhibit = Ticket::where('event_id', $event -> id)->count();
 //dd($ticketOrExhibit);
+
           if (Auth::check()) 
         {
             $rating = Rate::where('user_id', Auth::user()->id)->value('rate');
@@ -70,9 +76,13 @@ class EventDetailsComponent extends Component
           $rate = Rate::get();
           $rating = Rate::get();
         }
+
+        //dd($rating);
         $category = Denco::where('event_id', $event->id)->get();
          //dd($event);
-        return view('livewire.event-details-component',['pavillion'=>$pavillion,'category'=>$category,
+        return view('livewire.event-details-component',[
+                                                        'detailProductprice' => $detailProductprice,
+                                                        'pavillion'=>$pavillion,'category'=>$category,
                                                         'rating'=> $rating,
                                                         'rate'=> $rate,
                                                         'productPrice' => $productPrice,

@@ -173,7 +173,7 @@
                     
                         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
                             <div class="col  pr-0">
-                                <div class="h4 fw-light mb-0">Pav</div> 
+                                <div class="h4 fw-light mb-0">{{$pav->pavillion_name}}</div> 
                             
                                 <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
                                 {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}

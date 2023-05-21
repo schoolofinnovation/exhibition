@@ -177,6 +177,9 @@
                @endif
             </div>
         </div>
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+        {{Str::limit($evento->desc,170)}}
+        </div>
     </div>
     
     {{--webo--}}
@@ -184,7 +187,7 @@
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
                 <div class="h4 fw-light mb-0">Web</div> 
-                <div class="round-circle" ><a class="btn btn-primary btn-sm" href="{{$evento->link}}"><i class="bi bi-bookmark"></i></a></div> 
+                <div class="round-circle" ></div> 
             </div>
 
             <div class="col-7  p-0"> 
@@ -192,7 +195,7 @@
                 <div class="text-muted fs-sm text-start">Website</div>
               @else
                 <div class="fs-md fw-normal text-start">
-                <a class="btn btn-primary btn-sm" href="{{$evento->link}}">{{$evento->link}}</a></div>
+                <a class="btn btn-primary btn-sm" href="{{$evento->link}}">Web link</a></div>
               @endif
             </div>
 
@@ -306,7 +309,7 @@
     </div>
 
 {{--hastags--}}
-<div class="container my-3">
+  <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
                 <div class="h4 fw-light mb-0">#</div> 

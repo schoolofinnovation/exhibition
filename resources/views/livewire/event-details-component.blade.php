@@ -178,7 +178,8 @@
               </div>-->
               <div class="col-lg-4 col-md-5 pt-2 pb-0">
                   <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
-                  <span class="fs-md fw-bold"> <i class="bi bi-star-fill text-primary me-1"></i> 7.1/10 </span><span class="d-inline-block align-middle fs-sm"> 34.7K votes</span> <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
+                  <span class="fs-md fw-bold">
+                     <i class="bi bi-star-fill text-primary me-1"></i> 7.1/10 </span><span class="d-inline-block align-middle fs-sm"> 34.7K votes</span> <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
               </div>
 
               <ul class="list-unstyled  bg-secondary py-2">
@@ -186,12 +187,20 @@
                         $event->id = $avgrating;
                       @endphp
 
-                    @if( $rate == $avgrating)
+                    @if(Auth::check())
+
+
+                        @php
+                          $checkout = Auth::user()->id;
+                          //$find = Rate::where('user_id', $checkout->id)->value('event_id');
+                          //$findevent = $find->where('event_id',$event->id)
+                        @endphp
                         <li class="d-flex justify-content-between px-2 m-0">
                         <span cass="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
                         <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> {{$rating}} /10</a></span></li>
                         
                       @else
+
                         <li class="d-flex justify-content-between px-2 m-0 lh-1">
                         <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
                         <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
@@ -1052,6 +1061,8 @@
               
             </div>
 
+           {{$producStartdate}}
+
     </main>
 
 
@@ -1070,9 +1081,9 @@
                 "name": "{{$event->venue}}",
                 "address": {
                   "@type": "PostalAddress",
-                {{--"streetAddress": "100 West Snickerpark Dr",
-                  "addressLocality": "Snickertown",
-                  "postalCode": "19019",--}}
+                "streetAddress": "{{$event->venue}}",
+                  "addressLocality": "{{$event->venue}}",
+                  "postalCode": "110011",
                   "addressRegion": "{{$event->city}}",
                   "addressCountry": "IN"
                 }
@@ -1083,15 +1094,15 @@
               "description": "{{$event->desc}}",
               "offers": {
                 "@type": "Offer",
-                {{--"url": "https://www.example.com/event_offer/12345_201803180430",
-                "price": "30",
-                "priceCurrency": "USD",
-                "availability": "https://schema.org/InStock",
-                "validFrom": "2024-05-21T12:00"--}}
+                "url": "{{route('event.product',['slug' => $event->slug])}}",
+                "price": "{{$productPrice}}",
+                "priceCurrency": "INR",
+                "availability": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
+                "validFrom": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}"
               },
               "performer": {
-                {{--"@type": "PerformingGroup",
-                "name": "Kira and Morrison"--}}
+                "@type": "PerformingGroup",
+                "name": "The Exhibition Network"
               },
               "organizer": {
                 "@type": "Organization",

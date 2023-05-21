@@ -1768,7 +1768,7 @@
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
       @if($board == 'job')
-        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
+        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
           <span class="handheld-toolbar-icon">
           <i class="ci-filter-alt"></i></span>
           <span class="handheld-toolbar-label">Job</span>
@@ -1800,7 +1800,7 @@
             <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Event</span>
           </a>
           
-          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.blogpost')}}">
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
             <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
             <span class="handheld-toolbar-label">Add</span>
           </a>

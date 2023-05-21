@@ -20,7 +20,7 @@ class ProductComponent extends Component
     public $item;
     
     use WithPagination;
-
+    
     public function mount($slug)
     {
        $this->slug = $slug;
