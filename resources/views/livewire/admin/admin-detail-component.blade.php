@@ -220,14 +220,14 @@
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">Ptr</div> 
+                <div class="h4 fw-light mb-0">{{$participants->count()}}</div> 
                
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                <div class="round-circle" >Ptr</div> 
+                
             </div>
 
             <div class="col-7  p-0">
-              {{$participants->count()}}
+              
             </div>
 
             <div class="col-3 p-0">
@@ -244,14 +244,14 @@
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">Spk</div> 
+                <div class="h4 fw-light mb-0">{{$speaker->count()}}</div> 
                
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                <div class="round-circle">Spk</div> 
+                
             </div>
 
             <div class="col-7  p-0">
-             {{$speaker->count()}}
+             
             </div>
 
             <div class="col-3 p-0">
@@ -268,14 +268,14 @@
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">Pav</div> 
+                <div class="h4 fw-light mb-0">{{$pavillion->count()}}</div> 
                
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                <div class="round-circle">Pav</div> 
+                
             </div>
 
             <div class="col-7  p-0">
-              {{$pavillion->count()}}
+              
             </div>
 
             <div class="col-3 p-0">
@@ -292,14 +292,13 @@
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">Spr</div> 
+                <div class="h4 fw-light mb-0">{{$sponsership->count()}}</div> 
                
                 <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
-            </div>
+                            </div>
 
             <div class="col-7  p-0">
-            {{$sponsership->count()}}
+            
             </div>
 
             <div class="col-3 p-0">
@@ -316,14 +315,14 @@
       <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">#</div> 
+                <div class="h4 fw-light mb-0">{{$hastag->count()}}</div> 
                
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                <div class="round-circle" ><i class="bi bi-hastag"></i></div> 
+                
             </div>
 
             <div class="col-7  p-0">
-              {{$hastag->count()}}
+              
             </div>
 
             <div class="col-3 p-0">
