@@ -38,8 +38,12 @@ class AdminEventMultiParticipantsComponent extends Component
     public $plan;
     public $name;
     public $searchTerm;
-    public $checkvalue;
+    public $checkvalue = [];
     public $hastag;
+
+    public $pavill_id = null;
+    public $sponser_id = null;
+    public $partner;
     
     
     Use WithFileUploads;
@@ -149,7 +153,6 @@ class AdminEventMultiParticipantsComponent extends Component
 
     }
 
-
     public function updateSpeaker()
     {
         $rti = Str::replace('  ',' ',$this->name);
@@ -168,8 +171,6 @@ class AdminEventMultiParticipantsComponent extends Component
         }
 
     }
-
-    
 
     public function updateEvent()
     {
@@ -192,8 +193,6 @@ class AdminEventMultiParticipantsComponent extends Component
     }
 
     //$previous = url()->previous();
-
-    
 
     public function updatetag()
     {   $rti = Str::replace('  ',' ',$this->tag);
@@ -234,6 +233,33 @@ class AdminEventMultiParticipantsComponent extends Component
         
     }
 
+
+
+    public function participantToAdd()
+    {
+        $sectry = json_encode($this->checkvalue);
+        $tryi = json_decode($sectry);
+        //$expoo = explode("," , $sectry );
+        foreach($tryi as $trey)
+        {
+            $fattribute = new Denco();
+            $fattribut = Event::find($this->event_id);
+            $fattribute->event_id = $fattribut->id;
+            $fattribute->expo_id = $trey;
+            $fattribute->sponsership_id = $trey->sponser_id;
+            $fattribute->pavillion_id = $trey->pavill_id;
+            $fattribute->partner = $trey->partner;
+            
+            $fattribute->save();
+        }
+        
+        //dd($sectry, $expoo, $tryi);
+       
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
+    }
+
+
     public function Hashdelete($id)
     {   $job = Hashtag::find($id);
         $job->delete();
@@ -250,7 +276,8 @@ class AdminEventMultiParticipantsComponent extends Component
         $sponser = Sponsership::where('event_id', $evento->id)->get();
         $speaker = Speaker::where('event_id', $evento->id)->get();
         $hastago = Hashtag::where('event_id', $evento->id)->get();
+        $participants = Brand::where('event_id', $evento->id)->get();
         //dd($hastag);
-        return view('livewire.admin.admin-event-multi-participants-component',['hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
+        return view('livewire.admin.admin-event-multi-participants-component',['participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

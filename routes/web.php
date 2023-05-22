@@ -143,6 +143,7 @@ use App\Http\Livewire\Admin\AdminAccountComponent;
 use App\Http\Livewire\Admin\AdminClientComponent;
 use App\Http\Livewire\Admin\AdminDetailComponent;
 use App\Http\Livewire\Admin\AdminEventEditComponent;
+use App\Http\Livewire\Admin\AdminEventMultiDetailComponent;
 use App\Http\Livewire\Admin\AdminEventMultiParticipantsComponent;
 use App\Http\Livewire\Admin\AdminEventMultipleAddComponent;
 use App\Http\Livewire\Admin\AdminLandingComponent;
@@ -307,6 +308,9 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/multi/{event_id}/detail/{formm}', AdminEventMultipleAddComponent::class)->name('admin.eventMultiEdit');
 
     Route::get('/admin/participants/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
+
+    Route::get('/admin/sub-details/{event_id}/add/{id}/business/{formm}', AdminEventMultiDetailComponent::class)->name('admin.multiSubDetails');
+
 
     Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
     Route::get('/admin/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');

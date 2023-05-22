@@ -159,6 +159,51 @@
                     </form>
 
                     
+                      
+                       <form wire:submit.prevent="participantToAdd">      
+                        <div class="row mb-5 pb-2" wire:model="checkvalue">
+
+                            @foreach ($participants as $participant) 
+                            {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                            <div class=" col col-auto my-1 px-2"> 
+                            <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue">{{$participant->brand_name}}
+                            </div>
+                            @endforeach
+                            <div>@json($checkvalue)</div>
+                            
+                        </div>
+                        @if($sponser->count() > 0)
+                            <select class="form-select flex-shrink-0"  wire:model="sponser_id">
+                            <option>Categories</option>
+                                @foreach ($sponser as $sponseroo)
+                                <option  value="no">No</option>
+                                <option  value="{{$sponseroo->id}}">{{$sponseroo->plan}}</option>
+                                @endforeach 
+                            </select>
+                        @else
+                        <small>Please active Sponser plan <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}"> Click</a></small>
+                        @endif
+
+                        @if($pavillion->count() > 0)
+                        <select class="form-select flex-shrink-0"  wire:model="pavill_id">
+                          <option>Pavillion</option>
+                                @foreach ($pavillion as $pavill)
+                                    <option  value="no">No</option>
+                                    <option  value="{{$pavill->id}}">{{$pavill->pavillion_name}}</option>
+                                @endforeach 
+                        </select>
+                        @else
+                        <small>Please active Pavillion plan <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addPavillion'])}}"> Click</a></small>
+                        @endif
+
+                        <input type="text" placeholder="partner" wire:model="partner"> </input>
+
+
+
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                   
+                    
                 @endif
 
 
@@ -193,9 +238,9 @@
 
                             <div class="col-3 p-0">
                             @if(is_null($pav->desc))
-                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav_id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
                             @else
-                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav_id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
                             @endif
                             </div>
                         </div>
