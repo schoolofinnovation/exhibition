@@ -179,7 +179,7 @@
                 </form>
             @endif
 
-            @if($formm = 'webo')
+            @if($formm == 'webo')
                 <form  wire:submit.prevent="updateEvent">
                     
                         <div class="col-sm-2">
