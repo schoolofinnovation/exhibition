@@ -294,7 +294,7 @@
             <div class="col  pr-0">
                 <div class="h4 fw-light mb-0">{{$sponsership->count()}}</div> 
                
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                <div class="round-circle" >Spo</div> 
                             </div>
 
             <div class="col-7  p-0">
@@ -317,7 +317,7 @@
             <div class="col  pr-0">
                 <div class="h4 fw-light mb-0">{{$hastag->count()}}</div> 
                
-                <div class="round-circle" ><i class="bi bi-hastag"></i></div> 
+                <div class="round-circle" >#</div> 
                 
             </div>
 
