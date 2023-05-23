@@ -190,7 +190,7 @@ class AdminDashboardComponent extends Component
       $business = Service::paginate(5);
       $fattributes = ProductAttribute::paginate(10);
 
-      $expoaward = Event::where('status','1')->where('admstatus','0')->orderBy('created_at','ASC')->paginate(10);
+      $expoaward = Event::where('status','1')->where('admstatus','0')->orderBy('created_at','ASC')->get();
       $expireplan = Event::whereDate('enddate','<=',  $mytime)->where('status','1')->where('admstatus','1')->orderBy('enddate','DESC')->get();
       
       //total event
