@@ -192,14 +192,14 @@ class AdminDashboardComponent extends Component
 dd($brandAttend,$ContactDetail);
     }
 
-    public function EventVisted($id)
-      { 
-        $client = Event::find($id);
-        $client->visited = $this->visited;
-        $client->save();
-        session()->flash('message','User  has been  deleted successfully');
-      }
-    
+    public function updateInspectionStatus($id, $status) 
+    {
+      $visited = Event::find($id);
+      $visited->status = $status;
+      $visited->save();
+      session()->flash('message','info has been deleted Successfully');
+      return redirect()->route('admin.dashboard', ['board' => 'client']);
+    }  
 
     public function render()
     {
