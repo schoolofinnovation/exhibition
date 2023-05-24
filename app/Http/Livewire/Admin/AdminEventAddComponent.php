@@ -53,6 +53,7 @@ class AdminEventAddComponent extends Component
         $this->slug = Str::slug($this->eventname,'-');
     }
 
+    
     public function newlist(){   
         $event = new Event();
         $event->eventname = $this->eventname;

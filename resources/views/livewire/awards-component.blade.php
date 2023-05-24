@@ -6,7 +6,7 @@
     @if($board == 'add-your-event')
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">
-                <p >Let's Create Event Together</p>
+                <p>Find your Event</p>
 
                 <div class="col-lg-8 col-sm-7">
                 <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
@@ -20,7 +20,7 @@
                     @else
                         
                         @if(count($monthwise) > 0)
-                        <p class="py-2 display-4 fw-light">Find your listed event.</p>
+                         <p class="py-2 small fw-light">Select your business event<a href="" value="">Click here</a></p>
                             <div class="row mb-5 pb-2 d-lg-none">
                                 @foreach ($monthwise as $franchise) 
                                     <div class="container  ">
@@ -51,8 +51,11 @@
                                         </div>
 
                                         <div class="col-3  p-0">
-                                        <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                            <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                            {{--<a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                                <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>--}}
+                                                
+                                            <a class="round-circle" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                                <i class="bi bi-chevron-double-right"></i></a> 
                                         </div>
                                     </div>
                                     </div>

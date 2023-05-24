@@ -5,7 +5,9 @@ namespace App\Http\Livewire\Admin;
 use App\Mail\EventToClient;
 use App\Mail\MonthlyEvent;
 use App\Models\Appliedjob;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Coupon;
 use App\Models\Denco;
 use App\Models\Event;
@@ -37,6 +39,18 @@ class AdminDashboardComponent extends Component
   public $searchTerm;
   public $findIDs = null;
   //public $shtdesc;
+
+  public $name;
+  public $contact;
+  public $designation;
+  public $email;
+
+  public $brand_name;
+  public $country;
+  public $link;
+  public $event_id;
+  public $visited;
+ 
     
     //career
     use WithPagination;
@@ -45,6 +59,7 @@ class AdminDashboardComponent extends Component
     {
         $this->board = $board;
         $this->month = Carbon::today()->format("m");
+        $this->visited = '1';
     }
     
     public function updateJobstatus($id, $status) 
@@ -158,6 +173,33 @@ class AdminDashboardComponent extends Component
       session()->flash('message','User  has been  deleted successfully');
     }
 
+    public function AddBrandAttend()
+    {
+       $brandAttend = new Brand();
+       $brandAttend->brand_name = $this->brand_name;
+       $brandAttend->event_id = $this->event_id;
+       $brandAttend->official_website = $this->link;
+       //$brandAttend->save();
+
+
+       $ContactDetail = new Contact();
+       $ContactDetail->brand_id = $brandAttend->id;
+       $ContactDetail->email = $this->email;
+       $ContactDetail->name = $this->name; 
+       $ContactDetail->contact = $this->contact;
+       $ContactDetail->designation = $this->designation;
+       //$ContactDetail->save();
+dd($brandAttend,$ContactDetail);
+    }
+
+    public function EventVisted($id)
+      { 
+        $client = Event::find($id);
+        $client->visited = $this->visited;
+        $client->save();
+        session()->flash('message','User  has been  deleted successfully');
+      }
+    
 
     public function render()
     {

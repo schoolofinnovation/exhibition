@@ -240,20 +240,22 @@ class AdminEventMultiParticipantsComponent extends Component
         $sectry = json_encode($this->checkvalue);
         $tryi = json_decode($sectry);
         //$expoo = explode("," , $sectry );
+        $sponso = $this->sponser_id;
+        $pavillo = $this->pavill_id;
         foreach($tryi as $trey)
         {
             $fattribute = new Denco();
             $fattribut = Event::find($this->event_id);
             $fattribute->event_id = $fattribut->id;
             $fattribute->expo_id = $trey;
-            $fattribute->sponsership_id = $trey->sponser_id;
-            $fattribute->pavillion_id = $trey->pavill_id;
+            $fattribute->sponsership_id = $sponso;
+            $fattribute->pavillion_id = $pavillo;
             $fattribute->partner = $trey->partner;
             
-            $fattribute->save();
+            //$fattribute->save();
         }
         
-        //dd($sectry, $expoo, $tryi);
+        dd($fattribute);
        
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);

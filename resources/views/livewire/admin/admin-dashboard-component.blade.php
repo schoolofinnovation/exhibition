@@ -60,7 +60,7 @@
               <!-- Nav tabs-->
               <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#requuest" data-bs-toggle="tab" role="tab">Request {{$expoaward->count()}}</a></li>
-                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm active" href="#details" data-bs-toggle="tab" role="tab">Monthly {{$monthwise->count()}}</a></li>
+                <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#details" data-bs-toggle="tab" role="tab">Monthly {{$monthwise->count()}}</a></li>
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab">Search {{$searchCat->count()}}</a></li>
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviewID" data-bs-toggle="tab" role="tab">ID </a></li>
               </ul>
@@ -125,7 +125,7 @@
                     </div>
 
                     <!-- Product details tab-->
-                    <div class="tab-pane fade show active" id="details" role="tabpanel">
+                    <div class="tab-pane fade" id="details" role="tabpanel">
                       <!-- details test tickets-->
                       <div class="d-flex flex-nowrap align-items-center pb-3">
                           <select class="form-select form-select-sm me-2"  wire:model="month">
@@ -823,6 +823,83 @@
             </div>
           </form>
         </div>
+
+        <div class="container">
+        <input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
+                        <div class="row mb-5 pb-2">
+                          @if(is_null($searchTerm))
+ 
+                           <div class="container">
+                            Find Some Events
+                           </div>  
+
+                          @else
+                            @foreach ($searchCat as $franchise) 
+                              <div class="container  ">
+                                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                  <div class="col  pr-0">
+                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                      @else
+                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+
+                                      @endif 
+                                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                  </div>
+
+                                  <div class="col-7  p-0">
+                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                                      {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                    <div class="text-muted fs-sm text-start">
+                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                      @else
+                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                      @endif 
+                                    </div>  
+                                    <div class="text-muted fs-sm text-start">{{$franchise -> venue}}, {{$franchise -> city}}</div>
+                                  </div>
+
+                                  <div class="col-3  p-0">
+                                   
+                                  <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$franchise->id}})"> 
+                                  <i class="bi bi-x me-2"></i> Delete</a>
+
+                                  </div>
+                                </div>
+                              </div>
+                            @endforeach
+                          @endif
+
+                        </div>
+        </div>
+
+<div class="container my-5">
+      <div class="small"> List meet-up brand</div>        
+
+      <form wire:submit.prevent="AddBrandAttend">
+        <input type="text" class="form-control" wire:model.lazy="event_id" placeholder="event_id">
+        <input type="text" class="form-control" wire:model.lazy="brand_name" placeholder="brand_name">
+        <input type="text" class="form-control" wire:model.lazy="country" placeholder="country">
+        <input type="text" class="form-control" wire:model.lazy="link" placeholder="link">
+
+        <input type="text" class="form-control" wire:model.lazy="name" placeholder="name">
+        <input type="text" class="form-control" wire:model.lazy="contact" placeholder="contact">
+        <input type="email" class="form-control" wire:model.lazy="email" placeholder="email">
+        <input type="text" class="form-control" wire:model.lazy="designation" placeholder="designation">
+        
+        <textarea type="text" class="form-control" wire:model.lazy="comment" placeholder="comment"></textarea>
+        <input type="text" class="form-control" wire:model.lazy="size" placeholder="size">
+        <input type="text" class="form-control" wire:model.lazy="grade" placeholder="grade">
+        <textarea type="text" class="form-control" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+
+        <input type="text" class="form-control" wire:model.lazy="email_request" placeholder="email_request">
+        <input type="text" class="form-control" wire:model.lazy="service_request" placeholder="service_request">
+        <input type="submit" class="btn btn-primary"></input>
+      </form>
+</div>
       @endif
 <!--Stop Client-->
 
