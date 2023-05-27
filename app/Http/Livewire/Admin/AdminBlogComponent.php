@@ -49,7 +49,7 @@ class AdminBlogComponent extends Component
 
         $blog->save();
         session()->flash('message',' Congrats, Blog has been posted Successfully. we are reviewing, it will flash on the platform very soon.'); 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('admin.dashboard',['board' => 'blog']);
     }
     
     public function render()

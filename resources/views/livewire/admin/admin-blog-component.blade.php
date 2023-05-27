@@ -22,7 +22,7 @@
             <div class="row">
               <div class="col-sm-4 mb-3 pb-2">
                 <label class="form-label" >Blog tittle</label>
-                <input class="form-control" type="text" wire:model.lazy="tittle"  wire:keyup="generateSlug"> 
+                <input class="form-control" type="text" wire:model="tittle"  wire:keyup="generateSlug"> 
               </div>
 
               <div class="col-sm-4 mb-3 pb-2">
