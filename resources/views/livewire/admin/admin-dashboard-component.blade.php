@@ -1057,7 +1057,7 @@
                                   </div>
 
                                   <div class="col-7  p-0">
-                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('blog.details',['slug' => $franchise->slug])}}">
                                       {{ucwords(trans(Str::limit($franchise->tittle, 24)))}}</a></div>
                                     <div class="text-muted fs-sm text-start">
                                     {{ucwords(trans(Str::limit($franchise->desc, 24)))}}
@@ -1066,8 +1066,15 @@
                                   </div>
 
                                   <div class="col-3  p-0">
-                                  <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="bloGdelete({{$franchise->id}})"> 
-                                  <i class="bi bi-x me-2"></i> Delete</a>
+                                    <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="bloGdelete({{$franchise->id}})"> 
+                                    <i class="bi bi-x me-2"></i></a>
+                                    @if(is_null($franchise->image))
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $franchise->id, 'formm' => 'image' ])}}">
+                                          Add</a>
+                                    @else
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                                      <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                    @endif
                                   </div>
                                 </div>
                               </div>

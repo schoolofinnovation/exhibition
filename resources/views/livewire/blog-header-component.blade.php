@@ -27,7 +27,7 @@
 							<div class="dropdown-menu dropdown-menu-end">
                   <div style="min-width: 14rem;">
                   <h6 class="dropdown-header">Account</h6>
-                  <a class="dropdown-item d-flex align-items-center" href="{{route('user.dashboard')}}"><i class="ci-settings opacity-60 me-2"></i>Dashboard</a>
+                  <a class="dropdown-item d-flex align-items-center" href=""><i class="ci-settings opacity-60 me-2"></i>Dashboard</a>
                   <a class="dropdown-item d-flex align-items-center" href="{{--route('profile.show')--}}"><i class="ci-settings opacity-60 me-2"></i>Profile</a>
                   <a class="dropdown-item d-flex align-items-center" ><i class="ci-basket opacity-60 me-2"></i>Categories</a>
                   <div class="dropdown-divider"></div>
