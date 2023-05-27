@@ -115,23 +115,15 @@
                       </div>                    
                   </div>
 
-                  <div class="col-sm-3 mb-3">
-                    <label class="form-label" >Status</label>
-                    <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
-                    <select class="form-control" wire:model="status">
-                      <option value="deactive" >Inactive</option>
-                      <option value="active">Active</option>
-                    </select>
-                    </div>
-                  </div>
+                  
                   
                   <div class="col-sm-4  col-md-4 mb-3 pb-2">
                     <label class="form-label" >Description</label>
-                    <input class="form-control" type="text" wire:model="description"  >
+                    <textarea class="form-control" type="text" wire:model="description">
                     <div class="form-text"></div>
                   </div>
                   
-                  <button class="btn btn-primary d-block w-100" type="submit" ><i class=" bi bi-cloud-upload fs-lg me-2"></i>
+                  <button class="btn btn-primary d-block w-100" type="submit"><i class=" bi bi-cloud-upload fs-lg me-2"></i>
                   Entity Submit</button>
               
 

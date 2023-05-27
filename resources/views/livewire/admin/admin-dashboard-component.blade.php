@@ -256,7 +256,8 @@
                                   <div class="col-3  p-0">
                                    
                                   <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$franchise->id}})"> 
-                                  <i class="bi bi-x me-2"></i> Delete</a>
+                                  <i class="bi bi-x me-2"></i></a>
+                                  
                                   <a class="btn btn-sm btn-primary" href="#" wire:click.prevent="updateInspectionStatus({{$franchise->id}}, '1')">Visit</a>
                                   </div>
                                 </div>
@@ -328,7 +329,7 @@
 
     @if($board == 'event')
         
-        <div class="container">
+    {{--<div class="container">
           <div class="d-none d-sm-block">
             <div class="row g-1 ">
 
@@ -735,7 +736,7 @@
           @endif                  
 
         </div>
-          {{--<div class="table-responsive fs-md d-lg-none">
+          <div class="table-responsive fs-md d-lg-none">
             <table class="table table-hover mb-0">
                 <thead>
                   <tr> <th>#</th>
@@ -781,7 +782,7 @@
                                       <li><a class="dropdown-item" href="#" wire:click.prevent="updateEventstatus({{$info->id}},'1')">Active</a></li>
                                   @endif
                                   <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                  <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                  <li><a class="dropdown-item" href=""><i class="bi bi-pencil me-2"></i>Edit</a></li>
                                   <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
                               </ul>
                           </div>        
@@ -825,7 +826,7 @@
           </form>
         </div>
 
-        <div class="container">
+        {{--<div class="container">
         <input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
                         <div class="row mb-5 pb-2">
                           @if(is_null($searchTerm))
@@ -872,35 +873,35 @@
                                 </div>
                               </div>
                             @endforeach
-                          @endif
+                          @endif--}}
 
                         </div>
         </div>
 
-<div class="container my-5">
-      <div class="small"> List meet-up brand</div>        
+        <div class="container my-5">
+              <div class="small"> List meet-up brand</div>        
 
-      <form wire:submit.prevent="AddBrandAttend">
-        <input type="text" class="form-control" wire:model.lazy="event_id" placeholder="event_id">
-        <input type="text" class="form-control" wire:model.lazy="brand_name" placeholder="brand_name">
-        <input type="text" class="form-control" wire:model.lazy="country" placeholder="country">
-        <input type="text" class="form-control" wire:model.lazy="link" placeholder="link">
+              <form wire:submit.prevent="AddBrandAttend">
+                <input type="text" class="form-control" wire:model.lazy="event_id" placeholder="event_id">
+                <input type="text" class="form-control" wire:model.lazy="brand_name" placeholder="brand_name">
+                <input type="text" class="form-control" wire:model.lazy="country" placeholder="country">
+                <input type="text" class="form-control" wire:model.lazy="link" placeholder="link">
 
-        <input type="text" class="form-control" wire:model.lazy="name" placeholder="name">
-        <input type="text" class="form-control" wire:model.lazy="contact" placeholder="contact">
-        <input type="email" class="form-control" wire:model.lazy="email" placeholder="email">
-        <input type="text" class="form-control" wire:model.lazy="designation" placeholder="designation">
-        
-        <textarea type="text" class="form-control" wire:model.lazy="comment" placeholder="comment"></textarea>
-        <input type="text" class="form-control" wire:model.lazy="size" placeholder="size">
-        <input type="text" class="form-control" wire:model.lazy="grade" placeholder="grade">
-        <textarea type="text" class="form-control" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+                <input type="text" class="form-control" wire:model.lazy="name" placeholder="name">
+                <input type="text" class="form-control" wire:model.lazy="contact" placeholder="contact">
+                <input type="email" class="form-control" wire:model.lazy="email" placeholder="email">
+                <input type="text" class="form-control" wire:model.lazy="designation" placeholder="designation">
+                
+                <textarea type="text" class="form-control" wire:model.lazy="comment" placeholder="comment"></textarea>
+                <input type="text" class="form-control" wire:model.lazy="size" placeholder="size">
+                <input type="text" class="form-control" wire:model.lazy="grade" placeholder="grade">
+                <textarea type="text" class="form-control" wire:model.lazy="reminder" placeholder="reminder"></textarea>
 
-        <input type="text" class="form-control" wire:model.lazy="email_request" placeholder="email_request">
-        <input type="text" class="form-control" wire:model.lazy="service_request" placeholder="service_request">
-        <input type="submit" class="btn btn-primary"></input>
-      </form>
-</div>
+                <input type="text" class="form-control" wire:model.lazy="email_request" placeholder="email_request">
+                <input type="text" class="form-control" wire:model.lazy="service_request" placeholder="service_request">
+                <input type="submit" class="btn btn-primary"></input>
+              </form>
+        </div>
       @endif
 <!--Stop Client-->
 
@@ -914,57 +915,41 @@
               <div class="mb-4 mb-lg-5">
                 <!-- Nav tabs-->
                 <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
-                  <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#jobrequuest" data-bs-toggle="tab" role="tab">Job</a></li>
+                  <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm active" href="#jobrequuest" data-bs-toggle="tab" role="tab">Job</a></li>
                   <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#Appletdetails" data-bs-toggle="tab" role="tab">Applet</a></li>
                 </ul>
-
-                  {{--<div class="d-flex badgese pb-2">
-                    <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="today"> Today </a></span>
-                    <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="tomorrow"> Tomorrow </a></span>
-                    <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="this-weekend">  This weekend </a></span>
-                    <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-week">  Next Week </a></span>
-                    <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-weekend">  Next weekend </a></span>
-                    <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="this-month">  This Month </a></span>
-                    <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-month">  Next Month </a></span>
-                  </div>--}}
 
                     
                   <div class="tab-content pt-1">
                       <!-- Request tab-->
-                      <div class="tab-pane fade" id="jobrequuest" role="tabpanel">
+                      <div class="tab-pane show" id="jobrequuest" role="tabpanel">
                         <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
                           <div class="row mb-5 pb-2">
                             @foreach ($jobs as $franchise) 
                               <div class="container  ">
                                 <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                   <div class="col  pr-0">
-                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                                      @else
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-
-                                      @endif 
+                                     
+                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->updated_at)->format('d')}}</div> 
+                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->updated_at)->format('M')}} </div>
+                                     
                                         <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
                                   </div>
 
                                   <div class="col-7  p-0">
-                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                      {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('admin.job',['slug' => $franchise->slug])}}">
+                                      {{ucwords(trans(Str::limit($franchise->title, 24)))}}</a></div>
                                     <div class="text-muted fs-sm text-start">
-                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                      @else
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                      @endif 
+                                     
+                                        {{Carbon\Carbon::parse ($franchise->updated_at)->format('D, d M')}}
+                                     
                                     </div>  
-                                    <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                                    <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> location_state))}}, {{ucfirst(trans($franchise -> location_country))}}</div>
                                   </div>
 
                                   <div class="col-3  p-0">
-                                    <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                        <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                   {{-- <a class="card-img-top d-block overflow-hidden" href="{{route('admin.job',['slug' => $franchise->slug])}}">
+                                        <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>--}}
                                   </div>
                                 </div>
                               </div>
@@ -972,47 +957,7 @@
                           </div>
                       </div>
                   
-                      <!-- Reviews tab-->
-                      <div class="tab-pane fade" id="Appletdetails" role="tabpanel">
-                        <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
-                          <div class="row mb-5 pb-2">
-                            @foreach ($searchcat as $franchise) 
-                              <div class="container  ">
-                                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                  <div class="col  pr-0">
-                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                                      @else
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-
-                                      @endif 
-                                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                                  </div>
-
-                                  <div class="col-7  p-0">
-                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                      {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
-                                    <div class="text-muted fs-sm text-start">
-                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                      @else
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                      @endif 
-                                    </div>  
-                                    <div class="text-muted fs-sm text-start">{{$franchise -> venue}}, {{$franchise -> city}}</div>
-                                  </div>
-
-                                  <div class="col-3  p-0">
-                                    <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                        <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
-                                  </div>
-                                </div>
-                              </div>
-                            @endforeach
-                          </div>
-                      </div>
+                      
                   </div>
 
               </div>
@@ -1020,7 +965,8 @@
           </div>
         </div>
     
-        <div class="continer">
+        <!--desktop version-->
+        <div class="continer d-none d-sm-block">
           <div class="table-responsive fs-md mb-4">
             <table class="table table-hover mb-0">
                     <thead>
@@ -1068,7 +1014,7 @@
 <!--Stop blog -->
       @if($board == 'blog')
 
-        <div class="container d-lg-none">
+        <div class="container d-none d-sm-block">
           <div class="row">
             <div class="col-md-6 offset-md-3">
               
@@ -1276,7 +1222,7 @@
                         
                         @if($board == 'job')
                             Jobs          
-                            <a class="btn btn-sm btn-outline-primary" href="{{route('admin.jobadd')}}"> New Job</a>
+                            <a class="btn btn-sm btn-outline-primary" href=""> New Job</a>
                               <span class="badge bg-faded-accent fs-sm text-body align-middle ms-2">{{$jobs->count()}}</span>
                         @endif
 
@@ -1294,7 +1240,7 @@
 
                          @if($board == 'user')
                           User 
-                            <a class="btn btn-sm btn-outline-primary" href="{{route('admin.jobadd')}}" >New user</a>
+                            <a class="btn btn-sm btn-outline-primary" href="" >New user</a>
                               <span class="badge bg-faded-accent fs-sm text-body align-middle ms-2">{{$jobs->count()}}</span>
                          @endif
 
@@ -1377,7 +1323,7 @@
                 <!-- edit page,  active deactive-->
                 
                 @if($board == 'job')
-                  <div class="table-responsive fs-md mb-4">
+                  <div class="table-responsive fs-md mb-4 d-none d-sm-block">
                     <table class="table table-hover mb-0">
                       <thead>
                         <tr> <th>#</th>
@@ -1404,7 +1350,7 @@
                                               <li><a class="dropdown-item" href="#" wire:click.prevent="updateJobstatus({{$info->id}},'deactive')">Active</a></li>
                                           @endif
                                           <li><a class="dropdown-item" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="delete({{$info->id}})"> <i class="bi bi-x me-2"></i> Delete</a></li>
-                                          <li><a class="dropdown-item" href="{{route('admin.jobadd')}}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                                          <li><a class="dropdown-item" href=""><i class="bi bi-pencil me-2"></i>Edit</a></li>
                                           <li><a class="dropdown-item" href=""><i class="bi bi-note me-2"></i>Details</a></li>
                                       </ul>
                                   </div>      
@@ -1852,8 +1798,8 @@
           <span class="handheld-toolbar-label">Job</span>
         </a>
          
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobadd')}}">
-          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobCreate')}}">
+          <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
           <span class="handheld-toolbar-label">Add</span>
         </a>
      

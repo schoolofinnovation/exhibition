@@ -4,10 +4,99 @@
 @section('page_name',' All Job')
 
 <main> 
-  <div class="container">
+
+
+
+ 
+    <div class="row">
+                           
+        <div class="container  ">
+          <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                
+                  <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($findo->updated_at)->format('d')}}</div> 
+                  <div class="small text-muted">{{Carbon\Carbon::parse ($findo->updated_at)->format('M')}} </div>
+                
+                  <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+            </div>
+
+            <div class="col-7  p-0">
+              <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $findo->slug])}}">
+                {{ucwords(trans(Str::limit($findo->title, 24)))}}</a></div>
+              <div class="text-muted fs-sm text-start">
+                
+                  {{Carbon\Carbon::parse ($findo->updated_at)->format('D, d M')}}
+                
+              </div>  
+              <div class="text-muted fs-sm text-start">{{ucfirst(trans($findo -> location_state))}}, {{ucfirst(trans($findo -> location_country))}}</div>
+            </div>
+
+            <div class="col-3  p-0">
+              {{-- <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $findo->slug])}}">
+                  <img src="{{url('exhibition/'.$findo->image)}}" alt="{{Str::limit($findo->eventname, 24)}}"></a>--}}
+            </div>
+          </div>
+        </div>
+      
+    </div>
+
+    
+                           
+        <div class="container  ">
+          <div class=" text-center p-1 gx-0 mb-1">
+            
+
+            <div class="col  p-0">
+              <div class="text-start fw-bold">Job description</div>
+              <div class="text-muted text-start">What you'll do</div>  
+              <div class="small text-start">Responsibilities</div>
+
+              <div class="fs-xs  lh-1 fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $findo->slug])}}">
+                {{ucwords(trans(Str::limit($findo->description)))}}</a></div>
+             {{-- <div class="text-muted fs-sm text-start">
+                
+                  {{Carbon\Carbon::parse ($findo->updated_at)->format('D, d M')}}--}}
+                
+              </div>  
+              {{--<div class="text-muted fs-sm text-start">
+                {{ucfirst(trans($findo -> location_state))}}, {{ucfirst(trans($findo -> location_country))}}</div>--}}
+            </div>
+
+            
+          </div>
+       
+    
+ 
+              <div class="fs-sm fw-lighter">Qualification</div>
+              <div class="fs-md">{{$findo->qualification}}</div>
+
+              <div class="fs-sm fw-lighter">Industry Type</div>
+              <div class="fs-md">{{$findo->qualification}}</div>
+
+              <div class="fs-sm fw-lighter">Department</div>
+              <div class="fs-md">{{$findo->Department}}</div>
+
+              <div class="fs-sm fw-lighter">Role</div>
+              <div class="fs-md">{{$findo->qualification}}</div>
+
+              <div class="fs-sm fw-lighter">Role Category</div>
+              <div class="fs-md">{{$findo->qualification}}</div>
+
+              <div class="fs-sm fw-lighter">Employment type</div>
+              <div class="fs-md">{{$findo->type}}</div>
+
+              <div class="fs-sm fw-lighter">Education</div>
+              <div class="fs-md">{{$findo->qualification}}</div>
+
+
+              <div class="fs-sm fw-lighter">About Company</div>
+              <div class="fs-md">{{$findo->qualification}}</div>
+        </div>
+
+  {{--<div class="container">
         <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
           <div class="text-sm-end">
-          <a class="btn btn-primary" href="{{route('admin.jobadd')}}" data-bs-toggle="modal">Add New Job Post </a>          
+          <a class="btn btn-primary" href="" data-bs-toggle="modal">Add New Job Post </a>          
           </div>
             @if (Session::has('message'))
             <h6 class="fs-base text-light mb-0">
@@ -67,59 +156,55 @@
             </table>
           </div> 
           {{$jobs->links('pagination-links')}}
-  </div>
-</main>
+  </div>--}}
 
 
 
 
-<html>
-  <head>
-    <title>Software Engineer</title>
+
+
     <script type="application/ld+json">
-    {
-      "@context" : "https://schema.org/",
-      "@type" : "JobPosting",
-      "title" : "Software Engineer",
-      "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
-      "identifier": {
-        "@type": "PropertyValue",
-        "name": "Google",
-        "value": "1234567"
-      },
-      "datePosted" : "2017-01-18",
-      "validThrough" : "2017-03-18T00:00",
-      "employmentType" : "CONTRACTOR",
-      "hiringOrganization" : {
-        "@type" : "Organization",
-        "name" : "The Exhibition Network",
-        "sameAs" : "https://www.exhibition.org.in",
-        "logo" : "https://www.example.com/images/logo.png"
-      },
-      "jobLocation": {
-      "@type": "Place",
-        "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1600 Amphitheatre Pkwy",
-        "addressLocality": "Delhi",
-        "addressRegion": "Delhi NCR",
-        "postalCode": "110031",
-        "addressCountry": "India"
-        }
-      },
-      "baseSalary": {
-        "@type": "MonetaryAmount",
-        "currency": "INR",
-        "value": {
-          "@type": "QuantitativeValue",
-          "value": 40000.00,
-          "unitText": "MONTH"
+      {
+        "@context" : "https://schema.org/",
+        "@type" : "JobPosting",
+        "title" : "{{$findo->title}}",
+        "description" : "<p>{{$findo->desc}}</p>",
+        "identifier": {
+          "@type": "PropertyValue",
+          "name": "The Exhibition Network",
+          "value": "1234567"
+        },
+        "datePosted" : "{{$findo->updated_at}}",
+        "validThrough" : "{{$findo->updated_at->addMonth(30)}}",
+        "employmentType" : "{{$findo->type}}",
+        "hiringOrganization" : {
+          "@type" : "Organization",
+          "name" : "The Exhibition Network",
+          "sameAs" : "https://exhibition.org.in",
+          "logo" : "https://exhibition.org.in/image/Yoyo.png" 
+        },
+        "jobLocation": {
+        "@type": "Place",
+          "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1600 Amphitheatre Pkwy",
+          "addressLocality": "{{$findo->location_state}}",
+          "addressRegion": "{{$findo->location_state}}",
+          "postalCode": "110031",
+          "addressCountry": "{{$findo->location_country}}"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "value": 40000.00,
+            "unitText": "MONTH"
+          }
         }
       }
-    }
     </script>
-  </head>
-  <body>
-  </body>
-</html>
+  
 
+</main>
