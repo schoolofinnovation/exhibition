@@ -8,7 +8,7 @@
               <!-- Toolbar-->
               <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
                 <div class="text-sm-end">
-                <a class="btn btn-primary" href="{{route ('admin.job')}}" data-bs-toggle="modal">  All Posted Job </a></div>
+                <a class="btn btn-primary" href="" data-bs-toggle="modal">  All Posted Job </a></div>
                   @if (Session::has('message'))
                   <h6 class="fs-base text-light mb-0">
                   {{Session::get('message')}}
@@ -21,20 +21,20 @@
                 <div class="row">
                   <div class="col-sm-4 mb-3 pb-2">
                     <label class="form-label" >Title</label>
-                    <input class="form-control" type="text" wire:model="title" wire:keyup="generateSlug" required="">
+                    <input class="form-control" type="text" wire:model.lazy="title" wire:keyup="generateSlug" required="">
                     <div class="form-text"></div>
                   </div>
 
                   <div class="col-sm-4 mb-3 pb-2">
                     <label class="form-label" >Skills</label>
-                    <input class="form-control" type="text" wire:model="skills"  >
+                    <input class="form-control" type="text" wire:model.lazy="skills"  >
                     <div class="form-text"></div>
                   </div>
                 
                   <div class="col-sm-3 mb-3">
                     <label class="form-label">Level</label>
                     <div class="input-group"><span class="input-group-text"><i class=" bi bi-dollar"></i></span>
-                    <select class="form-control" wire:model="level">
+                    <select class="form-control" wire:model.lazy="level">
                     <option value="management">Management </option>
                       <option value="corporate">Corporate </option>
                       <option value="junior">Junior </option>
@@ -45,20 +45,20 @@
                 
                   <div class="col-sm-4 mb-3 pb-2">
                     <label class="form-label" >Requirement</label>
-                    <input class="form-control" type="text" wire:model="requirement"  >
+                    <input class="form-control" type="text" wire:model.lazy="requirement"  >
                     <div class="form-text"></div>
                   </div>
 
                   <div class="col-sm-4 mb-3 pb-2">
                     <label class="form-label" >Qualification</label>
-                    <input class="form-control" type="text" wire:model="qualification"  >
+                    <input class="form-control" type="text" wire:model.lazy="qualification"  >
                     <div class="form-text"></div>
                   </div>
 
                   <div class="col-sm-3  mb-3">
                       <label class="form-label">Department</label>
                       <div class="input-group">
-                      <select class="form-control" wire:model="department">
+                      <select class="form-control" wire:model.lazy="department">
                       <option value="Business Development">Business Development</option>
                         <option value="Marketing">Marketing</option>
                         <option value="Branding">Branding </option>
@@ -72,7 +72,7 @@
                   <div class="col-sm-2 mb-3">
                       <label class="form-label" >Country</label>
                       <div class="input-group"><span class="input-group-text"><i class=" bi bi-dollar"></i></span>
-                      <select class="form-control" wire:model="location_country">
+                      <select class="form-control" wire:model.lazy="location_country">
                       <option value="India">India </option>
                         <option value="Switzerland">Switzerland </option>
                         <option value="Canada">Canada </option>
@@ -83,7 +83,7 @@
                   <div class="col-sm-2 mb-3">
                       <label class="form-label" >State</label>
                       <div class="input-group"><span class="input-group-text"><i class=" bi bi-dollar"></i></span>
-                      <select class="form-control" wire:model="location_state">
+                      <select class="form-control" wire:model.lazy="location_state">
                       <option value="Gurgaon">Gurgaon</option>
                         <option value="Geneva">Geneva</option>
                         <option value="Fort Qu Appelle">Fort Qu'Appelle</option>
@@ -94,7 +94,7 @@
                   <div class="col-sm-2 mb-3">
                       <label class="form-label" >Experience</label>
                       <div class="input-group"><span class="input-group-text"><i class=" bi bi-dollar"></i></span>
-                      <select class="form-control" wire:model="experience">
+                      <select class="form-control" wire:model.lazy="experience">
                       <option value="0-2">0-2 years</option>
                         <option value="2-5">2-5 years</option>
                         <option value="5-7">5-7 years</option>
@@ -106,7 +106,7 @@
                   <div class="col-sm-2 mb-3">
                       <label class="form-label" >Type</label>
                       <div class="input-group"><span class="input-group-text"><i class=" bi bi-dollar"></i></span>
-                      <select class="form-control" wire:model="type">
+                      <select class="form-control" wire:model.lazy="type">
                       <option value="temporary" >Temporary</option>
                         <option value="freelancer" >Freelancer</option>
                         <option value="full-time">Full Time</option>
@@ -119,7 +119,7 @@
                   
                   <div class="col-sm-4  col-md-4 mb-3 pb-2">
                     <label class="form-label" >Description</label>
-                    <textarea class="form-control" type="text" wire:model="description">
+                    <textarea class="form-control" type="text" wire:model.lazy="description">
                     <div class="form-text"></div>
                   </div>
                   

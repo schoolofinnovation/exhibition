@@ -25,6 +25,8 @@ class AdminCareerAddComponent extends Component
     public function generateSlug()
     {
         $this->slug = Str::slug($this->title,'-');
+        $this->status = '1' ;
+        
     }
     
     public function add() {
@@ -47,7 +49,7 @@ class AdminCareerAddComponent extends Component
 
           $jobs->save();
           session()->flash('message','Job has been posted Successfully.'); 
-          return redirect()->route('admin.job');
+          return redirect()->route('admin.dashboard',['board' => 'job']);
       }
 
 

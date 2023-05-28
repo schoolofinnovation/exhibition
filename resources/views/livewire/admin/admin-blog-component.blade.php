@@ -16,39 +16,52 @@
     </div>
 
     <div class="container py-4">
+      @if($board == 'addBlog')
+        <form wire:submit.prevent="add" >
+              <div class="row">
+                <div class="col-sm-4 ">
+                  <label class="form-label" >Blog tittle</label>
+                  <textarea class="form-control" type="text" row="2" wire:model="tittle"  wire:keyup="generateSlug"> </textarea>
+                </div>
 
-    
-      <form wire:submit.prevent="add" >
-            <div class="row">
-              <div class="col-sm-4 mb-3 pb-2">
-                <label class="form-label" >Blog tittle</label>
-                <input class="form-control" type="text" wire:model="tittle"  wire:keyup="generateSlug"> 
-              </div>
-
-              <div class="col-sm-4 mb-3 pb-2">
-                <label class="form-label" >Short Desc</label>
-                  <textarea class="form-control" type="text" wire:model.lazy="s_desc"></textarea>
+                <div class="col-sm-4">
+                  <label class="form-label" >Short Desc</label>
+                    <textarea class="form-control" type="text"  row="3" wire:model.lazy="s_desc"></textarea>
+                    <div class="form-text"></div>
+                </div>
+            
+                <div class="col-sm-4">
+                  <label class="form-label" >Desc</label>
+                  <textarea class="form-control" type="text"  row="5" wire:model.lazy="desc"></textarea>
                   <div class="form-text"></div>
+                </div>
+                <div class="col-sm-4">
+                <button class="btn btn-primary d-block w-70" type="submit" ><i class=" bi bi-cloud-upload fs-lg me-2"></i>
+                Post</button>
+                </div>
+            
               </div>
-          
-              <div class="col-sm-4 mb-3 pb-2">
-                <label class="form-label" >Desc</label>
-                <textarea class="form-control" type="text" wire:model.lazy="desc"></textarea>
-                <div class="form-text"></div>
-              </div>
-              <div class="col-sm-4 mb-3 pb-2">
-              <button class="btn btn-primary d-block w-70" type="submit" ><i class=" bi bi-cloud-upload fs-lg me-2"></i>
-              Post</button>
-              </div>
-          
-            </div>
-      </form>
+        </form>
+      @endif
+
+
+      @if($formm == 'image')
+          <form  wire:submit.prevent="dateImage">
+                  <div class="col-sm-2">
+                      <label class="form-label" for="cf-name">Image</label>
+                      <input class="form-control" type="file"   wire:model.lazy="image" required=""></textarea>
+                      @error('image'){{ $message}}@enderror
+                  </div>
+                  <button class="btn btn-primary mt-2" type="submit">Submit</button>
+          </form>  
+      @endif
+      
     </div>
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
       
-        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'blog'])}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
             <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Blog</span>

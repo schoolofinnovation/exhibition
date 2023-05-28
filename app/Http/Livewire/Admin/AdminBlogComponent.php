@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Cag;
 use App\Models\Mag;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -23,9 +24,11 @@ class AdminBlogComponent extends Component
     public $user_id;
     public $board;
 
-    public function mount()
+    public function mount($blog_id, $board)
     {
-        $this->type="e";  
+        $this->$blog_id = $blog_id;
+        $this->board = $board;
+        $this->type = "e";  
         $this->status = "1"; 
     }
 
@@ -50,6 +53,19 @@ class AdminBlogComponent extends Component
         $blog->save();
         session()->flash('message',' Congrats, Blog has been posted Successfully. we are reviewing, it will flash on the platform very soon.'); 
         return redirect()->route('admin.dashboard',['board' => 'blog']);
+    }
+
+    public function dateImage()
+    {
+        $fattribute = Mag::find($this->blog_id);
+       
+        $newimage = Carbon::now()->timestamp.'.'.$this->image->extension();
+        $this->image->storeAs('exhibition', $newimage);
+        $fattribute->image = $newimage;
+
+        $fattribute->save();
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
     }
     
     public function render()

@@ -1069,7 +1069,7 @@
                                     <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="bloGdelete({{$franchise->id}})"> 
                                     <i class="bi bi-x me-2"></i></a>
                                     @if(is_null($franchise->image))
-                                      <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $franchise->id, 'formm' => 'image' ])}}">
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('admin.blogpost',['blog_id' => $franchise->id, 'board' => 'image' ])}}">
                                           Add</a>
                                     @else
                                       <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
@@ -1818,7 +1818,7 @@
             <span class="handheld-toolbar-label {{'admin/dashboard/blog' == request()->path() ? 'active' : '' }}">Blog</span>
           </a>
           
-          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.blogpost')}}">
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.blogpost',['blog_id' => 'blog', 'board' => 'image' ])}}">
             <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
             <span class="handheld-toolbar-label">Add</span>
           </a>
