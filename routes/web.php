@@ -373,7 +373,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     //blog
     Route::get('/admin/blog/dashboard', BlogDashboardComponent::class)->name('admin.blogdashboard');
     //post all new  post
-    Route::get('/admin/blog/add/{blog_id}/business/{board}', AdminBlogComponent::class)->name('admin.blogpost');
+    Route::get('/admin/blog/add/business/{board}', AdminBlogComponent::class)->name('admin.blogpost');
    // Route::get('/admin/blog/category/add', BlogCategoryEditCompopnent::class)->name('admin.blogadd');
 
    //event--add--status--list--edit

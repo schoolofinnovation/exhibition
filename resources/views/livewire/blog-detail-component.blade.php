@@ -10,7 +10,7 @@ Inner intro START -->
 			<i class="fas fa-circle me-2 small fw-bold"></i>{{$mag->tag}}</a>
         
 				<h1 class="text-white">{{$mag->tittle}}</h1>
-        <p class="lead text-white">{{Str::limit($mag->s_desc,263)}} </p>
+        {{--<p class="lead text-white">{{Str::limit($mag->s_desc,263)}} </p>--}}
         <!-- Info -->
         <ul class="nav nav-divider text-white-force align-items-center">
           <li class="nav-item">
@@ -91,9 +91,13 @@ Main START -->
 					{{$mag -> s_desc}}
 				</p>
 			
-				<p>
-					{{$mag->desc}}
-				</p>
+				@php
+				 $mago = json_decode ($mag->desc)
+				@endphp
+					@foreach($mago as $graph)
+						<p>{{$graph}}</p>
+					@endforeach
+				
 			</div>
 
 				<!-- Next prev post START -->

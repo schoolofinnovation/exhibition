@@ -24,9 +24,8 @@ class AdminBlogComponent extends Component
     public $user_id;
     public $board;
 
-    public function mount($blog_id, $board)
+    public function mount($board)
     {
-        $this->$blog_id = $blog_id;
         $this->board = $board;
         $this->type = "e";  
         $this->status = "1"; 
@@ -37,35 +36,39 @@ class AdminBlogComponent extends Component
         $this->slug = Str::slug($this->tittle,'-');
     }
 
+   
+
     Use WithFileUploads;
     public function add() {
     
         $blog = new Mag();
         $blog->tittle = $this->tittle;
         $blog->slug = $this->slug;
-        
-        $blog->desc = $this->desc;
+        $blogdesc = explode(",,",$this->desc);
+        $blog->desc = json_encode($blogdesc);
         $blog->s_desc = $this->s_desc;
         $blog->user_id = Auth::user()->id;
         $blog->type = $this->type;
         $blog->status = $this->status;
-
+        //dd($blog);
         $blog->save();
         session()->flash('message',' Congrats, Blog has been posted Successfully. we are reviewing, it will flash on the platform very soon.'); 
         return redirect()->route('admin.dashboard',['board' => 'blog']);
     }
 
+    
+
     public function dateImage()
     {
-        $fattribute = Mag::find($this->blog_id);
+       // $fattribute = Mag::find($this->blog_id);
        
         $newimage = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('exhibition', $newimage);
-        $fattribute->image = $newimage;
+        //$fattribute->image = $newimage;
 
-        $fattribute->save();
+        //$fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
-        return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
+       // return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
     }
     
     public function render()
