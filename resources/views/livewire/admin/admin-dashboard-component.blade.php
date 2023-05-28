@@ -916,13 +916,13 @@
                 <!-- Nav tabs-->
                 <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
                   <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm active" href="#jobrequuest" data-bs-toggle="tab" role="tab">Job</a></li>
-                  <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#Appletdetails" data-bs-toggle="tab" role="tab">Applet</a></li>
+                  <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm " href="#Appletdetails" data-bs-toggle="tab" role="tab">Applet</a></li>
                 </ul>
 
                     
                   <div class="tab-content pt-1">
                       <!-- Request tab-->
-                      <div class="tab-pane show" id="jobrequuest" role="tabpanel">
+                      <div class="tab-pane fade show active" id="jobrequuest" role="tabpanel">
                         <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
                           <div class="row mb-5 pb-2">
                             @foreach ($jobs as $franchise) 
@@ -1014,7 +1014,7 @@
 <!--Stop blog -->
       @if($board == 'blog')
 
-        <div class="container d-none d-sm-block">
+        <div class="container d-lg-none">
           <div class="row">
             <div class="col-md-6 offset-md-3">
               

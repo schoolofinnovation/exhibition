@@ -119,7 +119,7 @@
                   
                   <div class="col-sm-4  col-md-4 mb-3 pb-2">
                     <label class="form-label" >Description</label>
-                    <textarea class="form-control" type="text" wire:model.lazy="description">
+                    <textarea class="form-control" type="text" wire:model.lazy="description"></textarea>
                     <div class="form-text"></div>
                   </div>
                   
