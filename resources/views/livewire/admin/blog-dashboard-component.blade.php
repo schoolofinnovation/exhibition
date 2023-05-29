@@ -5,18 +5,19 @@
                 <div class="row">
                   <div class="col-sm-4 ">
                     <label class="form-label" >Blog tittle</label>
-                    <textarea class="form-control" type="text" row="3" wire:model="tittle"  wire:keyup="generateSlug"> </textarea>
+                    <textarea class="form-control" type="text" rows="3" wire:model="tittle"  wire:keyup="generateSlug"> </textarea>
                   </div>
 
                   <div class="col-sm-4">
                     <label class="form-label" >Short Desc</label>
-                      <textarea class="form-control" type="text"  row="7" wire:model.lazy="s_desc"></textarea>
+                      <textarea class="form-control" type="text"  rows="7" wire:model.lazy="s_desc"></textarea>
                       <div class="form-text"></div>
                   </div>
               
+                  
                   <div class="col-sm-4">
                     <label class="form-label" >Desc</label>
-                    <textarea class="form-control" type="text"  row="10" wire:model="desc"></textarea>
+                    <textarea class="form-control" type="text"  rows="10" wire:model="desc"></textarea>
                     <div class="form-text"></div>
                   </div>
                   <div class="col-sm-4">
@@ -65,7 +66,7 @@
       <form  wire:submit.prevent="dateImage">
               <div class="col-sm-2">
                   <label class="form-label" for="cf-name">Image</label>
-                  <input class="form-control" type="file"   wire:model.lazy="image" required=""></textarea>
+                  <input class="form-control" type="file"   wire:model="image" required=""></textarea>
                   @error('image'){{ $message}}@enderror
               </div>
               <button class="btn btn-primary mt-2" type="submit">Submit</button>

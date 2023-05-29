@@ -150,7 +150,7 @@
                 <form  wire:submit.prevent="updateEvent">
                         <div class="col-sm-2">
                             <label class="form-label" for="cf-name">Tag Line</label>
-                            <textarea class="form-control" type="text" row="2" placeholder="Your Tagline" wire:model.lazy="tagline" required=""></textarea>
+                            <textarea class="form-control" type="text" rows="2" placeholder="Your Tagline" wire:model.lazy="tagline" required=""></textarea>
                             @error('tagline'){{ $message}}@enderror
                         </div>
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
