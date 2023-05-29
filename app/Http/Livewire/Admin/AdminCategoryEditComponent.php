@@ -93,8 +93,7 @@ class AdminCategoryEditComponent extends Component
         $searchTerm = '%'.$this->searchTerm. '%';
         $searchcat = Expo::where('tag','LIKE', $searchTerm)
                     ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
-         $expoon = Expo::where('type','tag')->get();
-
+        $expoon = Expo::where('type','tag')->get();
 
         return view('livewire.admin.admin-category-edit-component',['selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat])->layout('layouts.eblog');
     }

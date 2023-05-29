@@ -359,30 +359,24 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contact');  
     Route::get('/admin/entity', AdminInfoComponent::class)->name('admin.info');
     Route::get('/admin/entity/add', AdminInfoAddComponent::class)->name('admin.infoadd');
-
     
     Route::get('/admin/The-Exhibition-Network/opportunity/{slug}', AdminCareerComponent::class)->name('admin.job');
     Route::get('/admin/job/applicat', AdminJobApplicationComponent::class)->name('admin.resume');
     Route::get('/admin/opportunity/add', AdminCareerAddComponent::class)->name('admin.jobCreate'); 
-
-
 
     //Qrcode
     Route::get('/admin/QrCode', GeneratorComponent::class)->name('admin.qrcode');
   
     //blog
     //post all new  post
-    Route::get('/admin/blog/dashboard', BlogDashboardComponent::class)->name('admin.blogdashboard');
+    Route::get('/admin/blog/{blog_id}/update/{board}', BlogDashboardComponent::class)->name('admin.blogdashboard');
+    //using for Add
     Route::get('/admin/blog/add/business/{board}', AdminBlogComponent::class)->name('admin.blogpost');
-    
-   // Route::get('/admin/blog/category/add', BlogCategoryEditCompopnent::class)->name('admin.blogadd');
 
+   // Route::get('/admin/blog/category/add', BlogCategoryEditCompopnent::class)->name('admin.blogadd');
    //event--add--status--list--edit
-   
-   
    //Order_details
    Route::get('/admin/order/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
-
   });
 
    //Master-MSR

@@ -36,8 +36,6 @@ class AdminBlogComponent extends Component
         $this->slug = Str::slug($this->tittle,'-');
     }
 
-   
-
     Use WithFileUploads;
     public function add() {
     

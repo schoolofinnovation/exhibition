@@ -1,96 +1,75 @@
-@section('page_title','update brand')
+<main>
+  <div class="container">
+    @if($board =='edit')
+          <form wire:submit.prevent="edit" >
+                <div class="row">
+                  <div class="col-sm-4 ">
+                    <label class="form-label" >Blog tittle</label>
+                    <textarea class="form-control" type="text" row="3" wire:model="tittle"  wire:keyup="generateSlug"> </textarea>
+                  </div>
 
-@section('page_description','Job')
-@section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
-@section('page_author' , 'COI - CouncilofInnovation')
+                  <div class="col-sm-4">
+                    <label class="form-label" >Short Desc</label>
+                      <textarea class="form-control" type="text"  row="7" wire:model.lazy="s_desc"></textarea>
+                      <div class="form-text"></div>
+                  </div>
+              
+                  <div class="col-sm-4">
+                    <label class="form-label" >Desc</label>
+                    <textarea class="form-control" type="text"  row="10" wire:model="desc"></textarea>
+                    <div class="form-text"></div>
+                  </div>
+                  <div class="col-sm-4">
+                  <button class="btn btn-primary d-block w-70" type="submit" ><i class=" bi bi-cloud-upload fs-lg me-2"></i>
+                  Post</button>
+                  </div>
+              
+                </div>
+          </form>
+    @endif
 
-@section('page_name',' All Job')
-@section('page_path',' Job')
-@section('page_list',' addJob')
+    @if($board == 'tag')
+        <div class="col-lg-8 col-sm-7 ">
+            <input type="text" class="form-control" placeholder="Search your Category..." wire:model.lazy="searchTerm">
+        </div>
 
+        @if(is_null($searchTerm))
+          @else
+              @if($searchcat->count() > 0)
+                  <form wire:submit.prevent="updateEvent">      
+                      <div class="row mb-5 pb-2" wire:model="checkvalue">
 
-         <main> 
+                          @foreach ($searchcat as $franchise) 
+                          {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                          <div class=" col col-auto my-1 px-2"> 
+                          <input class="form-check-input" type="checkbox"   value="{{$franchise->id}}"  wire:model="checkvalue">{{$franchise->tag}}
+                          </div>
+                          @endforeach
+                          <div>@json($checkvalue)</div>
+                          
+                      </div>
+                      <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                  </form>
+              @else
+                  <div class="small bold">Sorry, we could found relevant industry. You can upload </div>
 
+                  <form wire:submit.prevent="updatetag">
+                      <input type="text" placeholder="tag" wire:model="tag">
+                      <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                  </form>
+              @endif
+        @endif
+    @endif
 
-<div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
-         
-            @if (Session::has('message'))
-            <h6 class="fs-base text-light mb-0">
-            {{Session::get('message')}}
-            </h6>
-            @endif
-            <a class="btn btn-primary btn-sm ml-1" href="{{route('admin.blogdashboard')}}"><i class="ci-sign-out me-2"></i>Blog</a>
-            <a class="btn btn-primary btn-sm ml-1" href="{{route('admin.job')}}"><i class="ci-sign-out me-2"></i>Job</a>
-            <a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Post</a>
-            <a class="btn btn-primary btn-sm ml-1" href="{{route('admin.user')}}"><i class="ci-sign-out me-2"></i>User</a>
-            <a class="btn btn-primary btn-sm ml-1" href="{{route('admin.franchise')}}"><i class="ci-sign-out me-2"></i>Franchise</a>
-            <a class="btn btn-primary btn-sm ml-1" href="{{route('admin.info')}}"><i class="ci-sign-out me-2"></i>Info</a>
-            <a class="btn btn-primary btn-sm ml-1" href="{{route('admin.dashboard')}}"><i class="ci-sign-out me-2"></i>Dashboard</a>
-            <a class="btn btn-primary btn-sm ml-1" href="{{route('admin.contact')}}"><i class="ci-sign-out me-2"></i>Contact</a>
-          </div>
-
-<div class="table-responsive">
-  <table class="table table-bordered">
-    <thead;>
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Position</th>
-        <th>Phone</th>
-        <th>Phone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Blog</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Category</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>CEO, Founder</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Blog</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Category</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>CEO, Founder</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Blog</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Category</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>CEO, Founder</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Blog</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Category</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>CEO, Founder</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Blog</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Category</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>CEO, Founder</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-      </tr>
-      <tr>
-        <th scope="row">6</th>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Blog</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>Category</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>CEO, Founder</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-        <td><a class="btn btn-primary btn-sm ml-1" href="#"><i class="ci-sign-out me-2"></i>+3 555 68 70</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-         </main>
+    @if($board == 'image')
+      <form  wire:submit.prevent="dateImage">
+              <div class="col-sm-2">
+                  <label class="form-label" for="cf-name">Image</label>
+                  <input class="form-control" type="file"   wire:model.lazy="image" required=""></textarea>
+                  @error('image'){{ $message}}@enderror
+              </div>
+              <button class="btn btn-primary mt-2" type="submit">Submit</button>
+      </form>  
+    @endif
+  </div>
+</main>
