@@ -9,7 +9,7 @@
 						<div class="me-3"><span class="badge bg p-2 px-3 badgecolor" >Trending:</span></div>
 						<div class="my-Slider1 arrow-end arrow-xs arrow-white arrow-round arrow-md-none">
 							@foreach($trending as $post)
-								<a href="{{route('blog.details',['slug' => $post->slug])}}" class="text-reset btn-link">{{$post->s_desc}}</a>
+								<a href="{{route('blog.details',['slug' => $post->slug])}}" class="text-reset btn-link">{{$post->tittle}}</a>
 							@endforeach
 						</div>
 					</div>
