@@ -26,7 +26,6 @@ class AdminCareerAddComponent extends Component
     {
         $this->slug = Str::slug($this->title,'-');
         $this->status = '1' ;
-        
     }
     
     public function add() {
@@ -35,10 +34,17 @@ class AdminCareerAddComponent extends Component
         
           $jobs->title = $this->title;
           $jobs->slug = $this->slug;
-          $jobs->description = $this->description;
-          $jobs->skills = $this->skills;
+          
+          $blogdesc = explode(",,", $this->description);
+          $jobs->description = json_encode($blogdesc);
+
+          $blogReq = explode(",,", $this->requirement);
+          $jobs->requirement = json_encode($blogReq);   
+          
+          $blogSki = explode(",,", $this->skills);
+          $jobs->skills = json_encode($blogSki); 
+
           $jobs->level = $this->level;
-          $jobs->requirement = $this->requirement;
           $jobs->qualification = $this->qualification;
           $jobs->department = $this->department;
           $jobs->location_state = $this->location_state;
