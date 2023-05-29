@@ -29,7 +29,7 @@
 								<div class="card" >
 									<div class="row mx-1">
 										<div class="col-4 px-1">
-											<img class="rounded-3" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 25)}}">
+											<img class="rounded-3" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 25)}}">
 											</div>
 											<div class="col-8 px-1">
 												<a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link stretched-link px-1 text-reset fw-normal">{{Str::limit($post->tittle, 35)}}</a>
@@ -74,7 +74,7 @@
 						
 								@foreach($latest as $post)
 									<div class="card card-overlay-bottom card-bg-scale h-400 h-lg-560 rounded-0" 
-									style=" background-image:url({{asset('assets/image/exhibition/'.$post->image)}}); background-position: center left; background-size: cover;">
+									style=" background-image:url({{asset('public/assets/image/exhibition/'.$post->image)}}); background-position: center left; background-size: cover;">
 											<!-- Card Image overlay -->
 											<div class="card-img-overlay d-flex flex-column p-3 p-sm-5">
 											<!--Card overlay Bottom-->
@@ -136,7 +136,7 @@
 						<div class="card mb-4">
 							<div class="row g-3">
 								<div class="col-4">
-									<img class="rounded-3" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+									<img class="rounded-3" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 								</div>
 								<div class="col-8">
 									<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}" class="badge badgecolor mb-2">
@@ -189,7 +189,7 @@
 						@foreach($try as $post)
 							<div class="card card-overlay-bottom card-img-scale">
 								<!-- Card Image -->
-								<img class="card-img" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+								<img class="card-img" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 								<!-- Card Image overlay -->
 								<div class="card-img-overlay d-flex flex-column p-3 p-sm-4">
 									<div>
@@ -234,7 +234,7 @@
 									<div class="card">
 										<!-- Card img -->
 										<div class="position-relative">
-											<img class="card-img" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+											<img class="card-img" href="{{route('blog.details',['slug' => $post->slug])}}" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 											<div class="card-img-overlay d-flex align-items-start flex-column p-3">
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto" >
@@ -252,7 +252,7 @@
 													<div class="nav-link">
 														<div class="d-flex align-items-center position-relative">
 															<div class="avatar avatar-xs"> 
-																<img class="avatar-img rounded-circle" src="{{url('assets/image/exhibition/'.$post->user->profile_photo_url)}}" alt="{{Str::limit($post->tittle, 24)}}">
+																<img class="avatar-img rounded-circle" src="{{url('public/assets/image/exhibition/'.$post->user->profile_photo_url)}}" alt="{{Str::limit($post->tittle, 24)}}">
 															</div>
 															<span class="ms-3">by <a href="{{route('blog.author',['slug' => $post->user->slug])}}" class="stretched-link text-reset btn-link">{{$post->user->name}}</a></span>
 														</div>
@@ -341,7 +341,7 @@
 								<div class="card mb-3">
 									<div class="row g-3">
 										<div class="col-4">
-											<img class="rounded" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+											<img class="rounded" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 										</div>
 										<div class="col-8">
 											<h5><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link stretched-link text-reset">{{Str::limit($post->tittle,36)}}</a></h5>
@@ -385,7 +385,7 @@
 								<div class="card mb-3">
 									<div class="row g-3">
 										<div class="col-4">
-											<img class="rounded" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+											<img class="rounded" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 										</div>
 										<div class="col-8">
 											<h5><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link stretched-link text-reset">{{Str::limit($post->tittle,36)}}</a></h5>
@@ -612,7 +612,7 @@
 											<div class="card-title"><a href="{{route('blog.details',['slug' => $post->slug])}}" class="stretched-link fw-bold text-reset">{{Str::limit($post->tittle,31)}}</a></div>
 											<p class="m-0">{{Str::limit($post->s_desc,52)}}</p>
 										</div>
-										<img src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}" class="card-img-bottom" >
+										<img src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}" class="card-img-bottom" >
 									</div>
 								@endforeach	
 							</div>
@@ -632,7 +632,7 @@
 								    <div class="card">
 										<!-- Card img -->
 										<div class="position-relative">
-											<img class="card-img" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+											<img class="card-img" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 											<div class="card-img-overlay d-flex align-items-start flex-column p-3">
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto">
@@ -690,7 +690,7 @@
 								<!-- Card img -->
 								<div class="position-relative">
 								
-									<img class="card-img" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+									<img class="card-img" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 									
 									<div class="card-img-overlay d-flex align-items-start flex-column p-3">
 										<!-- Card overlay bottom -->
@@ -771,7 +771,7 @@
 							@foreach($cag as $post)
 							<!-- Category item -->
 							<div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " 
-							style="background-image:url({{asset('assets/image/exhibition/'.$post->image)}}); background-position: center left; background-size: cover;">
+							style="background-image:url({{asset('public/assets/image/exhibition/'.$post->image)}}); background-position: center left; background-size: cover;">
 								<div class="p-3">
 									<a href="{{--route('blog.category',['category_slug'=> $post->tag])--}}"   class="stretched-link btn-link fw-bold text-white h5">{{$post -> category}}</a>
 								</div>
@@ -793,7 +793,7 @@
 								<div class="card mb-3">
 									<div class="row g-3">
 										<div class="col-4">
-											<img class="rounded" src="{{url('assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
+											<img class="rounded" src="{{url('public/assets/image/exhibition/'.$post->image)}}" alt="{{Str::limit($post->tittle, 24)}}">
 										</div>
 										<div class="col-8">
 											<h6><a href="{{route('blog.details',['slug' => $post->slug])}}" class="btn-link stretched-link text-reset fw-bold">
@@ -843,7 +843,7 @@
 									<div class="card tns-item tns-slide-cloned" aria-hidden="true" tabindex="-1">
 										<!-- Card img -->
 										<div class="position-relative">
-											<img class="card-img" src="{{url('assets/image/exhibition/'.$posts->image)}}" alt="{{Str::limit($posts->tittle, 24)}}">
+											<img class="card-img" src="{{url('public/assets/image/exhibition/'.$posts->image)}}" alt="{{Str::limit($posts->tittle, 24)}}">
 											<div class="card-img-overlay d-flex align-items-start flex-column p-3">
 												<!-- Card overlay bottom -->
 												<div class="w-100 mt-auto">
@@ -861,7 +861,7 @@
 														<div class="d-flex align-items-center position-relative">
 															<div class="avatar avatar-xs">
 																<img class="avatar-img rounded-circle" 
-																src="{{url('assets/image/exhibition/'.$posts->image)}}" alt="{{Str::limit($posts->tittle, 24)}}">
+																src="{{url('public/assets/image/exhibition/'.$posts->image)}}" alt="{{Str::limit($posts->tittle, 24)}}">
 															</div>
 															<!--<span class="ms-3">by <a href="" class="stretched-link text-reset btn-link">{{$posts->user->name}}</a></span>-->
 														</div>
