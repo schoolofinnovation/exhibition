@@ -1,8 +1,14 @@
+@section('page_title', ($mag->tittle))
+@section('page_description', ($mag->s_desc))
+@section('page_keyword', 'The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
+
+
+
 <main>
 
 <!-- =======================
 Inner intro START -->
-<section class="bg-dark-overlay-4" style="background-image:url({{asset('Storage/mags/'.$mag->image)}}); background-position: center left; background-size: cover;">
+<section class="bg-dark-overlay-4" style="background-image:url({{asset('public/assets/image/exhibition/'.$mag->image)}}); background-position: center left; background-size: cover;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 py-md-5 my-lg-5">
@@ -83,7 +89,7 @@ Inner intro END -->
 Main START -->
 
 <section>
-	<div class="container position-relative" data-sticky-container="">
+	<div class="container position-relative">
 		<div class="row">
 			<div class="col-lg-9 mb-5">
 				<p>

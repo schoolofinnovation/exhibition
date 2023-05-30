@@ -220,7 +220,7 @@
 
 	<!--testing-->
 	<section class="position-relative">
-		<div class="container" data-sticky-container="">
+		<div class="container">
 			<div class="row">
 				<!-- Main Post START -->
 				<div class="col-lg-9">
@@ -493,7 +493,7 @@
 
 	<!--Main content 2 START -->
 	<section class="position-relative">
-		<div class="container" data-sticky-container="">
+		<div class="container" >
 			<div class="row">
 				<!-- Main Post START -->
 				<div class="col-lg-9">
@@ -672,7 +672,7 @@
 
 	<!--Main content START -->
 	<section class="position-relative">
-		<div class="container" data-sticky-container="">
+		<div class="container" >
 			<div class="row">
 				<!-- Main Post START -->
 				<div class="col-lg-9">

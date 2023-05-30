@@ -8,6 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="The Exhibition Network">
 	<title>The Exhibition Network - Latest Blog Updates & Reviews</title>
+	
+	<title> @yield('page_title') | The Exhibition Network</title>
+    <meta name="description" content="@yield('page_description')">
+    <meta name="keyword" content="@yield('page_keyword')">
+
 	<meta name="description" content="Stay up to date with the latest exhibitions  and conferences on The Exhibition Network's Blog. Read the latest updates, reviews by visitors and industry critics, and join the conversation.">
 	<meta name="keywords" content="Exhibition Business News, Exhibition Blog, The Exhibition Network, Expo updates, Exhibition Reviews, Visitor Reviews Industry Critics, Exhibition Magazine and Blog!!">
 
@@ -40,7 +45,8 @@
 	
 <style>
 
-	.badgecolor{
+	.badgecolor
+	{
 		background-color : #ff0440;
 		}
 

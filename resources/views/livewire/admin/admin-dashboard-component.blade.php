@@ -1057,7 +1057,7 @@
                                   </div>
 
                                   <div class="col-7  p-0">
-                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('admin.blogdashboard',['blog_id' => $franchise -> id , 'board' => 'edit'])}}">
+                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('admin.blogdashboard',['blog_id' => $franchise -> id , 'board' => 'all'])}}">
                                       {{ucwords(trans(Str::limit($franchise->tittle, 24)))}}</a></div>
                                     <div class="text-muted fs-sm text-start">
                                     {{ucwords(trans(Str::limit($franchise->desc, 24)))}}
