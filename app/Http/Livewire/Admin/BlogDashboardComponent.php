@@ -38,7 +38,8 @@ class BlogDashboardComponent extends Component
           $this->s_desc = $findoblog->s_desc; 
           $this->type = $findoblog->type;
           $this->status = $findoblog->status;
-
+          $this->image = $findoblog->image;
+          
         $this->blog_id = $blog_id;
         $this->board = $board;
         $this->type = "e";  
@@ -71,10 +72,12 @@ class BlogDashboardComponent extends Component
     public function dateImage()
     {
         $fattribute = Mag::find($this->blog_id);
+
         $newimage = Carbon::now()->timestamp.'.'.$this->image->extension();
         $this->image->storeAs('exhibition', $newimage);
         $fattribute->image = $newimage;
         $fattribute->save();
+
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('admin.dashboard',['board' => 'blog']);
     }
