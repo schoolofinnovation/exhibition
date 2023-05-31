@@ -6,9 +6,13 @@
       <section class="container-fluid py-3 py-lg-5  ">
           <div class="text-center mt-4 mb-3">
             <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger"></div>
-            <h2 class="display-5 fw-normal">Do the Most Meaningful Work <br> of Your Career</h2><p class="col-md-10 col-lg-8 mx-auto lead"><a href="{{asset('/')}}">The Exhibition Network</a> is building a team with superpowers. <strong>How are we doing it? </strong>
+            <h2 class="display-5 fw-normal">Do the Most Meaningful Work <br> of Your Career</h2>
+            
+            <p class="col-md-10 col-lg-8 mx-auto lead"><a href="{{asset('/')}}">The Exhibition Network</a> is building a team with superpowers. <strong>How are we doing it? </strong>
             <br> By hiring top talent and creating a unique work environment, built as their own extended career frameworks,rich with new skills as components and plugins.
-            </p><a href="#opening" class="btn btn-lg btn-outline-primary mb-3">Browse open positions</a>
+            </p>
+            
+            <a href="#opening" class="btn btn-lg btn-outline-primary mb-3">Browse open positions</a>
           </div>
       </section>
 
@@ -19,7 +23,7 @@
                 <h2 class="fs-5 text-center  fw-light">{{$job->title}}<div class="fs-sm text-primary">{{$job->level}}, {{$job->type}}<i class="fs-sm  bi bi-chevron-right align-middle ms-1"></i></div></h2>
                 <h2 class="fs-5 text-center fw-light">{{$job->experience}} years<div class="fs-sm text-primary">Click to see requirement<i class=" bi bi-chevron-right align-middle ms-1"></i></div></h2>
                 <h2 class="fs-5 text-center fw-light">{{$job->location_state}}<div class="fs-sm text-primary">{{$job->location_country}}<i class=" bi bi-chevron-right align-middle ms-1"></i></div></h2>
-                <h2 class="fs-5 text-center fw-light"><a href="#apply">Apply <i class="bi bi-chevron-right"></i> </a></h2>
+                <h2 class="fs-5 text-center fw-light"><a href="#apply"><i class="bi bi-chevron-right"></i> </a></h2>
             </div>
           @endforeach 
         

@@ -1,6 +1,6 @@
-@section('page_title', upcoming ($this->eventype) )
-@section('page_description','')
-@section('page_keywords', 'upcoming ($this->eventype) ($this->categry_id) ,Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
+@section('page_title',  ($this->eventype) )
+@section('page_description','Find the business opportunity with The Exhibition Network, World leading event publishing company.')
+@section('page_keyword',  'upcoming  ,Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 
     <main>
       <!--google-->
@@ -210,7 +210,7 @@
                     
                       <div class="d-flex justify-content-between">
                         <div class="product-price"><h3 class="product-title fs-sm">
-                          <a href="{{route('event.details',['slug' => $franchise->event->slug])}}"><strong>{{$franchise->event->id}}{{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</strong></a></h3></div>
+                          <a href="{{route('event.details',['slug' => $franchise->event->slug])}}"><strong>{{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</strong></a></h3></div>
                         <div class="star-rating align-center">
                         <!--untitled-1 line 558 -574-->
                         </div>

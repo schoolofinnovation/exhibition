@@ -27,7 +27,7 @@ class BlogDashboardComponent extends Component
     public $board;
     public $blog_id;
     public $searchTerm;
-    public $checkvalue;
+    public $checkvalue = [];
 
     public function mount($board, $blog_id)
     {

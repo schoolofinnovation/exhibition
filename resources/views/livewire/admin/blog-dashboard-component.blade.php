@@ -72,94 +72,99 @@
               <button class="btn btn-primary mt-2" type="submit">Submit</button>
       </form>  
     @endif
-
-
-    {{--Short--}}
-    <div class="container my-3">
-        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-            <div class="col  pr-0">
-           <div class="h4 fw-light mb-0">IMG</div> 
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                <a class="btn btn-primary btn-sm" href="">Add to Calender</a>
-            </div>
-
-            <div class="col-7  p-0">
-            {{-- @if(is_null($evento->shtdesc))
-                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
-              @else
-                <div class="fs-md fw-normal text-start">{{Str::limit($evento->shtdesc,170)}}</div>
-              @endif--}}
-            </div>
-
-            <div class="col-3 p-0">
-               @if(is_null($findblog->image))
-                <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'image'])}}" class="btn btn-primary btn-sm">Add</a>
-               @else
-                <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'image'])}}" class="btn btn-primary btn-sm">Edit</a>
-               @endif
-            </div>
-        </div>
-    </div>
-
-    {{--Long--}}
-    <div class="container my-3">
-        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-            <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">Blog</div> 
-               
-                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                <a class="btn btn-primary btn-sm" href="">Add to Calender</a>
-            </div>
-
-            <div class="col-7  p-0">
-              {{--@if(is_null($evento->desc))
-                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
-              @else
-                <div class="fs-md fw-normal text-start">{{Str::limit($evento->desc,170)}}</div>
-              @endif--}}
-            </div>
-
-            <div class="col-3 p-0">
-               @if(is_null($findblog->tittle))
-                <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'edit' ])}}" class="btn btn-primary btn-sm">Add</a>
-               @else
-                <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'edit'])}}" class="btn btn-primary btn-sm">Edit</a>
-               @endif
-            </div>
-        </div>
-        
-    </div>
-    
-    {{--webo--}}
-    <div class="container my-3">
-        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-            <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">Tag</div> 
-                <div class="round-circle" ></div> 
-            </div>
-
-            <div class="col-7  p-0"> 
-              {{--@if(is_null($evento->link))
-                <div class="text-muted fs-sm text-start">Website</div>
-              @else
-                <div class="fs-md fw-normal text-start">
-                <a class="btn btn-primary btn-sm" href="{{$evento->link}}">Web link</a></div>
-              @endif--}}
-            </div>
-
-            <div class="col-3 p-0">
-               @if(is_null($findblog->tag))
-                <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'tag' ])}}" class="btn btn-primary btn-sm">Add</a>
-               @else
-                <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'tag' ])}}" class="btn btn-primary btn-sm">Edit</a>
-               @endif
-
-            </div>
-        </div>
-
-       
-    </div>
   </div>
+
+    @if($board == 'all')
+      
+      {{--IMg--}}
+      <div class="container my-3">
+          <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+              <div class="col  pr-0">
+            <div class="h4 fw-light mb-0">IMG</div> 
+                  <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                  
+              </div>
+
+              <div class="col-7  p-0">
+              @if(is_null($findblog -> image))
+                  <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
+                @else
+                  <div class="fs-md fw-normal text-start">{{$findblog -> image}}</div>
+              @endif
+              </div>
+
+              <div class="col-3 p-0">
+                @if(is_null($findblog->image))
+                  <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'image'])}}" class="btn btn-primary btn-sm">Add</a>
+                @else
+                  <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'image'])}}" class="btn btn-primary btn-sm">Edit</a>
+                @endif
+              </div>
+          </div>
+      </div>
+
+      {{--Blog--}}
+      <div class="container my-3">
+          <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+              <div class="col  pr-0">
+                  <div class="h4 fw-light mb-0">{{$findblog->id}}</div> 
+                
+                  <div class="round-circle" >blog</div> 
+                 
+              </div>
+
+              <div class="col-7  p-0">
+                @if(is_null($findblog->desc))
+                  <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
+                @else
+                  <div class="fs-md fw-normal text-start">
+                    {{Str::limit($findblog->desc,170)}}
+                  </div>
+                @endif
+              </div>
+
+              <div class="col-3 p-0">
+                @if(is_null($findblog->tittle))
+                  <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'edit' ])}}" class="btn btn-primary btn-sm">Add</a>
+                @else
+                  <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'edit'])}}" class="btn btn-primary btn-sm">Edit</a>
+                @endif
+              </div>
+          </div>
+          
+      </div>
+
+      {{--tag--}}
+      <div class="container my-3">
+          <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+              <div class="col  pr-0">
+                  <div class="h4 fw-light mb-0">Tag</div> 
+                  <div class="round-circle" ></div> 
+              </div>
+
+              <div class="col-7  p-0"> 
+                {{--@if(is_null($evento->link))
+                  <div class="text-muted fs-sm text-start">Website</div>
+                @else
+                  <div class="fs-md fw-normal text-start">
+                  <a class="btn btn-primary btn-sm" href="{{$evento->link}}">Web link</a></div>
+                @endif--}}
+              </div>
+
+              <div class="col-3 p-0">
+                @if(is_null($findblog->tag))
+                  <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'tag' ])}}" class="btn btn-primary btn-sm">Add</a>
+                @else
+                  <a href="{{route('admin.blogdashboard',['blog_id' => $findblog->id, 'board' => 'tag' ])}}" class="btn btn-primary btn-sm">Edit</a>
+                @endif
+
+              </div>
+          </div>
+
+        
+      </div>
+    @endif
+  
 
 
 </main>

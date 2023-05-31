@@ -57,7 +57,7 @@
         <section class="container py-3 py-lg-5 mt-4 mb-3">
           <div class="text-center mb-5">
             <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger"></div>
-              <h2 class="display-6 fw-normal" id="opening">Discover more about</h2>
+              <h2 class="display-9 fw-normal lh-1" id="opening">Discover more about</h2>
                 <p class="col-md-10 col-lg-8 mx-auto lead">Get more done with a single, connected experience.</p>
                 {{--<p class="col-md-10 col-lg-8 mx-auto  lead ">Today, COI leads a diversified business as  business consultant with 
                   revenues from business exhibition membership subscriptions, advertising sales solutions under the leadership of Miss. Bhakti Tanna.
