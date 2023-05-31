@@ -74,6 +74,7 @@ class ExhibitionCategoryComponent extends Component
         }
         else{
             $exhibition = Denco :: where('expo_id', $this->categry_id)->get(); 
+            
            // $exhibition = Event::where('id', [$seco->event_id])->where('eventype', $this->eventype)->paginate($this->pagesize); 
         //dd($seco);
         }

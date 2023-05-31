@@ -1,6 +1,6 @@
 @section('page_title', ($event->eventname))
-@section('page_description', ($event->description))
-@section('page_keyword', '($event->eventname), The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
+@section('page_description', ($event->s_desc))
+@section('page_keyword', '($event->eventname), ($event -> tag) The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
 
 <main>

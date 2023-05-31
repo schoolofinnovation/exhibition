@@ -1,13 +1,6 @@
-@section('page_title', ($this->eventype) )
-@section('page_description','Job')
-@section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
-@section('page_author' , 'COI - CouncilofInnovation')
-
-
-@section('page_name',' All Job')
-@section('page_path',' Job')
-@section('page_list',' addJob')
-@section('page_name',' All Job')
+@section('page_title', upcoming ($this->eventype) )
+@section('page_description','')
+@section('page_keywords', 'upcoming ($this->eventype) ($this->categry_id) ,Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 
     <main>
       <!--google-->
@@ -101,7 +94,7 @@
 
                               <div class="col-3  p-0">
                                 <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
-                                    <img src="{{url('exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                                    <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
                               </div>
                             </div>
                           </div>
@@ -208,7 +201,7 @@
                   </div>
 
                   <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
-                  <img src="{{url('exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                  <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
                   
                   <div class="card-body py-2">
                         <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->event->slug])}}">

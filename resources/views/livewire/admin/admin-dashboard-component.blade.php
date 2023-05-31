@@ -158,7 +158,7 @@
                                         <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
 
                                       @endif 
-                                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                        <div class="round-circle">{{$franchise -> id}}</div> 
                                         {{--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">try</button>--}}
                                   </div>
 
@@ -181,7 +181,7 @@
                                     @else
 
                                       <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                      <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                      <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
                                     @endif
                                   </div>
                                 </div>
