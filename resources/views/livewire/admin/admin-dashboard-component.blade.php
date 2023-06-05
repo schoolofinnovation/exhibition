@@ -1,5 +1,5 @@
 
-@section('page_description','Job')
+@section('page_description','Dashboard')
 @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 <main>
       {{--<div class="page-title-overlap bg-accent pt-4">
@@ -50,7 +50,7 @@
         </div>
       </div>--}}
        
-<!--event start-->      
+  <!--event start-->      
     @if($board == 'event')           
       <div class="container d-lg-none">
         <div class="row">
@@ -75,9 +75,8 @@
                   <span class="badge border border-1 text-right border-dark text-dark mr-1"  value="next-month">  Next Month </a></span>
                 </div>--}}
 
-                  
                 <div class="tab-content pt-1">
-                    <!-- Request tab-->
+                  <!-- Request tab-->
                     <div class="tab-pane fade" id="requuest" role="tabpanel">
                       <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchTerm">
                         <div class="row mb-5 pb-2">
@@ -114,7 +113,7 @@
                                         Add</a>
                                   @else
                                     <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                    <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                    <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
                                   @endif
                                 </div>
                               </div>
@@ -123,7 +122,7 @@
                         </div>
                     </div>
 
-                    <!-- Product details tab-->
+                  <!-- Product details tab-->
                     <div class="tab-pane fade show active" id="details" role="tabpanel">
                       <!-- details test tickets-->
                       <div class="d-flex flex-nowrap align-items-center pb-3">
@@ -205,7 +204,7 @@
                                   <li></li>
                                 </ul>
                             </div>
-                           </div>
+                            </div>
                           </div>
                         </div>--}}
 
@@ -213,15 +212,15 @@
                       </div>
                     </div>
                 
-                    <!-- Reviews tab-->
+                  <!-- Reviews tab-->
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                       <input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
                         <div class="row mb-5 pb-2">
                           @if(is_null($searchTerm))
- 
-                           <div class="container">
+
+                            <div class="container">
                             Find Some Events
-                           </div>  
+                            </div>  
 
                           @else
                             @foreach ($searchCat as $franchise) 
@@ -253,7 +252,7 @@
                                   </div>
 
                                   <div class="col-3  p-0">
-                                   
+                                    
                                   <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$franchise->id}})"> 
                                   <i class="bi bi-x me-2"></i></a>
                                   
@@ -302,7 +301,7 @@
                                   </div>
 
                                   <div class="col-3 p-0">
-                                      <a href="{{route('admin.eventEdit',['event_id' => $franchise->id, 'board' => 'edit'])}}" class="btn btn-primary btn-sm"> <i class="bi bi-x"></i> </a>
+                                      <a href="{{route('admin.eventEdit',['event_id' => $franchise->id, 'board' => 'edit'])}}" class="btn btn-primary btn-sm"> <i class="bi bi-plus-circle"></i> </a>
                                       <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$franchise->id}})"> <i class="bi bi-x me-2"></i></a>
                                   </div>
                                 </div>
@@ -320,8 +319,7 @@
     @endif
 
     @if($board == 'event')
-        
-    {{--<div class="container">
+      {{--<div class="container">
           <div class="d-none d-sm-block">
             <div class="row g-1 ">
 
@@ -785,7 +783,7 @@
             </table>
           </div>--}}
     @endif
-<!--event stop--> 
+  <!--event stop--> 
 
 
 <!-- Start Cleint-->

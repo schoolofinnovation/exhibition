@@ -430,6 +430,37 @@
         </div>
     </div>
 
+    {{--doubling--}}
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0"></div> 
+               
+                <div class="round-circle" >Dbl</div> 
+                
+            </div>
+
+            <div class="col-7  p-0">
+              {{--@if(is_null($evento->edition))
+                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
+              @else
+                <div class="fs-md fw-normal text-start">
+                  
+                </div>
+              @endif--}}
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($evento->edition))
+                <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'doubling'])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'doubling'])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
+    
+    
     {{--<div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
         <a class="d-table-cell handheld-toolbar-item" href="#shop-sidebar" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar">
@@ -453,7 +484,6 @@
       </div>
     </div>--}}
 
-    
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
         <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'event'])}}">

@@ -132,6 +132,22 @@ class AdminEventEditComponent extends Component
         return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
     }
 
+    public function doubleing()
+    {
+      $rti = Str::replace('  ',' ', $this->eventname);
+      $ret = explode(",", $rti);
+
+      foreach($ret as $tre)
+        {
+          $doublse = new Event();
+          //$doublse->type = $this->type;
+          $doublse->eventname = $tre;
+          //$doublse->status = $this->status;
+          //$doublse->reference = $this->reference;
+          $doublse->save();
+        }
+    }
+
     public function render()
     {
         $evento = Event::find($this->event_id);

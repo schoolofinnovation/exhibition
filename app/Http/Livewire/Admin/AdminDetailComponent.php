@@ -13,6 +13,7 @@ use App\Models\Speaker;
 use App\Models\Sponsership;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 class AdminDetailComponent extends Component
 {   public $slug;
@@ -20,7 +21,7 @@ class AdminDetailComponent extends Component
     public $webo;
     public $link;
     public $formm;
-
+    public $eventname;
 
     public function mount($slug)
     {
@@ -51,6 +52,8 @@ class AdminDetailComponent extends Component
       $eVent->save();
       session()->flash('message',' Status Successfully Changed');
     } 
+
+    
 
     use WithPagination;
     public function render()
