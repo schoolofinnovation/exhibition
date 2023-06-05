@@ -43,7 +43,7 @@ class AdminTicketComponent extends Component
         
         $this->board = $board;
         $this->admstatus= '0';  
-        $this->status = 1; 
+        $this->status = '1'; 
         $this->cart_value = 100;
     } 
 

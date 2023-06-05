@@ -44,6 +44,7 @@
       <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
       <div class="col-8 p-0">
         <div class="fs-md fw-normal text-start">
+
           <a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
             Last update: <br>{{$evento->updated_at}}</a>
         </div>
@@ -63,7 +64,7 @@
           @elseif($evento->admstatus == 1)
                <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'0')" class="btn btn-primary btn-sm">Deactive</a>
           @else
-               <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'0')" class="btn btn-primary btn-sm">Deactive</a>
+               <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')" class="btn btn-primary btn-sm">Active</a>
           @endif
 
           
@@ -414,9 +415,7 @@
                 <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
               @else
                 <div class="fs-md fw-normal text-start">
-                  {{$evento->organizer}}<br>
-                  {{$evento->email}}<br>
-                  {{$evento->phone}}
+                  
                 </div>
               @endif
             </div>
