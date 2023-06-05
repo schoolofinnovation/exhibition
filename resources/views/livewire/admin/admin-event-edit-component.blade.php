@@ -4,8 +4,6 @@
 @section('page_name',' Add event')
 
     <main> 
-
-    
         <div class="container mb-5 pb-5">
             <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
                 <div class="text-sm-end">
@@ -207,42 +205,35 @@
             @endif
 
             @if($board == "doubling")
-                <div class="container my-3">
-                <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
                 <form wire:submit.prevent = "doubleing">   
-                    <input type="text" wire:model = "eventname">
-                    <button type="submit">Submit</button>
+                    <input type="text" wire:model.lazy = "eventname">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                </div>
-                </div>
             @endif
-
-
-
         </div>
 
-    <div class="handheld-toolbar">
-      <div class="d-table table-layout-fixed w-100">
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail',['slug' => $evento->slug])}}">
-          <span class="handheld-toolbar-icon">
-          <i class="ci-filter-alt"></i></span>
-          <span class="handheld-toolbar-label">Admin</span>
-        </a>
-       
-
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventEdit',['event_id' => $evento->id,'board' => 'edit'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-        <span class="handheld-toolbar-label">Edit</span></a>
+        <div class="handheld-toolbar">
+        <div class="d-table table-layout-fixed w-100">
+            <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail',['slug' => $evento->slug])}}">
+            <span class="handheld-toolbar-icon">
+            <i class="ci-filter-alt"></i></span>
+            <span class="handheld-toolbar-label">Admin</span>
+            </a>
         
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.editcategories',['event_id' => $evento->id])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
-          <span class="handheld-toolbar-label">category</span>
-        </a>
 
-        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          <span class="handheld-toolbar-icon"><i class=" bi bi-list"></i></span>
-          <span class="handheld-toolbar-label">Menu</span>
-        </a>
-      </div>
-    </div>
+            <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventEdit',['event_id' => $evento->id,'board' => 'edit'])}}">
+            <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+            <span class="handheld-toolbar-label">Edit</span></a>
+            
+            <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.editcategories',['event_id' => $evento->id])}}">
+            <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+            <span class="handheld-toolbar-label">category</span>
+            </a>
+
+            <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <span class="handheld-toolbar-icon"><i class=" bi bi-list"></i></span>
+            <span class="handheld-toolbar-label">Menu</span>
+            </a>
+        </div>
+        </div>
     </main>

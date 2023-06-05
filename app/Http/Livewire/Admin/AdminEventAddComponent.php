@@ -81,6 +81,7 @@ class AdminEventAddComponent extends Component
         $event->status  = $this->status;
         $event->link  = $this->link;
         $event->admstatus  =  $this->admstatus;
+        $event->reference = Str::uuid()->toString();
         $event->save();
 
         //$this->sendEmail($event);

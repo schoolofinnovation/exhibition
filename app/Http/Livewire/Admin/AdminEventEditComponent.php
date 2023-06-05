@@ -8,6 +8,7 @@ use App\Models\Expo;
 use App\Models\Pavillion;
 use App\Models\Sector;
 use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -44,7 +45,11 @@ class AdminEventEditComponent extends Component
     public $venue;
 
     public $board;
-
+    public $status;
+    public $slyug;
+    public $admstatus;
+    public $user_id;
+    public $reference;
 
     public function generateSlug()
     {
@@ -75,7 +80,9 @@ class AdminEventEditComponent extends Component
         $this->phone = $fattribute->phone;
         $this->auidence = $fattribute->auidence;
         $this->edition = $fattribute->edition;
-        $this->link = $fattribute->link;        
+        $this->link = $fattribute->link;  
+        $this->reference = $fattribute->reference;
+        $this->status = '1';     
     }
 
     public function updateEvent()
@@ -121,8 +128,6 @@ class AdminEventEditComponent extends Component
         $fattribute->exhibitors =  $this->exhibitors;
         $fattribute->auidence =  $this->auidence;
       
-        
-
         $fattribute->edition =  $this->edition;
         $fattribute->startdate =  $this->startdate;
         $fattribute->enddate =  $this->enddate;
@@ -134,19 +139,48 @@ class AdminEventEditComponent extends Component
 
     public function doubleing()
     {
+      
       $rti = Str::replace('  ',' ', $this->eventname);
       $ret = explode(",", $rti);
-
+    
       foreach($ret as $tre)
         {
           $doublse = new Event();
-          //$doublse->type = $this->type;
+          $doublse->eventype = $this->eventype;
           $doublse->eventname = $tre;
-          //$doublse->status = $this->status;
-          //$doublse->reference = $this->reference;
+          $doublse->slug = Str::slug ($tre,'-');
+
+          $doublse->city =  $this->city;
+          $doublse->country =  'india';
+          $doublse->venue =  $this->venue;
+          $doublse->exhibitors =  $this->exhibitors;
+          $doublse->auidence =  $this->auidence;
+          $doublse->edition =  $this->edition;
+          $doublse->startdate =  $this->startdate;
+          $doublse->enddate =  $this->enddate;
+
+            $doublse->organizer = $this->organizer;
+            $doublse->shtdesc =  $this->shtdesc;
+            $doublse->tagline =  $this->tagline;
+            $doublse->desc =  $this->desc;
+
+            $doublse->email =  $this->email;
+            $doublse->phone =  $this->phone;
+            $doublse->link =  $this->link;
+          
+          $doublse->status = $this->status;
+          $doublse->admstatus = '0';
+          $doublse->user_id = Auth::user()->id;
+          $doublse->reference = $this->reference;
           $doublse->save();
+          return redirect()->route('adminevent.detail', ['slug' => $this->slug]);
         }
+        
+        dd($rti);
     }
+
+    
+    
 
     public function render()
     {
@@ -155,6 +189,8 @@ class AdminEventEditComponent extends Component
         $sec = Sector::get();
         $pavillion = Expo::get();
         $searchtag = Expo::get();
+
+        
         return view('livewire.admin.admin-event-edit-component',['evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
     }
 }

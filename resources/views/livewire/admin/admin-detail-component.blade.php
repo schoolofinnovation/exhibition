@@ -34,7 +34,7 @@
                     <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
                   @else
                   <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
-                  <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                  <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
                 @endif
             </div>
         </div>
@@ -459,6 +459,13 @@
             </div>
         </div>
     </div>
+
+    @if(is_null($evento->reference))
+    <div class="container">
+      create a unique ID
+      <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
+    </div>
+    @endif
     
     
     {{--<div class="handheld-toolbar">

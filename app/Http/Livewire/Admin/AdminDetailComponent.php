@@ -45,6 +45,14 @@ class AdminDetailComponent extends Component
       session()->flash('message',' Status Successfully Changed');
     } 
 
+    public function updateIDstatus($id) 
+    {
+      $eVent = Event::find($id);
+      $eVent->reference = Str::uuid()->toString();
+      $eVent->save();
+      session()->flash('message',' Status Successfully Changed');
+    } 
+
     public function EventLink($id, $webo) 
     {
       $eVent = Event::find($id);
