@@ -51,6 +51,8 @@ class AdminEventEditComponent extends Component
     public $user_id;
     public $reference;
 
+    public $eventkhaname;
+
     public function generateSlug()
     {
         $this->slug = Str::slug($this->eventname,'-');
@@ -140,16 +142,17 @@ class AdminEventEditComponent extends Component
     public function doubleing()
     {
       
-      $rti = Str::replace('  ',' ', $this->eventname);
+      $rti = Str::replace('  ',' ', $this->eventkhaname);
       $ret = explode(",", $rti);
     
       foreach($ret as $tre)
         {
           $doublse = new Event();
-          $doublse->eventype = $this->eventype;
+          
           $doublse->eventname = $tre;
           $doublse->slug = Str::slug ($tre,'-');
 
+          $doublse->eventype = $this->eventype;
           $doublse->city =  $this->city;
           $doublse->country =  'india';
           $doublse->venue =  $this->venue;
@@ -173,11 +176,10 @@ class AdminEventEditComponent extends Component
           $doublse->user_id = Auth::user()->id;
           $doublse->reference = $this->reference;
           $doublse->save();
-          return redirect()->route('adminevent.detail', ['slug' => $this->slug]);
+          
         }
-        
-        dd($rti);
-    }
+        return redirect()->route('adminevent.detail', ['slug' => $this->slug]);
+       }
 
     
     

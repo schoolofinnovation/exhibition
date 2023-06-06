@@ -430,6 +430,12 @@
         </div>
     </div>
 
+    @if(is_null($evento->reference))
+      <div class="container">
+        create a unique ID
+        <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
+      </div>
+    @else
     {{--doubling--}}
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
@@ -459,13 +465,13 @@
             </div>
         </div>
     </div>
-
-    @if(is_null($evento->reference))
-    <div class="container">
-      create a unique ID
-      <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
-    </div>
     @endif
+
+    <div class="container mb-5">
+      {{$evento->reference}}
+
+      
+    </div>
     
     
     {{--<div class="handheld-toolbar">

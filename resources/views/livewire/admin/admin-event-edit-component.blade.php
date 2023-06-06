@@ -206,7 +206,7 @@
 
             @if($board == "doubling")
                 <form wire:submit.prevent = "doubleing">   
-                    <input type="text" wire:model.lazy = "eventname">
+                    <input type="text" wire:model.lazy = "eventkhaname">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             @endif
