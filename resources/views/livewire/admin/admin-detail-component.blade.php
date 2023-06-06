@@ -372,22 +372,14 @@
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">basic</div> 
+                <div class="h4 fw-light mb-0">BSC</div> 
                
                 <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
                 {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
             </div>
 
             <div class="col-7  p-0">
-              @if(is_null($evento->edition))
-                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
-              @else
-                <div class="fs-md fw-normal text-start">
-                  {{$evento->organizer}}<br>
-                  {{$evento->email}}<br>
-                  {{$evento->phone}}
-                </div>
-              @endif
+                <div class="fs-md fw-normal text-start">{{$evento->eventname}}</div>
             </div>
 
             <div class="col-3 p-0">
@@ -435,7 +427,8 @@
         create a unique ID
         <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
       </div>
-    @else
+    @endif
+
     {{--doubling--}}
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
@@ -465,12 +458,16 @@
             </div>
         </div>
     </div>
-    @endif
+   
 
     <div class="container mb-5">
       {{$evento->reference}}
 
-      
+      @php
+        $findreference = Event::find($evento->reference)->get();
+      @endphp
+
+      {{$findreference}}
     </div>
     
     

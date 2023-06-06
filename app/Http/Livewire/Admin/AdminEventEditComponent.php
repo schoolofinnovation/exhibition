@@ -149,7 +149,7 @@ class AdminEventEditComponent extends Component
         {
           $doublse = new Event();
           
-          $doublse->eventname = $tre;
+          $doublse->eventname = Str::trim($tre);
           $doublse->slug = Str::slug ($tre,'-');
 
           $doublse->eventype = $this->eventype;
@@ -181,8 +181,6 @@ class AdminEventEditComponent extends Component
         return redirect()->route('adminevent.detail', ['slug' => $this->slug]);
        }
 
-    
-    
 
     public function render()
     {

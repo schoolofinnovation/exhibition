@@ -50,7 +50,7 @@
         </div>
       </div>--}}
        
-  <!--event start-->      
+    <!--event start-->      
     @if($board == 'event')           
       <div class="container d-lg-none">
         <div class="row">
@@ -86,10 +86,10 @@
                                 <div class="col  pr-0">
                                     @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
                                       <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                      <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                      <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
                                     @else
                                       <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
                                     @endif 
                                     <div class="round-circle">{{$franchise -> id}}</div> 
                                 </div>
@@ -150,11 +150,10 @@
                                   <div class="col  pr-0">
                                       @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
                                         <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
                                       @else
                                         <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-
+                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
                                       @endif 
                                         <div class="round-circle">{{$franchise -> id}}</div> 
                                         {{--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">try</button>--}}
@@ -229,10 +228,10 @@
                                   <div class="col  pr-0">
                                       @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
                                         <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
                                       @else
                                         <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
 
                                       @endif 
                                       <div class="round-circle">{{$franchise -> id}}</div>
@@ -292,9 +291,9 @@
                                       {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
                                     <div class="text-muted fs-sm text-start">
                                       @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
                                       @else
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
                                       @endif 
                                     </div>  
                                     <div class="text-muted fs-sm text-start">{{$franchise -> venue}}, {{$franchise -> city}}</div>
@@ -816,17 +815,17 @@
           </form>
         </div>
 
-        {{--<div class="container">
-        <input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
+        
+        {{--<input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
                         <div class="row mb-5 pb-2">
-                          @if(is_null($searchTerm))
+                          @if(is_null($findInspection))
  
                            <div class="container">
                             Find Some Events
                            </div>  
 
-                          @else
-                            @foreach ($searchCat as $franchise) 
+                          @else--}}
+                            @foreach ($findInspection as $franchise) 
                               <div class="container  ">
                                 <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                   <div class="col  pr-0">
@@ -863,10 +862,10 @@
                                 </div>
                               </div>
                             @endforeach
-                          @endif--}}
+                          {{--@endif--}}
 
                         </div>
-        </div>
+        
 
         <div class="container my-5">
               <div class="small"> List meet-up brand</div>        

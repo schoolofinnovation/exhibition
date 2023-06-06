@@ -238,9 +238,9 @@
 
                             <div class="col-3 p-0">
                             @if(is_null($pav->desc))
-                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav_id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
                             @else
-                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav_id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
                             @endif
                             </div>
                         </div>

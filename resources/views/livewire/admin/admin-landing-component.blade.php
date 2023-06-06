@@ -26,6 +26,18 @@
                             <div class="p-3 border rounded border-dark bg-light text-center">Blog</div>
                         </a> 
                     </div>
+
+                    <div class="col">
+                        <a  href="{{route('admin.dashboard', ['board' => 'category'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Category</div>
+                        </a> 
+                    </div>
+
+                    <div class="col">
+                        <a  href="{{route('admin.dashboard', ['board' => 'magazine'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Magazine</div>
+                        </a> 
+                    </div>
                     
                 </div>
             </div>
