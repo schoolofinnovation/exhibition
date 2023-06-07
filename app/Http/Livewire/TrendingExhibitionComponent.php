@@ -19,8 +19,8 @@ class TrendingExhibitionComponent extends Component
         //dd($lasttime);
         $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
        
-        $finder = Denco::where('admstatus','1')->where('status','1')->select('expo_id')->groupBy('expo_id')->get();
-
+        //$finder = Denco::where('admstatus','1')->where('status','1')->select('expo_id')->groupBy('expo_id')->get();
+        $finder = Expo::where('admstatus','1')->where('status','1')->get();
         return view('livewire.trending-exhibition-component',['evento'=>$evento, 'finder'=>$finder]);
     }
 }
