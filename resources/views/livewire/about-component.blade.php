@@ -1,7 +1,6 @@
 @section('page_title','About The Exhibtion Network: Your Trusted Marketing Partner for Exhibtions and Trade Shows.')
 @section('page_description','The Exhibition Network is a leading marketing partner for exhibitions and trade shows, providing comprehensive services to help exhibitors promote their businesses and expand thier reach. We offer certification and membership programs , as well as benefits for MSMEs. Our goal is to help exhibitors showcase thier products and services, while enhancing the overall experience for exhibitors and visitors alike.')
 @section('page_keywords', 'The Exhibtion Network, marketing partner,trade shows, exhibitors, certification, membership, programs, MSMES, marketing tools, resources, discounted rates, networking opportunities, industry experts, exhibition network magazine')
-@section('page_author' , 'The Exhibition Network')
 
   <main>
         <section class="container py-5 py-lg-5 mt-4 mb-3">
@@ -58,7 +57,7 @@
           <div class="text-center mb-5">
             <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger"></div>
               <h2 class="display-9 fw-normal lh-1" id="opening">Discover more about</h2>
-                <p class="col-md-10 col-lg-8 mx-auto lead">Get more done with a single, connected experience.</p>
+                <p class="col-md-10 col-lg-8 mx-auto lead lh-1">Get more done with a single, connected experience.</p>
                 {{--<p class="col-md-10 col-lg-8 mx-auto  lead ">Today, COI leads a diversified business as  business consultant with 
                   revenues from business exhibition membership subscriptions, advertising sales solutions under the leadership of Miss. Bhakti Tanna.
                   In January 2020, collaborated with Fortify Solutions completed our idea acquisition into Council of Innovation, bringing together the world’s leading professional 
@@ -75,7 +74,7 @@
                           <small class="fw-bold"> Understanding </small>
                           <hr class="my-1">
                           <p class="text-left">Discover more about our 450+ specialist Brands</p>
-                          <h5 class="card-title text-left"  style="color:#ff0440;">What We Do</h5>  
+                          <h5 class="card-title text-left fs-lg fw-light"  style="color:#ff0440;">What We Do</h5>  
                         </div>
                       </div>
                     </div>
@@ -101,7 +100,7 @@
                           <hr class="my-1">
                           <p class="text-left">Find out why Markets is a Great place to work</p>
                         
-                            <h5 class="card-title text-left"  style="color:#ff0440;">Our Community</h5>
+                            <h5 class="card-title text-left fs-lg fw-light"  style="color:#ff0440;">Our Community</h5>
                         </div>
                       </div>
                     </div>
@@ -110,7 +109,7 @@
 
         <section class="container py-3 py-lg-5 mt-4 mb-3">
           <h2 class="display-5 text-center my-2">We are</h2>
-          <p class="fs-md  text-center">For more information about our company:</p>
+          {{--<p class="fs-md  text-center">For more information about our company:</p>--}}
           <div class="row row-cols-1 row-cols-md-3 g-4 badgese">
               <div class="col col-md-4">
                 <div class="card h-100  border-0">
@@ -118,7 +117,7 @@
                   <div class="fw-normal fs-xs">What we do</div>
                     <small class="fw-bold fw-bold fs-lg" style="color:#ff0440;"> Markets Events </small>
                     <hr class="my-1">
-                    <p class="text-left">Markets is redefining the exhibition experience. Our Markets Events offer participants an enchanced customer journey, better return on time and an increased return on investment through more choices and a personalised experience. Meet the buyers and suppliers who really matter and make the connections that count.</p>
+                    <p class="text-left lh-1 fw-light">Markets is redefining the exhibition experience. Our Markets Events offer participants an enchanced customer journey, better return on time and an increased return on investment through more choices and a personalised experience. Meet the buyers and suppliers who really matter and make the connections that count.</p>
                     {{--<h5 class="card-title text-left"  style="color:#ff0440;">Markets Events</h5>--}}
                   </div>
                 </div>
@@ -186,7 +185,7 @@
               <div class="col p-5 my-5"></div>
               <div class="col col-8 text-right text-dark display-3"> <span class="display-5 text-primary">Our Data.</span> <div> Your Customers.</div></div>
             </div>
-            <div class="col d-none d-sm-block">
+            <div class="col ">
               <div class="row">
               <div class="col"></div>
 
@@ -201,7 +200,7 @@
           </div>
         </section>
 
-        <section class="container  p-5 my-5 d-none d-sm-block">
+        <section class="container  p-5 my-5 ">
           <div class="row">
             <div class="col">
               <div class="col p-5 my-5"></div>
@@ -220,7 +219,7 @@
           </div>
         </section>
 
-        <section class="container my-5 d-none d-sm-block" style="background-image: url(https://source.unsplash.com/1335x735/?job,exhibition);">
+        <section class="container my-5 " style="background-image: url(https://source.unsplash.com/1335x735/?job,exhibition);">
           <div class="row  ">
             <div class="col col-6">
               <div class="row">
@@ -301,7 +300,7 @@
           "300": {
             "items": 3,
             "controls": false,
-            "fixedWidth": 400,
+            "fixedWidth": 300,
             "mouseDrag": true,
             "autoplay": false,
             "autoplayButtonOutput": false,

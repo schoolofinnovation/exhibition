@@ -258,6 +258,7 @@ Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.ad
 //need to delete
 Route::get('/award', AwardComponent::class)->name('business.award');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
+
 Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
 
 //lead
@@ -316,8 +317,6 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
 
     Route::get('/admin/ticket/{event_id}/business/{board}', AdminTicketComponent::class)->name('admincheck.ticket');
-
-
 
     Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
 

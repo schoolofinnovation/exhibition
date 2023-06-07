@@ -217,9 +217,39 @@
                 </form>
             @endif
 
-        
+            @if($formm == 'magazine')
+                <form wire:submit.prevent="">
 
-           
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="form-label" for="cf-name">Name</label>
+                            <input class="form-control" type="text" placeholder="Name" wire:model.lazy="name" required="">
+                            @error( 'name' ){{ $message}}@enderror
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="form-label" for="cf-name">Type</label>
+                            <input class="form-control" type="email" placeholder="Type" wire:model.lazy="type" required="">
+                            @error( 'type' ){{ $message}}@enderror
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label class="form-label" for="cf-name">Desc</label>
+                            <input class="form-control" type="number" placeholder="Description"   wire:model.lazy="desc" required="">
+                            @error( 'desc' ){{ $message}}@enderror
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label class="form-label" for="cf-name">Desc</label>
+                            <input class="form-control" type="number" placeholder="Distribution"   wire:model.lazy="frequency" required="">
+                            @error( 'frequency' ){{ $message}}@enderror
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                </form>
+            @endif
+
         </div>
 
     <div class="handheld-toolbar">

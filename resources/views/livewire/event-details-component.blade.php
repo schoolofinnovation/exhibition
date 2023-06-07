@@ -188,17 +188,22 @@
                       @endphp
 
                     @if(Auth::check())
-
-
                         @php
                           $checkout = Auth::user()->id;
-                          //$find = Rate::where('user_id', $checkout->id)->value('event_id');
-                          //$findevent = $find->where('event_id',$event->id)
+                          $find = DB::table('rates')->where('user_id', $checkout)->get();
+                          $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id',$event->id)->get();
                         @endphp
-                        <li class="d-flex justify-content-between px-2 m-0">
-                        <span cass="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                        <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> {{$rating}} /10</a></span></li>
+
+                        {{$find}} {{$checkComment}}
+
+                        {{$event->id}}
+                        @if(count($find) == '0')
                         
+                          <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                          <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                          <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
+                        @endif
+
                       @else
 
                         <li class="d-flex justify-content-between px-2 m-0 lh-1">

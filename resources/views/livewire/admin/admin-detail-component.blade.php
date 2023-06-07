@@ -422,12 +422,12 @@
         </div>
     </div>
 
-    @if(is_null($evento->reference))
+   
       <div class="container">
         create a unique ID
         <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
       </div>
-    @endif
+  
 
     {{--doubling--}}
     <div class="container my-3">
@@ -462,12 +462,6 @@
 
     <div class="container mb-5">
       {{$evento->reference}}
-
-      @php
-        $findreference = Event::find($evento->reference)->get();
-      @endphp
-
-      {{$findreference}}
     </div>
     
     
