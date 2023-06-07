@@ -329,7 +329,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
 
     Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
-    Route::get('/admin/category/add', AdminCategoryAddComponent::class)->name('admin.addcategories');
+    Route::get('/admin/category/dashboard', AdminCategoryAddComponent::class)->name('admin.addcategories');
     
 
     Route::get('/admin/brands', AdminBrandComponent::class)->name('admin.brand');

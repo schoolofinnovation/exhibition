@@ -50,7 +50,7 @@
         </div>
       </div>--}}
        
-    <!--event start-->      
+<!--event start-->      
     @if($board == 'event')           
       <div class="container d-lg-none">
         <div class="row">
@@ -782,8 +782,7 @@
             </table>
           </div>--}}
     @endif
-  <!--event stop--> 
-
+<!--event stop--> 
 
 <!-- Start Cleint-->
       @if($board == 'client')
@@ -893,7 +892,6 @@
         </div>
       @endif
 <!--Stop Client-->
-
 
 <!--Start job -->
       @if($board == 'job')
@@ -1122,7 +1120,223 @@
       @endif
 <!--Stop blog-->
 
+<!--start category-->
+      @if($board == 'category')
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li class="nav-item"><a class="nav-link px-0 active" href="#group" data-bs-toggle="tab" role="tab">
+                <div class="d-none d-lg-block"><i class="ci-user opacity-60 me-2"></i>Group</div>
+                <div class="d-lg-none text-center"><i class="ci-user opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Franchise</span></div></a></li>
+            <li class="nav-item"><a class="nav-link px-0" href="#category" data-bs-toggle="tab" role="tab">
+                <div class="d-none d-lg-block"><i class="ci-card opacity-60 me-2"></i>Category {{$categories->count()}}</div>
+                <div class="d-lg-none text-center"><i class="ci-card opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Team</span></div></a></li>
+            <li class="nav-item"><a class="nav-link px-0" href="#sector" data-bs-toggle="tab" role="tab">
+                <div class="d-none d-lg-block"><i class="ci-bell opacity-60 me-2"></i>Sub-Category {{$sector->count()}}</div>
+                <div class="d-lg-none text-center"><i class="ci-bell opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Social</span></div></a></li>
+            <li class="nav-item"><a class="nav-link px-0" href="#business" data-bs-toggle="tab" role="tab">
+                <div class="d-none d-lg-block"><i class="ci-card opacity-60 me-2"></i>Business {{$service->count()}}</div>
+                <div class="d-lg-none text-center"><i class="ci-card opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Team</span></div></a></li>   
+        </ul>
 
+        <div class="tab-content">  
+          <div class="tab-pane fade show active" id="group" role="tabpanel">
+              <div class="table-responsive fs-md mb-4">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Industry<span class="badge bg-danger">{{$catcount->count()}}</span></th>
+                      <th>Sub-Industry<span class="badge bg-danger">{{$sector->count()}}</span></th>
+                      <th>Business<span class="badge bg-danger">{{$service->count()}}</span></th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+ @foreach($categ as $categoryo)
+  
+ <td class="py-3">{{$categoryo->tag}} {{$categoryo->id}} 
+
+
+ @php
+   $erty = $categoryo->id;
+   $findui = Denco::where('expo_id', $erty)->get();
+ @endphp
+ {{$findui->count()}}
+ </td>
+
+ @endforeach
+
+                    {{--@foreach($categ as $category)
+                      <tr>
+                        <td class="py-3">
+                        <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
+                        {{$category->id}} </a></td>
+
+                        <td class="py-3">{{$category->industry}} 
+                        
+                        </td>
+
+                        <td class="py-3">
+                          @foreach($category->sector as $cat)
+                          <span class="badge bg-success m-0">{{$cat->sector}}</span>
+                          @endforeach
+                        </td>
+
+                        <td class="py-3">
+                          @foreach($category->service as $cat)
+                          <span class="badge bg-success m-0">{{$cat->business}}</span>
+                          @endforeach
+                        </td>       
+                      
+                      </tr>
+                    @endforeach--}}
+                  </tbody>
+                </table>
+              </div>
+              <!-- Pagination-->
+            {{$categ->links('pagination-links')}}
+          </div>
+
+              {{--
+                        <!--Sector-->
+                        <div class="tab-pane fade " id="sector" role="tabpanel">
+                            <!-- Orders list-->
+                            <div class="table-responsive fs-md mb-4">
+                              <table class="table table-hover mb-0">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Sector</th>
+                                    
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($sectorr as $category)
+                                      <tr>
+                                        <td class="py-3">
+                                        <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
+                                        {{$category->id}} </a></td>
+                                        <td class="py-3">{{$category->sector}} </td>
+                                        
+                                        <td class="py-3">
+                                        @if($category->status == 'active')
+                                        <span class="badge bg-success m-0">Active</span>
+                                        @else
+                                        <span class="badge bg-danger m-0">Deactive</span>
+                                        @endif
+                                        </td>
+
+                                      <td class=" py-3 align-middle">
+                                      <a class="nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                                      <i class="bi bi-pencil"></i></a>
+                                      <a class="btn nav-link-style text-danger" href="#" onclick="confirm('Are you sure, You want to delete this category?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteCategory({{$category->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
+                                      <i class=" bi bi-x"></i></a></td>
+                                      </tr>
+                                      @endforeach
+                                </tbody>
+                              </table>
+                            </div>
+                            <!-- Pagination-->
+                            {{$sectorr->links('pagination-links')}}
+                        </div>
+
+                        <!-- business-->
+                        <div class="tab-pane fade" id="business" role="tabpanel">
+                          <!-- Orders list-->
+                          <div class="table-responsive fs-md mb-4">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Business   <span class="badge bg-danger"></span></th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                              <tbody>
+                                @foreach ($business as $category)
+                                  <tr>
+                                    <td class="py-3">
+                                    <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
+                                    {{$category->id}} </a></td>
+                                    <td class="py-3">{{$category->business}} 
+                                    <span class="badge bg-danger"> 22 </span>
+                                    </td>
+                                    
+                                    <td class="py-3">
+                                    @if($category->status == 'active')
+                                    <span class="badge bg-success m-0">Active</span>
+                                    @else
+                                    <span class="badge bg-danger m-0">Deactive</span>
+                                    @endif
+                                    </td>
+
+                                    <td class=" py-3 align-middle">
+                                    <a class="nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                                    <i class="bi bi-pencil"></i></a>
+                                    <a class="btn nav-link-style text-danger" href="#" onclick="confirm('Are you sure, You want to delete this category?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteCategory({{$category->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
+                                    <i class=" bi bi-x"></i></a> </td>
+                                  </tr>
+                                  @endforeach
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- Pagination-->
+                          {{$business->links('pagination-links')}}
+                        </div>
+
+                        <!-- category-->
+                        <div class="tab-pane fade" id="category" role="tabpanel">
+                          <!-- Orders list-->
+                          <div class="table-responsive fs-md mb-4">
+                            <table class="table table-hover mb-0">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Industry   <span class="badge bg-danger"></span></th>
+                                
+                                  <th>Status</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              @foreach ($categ as $category)
+                                <tr>
+
+                                  <td class="py-3">
+                                  <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
+                                  {{$category->id}} </a></td>
+                                  <td class="py-3">{{$category->industry}} 
+                                  <span class="badge bg-danger"> 22 </span>
+                                  </td>
+                                
+                                
+                                  
+                                  <td class="py-3">
+                                  @if($category->status == 'active')
+                                  <span class="badge bg-success m-0">Active</span>
+                                  @else
+                                  <span class="badge bg-danger m-0">Deactive</span>
+                                  @endif
+                                  </td>
+
+                                <td class=" py-3 align-middle">
+                                <a class="nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
+                                <i class="bi bi-pencil"></i></a>
+
+                                <a class="btn nav-link-style text-danger" href="#" onclick="confirm('Are you sure, You want to delete this category?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteCategory({{$category->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
+                                    <i class=" bi bi-x"></i></a> </td>
+                                </tr>
+                                @endforeach
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+              --}}
+        </div>
+      @endif
+<!--Stop Category-->
       <div class="container">
           <div class="row">
             <!-- Sidebar
@@ -1459,8 +1673,6 @@
                   {{$coupons->links('pagination-links')}}
                 @endif
 
-                     
-
                 @if($board == 'user')
                   <div class="table-responsive fs-md mb-4">
                     <table class="table table-hover mb-0">
@@ -1534,209 +1746,7 @@
                    @livewire('admin.admin-attributes-component')
                 @endif
 
-                @if($board == 'category')
-                  <ul class="nav nav-tabs nav-justified" role="tablist">
-                      <li class="nav-item"><a class="nav-link px-0 active" href="#group" data-bs-toggle="tab" role="tab">
-                          <div class="d-none d-lg-block"><i class="ci-user opacity-60 me-2"></i>Group</div>
-                          <div class="d-lg-none text-center"><i class="ci-user opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Franchise</span></div></a></li>
-                      <li class="nav-item"><a class="nav-link px-0" href="#category" data-bs-toggle="tab" role="tab">
-                          <div class="d-none d-lg-block"><i class="ci-card opacity-60 me-2"></i>Category {{$categories->count()}}</div>
-                          <div class="d-lg-none text-center"><i class="ci-card opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Team</span></div></a></li>
-                      <li class="nav-item"><a class="nav-link px-0" href="#sector" data-bs-toggle="tab" role="tab">
-                          <div class="d-none d-lg-block"><i class="ci-bell opacity-60 me-2"></i>Sub-Category {{$sector->count()}}</div>
-                          <div class="d-lg-none text-center"><i class="ci-bell opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Social</span></div></a></li>
-                      <li class="nav-item"><a class="nav-link px-0" href="#business" data-bs-toggle="tab" role="tab">
-                          <div class="d-none d-lg-block"><i class="ci-card opacity-60 me-2"></i>Business {{$service->count()}}</div>
-                          <div class="d-lg-none text-center"><i class="ci-card opacity-60 d-block fs-xl mb-2"></i><span class="fs-ms">Team</span></div></a></li>   
-                  </ul>
-
-                  <!-- Tab content-->
-                  <div class="tab-content">
-                    <!-- category-->
-                    <div class="tab-pane fade show active" id="group" role="tabpanel">
-                        <!-- Orders list-->
-                        <div class="table-responsive fs-md mb-4">
-                          <table class="table table-hover mb-0">
-                            <thead>
-                              <tr>
-                                <th>#</th>
-                                <th>Industry<span class="badge bg-danger">{{$catcount->count()}}</span></th>
-                                <th>Sector<span class="badge bg-danger">{{$sector->count()}}</span></th>
-                                <th>Business<span class="badge bg-danger">{{$service->count()}}</span></th>
-                              </tr>
-                            </thead>
-                            
-                            <tbody>
-                            @foreach($categ as $category)
-                              <tr>
-                                <td class="py-3">
-                                <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
-                                {{$category->id}} </a></td>
-
-                                <td class="py-3">{{$category->industry}} 
-                                
-                                </td>
-
-                                <td class="py-3">
-                                  @foreach($category->sector as $cat)
-                                  <span class="badge bg-success m-0">{{$cat->sector}}</span>
-                                  @endforeach
-                                </td>
-
-                                <td class="py-3">
-                                  @foreach($category->service as $cat)
-                                  <span class="badge bg-success m-0">{{$cat->business}}</span>
-                                  @endforeach
-                                </td>       
-                              
-                              </tr>
-                            @endforeach
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- Pagination-->
-                      {{$categ->links('pagination-links')}}
-                    </div>
-
-                    <!--Sector-->
-                    <div class="tab-pane fade " id="sector" role="tabpanel">
-                        <!-- Orders list-->
-                        <div class="table-responsive fs-md mb-4">
-                          <table class="table table-hover mb-0">
-                            <thead>
-                              <tr>
-                                <th>#</th>
-                                <th>Sector</th>
-                                
-                                <th>Status</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($sectorr as $category)
-                                  <tr>
-                                    <td class="py-3">
-                                    <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
-                                    {{$category->id}} </a></td>
-                                    <td class="py-3">{{$category->sector}} </td>
-                                    
-                                    <td class="py-3">
-                                    @if($category->status == 'active')
-                                    <span class="badge bg-success m-0">Active</span>
-                                    @else
-                                    <span class="badge bg-danger m-0">Deactive</span>
-                                    @endif
-                                    </td>
-
-                                  <td class=" py-3 align-middle">
-                                  <a class="nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                                  <i class="bi bi-pencil"></i></a>
-                                  <a class="btn nav-link-style text-danger" href="#" onclick="confirm('Are you sure, You want to delete this category?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteCategory({{$category->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
-                                  <i class=" bi bi-x"></i></a></td>
-                                  </tr>
-                                  @endforeach
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- Pagination-->
-                        {{$sectorr->links('pagination-links')}}
-                    </div>
-
-                    <!-- business-->
-                    <div class="tab-pane fade" id="business" role="tabpanel">
-                      <!-- Orders list-->
-                      <div class="table-responsive fs-md mb-4">
-                        <table class="table table-hover mb-0">
-                            <thead>
-                              <tr>
-                                <th>#</th>
-                                <th>Business   <span class="badge bg-danger"></span></th>
-                                <th>Status</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                          <tbody>
-                            @foreach ($business as $category)
-                              <tr>
-                                <td class="py-3">
-                                <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
-                                {{$category->id}} </a></td>
-                                <td class="py-3">{{$category->business}} 
-                                <span class="badge bg-danger"> 22 </span>
-                                </td>
-                                
-                                <td class="py-3">
-                                @if($category->status == 'active')
-                                <span class="badge bg-success m-0">Active</span>
-                                @else
-                                <span class="badge bg-danger m-0">Deactive</span>
-                                @endif
-                                </td>
-
-                                <td class=" py-3 align-middle">
-                                <a class="nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                                <i class="bi bi-pencil"></i></a>
-                                <a class="btn nav-link-style text-danger" href="#" onclick="confirm('Are you sure, You want to delete this category?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteCategory({{$category->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
-                                <i class=" bi bi-x"></i></a> </td>
-                              </tr>
-                              @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                      <!-- Pagination-->
-                      {{$business->links('pagination-links')}}
-                    </div>
-
-                    <!-- category-->
-                    <div class="tab-pane fade" id="category" role="tabpanel">
-                      <!-- Orders list-->
-                      <div class="table-responsive fs-md mb-4">
-                        <table class="table table-hover mb-0">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>Industry   <span class="badge bg-danger"></span></th>
-                            
-                              <th>Status</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          @foreach ($categ as $category)
-                            <tr>
-
-                              <td class="py-3">
-                              <a class="nav-link-style fw-medium fs-sm" href="#order-details" data-bs-toggle="modal">
-                              {{$category->id}} </a></td>
-                              <td class="py-3">{{$category->industry}} 
-                              <span class="badge bg-danger"> 22 </span>
-                              </td>
-                            
-                            
-                              
-                              <td class="py-3">
-                              @if($category->status == 'active')
-                              <span class="badge bg-success m-0">Active</span>
-                              @else
-                              <span class="badge bg-danger m-0">Deactive</span>
-                              @endif
-                              </td>
-
-                            <td class=" py-3 align-middle">
-                            <a class="nav-link-style me-2"  data-bs-toggle="tooltip" title="" data-bs-original-title="Edit" aria-label="Edit">
-                            <i class="bi bi-pencil"></i></a>
-
-                            <a class="btn nav-link-style text-danger" href="#" onclick="confirm('Are you sure, You want to delete this category?') || event.stopImmediatePropagation()"  wire:click.prevent="deleteCategory({{$category->id}})" data-bs-toggle="tooltip" title="" data-bs-original-title="Remove">
-                                <i class=" bi bi-x"></i></a> </td>
-                            </tr>
-                            @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                 </div>               
-                @endif
+                
               </div>  
               
                 @if($board == 'order')

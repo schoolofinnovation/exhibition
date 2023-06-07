@@ -20,6 +20,7 @@
             </div>
         
             @if(is_null($searchTerm))
+            
             @else
 
                 @if($searchcat->count() > 0)

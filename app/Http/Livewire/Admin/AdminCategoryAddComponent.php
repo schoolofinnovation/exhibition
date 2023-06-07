@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Cag;
 use App\Models\Category;
+use App\Models\Denco;
+use App\Models\Expo;
 use App\Models\Sector;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -23,7 +25,7 @@ class AdminCategoryAddComponent extends Component
     public $tag;
     public $c_desc;
     public $icon;
-   
+    public $searchTerm;
 
     public function mount()
     {
@@ -72,9 +74,27 @@ class AdminCategoryAddComponent extends Component
         return redirect()->route('admin.dashboard');
     }
 
+    public function updateEventstatus($id, $status) 
+    {
+      $eVent = Expo::find($id);
+      $eVent->admstatus = $status;
+      $eVent->save();
+      session()->flash('message',' Status Successfully Changed');
+    } 
+
+
     public function render()
     {
+        $searchTerm = '%'.$this->searchTerm. '%';
+        $searchcat = Expo::where('tag','LIKE', $searchTerm)
+                    ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
+
+
         $categor = Category::orderBy('industry','ASC')->get();
-        return view('livewire.admin.admin-category-add-component',['categor'=> $categor])->layout('layouts.admin');
+
+        $resultAdded = Expo::where('admstatus','1')->get();
+        $counteventWithCategory = Denco::where('expo_id', '$resultAdded->id')->count();
+
+        return view('livewire.admin.admin-category-add-component', ['counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');
     }
 }
