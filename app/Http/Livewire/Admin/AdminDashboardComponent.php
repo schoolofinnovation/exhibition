@@ -7,6 +7,7 @@ use App\Mail\MonthlyEvent;
 use App\Models\Appliedjob;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Coupon;
 use App\Models\Denco;
@@ -28,7 +29,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use Illuminate\Support\Str;
 use Livewire\WithPagination;
+use Faker\Factory;
 
 class AdminDashboardComponent extends Component
 {
@@ -50,7 +53,8 @@ class AdminDashboardComponent extends Component
   public $link;
   public $event_id;
   public $visited;
- 
+  public $statement;
+  
     
     //career
     use WithPagination;
@@ -200,6 +204,25 @@ dd($brandAttend,$ContactDetail);
       session()->flash('message','info has been deleted Successfully');
       return redirect()->route('admin.dashboard', ['board' => 'client']);
     }  
+
+    public function createStatement()
+    {
+      $rti = Str::replace('  ',' ',$this->statement);
+      $ret = explode(",", $rti);
+     
+      foreach($ret as $tre)
+      {
+        $visited =  new Comment();
+        $visited->statement = $tre;
+        $visited->status = '1';
+        $visited->admstatus = '1';
+        $visited->user_id = Auth::user()->id;
+        $visited->save();
+    
+      }
+      session()->flash('message','info has been deleted Successfully');
+      return redirect()->route('admin.dashboard', ['board' => 'client']);
+    }
 
     public function render()
     {

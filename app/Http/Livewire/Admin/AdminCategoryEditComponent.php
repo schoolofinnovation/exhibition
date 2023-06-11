@@ -95,6 +95,8 @@ class AdminCategoryEditComponent extends Component
                     ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
         $expoon = Expo::where('type','tag')->get();
 
-        return view('livewire.admin.admin-category-edit-component',['selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat])->layout('layouts.eblog');
+        $findAdminStatus = Expo::where('admstatus','1')->get();
+
+        return view('livewire.admin.admin-category-edit-component',['findAdminStatus' => $findAdminStatus, 'selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat])->layout('layouts.eblog');
     }
 }

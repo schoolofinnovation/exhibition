@@ -5,15 +5,19 @@ namespace App\Http\Livewire\Admin;
 use App\Http\Livewire\Seller\HastagComponent;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Hashtag;
 use App\Models\Pavillion;
+use App\Models\Rate;
 use App\Models\Speaker;
 use App\Models\Sponsership;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
+
 
 class AdminDetailComponent extends Component
 {   public $slug;
@@ -22,6 +26,14 @@ class AdminDetailComponent extends Component
     public $link;
     public $formm;
     public $eventname;
+
+    public $rate;
+    public $hasttag;
+    public $status;
+    public $admstatus;
+    public $event_id;
+    public $opinion;
+    
 
     public function mount($slug)
     {
@@ -61,7 +73,30 @@ class AdminDetailComponent extends Component
       session()->flash('message',' Status Successfully Changed');
     } 
 
-    
+    //@for($i = 0; $i < 10; $i++) @endfor
+
+    public function tryingfaker()
+    {
+      
+      for($i = 0; $i < $this->howMany; $i++)
+      {
+        $indoyui = Event::where('slug', $this->slug)->first();
+        $usero =  new Rate ();
+        $usero->rate = Str::numberBetween(1,10);
+        $findhastag = Hashtag::where('admstatus','1')->where('status','1')->where('event_id', '555')->value('hastag');
+        $usero->hasttag = Str::random($findhastag);
+        $findComment = Comment::where('admstatus','1')->where('status','1')->get();
+        $usero->opinion =  $findComment->random();
+       
+        $usero->event_id = $indoyui->id;
+        $usero->user_id = Auth::user()->id;
+        $usero->status = '1'; 
+        $usero->admstatus = '1';
+        $usero->save();
+
+      }
+      
+    }
 
     use WithPagination;
     public function render()

@@ -24,8 +24,14 @@
             @else
 
                 @if($searchcat->count() > 0)
+                
+
+                
                     <form wire:submit.prevent="updateEvent">      
                         <div class="row mb-5 pb-2" wire:model="checkvalue">
+                        @foreach ($findAdminStatus as $findoo)
+                            <span class="badge bg-success m-0" value="{{$findoo->id}}"  wire:model="checkvalue">  {{$findoo -> tag}} </span>
+                        @endforeach
 
                             @foreach ($searchcat as $franchise) 
                             {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}

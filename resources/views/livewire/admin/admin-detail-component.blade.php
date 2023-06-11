@@ -464,6 +464,12 @@
       {{$evento->reference}}
     </div>
     
+    <div class="container mb-5" >
+       <form wire:submit.prevent="tryingfaker">
+         <input type="text" wire:model="howMany">
+         <button type="submit"></button>
+       </form>
+    </div>
     
     {{--<div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">

@@ -18,6 +18,7 @@ class LeadOtherComponent extends Component
     public $type;
     public $admstatus;
     public $status;
+    public $slug;
 
     public function mount($slug , $type)
     {
