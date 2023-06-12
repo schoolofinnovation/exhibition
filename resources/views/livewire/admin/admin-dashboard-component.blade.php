@@ -1128,11 +1128,11 @@
       @endif
 
       @if($board == 'review')     
-        <div>
+        <div class="container">
           <p>List your Statement</p>
-          <form wire:submit.prevent="createStatement">
-             <input type="text" wire:model="statement">
-             <button type="submit">Submit</button>
+          <form wire:submit.prevent = "createStatement">
+             <textarea class="form-control" type="text" wire:model.lazy = "statement" rows="12"></textarea>
+            <div class="form-control btn btn-primary" type="submit">Submit</div> 
            </form>
         </div>
       @endif

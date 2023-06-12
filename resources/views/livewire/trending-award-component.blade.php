@@ -27,7 +27,7 @@
                   <div class="card product-card">
                     
                     <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
-                      <img src="{{url('exhibition/'.$eventoi->image)}}" alt="{{$eventoi -> eventname}}"></a>
+                      <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" alt="{{$eventoi -> eventname}}"></a>
 
                     <div class="card-body p-1">
                       <!--<h3 class="product-title fs-sm"><a href="#">in asperiores quod nam</a></h3>-->

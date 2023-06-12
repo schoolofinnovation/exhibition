@@ -29,7 +29,7 @@
             <div class="card product-card">
               
               <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
-                <img src="{{url('public/exhibition/'.$eventoi->image)}}" alt="{{$eventoi->eventname}}"></a>
+              <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" alt="{{$eventoi->eventname}}"></a>
 
               <div class="card-body p-1">
                 <div class="d-flex justify-content-between">

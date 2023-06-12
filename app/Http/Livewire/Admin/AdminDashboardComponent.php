@@ -208,7 +208,9 @@ dd($brandAttend,$ContactDetail);
     public function createStatement()
     {
       $rti = Str::replace('  ',' ',$this->statement);
-      $ret = explode(",", $rti);
+      $checknumber = preg_replace('/[0-9_].+/', [''] , $rti);
+      $stoi = Str::replace('"',',', $checknumber);
+      $ret = explode(" ", $stoi);
      
       foreach($ret as $tre)
       {
@@ -218,10 +220,11 @@ dd($brandAttend,$ContactDetail);
         $visited->admstatus = '1';
         $visited->user_id = Auth::user()->id;
         $visited->save();
-    
       }
+      
+      dd($rti);
       session()->flash('message','info has been deleted Successfully');
-      return redirect()->route('admin.dashboard', ['board' => 'client']);
+      return redirect()->route('admin.dashboard', ['board' => 'review']);
     }
 
     public function render()
