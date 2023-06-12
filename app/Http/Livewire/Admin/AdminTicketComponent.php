@@ -45,6 +45,7 @@ class AdminTicketComponent extends Component
         $this->admstatus= '0';  
         $this->status = '1'; 
         $this->cart_value = 100;
+        $this->code = Str::random(10);
     } 
 
     public function generateSlug(){
@@ -55,11 +56,15 @@ class AdminTicketComponent extends Component
     public function ticketAdd()
     {
         $newTicket = new Ticket();
+
         $newTicket->code = $this->code;
+
         $newTicket->package = $this->package;
         $newTicket->slug = $this->slug;
         $newTicket->desc = $this->desc;
-        //$newTicket->type = $this->type;
+        
+        $newTicket->type = $this->type;
+
         $newTicket->event_id = $this->event_id;
         $newTicket->price = $this->price;
         $newTicket->saleprice = $this->saleprice;
@@ -70,6 +75,7 @@ class AdminTicketComponent extends Component
         $newTicket->expiry_time = $this->expiry_time;
         $newTicket->validity = $this->validity;
         $newTicket->number = $this->number;
+
         $newTicket->user_id = Auth::user()->id;
         
         $newTicket->terms = $this->terms;

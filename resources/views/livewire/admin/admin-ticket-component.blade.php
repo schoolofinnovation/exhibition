@@ -2,7 +2,7 @@
       
 
       @if($board == 'dashboard')
-          <div class="container my-3">
+          <div class="container  bg-success my-3">
             <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
                 <div class="col  pr-0">
                     <div class="h4 fw-light mb-0">{{count($ticket)}}</div> 
@@ -38,19 +38,12 @@
             <form wire:submit.prevent="add">
                 <!-- Title-->
                 <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
-                    <h2 class="h3 py-2 me-2 text-center text-sm-start">Add New Event</h2>
+                    <h2 class="h3 py-2 me-2 text-center text-sm-start">Add New Ticket</h2>
                 </div>
                 <div class="container">
                 
                   <div class="row">
-                      <div class="col-sm-3 mb-3">
-                          <label class="form-label" for="unp-standard-price">Code</label>
-                          <input class="form-control" type="text" wire:model.lazy="code">
-                          <div class="form-text">It shoud be unique</div>
-                          @error('code')
-                              <div class="form-text">{{$message}}</div>
-                          @enderror
-                      </div>
+                      
 
                       <div class="col-sm-6 mb-3">
                           <label class="form-label" for="unp-product-name">Ticket Name</label>
@@ -73,6 +66,15 @@
                       <div class="col-sm-3 mb-3">
                           <label class="form-label" for="unp-product-name">Ticket Price </label>
                           <input class="form-control" type="number" wire:model.lazy="price">
+                          <div class="form-text">Price of the ticket</div>
+                          @error('price')
+                              <div class="form-text">{{$message}}</div>
+                          @enderror
+                      </div>
+
+                      <div class="col-sm-3 mb-3">
+                          <label class="form-label" for="unp-product-name">Ticket Price </label>
+                          <input class="form-control" type="text" wire:model.lazy="type">
                           <div class="form-text">Price of the ticket</div>
                           @error('price')
                               <div class="form-text">{{$message}}</div>
@@ -108,7 +110,7 @@
 
                   <div class="mb-3">
                       <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" wire:model.lazy="desc"></textarea>
+                      <textarea class="form-control"  rows="6" wire:model.lazy="desc"></textarea>
                       <div class="form-text">Describle your tickets plan</div>
                       @error('desc')
                           <div class="form-text">{{$message}}</div>
@@ -169,7 +171,7 @@
 
                 <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
               </div>
-              </form>
+            </form>
 
       @endif
 </main>

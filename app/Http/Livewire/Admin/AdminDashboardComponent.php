@@ -54,6 +54,8 @@ class AdminDashboardComponent extends Component
   public $event_id;
   public $visited;
   public $statement;
+
+  public $businessstatement;
   
     
     //career
@@ -64,6 +66,7 @@ class AdminDashboardComponent extends Component
         $this->board = $board;
         $this->month = Carbon::today()->format("m");
         $this->visited = '1';
+
     }
     
     public function updateJobstatus($id, $status) 
@@ -207,11 +210,9 @@ dd($brandAttend,$ContactDetail);
 
     public function createStatement()
     {
-      $rti = Str::replace('  ',' ',$this->statement);
-      $checknumber = preg_replace('/[0-9_].+/', [''] , $rti);
-      $stoi = Str::replace('"',',', $checknumber);
-      $ret = explode(" ", $stoi);
-     
+      $rti = Str::replace('"',',', $this->businessstatement );
+      $ret = explode(",", $rti);
+
       foreach($ret as $tre)
       {
         $visited =  new Comment();
@@ -221,10 +222,9 @@ dd($brandAttend,$ContactDetail);
         $visited->user_id = Auth::user()->id;
         $visited->save();
       }
-      
-      dd($rti);
+
       session()->flash('message','info has been deleted Successfully');
-      return redirect()->route('admin.dashboard', ['board' => 'review']);
+      return redirect()->route('admin.dashboard', ['board' => 'client']);
     }
 
     public function render()
