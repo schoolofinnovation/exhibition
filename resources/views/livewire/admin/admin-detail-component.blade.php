@@ -440,7 +440,7 @@
             </div>
 
             <div class="col-7  p-0">
-              {{--@if(is_null($evento->edition))
+              {{-- @if(is_null($evento->edition))
                 <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
               @else
                 <div class="fs-md fw-normal text-start">
@@ -470,6 +470,9 @@
          <button type="submit"></button>
        </form>
     </div>
+
+    {{-- Creating review--}}
+     <p>creating review</p>
     
     {{--<div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">

@@ -42,10 +42,13 @@ class AdminTicketComponent extends Component
         $this->type = $fattribute->eventype;
         
         $this->board = $board;
-        $this->admstatus= '0';  
-        $this->status = '1'; 
-        $this->cart_value = 100;
+        $this->admstatus= '1';  
+        $this->status = '0'; 
+        $this->cart_value = '100';
         $this->code = Str::random(10);
+
+        //$this->expiry_date = $fattribute->enddate;
+        //$this->expiry_time = $fattribute->enddate;
     } 
 
     public function generateSlug(){
@@ -60,20 +63,26 @@ class AdminTicketComponent extends Component
         $newTicket->code = $this->code;
 
         $newTicket->package = $this->package;
-        $newTicket->slug = $this->slug;
+        $newTicket->slug = Str::slug($this->package,'-');
         $newTicket->desc = $this->desc;
         
         $newTicket->type = $this->type;
 
         $newTicket->event_id = $this->event_id;
+
         $newTicket->price = $this->price;
         $newTicket->saleprice = $this->saleprice;
+
         $newTicket->cart_value = $this->cart_value;
+
         $newTicket->expiry_date = $this->expiry_date;
-        $newTicket->start_date = $this->start_date;
-        $newTicket->start_time = $this->start_time;
         $newTicket->expiry_time = $this->expiry_time;
         $newTicket->validity = $this->validity;
+
+        $newTicket->start_date = $this->start_date;
+        $newTicket->start_time = $this->start_time;
+        
+        
         $newTicket->number = $this->number;
 
         $newTicket->user_id = Auth::user()->id;
@@ -83,8 +92,7 @@ class AdminTicketComponent extends Component
         $newTicket->admstatus = $this->admstatus;
         $newTicket->save();
         
-       // return redirect()->route('adminevent.detail', ['slug' => $newTicket->slug]);
-        
+       return redirect()->route('admincheck.ticket',['event_id' => $this->event_id, 'board' => 'dashboard']);
         session()->flash('message','Thanks for sharing your review.');
     }
 
@@ -92,8 +100,13 @@ class AdminTicketComponent extends Component
     use WithPagination;
     public function render()
     {
-        $tickets = Ticket::orderBy('id','DESC')->paginate(5);
+        $ticketsfeatured = Ticket::where('admstatus','1')->where('status','0')->where('type','featured')->orderBy('id','DESC')->get();
+        $ticketssponsored = Ticket::where('admstatus','1')->where('status','0')->where('type','sponsored')->orderBy('id','DESC')->get();
+        $ticketsBasic = Ticket::where('admstatus','1')->where('status','0')->where('type','basic')->orderBy('id','DESC')->get();
+        $ticketsActive = Ticket::where('admstatus','1')->where('status','1')->where('type','active')->orderBy('id','DESC')->get();
+        $ticketsDeactive = Ticket::where('admstatus','1')->where('status','0')->where('type','deactive')->orderBy('id','DESC')->get();
+
         $event = Event::where('id', $this->event_id)->first();
-        return view('livewire.admin.admin-ticket-component',['tickets'=>$tickets, 'event'=>$event])->layout('layouts.eblog');
+        return view('livewire.admin.admin-ticket-component',['ticketsfeatured' => $ticketsfeatured, 'ticketssponsored'=>$ticketssponsored, 'ticketsBasic'=>$ticketsBasic, 'ticketsActive'=>$ticketsActive, 'ticketsDeactive'=>$ticketsDeactive, 'event'=>$event])->layout('layouts.eblog');
     }
 }
