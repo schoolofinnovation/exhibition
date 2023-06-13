@@ -1,143 +1,138 @@
 <main>
-      
-
       @if($board == 'dashboard')
-          <div class="container  bg-success my-3">
+            <div class="container my-3">
                 <small>-Basic Plan-</small>
-                @foreach($ticketsBasic as ticket)
-                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-                        <div class="col  pr-0">
-                            <div class="h4 fw-light mb-0">{{$ticket->saleprice}}</div> 
+                @foreach($ticketsBasic as $ticket)
+                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1 bg-success">
+                        <div class="col  pr-1">
+                            <div class=" small fw-light mb-0">{{$ticket->saleprice}}</div> 
                         
-                            <div class="round-circle" >{{$ticket->price}}</div> 
+                            <div class="small" >{{$ticket->price}}</div> 
                             
                         </div>
 
                         <div class="col-7  p-0">
-                            <div class="fs-md fw-normal text-start">
+                            <div class="fs-md fw-normal text-center">
                                   <strong>{{$ticket -> package}}</strong>   
                                   <small>{{$ticket -> code}}</small> | <strong> {{$ticket -> number}} </strong>
                             </div>
                         </div>
 
                         <div class="col-3 p-0">
-                        @if(is_null($evento->edition))
-                            <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Add</a>
-                        @else
                             <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Edit</a>
-                        @endif
+                            <a class="btn btn-sm btn-primary" href="#" wire:click.prevent="tivateBusinessPlan({{$ticket->id}}, '1',{{$evento->id}})">Active</a>
                         </div>
                     </div>
                 @endforeach
+            </div>
 
+            <div class="container my-3">
                 <small>-Active Plan-</small>
-                @foreach($ticketsActive as ticket)
-                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-                        <div class="col  pr-0">
-                            <div class="h4 fw-light mb-0">{{$ticket->saleprice}}</div> 
+                @foreach($ticketsActive as $ticket)
+                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1 bg-success">
+                        <div class="col  pr-1">
+                            <div class=" small fw-light mb-0">{{$ticket->saleprice}}</div> 
                         
-                            <div class="round-circle" >{{$ticket->price}}</div> 
+                            <div class="small" >{{$ticket->price}}</div> 
                             
                         </div>
 
                         <div class="col-7  p-0">
-                            <div class="fs-md fw-normal text-start">
+                            <div class="fs-md fw-normal text-center">
                                   <strong>{{$ticket -> package}}</strong>   
                                   <small>{{$ticket -> code}}</small> | <strong> {{$ticket -> number}} </strong>
                             </div>
                         </div>
 
                         <div class="col-3 p-0">
-                        @if(is_null($evento->edition))
-                            <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Add</a>
-                        @else
+                        
                             <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Edit</a>
-                        @endif
+                        
                         </div>
                     </div>
                 @endforeach
-
+            </div>
+                
+            <div class="container my-3">
                 <small>-Expire Plan-</small>
-                @foreach($ticketsDeactive as ticket)
-                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-                        <div class="col  pr-0">
-                            <div class="h4 fw-light mb-0">{{$ticket->saleprice}}</div> 
+                @foreach($ticketsDeactive as $ticket)
+                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1 bg-success">
+                        <div class="col  pr-1">
+                            <div class=" small fw-light mb-0">{{$ticket->saleprice}}</div> 
                         
-                            <div class="round-circle" >{{$ticket->price}}</div> 
+                            <div class="small" >{{$ticket->price}}</div> 
                             
                         </div>
 
                         <div class="col-7  p-0">
-                            <div class="fs-md fw-normal text-start">
+                            <div class="fs-md fw-normal text-center">
                                   <strong>{{$ticket -> package}}</strong>   
                                   <small>{{$ticket -> code}}</small> | <strong> {{$ticket -> number}} </strong>
                             </div>
                         </div>
 
                         <div class="col-3 p-0">
-                        @if(is_null($evento->edition))
-                            <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Add</a>
-                        @else
+                        
                             <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Edit</a>
-                        @endif
+                        
                         </div>
                     </div>
                 @endforeach
-
+            </div>
+                
+            <div class="container my-3">
                 <small>-Sponsored Plan-</small>
-                @foreach($ticketssponsored as ticket)
-                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-                        <div class="col  pr-0">
-                            <div class="h4 fw-light mb-0">{{$ticket->saleprice}}</div> 
+                @foreach($ticketssponsored as $ticket)
+                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1 bg-success">
+                        <div class="col  pr-1">
+                            <div class=" small fw-light mb-0">{{$ticket->saleprice}}</div> 
                         
-                            <div class="round-circle" >{{$ticket->price}}</div> 
+                            <div class="small" >{{$ticket->price}}</div> 
                             
                         </div>
 
                         <div class="col-7  p-0">
-                            <div class="fs-md fw-normal text-start">
+                            <div class="fs-md fw-normal text-center">
                                   <strong>{{$ticket -> package}}</strong>   
                                   <small>{{$ticket -> code}}</small> | <strong> {{$ticket -> number}} </strong>
                             </div>
                         </div>
 
                         <div class="col-3 p-0">
-                        @if(is_null($evento->edition))
-                            <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Add</a>
-                        @else
+                        
                             <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Edit</a>
-                        @endif
+                        
                         </div>
                     </div>
                 @endforeach
-
+            </div>
+                
+            <div class="container my-3">
                 <small>-Featured Plan-</small>
-                @foreach($ticketsfeatured as ticket)
-                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-                        <div class="col  pr-0">
-                            <div class="h4 fw-light mb-0">{{$ticket->saleprice}}</div> 
+                @foreach($ticketsfeatured as $ticket)
+                    <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1 bg-success">
+                        <div class="col  pr-1">
+                            <div class=" small fw-light mb-0">{{$ticket->saleprice}}</div> 
                         
-                            <div class="round-circle" >{{$ticket->price}}</div> 
+                            <div class="small" >{{$ticket->price}}</div> 
                             
                         </div>
 
                         <div class="col-7  p-0">
-                            <div class="fs-md fw-normal text-start">
+                            <div class="fs-md fw-normal text-center">
                                   <strong>{{$ticket -> package}}</strong>   
                                   <small>{{$ticket -> code}}</small> | <strong> {{$ticket -> number}} </strong>
                             </div>
                         </div>
 
                         <div class="col-3 p-0">
-                        @if(is_null($evento->edition))
-                            <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Add</a>
-                        @else
+                        
                             <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm">Edit</a>
-                        @endif
+                        
                         </div>
                     </div>
                 @endforeach
-          </div>
+            </div>
       @endif
 
       @if($board == 'add-ticket')

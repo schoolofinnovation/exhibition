@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->string('package')->unique();
+            $table->string('package')->nullable();
             $table->string('desc')->nullable();
             $table->string('type');
             $table->decimal('price');

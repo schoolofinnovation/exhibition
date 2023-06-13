@@ -28,7 +28,7 @@ class AdminTicketComponent extends Component
     public $validity;
     public $number;
     public $user_id;
-   
+    public $packagge;
     public $terms;
     public $status;
     public $admstatus;
@@ -45,7 +45,7 @@ class AdminTicketComponent extends Component
         $this->admstatus= '1';  
         $this->status = '0'; 
         $this->cart_value = '100';
-        $this->code = Str::random(10);
+        $this->code = Str::random(12);
 
         //$this->expiry_date = $fattribute->enddate;
         //$this->expiry_time = $fattribute->enddate;
@@ -62,9 +62,10 @@ class AdminTicketComponent extends Component
 
         $newTicket->code = $this->code;
 
-        $newTicket->package = $this->package;
-        $newTicket->slug = Str::slug($this->package,'-');
-        $newTicket->desc = $this->desc;
+        $newTicket->packagge = $this->packagge;
+        $newTicket->package = '1';
+        $newTicket->slug = Str::slug($this->packagge,'-');
+        $newTicket->desc = explode("-", $this->desc);
         
         $newTicket->type = $this->type;
 
@@ -96,6 +97,52 @@ class AdminTicketComponent extends Component
         session()->flash('message','Thanks for sharing your review.');
     }
 
+   
+
+    public function tivateBusinessPlan ($id, $status, $event_id)
+    {
+       $ActivateBusinessPlan = new Ticket();
+       
+       $copyingTicket= Ticket::find($id);
+       //$ActivateBusinessPlan = $copyingTicket->id;
+
+
+       $ActivateBusinessPlan->code = $this->code;
+
+        $ActivateBusinessPlan->packagge = $copyingTicket->packagge;
+        $ActivateBusinessPlan->package = '1';
+        $ActivateBusinessPlan->slug = Str::slug($copyingTicket->packagge,'-');
+        $ActivateBusinessPlan->desc = $copyingTicket->desc;
+        
+        $ActivateBusinessPlan->type = $copyingTicket->type;
+
+        $ActivateBusinessPlan->event_id = $event_id;
+
+        $ActivateBusinessPlan->price = $copyingTicket->price;
+        $ActivateBusinessPlan->saleprice = $copyingTicket->saleprice;
+
+        $ActivateBusinessPlan->cart_value = $copyingTicket->cart_value;
+
+        $ActivateBusinessPlan->expiry_date = $copyingTicket->expiry_date;
+        $ActivateBusinessPlan->expiry_time = $copyingTicket->expiry_time;
+        $ActivateBusinessPlan->validity = $copyingTicket->validity;
+
+        $ActivateBusinessPlan->start_date = $copyingTicket->start_date;
+        $ActivateBusinessPlan->start_time = $copyingTicket->start_time;
+        
+        
+        $ActivateBusinessPlan->number = $copyingTicket->number;
+
+        $ActivateBusinessPlan->user_id = Auth::user()->id;
+        
+        $ActivateBusinessPlan->terms = $copyingTicket->terms;
+        $ActivateBusinessPlan->status = $status;
+        $ActivateBusinessPlan->admstatus = $copyingTicket->admstatus;
+
+
+       $ActivateBusinessPlan -> save();
+    }
+
 
     use WithPagination;
     public function render()
@@ -106,7 +153,7 @@ class AdminTicketComponent extends Component
         $ticketsActive = Ticket::where('admstatus','1')->where('status','1')->where('type','active')->orderBy('id','DESC')->get();
         $ticketsDeactive = Ticket::where('admstatus','1')->where('status','0')->where('type','deactive')->orderBy('id','DESC')->get();
 
-        $event = Event::where('id', $this->event_id)->first();
-        return view('livewire.admin.admin-ticket-component',['ticketsfeatured' => $ticketsfeatured, 'ticketssponsored'=>$ticketssponsored, 'ticketsBasic'=>$ticketsBasic, 'ticketsActive'=>$ticketsActive, 'ticketsDeactive'=>$ticketsDeactive, 'event'=>$event])->layout('layouts.eblog');
+        $evento = Event::where('id', $this->event_id)->first();
+        return view('livewire.admin.admin-ticket-component',['ticketsfeatured' => $ticketsfeatured, 'ticketssponsored'=>$ticketssponsored, 'ticketsBasic'=>$ticketsBasic, 'ticketsActive'=>$ticketsActive, 'ticketsDeactive'=>$ticketsDeactive, 'evento'=>$evento])->layout('layouts.eblog');
     }
 }

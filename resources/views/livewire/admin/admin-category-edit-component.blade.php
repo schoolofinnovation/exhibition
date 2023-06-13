@@ -28,7 +28,7 @@
 
                 
                     <form wire:submit.prevent="updateEvent">      
-                        <div class="row mb-5 pb-2" wire:model="checkvalue">
+                        <div class="row mb-5 pb-2">
                         @foreach ($findAdminStatus as $findoo)
                             <span class="badge bg-success m-0" value="{{$findoo->id}}"  wire:model="checkvalue">  {{$findoo -> tag}} </span>
                         @endforeach
