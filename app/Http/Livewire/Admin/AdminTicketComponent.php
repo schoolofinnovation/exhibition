@@ -65,7 +65,7 @@ class AdminTicketComponent extends Component
         $newTicket->packagge = $this->packagge;
         $newTicket->package = '1';
         $newTicket->slug = Str::slug($this->packagge,'-');
-        $newTicket->desc = explode("-", $this->desc);
+        $newTicket->desc = explode ("-", $this->desc);
         
         $newTicket->type = $this->type;
 
@@ -91,6 +91,9 @@ class AdminTicketComponent extends Component
         $newTicket->terms = $this->terms;
         $newTicket->status = $this->status;
         $newTicket->admstatus = $this->admstatus;
+         
+        dd($newTicket->desc);
+        
         $newTicket->save();
         
        return redirect()->route('admincheck.ticket',['event_id' => $this->event_id, 'board' => 'dashboard']);

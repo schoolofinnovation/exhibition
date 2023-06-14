@@ -237,7 +237,7 @@
            
          
 
-          @if(Cart::instance('cart')->count() > 0)
+          {{--@if(Cart::instance('cart')->count() > 0)
             <a class="d-table-cell handheld-toolbar-item" href="#">
               <span class="handheld-toolbar-icon"><i class="bi bi-cart"></i>
               @if(Cart::instance('cart')->count() > 0)
@@ -248,7 +248,8 @@
               <span class="handheld-toolbar-label">Cart</span>
               @endif  
             </a>
-          @endif
+          @endif --}}
+
           @if(Route::currentRouteName() === 'coievent.add')
           <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>

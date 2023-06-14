@@ -104,40 +104,43 @@
                   <div class="fs-ms">SELECT YOUR TICKET
                     @foreach (Cart::instance('cart')->content() as $item)
                       <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
-                        <div class="d-block d-sm-flex justify-content-between text-sm-start">
-                          <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                            <img src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->event->image, 24)}}" width="50"></a>
-                            
-                            <div class="pt-2">
-                              <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">{{$item->model->event->eventname}}</a></h3>
-                              {{--<div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
-                                      {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y ')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
-                                    @else
-                                      {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
-                                    @endif
-                              </div>--}}
+                        <div class="col-9">
+                          <div class="d-block d-sm-flex justify-content-between text-sm-start">
+                            <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                              <img src="{{asset ('public/assets/image/exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->event->image, 24)}}" width="50"></a>
                               
-                                @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                                  <div class="fs-lg text-accent pt-2"><small>Rs. <span class="border-end pe-2 me-2"> <strong>{{$item->model->sale_price}}</strong></span> 
-                                  <span class="fs-sm text-muted"> <del>{{$item->model->regualar_price}}</del></span></small></div>
-                                  @elseif($item->model->sale_price >0)
-                                  <div class="fs-lg text-accent pt-2">Rs. {{$item->model->sale_price}}<small></small></div>
-                                  <del class="fs-lg text-accent pt-2">Rs. {{$item->model->regualar_price}}<small></small></del>
-                                  @else
-                                  <div class="fs-lg text-accent pt-2">Rs. {{$item->model->price}}<small></small></div>
-                                @endif
+                              <div class="pt-2">
+                                <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">{{$item->model->event->eventname}}</a></h3>
+                                {{--<div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
+                                        {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y ')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
+                                      @else
+                                        {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
+                                      @endif
+                                </div>--}}
+                                
+                                  @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+                                    <div class="fs-lg text-accent pt-2"><small>Rs. <span class="border-end pe-2 me-2"> <strong>{{$item->model->sale_price}}</strong></span> 
+                                    <span class="fs-sm text-muted"> <del>{{$item->model->regualar_price}}</del></span></small></div>
+                                    @elseif($item->model->sale_price >0)
+                                    <div class="fs-lg text-accent pt-2">Rs. {{$item->model->sale_price}}<small></small></div>
+                                    <del class="fs-lg text-accent pt-2">Rs. {{$item->model->regualar_price}}<small></small></del>
+                                    @else
+                                    <div class="fs-lg text-accent pt-2">Rs. {{$item->model->price}}<small></small></div>
+                                  @endif
 
-                            </div>
+                              </div>
+                          </div>
                         </div>
 
-                        <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">  
-                            <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')">+</a>
-                            {{$item->qty}} 
-                            <a class="btn btn-decrease" href="#" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')">-</a>
-                          <button class="btn btn-link px-0 text-danger" type="button" wire:click="destroy('{{$item->rowId}}')">
-                          <i class="bi bi-x"></i><span class="fs-sm">Remove</span></button>
+                        <div class="col-3">
+                          <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">  
+                              <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')">+</a>
+                              {{$item->qty}} 
+                              <a class="btn btn-decrease" href="#" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')">-</a>
+                            <button class="btn btn-link px-0 text-danger" type="button" wire:click="destroy('{{$item->rowId}}')">
+                            <i class="bi bi-x"></i><span class="fs-sm">Remove</span></button>
+                          </div>
                         </div>
-                        
                       </div>
                     @endforeach	
                   </div>
