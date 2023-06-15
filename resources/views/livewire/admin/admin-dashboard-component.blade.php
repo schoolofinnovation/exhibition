@@ -1141,7 +1141,12 @@
         </div>
 
         @foreach($nEwComment as $comment)
-          {{$comment ->statement}}
+       
+       <div class="bg-primary">
+       {{$comment ->statement}}
+       </div>
+       
+        
         @endforeach
 
       @endif
