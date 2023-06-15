@@ -1140,7 +1140,10 @@
            </form>
         </div>
 
-        
+        @foreach($nEwComment as $comment)
+          {{$comment ->statement}}
+        @endforeach
+
       @endif
 
       @if($board == 'crowd')     
