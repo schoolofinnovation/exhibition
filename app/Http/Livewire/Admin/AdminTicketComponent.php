@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Event;
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -101,7 +102,6 @@ class AdminTicketComponent extends Component
     }
 
    
-
     public function tivateBusinessPlan ($id, $status, $event_id)
     {
        $ActivateBusinessPlan = new Ticket();
@@ -147,16 +147,43 @@ class AdminTicketComponent extends Component
     }
 
 
+    public function testingChecking ()
+    {
+        $string = ' xyz ';
+        $testing = Str ::trim ($string);
+        dd($testing);
+    }
+
+
     use WithPagination;
     public function render()
     {
-        $ticketsfeatured = Ticket::where('admstatus','1')->where('status','0')->where('type','featured')->orderBy('id','DESC')->get();
-        $ticketssponsored = Ticket::where('admstatus','1')->where('status','0')->where('type','sponsored')->orderBy('id','DESC')->get();
-        $ticketsBasic = Ticket::where('admstatus','1')->where('status','0')->where('type','basic')->orderBy('id','DESC')->get();
-        $ticketsActive = Ticket::where('admstatus','1')->where('status','1')->where('type','active')->orderBy('id','DESC')->get();
-        $ticketsDeactive = Ticket::where('admstatus','1')->where('status','0')->where('type','deactive')->orderBy('id','DESC')->get();
+        //$string = '9. "xyz" 8."ert" ';
+        //$testing = trim(preg_replace_array ( '/[0-9._]+/', [] , $string));
+        //$rti = Str::replace('" "',',', $testing );
+        //$rtii = Str::replace('"','', $rti );
+        //$erto = trim($rtii);
+        //$ret = explode(",", $erto);
+        
+        //$tstring = ' xyz business  testing        ';
+        //$testing = preg_replace_array ( '/[0-9._]+/', [] , $string);
+        //$newtest = trim($tstring);
+        
+        //dd($string, $testing ,$erto, $ret);
+
+
 
         $evento = Event::where('id', $this->event_id)->first();
+        $todaydate = Carbon::now()->format('Y-m-d');
+        $timerty = Carbon::now()->format('H:i:s');
+
+        $ticketsfeatured = Ticket::where('admstatus','1')->where('status','0')->where('type','featured')->orderBy('updated_at','DESC')->get();
+        $ticketssponsored = Ticket::where('admstatus','1')->where('status','0')->where('type','sponsored')->orderBy('updated_at','DESC')->get();
+        $ticketsBasic = Ticket::where('admstatus','1')->where('status','0')->where('type','basic')->orderBy('id','DESC')->get();
+        $ticketsActive = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $evento->id)->orderBy('saleprice','DESC')->get();
+        $ticketsDeactive = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $evento->id)->where('expiry_date', $todaydate)->where('expiry_time', $timerty)->get();
+
+        
         return view('livewire.admin.admin-ticket-component',['ticketsfeatured' => $ticketsfeatured, 'ticketssponsored'=>$ticketssponsored, 'ticketsBasic'=>$ticketsBasic, 'ticketsActive'=>$ticketsActive, 'ticketsDeactive'=>$ticketsDeactive, 'evento'=>$evento])->layout('layouts.eblog');
     }
 }

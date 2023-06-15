@@ -1127,14 +1127,15 @@
         </div>
       @endif
 
-      @if($board == 'creatoreview')     
+
+
+
+      @if($board == 'review')     
         <div class="container">
           <p>List your Statement</p>
 
           <form wire:submit.prevent = "createStatement">
              <input class="form-control" type="text" wire:model.lazy = "businessstatement">
-
-            
              <button type="submit">Submit</button>
            </form>
 
