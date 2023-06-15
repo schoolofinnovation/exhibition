@@ -1135,12 +1135,12 @@
           <p>List your Statement</p>
 
           <form wire:submit.prevent = "createStatement">
-             <input class="form-control" type="text" wire:model.lazy = "businessstatement">
-             <button type="submit">Submit</button>
+             <textarea class="form-control" type="text" rows="9" wire:model.lazy = "businessstatement"></textarea>
+             <button type="submit" class="form-control"  >Submit</button>
            </form>
-
-          
         </div>
+
+        
       @endif
 
       @if($board == 'crowd')     
