@@ -1136,15 +1136,15 @@
 
           <form wire:submit.prevent = "createStatement">
              <textarea class="form-control" type="text" rows="9" wire:model.lazy = "businessstatement"></textarea>
-             <button type="submit" class="form-control"  >Submit</button>
+             <button type="submit" class="form-control "  >Submit</button>
            </form>
         
 
         @foreach($nEwComment as $comment)
        
-       <div class="bg-primary mb-2">
-       {{$comment ->statement}}
-       </div>
+        <div class="bg-secondary mb-2 lh-1 fs-sm" >
+         {{$comment ->statement}}
+        </div>
        
         
         @endforeach

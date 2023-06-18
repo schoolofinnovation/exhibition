@@ -51,8 +51,8 @@
  
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
-    <!-- Sign in / sign up modal-->
-     <main class="page-wrapper">
+    <!-- Sign in / sign up modal <main class="page-wrapper">-->
+     <main >
       
      @livewire('header-component')
      

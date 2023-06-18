@@ -5,6 +5,47 @@
 
     <main>
    
+
+
+      {{--<div class="container  ">
+        <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+          <div class="col  pr-0">
+              @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
+              @else
+                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
+              @endif 
+              <div class="round-circle">{{$franchise -> id}}</div> 
+          </div>
+
+          <div class="col-7  p-0">
+            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+              {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+            <div class="text-muted fs-sm text-start">
+              @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
+              @else
+                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
+              @endif 
+            </div>  
+            <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+          </div>
+
+          <div class="col-3  p-0">
+            @if(is_null($franchise->image))
+              <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $franchise->id, 'formm' => 'image' ])}}">
+                  Add</a>
+            @else
+              <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+              <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+            @endif
+          </div>
+        </div>
+      </div>--}}
+
+
   @if($board == 'dashboard')   
     @foreach($eventoo as $evento)
         <div class="container my-3">
@@ -43,7 +84,7 @@
         </div>
     @endforeach
 
-    <div class="container d-lg-none">
+      <div class="container d-lg-none">
            <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
            
         <div class=" my-sliderOffers">
@@ -544,7 +585,7 @@
         </div>
       </div>--}}
 
-              <div class="offcanvas offcanvas-start show" data-bs-toggle="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"  style="width: 4.5rem;">                  
+              <div class="offcanvas offcanvas-start" data-bs-toggle="offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"  style="width: 4.5rem;">                  
                 <div class=" ms-1 toggle" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">    
 
                   
@@ -576,11 +617,12 @@
                         <div class="col-10 mb-1 fs-sm fw-lighter ">Advertise</div>
                       </a>
                                                                     
-                      <a href="#" class=" border-0 list-group-item px-1 list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                      <a href="{{route('user.dashboard', ['board' => 'profile'])}}" class=" border-0 list-group-item px-1 list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
                         <div class="d-flex w-100 align-items-center justify-content-between">
                           <small><i class="bi bi-chevron-right"></i></small>
                         </div>
-                        <div class="col-10 mb-1 fs-sm fw-lighter ">Profile</div>
+                        <div class="col-10 mb-1 fs-sm fw-lighter">
+                          Profile</div>
                       </a>
 
                   </div>
@@ -668,15 +710,143 @@
   @endif
 
   @if( $board == 'profile')
+
+
+  <div class="container mb-5">
+    <div class="row">  
+       <a href="http://" class="">Done</a>
+       <a href="http://" class="">Export</a>
+    </div>  
+  
+    <div class="text-center">
+      <img src="path-to-image" class="d-inline-block rounded-circle mb-3" width="96" alt="Amanda Gallaher">
+      <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
+      <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
+      <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
+        <i class="ci-twitter"></i>
+      </a>
+      <a href="#" class="btn-social bs-messenger bs-outline bs-sm">
+        <i class="ci-messenger"></i>
+      </a>
+      <a href="#" class="btn-social bs-pinterest bs-outline bs-sm">
+        <i class="ci-pinterest"></i>
+      </a>
+      <a href="#" class="btn-social bs-linkedin bs-outline bs-sm">
+        <i class="ci-linkedin"></i>
+      </a>
+    </div>
+
+    <div class="row my-3 ">
+      <div class=" col fs-xs text-center">mobile</div>
+      <div class=" col fs-xs text-center">call</div>
+      <div class=" col fs-xs text-center">whats App</div>
+      <div class=" col fs-xs text-center">mail</div>
+    </div>
+
+    <div class="card ">
+      <div class="card-body">
+        <ul class="list-unstyled mb-0">
+          <li class="d-flex pb-3 border-bottom">
+            <i class="ci-location fs-lg mt-2 mb-0 text-primary"></i>
+            <div class="ps-3">
+              <span class="fs-ms text-muted">Find us</span>
+              <a href="#" class="d-block text-heading fs-sm">769, Industrial Dr, West Chicago, IL 60185, USA</a>
+            </div>
+          </li>
+          <li class="d-flex pt-2 pb-3 border-bottom">
+            <i class="ci-phone fs-lg mt-2 mb-0 text-primary"></i>
+            <div class="ps-3">
+              <span class="fs-ms text-muted">Call us</span>
+              <a href="tel:+184725276533" class="d-block text-heading fs-sm">+1 (847) 252 765 33</a>
+            </div>
+          </li>
+          <li class="d-flex pt-2m">
+            <i class="ci-mail fs-lg mt-2 mb-0 text-primary"></i>
+            <div class="ps-3">
+              <span class="fs-ms text-muted">Write us</span>
+              <a href="mailto:email@example.com" class="d-block text-heading fs-sm">email@example.com</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+
+  @endif
+
+  @if($board == 'SaveContact')
+   
+  <div class=" container text-center mt-4">
+      <img src="path-to-image" class="d-inline-block rounded-circle mb-3" width="96" alt="Amanda Gallaher">
+      <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
+      <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
+      <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
+        <i class="ci-twitter"></i>
+      </a>
+      <a href="#" class="btn-social bs-messenger bs-outline bs-sm">
+        <i class="ci-messenger"></i>
+      </a>
+      <a href="#" class="btn-social bs-pinterest bs-outline bs-sm">
+        <i class="ci-pinterest"></i>
+      </a>
+      <a href="#" class="btn-social bs-linkedin bs-outline bs-sm">
+        <i class="ci-linkedin"></i>
+      </a>
+
+      <div class="btn btn-primary  form-control mt-4">Save Contact</div>
+
+    </div>
+
+  @endif
+
+
+
+  @if($board == 'ExchangeContact')
+   
+   <div class=" container text-center mt-4">
+       <img src="path-to-image" class="d-inline-block rounded-circle mb-3" width="96" alt="Amanda Gallaher">
+       <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
+       <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
+       <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
+         <i class="ci-twitter"></i>
+       </a>
+       <a href="#" class="btn-social bs-messenger bs-outline bs-sm">
+         <i class="ci-messenger"></i>
+       </a>
+       <a href="#" class="btn-social bs-pinterest bs-outline bs-sm">
+         <i class="ci-pinterest"></i>
+       </a>
+       <a href="#" class="btn-social bs-linkedin bs-outline bs-sm">
+         <i class="ci-linkedin"></i>
+       </a>
+ 
+     </div>
+ 
+     <div class="container">
+      <form action="">
+         <input type="text" class="form-control" placeholder="email">
+         <input type="text" class="form-control" placeholder="phone">
+
+         <div class="btn btn-primary  form-control mt-4">Save Contact</div>
+       </form>
+     </div>
+     
+   @endif
+
+
+  @if ($board == 'editprofile')
+    <div class="container">
      <form wire:submit.prevent="likesUser">
-      <input type="email"  placeholder="email" wire:model="email">
-      <input type="text" placeholder="name" wire:model="name">
-      <input type="number" placeholder="phone" wire:model="phone">
-      <input type="number" placeholder="exp" wire:model="exp">
-      <input type="text" placeholder="designation" wire:model="designation">
-      <input type="text" placeholder="industry" wire:model="industry">
-      <button type="submit">Submit</button>
+        <input  class="form-control" type="email"  placeholder="email" wire:model="email">
+        <input  class="form-control" type="text" placeholder="name" wire:model="name">
+        <input  class="form-control" type="number" placeholder="phone" wire:model="phone">
+        <input  class="form-control" type="number" placeholder="exp" wire:model="exp">
+        <input  class="form-control" type="text" placeholder="designation" wire:model="designation">
+        <input  class="form-control" type="text" placeholder="industry" wire:model="industry">
+        <div  class="btn btn-primary form-control" type="submit">Submit</div>
      </form>
+    </div>
   @endif
 
 
@@ -689,7 +859,33 @@
      </form>
   @endif                  
 
-    </main>
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100">
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'dashboard'])}}">
+          <span class="handheld-toolbar-icon">
+          <i class="ci-filter-alt"></i></span>
+          <span class="handheld-toolbar-label">Profile</span>
+        </a>
+       
+
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Create</span></a>
+        
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'editprofile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+          <span class="handheld-toolbar-label">Meet-ups</span>
+        </a>
+
+        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+          <span class="handheld-toolbar-label">Menu</span>
+        </a>
+      </div>
+    </div>
+
+</main>
+
     @push('scripts')
           <script>
             var slider = tns({
@@ -703,7 +899,7 @@
                   "autoplayButtonOutput":false,
                   "autoplayHoverPause": true,
                   "nav": false,
-                  "fixedWidth": 200,
+                  "fixedWidth": 170,
                 },
                 "500": {
                   "items": 3,

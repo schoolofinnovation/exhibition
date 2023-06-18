@@ -215,9 +215,9 @@ dd($brandAttend,$ContactDetail);
 
         //$string = '9. "xyz" 8."ert" ';
         $testing = trim(preg_replace_array ( '/[0-9._]+/', [] , $this->businessstatement));
-        $rti = Str::replace('" "','#*#', $testing );
-        $rti = Str::replace('""','#*#', $testing );
-        $rtii = Str::replace('"','', $rti );
+        $rti = Str::replace('" "',',', $testing );
+        $rtis = Str::replace('""',',', $rti );
+        $rtii = Str::replace('"','**', $rtis );
         $erto = trim($rtii);
         $ret = explode("#*#", $erto);
 
@@ -232,7 +232,7 @@ dd($brandAttend,$ContactDetail);
       }
 
       session()->flash('message','info has been deleted Successfully');
-      return redirect()->route('admin.dashboard', ['board' => 'client']);
+      return redirect()->back();
     }
 
     public function render()
