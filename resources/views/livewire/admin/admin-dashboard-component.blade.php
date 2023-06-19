@@ -1208,7 +1208,7 @@
             <span class="handheld-toolbar-label">Magazine</span>
           </a>
           
-          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobCreate')}}">
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">
             <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
             <span class="handheld-toolbar-label">Add</span>
           </a>

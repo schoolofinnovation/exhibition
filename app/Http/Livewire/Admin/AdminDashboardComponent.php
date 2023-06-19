@@ -58,6 +58,10 @@ class AdminDashboardComponent extends Component
 
   public $businessstatement;
   
+public $frequency;
+public $subscriber;
+public $desc;
+public $type;
     
     //career
     use WithPagination;
