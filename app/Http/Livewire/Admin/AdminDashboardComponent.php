@@ -71,7 +71,6 @@ public $type;
         $this->board = $board;
         $this->month = Carbon::today()->format("m");
         $this->visited = '1';
-
     }
     
     public function updateJobstatus($id, $status) 
@@ -191,8 +190,7 @@ public $type;
        $brandAttend->brand_name = $this->brand_name;
        $brandAttend->event_id = $this->event_id;
        $brandAttend->official_website = $this->link;
-       //$brandAttend->save();
-
+       $brandAttend->save();
 
        $ContactDetail = new Contact();
        $ContactDetail->brand_id = $brandAttend->id;
@@ -241,7 +239,7 @@ dd($brandAttend,$ContactDetail);
     }
 
 
-    public function addmagazine()
+    public function added()
     {
        $addmagazine = new Magazine();
        $addmagazine -> name  = trim($this->name); 
@@ -255,9 +253,11 @@ dd($brandAttend,$ContactDetail);
        $addmagazine -> user_id = Auth::user()->id;
        //$addmagazine -> event_id = $this->event_id;
        //$addmagazine -> expo_id = $this->expo_id; 
+
+       //dd($addmagazine);
        $addmagazine ->save();
        session()->flash('message','info has been deleted Successfully');
-       return redirect()->route('admin.dashboard', ['board' => 'magazine']);
+       return redirect()->route('admin.dashboard', ['board' => 'dashboard']);
     }
 
     public function render()

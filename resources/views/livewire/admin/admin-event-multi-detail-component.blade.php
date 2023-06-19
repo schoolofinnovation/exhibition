@@ -5,11 +5,15 @@
         </form>
     @endif
 
-    @if($formm == 'detailPavillion')
+    @if($formm == 'brand')
         <form wire:submit.prevent="">
 
+        <input type="text" wire:model="brand_name">
+        <input type="text" wire:model="">
         </form>
     @endif
 
+
+    
 
 </main>

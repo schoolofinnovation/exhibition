@@ -786,7 +786,7 @@
 
 <!-- Start Cleint-->
       @if($board == 'client')
-        <div class="container">
+        {{--<div class="container">
           <form wire:submit.prevent="emailSend">
              
               <div class="col-lg-4 col-md-4 ">
@@ -812,65 +812,15 @@
              <button type="submit"></button>
             </div>
           </form>
-        </div>
+        </div>--}}
 
-        
-        {{--<input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
-                        <div class="row mb-5 pb-2">
-                          @if(is_null($findInspection))
- 
-                           <div class="container">
-                            Find Some Events
-                           </div>  
-
-                          @else--}}
-                            @foreach ($findInspection as $franchise) 
-                              <div class="container  ">
-                                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                  <div class="col  pr-0">
-                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                                      @else
-                                        <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                        <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-
-                                      @endif 
-                                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                                  </div>
-
-                                  <div class="col-7  p-0">
-                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                                      {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
-                                    <div class="text-muted fs-sm text-start">
-                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                      @else
-                                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                      @endif 
-                                    </div>  
-                                    <div class="text-muted fs-sm text-start">{{$franchise -> venue}}, {{$franchise -> city}}</div>
-                                  </div>
-
-                                  <div class="col-3  p-0">
-                                   
-                                  <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$franchise->id}})"> 
-                                  <i class="bi bi-x me-2"></i> Delete</a>
-
-                                  </div>
-                                </div>
-                              </div>
-                            @endforeach
-                          {{--@endif--}}
-
-                        </div>
-        
 
         <div class="container my-5">
               <div class="small"> List meet-up brand</div>        
 
               <form wire:submit.prevent="AddBrandAttend">
                 <input type="text" class="form-control" wire:model.lazy="event_id" placeholder="event_id">
+                
                 <input type="text" class="form-control" wire:model.lazy="brand_name" placeholder="brand_name">
                 <input type="text" class="form-control" wire:model.lazy="country" placeholder="country">
                 <input type="text" class="form-control" wire:model.lazy="link" placeholder="link">
@@ -887,7 +837,8 @@
 
                 <input type="text" class="form-control" wire:model.lazy="email_request" placeholder="email_request">
                 <input type="text" class="form-control" wire:model.lazy="service_request" placeholder="service_request">
-                <input type="submit" class="btn btn-primary"></input>
+
+                <button class="btn btn-primary mt-2" type="submit">Submit</button>
               </form>
         </div>
       @endif
@@ -1119,9 +1070,9 @@
           </div>--}}
       @endif
 <!--Stop blog-->
-      @if($board == "magazine")
+      @if($board == "dashboard")
         <div class="container">
-          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">List Magazine</a>
+          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'added'])}}">List Magazine</a>
           <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'image-magazine'])}}">Image</a>
         </div>
       @endif
@@ -1130,14 +1081,13 @@
       @if($board == 'add-magazine')     
         <div class="container">
           <p>List your Business Magazine</p>
-            <form wire:sbumit.prevent = "addmagazine">
-             <input type="text" class="form-control mb-1"  placeholder = "name"  wire:model.lazy="name" >
+            <form wire:submit.prevent="added">
+             <input type="text" class="form-control mb-1"  placeholder = "name"  wire:model="name" >
              <input type="text" class="form-control mb-1"  placeholder = "type"  wire:model.lazy="type" >
              <input type="text" class="form-control mb-1"  placeholder = "subscriber"  wire:model.lazy="subscriber" >
              <textarea type="text" class="form-control mb-1"  placeholder = "desc" rows="3" wire:model.lazy="desc" > </textarea>
-             
              <input type="text" class="form-control mb-1"  placeholder = "frequency"  wire:model.lazy="frequency" >
-             <div class="btn btn-primary" class="form-control mb-1" type="submit">Submit</div>
+             <button class="btn btn-primary mt-2" type="submit">Submit</button>
             </form>
         </div>
       @endif
