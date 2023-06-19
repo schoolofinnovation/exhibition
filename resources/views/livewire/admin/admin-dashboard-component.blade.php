@@ -1119,16 +1119,39 @@
           </div>--}}
       @endif
 <!--Stop blog-->
-
-
-      @if($board == 'magazine')     
-        <div>
-          <p>List your Business Magazine</p>
+      @if($board == "magazine")
+        <div class="container">
+          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">List Magazine</a>
+          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'image-magazine'])}}">Image</a>
         </div>
       @endif
 
 
+      @if($board == 'add-magazine')     
+        <div class="container">
+          <p>List your Business Magazine</p>
+            <form wire:sbumit.prevent = "addmagazine">
+             <input type="text" class="form-control mb-1"  placeholder = "name"  wire:model.lazy="name" >
+             <input type="text" class="form-control mb-1"  placeholder = "type"  wire:model.lazy="type" >
+             <input type="text" class="form-control mb-1"  placeholder = "subscriber"  wire:model.lazy="subscriber" >
+             <textarea type="text" class="form-control mb-1"  placeholder = "desc" rows="3" wire:model.lazy="desc" > </textarea>
+             
+             <input type="text" class="form-control mb-1"  placeholder = "frequency"  wire:model.lazy="frequency" >
+             <div class="btn btn-primary" class="form-control mb-1" type="submit">Submit</div>
+            </form>
+        </div>
+      @endif
 
+      @if($board == 'image-magazine')
+        <div class="container">
+          <form wire:submit.prevent = "image">
+          <input type="file" class="form-control mb-1"  placeholder = "image"  wire:model="image" >
+            <div class="btn btn-primary form-control mb-1">Submit</div>
+          </form>
+        </div>
+      @endif
+
+     
 
       @if($board == 'review')     
         <div class="container">

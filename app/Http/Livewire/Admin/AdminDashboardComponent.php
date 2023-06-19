@@ -17,6 +17,7 @@ use App\Models\Franchise;
 use App\Models\Job;
 use App\Models\Lead;
 use App\Models\Mag;
+use App\Models\Magazine;
 use App\Models\Optio;
 use App\Models\Order;
 use App\Models\ProductAttribute;
@@ -233,6 +234,26 @@ dd($brandAttend,$ContactDetail);
 
       session()->flash('message','info has been deleted Successfully');
       return redirect()->back();
+    }
+
+
+    public function addmagazine()
+    {
+       $addmagazine = new Magazine();
+       $addmagazine -> name  = trim($this->name); 
+       $addmagazine -> slug = Str::slug ($this->name,'-');
+       $addmagazine -> frequency = $this->frequency;
+       $addmagazine -> subscriber  = $this->subscriber; 
+       $addmagazine -> desc = trim($this->desc); 
+       $addmagazine -> type = $this->type;
+       $addmagazine -> status = '1';
+       $addmagazine -> admstatus = '1';
+       $addmagazine -> user_id = Auth::user()->id;
+       //$addmagazine -> event_id = $this->event_id;
+       //$addmagazine -> expo_id = $this->expo_id; 
+       $addmagazine ->save();
+       session()->flash('message','info has been deleted Successfully');
+       return redirect()->route('admin.dashboard', ['board' => 'magazine']);
     }
 
     public function render()
