@@ -63,7 +63,7 @@
                     @foreach (Cart::instance('cart')->content() as $item)
                       <div class="d-flex align-items-center pb-2 border-bottom">
                       <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                      <img class="rounded-1" src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
+                      <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                         <div class="ps-1">
                           <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
                           {{$item->model->event->eventname}}</a></h6>
@@ -92,7 +92,7 @@
                           @endif </span></li>
                           <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Time 
                         </span>
-                        <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> 10:00</span></li>
+                        <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{Carbon\Carbon::now()->format(h:i:s)}}</span></li>
                         <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Venue 
                         </span>
                         <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->event->venue}} : {{$item->model->event->city}}</span></li>
