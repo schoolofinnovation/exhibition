@@ -158,18 +158,18 @@ class AdminTicketComponent extends Component
     use WithPagination;
     public function render()
     {
-        $string = '19. "xyz" 28."ert" ';
-        $testing = trim(preg_replace_array ( '/[0-9._]+/', [] , $string));
-        $rti = Str::replace('" "',',', $testing );
-        $rtii = Str::replace('"','', $rti );
-        $erto = trim($rtii);
-        $ret = explode(",", $erto);
+        //$string = '19. "xyz" 28."ert" ';
+        //$testing = trim(preg_replace_array ( '/[0-9._]+/', [] , $string));
+        //$rti = Str::replace('" "',',', $testing );
+        //$rtii = Str::replace('"','', $rti );
+        //$erto = trim($rtii);
+        //$ret = explode(",", $erto);
         
         //$tstring = ' xyz business  testing        ';
         //$testing = preg_replace_array ( '/[0-9._]+/', [] , $string);
         //$newtest = trim($tstring);
         
-        dd($string, $testing ,$erto, $ret);
+        //dd($string, $testing ,$erto, $ret);
 
 
 

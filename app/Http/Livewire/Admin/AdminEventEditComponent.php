@@ -51,6 +51,8 @@ class AdminEventEditComponent extends Component
     public $user_id;
     public $reference;
 
+    public $country;
+
     public $eventkhaname;
 
     public function generateSlug()
@@ -93,7 +95,7 @@ class AdminEventEditComponent extends Component
         $fattribute->eventname =  $this->eventname;
         $fattribute->slug = $this->slug;
         $fattribute->eventype =  $this->eventype;
-      
+        $fattribute->country =  'india';
         $fattribute->city =  $this->city;
         $fattribute->venue =  $this->venue;
         $fattribute->organizer = $this->organizer;
@@ -133,7 +135,7 @@ class AdminEventEditComponent extends Component
         $fattribute->edition =  $this->edition;
         $fattribute->startdate =  $this->startdate;
         $fattribute->enddate =  $this->enddate;
-       
+        $fattribute->country = 'india';
         $fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);

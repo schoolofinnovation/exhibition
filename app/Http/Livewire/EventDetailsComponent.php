@@ -52,7 +52,7 @@ class EventDetailsComponent extends Component
 
         $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
 
-        $detailProductprice = Ticket::where('event_id', '555')->get();
+        $detailProductprice = Ticket::where('event_id', $event->id)->get();
         $productPrice = $detailProductprice->min('price');
        
         

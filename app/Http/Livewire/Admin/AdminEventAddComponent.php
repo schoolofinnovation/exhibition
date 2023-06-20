@@ -23,6 +23,7 @@ class AdminEventAddComponent extends Component
     public $startdate;
     public $venue;
     public $city;
+    public $country;
     public $user_id;
     public $auidence;
     public $exhibitors;
@@ -62,7 +63,7 @@ class AdminEventAddComponent extends Component
         $event->enddate = $this->enddate;
         $event->venue = trim($this->venue);
         $event->city = trim($this->city);
-
+        $event->country =  'india';
         $event->organizer = $this->organizer;
         $event->email = $this->email;
         $event->phone = $this->phone;
@@ -70,9 +71,9 @@ class AdminEventAddComponent extends Component
         $event->auidence = $this->auidence;
         $event->exhibitors = $this->exhibitors; 
 
-        $event->tagline = $this->tagline;
-        $event->shtdesc = $this->shtdesc;
-        $event->desc = $this->desc;
+        $event->tagline = trim($this->tagline);
+        $event->shtdesc = trim($this->shtdesc);
+        $event->desc = trim($this->desc);
 
         $event->edition  = $this->edition;
         $event->eventype = $this->eventype;

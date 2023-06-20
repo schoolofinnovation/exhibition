@@ -820,7 +820,7 @@
 
               <form wire:submit.prevent="AddBrandAttend">
                 <input type="text" class="form-control" wire:model.lazy="event_id" placeholder="event_id">
-                
+
                 <input type="text" class="form-control" wire:model.lazy="brand_name" placeholder="brand_name">
                 <input type="text" class="form-control" wire:model.lazy="country" placeholder="country">
                 <input type="text" class="form-control" wire:model.lazy="link" placeholder="link">
@@ -1070,13 +1070,13 @@
           </div>--}}
       @endif
 <!--Stop blog-->
-      @if($board == "dashboard")
+
+      @if($board == "dashboard-magazine")
         <div class="container">
-          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'added'])}}">List Magazine</a>
+          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">List Magazine</a>
           <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'image-magazine'])}}">Image</a>
         </div>
       @endif
-
 
       @if($board == 'add-magazine')     
         <div class="container">
@@ -1100,8 +1100,6 @@
           </form>
         </div>
       @endif
-
-     
 
       @if($board == 'review')     
         <div class="container">
