@@ -62,37 +62,42 @@
                   @if(Cart::instance('cart')->count()>0)
                     @foreach (Cart::instance('cart')->content() as $item)
                       <div class="d-flex align-items-center pb-2 border-bottom">
-                      <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                      <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
+                        <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                        <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
+                        
                         <div class="ps-1">
-                          <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                          {{$item->model->event->eventname}}</a></h6>
+                            <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                            {{$item->model->event->eventname}}</a></h6>
 
-                          <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
-                              @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-                                <i class="bi bi-currency-rupee"></i> {{$item->model->sale_price}}
-                                @else
-                                <i class="bi bi-currency-rupee"></i> {{$item->model->regular_price}}
-                              @endif
+                            <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
+                                @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+                                  <i class="bi bi-currency-rupee"></i> {{$item->model->sale_price}}
+                                  @else
+                                  <i class="bi bi-currency-rupee"></i> {{$item->model->regular_price}}
+                                @endif
 
-                              <span class="text-muted">{{$item->model->price}} x {{$item->qty}}</span></span> 
-                              <span class="fs-xs text">Ticket</span>
-                          </div>
+                                <span class="text-muted">{{$item->model->price}} x {{$item->qty}}</span></span> 
+                                <span class="fs-xs text">Ticket</span>
+                            </div>
                           
                         </div>
                       </div>
                       @endforeach
+
                       <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
-                        <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Date 
+                        <li class="d-flex justify-content-between align-items-center">
+                          <span class="me-2"> Date </span>
+                          <span class="text-end">
+                            @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M Y ')}}
+                              @else
+                                {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->eevent->nddate)->format('D, d M Y')}}
+                            @endif 
                           </span>
-                          <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> @if(Carbon\Carbon::parse ($item->model->startdate)->format('M') != Carbon\Carbon::parse ($item->model->enddate)->format('M'))
-                              {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y ')}}
-                            @else
-                              {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y')}}
-                          @endif </span></li>
-                          <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Time 
-                        </span>
-                        <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{Carbon\Carbon::now()->format(h:i:s)}}</span></li>
+                        </li>
+                          <li class="d-flex justify-content-between align-items-center">
+                            <span class="me-2"> Time </span>
+                            <span class="text-end"> {{Carbon\Carbon::now()->format(h:i:s)}}</span></li>
                         <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Venue 
                         </span>
                         <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->event->venue}} : {{$item->model->event->city}}</span></li>
@@ -101,7 +106,8 @@
                           
                         <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->code}}({{$item->model->price}}): {{$item->qty}} ticket(s)</span></li>
 
-                      </ul>          
+                      </ul>     
+
                         @if(session::has('coupon'))
                             <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
                                 <li class="d-flex justify-content-between align-items-center"><span class="me-2">Discount : ({{session::get('coupon')['code']}}) <a href="" wire:click.prevent="removeCoupon"><i class="bi bi-x"></i></a> </span><span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$discount}}</span></li>
