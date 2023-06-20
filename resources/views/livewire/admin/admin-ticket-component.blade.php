@@ -20,7 +20,7 @@
 
                         <div class="col-3 p-0">
                             <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-sm btn-primary" href="#" wire:click.prevent="tivateBusinessPlan({{$ticket->id}}, '1',{{$evento->id}})">Active</a>
+                            {{--<a class="btn btn-sm btn-primary" href="#" wire:click.prevent="tivateBusinessPlan({{$ticket->id}}, '1',{{$evento->id}})">Active</a>--}}
                             <input type="checkbox" wire:click.prevent="tivateBusinessPlan({{$ticket->id}}, '1',{{$evento->id}})">
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="col-3 p-0">
                         
                             <a href="{{route('admin.eventEdit',['event_id' => $evento->id, 'board' => 'basic'])}}" class="btn btn-primary btn-sm"> <i class="bi bi-pencil-square"></i> </a>
-                        
+                            <input type="checkbox"  value="1" wire:click.prevent="tivateBusinessPlan({{$ticket->id}}, '0',{{$evento->id}})">
 
                         </div>
                     </div>

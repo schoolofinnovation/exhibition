@@ -154,10 +154,14 @@
             
                 @if($formm == 'addParticipants')
                     <form wire:submit.prevent="updateBrand">
-                        <input type="text" placeholder="participants" wire:model="brand_name">
+                        <textarea type="text" placeholder="participants" wire:model="brand_name" rows="7"></textarea>
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
 
+                    {{--<form wire:submit.prevent="multiImage">
+                        <input type="file" placeholder="multiple Image" wire:model="image"  multiple="multiple">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>--}}
                     
                       
                        <form wire:submit.prevent="participantToAdd">      
@@ -214,8 +218,6 @@
                     </form>
 
                     @foreach($pavillion as $pav)
-                        
-                    
                         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
                             <div class="col  pr-0">
                                 <div class="h4 fw-light mb-0">{{$pav->pavillion_name}}</div> 
@@ -244,7 +246,6 @@
                             @endif
                             </div>
                         </div>
-                        
                     @endforeach
                 @endif
 

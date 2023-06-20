@@ -813,30 +813,38 @@
             </div>
           </form>
         </div>--}}
-
+       
+        {{$findInspection}}
 
         <div class="container my-5">
               <div class="small"> List meet-up brand</div>        
 
               <form wire:submit.prevent="AddBrandAttend">
-                <input type="text" class="form-control" wire:model.lazy="event_id" placeholder="event_id">
 
-                <input type="text" class="form-control" wire:model.lazy="brand_name" placeholder="brand_name">
-                <input type="text" class="form-control" wire:model.lazy="country" placeholder="country">
-                <input type="text" class="form-control" wire:model.lazy="link" placeholder="link">
+                    <select class="form-control mb-1" type="text"   wire:model.lazy="event_id" >
+                        <option selected>Choose</option>
+                      @foreach($findInspection as $findoo)
+                        <option value="{{$findoo -> id}}">{{$findoo -> eventname}}</option>
+                      @endforeach
+                    </select>
+                       
 
-                <input type="text" class="form-control" wire:model.lazy="name" placeholder="name">
-                <input type="text" class="form-control" wire:model.lazy="contact" placeholder="contact">
-                <input type="email" class="form-control" wire:model.lazy="email" placeholder="email">
-                <input type="text" class="form-control" wire:model.lazy="designation" placeholder="designation">
+                <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
+                <input type="text" class="form-control mb-1" wire:model.lazy="country" placeholder="country">
+                <input type="text" class="form-control mb-1" wire:model.lazy="link" placeholder="link">
+
+                <input type="text" class="form-control mb-1" wire:model.lazy="name" placeholder="name">
+                <input type="text" class="form-control mb-1" wire:model.lazy="contact" placeholder="contact">
+                <input type="email" class="form-control mb-1" wire:model.lazy="email" placeholder="email">
+                <input type="text" class="form-control mb-1" wire:model.lazy="designation" placeholder="designation">
                 
-                <textarea type="text" class="form-control" wire:model.lazy="comment" placeholder="comment"></textarea>
-                <input type="text" class="form-control" wire:model.lazy="size" placeholder="size">
-                <input type="text" class="form-control" wire:model.lazy="grade" placeholder="grade">
-                <textarea type="text" class="form-control" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+               {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
+                <input type="text" class="form-control mb-1" wire:model.lazy="size" placeholder="size">
+                <input type="text" class="form-control mb-1" wire:model.lazy="grade" placeholder="grade">
+                <textarea type="text" class="form-control mb-1" wire:model.lazy="reminder" placeholder="reminder"></textarea>
 
-                <input type="text" class="form-control" wire:model.lazy="email_request" placeholder="email_request">
-                <input type="text" class="form-control" wire:model.lazy="service_request" placeholder="service_request">
+                <input type="text" class="form-control mb-1" wire:model.lazy="email_request" placeholder="email_request">
+                <input type="text" class="form-control mb-1" wire:model.lazy="service_request" placeholder="service_request">--}}
 
                 <button class="btn btn-primary mt-2" type="submit">Submit</button>
               </form>

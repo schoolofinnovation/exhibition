@@ -142,7 +142,7 @@
               @if(is_null($evento->shtdesc))
                 <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
               @else
-                <div class="fs-md fw-normal text-start">{{Str::limit($evento->shtdesc,170)}}</div>
+                <div class="fs-xs fw-normal text-start">{{Str::limit($evento->shtdesc,170)}}</div>
               @endif
             </div>
 
@@ -182,9 +182,7 @@
                @endif
             </div>
         </div>
-        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-        {{Str::limit($evento->desc,170)}}
-        </div>
+        
     </div>
     
     {{--webo--}}

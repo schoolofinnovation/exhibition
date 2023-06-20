@@ -115,6 +115,11 @@ class AdminEventMultiParticipantsComponent extends Component
 
     }
 
+    public function multiImage()
+    {
+        
+    }
+
     public function updatePavillion()
     {
         $rti = Str::replace('  ',' ',$this->pavillion_name);
@@ -232,8 +237,6 @@ class AdminEventMultiParticipantsComponent extends Component
         session()->flash('message','Thanks for sharing your review.');
         
     }
-
-
 
     public function participantToAdd()
     {

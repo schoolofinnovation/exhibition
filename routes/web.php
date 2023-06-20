@@ -312,7 +312,7 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/admin/sub-details/{event_id}/add/{id}/business/{formm}', AdminEventMultiDetailComponent::class)->name('admin.multiSubDetails');
 
     //testing
-    Route::get('/admin/magazine',MagazineUpgradingComponent::class);
+    Route::get('/admin/magazine', MagazineUpgradingComponent::class);
 
     Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
     Route::get('/admin/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
