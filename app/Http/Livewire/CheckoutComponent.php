@@ -20,7 +20,10 @@ class CheckoutComponent extends Component
    public $basePrice;
    public $bookingFee;
    public $checkfee;
-   
+
+   public $subtotal;
+   public $tax;
+   public $total;
 
     public function destroy($rowId)
     {
