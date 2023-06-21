@@ -106,7 +106,7 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand = new Brand();
             $bran = Event::find($this->event_id);
             $brand->event_id = $bran->id;
-            $brand->brand_name = $tre;
+            $brand->brand_name = trim($tre);
             $brand->slug = str::slug($tre,'-');
             $brand->status = $this->status;
             $brand->user_id = Auth::user()->id;

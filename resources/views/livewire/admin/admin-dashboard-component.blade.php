@@ -814,8 +814,7 @@
           </form>
         </div>--}}
        
-        {{$findInspection}}
-
+    
         <div class="container my-5">
               <div class="small"> List meet-up brand</div>        
 
@@ -1079,18 +1078,52 @@
       @endif
 <!--Stop blog-->
 
-      @if($board == "dashboard-magazine")
+      @if($board == "magazine")
         <div class="container">
           <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">List Magazine</a>
           <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'image-magazine'])}}">Image</a>
         </div>
+        
+        @foreach ($magazine as $evento)
+          <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                  
+                      <div class="h4 fw-light mb-0">18</div> 
+                      <div class="small text-muted">Jul</div>
+                    
+                    <div class="round-circle">1</div> 
+                    
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="">
+                      {{ucwords(trans(Str::limit($evento->name, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      
+                  </div>  
+                  <div class="text-muted fs-sm text-start"></div>
+                </div>
+
+                <div class="col-3  p-0">
+                    @if(is_null($evento->image))
+                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine',['event_id' => $evento->slug, 'formm' => 'image' ])}}">Add</a>
+                      @else
+                      <a class="card-img-top d-block overflow-hidden" href="">
+                      <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                    @endif
+                </div>
+            </div>
+          </div>
+        @endforeach
+
       @endif
 
       @if($board == 'add-magazine')     
         <div class="container">
           <p>List your Business Magazine</p>
             <form wire:submit.prevent="added">
-             <input type="text" class="form-control mb-1"  placeholder = "name"  wire:model="name" >
+             <input type="text" class="form-control mb-1"  placeholder = "name"  wire:model.lazy="name" >
              <input type="text" class="form-control mb-1"  placeholder = "type"  wire:model.lazy="type" >
              <input type="text" class="form-control mb-1"  placeholder = "subscriber"  wire:model.lazy="subscriber" >
              <textarea type="text" class="form-control mb-1"  placeholder = "desc" rows="3" wire:model.lazy="desc" > </textarea>
