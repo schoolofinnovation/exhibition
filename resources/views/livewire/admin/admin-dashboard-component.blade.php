@@ -1200,9 +1200,10 @@
                   <div class="text-muted fs-sm text-start">
                       {{$evento->email}} <br>
                       @if(is_null($evento->email_verified_at)) 
-                      <span class="fs-xs">{{ $evento->email_verified_at}}</span>
-                      @else
                       <span class="fs-xs bg-success">{{ $evento->created_at}}</span>
+                      @else
+                      
+                      <span class="fs-xs">{{ $evento->email_verified_at}}</span>
                       @endif
                   </div>  
                   <div class="text-muted fs-sm text-start"></div>
