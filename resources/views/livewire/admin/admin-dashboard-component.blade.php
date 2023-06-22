@@ -1198,7 +1198,12 @@
                   <div class="fs-md fw-normal text-start"><a class="text-dark" href="">
                       {{ucwords(trans(Str::limit($evento->name, 24)))}}</a></div>
                   <div class="text-muted fs-sm text-start">
-                      {{$evento->email}} <span class="fs-xs">{{ $evento->email_verified_at}}</span>
+                      {{$evento->email}} <br>
+                      @if(is_null($evento->email_verified_at)) 
+                      <span class="fs-xs">{{ $evento->email_verified_at}}</span>
+                      @else
+                      <span class="fs-xs bg-success">{{ $evento->created_at}}</span>
+                      @endif
                   </div>  
                   <div class="text-muted fs-sm text-start"></div>
                 </div>
