@@ -1198,7 +1198,7 @@
                   <div class="fs-md fw-normal text-start"><a class="text-dark" href="">
                       {{ucwords(trans(Str::limit($evento->name, 24)))}}</a></div>
                   <div class="text-muted fs-sm text-start">
-                      {{$evento->email}}
+                      {{$evento->email}} <span class="fs-xs">{{ $evento->email_verified_at}}</span>
                   </div>  
                   <div class="text-muted fs-sm text-start"></div>
                 </div>
@@ -1280,7 +1280,18 @@
             <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
             <span class="handheld-toolbar-label">Add</span>
           </a>
-
+      
+      @elseif($board == 'visitor')
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+            <span class="handheld-toolbar-icon">
+            <i class="ci-filter-alt"></i></span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Visitor</span>
+          </a>
+          
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
+            <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+            <span class="handheld-toolbar-label">Add</span>
+          </a>
       @endif
 
         <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">

@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="col">
-                        <a  href="{{route('admin.dashboard', ['board' => 'crowd'])}}">
+                        <a  href="{{route('admin.dashboard', ['board' => 'visitor'])}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">User</div>
                         </a> 
                     </div>

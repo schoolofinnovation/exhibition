@@ -266,12 +266,11 @@ public $type;
 
     public function updateVisitorStatus($id, $utype) 
     {
-
       $visited = User::find($id);
       $visited->utype = $utype;
       $visited->save();
       session()->flash('message','info has been deleted Successfully');
-      return redirect()->route('admin.dashboard', ['board' => 'client']);
+      return redirect()->route('admin.dashboard', ['board' => 'visitor']);
     }  
 
 
