@@ -5,11 +5,16 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Magazine;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class MagazineUpgradingComponent extends Component
 {
 
     public $slug;
+    public $formm;
+    public $image;
+
+     use WithFileUploads; 
 
     public function mount($slug)
     {

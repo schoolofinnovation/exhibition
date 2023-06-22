@@ -16,7 +16,7 @@
             
              <div class="d-flex badgeseMagaz">
               @foreach( $finder as $categ) 
-              <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
+                <span class="badge border-1 text-right border-dark text-dark mr-1">{{ucwords(trans($categ->expoindustry))}}</span>
               @endforeach
             </div>
               
@@ -28,7 +28,7 @@
                   <div class="card product-card">
                     
                     <a class="card-img-top d-block overflow-hidden" href="">
-                      <img src="{{url('magazine/'.$eventoi->image)}}" class="img-thumbnail" alt="">
+                      <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" class="img-thumbnail" alt="">
                     </a>
                   </div>
                 </div>

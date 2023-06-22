@@ -1107,10 +1107,10 @@
 
                 <div class="col-3  p-0">
                     @if(is_null($evento->image))
-                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine',['event_id' => $evento->slug, 'formm' => 'image' ])}}">Add</a>
+                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine',['slug' => $evento->slug, 'formm' => 'image' ])}}">Add</a>
                       @else
                       <a class="card-img-top d-block overflow-hidden" href="">
-                      <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                      <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}"></a>
                     @endif
                 </div>
             </div>

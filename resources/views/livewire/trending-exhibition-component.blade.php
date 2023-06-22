@@ -23,9 +23,10 @@
         @endforeach
       </div>
       
-      <div class="row pt-1 mx-n2 my-Slider3"> 
+      <div class="row g-0 py-0 mx-n2 my-Slider3"> 
+        {{-- px-2 mb-1 --}}
         @foreach($evento as $eventoi)
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
+          <div class="col-lg-3 col-md-4 col-sm-6" href="{{route('event.details',['slug' => $eventoi->slug])}}">
             <div class="card product-card">
               
               <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
