@@ -16,7 +16,7 @@
                 
                  <div class="d-flex badgeseaward">
                       @foreach( $finder as $categ) 
-                         <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $categ->id])}}">
+                         <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $categ->id])}}">
                         {{ucwords(trans($categ->tag))}}</a>
                       @endforeach
                 </div>

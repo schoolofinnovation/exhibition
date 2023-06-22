@@ -1176,6 +1176,60 @@
       @endif
 
      
+      @if ($board == 'visitor')
+
+        @foreach ($visitors as $evento)
+          <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                  
+                      <div class="p fw-light mb-0">{{$evento->utype}}</div> 
+                      <div class="small text-muted">{{$evento->id}}</div>
+                    
+                    @if(is_null($evento->email_verified_at))   
+                        <div class="round-circle">0</div> 
+                      @else
+                        <div class="round-circle">1</div> 
+                    @endif
+                    
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="">
+                      {{ucwords(trans(Str::limit($evento->name, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      {{$evento->email}}
+                  </div>  
+                  <div class="text-muted fs-sm text-start"></div>
+                </div>
+
+                <div class="col-3  p-0">
+                    {{--@if(is_null($evento->image))
+                            <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine',['slug' => $evento->slug, 'formm' => 'image' ])}}">Add</a>
+                          @else
+                          <a class="card-img-top d-block overflow-hidden" href="">
+                          <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}"></a>
+                        @endif--}}
+                    <span>
+                      <a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{$evento->utype}}</a>
+                     
+                      <ul class="dropdown-menu" width="auto">
+
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateVisitorStatus({{$evento->id}}, 'ADM')">ADM</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateVisitorStatus({{$evento->id}}, 'SLR')">SLR</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateVisitorStatus({{$evento->id}}, 'MSR')">MSR</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateVisitorStatus({{$evento->id}}, 'EMP')">EMP</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateVisitorStatus({{$evento->id}}, 'USR')">USR</a></li>
+                      
+                      </ul>
+
+                    </span>
+                </div>
+            </div>
+          </div>
+        @endforeach
+
+      @endif
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">

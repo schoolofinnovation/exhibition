@@ -62,6 +62,8 @@ public $frequency;
 public $subscriber;
 public $desc;
 public $type;
+
+  public $utype;
     
     //career
     use WithPagination;
@@ -261,6 +263,18 @@ public $type;
        return redirect()->route('admin.dashboard', ['board' => 'dashboard']);
     }
 
+
+    public function updateVisitorStatus($id, $utype) 
+    {
+
+      $visited = User::find($id);
+      $visited->utype = $utype;
+      $visited->save();
+      session()->flash('message','info has been deleted Successfully');
+      return redirect()->route('admin.dashboard', ['board' => 'client']);
+    }  
+
+
     public function render()
     {
       //current Event
@@ -323,12 +337,13 @@ public $type;
 
       $categ = Expo::where('admstatus', '1')->paginate(5);
 
-      $nEwComment = Comment::orderBy('created_at')->get();
+      $nEwComment = Comment::orderBy('created_at', 'desc')->get();
 
       //magazine
       $magazine = Magazine::get();
+      $visitors = User::orderBy('created_at', 'desc')->get();
 
-        return view('livewire.admin.admin-dashboard-component',[ 'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',[ 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         
