@@ -15,7 +15,8 @@ class TrendingAwardComponent extends Component
     public function render()
     {
         $mytime = Carbon::today()->format("Y-m-d");
-        $finder = Denco::select('expo_id')->groupBy('expo_id')->get();
+        $finder = Expo::where('admstatus','1')->where('status','1')->get();
+        
         $awardo = Event::where('admstatus','1')->where('status','1')->where('eventype','award')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
         return view('livewire.trending-award-component',['finder'=>$finder,'awardo'=>$awardo]);
     }

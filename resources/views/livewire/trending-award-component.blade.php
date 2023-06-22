@@ -14,10 +14,11 @@
                   </div>
                 </div>
                 
-                 <div class="d-flex badgeseaward my-0">
-                  @foreach( $finder as $categ) 
-                  <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $categ->expo_id])}}">{{ucwords(trans($categ->expo->tag))}}</a>
-                  @endforeach
+                 <div class="d-flex badgeseaward">
+                      @foreach( $finder as $categ) 
+                         <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $categ->id])}}">
+                        {{ucwords(trans($categ->tag))}}</a>
+                      @endforeach
                 </div>
 
             <!--Award-->

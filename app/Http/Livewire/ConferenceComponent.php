@@ -15,7 +15,7 @@ class ConferenceComponent extends Component
     {
         $mytime = Carbon::today()->format("Y-m-d");
         $conference = Event::where('admstatus','1')->where('status','1')->where('eventype','conference','summit')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
-        $finder = Denco::select('expo_id')->groupBy('expo_id')->get();
+        $finder = Expo::where('admstatus','1')->where('status','1')->get();
 
         return view('livewire.conference-component',['conference'=>$conference, 'finder'=>$finder]);
     }
