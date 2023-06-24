@@ -33,6 +33,8 @@ class AdminDetailComponent extends Component
     public $admstatus;
     public $event_id;
     public $opinion;
+
+    public $howMany;
     
 
     public function mount($slug)
@@ -77,23 +79,30 @@ class AdminDetailComponent extends Component
 
     public function tryingfaker()
     {
+      //$findComment = Comment::where('admstatus','1')->where('status','1')->get();
+        
+      //$usero->opinion =  $findComment->random();
       
       for($i = 0; $i < $this->howMany; $i++)
       {
         $indoyui = Event::where('slug', $this->slug)->first();
         $usero =  new Rate ();
-        $usero->rate = Str::numberBetween(1,10);
-        $findhastag = Hashtag::where('admstatus','1')->where('status','1')->where('event_id', '555')->value('hastag');
-        $usero->hasttag = Str::random($findhastag);
+        $usero->rate = Str::random(1);
+        $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', '555')->get();
+        
+        $usero->hasttag = $findhastag->random();
+        
         $findComment = Comment::where('admstatus','1')->where('status','1')->get();
+        
         $usero->opinion =  $findComment->random();
        
         $usero->event_id = $indoyui->id;
         $usero->user_id = Auth::user()->id;
         $usero->status = '1'; 
         $usero->admstatus = '1';
-        $usero->save();
+        //$usero->save();
 
+        dd($usero);
       }
       
     }

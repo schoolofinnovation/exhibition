@@ -260,7 +260,7 @@ public $type;
        //dd($addmagazine);
        $addmagazine ->save();
        session()->flash('message','info has been deleted Successfully');
-       return redirect()->route('admin.dashboard', ['board' => 'dashboard']);
+       return redirect()->route('admin.dashboard', ['board' => 'magazine']);
     }
 
 
