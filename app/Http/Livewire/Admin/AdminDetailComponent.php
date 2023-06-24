@@ -13,6 +13,7 @@ use App\Models\Pavillion;
 use App\Models\Rate;
 use App\Models\Speaker;
 use App\Models\Sponsership;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -88,21 +89,26 @@ class AdminDetailComponent extends Component
         $indoyui = Event::where('slug', $this->slug)->first();
         $usero =  new Rate ();
         $usero->rate = Str::random(1);
+
         $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', '555')->get();
-        
-        $usero->hasttag = $findhastag->random();
+        $findhastagID = $findhastag->random();
+        $usero->hasttag = $findhastagID->hastag; 
         
         $findComment = Comment::where('admstatus','1')->where('status','1')->get();
-        
-        $usero->opinion =  $findComment->random();
+        $findCommentID = $findComment->random();
+        $usero->opinion =  $findCommentID->statement;
        
         $usero->event_id = $indoyui->id;
-        $usero->user_id = Auth::user()->id;
+
+        $uertyui = User::where('utype', 'USR')->get();
+        $useroID = $uertyui->random();
+        $usero->user_id = $useroID->id;
+
         $usero->status = '1'; 
         $usero->admstatus = '1';
-        //$usero->save();
+        $usero->save();
 
-        dd($usero);
+        //dd($usero);
       }
       
     }
