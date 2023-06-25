@@ -179,7 +179,7 @@
               <div class="col-lg-4 col-md-5 pt-2 pb-0">
                   <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
                   <span class="fs-md fw-bold">
-                     <i class="bi bi-star-fill text-primary me-1"></i> 7.1/10 </span><span class="d-inline-block align-middle fs-sm"> 34.7K votes</span> <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
+                     <i class="bi bi-star-fill text-primary me-1"></i> 7.1/10 </span><span class="d-inline-block align-middle fs-sm"> {{$event->rate->count()}} votes</span> <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
               </div>
 
               <ul class="list-unstyled  bg-secondary py-2">

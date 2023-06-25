@@ -30,6 +30,11 @@ class Event extends Model
     return $this->belongsTo(Expo::class, 'expo_id');
     }
 
+    public function rate()
+    {
+    return $this->belongsTo(Rate::class, 'event_id');
+    }
+
    
     
 
