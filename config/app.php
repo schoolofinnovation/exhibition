@@ -1,5 +1,7 @@
 <?php
 
+use Laravel\Socialite\Facades\Socialite;
+
 return [
 
     /*
@@ -181,7 +183,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-        
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -240,6 +242,7 @@ return [
         'Qrcode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Link' => Spatie\CalendarLinks\Link::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

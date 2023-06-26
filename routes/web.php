@@ -150,6 +150,7 @@ use App\Http\Livewire\Admin\AdminLandingComponent;
 use App\Http\Livewire\Admin\MagazineUpgradingComponent;
 use App\Http\Livewire\AwardsComponent;
 use App\Http\Livewire\ExhibitionTimeComponent;
+use App\Http\Livewire\GoogleComponent;
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
 
 use App\Http\Livewire\ThankyouComponent;
@@ -298,6 +299,11 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
     Route::get('/user/account', UserAccountComponent::class)->name('user.account');
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
   });
+
+  //google login setup
+  Route::get('auth/google', [GoogleComponent::class,'loginwithGoogle'])->name('google.login');
+  Route::get('google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->name('google.callback');
+
 
   //Admin-ADM
   Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group( function () {

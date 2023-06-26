@@ -111,7 +111,7 @@ The all new Quick is here</h5><p class="text-white opacity-8">Everything you nee
 <div class="col-sm-6"><a href="#" class="btn btn-block btn-neutral btn-icon mb-3 mb-sm-0"><span class="btn-inner--icon">
 <img src="{{asset ('image/social/facebook-7fcb46c06e.svg') }}" alt="Image placeholder"></span>
 </a></div>
-<div class="col-sm-6"><a href="#" class="btn btn-block btn-neutral btn-icon"><span class="btn-inner--icon">
+<div class="col-sm-6"><a href="{{route('google.login')}}" class="btn btn-block btn-neutral btn-icon"><span class="btn-inner--icon">
 <img src="{{asset ('image/social/google-213cd1c446.svg') }}" alt="Image placeholder"></span><!--<span class="btn-inner--text">Google</span>--></a></div></div>
 
 <div class="mt-4"><small>Not registered?</small> <a href="{{route('register')}}" class="small font-weight-bold">Create account</a></div>
