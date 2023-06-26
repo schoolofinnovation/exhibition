@@ -14,6 +14,7 @@ use App\Models\Rate;
 use App\Models\Speaker;
 use App\Models\Sponsership;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -88,7 +89,9 @@ class AdminDetailComponent extends Component
       {
         $indoyui = Event::where('slug', $this->slug)->first();
         $usero =  new Rate ();
-        $usero->rate = Str::random(1);
+        $trynigtocreate = collect([1,2,3,4,5,6,7,8,9]);
+        $usero->rate = $trynigtocreate->random();
+
 
         $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', '555')->get();
         $findhastagID = $findhastag->random();
@@ -106,6 +109,7 @@ class AdminDetailComponent extends Component
 
         $usero->status = '1'; 
         $usero->admstatus = '1';
+        //$usero->created_at = 
         $usero->save();
 
         //dd($usero);

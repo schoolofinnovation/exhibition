@@ -25,28 +25,29 @@ class GoogleComponent extends Component
                     $user = Socialite::driver('google')->user();
                         $is_user = user::where('email', $user->getEmail())->first();
 
-                        if(!$is_user){
-                            $saveUser = User::updateOrCreate(
-                            [
-                                'google_id' => $user->getId()
-                            ],
-                            [
-                                'name' => $user->getName(),
-                                'email' => $user->getEmail(),
-                                'password' => Hash:: make ($user->getName().'@'.$user -> getId())
-                            ]
-                        );
+                        if(!$is_user)
+                            {
+                                $saveUser = User::updateOrCreate
+                                (
+                                    [
+                                        'google_id' => $user->getId()
+                                    ],
+                                    [
+                                        'name' => $user->getName(),
+                                        'email' => $user->getEmail(),
+                                        'password' => Hash:: make ($user->getName().'@'.$user -> getId())
+                                    ]
+                                );
 
-                }
-                else
-                {
-                    $saveUser = User::where('email',$user->getEmail())->update([
-                        'google_id' => $user->getId(),
-                    ]);
-                    $saveUser = user::where('email', $user->getEmail())->first();
-                }
+                            }
+                        else
+                            {
+                                $saveUser = User::where('email',$user->getEmail())->update(['google_id' => $user->getId()]);
+                                $saveUser = user::where('email', $user->getEmail())->first();
+                            }
+
                 Auth::loginUsingId($saveUser->id);
-                return redirect()->route('/');
+                return redirect()->route('business.exhibition');
              }
              catch(\Throwable $th){
                 throw $th;

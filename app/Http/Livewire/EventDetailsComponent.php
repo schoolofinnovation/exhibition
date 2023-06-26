@@ -80,7 +80,12 @@ class EventDetailsComponent extends Component
         //dd($rating);
         $category = Denco::where('event_id', $event->id)->get();
          //dd($event);
-        return view('livewire.event-details-component',[
+
+         $commentedRates = Rate::where('admstatus','1')->where('status','1')->where('event_id', $event->id)->get();
+         $rateRating = $commentedRates->pluck('rate');
+
+        return view('livewire.event-details-component',[ 'rateRating' => $rateRating,
+                                                        'commentedRates' => $commentedRates,
                                                         'detailProductprice' => $detailProductprice,
                                                         'pavillion'=>$pavillion,'category'=>$category,
                                                         'rating'=> $rating,

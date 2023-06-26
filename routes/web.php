@@ -182,7 +182,7 @@ use Carbon\Carbon;
 });*/
 
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    return view ('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {

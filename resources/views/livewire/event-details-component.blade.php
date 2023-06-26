@@ -161,6 +161,7 @@
     </section>
 
     <!-- slider at next header-->  
+
     <section class="container d-lg-none ">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Exhibit</a></li>
@@ -169,7 +170,7 @@
             <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
         </ul>
     </section>
-
+    
     {{--details--}}
       <div class="container d-lg-none">
               <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
@@ -178,9 +179,19 @@
               </div>-->
               <div class="col-lg-4 col-md-5 pt-2 pb-0">
                   <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
+
+                  @if($commentedRates->count() > 0)
+                  
                   <span class="fs-md fw-bold">
-                     <i class="bi bi-star-fill text-primary me-1"></i> 7.1/10 </span><span class="d-inline-block align-middle fs-sm"> {{$event->rate->count()}} votes</span> <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
+                     <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
+                     <span class="d-inline-block align-middle fs-sm"> {{$commentedRates->count()}} votes</span>
+                  @endif
+                      <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
               </div>
+
+
+
+
 
               <ul class="list-unstyled  bg-secondary py-2">
                       @php
@@ -225,7 +236,7 @@
               <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
               <div class="fs-xs fw-normal">
                 @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
-                {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
+                {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
               </div>
               <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->desc,170)}}</div> 
               
@@ -1058,7 +1069,7 @@
             <div class="handheld-toolbar bg-secondary">
               
               <div class="d-flex justify-content-between py-2 px-2">
-               <div class="text-dark fw-medium fs-sm pl-3 lh-3">  Rs.{{$productPrice}}<br><span class=" fw-light fs-xs">Onwards</span></div>
+               <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                @if( $ticketOrExhibit != 0 )
                   <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket</a>
                 @elseif( $ticketOrExhibit == 0 )
