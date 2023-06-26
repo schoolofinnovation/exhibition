@@ -841,63 +841,26 @@
 
                 <div class="d-flex abced gx-2">
                  
+                @foreach($commentedRates  as $comment)
                   <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
                     <img class="rounded-circle" src="#" width="50" alt="">
   
                     <div class="ps-0">
                       <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">User</p>
+                        <p class="fs-md mb-0">{{$comment->user->name}}</p>
                         <a class="nav-link-style fs-sm fw-medium" href="#">
-                          <i class="bi bi-star me-2"></i>10/10</a>
+                          <i class="bi bi-star me-2"></i>{{$comment->rate}}/10</a>
                       </div>
 
-                      <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
+                      <h4 class="fs-md mb-3">{{$comment->opinion}}</h4>
                       
                       <div class="d-flex justify-content-between align-items-center">
                         <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
-                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i></span>
+                        <span class="fs-ms text-muted">{{Carbon\Carbon::parse ($comment->updated_at)->format('Y-m-d')}}<i class=" bi bi-share align-middle me-2"></i></span>
                       </div>
                     </div>
                   </div>
-
-                  <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
-                    <img class="rounded-circle" src="#" width="50" alt="">
-  
-                    <div class="ps-0">
-                      <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">User</p>
-                        <a class="nav-link-style fs-sm fw-medium" href="#">
-                          <i class="bi bi-star me-2"></i>10/10</a>
-                      </div>
-
-                      <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
-                      
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
-                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
-                    <img class="rounded-circle" src="#" width="50" alt="">
-  
-                    <div class="ps-0">
-                      <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">User</p>
-                        <a class="nav-link-style fs-sm fw-medium" href="#">
-                          <i class="bi bi-star me-2"></i>10/10</a>
-                      </div>
-
-                      <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
-                      
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
-                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
+                @endforeach
                 </div>
 
                 </div>
