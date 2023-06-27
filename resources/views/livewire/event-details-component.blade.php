@@ -857,60 +857,22 @@
                                 <i class="bi bi-star me-2"></i>{{$comment->rate}}/10</a>
                             </div>
 
-                      <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
-                      
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
-                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i></span>
+                            <h4 class="fs-md mb-3">{{$comment->opinion}}</h4>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                              <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
+                              <span class="fs-ms text-muted">{{Carbon\Carbon::parse ($comment->updated_at)->format('Y-m-d')}}<i class=" bi bi-share align-middle me-2"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                      @endforeach
+                      </div>
+
                       </div>
                     </div>
                   </div>
-
-                  <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
-                    <img class="rounded-circle" src="#" width="50" alt="">
-  
-                    <div class="ps-0">
-                      <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">User</p>
-                        <a class="nav-link-style fs-sm fw-medium" href="#">
-                          <i class="bi bi-star me-2"></i>10/10</a>
-                      </div>
-
-                      <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
-                      
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
-                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
-                    <img class="rounded-circle" src="#" width="50" alt="">
-  
-                    <div class="ps-0">
-                      <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">User</p>
-                        <a class="nav-link-style fs-sm fw-medium" href="#">
-                          <i class="bi bi-star me-2"></i>10/10</a>
-                      </div>
-
-                      <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
-                      
-                      <div class="d-flex justify-content-between align-items-center">
-                        <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
-                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i></span>
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-      </section>
+            </section>
 
             <hr class="mt-md-2 mb-2">
       <!--exhibitor-->
@@ -1146,15 +1108,15 @@
             let postUrl = encodeURI(document.location.href);
             let postTitle = encodeURI('{{$event->eventname}}');
            
-            gmailbtn.setAttribute("href",'https://mail.gmail.com/mail/?view=cm&su=$(postTitle)&body=$(postUrl)');
+            gmailbtn.setAttribute("href",'https://mail.gmail.com/mail/?view=cm&su=${postTitle}&body=${postUrl}');
 
-            facebookbtn.setAttribute("href",'https://wwww.facebook.com/sharer.php?u=$(postUrl)');
+            facebookbtn.setAttribute("href",'https://wwww.facebook.com/sharer.php?u=${postUrl}');
 
-            twitterbtn.setAttribute("href",'https://twitter.com/share?url=$(postUrl)&text=$(postTitle)');
+            twitterbtn.setAttribute("href",'https://twitter.com/share?url=${postUrl}&text=${postTitle}');
 
-            linkedinbtn.setAttribute("href",'https://wwww.linkedin.com/shareArticle?url=$(postUrl)&title=$(postTitle)');
+            linkedinbtn.setAttribute("href",'https://wwww.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}');
            
-            whatsappbtn.setAttribute("href",'https://wa.me/?text=$(postTitle) $(postUrl)');
+            whatsappbtn.setAttribute("href",'https://wa.me/?text=${postTitle}${postUrl}');
 
           </script>
 
