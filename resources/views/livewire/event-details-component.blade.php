@@ -280,6 +280,9 @@
       <a href="#" id="linkedin-btn">linkedin</a>
       <a href="#" id="whatsapp-btn">whatsapp</a>
 
+      
+      <a href="#" id="shareBtn" class="btn btn-primary btn-sm">share</a>
+
       <!--Applicable Offers-->
             <div class="container d-lg-none">
                 <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
@@ -1117,6 +1120,23 @@
             linkedinbtn.setAttribute("href",'https://wwww.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}');
            
             whatsappbtn.setAttribute("href",'https://wa.me/?text=${postTitle}${postUrl}');
+
+            const shareBtn = document.getElementById('shareBtn');
+            if(navigator.share){
+              shareBtn.style.display = 'block';
+              shareBtn.addEventListener('click',()=>{
+                navigator.share({
+                  title : postTitle,
+                  url:postUrl
+                }).then((result)=>{
+                  alert('Thank you for sharing.')
+                }).catch((err)=>{
+                  console.log(err);
+                });
+                });
+              }else{
+
+            }
 
           </script>
 
