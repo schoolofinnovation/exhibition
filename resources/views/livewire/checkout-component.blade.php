@@ -66,8 +66,8 @@
                         <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$item->model->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                         
                         <div class="ps-1">
-                            <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->image])}}">
-                            {{$item->model->eventname}}</a></h6>
+                            <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->slug])}}">
+                            {{$item->eventname}}</a></h6>
 
                             <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
                                 @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
@@ -82,16 +82,16 @@
                           
                         </div>
                       </div>
-                      @endforeach
+                    @endforeach
 
                       <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
                         <li class="d-flex justify-content-between align-items-center">
                           <span class="me-2"> Date </span>
                           <span class="text-end">
-                            @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
-                                {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M Y ')}}
+                            @if(Carbon\Carbon::parse ($item->model->startdate)->format('M') != Carbon\Carbon::parse ($item->model->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y ')}}
                               @else
-                                {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M Y')}}
+                                {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y')}}
                             @endif 
                           </span>
                         </li>
@@ -100,7 +100,7 @@
                             <span class="text-end"> {{Carbon\Carbon::now()}}</span></li>
                         <li class="d-flex justify-content-between align-items-center">
                           <span class="me-2"> Venue </span>
-                        <span class="text-end"> {{$item->model->event->venue}} : {{$item->model->event->city}}</span></li>
+                        <span class="text-end"> {{$item->model->venue}} : {{$item->model->city}}</span></li>
                         
                         <li class="align-items-center">
                           

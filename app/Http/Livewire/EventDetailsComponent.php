@@ -28,6 +28,7 @@ class EventDetailsComponent extends Component
     public $avgrating;
     //public $producStartdate;
     public $productExpiryDate;
+    public $productPrice;
 
     
     public function mount($slug)
@@ -39,22 +40,31 @@ class EventDetailsComponent extends Component
     public function render()
     {   
         $event = Event::where('slug', $this->slug)->first();
-        //$start = $event->startdate;
-        
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
         $name = $event->eventname;
         $venue = $event->venue;
         $city = $event->city;
         $country = $event->country;
-       // dd($from);
-        //dd($to);
-
         $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
 
-        $detailProductprice = Ticket::where('event_id', $event->id)->get();
-        $productPrice = $detailProductprice->min('price');
-       
+
+        // $finrty = $detailProductprice->count();
+        $currentTime = now()->format( 'H:m:s');
+        $currentDate = now()->format( 'Y-m-d'); 
+
+        //ticket
+        $detailProductprice = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $event -> id)->where('expiry_date', '>=' , $currentDate)->where('expiry_time', '>=' , $currentTime)->get();
+        $ticketOrExhibit = $detailProductprice->count();
+        
+        if($ticketOrExhibit == '0')
+        {
+          $productPrice = Ticket::where('admstatus','1')->where('status','0')->where('event_id', NULL)->min('price');
+        }
+        else
+        {
+          $productPrice = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $event -> id)->where('expiry_date', '>=' , $currentDate)->where('expiry_time', '>=' , $currentTime)->min('price');
+        }
         
         $franchises = Franchise::paginate(4);
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
@@ -63,8 +73,8 @@ class EventDetailsComponent extends Component
         $premium = Franchise::where('status', 'active')->where('featured','premium')->limit(1);
         $pavillion = Pavillion::where('admstatus','0')->where('status','1')->where('event_id',$event->id)->get();
 
-        $ticketOrExhibit = Ticket::where('event_id', $event -> id)->count();
-//dd($ticketOrExhibit);
+        
+
 
           if (Auth::check()) 
         {

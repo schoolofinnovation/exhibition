@@ -203,9 +203,9 @@
                                 $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id',$event->id)->get();
                               @endphp
 
-                              {{$find}} {{$checkComment}}
+                              {{--{{$find}} {{$checkComment}}
 
-                              {{$event->id}}
+                              {{$event->id}}  --}}
                               @if(count($find) == '0')
                               
                                 <li class="d-flex justify-content-between px-2 m-0 lh-1">
