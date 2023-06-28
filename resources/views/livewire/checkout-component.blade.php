@@ -91,13 +91,13 @@
                             @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
                                 {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M Y ')}}
                               @else
-                                {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->eevent->nddate)->format('D, d M Y')}}
+                                {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M Y')}}
                             @endif 
                           </span>
                         </li>
                           <li class="d-flex justify-content-between align-items-center">
                             <span class="me-2"> Time </span>
-                            <span class="text-end"> {{Carbon\Carbon::now()->format( )}}</span></li>
+                            <span class="text-end"> {{Carbon\Carbon::now()}}</span></li>
                         <li class="d-flex justify-content-between align-items-center">
                           <span class="me-2"> Venue </span>
                         <span class="text-end"> {{$item->model->event->venue}} : {{$item->model->event->city}}</span></li>

@@ -1041,6 +1041,7 @@
               
               <div class="d-flex justify-content-between py-2 px-2">
                <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+               <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket</a>
                @if( $ticketOrExhibit != 0 )
                   <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket</a>
                 @elseif( $ticketOrExhibit == 0 )
@@ -1110,6 +1111,8 @@
             //url
             let postUrl = encodeURI(document.location.href);
             let postTitle = encodeURI('{{$event->eventname}}');
+
+          
            
             gmailbtn.setAttribute("href",'https://mail.gmail.com/mail/?view=cm&su=${postTitle}&body=${postUrl}');
 
@@ -1127,7 +1130,8 @@
               shareBtn.addEventListener('click',()=>{
                 navigator.share({
                   title : postTitle,
-                  url:postUrl
+                  url : postUrl,
+
                 }).then((result)=>{
                   alert('Thank you for sharing.')
                 }).catch((err)=>{

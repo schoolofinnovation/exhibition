@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Event;
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
@@ -38,8 +39,16 @@ class ProductComponent extends Component
         $event = Event::where('slug', $this->slug)->first();
         $test= $event->id;
         $previous = url()->previous();
-        $ticke = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $test)->get();
+
+        $currentTime = now()->format( 'h:m:s');
+        $currentDate = now()->format( 'Y-m-d');
+       
         
-        return view('livewire.product-component',['previous'=> $previous , 'event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
+
+        $ticke = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $test)->where('expiry_date', '>=' , $currentDate)->where('expiry_time', '>=' , $currentTime)->get();
+        //dd($currentTime,$currentDate, $ticke);
+        $ticke = Ticket::where('admstatus','1')->where('status','0')->where('event_id', NULL)->get();
+        
+        return view('livewire.product-component', ['previous'=> $previous , 'event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
     }
 }
