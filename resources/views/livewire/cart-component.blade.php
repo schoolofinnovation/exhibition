@@ -32,7 +32,7 @@
                               <div class="d-flex align-items-center">
                                 <a class="d-block flex-shrink-0" href="{{route('event.details',['slug'=>$item->model->slug])}}">
                                 <img src="{{asset ('public/assets/image/exhibition')}}/{{$item->model->image}}" width="64" alt="{{$item->model->eventname}}"></a>
-                                  <div class="ps-2">
+                                  <div class="ps-2"> {{$item->model}}
                                     <h6 class="widget-product-title">
                                     <a href="{{route ('event.details',['slug'=>$item->model->slug])}}">{{Str::limit($item->model->eventname,28)}}</a></h6>
                                     <div class="widget-product-meta">

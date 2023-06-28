@@ -26,10 +26,7 @@ class EventDetailsComponent extends Component
     public $eventname;
     public $event_id;
     public $avgrating;
-    //public $producStartdate;
     public $productExpiryDate;
-    public $productPrice;
-
     
     public function mount($slug)
     {
@@ -66,6 +63,7 @@ class EventDetailsComponent extends Component
           $productPrice = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $event -> id)->where('expiry_date', '>=' , $currentDate)->where('expiry_time', '>=' , $currentTime)->min('price');
         }
         
+
         $franchises = Franchise::paginate(4);
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
         $speaker = Speaker::where('admstatus','1')->where('status','1')->where('event_id',$event->id)->where('entity','speaker')->get();
@@ -94,7 +92,7 @@ class EventDetailsComponent extends Component
          $commentedRates = Rate::where('admstatus','1')->where('status','1')->where('event_id', $event->id)->get();
          $rateRating = $commentedRates->pluck('rate');
 
-        return view('livewire.event-details-component',[ 'rateRating' => $rateRating,
+        return view('livewire.event-details-component',['rateRating' => $rateRating,
                                                         'commentedRates' => $commentedRates,
                                                         'detailProductprice' => $detailProductprice,
                                                         'pavillion'=>$pavillion,'category'=>$category,

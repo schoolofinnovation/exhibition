@@ -43,9 +43,9 @@
               
 
             <ul class="bg-secondary py-3"> <span class="fw-bold"> M-Ticket Information</span> 
-              <li class="fs-sm">1. Customer(s) can access their ticket(s) from the 'My Profile' section on the app/mobile-web.</li>				
-              <li class="fs-sm">2. It is mandatory to present the ticket(s) in my profile section via app/mobile-web at the venue.</li>					
-              <li class="fs-sm">3. No physical ticket(s) are required to enter the venue.</li>
+              <li class="fs-sm">Customer(s) can access their ticket(s) from the 'My Profile' section on the app/mobile-web.</li>				
+              <li class="fs-sm">It is mandatory to present the ticket(s) in my profile section via app/mobile-web at the venue.</li>					
+              <li class="fs-sm">No physical ticket(s) are required to enter the venue.</li>
             </ul>
               
           </section>
@@ -61,14 +61,14 @@
 
                   @if(Cart::instance('cart')->count()>0)
                     @foreach (Cart::instance('cart')->content() as $item)
-                      <div class="d-flex align-items-center pb-2 border-bottom">
+                      {{--<div class="d-flex align-items-center pb-2 border-bottom">
                         <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->slug])}}">
                         <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$item->model->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                         
                         <div class="ps-1">
                             <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->slug])}}">
-                            {{$item->eventname}}</a></h6>
-
+                            {{$item->model->package}}</a></h6>
+                           
                             <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
                                 @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                                   <i class="bi bi-currency-rupee"></i> {{$item->model->sale_price}}
@@ -81,7 +81,7 @@
                             </div>
                           
                         </div>
-                      </div>
+                      </div>--}}
                     @endforeach
 
                       <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
