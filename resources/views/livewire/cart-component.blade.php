@@ -27,7 +27,7 @@
                         
                           @foreach (Cart::instance('cart')->content() as $item)
                          
-                            <div class="widget-cart-item pb-2 border-bottom">
+                            {{--<div class="widget-cart-item pb-2 border-bottom">
                               <button class="btn-close text-danger" wire:click="destroy('{{$item->rowId}}')" type="button" aria-label="Remove"><span aria-hidden="true">×</span></button>
                               <div class="d-flex align-items-center">
                                 <a class="d-block flex-shrink-0" href="{{route('event.details',['slug'=>$item->model->slug])}}">
@@ -40,7 +40,7 @@
                                     <span class="text-muted">x 1</span></div>
                                   </div>
                               </div>
-                            </div>
+                            </div>--}}
                           @endforeach
                         
                         </div>
