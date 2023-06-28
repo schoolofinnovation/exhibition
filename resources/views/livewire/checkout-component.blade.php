@@ -62,12 +62,12 @@
                   @if(Cart::instance('cart')->count()>0)
                     @foreach (Cart::instance('cart')->content() as $item)
                       <div class="d-flex align-items-center pb-2 border-bottom">
-                        <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                        <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
+                        <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->slug])}}">
+                        <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$item->model->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                         
                         <div class="ps-1">
-                            <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                            {{$item->model->event->eventname}}</a></h6>
+                            <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->image])}}">
+                            {{$item->model->eventname}}</a></h6>
 
                             <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
                                 @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
