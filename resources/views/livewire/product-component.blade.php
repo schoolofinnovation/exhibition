@@ -110,18 +110,19 @@
               </div>
           
               <!-- Reviews tab-->
-              <div class="tab-pane fade" id="reviews" role="tabpanel">
+             
+        {{-- <div class="tab-pane fade" id="reviews" role="tabpanel">
                 <div class="row">
                   <!-- details test tickets-->
                   <div class="fs-ms">SELECT YOUR TICKET
                     @foreach (Cart::instance('cart')->content() as $item)
                       <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
                         <div class="d-block d-sm-flex justify-content-between text-sm-start">
-                          <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                          <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details', ['slug'=> $item->model->event->slug])}}">
                             <img src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->event->image, 24)}}" width="50"></a>
                             
                             <div class="pt-2">
-                              <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">{{$item->model->event->eventname}}</a></h3>
+                              <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->slug])}}">{{$item->model->event->eventname}}</a></h3>
                               {{--<div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
                                       {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y ')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
                                     @else
@@ -180,7 +181,7 @@
                   @endif
 
                 </div>
-              </div>
+              </div>--}}
 
             </div>
           </div>

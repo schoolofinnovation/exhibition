@@ -108,15 +108,15 @@
                         <div class="row">
                           <div class="col-6">
                             <div class="d-block d-sm-flex justify-content-between text-sm-start">
-                              <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
-                                <img src="{{asset ('public/assets/image/exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->event->image, 24)}}" width="50"></a>
+                              <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{{route ('event.details',['slug'=> $event->slug])}}">
+                                <img src="{{asset ('public/assets/image/exhibition') }}/{{$event->image}}" alt="{{Str::limit($event->image, 24)}}" width="50"></a>
                                 
                                 <div class="pt-2">
-                                  <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">{{$item->model->event->eventname}}</a></h3>
-                                  {{--<div class="fs-sm"> @if(Carbon\Carbon::parse ($item->model->event->startdate)->format('M') != Carbon\Carbon::parse ($item->model->event->enddate)->format('M'))
-                                          {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y ')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
+                                  <h3 class="product-title fs-base mb-2"><a href="{{route ('event.details',['slug'=> $event->slug])}}">{{$event->eventname}}</a></h3>
+                                  {{--<div class="fs-sm"> @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                                          {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}} | {{ucwords(trans($event->venue))}} {{ucwords(trans($event->city))}} {{ucwords(trans($event->country))}}
                                         @else
-                                          {{Carbon\Carbon::parse ($item->model->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->event->enddate)->format('D, d M y')}} | {{ucwords(trans($item->model->event->venue))}} {{ucwords(trans($item->model->event->city))}} {{ucwords(trans($item->model->event->country))}}
+                                          {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}} | {{ucwords(trans($event->venue))}} {{ucwords(trans($event->city))}} {{ucwords(trans($item->model->event->country))}}
                                         @endif
                                   </div>--}}
                                   

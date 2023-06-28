@@ -24,16 +24,17 @@
                     <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
                       <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;">
                         <div class="simplebar-content" style="padding: 0px 16px 0px 0px;">
-
+                        
                           @foreach (Cart::instance('cart')->content() as $item)
+                         
                             <div class="widget-cart-item pb-2 border-bottom">
                               <button class="btn-close text-danger" wire:click="destroy('{{$item->rowId}}')" type="button" aria-label="Remove"><span aria-hidden="true">×</span></button>
                               <div class="d-flex align-items-center">
-                                <a class="d-block flex-shrink-0" href="{{route('event.details',['slug'=>$item->model->event->slug])}}">
-                                <img src="{{asset ('exhibition')}}/{{$item->model->event->image}}" width="64" alt="{{$item->model->event->eventname}}"></a>
+                                <a class="d-block flex-shrink-0" href="{{route('event.details',['slug'=>$item->model->slug])}}">
+                                <img src="{{asset ('public/assets/image/exhibition')}}/{{$item->model->image}}" width="64" alt="{{$item->model->eventname}}"></a>
                                   <div class="ps-2">
                                     <h6 class="widget-product-title">
-                                    <a href="{{route ('event.details',['slug'=>$item->model->event->slug])}}">{{Str::limit($item->model->event->eventname,28)}}</a></h6>
+                                    <a href="{{route ('event.details',['slug'=>$item->model->slug])}}">{{Str::limit($item->model->eventname,28)}}</a></h6>
                                     <div class="widget-product-meta">
                                     <span class="text-accent me-2">{{$item->model->price}} </span>
                                     <span class="text-muted">x 1</span></div>
