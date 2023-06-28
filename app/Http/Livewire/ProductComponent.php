@@ -40,15 +40,15 @@ class ProductComponent extends Component
         $test= $event->id;
         $previous = url()->previous();
 
-        $currentTime = now()->format( 'h:m:s');
+        $currentTime = now()->format( 'H:m:s');
         $currentDate = now()->format( 'Y-m-d');
        
         
 
         $ticke = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $test)->where('expiry_date', '>=' , $currentDate)->where('expiry_time', '>=' , $currentTime)->get();
         //dd($currentTime,$currentDate, $ticke);
-        $ticke = Ticket::where('admstatus','1')->where('status','0')->where('event_id', NULL)->get();
+        $tickeo = Ticket::where('admstatus','1')->where('status','0')->where('event_id', NULL)->get();
         
-        return view('livewire.product-component', ['previous'=> $previous , 'event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
+        return view('livewire.product-component', ['tickeo'=> $tickeo ,'previous'=> $previous , 'event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
     }
 }

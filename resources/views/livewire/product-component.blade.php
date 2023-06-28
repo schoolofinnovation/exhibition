@@ -52,18 +52,32 @@
                       <div class="fs-ms">SELECT YOUR CATEGORY
                         @foreach($ticke as $edy)
 
-                        <div class="row">
-                            <div class="col-9">
-                              <div class="product-title fs-md mb-2">{{$edy->packagge}}</div>
-                              <div class="fs-xs fw-lighter lh-1">{{$edy->desc}}</div>
-                              <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
+                            <div class="row">
+                                <div class="col-9">
+                                  <div class="product-title fs-md mb-2">{{$edy->packagge}}</div>
+                                  <div class="fs-xs fw-lighter lh-1">{{$edy->desc}}</div>
+                                  <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
+                                </div>
+                                <div class="col-3">
+                                  <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a>
+                                </div>
                             </div>
-                            <div class="col-3">
-                              <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a>
-                            </div>
-                        </div>
+                        
+                        @endforeach
 
-                            
+                        @foreach($tickeo as $edy)
+
+                            <div class="row">
+                                <div class="col-9">
+                                  <div class="product-title fs-md mb-2">{{$edy->packagge}}</div>
+                                  <div class="fs-xs fw-lighter lh-1">{{$edy->desc}}</div>
+                                  <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
+                                </div>
+                                <div class="col-3">
+                                  <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a>
+                                </div>
+                            </div>
+                        
                         @endforeach
                       </div>
                       
