@@ -37,6 +37,7 @@ class EventDetailsComponent extends Component
     public function render()
     {   
         $event = Event::where('slug', $this->slug)->first();
+        $findEvent = $event->id;
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
         $name = $event->eventname;
@@ -92,7 +93,7 @@ class EventDetailsComponent extends Component
          $commentedRates = Rate::where('admstatus','1')->where('status','1')->where('event_id', $event->id)->get();
          $rateRating = $commentedRates->pluck('rate');
 
-        return view('livewire.event-details-component',['rateRating' => $rateRating,
+        return view('livewire.event-details-component',['findEvent'=>$findEvent,'rateRating' => $rateRating,
                                                         'commentedRates' => $commentedRates,
                                                         'detailProductprice' => $detailProductprice,
                                                         'pavillion'=>$pavillion,'category'=>$category,

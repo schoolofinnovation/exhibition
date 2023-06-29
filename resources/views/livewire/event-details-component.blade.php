@@ -109,6 +109,7 @@
                         <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
                             <img src="{{url('assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
                         </a>
+                       
                   </div>
                   <div class="col-lg-7 col-md-6 col-sm-8">
                     <div class="col-lg-6 col-md-6 border border-white border-1 px-3 py-5">
@@ -146,6 +147,7 @@
                                 href="{{route('event.product',['slug' => $event->slug])}}">Exhibit</a>
                               @endif
                               <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                              <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2">Share<i class="bi bi-share"></i></a>
                               </li>
                         </ul>
 
@@ -192,26 +194,25 @@
 
 
                     <ul class="list-unstyled  bg-secondary py-2">
-                            @php
-                              $event->id = $avgrating;
-                            @endphp
+                    @php
+                        $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
+                        $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
+                    @endphp
+
 
                           @if(Auth::check())
-                              @php
-                                $checkout = Auth::user()->id;
-                                $find = DB::table('rates')->where('user_id', $checkout)->get();
-                                $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id',$event->id)->get();
-                              @endphp
-
-                              {{--{{$find}} {{$checkComment}}
-
-                              {{$event->id}}  --}}
-                              @if(count($find) == '0')
-                              
-                                <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                             
+                            @if(count($checkComment) > '0')
+                              <li class="d-flex justify-content-between px-2 m-0 lh-1">
                                 <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
-                              @endif
+                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light">{{$checkComment->rate}}/10</a></span>
+                              </li>
+                            @else
+                              <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span>
+                              </li>
+                            @endif
 
                             @else
 
@@ -220,6 +221,21 @@
                               <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
                           @endif
                     </ul>
+
+                      
+                    {{--@if(Auth::check())
+                      <h1>logout</h1>
+                      @if(count($checkComment) > '0')
+                        <h1>doo comment</h1>
+                        
+                      @else
+                        <h1>rating</h1>
+                        {{$checkout}}, {{$find}}, {{$checkComment}} {{$event}} {{$event->eventname}}
+                      @endif
+                    @else
+                      <h1>login</h1>
+                      <a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a>
+                    @endif--}}
 
                     
                       
@@ -274,14 +290,15 @@
 
       <!--share-->
 
-      <a href="#" id="gmail-btn">gmail</a>
-      <a href="#" id="facebook-btn">facebook</a>
-      <a href="#" id="twitter-btn">twitter</a>
-      <a href="#" id="linkedin-btn">linkedin</a>
-      <a href="#" id="whatsapp-btn">whatsapp</a>
+            <!-- <a href="#" id="gmail-btn">gmail</a>
+            <a href="#" id="facebook-btn">facebook</a>
+            <a href="#" id="twitter-btn">twitter</a>
+            <a href="#" id="linkedin-btn">linkedin</a>
+            <a href="#" id="whatsapp-btn">whatsapp</a> -->
 
       
-      <a href="#" id="shareBtn" class="btn btn-primary btn-sm">share</a>
+            <i class="bi bi-share"></i>
+      
 
       <!--Applicable Offers-->
             <div class="container d-lg-none">
@@ -855,7 +872,7 @@
         
                           <div class="ps-0">
                             <div class="d-flex justify-content-between align-items-end mb-2">
-                              <p class="fs-md mb-0">{{$comment->user->name}}</p>
+                              <p class="fs-md mb-0">{{$comment}}</p>
                               <a class="nav-link-style fs-sm fw-medium" href="#">
                                 <i class="bi bi-star me-2"></i>{{$comment->rate}}/10</a>
                             </div>
