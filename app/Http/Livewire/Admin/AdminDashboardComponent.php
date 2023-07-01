@@ -14,6 +14,7 @@ use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Franchise;
+use App\Models\Hashtag;
 use App\Models\Job;
 use App\Models\Lead;
 use App\Models\Mag;
@@ -62,8 +63,9 @@ public $frequency;
 public $subscriber;
 public $desc;
 public $type;
+public $utype;
 
-  public $utype;
+public $hastag;
     
     //career
     use WithPagination;
@@ -264,6 +266,26 @@ public $type;
     }
 
 
+    public function addHastag()
+    {
+        $rti = Str::replace(' ','', $this->hastag);
+        $rtoi = Str::replace('#',',',$rti);
+        $ret = explode("," , $rtoi);
+        foreach($ret as $tre)
+        {
+            $newEvent = new Hashtag();
+            $newEvent->hastag = $tre;
+            //$newEvent->event_id = $this->event_id;
+            $newEvent->user_id = Auth::user()->id;
+            $newEvent->status = $this->status;
+            $newEvent->admstatus = $this->admstatus;
+            $newEvent->save();
+        }
+        return redirect()->back();
+        session()->flash('message','Thanks for sharing your review.');
+        
+    }
+
     public function updateVisitorStatus($id, $utype) 
     {
       $visited = User::find($id);
@@ -342,7 +364,9 @@ public $type;
       $magazine = Magazine::get();
       $visitors = User::orderBy('created_at', 'desc')->get();
 
-        return view('livewire.admin.admin-dashboard-component',[ 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+      $hastago = Hashtag::where('event_id', $evento->id)->get();
+
+        return view('livewire.admin.admin-dashboard-component',[ 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         

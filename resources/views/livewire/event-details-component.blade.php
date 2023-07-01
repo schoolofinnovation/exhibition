@@ -172,23 +172,24 @@
             </section>
     
       <!--details-->
-                  <div class="container d-lg-none">
+            <div class="container d-lg-none">
                     <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
                       <div class="star-rating me-2"><i class="bi bi-star-filled text-accent me-1"></i>
                       <span class="fs-md fw-bold">77% </span><span class="d-inline-block align-middle fs-sm"> 58K rating</span></div>        
                     </div>-->
-                    <div class="col-lg-4 col-md-5 pt-2 pb-0">
-                        <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
-
-                        @if($commentedRates->count() > 0)
-                        
-                        <span class="fs-md fw-bold">
-                          <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
-                          <span class="d-inline-block align-middle fs-sm"> {{$commentedRates->count()}} votes</span>
-                        @endif
-                            <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
-                  </div>
-
+                    
+                      @if($commentedRates->count() > 0)
+                        <div class="col-lg-4 col-md-5 pt-2 pb-0">
+                            <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
+                              <span class="fs-md fw-bold">
+                              <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
+                              <span class="d-inline-block align-middle fs-sm"> {{$commentedRates->count()}} Reviews</span>
+                          
+                                <i class="bi bi-chevron-right fs-xs text-primary me-1"></i>
+                            </div>        
+                        </div>
+                      @endif
+                   
                     <ul class="list-unstyled  bg-secondary py-2">
                           @if(Auth::check())
                           @php
@@ -208,10 +209,10 @@
                             @endif
 
                             @else
-
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">
-                              <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                              <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm"> Rate Now</a></span></li>
+                                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkComment->rate}}/10</a></span>
+                              </li>
                           @endif
                     </ul>
 
@@ -245,7 +246,7 @@
                       @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
                       {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
                     </div>
-                    <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->desc,170)}}</div> 
+                    <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
                     
             </div>  
 
@@ -283,14 +284,14 @@
 
       <!--share-->
 
-            <!-- <a href="#" id="gmail-btn">gmail</a>
+            <a href="#" id="gmail-btn">gmail</a>
             <a href="#" id="facebook-btn">facebook</a>
             <a href="#" id="twitter-btn">twitter</a>
             <a href="#" id="linkedin-btn">linkedin</a>
             <a href="#" id="whatsapp-btn">whatsapp</a> 
 
       
-            <i class="bi bi-share"></i>-->
+            <i class="bi bi-share"></i>
             <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
 
       <!--Applicable Offers-->
@@ -1080,7 +1081,7 @@
                 "name": "{{$event->venue}}",
                 "address": {
                   "@type": "PostalAddress",
-                "streetAddress": "{{$event->venue}}",
+                  "streetAddress": "{{$event->venue}}",
                   "addressLocality": "{{$event->venue}}",
                   "postalCode": "110011",
                   "addressRegion": "{{$event->city}}",
@@ -1090,7 +1091,9 @@
               "image": [
                 "{{url('assets/image/exhibition/'.$event->image)}}"
               ],
-              "description": "{{$event->desc}}",
+
+              "description": "{{$event->shtdesc}}",
+
               "offers": {
                 "@type": "Offer",
                 "url": "{{route('event.product',['slug' => $event->slug])}}",
@@ -1099,10 +1102,19 @@
                 "availability": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
                 "validFrom": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}"
               },
+
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "{{round($commentedRates->avg('rate') , 1)}}",
+                "ratingCount": "{{$commentedRates->count()}}"
+                "bestRating": "10"
+              },
+
               "performer": {
                 "@type": "PerformingGroup",
                 "name": "The Exhibition Network"
               },
+
               "organizer": {
                 "@type": "Organization",
                 "name": "The Exhibition Network",

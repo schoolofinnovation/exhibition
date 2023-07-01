@@ -82,6 +82,12 @@ class AdminCategoryAddComponent extends Component
       session()->flash('message',' Status Successfully Changed');
     } 
 
+    public function eventdelete($id)
+    {   $job = Expo::find($id);
+        $job->delete();
+        session()->flash('message','info has been deleted Successfully');
+    }
+
 
     public function render()
     {

@@ -218,7 +218,6 @@ Route::get('/downloadOpportunity', [UserOrderDetailsComponent::class, 'index'])-
 //Route::get('/opportunity-sector/{sector_slug}', SectorComponent::class)->name('franchise.sector');
 //Route::get('/document/expand', ExpandComponent::class)->name('document.expand');
 
-
 //Route::get('/cartzilla-cart', CartzillaCartComponent::class)->name('product.cart');
 //Route::get('/cartzilla-payment', CartzillaPaymentComponent::class)->name('payment');
 //Route::get('/cartzilla-transaction', CartzillaTransactionComponent::class)->name('transaction');
@@ -231,6 +230,8 @@ Route::get('/author/{slug}', BlogAuthorComponent::class)->name('blog.author');
 Route::get('/leadership', TeamComponent::class)->name('team');
 
 //Start
+Route::get('/', EventComponent::class)->name('business.exhibition');
+
 Route::get('/sell-your-business', SellyourbusinessComponent::class)->name('sell.business');
 Route::get('/expand-your-business', ExpandyourbusinessComponent::class)->name('expand.business');
 Route::get('/buy-a-brand-license', BuyabrandlicenseComponent::class)->name('buy.license');
@@ -238,11 +239,11 @@ Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)-
 
 Route::get('/career', CareerComponent::class)->name('career');
 Route::get('/contact', ContactComponent::class)->name('contact');
-Route::get('/about', AboutComponent::class)->name('about');
+Route::get('/about-us', AboutComponent::class)->name('about');
 
-Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
 Route::get('/exhibit', ExhibitComponent::class)->name('event.exhibit');
+
 
 Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
 Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
@@ -263,9 +264,6 @@ Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
 
 Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
 
-//lead
-Route::get('/coi/expand-your-business/{slug}', LeadComponent::class)->name('lead.business');
-Route::get('/coi/sell-your-business/{slug}/{type}', LeadOtherComponent::class)->name('lead.business.other');
 
 Route::get('/cart', CheckoutComponent::class)->name('checkout');
 Route::get('/checkout', CoicartComponent::class)->name('coicart');
@@ -274,6 +272,10 @@ Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 Route::get('/review', CoiReviewComponent::class)->name('review');
 Route::get('/partner', MembershipComponent::class)->name('business.membership');
 
+
+//lead
+Route::get('/coi/expand-your-business/{slug}', LeadComponent::class)->name('lead.business');
+Route::get('/coi/sell-your-business/{slug}/{type}', LeadOtherComponent::class)->name('lead.business.other');
 //track
 Route::get('/COIbusiness',TrackComponent::class)->name('admin.track');
 Route::get('/wishlist', WishlistDetailsComponent::class)->name('franchise.wishlist');

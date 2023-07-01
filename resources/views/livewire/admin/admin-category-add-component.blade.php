@@ -6,9 +6,14 @@
             <a  class="btn btn-primary">Search</a>
         </div>
         
-        <div class=" border-1">
+        <div class=" border-0">
               @foreach($resultAdded as $resultAdd)
-                  <span class="badge bg-success m-0">  {{$resultAdd -> tag}} </span>
+                 
+                  <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+                  onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+                  wire:click.prevent="eventdelete({{$resultAdd->id}})">
+                  {{$resultAdd -> tag}} <i class="bi bi-x me-2"></i>
+                    </a>
               @endforeach
         </div>
 

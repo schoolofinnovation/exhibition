@@ -42,17 +42,21 @@
             </div>
             
                 
-            @if(!is_null($rate))
+            {{--@if(!is_null($rate))--}}
                 <div class="col-sm-2 col-md-12 pb-5 pb-sm-5">
                     <label class="form-label fw-normal">What do you think about business learning?
                         <span class="">Express yourself with hashtags!</span></label>
-                        @json($hasttag)
+                       
                     <div class="input-group">
                         @foreach ($hashtag as $hhtag)
-                        <input class="form-control" type="checkbox" value="{{$hhtag->id}}" wire:model.lazy="hasttag" multiple>
-                        <span class="badge badge-secondary bg-primary">#{{$hhtag->hastag}}</span>
+
+
+                        <div class=" col col-auto my-1 px-2"> 
+                            <input class="form-check-input" type="checkbox"   value="{{$hhtag->id}}"  wire:model="hasttag">{{$hhtag->hastag}}
+                        </div>
                         @endforeach
                     </div>
+                    @json($hasttag)
                     
                 </div>
 
@@ -65,7 +69,7 @@
                     <div class="form-text text-primary">{{$message}}</div>
                     @enderror
                 </div>
-            @endif
+            {{--@endif--}}
         
             <button class="btn btn-primary d-block w-100 mt-5 d-none d-sm-block" type="submit">Submit</button>
 

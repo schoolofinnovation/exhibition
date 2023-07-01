@@ -34,6 +34,13 @@
                     </div>
 
                     <div class="col">
+                        <a  href="{{route('admin.dashboard', ['board' => 'createhashtagss'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Hashtag</div>
+                        </a> 
+                    </div>
+
+
+                    <div class="col">
                         <a  href="{{route('admin.dashboard', ['board' => 'magazine'])}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">Magazine</div>
                         </a> 
