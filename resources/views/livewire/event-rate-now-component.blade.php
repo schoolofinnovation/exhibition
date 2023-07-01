@@ -4,7 +4,7 @@
 
 <main>
           <div class="bg-secondary d-lg-none mb-3">
-            <div class="">
+            <div class="container">
               <div class="col-md-6 offset-md-3 d-flex justify-content-between ">
 
                     <div class="align-content-center py-2 "><a href="{{$previous}}"><i class="bi bi-chevron-left"></i></a></div>

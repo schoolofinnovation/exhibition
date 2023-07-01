@@ -147,7 +147,7 @@
                                 href="{{route('event.product',['slug' => $event->slug])}}">Exhibit</a>
                               @endif
                               <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
-                              <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2">Share<i class="bi bi-share"></i></a>
+                              <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
                               </li>
                         </ul>
 
@@ -172,7 +172,7 @@
             </section>
     
       <!--details-->
-            <div class="container d-lg-none">
+                  <div class="container d-lg-none">
                     <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
                       <div class="star-rating me-2"><i class="bi bi-star-filled text-accent me-1"></i>
                       <span class="fs-md fw-bold">77% </span><span class="d-inline-block align-middle fs-sm"> 58K rating</span></div>        
@@ -187,30 +187,23 @@
                           <span class="d-inline-block align-middle fs-sm"> {{$commentedRates->count()}} votes</span>
                         @endif
                             <i class="bi bi-chevron-right fs-xs text-primary me-1"></i> </div>        
-                    </div>
-
-
-
-
+                  </div>
 
                     <ul class="list-unstyled  bg-secondary py-2">
-                    @php
-                        $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
-                        $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
-                    @endphp
-
-
                           @if(Auth::check())
-                             
+                          @php
+                              $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
+                              $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
+                          @endphp
                             @if(count($checkComment) > '0')
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">
                                 <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light">{{$checkComment->rate}}/10</a></span>
+                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkComment->rate}}/10</a></span>
                               </li>
                             @else
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">
                                 <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span>
+                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm"> Rate Now</a></span>
                               </li>
                             @endif
 
@@ -218,7 +211,7 @@
 
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">
                               <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                              <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a></span></li>
+                              <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm"> Rate Now</a></span></li>
                           @endif
                     </ul>
 
@@ -294,11 +287,11 @@
             <a href="#" id="facebook-btn">facebook</a>
             <a href="#" id="twitter-btn">twitter</a>
             <a href="#" id="linkedin-btn">linkedin</a>
-            <a href="#" id="whatsapp-btn">whatsapp</a> -->
+            <a href="#" id="whatsapp-btn">whatsapp</a> 
 
       
-            <i class="bi bi-share"></i>
-      
+            <i class="bi bi-share"></i>-->
+            <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
 
       <!--Applicable Offers-->
             <div class="container d-lg-none">
@@ -417,7 +410,7 @@
                       
 
                     
-                      @if( $rate == $event->id)
+                      {{--@if( $rate == $event->id)
                       
                       <button class="btn btn-sm btn-outline-primary" type="button" > 
                       {{$rating}} /10</button>
@@ -427,7 +420,7 @@
                             <button class="btn btn-sm btn-outline-primary" type="button" ><i class="bi bi-star fs-lg me-2"></i> 
                             <a href="{{route('coi.ratenow',['slug' => $event->slug])}}">Rate Now</a> </button>
                           </div>
-                      @endif
+                      @endif--}}
                       
                       </li>
                       </ul>
