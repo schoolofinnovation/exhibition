@@ -237,6 +237,7 @@
                @endif
             </div>
         </div>
+        
     </div>
 
     {{--speaker--}}
@@ -310,29 +311,29 @@
         </div>
     </div>
 
-{{--hastags--}}
-      <div class="container my-3">
-        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-            <div class="col  pr-0">
-                <div class="h4 fw-light mb-0">{{$hastag->count()}}</div> 
-               
-                <div class="round-circle" >#</div> 
-                
-            </div>
-
-            <div class="col-7  p-0">
+    {{--hastags--}}
+    <div class="container my-3">
+      <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+          <div class="col  pr-0">
+              <div class="h4 fw-light mb-0">{{$hastag->count()}}</div> 
               
-            </div>
+              <div class="round-circle" >#</div> 
+              
+          </div>
 
-            <div class="col-3 p-0">
-               @if(is_null($hastag))
-                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag' ])}}" class="btn btn-primary btn-sm">Add</a>
-               @else
-                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag'])}}" class="btn btn-primary btn-sm">Edit</a>
-               @endif
-            </div>
-        </div>
+          <div class="col-7  p-0">
+            
+          </div>
+
+          <div class="col-3 p-0">
+              @if(is_null($hastag))
+              <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag' ])}}" class="btn btn-primary btn-sm">Add</a>
+              @else
+              <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'add-hastag'])}}" class="btn btn-primary btn-sm">Edit</a>
+              @endif
+          </div>
       </div>
+    </div>
 
     {{--organiser--}}
     <div class="container my-3">
@@ -422,13 +423,11 @@
       </a>
     </div>
 
-   
-      <div class="container">
-        create a unique ID
-        <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
-      </div>
+    <div class="container">
+      create a unique ID
+      <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
+    </div>
   
-
     {{--doubling--}}
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
@@ -458,23 +457,19 @@
             </div>
         </div>
     </div>
-   
 
     <div class="container mb-5">
       {{$evento->reference}}
     </div>
     
-   
-
     {{-- Creating review--}}
-     
-     <div class="container mb-5" >
-     <p>creating review</p>
-       <form wire:submit.prevent="tryingfaker">
-         <input type="text" wire:model.lazy="howMany">
-         <button type="submit" class="btn btn-primary">Submit</button>
-       </form>
-    </div>
+      <div class="container mb-5" >
+        <p>creating review</p>
+          <form wire:submit.prevent="tryingfaker">
+            <input type="text" wire:model.lazy="howMany">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
     
     {{--<div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">

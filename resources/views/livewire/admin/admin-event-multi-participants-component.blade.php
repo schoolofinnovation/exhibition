@@ -158,13 +158,12 @@
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
 
-                    {{--<form wire:submit.prevent="multiImage">
-                        <input type="file" placeholder="multiple Image" wire:model="image"  multiple="multiple">
+                    <form wire:submit.prevent="multiImage">
+                        <input type="file" placeholder="multiple Image" wire:model="brand_logo"  multiple="multiple">
                         <button class="btn btn-primary" type="submit">Submit</button>
-                    </form>--}}
-                    
+                    </form>
                       
-                       <form wire:submit.prevent="participantToAdd">      
+                    <form wire:submit.prevent="participantToAdd">      
                         <div class="row mb-5 pb-2" wire:model="checkvalue">
 
                             @foreach ($participants as $participant) 
@@ -207,7 +206,10 @@
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
                     </form>
                    
-                    
+
+                    <form action="">
+
+                    </form>
                 @endif
 
 
@@ -339,7 +341,7 @@
                             <label class="form-label" for="unp-standard-price">Create Hashtag 
                             </label>
                             <div class="input-group">
-                            <input class="form-control" type="text" wire:model.lazy="hastag">
+                            <textarea class="form-control" type="text"  rows="5" wire:model.lazy="hastag"></textarea>
                             </div>
                             @error('hastag')
                             <div class="form-text">Create hashtag, separate with comma </div>
@@ -364,7 +366,6 @@
                     </div>
                 @endif
                 
-
                 @if($formm == 'detailPavillion')
 
                     <form wire:submit.prevent="add">

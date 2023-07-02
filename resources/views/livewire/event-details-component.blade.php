@@ -1,8 +1,8 @@
 @section('page_title', ($event->eventname))
-@section('page_description', ($event->s_desc))
-@section('page_keyword', '($event->eventname), ($event -> tag) The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
+@section('page_description', ($event->shtdesc))
+@section('page_keyword',  'The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
-<main>
+    <main>
             <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
             style="background-image: url('{{('/image/test.jpg')}}');">
               
@@ -161,7 +161,7 @@
               </div>
             </section>
 
-      <!-- slider at next header-->  
+            <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Exhibit</a></li>
@@ -171,7 +171,7 @@
                 </ul>
             </section>
     
-      <!--details-->
+            <!--details-->
             <div class="container d-lg-none">
                     <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
                       <div class="star-rating me-2"><i class="bi bi-star-filled text-accent me-1"></i>
@@ -217,24 +217,6 @@
                           @endif
                     </ul>
 
-                      
-                    {{--@if(Auth::check())
-                      <h1>logout</h1>
-                      @if(count($checkComment) > '0')
-                        <h1>doo comment</h1>
-                        
-                      @else
-                        <h1>rating</h1>
-                        {{$checkout}}, {{$find}}, {{$checkComment}} {{$event}} {{$event->eventname}}
-                      @endif
-                    @else
-                      <h1>login</h1>
-                      <a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm bg-light"> Rate Now</a>
-                    @endif--}}
-
-                    
-                      
-
                       <div class="d-flex badgeseTag">
                         @foreach($category as $cat)
                           <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
@@ -244,9 +226,11 @@
                     {{--<span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>--}}
                     <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
                     <div class="fs-xs fw-normal">
-                      @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif . @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
+                      @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
+                       @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
                       {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
                     </div>
+
                     <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
                     
             </div>  
@@ -283,18 +267,18 @@
               </ul>
             </div> 
 
-      <!--share-->
-      <div class="d-none">            
-            <a href="#" id="gmail-btn">gmail</a>
-            <a href="#" id="facebook-btn">facebook</a>
-            <a href="#" id="twitter-btn">twitter</a>
-            <a href="#" id="linkedin-btn">linkedin</a>
-            <a href="#" id="whatsapp-btn">whatsapp</a> 
-            <i class="bi bi-share"></i>
-            <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
-      </div>
+            <!--share hidden-->
+            <div class="d-none">            
+                  <a href="#" id="gmail-btn">gmail</a>
+                  <a href="#" id="facebook-btn">facebook</a>
+                  <a href="#" id="twitter-btn">twitter</a>
+                  <a href="#" id="linkedin-btn">linkedin</a>
+                  <a href="#" id="whatsapp-btn">whatsapp</a> 
+                  <i class="bi bi-share"></i>
+                  <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
+            </div>
 
-      <!--Applicable Offers-->
+            <!--Applicable Offers-->
             <div class="container d-lg-none">
                 <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
                 
@@ -322,7 +306,7 @@
 
             <hr class="mt-md-2 mb-2">
 
-      <!-- for big screens Product description + Reviews + Comments-->  
+            <!-- for big screens Product description + Reviews + Comments-->  
             <section class="container py-4 py-md-5 my-2 d-none d-sm-block">
               <div class="row text-center text-sm-start">
                 <div class="col-lg-3 col-md-4 col-sm-4 bg-secondary">
@@ -661,7 +645,7 @@
               </div>-->
             </div>
 
-      <!-- Product description + Reviews + Comments-->
+            <!-- Product description + Reviews + Comments-->
             <section class="container mb-4 mb-lg-5">
               <div class="tab-content pt-2">
 
@@ -885,11 +869,12 @@
                       </div>
                     </div>
                   </div>
-                </div>
+              </div>
             </section>
 
             <hr class="mt-md-2 mb-2">
-      <!--exhibitor-->
+            
+            <!--exhibitor-->
             <section class="container pt-2 pt-md-5">
               <h6 class="text-left mb-2"> Participants</h6>
               <div class="my-sliderexpo d-none d-sm-block">
@@ -942,7 +927,8 @@
               </section>
             @endif
 
-      <hr class="mt-md-2 mb-2">
+            <hr class="mt-md-2 mb-2">
+
           <!-- Partner-->
             <section class="container py-2 pt-md-5">
               <h6 class="text-left mb-2">Partner</h6>
@@ -1048,23 +1034,19 @@
                 </div>
             </section>
 
+            <!--footer-->
             <div class="handheld-toolbar bg-secondary">
-              
               <div class="d-flex justify-content-between py-2 px-2">
                <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
-              
-               @if( $ticketOrExhibit != 0 )
-                  <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket</a>
-                @elseif( $ticketOrExhibit == 0 )
-                  {{--<a href="{{route('event.exhibit')}}" class="btn btn-primary btn-sm">Book your Space</a>--}}
-                  <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Space</a>
-               @endif
-              
+                  @if( $ticketOrExhibit != 0 )
+                      <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket</a>
+                    @elseif( $ticketOrExhibit == 0 )
+                      {{--<a href="{{route('event.exhibit')}}" class="btn btn-primary btn-sm">Book your Space</a>--}}
+                      <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                  @endif
               </div>
-              
             </div>
     </main>
-
 
     @push('scripts')
           <script type="application/ld+json">

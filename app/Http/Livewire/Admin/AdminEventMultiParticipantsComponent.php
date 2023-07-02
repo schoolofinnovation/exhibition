@@ -115,9 +115,18 @@ class AdminEventMultiParticipantsComponent extends Component
 
     }
 
+    public $brand_logo;
     public function multiImage()
     {
-        
+        foreach($this->brand_logo as $key=>$image)
+        {
+                   $this->brand_logo[$key] = $image->store('exhibition', 'assets');
+
+        }
+        $this->brand_logo = json_encode($this->brand_logo);
+        Brand::create(['filename'=>$this->brand_logo]);
+        session()->flash('message','Images Successfully uploaded');
+        //$this->emit('imagesUploaded');
     }
 
     public function updatePavillion()

@@ -1174,10 +1174,8 @@
 
         </div>
       @endif
-
      
-      @if ($board == 'visitor')
-
+      @if($board == 'visitor')
         @foreach ($visitors as $evento)
           <div class="container my-3">
             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
@@ -1234,42 +1232,38 @@
             </div>
           </div>
         @endforeach
-
       @endif
 
       @if($board == 'createhashtagss')
-                    <div class="container">
-                    <form wire:submit.prevent="addHastag">
-                        <div class="col-sm-6 mb-3">
-                            <label class="form-label" for="unp-standard-price">Create Hashtag 
-                            </label>
-                            <div class="input-group">
-                            <textarea class="form-control" type="text" rows="5" wire:model.lazy="hastag"></textarea>
-                            </div>
-                            @error('hastag')
-                            <div class="form-text">Create hashtag, separate with comma </div>
-                            <div class="form-text">{{$message}}</div>
-                            @enderror
-                        </div>
-                        <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
-                    </form>
-
-                    <div>
-                       <span class="badge">#{{$hastag}}</span> 
+          <div class="container">
+            <form wire:submit.prevent="addHastag">
+                <div class="col-sm-6 mb-3">
+                    <label class="form-label" for="unp-standard-price">Create Hashtag 
+                    </label>
+                    <div class="input-group">
+                    <textarea class="form-control" type="text" rows="5" wire:model.lazy="hastag"></textarea>
                     </div>
+                    @error('hastag')
+                    <div class="form-text">Create hashtag, separate with comma </div>
+                    <div class="form-text">{{$message}}</div>
+                    @enderror
+                </div>
+                <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
+            </form>
 
-                    <div class="d-flex badgeseTag pb-2">
-                        @foreach($hastago as $cat)
-                            <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}
-                                <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Hashdelete({{$cat->id}})"> <i class="bi bi-x me-2"></i> </a> 
-                            
-                            </span>
-                        @endforeach
-                        
-                    </div>
+            <div>
+              <span class="badge">#{{$hastag}}</span> 
+            </div>
 
-                    </div>
-                @endif
+            <div class="d-flex badgeseTag pb-2">
+                @foreach($hastago as $cat)
+                    <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}
+                        <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Hashdelete({{$cat->id}})"> <i class="bi bi-x me-2"></i> </a> 
+                    </span>
+                @endforeach
+            </div>
+          </div>
+      @endif
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
