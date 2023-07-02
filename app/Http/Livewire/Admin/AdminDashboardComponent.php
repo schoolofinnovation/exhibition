@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
-use Faker\Factory;
+
 
 class AdminDashboardComponent extends Component
 {
@@ -64,6 +64,9 @@ public $subscriber;
 public $desc;
 public $type;
 public $utype;
+
+public $status;
+public $admstatus;
 
 public $hastag;
     

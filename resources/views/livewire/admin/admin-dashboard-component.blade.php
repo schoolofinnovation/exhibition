@@ -1238,6 +1238,7 @@
       @endif
 
       @if($board == 'createhashtagss')
+                    <div class="container">
                     <form wire:submit.prevent="addHastag">
                         <div class="col-sm-6 mb-3">
                             <label class="form-label" for="unp-standard-price">Create Hashtag 
@@ -1265,6 +1266,8 @@
                             </span>
                         @endforeach
                         
+                    </div>
+
                     </div>
                 @endif
 
