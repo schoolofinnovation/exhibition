@@ -3,18 +3,18 @@
 @section('page_keywords', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
 <main>
-          <div class="bg-secondary d-lg-none mb-3">
-            <div class="container">
-              <div class="col-md-6 offset-md-3 d-flex justify-content-between ">
+    <div class="bg-secondary d-lg-none mb-3">
+    <div class="container">
+        <div class="col-md-6 offset-md-3 d-flex justify-content-between ">
 
-                    <div class="align-content-center py-2 "><a href="{{$previous}}"><i class="bi bi-chevron-left"></i></a></div>
-              
-                    <div class="text-center py-2"><div>How was the experience?</div></div>
+            <div class="align-content-center py-2 "><a href="{{$previous}}"><i class="bi bi-chevron-left"></i></a></div>
+        
+            <div class="text-center py-2"><div>How was the experience?</div></div>
 
-                    <div class="align-content-center py-2"><a href=""><i class="bi bi-x"></i></a></div>
-              </div>
-            </div>
-          </div>
+            <div class="align-content-center py-2"><a href=""><i class="bi bi-x"></i></a></div>
+        </div>
+    </div>
+    </div>
 
     <div class="container py-lg-5 my-lg-5">
         <form wire:submit.prevent="add">

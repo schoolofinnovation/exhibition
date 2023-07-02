@@ -200,7 +200,7 @@
                             @if(count($checkComment) > '0')
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">
                                 <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkComment->rate}}/10</a></span>
+                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkComment->first('rate')}}/10</a></span>
                               </li>
                             @else
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">
@@ -284,16 +284,15 @@
             </div> 
 
       <!--share-->
-
+      <div class="d-none">            
             <a href="#" id="gmail-btn">gmail</a>
             <a href="#" id="facebook-btn">facebook</a>
             <a href="#" id="twitter-btn">twitter</a>
             <a href="#" id="linkedin-btn">linkedin</a>
             <a href="#" id="whatsapp-btn">whatsapp</a> 
-
-      
             <i class="bi bi-share"></i>
             <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
+      </div>
 
       <!--Applicable Offers-->
             <div class="container d-lg-none">
