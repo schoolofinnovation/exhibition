@@ -156,7 +156,7 @@
 
 
                 <div class="small">
-                    <input type="checkbox" value="1" wire:model="lookingAddParticipants" name="" id="">
+                    <input type="checkbox" value="1" wire:model="lookingAddParticipants" name="" id=""> Add Participants
                 </div>
 
 @if($lookingAddParticipants == 1)
@@ -171,7 +171,7 @@
 
                     <div class="my-3">
                         <div class="small">
-                            <input type="checkbox" value="1" wire:model="lookingAddImage" name="" id="">
+                            <input type="checkbox" value="1" wire:model="lookingAddImage" name="" id=""> Add Images
                         </div>
                         @if($lookingAddImage == 1)
                             <form wire:submit.prevent="multiImage">

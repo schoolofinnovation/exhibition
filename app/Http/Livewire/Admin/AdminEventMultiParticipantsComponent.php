@@ -44,6 +44,8 @@ class AdminEventMultiParticipantsComponent extends Component
     public $pavill_id = null;
     public $sponser_id = null;
     public $partner;
+    public $lookingAddImage;
+    public $lookingAddParticipants;
     
     
     Use WithFileUploads;
@@ -133,7 +135,6 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand->status = $this->status;
             $brand->user_id = Auth::user()->id;
             $brand->save();
-
         }
 
     }
