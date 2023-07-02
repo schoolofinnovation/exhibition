@@ -189,13 +189,15 @@
     </div>
     
             <div class="handheld-toolbar bg-secondary">
-              
               <div class="py-2 px-2">
-               
+              @if(Auth::check())
                <a class="btn btn-primary btn-shadow d-block w-100 " href="#" wire:click.prevent="checkout">
                   Login to Proceed</a>
+              @else
+                <a class="btn btn-primary btn-shadow d-block w-100 " href="#" wire:click.prevent="checkout">
+                  Proceed</a>
+              @endif
               </div>
-              
             </div>
 
     </main>

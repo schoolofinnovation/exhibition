@@ -93,7 +93,7 @@ class AdminDetailComponent extends Component
         $usero->rate = $trynigtocreate->random();
 
 
-        $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', '555')->get();
+        $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', $indoyui)->get();
         $findhastagID = $findhastag->random();
         $usero->hasttag = $findhastagID->hastag; 
         
