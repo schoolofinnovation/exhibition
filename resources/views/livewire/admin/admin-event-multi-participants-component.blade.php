@@ -169,7 +169,8 @@
                             @foreach ($participants as $participant) 
                             {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
                             <div class=" col col-auto my-1 px-2"> 
-                            <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue">{{$participant->brand_name}}
+                            <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}}
+                            <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="{{Str::limit($info->eventname, 24)}}">{{$participant->brand_name}}
                             </div>
                             @endforeach
                             <div>@json($checkvalue)</div>

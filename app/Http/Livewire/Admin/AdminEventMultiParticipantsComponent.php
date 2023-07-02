@@ -127,7 +127,7 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand->event_id = $bran->id;
 
             $newimage = Carbon::now()->timestamp. $key. '.'. $multiimage[$key]->extension();
-            $this->$multiimage[$key]->storeAs('exhibition', $newimage);
+            $multiimage[$key]->storeAs('exhibition', $newimage);
             $brand->brand_logo = $newimage;
 
             $brand->status = $this->status;
