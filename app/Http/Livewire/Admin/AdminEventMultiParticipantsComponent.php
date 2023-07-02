@@ -115,17 +115,34 @@ class AdminEventMultiParticipantsComponent extends Component
 
     }
 
-    public $brand_logo;
+    public $brand_logo = [];
     public function multiImage()
     {
-        foreach($this->brand_logo as $key=>$image)
+        $multiimage = $this->brand_logo;
+
+        foreach($multiimage as $imageso)
         {
-                   $this->brand_logo[$key] = $image->store('exhibition', 'assets');
+            $brand = new Brand();
+            $bran = Event::find($this ->event_id);
+            $brand->event_id = $bran->id;
+
+            $newimage = Carbon::now()->timestamp.'.'. $imageso->extension();
+            $this->image->storeAs('exhibition', $newimage);
+            $brand->brand_logo = $newimage;
+
+            $brand->status = $this->status;
+            $brand->user_id = Auth::user()->id;
+            $brand->save();
 
         }
-        $this->brand_logo = json_encode($this->brand_logo);
-        Brand::create(['filename'=>$this->brand_logo]);
-        session()->flash('message','Images Successfully uploaded');
+
+       // foreach($this->brand_logo as $key=>$image)
+        //{
+         //          $this->brand_logo[$key] = $image->store('exhibition', 'assets');
+        //}
+        //$this->brand_logo = json_encode($this->brand_logo);
+        //Brand::create(['filename'=>$this->brand_logo]);
+        //session()->flash('message','Images Successfully uploaded');
         //$this->emit('imagesUploaded');
     }
 
