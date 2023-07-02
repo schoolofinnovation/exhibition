@@ -154,14 +154,19 @@
             
                 @if($formm == 'addParticipants')
                     <form wire:submit.prevent="updateBrand">
-                        <textarea type="text" placeholder="participants" wire:model="brand_name" rows="7"></textarea>
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                    <label class="form-label">Add Participants<span class="text-danger">*</span></label> 
+                        <textarea type="text" placeholder="participants" class="form-control" wire:model="brand_name" rows="7"></textarea>
+                        <button class="btn btn-primary btn-shadow d-block w-100"  type="submit">Submit</button>
                     </form>
 
+
+                    <div class="my-3">
                     <form wire:submit.prevent="multiImage">
-                        <input type="file" placeholder="multiple Image" wire:model="brand_logo"  multiple="multiple">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                    <label class="form-label">Upload Multi Image<span class="text-danger">*</span></label> 
+                        <input type="file" class="form-control" placeholder="multiple Image" wire:model="brand_logo"  multiple="multiple">
+                        <button class="btn btn-primary btn-shadow d-block w-100"  type="submit">Submit</button>
                     </form>
+                    </div>
                       
                     <form wire:submit.prevent="participantToAdd">      
                         <div class="row mb-5 pb-2" wire:model="checkvalue">
