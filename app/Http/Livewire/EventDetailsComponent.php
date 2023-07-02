@@ -93,10 +93,10 @@ class EventDetailsComponent extends Component
          $commentedRates = Rate::where('admstatus','1')->where('status','1')->where('event_id', $event->id)->get();
          $rateRating = $commentedRates->pluck('rate');
 
-       // $checkComment = Rate::where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
+         $checkCommentop = Rate::where('user_id', Auth::user()->id)->where('event_id', $findEvent)->first();
          //dd( Auth::user()->id, $checkComment);
 
-        return view('livewire.event-details-component',['findEvent'=>$findEvent,'rateRating' => $rateRating,
+        return view('livewire.event-details-component',['findEvent'=>$findEvent,'rateRating' => $rateRating,'checkCommentop' => $checkCommentop,
                                                         'commentedRates' => $commentedRates,
                                                         'detailProductprice' => $detailProductprice,
                                                         'pavillion'=>$pavillion,'category'=>$category,
