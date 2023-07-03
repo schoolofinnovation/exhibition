@@ -10,6 +10,6 @@ class MagazineComponent extends Component
 
     public function render()
     {
-        return view('livewire.magazine-component')->layout('layouts.eblog');
+        return view('livewire.magazine-component');
     }
 }

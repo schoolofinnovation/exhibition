@@ -183,7 +183,7 @@
                             <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
                               <span class="fs-md fw-bold">
                               <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
-                              <span class="d-inline-block align-middle fs-sm"> {{$commentedRates->count()}} Reviews</span>
+                              <span class="d-inline-block align-middle fs-xs"> {{$commentedRates->count()}} Reviews</span>
                           
                                 <i class="bi bi-chevron-right fs-xs text-primary me-1"></i>
                             </div>        
@@ -195,6 +195,7 @@
                             @php
                                 $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
                                 $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
+                                $checkCommentop = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
                             @endphp
 
                             @if(count($checkComment) > '0')
