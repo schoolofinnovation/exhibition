@@ -19,6 +19,7 @@ use DateTime;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel\Days;
 
 class EventDetailsComponent extends Component
 {
@@ -93,8 +94,21 @@ class EventDetailsComponent extends Component
          $commentedRates = Rate::where('admstatus','1')->where('status','1')->where('event_id', $event->id)->get();
          $rateRating = $commentedRates->pluck('rate');
 
-         //$checkCommentop = Rate::where('user_id', Auth::user()->id)->where('event_id', $findEvent)->first();
-         //dd( Auth::user()->id, $checkComment);
+         //$checkCommentop = Carbon::now();
+        // $startdate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-27 00:00:00');
+         //$fromdate = strtotime($event->startdate);
+
+         //$enddate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-29 00:00:00');
+         //$todate= strtotime($event->enddate);
+         
+
+         //$subtract = ( $todate - $fromdate);
+         //$diffinhours = $enddate ->diffInHours($startdate);
+         //$getodata = abs($subtract/3600);
+         
+         //$testi = strtotime($checkCommentop);
+
+         //dd($testi, $checkCommentop, $startdate, $fromdate, $enddate,  $todate, $subtract, $diffinhours, $getodata );
 
         return view('livewire.event-details-component',['findEvent'=>$findEvent,'rateRating' => $rateRating,
                                                         'commentedRates' => $commentedRates,

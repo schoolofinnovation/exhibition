@@ -135,8 +135,6 @@
                         
                         <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
                         
-                        
-
                         <ul class="list-unstyled text-light mb-0 mt-2">
                               <li class="d-flex">
                               @if( $ticketOrExhibit != 0 )
@@ -224,7 +222,21 @@
                         @endforeach
                       </div>
 
-                    {{--<span class="badge bg-secondary"> {{ucwords(trans($event->sector->sector))}}</span>--}}
+                    <span class="badge bg-secondary">
+                      @if(Carbon\Carbon::parse ($event->startdate)->format('M') > Carbon\Carbon::now()->format('M'))
+                        Upcoming
+                      @endif
+
+                      @if(Carbon\Carbon::parse ($event->startdate)->format('M') < Carbon\Carbon::now()->format('M'))
+                        Expired
+                      @endif
+
+                      @if(Carbon\Carbon::parse ($event->startdate)->format('M') == Carbon\Carbon::now()->format('M'))
+                        Ongoing
+                      @endif
+                    </span>
+
+                    
                     <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
                     <div class="fs-xs fw-normal">
                       @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |

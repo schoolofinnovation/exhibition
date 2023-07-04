@@ -28,7 +28,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                   <div class="card product-card">
                     
-                    <a class="card-img-top d-block overflow-hidden" href="">
+                    <a class="card-img-top d-block overflow-hidden" href="{{route('business.magazine', ['slug' => $eventoi->slug])}}">
                       <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" class="img-thumbnail" alt="">
                     </a>
                   </div>

@@ -1,5 +1,4 @@
-<style>.woocommerce-password-strength.short {color: #e2401c}.woocommerce-password-strength.bad {color: #e2401c}.woocommerce-password-strength.good {color: #3d9cd2}.woocommerce-password-strength.strong {color: #0f834d}</style>	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
-	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>        <style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>        <style>
             input[type="submit"].dokan-btn-theme, a.dokan-btn-theme, .dokan-btn-theme {
                 color: #ffffff !important;
                 background-color: #f05025 !important;
@@ -59,6 +58,7 @@
 @-webkit-keyframes loading-fade{0%{opacity:.7}50%{opacity:1}to{opacity:.7}}@keyframes loading-fade{0%{opacity:.7}50%{opacity:1}to{opacity:.7}}.components-toggle-button-control .components-base-control__field{flex-wrap:wrap}.components-toggle-button-control .components-toggle-button-control__label{width:100%;margin-bottom:8px;display:block}.components-toggle-button-control .components-base-control__help{margin-top:0}
 @-webkit-keyframes loading-fade{0%{opacity:.7}50%{opacity:1}to{opacity:.7}}@keyframes loading-fade{0%{opacity:.7}50%{opacity:1}to{opacity:.7}}.wc-block-product-search .wc-block-product-search__fields{display:-webkit-box;display:flex}.wc-block-product-search .wc-block-product-search__field{padding:6px 8px;line-height:1.8;-webkit-box-flex:1;flex-grow:1}.wc-block-product-search .wc-block-product-search__button{display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;text-decoration:none;font-size:13px;margin:0 0 0 6px;border:none;cursor:pointer;background:none;padding:8px;color:#555d66;position:relative;overflow:hidden;border-radius:4px}.wc-block-product-search .wc-block-product-search__button svg{fill:currentColor;outline:none}.wc-block-product-search .wc-block-product-search__button:active{color:currentColor}.wc-block-product-search .wc-block-product-search__button:disabled,.wc-block-product-search .wc-block-product-search__button[aria-disabled=true]{cursor:default;opacity:.3}.wc-block-product-search .wc-block-product-search__button:focus:enabled{background-color:#fff;color:#191e23;box-shadow:inset 0 0 0 1px #6c7781,inset 0 0 0 2px #fff;outline:2px solid transparent;outline-offset:-2px}.wc-block-product-search .wc-block-product-search__button:not(:disabled):not([aria-disabled=true]):hover{background-color:#fff;color:#191e23;box-shadow:inset 0 0 0 1px #e2e4e7,inset 0 0 0 2px #fff,0 1px 1px rgba(25,30,35,.2)}.wc-block-product-search .wc-block-product-search__button:not(:disabled):not([aria-disabled=true]):active{outline:none;background-color:#fff;color:#191e23;box-shadow:inset 0 0 0 1px #ccd0d4,inset 0 0 0 2px #fff}.wc-block-product-search .wc-block-product-search__button:disabled:focus,.wc-block-product-search .wc-block-product-search__button[aria-disabled=true]:focus{box-shadow:none}
 @-webkit-keyframes loading-fade{0%{opacity:.7}50%{opacity:1}to{opacity:.7}}@keyframes loading-fade{0%{opacity:.7}50%{opacity:1}to{opacity:.7}}.woocommerce-product-tags__operator .components-base-control__help{clip:rect(1px,1px,1px,1px);-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;width:1px;margin:-1px;overflow:hidden;overflow-wrap:normal!important;word-wrap:normal!important}.components-panel .woocommerce-product-tags__operator.components-base-control{margin-top:16px}.components-panel .woocommerce-product-tags__operator.components-base-control .components-select-control__input{margin-left:0;min-width:100%}
+
 @charset "UTF-8";
 /*!
  * Bootstrap v4.0.0-beta (https://getbootstrap.com)
@@ -11428,65 +11428,79 @@ dt {
           <div id="primary" class="content-area">
             <main id="main" class="site-main" role="main">
 
-              <div class="woocommerce-notices-wrapper"></div><h1 class="d-none d-lg-block mb-3">Cartzilla – Multipurpose eCommerce Template</h1>
+              <div class="woocommerce-notices-wrapper">
+
+              </div>
+                  <h1 class="d-none d-lg-block mb-3">{{$magazine->name}}</h1>
                   <div class="row">
                       <div class="col-lg-8 mb-md-0 mb-3">
                           <div id="product-35287" class="post-35287 product type-product status-publish has-post-thumbnail product_cat-ecommerce-retail first instock downloadable shipping-taxable purchasable product-type-simple">
                               <div class="feature-screenshot">
-                                                  <div class="" data-columns="4" style="opacity: 1; transition: opacity .25s ease-in-out;">
+                                    <div class="" data-columns="4" style="opacity: 1; transition: opacity .25s ease-in-out;">
                                       <div data-thumb="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" 
-                                      class="woocommerce-product-gallery__image">
-                                      <a href="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-3-1200x900.jpg">
-                                        <img width="1200" height="900" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-3-1200x900.jpg" class="attachment-large_crop size-large_crop" alt="" title="screenshot" data-caption="" data-src="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" data-large_image="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" data-large_image_width="1200" data-large_image_height="900" srcset="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-540x405.jpg 540w" sizes="(max-width: 1200px) 100vw, 1200px"></a></div>                </div>
+                                        class="woocommerce-product-gallery__image">
+                                        <a href="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-3-1200x900.jpg">
+                                          <img width="1200" height="900" src="{{public/asset/exhibition/.$magazine->image}}" 
+                                          class="attachment-large_crop size-large_crop" alt="" title="screenshot" data-caption="" 
+                                          data-src="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" 
+                                          data-large_image="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg"
+                                          data-large_image_width="1200" data-large_image_height="900" 
+                                          srcset="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-540x405.jpg 540w" sizes="(max-width: 1200px) 100vw, 1200px">
+                                          </a>
+                                      </div>
+                                    </div>
                                   <a class="feature-screenshot__overlay" target="_blank" href="#">
-                                      <button class="btn btn-inverted">Launch live preview</button>
+                                      <button class="btn btn-inverted">Advertise with us</button>
                                   </a>
                               </div>
 
                               <!-- Responsive sidebar put below the theme -->
                               <div class="d-lg-none">
-                                  <div class="d-flex justify-content-between align-items-center mb-3">
-                                      <div>
-                                          <h4 class="mt-3 mb-1">Cartzilla – Multipurpose eCommerce Template</h4>
-                                          <div class="dropdown">
-                                              <a class="dropdown-toggle link--dark" js-price-dropdown="true" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Standard License</a>
-                                              <div class="dropdown-menu dropdown-menu--xl dropdown-menu--centered dropdown-menu--has-triangle">
-                                                  <button class="dropdown-block-item switch_price_prod" data-type="Standard License" data-price="49.00" data-price_label="$49.00" data-label="Standard License">
-                                                      <div class="d-flex justify-content-between align-items-center mb-2"><span>Standard License</span><span class="d-flex align-items-center"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></span></div>
-                                                      <ul class="fs-13 text-gray-soft mb-2">
-                                                          <li>Use for a single product</li>
-                                                          <li>Non-paying users only</li>
-                                                      </ul>
-                                                      <p class="fs-11 text-gray-soft">Read the full <a href="#">Standard License</a></p>
-                                                  </button>
-                                                  
-                                                  <div class="dropdown-divider"></div>
-
-                                                  <button class="dropdown-block-item switch_price_prod" data-type="Multisite License" data-price="149.00" data-price_label="$149.00" data-label="Multisite License">
-                                                      <div class="d-flex justify-content-between align-items-center mb-2"><span>Multisite License</span><span class="d-flex align-items-center">$149.00</span></div>
-                                                      <ul class="fs-13 text-gray-soft mb-2">
-                                                        <li>Use for a unlimited product</li>
-                                                        <li>Non-paying users only</li>
-                                                      </ul>
-                                                      <p class="fs-11 text-gray-soft">Read the full <a href="#">Multisite License</a></p>
-                                                  </button>
-
-                                                  <div class="dropdown-divider"></div>
-                                                      <button class="dropdown-block-item switch_price_prod" data-type="Extended License" data-price="499.00" data-price_label="$499.00" data-label="Extended License">
-                                                          <div class="d-flex justify-content-between align-items-center mb-2"><span>Extended License</span><span class="d-flex align-items-center">$499.00</span></div>
-                                                          <ul class="fs-13 text-gray-soft mb-2">
-                                                              <li>Use for a single product</li>
-                                                              <li>Paying users allowed</li>
-                                                          </ul>
-                                                          <p class="fs-11 text-gray-soft">Read the full <a href="#">Extended License</a></p>
-                                                      </button>
-                                                  </div>
-                                          </div>
-                                      </div>
-                                      <h3 class="d-flex align-items-center" js-price-value="main_price_div"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></h3>
-                                  </div>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                      <a class="btn btn-brand btn-block" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=35287">Live preview</a>
+                                        <div>
+                                            <h4 class="mt-3 mb-1">{{$magazine->name}}</h4>
+                                              <div class="dropdown">
+                                                  <a class="dropdown-toggle link--dark" js-price-dropdown="true" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Standard License</a>
+                                                    <div class="dropdown-menu dropdown-menu--xl dropdown-menu--centered dropdown-menu--has-triangle">
+                                                        <button class="dropdown-block-item switch_price_prod" data-type="Standard License" data-price="49.00" data-price_label="$49.00" data-label="Standard License">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2"><span>Standard License</span><span class="d-flex align-items-center"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></span></div>
+                                                            <ul class="fs-13 text-gray-soft mb-2">
+                                                                <li>Use for a single product</li>
+                                                                <li>Non-paying users only</li>
+                                                            </ul>
+                                                            <p class="fs-11 text-gray-soft">Read the full <a href="#">Standard License</a></p>
+                                                        </button>
+                                                        
+                                                        <div class="dropdown-divider"></div>
+
+                                                        <button class="dropdown-block-item switch_price_prod" data-type="Multisite License" data-price="149.00" data-price_label="$149.00" data-label="Multisite License">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2"><span>Multisite License</span><span class="d-flex align-items-center">$149.00</span></div>
+                                                            <ul class="fs-13 text-gray-soft mb-2">
+                                                              <li>Use for a unlimited product</li>
+                                                              <li>Non-paying users only</li>
+                                                            </ul>
+                                                            <p class="fs-11 text-gray-soft">Read the full <a href="#">Multisite License</a></p>
+                                                        </button>
+
+                                                        <div class="dropdown-divider"></div>
+
+                                                        <button class="dropdown-block-item switch_price_prod" data-type="Extended License" data-price="499.00" data-price_label="$499.00" data-label="Extended License">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2"><span>Extended License</span><span class="d-flex align-items-center">$499.00</span></div>
+                                                            <ul class="fs-13 text-gray-soft mb-2">
+                                                                <li>Use for a single product</li>
+                                                                <li>Paying users allowed</li>
+                                                            </ul>
+                                                            <p class="fs-11 text-gray-soft">Read the full <a href="#">Extended License</a></p>
+                                                        </button>
+                                                    </div>
+                                              </div>
+                                        </div>
+                                        <h3 class="d-flex align-items-center" js-price-value="main_price_div">
+                                          <span class="woocommerce-Price-amount amount">
+                                            <span class="woocommerce-Price-currencySymbol">$</span>49.00</span></h3>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                      <a class="btn btn-brand btn-block" target="_blank" href="#">Live preview</a>
                                       <form action="" method="POST" class="d-block w-100">
                                           <input type="hidden" js-license-type="license_type" name="license_type" value="Standard License">
                                           <input type="hidden" name="add-to-cart" value="35287">
@@ -11494,21 +11508,25 @@ dt {
                                         </button>
                                       </form>
                                     </div>
-                                  <div class="theme-purchases">
-                                      <div class="theme-purchases__item">
-                                          <a class="theme-purchases__item__inner text-center" data-toggle="tab" href="https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/#reviews-tab" role="tab" js-handle="review-toggler">
-                                              <ul class="rating justify-content-center">
-                                                  <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>
-                                              </ul>
+                                    <div class="theme-purchases">
+                                        <div class="theme-purchases__item">
+                                            <a class="theme-purchases__item__inner text-center" data-toggle="tab" href="#" role="tab" js-handle="review-toggler">
+                                                <ul class="rating justify-content-center">
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                </ul>
 
-                                              <p>4.71/5 (21 reviews)</p>
-                                          </a>
-                                          <div class="theme-purchases__item__inner text-center">
-                                              <h5 class="mb-0"><i class="bootstrap-themes-icon-cart"></i>2178</h5>
-                                              <p>Purchases</p>
-                                          </div>
-                                      </div>
-                                  </div>
+                                                <p>4.71/5 (21 reviews)</p>
+                                            </a>
+                                            <div class="theme-purchases__item__inner text-center">
+                                                <h5 class="mb-0"><i class="bootstrap-themes-icon-cart"></i>2178</h5>
+                                                <p>Purchases</p>
+                                            </div>
+                                        </div>
+                                    </div>
                               </div>
 
                               <div class="d-flex justify-content-between align-items-center has-border">
@@ -11549,7 +11567,6 @@ dt {
                                           <span class="theme-description__item__title">Category</span>
                                           <a href="">E-Commerce &amp; Retail</a>                        
                                         </div>
-
                                         <div class="theme-description__list__item align-items-center">
                                           <span class="theme-description__item__title">Questions?</span>
                                           <a class="btn btn-xs btn-outline-brand" href="mailto:support@createx.studio" target="_blank">Contact Seller</a>
@@ -11557,9 +11574,8 @@ dt {
                                       </div>
                                     
                                       <div class="theme-description">
-                                          <h3><strong>Our dear customers!Some of you might noticed slower responce time of our support. This happens because our team is from Ukraine. Most of you are probably aware of the current situation in our country. So we hope for your understanding. We’ll keep providing you with quality support, updates and new themes.</strong></h3>
-                                          <p><strong>Cartzilla</strong> is the ultimate e-commerce front-end template based on the latest Bootstrap 5 framework. Along with styling all the default Bootstrap components it introduces lots of new flexible elements you can use across website. <strong>40+ components</strong> in total (plus sign means some components have multiple style variations). Besides well thought out <strong>Store Front pages (Homepage, Catalog, Categories)</strong>, Cartzilla includes pages of <strong>User Account, Cart, Checkout</strong>, etc. to ensure your online shop will provide smooth and engaging user experience. Every successful e-commerce website should have <strong>Blog (News)</strong> section, <strong>About Us</strong> information, <strong>Contact details</strong>, <strong>Help / FAQ</strong> section to engage with its visitors. Cartzilla includes all this along with service pages like: 404 Not Found, etc. More Front pages and Secondary pages are coming in the future updates. &nbsp;</p>
-                                          <h2>Cartzilla Features</h2>
+                                          <p><strong>Cartzilla</strong>{{$magazine->desc}}</p>
+                                          <h2>{{$magazine->name}} Features</h2>
 
                                           <ul>
                                           <li>Mono Brand Store</li>
@@ -11567,16 +11583,22 @@ dt {
 
                                           <h2>UI Components</h2>
                                           <p>Please see the list of available UI components <a href="#">here</a>. &nbsp;</p>
+                                          
                                           <h2>Documentation</h2>
                                           <p>Need help to get started?&nbsp; Please follow the link below: <a href="#">Link to online documentation</a> &nbsp;</p>
+                                          
                                           <h2>Sketch file included</h2>
                                           <p>Sketch file with mockups of some core pages is included in the download package.</p>
+                                         
                                           <h2>Free updates and support</h2>
                                           <p><strong>Free Updates:</strong> With the purchase of this template you are entitled to lifetime free rupdates. <strong>Support:</strong> Our team will be happy to help you with any issues or answer any questions 24/7. Email address for support&nbsp;inquiry:&nbsp;<a href="mailto:support@createx.studio">support@createx.studio</a> We normally reply within 24-48 hours. &nbsp;</p>
+                                          
                                           <h2>Customization services</h2>
                                           <p>Need help with Cartzilla customization?&nbsp;Reach us out at&nbsp;<a href="#">contact@createx.studio</a> Our Team will be happy to bring your ideas to life. &nbsp;</p>
+                                          
                                           <h2>Copyrighted images</h2>
                                           <p>Most of the demo images are included in the download package. But some images like brand logos, products are pixelated due to copyright restrictions. &nbsp;</p>
+                                          
                                           <h2>Subscribe to newsletter</h2>
                                           <p>Interested in receiving email about new themes and updates?&nbsp;<a href="#">Subscribe here</a></p>
                                       </div>
@@ -11929,15 +11951,10 @@ dt {
                                   </div>
                               </div>
 
-
-
-                                          <div class="summary entry-summary">
-
-                                  
+                              <div class="summary entry-summary">
                               </div><!-- .summary -->
                           </div>
                       </div>
-
 
                       <div class="col-lg-4 d-none d-lg-block pl-xs-0 pl-lg-5">
                           <div class="d-flex align-items-center mb-3">
@@ -12000,10 +12017,10 @@ dt {
                               <input type="hidden" name="add-to-cart" value="35287">
                               <button type="submit" class="btn btn-brand btn-block btn-checkout"> <span class="btn-text">Add to cart</span></button>
                           </form>
-                          <a class="btn btn-outline-brand btn-block mb-4 ml-0" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=35287">Live preview</a>
+                          <a class="btn btn-outline-brand btn-block mb-4 ml-0" target="_blank" href="#">Live preview</a>
                           <div class="theme-purchases">
                               <div class="theme-purchases__item">
-                                  <a class="theme-purchases__item__inner text-center" data-toggle="tab" href="https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/#reviews-tab" role="tab" js-handle="review-toggler">
+                                  <a class="theme-purchases__item__inner text-center" data-toggle="tab" href="#reviews-tab" role="tab" js-handle="review-toggler">
                                       <ul class="rating justify-content-center">
                                           <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>
                                       </ul>
@@ -12019,7 +12036,7 @@ dt {
                                   <div class="theme-purchases__item__inner px-0">
                                       <ul class="guarantees">
                                           <li> <i class="bootstrap-themes-icon-check-circle"></i>Reviewed by the Bootstrap team</li>
-                                          <li><i class="bootstrap-themes-icon-check-circle"></i><a href="https://themes.zendesk.com/hc/en-us/articles/360000006291-How-do-I-get-help-with-the-theme-I-purchased-">6 months technical support</a></li>
+                                          <li><i class="bootstrap-themes-icon-check-circle"></i><a href="#">6 months technical support</a></li>
                                           <li><i class="bootstrap-themes-icon-check-circle"></i>100% money back guarantee</li>
                                       </ul>
                                   </div>
@@ -12032,7 +12049,7 @@ dt {
                                               <div class="theme-description__list__item"><span class="theme-description__item__title">Updated</span><span>6 months ago</span></div>
                                                           <div class="theme-description__list__item"><span class="theme-description__item__title">Version</span><span>2.5.1</span></div>
                                           <div class="theme-description__list__item"><span class="theme-description__item__title">Category</span>
-                                  <a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a>            </div>
+                                  <a href="#">E-Commerce &amp; Retail</a>            </div>
                                               <div class="theme-description__list__item align-items-center"><span class="theme-description__item__title">Questions?</span><a class="btn btn-xs btn-outline-brand" href="mailto:support@createx.studio" target="_blank">Contact Seller</a></div>
                                           <div class="theme-description__list__item">
                                   <a class="profile-author" href="https://themes.getbootstrap.com/store/createx-studio">
@@ -12056,87 +12073,87 @@ dt {
                           <p class="text-gray-soft">Related themes in the same category.</p>
                         </div>
                             <a class="theme-cards__heading__button btn btn-outline-brand btn-sm" href="#">View All</a>
-                                    </div>
-                    <ul class="row">
-                        
-                            <li class="col-md-4 col-6">
-                                <div class="theme-card">
-                                    <div class="theme-card__body">
-                                        <a class="d-block" href="https://themes.getbootstrap.com/product/finder-directory-listings-template-ui-kit/">
-                                            <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
-
-                                        <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=92316">Live preview</a>
-                                    </div>
-                                    <div class="theme-card__footer">
-                                        <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="https://themes.getbootstrap.com/product/finder-directory-listings-template-ui-kit/">Finder – Directory &amp; Listings Template + UI Kit</a>
-                                            <p class="theme-card__info">
-                                                </p><ul class="prod_cats_list"><li><a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a></li></ul>                <p></p>
-                                        </div>
-                                        <div class="theme-card__footer__item">
-                                            <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
-
-                                            <ul class="rating">
-                                                <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>                </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                    </div>
+                        <ul class="row">
                             
-                            <li class="col-md-4 col-6">
-                                <div class="theme-card">
-                                    <div class="theme-card__body">
-                                        <a class="d-block" href="https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/">
-                                            <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/FreshCart-eCommerce-HTML-Template-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
+                                <li class="col-md-4 col-6">
+                                    <div class="theme-card">
+                                        <div class="theme-card__body">
+                                            <a class="d-block" href="#">
+                                                <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2021/06/screenshot-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
 
-                                        <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=113886">Live preview</a>
-                                    </div>
-                                    <div class="theme-card__footer">
-                                        <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/">FreshCart – eCommerce HTML Template</a>
-                                            <p class="theme-card__info">
-                                                </p><ul class="prod_cats_list"><li><a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a></li></ul>                <p></p>
+                                            <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=92316">Live preview</a>
                                         </div>
-                                        <div class="theme-card__footer__item">
-                                            <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
+                                        <div class="theme-card__footer">
+                                            <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="https://themes.getbootstrap.com/product/finder-directory-listings-template-ui-kit/">Finder – Directory &amp; Listings Template + UI Kit</a>
+                                                <p class="theme-card__info">
+                                                    </p><ul class="prod_cats_list"><li><a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a></li></ul>                <p></p>
+                                            </div>
+                                            <div class="theme-card__footer__item">
+                                                <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
 
-                                            <ul class="rating">
-                                                <li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li>                </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="col-md-4 col-6">
-                                <div class="theme-card">
-                                    <div class="theme-card__body">
-                                        <a class="d-block" href="#">
-                                            <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/Booking-Multipurpose-Online-Booking-Theme-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
-
-                                        <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="#">Live preview</a>
-                                    </div>
-                                    <div class="theme-card__footer">
-                                        <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="#">Booking – Multipurpose Booking and Directory Theme</a>
-                                            <p class="theme-card__info">
-                                                </p><ul class="prod_cats_list"><li><a href="#">E-Commerce &amp; Retail</a></li></ul>                <p></p>
-                                        </div>
-                                        <div class="theme-card__footer__item">
-                                            <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
-
-                                              <ul class="rating">
-                                                <li class="rating__item rating__item--active"></li>
-                                                <li class="rating__item rating__item--active"></li>
-                                                <li class="rating__item rating__item--active"></li>
-                                                <li class="rating__item rating__item--active"></li>
-                                                <li class="rating__item rating__item--active"></li>
-                                              </ul>
+                                                <ul class="rating">
+                                                    <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                    </ul>
+                                </li>
+                                
+                                <li class="col-md-4 col-6">
+                                    <div class="theme-card">
+                                        <div class="theme-card__body">
+                                            <a class="d-block" href="https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/">
+                                                <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/FreshCart-eCommerce-HTML-Template-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
+
+                                            <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=113886">Live preview</a>
+                                        </div>
+                                        <div class="theme-card__footer">
+                                            <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/">FreshCart – eCommerce HTML Template</a>
+                                                <p class="theme-card__info">
+                                                    </p><ul class="prod_cats_list"><li><a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a></li></ul>                <p></p>
+                                            </div>
+                                            <div class="theme-card__footer__item">
+                                                <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
+
+                                                <ul class="rating">
+                                                    <li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li>                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="col-md-4 col-6">
+                                    <div class="theme-card">
+                                        <div class="theme-card__body">
+                                            <a class="d-block" href="#">
+                                                <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/Booking-Multipurpose-Online-Booking-Theme-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
+
+                                            <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="#">Live preview</a>
+                                        </div>
+                                        <div class="theme-card__footer">
+                                            <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="#">Booking – Multipurpose Booking and Directory Theme</a>
+                                                <p class="theme-card__info">
+                                                    </p><ul class="prod_cats_list"><li><a href="#">E-Commerce &amp; Retail</a></li></ul>                <p></p>
+                                            </div>
+                                            <div class="theme-card__footer__item">
+                                                <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
+
+                                                  <ul class="rating">
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                  </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                        </ul>
                   </div>
             </main>
           </div>
-      </div><!-- end .col -->
+      </div>
     </div>
   </div>
 </section>

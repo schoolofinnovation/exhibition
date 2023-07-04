@@ -252,7 +252,8 @@ Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibitio
 Route::get('/schedule/{eventype}/{time}', ExhibitionTimeComponent::class)->name('coi.exhibitiontime');
 Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 
-Route::get('/magazineo', MagazineComponent::class)->name('business.magazine');
+Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazine');
+
 
 //catch exhibition data
 Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');
