@@ -11440,7 +11440,7 @@ dt {
                                       <div data-thumb="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" 
                                         class="woocommerce-product-gallery__image">
                                         <a href="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-3-1200x900.jpg">
-                                          <img width="1200" height="900" src="{{public/asset/exhibition/.$magazine->image}}" 
+                                          <img width="1200" height="900" src="{{url('public/assets/image/exhibition/'.$magazine->image)}}"
                                           class="attachment-large_crop size-large_crop" alt="" title="screenshot" data-caption="" 
                                           data-src="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" 
                                           data-large_image="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg"

@@ -56,9 +56,9 @@
                 <a target="_blank" href="{{asset('/career')}}">Check out our job openings</a><br>
                  <a target="_blank" href="{{asset('/contact-us')}}">Contact us</a></h3>
               <ul class="widget-list">
-                <li class="widget-list-item"><a class="widget-list-link" href="{{route('business.exhibition')}}">Exhibition</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="{{route('business.magazine')}}">Magazine</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="{{route('business.award')}}">Award</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Exhibition</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Magazine</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Award</a></li>
               </ul>
             </div>
 
