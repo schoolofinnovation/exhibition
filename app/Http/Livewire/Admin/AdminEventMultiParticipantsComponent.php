@@ -283,6 +283,11 @@ class AdminEventMultiParticipantsComponent extends Component
         return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
     }
 
+    public function Imagedelete($id)
+    {   $job = Brand::find($id);
+        $job->delete();
+        session()->flash('message','info has been deleted Successfully');
+    }
 
     public function Hashdelete($id)
     {   $job = Hashtag::find($id);

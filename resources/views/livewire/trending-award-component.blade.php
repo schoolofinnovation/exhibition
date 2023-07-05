@@ -22,7 +22,7 @@
                 </div>
 
             <!--Award-->
-            <div class="row pt-2 mx-n2 my-Slider5">
+            <div class="row g-0 py-0 mx-n2 my-Slider5">
               @foreach($awardo as $eventoi)
                 <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
                   <div class="card product-card">

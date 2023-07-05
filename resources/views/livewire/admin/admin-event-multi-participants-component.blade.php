@@ -171,7 +171,7 @@
 
                     <div class="my-3">
                         <div class="small">
-                            <input type="checkbox" value="1" wire:model="lookingAddImage" name="" id=""> Add Images
+                            <input type="checkbox" value="1" wire:model="lookingAddImage" > Add Images
                         </div>
                         @if($lookingAddImage == 1)
                             <form wire:submit.prevent="multiImage">
@@ -188,13 +188,15 @@
                             @foreach ($participants as $participant) 
                             {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
                             <div class=" col col-auto my-1 px-2"> 
-                            <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}}
-                            <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="{{Str::limit($info->eventname, 24)}}">{{$participant->brand_name}}
+                                <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}} 
+                                <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
+                                <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
                             </div>
                             @endforeach
                             <div>@json($checkvalue)</div>
                             
                         </div>
+
                         @if($sponser->count() > 0)
                             <select class="form-select flex-shrink-0"  wire:model="sponser_id">
                             <option>Categories</option>

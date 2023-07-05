@@ -74,6 +74,7 @@
                            {{$event->count()}} Event</div>
                         </a> 
                     </div>
+
                     <div class="col">
                          <a href="{{route('admin.dashboard', ['board' => 'job'])}}">
                             <div class="p-3 border rounded border-dark bg-light text-center"><span class="small">Expire</span>{{$eventd->count()}} Event</div>
@@ -85,16 +86,17 @@
                             <div class="p-3 border rounded border-dark bg-light text-center"><span class="small">Active</span>{{$evento->count()}} Event</div>
                         </a> 
                     </div>
-                    
+
+                    <div class="col">
+                         <a href="{{route('admin.dashboard', ['board' => 'createShtDesc'])}}">
+                            <div class="p-3 border rounded border-dark bg-light text-center">Sht Desc</div>
+                        </a> 
+                    </div>
+                   
                    
                     
                 </div>
             </div>
           </div>
         </section>
-
-
-        {{$event->count()}}
-        {{$evento->count()}}
-        {{$eventd->count()}}
 </main>

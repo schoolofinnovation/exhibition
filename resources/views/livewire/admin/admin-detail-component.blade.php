@@ -463,13 +463,27 @@
     </div>
     
     {{-- Creating review--}}
-      <div class="container mb-5" >
-        <p>creating review</p>
-          <form wire:submit.prevent="tryingfaker">
-            <input type="text" wire:model.lazy="howMany">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-      </div>
+
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0"></div> 
+                <div class="round-circle fs-xs">Reviews</div> 
+            </div>
+
+            <form wire:submit.prevent="tryingfaker">
+                <div class="col-7  p-0">
+                      <input type="text" wire:model.lazy="howMany">
+                </div>
+
+                <div class="col-3 p-0">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+     
     
     {{--<div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
