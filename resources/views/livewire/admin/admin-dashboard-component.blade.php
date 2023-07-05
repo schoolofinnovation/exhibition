@@ -1107,9 +1107,10 @@
                 <div class="col-3  p-0">
                     @if(is_null($evento->image))
                         <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine',['slug' => $evento->slug, 'formm' => 'image' ])}}">Add</a>
-                      @else
+                        <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Magazinedelete({{$evento->id}})">
+                        @else
                       <a class="card-img-top d-block overflow-hidden" href="">
-                      <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}"></a>
+                      <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}" href="{{route('admin.magazine',['slug' => $evento->slug, 'formm' => 'image' ])}}"></a>
                     @endif
                 </div>
             </div>
@@ -1308,6 +1309,7 @@
           @endforeach
         </div>
       @endif
+
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
       @if($board == 'job')
