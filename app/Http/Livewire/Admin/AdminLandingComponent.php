@@ -13,17 +13,6 @@ class AdminLandingComponent extends Component
     public function updatedShortDescription() 
     {
 
-      
-           
-    }
-
-    public function render()
-    {
-        $event = Event::get();
-        $mytime = now()->format('Y-m-d');
-        $evento = Event::where('status','1')->where('admstatus','1')->get();
-        $eventd = Event::where('enddate', '<' , $mytime)->get();
-
         $eventsht = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->get();
 
         foreach ($eventsht as $eventdesc)
@@ -59,10 +48,21 @@ class AdminLandingComponent extends Component
                 $replacedfindDatostartdate = str::replace('findDatostartdate', $findDatostartdate ,$replacedfindDataTagline );
                 //$replacedfindDatoenddate = str::replace('', $findDatoenddate ,$replacedfindDatostartdate );
 
-                dd($replacedfindDataTagline);
+                //dd($replacedfindDataTagline);
             $eventde->save();
         }
+           
+    }
+
+    public function render()
+    {
+        $event = Event::get();
+        $mytime = now()->format('Y-m-d');
+        $evento = Event::where('status','1')->where('admstatus','1')->get();
+        $eventd = Event::where('enddate', '<' , $mytime)->get();
+
         
+        $eventsht = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->get();
         //dd( $evento, $evento->count() );
         return view('livewire.admin.admin-landing-component',['eventsht'=>$eventsht,'event'=>$event,'evento'=>$evento,'eventd'=>$eventd,]);
     }

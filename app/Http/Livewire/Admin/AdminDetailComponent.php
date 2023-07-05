@@ -92,7 +92,6 @@ class AdminDetailComponent extends Component
         $trynigtocreate = collect([1,2,3,4,5,6,7,8,9]);
         $usero->rate = $trynigtocreate->random();
 
-
         $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', $indoyui->id)->get();
         $findhastagID = $findhastag->random();
         $usero->hasttag = $findhastagID->hastag; 
@@ -106,36 +105,21 @@ class AdminDetailComponent extends Component
         $uertyui = User::where('utype', 'USR')->get();
         $useroID = $uertyui->random();
         $usero->user_id = $useroID->id;
-
         $usero->status = '1'; 
         $usero->admstatus = '1';
 
-
         $currenttime = Carbon::now();
         $currento =  strtotime($currenttime);
-
         $Subtracttime =  Carbon::now()->subHours(24);
         $Subtracttimeo = strtotime($Subtracttime);
-
         $getmid = rand($currento, $Subtracttimeo);
-
-        $finall = date('d/M/Y h:i:s', $getmid);
-
-
+        $finall = date('Y/m/d h:i:s', $getmid);
         $usero->created_at = $finall;
         $usero->updated_at = $finall;
-        
         $usero->save();
-        
-
-        //dd($usero);
       }
       
     }
-
-
-
-    
 
     use WithPagination;
     public function render()
