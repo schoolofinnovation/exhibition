@@ -150,6 +150,8 @@ use App\Http\Livewire\Admin\AdminLandingComponent;
 use App\Http\Livewire\Admin\MagazineUpgradingComponent;
 use App\Http\Livewire\AwardsComponent;
 use App\Http\Livewire\ExhibitionTimeComponent;
+use App\Http\Livewire\GiftBirthdayComponent;
+use App\Http\Livewire\GiftDateComponent;
 use App\Http\Livewire\GoogleComponent;
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
 
@@ -254,6 +256,8 @@ Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::c
 
 Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazine');
 
+Route::get('/birthday', GiftBirthdayComponent::class)->name('gift.business');
+Route::get('/birthday/{board}/tie/{id}', GiftDateComponent::class)->name('date.business');
 
 //catch exhibition data
 Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');
