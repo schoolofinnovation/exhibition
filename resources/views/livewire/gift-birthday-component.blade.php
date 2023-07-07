@@ -22,13 +22,7 @@
             @enderror
         </div>
 
-        <div class="mb-3 mb-4">
-            <label class="form-label" for="review-cons">Status<span class="text-danger">*</span></label>
-            <input class="form-control" type="text" required="" wire:model.lazy="status">
-            @error('status')    
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </div>
+       
 
         <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Your Day</button>
         </form>
