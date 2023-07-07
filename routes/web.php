@@ -257,7 +257,7 @@ Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::c
 Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazine');
 
 Route::get('/birthday', GiftBirthdayComponent::class)->name('gift.business');
-Route::get('/birthday/{board}/tie/{id}', GiftDateComponent::class)->name('date.business');
+Route::get('/birthday/{board}/tie/{ido}', GiftDateComponent::class)->name('date.business');
 
 //catch exhibition data
 Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');

@@ -23,7 +23,10 @@ class GiftBirthdayComponent extends Component
         $jollyknot->name = $this->name;
         $jollyknot->phone = $this->phone;
         $jollyknot->save();
-        return redirect()->route('date.business', ['id' => $jollyknot->id,'board' => 'birthday']);
+
+        //dd($jollyknot, $jollyknot->id );
+        return redirect()->route('date.business', ['ido' => $jollyknot->id,'board' => 'birthday']);
+
     }
 
     public function render()
