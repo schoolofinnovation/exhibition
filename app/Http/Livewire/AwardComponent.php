@@ -2,12 +2,25 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Event;
+use App\Models\Rate;
 use Livewire\Component;
 
 class AwardComponent extends Component
 {
+    public $slug;
+
+    public function mount($slug)
+    {
+        $this->slug = $slug;
+    }
+    
     public function render()
     {
-        return view('livewire.award-component');
+        $eventID = Event::where('slug', $this->slug)->first();
+        $getIDEvent = $eventID->id;
+        $eventrate = Rate::where('event_id', $getIDEvent)->get();
+
+        return view('livewire.award-component', ['eventrate' => $eventrate]);
     }
 }

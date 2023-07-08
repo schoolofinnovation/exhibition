@@ -137,7 +137,7 @@ Show password</a></div></div>
 </a>
 </div>
 <div class="col-sm-6">
-<a href="#" class="btn btn-block btn-neutral btn-icon"><span class="btn-inner--icon">
+<a href="{{route('google.login')}}" class="btn btn-block btn-neutral btn-icon"><span class="btn-inner--icon">
 <img src="{{asset ('image/social/google-213cd1c446.svg') }}" alt="Image placeholder"></span>
 <!--<span class="btn-inner--text">Google</span>-->
 </a>

@@ -206,68 +206,25 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     Route::get('/contact', [ContactusComponent::class,'sendEmail']);
 
-//pages Routes
-Route::get('/downloadExpand', [ExpandyourbusinessComponent::class, 'index']);
-Route::get('/downloadSell', [SellyourbusinessComponent::class, 'index']);
-Route::get('/downloadBuy', [BuyabrandlicenseComponent::class, 'index']);
-Route::get('/downloadOpportunity', [UserOrderDetailsComponent::class, 'index'])->name('user.opportunity');
-
-//Route::get('/', HomeComponent::class)->name('front.home');
-//Route::get('/opportunities', shopComponent::class)->name('franchise.Coi');
-
-//Route::get('/opportunity/{slug}', DetailsComponent::class)->name('franchise.details');
-//Route::get('/opportunity-category/{category_slug}', CategoryComponent::class)->name('franchise.category');
-//Route::get('/opportunity-sector/{sector_slug}', SectorComponent::class)->name('franchise.sector');
-//Route::get('/document/expand', ExpandComponent::class)->name('document.expand');
-
-//Route::get('/cartzilla-cart', CartzillaCartComponent::class)->name('product.cart');
-//Route::get('/cartzilla-payment', CartzillaPaymentComponent::class)->name('payment');
-//Route::get('/cartzilla-transaction', CartzillaTransactionComponent::class)->name('transaction');
-
-Route::get('/blog', BlogComponent::class)->name('blog.Coi');
-Route::get('/blog/{slug}', BlogDetailComponent::class)->name('blog.details');
-Route::get('/blog-category/{category_slug}', BlogCategoryComponent::class)->name('blog.category');
-Route::get('/author/{slug}', BlogAuthorComponent::class)->name('blog.author');
-
-Route::get('/leadership', TeamComponent::class)->name('team');
-
 //Start
 Route::get('/', EventComponent::class)->name('business.exhibition');
-
-Route::get('/sell-your-business', SellyourbusinessComponent::class)->name('sell.business');
-Route::get('/expand-your-business', ExpandyourbusinessComponent::class)->name('expand.business');
-Route::get('/buy-a-brand-license', BuyabrandlicenseComponent::class)->name('buy.license');
-Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)->name('design.strategy');
-
-Route::get('/career', CareerComponent::class)->name('career');
-Route::get('/contact', ContactComponent::class)->name('contact');
-Route::get('/about-us', AboutComponent::class)->name('about');
-
+Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
 Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
-Route::get('/exhibit', ExhibitComponent::class)->name('event.exhibit');
 
+//reviews 
+Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
+Route::get('/{slug}/reviews', AwardComponent::class)->name('business.award');
 
-Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
-Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
+//magazine Detail
+Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazine');
 
+//categorie
 Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
 Route::get('/schedule/{eventype}/{time}', ExhibitionTimeComponent::class)->name('coi.exhibitiontime');
 Route::get('/exhibition/{eventype}/{categry_id}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 
-Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazine');
-
-Route::get('/birthday', GiftBirthdayComponent::class)->name('gift.business');
-Route::get('/birthday/{board}/tie/{ido}', GiftDateComponent::class)->name('date.business');
-
-//catch exhibition data
-Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');
-
-
-//need to delete
-Route::get('/award', AwardComponent::class)->name('business.award');
-Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
-
-Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
+Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
+Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
 
 
 Route::get('/cart', CheckoutComponent::class)->name('checkout');
@@ -277,41 +234,67 @@ Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 Route::get('/review', CoiReviewComponent::class)->name('review');
 Route::get('/partner', MembershipComponent::class)->name('business.membership');
 
+//product
+Route::get('/sell-your-business', SellyourbusinessComponent::class)->name('sell.business');
+Route::get('/expand-your-business', ExpandyourbusinessComponent::class)->name('expand.business');
+Route::get('/buy-a-brand-license', BuyabrandlicenseComponent::class)->name('buy.license');
+Route::get('/business-design-strategy', BusinessDesignStrategyComponent::class)->name('design.strategy');
 
-//lead
+//company details
+Route::get('/career', CareerComponent::class)->name('career');
+Route::get('/contact', ContactComponent::class)->name('contact');
+Route::get('/about-us', AboutComponent::class)->name('about');
+Route::get('/leadership', TeamComponent::class)->name('team');
+
+//catch lead participants
+Route::get('/exhibit', ExhibitComponent::class)->name('event.exhibit');
+//catch exhibition data
+Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');
+
+//lead-re-check
 Route::get('/coi/expand-your-business/{slug}', LeadComponent::class)->name('lead.business');
 Route::get('/coi/sell-your-business/{slug}/{type}', LeadOtherComponent::class)->name('lead.business.other');
+
+//trying
+Route::get('/birthday', GiftBirthdayComponent::class)->name('gift.business');
+Route::get('/birthday/{board}/tie/{ido}', GiftDateComponent::class)->name('date.business');
+
+
 //track
 Route::get('/COIbusiness',TrackComponent::class)->name('admin.track');
 Route::get('/wishlist', WishlistDetailsComponent::class)->name('franchise.wishlist');
+
+//Blog
+Route::get('/blog', BlogComponent::class)->name('blog.Coi');
+Route::get('/blog/{slug}', BlogDetailComponent::class)->name('blog.details');
+Route::get('/blog-category/{category_slug}', BlogCategoryComponent::class)->name('blog.category');
+Route::get('/author/{slug}', BlogAuthorComponent::class)->name('blog.author');
 
 //likesor dislikes
 Route::post('/like-post/{mag}', 'App\Http\Livewire\BlogComponent@likepost')->name('post.like')->middleware('auth');
 Route::post('/likes-post/{mag}', 'App\Http\Livewire\BlogDetailComponent@likepost')->name('postdetail.like')->middleware('auth');
 Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@likepost')->name('detail.like')->middleware('auth');
-    //likes
-    //Route::post('/like-post/{mag}', 'LikeComponent@likepost')->name('post.like')->middleware('auth');
-    //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
+//likes
+//Route::post('/like-post/{mag}', 'LikeComponent@likepost')->name('post.like')->middleware('auth');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () { return view('dashboard'); })->name('dashboard');
+
+//google login setup 
+Route::get('/auth/google', [GoogleComponent::class,'loginwithGoogle'])->name('google.login');
+Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->name('google.callback');
 
   //User
   Route::middleware(['auth:sanctum', 'verified'])->group( function () {
     Route::get('/user/dashboard/{board}', UserDashboardComponent::class)->name('user.dashboard');
-    
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.Orders');
     Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
     Route::get('/user/mybrand', MybrandComponent::class)->name('user.mybrand');
-    
     Route::get('/user/blog', UserBlogComponent::class)->name('user.blog');
     Route::get('/user/account', UserAccountComponent::class)->name('user.account');
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
   });
 
-  //google login setup
-  Route::get('auth/google', [GoogleComponent::class,'loginwithGoogle'])->name('google.login');
-  Route::get('google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->name('google.callback');
-
-
+    
   //Admin-ADM
   Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group( function () {
     Route::get('/admin/global', AdminLandingComponent::class)->name('admin.global');
@@ -444,5 +427,24 @@ Route::post('/like-business/{franchise}', 'App\Http\Livewire\DetailsComponent@li
 
   //sitemap
   Route::get('siteemap.xml', 'App\Http\Controllers\SitemapController@index');
+
+
+//pages Routes check and delete
+Route::get('/downloadExpand', [ExpandyourbusinessComponent::class, 'index']);
+Route::get('/downloadSell', [SellyourbusinessComponent::class, 'index']);
+Route::get('/downloadBuy', [BuyabrandlicenseComponent::class, 'index']);
+Route::get('/downloadOpportunity', [UserOrderDetailsComponent::class, 'index'])->name('user.opportunity');
+
+//Route::get('/', HomeComponent::class)->name('front.home');
+//Route::get('/opportunities', shopComponent::class)->name('franchise.Coi');
+
+//Route::get('/opportunity/{slug}', DetailsComponent::class)->name('franchise.details');
+//Route::get('/opportunity-category/{category_slug}', CategoryComponent::class)->name('franchise.category');
+//Route::get('/opportunity-sector/{sector_slug}', SectorComponent::class)->name('franchise.sector');
+//Route::get('/document/expand', ExpandComponent::class)->name('document.expand');
+
+//Route::get('/cartzilla-cart', CartzillaCartComponent::class)->name('product.cart');
+//Route::get('/cartzilla-payment', CartzillaPaymentComponent::class)->name('payment');
+//Route::get('/cartzilla-transaction', CartzillaTransactionComponent::class)->name('transaction');
   
   

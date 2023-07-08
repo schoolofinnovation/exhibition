@@ -70,7 +70,7 @@ The all new Quick is here</h5><p class="text-white opacity-8">Everything you nee
     <p class="text-muted mb-0">Sign in to your account to continue.</p></div>
 <span class="clearfix"></span>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-jet-validation-errors class="mb-1 " />
     <form method="POST" action="{{route('login')}}">
             @csrf 
 

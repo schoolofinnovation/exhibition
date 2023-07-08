@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Award;
+use App\Models\Brand;
 use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Franchise;
@@ -18,8 +19,6 @@ use Spatie\CalendarLinks\Link;
 use DateTime;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel\Days;
 
 class EventDetailsComponent extends Component
 {
@@ -38,6 +37,8 @@ class EventDetailsComponent extends Component
     public function render()
     {   
         $event = Event::where('slug', $this->slug)->first();
+        $count = $event->increment('view_count');
+       
         $findEvent = $event->id;
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
@@ -66,7 +67,7 @@ class EventDetailsComponent extends Component
         }
         
 
-        $franchises = Franchise::paginate(4);
+        //$franchises = Franchise::paginate(4);
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
         $speaker = Speaker::where('admstatus','1')->where('status','1')->where('event_id',$event->id)->where('entity','speaker')->get();
         $sponSer = Sponsership::where('admstatus','0')->where('status','1')->get();
@@ -88,11 +89,13 @@ class EventDetailsComponent extends Component
         }
 
         //dd($rating);
-        $category = Denco::where('event_id', $event->id)->get();
+          $category = Denco::where('event_id', $event->id)->get();
          //dd($event);
 
          $commentedRates = Rate::where('admstatus','1')->where('status','1')->where('event_id', $event->id)->get();
          $rateRating = $commentedRates->pluck('rate');
+
+         $eventbrand = Brand::where('event_id', $event->id)->where('status','active')->get();
 
          //$checkCommentop = Carbon::now();
         // $startdate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-27 00:00:00');
@@ -110,7 +113,7 @@ class EventDetailsComponent extends Component
 
          //dd($testi, $checkCommentop, $startdate, $fromdate, $enddate,  $todate, $subtract, $diffinhours, $getodata );
 
-        return view('livewire.event-details-component',['findEvent'=>$findEvent,'rateRating' => $rateRating,
+        return view('livewire.event-details-component',['count'=>$count,'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
                                                         'commentedRates' => $commentedRates,
                                                         'detailProductprice' => $detailProductprice,
                                                         'pavillion'=>$pavillion,'category'=>$category,
@@ -123,7 +126,7 @@ class EventDetailsComponent extends Component
                                                         'sponSer' => $sponSer,
                                                         'speaker' => $speaker,
                                                         'awarde' => $awarde,
-                                                        'franchises' => $franchises,'ticketOrExhibit' => $ticketOrExhibit
+                                                        'ticketOrExhibit' => $ticketOrExhibit
                                                       ])->layout('layouts.eblog');
     }
 }

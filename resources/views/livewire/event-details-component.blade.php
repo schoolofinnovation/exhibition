@@ -4,100 +4,101 @@
 
     <main>
             <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
-            style="background-image: url('{{('/image/test.jpg')}}');">
+              style="background-image: url('{{('/image/test.jpg')}}');">
+                
+                <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem; padding-left: 0.625rem; padding-right: 1rem;
+                  padding-bottom: 0.425rem;
+                  transform: translateY(-50%);
+                  border-radius: 0.3125rem;
+                  border-top-right-radius: 0;
+                  border-bottom-right-radius: 0;
+                  font-size: .8125rem;">
+                  <div class = "h1 pt-5 text-light pb-0 mb-0" style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;">COI</div>  
+                  <div class = "fw-bold text-dark pb-2 lh-1">Exhibition</div> 
+                </div>
               
-              <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem; padding-left: 0.625rem; padding-right: 1rem;
-                padding-bottom: 0.425rem;
-                transform: translateY(-50%);
-                border-radius: 0.3125rem;
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                font-size: .8125rem;">
-                <div class = "h1 pt-5 text-light pb-0 mb-0" style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;">COI</div>  
-                <div class = "fw-bold text-dark pb-2 lh-1">Exhibition</div> 
-              </div>
-            
-              <div class="container pt-4 mb-3 mb-lg-0 ">
-                  <div class="row gy-0 ">
-                  
-                    <div class="col-lg-3 col-md-6 col-sm-8 px-1 d-none d-sm-block">
-                        <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
-                            <img src="{{url('assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
-                        </a>
+                ``<div class="container pt-4 mb-3 mb-lg-0 ">
+                    <div class="row gy-0 ">
+                    
+                      <div class="col-lg-3 col-md-6 col-sm-8 px-1 d-none d-sm-block">
+                          <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
+                              <img src="{{url('assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
+                          </a>
+                      </div>
+
+                      <div class="col-lg-3 col-md-6 col-sm-8  border border-white border-1 px-3 py-5 ">
+                          <div class="position-relative me-n4 mb-3 d-none d-sm-block">
+                            <div class="product-badge product-available  lh-1 fs-sm" style="right: 19.25rem;">
+                              <strong>Great <br>Place <br>To <br>Exhibit</strong>
+                            </div>
+                          </div>
+                          <h5 class="text-light fw-normal pt-2 pb-0">
+                              @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}}
+                              @else
+                                {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
+                              @endif 
+                          </h5>
+                          <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
+                          <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
+                            @if(count($eventbrand) > 0)
+                                <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
+                                <div class="d-flex bg-transparent border-bottom"> 
+                                
+                                  @foreach($eventbrand as $franchise)
+                                      <img class="p-1" width="24%" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                                  @endforeach
+                                </div>
+                            @endif
+                          <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
+                          <ul class="list-unstyled text-light mb-0 mt-2">
+                                <li class="d-flex">
+                                  @if( $ticketOrExhibit != 0 )
+                                  <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                  href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
+                                  @else ( $ticketOrExhibit == 0 )
+                                  <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                  href="{{route('event.exhibit')}}">Exhibit</a>
+                                  @endif
+                                  <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                                </li>
+                          </ul>
+                      </div>
+                      
+                      <div class="col-lg-3 col-md-6 col-sm-8  px-3 py-5 d-none d-sm-block">
+                            <h5 class="text-light fw-normal fs-sm pt-2 pb-0">
+                                Upcoming Expo
+                            </h5>
+                                      
+                          <h2 class="text-primary mb-3 lh-1"> <span class="fw-light"> MAKING</span> <br>BIG GROWTH <br>
+                          <span class="fw-light">IN INDIA</span> <br>BUSINESS <br><span class="fw-light">A REALITY</span></h1>
+                              <ul class="list-unstyled text-light mb-0 mt-0 border-top">
+                                    <li class="d-flex pt-1">
+                                      <a class="fs-xs  text-center border-end px-0" href="{{$link->google()}}"> <span class="fw-bold">100 +</span> <br>Thought Leadership</a>
+                                      <a class="fs-xs  text-center border-end px-2" href="{{$link->google()}}"><span class="fw-bold">> 800</span> <br>Business Matching Meetings</a>
+                                      <a class="fs-xs  text-center  px-0" href="{{$link->google()}}"><span class="fw-bold">300 +</span> <br>Business Ideas Opportunities</a>
+                                    </li>
+                              </ul>
+                      </div>  
+                        
+                      <div class="col-lg-3 d-none d-sm-block">
+                      
+                      </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-8  border border-white border-1 px-3 py-5 ">
-                      <div class="position-relative me-n4 mb-3 d-none d-sm-block">
-                      <div class="product-badge product-available  lh-1 fs-sm" style="right: 19.25rem;">
-                      <strong>Great <br>Place <br>To <br>Exhibit</strong></div>
-                      </div>
-                        <h5 class="text-light fw-normal pt-2 pb-0">
-                            @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
-                              {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}}
-                            @else
-                              {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
-                            @endif 
-                        </h5>
-                        <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
-                        <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
-                        
-                        <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
-                        <div class="d-flex bg-transparent border-bottom"> 
-                        
-                          @foreach($franchises as $franchise)
-                              <img class="p-1" width="24%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
-                          @endforeach
-                        </div>
-                        
-                        <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
-                        <ul class="list-unstyled text-light mb-0 mt-2">
+                    <div class="container d-none">
+                      <div class="row text-light mb-0 mt-0">
+                        <ul class="list-unstyled text-light mb-0 mt-5">
                               <li class="d-flex">
-                                @if( $ticketOrExhibit != 0 )
-                                <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
-                                href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
-                                @else ( $ticketOrExhibit == 0 )
-                                <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
-                                href="{{route('event.exhibit')}}">Exhibit</a>
-                                @endif
-                                <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                                <a class="" href="{{$link->google()}}">4095+ <br>Exhibitors</a>
+                                <a class="" href="{{$link->google()}}">5500+ <br>Brands on Display</a>
+                                <a class="" href="{{$link->google()}}">4095+ <br>Exhibitors</a>
                               </li>
                         </ul>
+                      </div>
                     </div>
-                    
-                    <div class="col-lg-3 col-md-6 col-sm-8  px-3 py-5 d-none d-sm-block">
-                          <h5 class="text-light fw-normal fs-sm pt-2 pb-0">
-                              Upcoming Expo
-                          </h5>
-                                    
-                        <h2 class="text-primary mb-3 lh-1"> <span class="fw-light"> MAKING</span> <br>BIG GROWTH <br>
-                        <span class="fw-light">IN INDIA</span> <br>BUSINESS <br><span class="fw-light">A REALITY</span></h1>
-                            <ul class="list-unstyled text-light mb-0 mt-0 border-top">
-                                  <li class="d-flex pt-1">
-                                    <a class="fs-xs  text-center border-end px-0" href="{{$link->google()}}"> <span class="fw-bold">100 +</span> <br>Thought Leadership</a>
-                                    <a class="fs-xs  text-center border-end px-2" href="{{$link->google()}}"><span class="fw-bold">> 800</span> <br>Business Matching Meetings</a>
-                                    <a class="fs-xs  text-center  px-0" href="{{$link->google()}}"><span class="fw-bold">300 +</span> <br>Business Ideas Opportunities</a>
-                                  </li>
-                            </ul>
-                    </div>  
-                      
-                    <div class="col-lg-3 d-none d-sm-block">
-                    
-                    </div>
-                  </div>
 
-                  <div class="container d-none">
-                    <div class="row text-light mb-0 mt-0">
-                      <ul class="list-unstyled text-light mb-0 mt-5">
-                            <li class="d-flex">
-                              <a class="" href="{{$link->google()}}">4095+ <br>Exhibitors</a>
-                              <a class="" href="{{$link->google()}}">5500+ <br>Brands on Display</a>
-                              <a class="" href="{{$link->google()}}">4095+ <br>Exhibitors</a>
-                            </li>
-                      </ul>
-                    </div>
                   </div>
-
-                </div>
             </section>
 
             <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
@@ -125,13 +126,14 @@
                         <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
                         <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
 
-                        <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
-                        <div class="d-flex bg-transparent border-bottom"> 
-                        
-                          @foreach($franchises as $franchise)
-                              <img class="p-1" width="24%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
-                          @endforeach
-                        </div>
+                        @if(count($eventbrand) > 0)
+                            <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
+                            <div class="d-flex bg-transparent border-bottom"> 
+                              @foreach($eventbrand as $franchise)
+                                  <img class="p-1" width="24%" src="{{url('public/assets/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                              @endforeach
+                            </div>
+                        @endif
                         
                         <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
                         
@@ -165,7 +167,7 @@
                     <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Exhibit</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Start-up</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Start-up</a></li>
                 </ul>
             </section>
     
@@ -178,13 +180,15 @@
                     
                       @if($commentedRates->count() > 0)
                         <div class="col-lg-4 col-md-5 pt-2 pb-0">
-                            <div class="star-rating me-2 pb-2"> <i class = "bi bi-star-filled text-accent me-1"></i>
-                              <span class="fs-md fw-bold">
-                              <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
-                              <span class="d-inline-block align-middle fs-xs"> {{$commentedRates->count()}} Reviews</span>
-                          
-                                <i class="bi bi-chevron-right fs-xs text-primary me-1"></i>
-                            </div>        
+                            <a class="star-rating me-2 pb-2" href="{{route('business.award', ['slug'=> $event->slug])}}"> 
+                           
+                                  <i class = "bi bi-star-filled text-accent me-1"></i>
+                                    <span class="fs-md fw-bold">
+                                    <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
+                                    <span class="d-inline-block align-middle fs-xs"> {{$commentedRates->count()}} Reviews</span>
+                                
+                                      <i class="bi bi-chevron-right fs-xs text-primary me-1"></i>
+                            </a>        
                         </div>
                       @endif
                    
@@ -223,7 +227,7 @@
                       </div>
 
                     <span class="badge bg-secondary">
-                      @if(Carbon\Carbon::parse ($event->startdate)->format('M') > Carbon\Carbon::now()->format('M'))
+                      @if(Carbon\Carbon::parse ($event->startdate)->format('d M Y') > Carbon\Carbon::now()->format('d M Y'))
                         Upcoming
                       @endif
 
@@ -236,7 +240,6 @@
                       @endif
                     </span>
 
-                    
                     <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
                     <div class="fs-xs fw-normal">
                       @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
@@ -587,76 +590,7 @@
               </div>
             </section>
 
-            <div class=" container col-lg-8">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h6 class="fs-md mb-0">Top reviews</h6>
-                    <a class="nav-link-style fs-xs fw-normal text-primary" href="#"> 203K
-                    reviews<i class="bi bi-chevron-right me-2"></i></a>
-              </div>
-
-                <div class="fs-xs fw-normal">Summary of 203K reviews.</div> 
-                
-                
-
-                <div class="d-flex badgese pb-2">
-                <span class="badge border border-1 text-right border-dark text-dark mr-1">Today  <span class="bg-"> 2935</span> </span>
-                <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
-                <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
-                <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
-                <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
-                <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
-                <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
-                </div>
-              <!-- comment-->
-              <div class=" border-1 d-flex align-items-start py-2 mt-2 border-bottom">
-                <img class="rounded-circle" src="#" width="50" alt="">
-
-                <div class="ps-3">
-                  <div class="d-flex justify-content-between align-items-end mb-2">
-                    <p class="fs-md mb-0">User</p>
-                    <a class="nav-link-style fs-sm fw-medium" href="#">
-                      <i class="bi bi-star me-2"></i>10/10</a>
-                  </div>
-                  <h4 class="fs-md mb-3">Lorem ipsum dolor sit amet</h4>
-                  
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="fs-ms text-muted">
-                    9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>
-                    12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i>
-                      </span>
-
-                    <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i>
-                      </span>
-                  </div>
-                  
-                  <!-- comment  insdie comment reply-->
-                  {{--<div class="d-flex align-items-start border-top pt-4 mt-4"><img class="rounded-circle" src="#" width="50" alt="Sara Palson">
-                    <div class="ps-3">
-                      <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="fs-md mb-0">Sara Palson</h6>
-                      </div>
-                      <p class="fs-md mb-1">Egestas sed sed risus pretium quam vulputate dignissim. A diam sollicitudin tempor id eu nisl. Ut porttitor leo a diam. Bibendum at varius vel pharetra vel turpis nunc.</p><span class="fs-ms text-muted"><i class="ci-time align-middle me-2"></i>Sep 13, 2019</span>
-                    </div>
-                  </div>--}}
-
-                </div>
-              </div>
-
-              <!-- Post comment form
-              <div class="card border-0 px-0 shadow my-2">
-                <div class="card-body">
-                  <div class="d-flex align-items-start"><img class="rounded-circle border p-2" src="#" width="50" alt="Createx Studio">
-                    <form class="needs-validation w-100 ms-3" novalidate="">
-                      <div class="mb-3">
-                        <textarea class="form-control" rows="4" placeholder="Write comment..." required=""></textarea>
-                        <div class="invalid-feedback">Please write your comment.</div>
-                      </div>
-                      <button class="btn btn-primary btn-sm" type="submit">Post comment</button>
-                    </form>
-                  </div>
-                </div>
-              </div>-->
-            </div>
+            
 
             <!-- Product description + Reviews + Comments-->
             <section class="container mb-4 mb-lg-5">
@@ -863,7 +797,7 @@
         
                           <div class="ps-0">
                             <div class="d-flex justify-content-between align-items-end mb-2">
-                              <p class="fs-md mb-0">{{$comment}}</p>
+                              <p class="fs-md mb-0">{{$comment->hasttag}}</p>
                               <a class="nav-link-style fs-sm fw-medium" href="#">
                                 <i class="bi bi-star me-2"></i>{{$comment->rate}}/10</a>
                             </div>
@@ -888,10 +822,11 @@
             <hr class="mt-md-2 mb-2">
             
             <!--exhibitor-->
+            @if(count($eventbrand)>0)
             <section class="container pt-2 pt-md-5">
               <h6 class="text-left mb-2"> Participants</h6>
               <div class="my-sliderexpo d-none d-sm-block">
-                    @foreach ($franchises as $franchise)
+                    @foreach ($eventbrand as $franchise)
                         <div class="col-sm-3 mb-grid-gutter">
                           <div class="card product-card-alt">
                                   
@@ -907,18 +842,20 @@
 
                                     <a class="product-thumb-overlay" href=""></a>
 
-                                    <img class="p-3" width="auto" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                                    <img class="p-3" width="auto" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
                                 </div>  
                           </div>
                         </div>
                     @endforeach
               </div>
+
               <div class="my-sliderexpo d-lg-none">
                   <a class="d-flex align-items-center" href="#">
-                    <img class="rounded-circle" width="90%" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                    <img class="rounded-circle" width="90%" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
                   </a>
               </div>
             </section>
+            @endif
 
             @if($speaker->count() > 0 )
               <hr class="mt-md-2 mb-2">
@@ -942,11 +879,12 @@
 
             <hr class="mt-md-2 mb-2">
 
-          <!-- Partner-->
+           <!-- Partner-->
+           @if(count($eventbrand)>0)
             <section class="container py-2 pt-md-5">
               <h6 class="text-left mb-2">Partner</h6>
               <div class="my-sliderPartner">
-                    @foreach ($franchises as $franchise)
+                    @foreach ($eventbrand as $franchise)
                     
                       <div class="card product-card-alt">
                         <div class="product-thumb p-3">
@@ -956,13 +894,14 @@
                             <div class="fs-sm text-light" href="">View Website</div>
                           </div>   
                           <a class="product-thumb-overlay" href=""> </a>
-                          <img class="p-3" width="auto" src="{{url('brands/'.$franchise->image)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                          <img class="p-3" width="auto" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
                         
                         </div>
                       </div>
                     @endforeach
               </div>
             </section>
+           @endif
 
           <!-- Card group sec_last-->
             <section class="container py-5">
@@ -1062,59 +1001,68 @@
     </main>
 
     @push('scripts')
-          <script type="application/ld+json">
+          <script type = "application/ld+json">
             {
-              "@context": "https://schema.org",
-              "@type": "Event",
-              "name": "{{$event->eventname}}",
-              "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
-              "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('Y-m-d')}}",
-              "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-              "eventStatus": "https://schema.org/EventScheduled",
-              "location": {
-                "@type": "Place",
-                "name": "{{$event->venue}}",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "{{$event->venue}}",
-                  "addressLocality": "{{$event->venue}}",
-                  "postalCode": "110011",
-                  "addressRegion": "{{$event->city}}",
-                  "addressCountry": "IN"
-                }
-              },
-              "image": [
-                "{{url('assets/image/exhibition/'.$event->image)}}"
-              ],
+                  "@context": "https://schema.org",
+                  "@type": "Event",
+                  "name": "{{$event->eventname}}",
+                  "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
+                  "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('Y-m-d')}}",
+                  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                  "eventStatus": "https://schema.org/EventScheduled",
 
-              "description": "{{$event->shtdesc}}",
+                  "location": [{
+                    "@type": "Place",
+                    "name": "{{$event->venue}}",
 
-              "offers": {
-                "@type": "Offer",
-                "url": "{{route('event.product',['slug' => $event->slug])}}",
-                "price": "{{$productPrice}}",
-                "priceCurrency": "INR",
-                "availability": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
-                "validFrom": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}"
-              },
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "{{$event->venue}}",
+                      "addressLocality": "{{$event->venue}}",
+                      "postalCode": "110011",
+                      "addressRegion": "{{$event->city}}",
+                      "addressCountry": "IN"
+                    }
+                  }],
 
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "{{round($commentedRates->avg('rate') , 1)}}",
-                "ratingCount": "{{$commentedRates->count()}}"
-                "bestRating": "10"
-              },
+                  "image": [
+                    "{{url('assets/image/exhibition/'.$event->image)}}"
+                  ],
 
-              "performer": {
-                "@type": "PerformingGroup",
-                "name": "The Exhibition Network"
-              },
+                  "description": "{{$event->shtdesc}}",
 
-              "organizer": {
-                "@type": "Organization",
-                "name": "The Exhibition Network",
-                "url": "https://exhibition.org.in"
-              }
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "{{route('event.product',['slug' => $event->slug])}}",
+                    "price": "{{$productPrice}}",
+                    "priceCurrency": "INR",
+                    "availability": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
+                    "validFrom": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}"
+                  },
+
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "{{round($commentedRates->avg('rate') , 1)}}",
+                    "ratingCount": "{{$commentedRates->count()}}",
+                    "bestRating": "10"
+                  },
+
+                  "review": {
+                    "@type": "Review",
+                    "reviewRating" :{"@type":"Rating",
+                    "ratingValue":"{{round($commentedRates->avg('rate') , 1)}}",
+                  },
+
+                  "performer": {
+                    "@type": "PerformingGroup",
+                    "name": "The Exhibition Network"
+                  },
+
+                  "organizer": {
+                    "@type": "Organization",
+                    "name": "The Exhibition Network",
+                    "url": "https://exhibition.org.in"
+                  },
             }
           </script>
 
