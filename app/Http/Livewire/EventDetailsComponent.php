@@ -19,6 +19,7 @@ use Spatie\CalendarLinks\Link;
 use DateTime;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class EventDetailsComponent extends Component
 {
@@ -33,15 +34,37 @@ class EventDetailsComponent extends Component
        $this->slug = $slug;
     }
 
+    
+
+    public function post( Request $request, $slug)
+    {
+      $post = Event::where('slug',$slug)->published()->first();
+      $postKey = 'post_'.$post->id;
+      if($request->session()->has($postKey))
+      {
+          $post->increment('view_count');
+          $request->session()->put ($postKey,1);
+      }
+    
+      return view('post', compact('post'));
+    }
+
     use WithPagination;
     public function render()
     {   
         $event = Event::where('slug', $this->slug)->first();
-        $count = $event->increment('view_count');
-       
+        $postKey = 'post_'.$event->id;
+        if(Session()->has($postKey))
+        {
+            $event->increment('view_count' , 10);
+            Session()->put ($postKey , 1);
+        }
+        //$data = $request->session()->all();
+
         $findEvent = $event->id;
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));
+
         $name = $event->eventname;
         $venue = $event->venue;
         $city = $event->city;
@@ -113,7 +136,7 @@ class EventDetailsComponent extends Component
 
          //dd($testi, $checkCommentop, $startdate, $fromdate, $enddate,  $todate, $subtract, $diffinhours, $getodata );
 
-        return view('livewire.event-details-component',['count'=>$count,'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
+        return view('livewire.event-details-component',['eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
                                                         'commentedRates' => $commentedRates,
                                                         'detailProductprice' => $detailProductprice,
                                                         'pavillion'=>$pavillion,'category'=>$category,
