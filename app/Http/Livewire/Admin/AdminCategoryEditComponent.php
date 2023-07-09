@@ -44,7 +44,7 @@ class AdminCategoryEditComponent extends Component
         {
             $fattribute = new Denco();
             $fattribut = Event::find($this->event_id);
-            $fattribute->expo_id = $trey;
+            $fattribute->expo_id = trim($trey);
             $fattribute->event_id = $fattribut->id;
             $fattribute->save();
         }

@@ -48,8 +48,7 @@ class AdminDetailComponent extends Component
     {
         $updateDetials = Event::where('slug', $this->slug)->first();
         $updateDetials = $updateDetials->find($id);
-        $updateDetials->category_id = $category_id; 
-         dd($updateDetials);   
+        $updateDetials->category_id = $category_id;  
         $updateDetials->save();
     }
 
@@ -89,7 +88,7 @@ class AdminDetailComponent extends Component
       {
         $indoyui = Event::where('slug', $this->slug)->first();
         $usero =  new Rate ();
-        $trynigtocreate = collect([1,2,3,4,5,6,7,8,9]);
+        $trynigtocreate = collect([4,5,6,7,8,9]);
         $usero->rate = $trynigtocreate->random();
 
         $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', $indoyui->id)->get();
@@ -135,8 +134,10 @@ class AdminDetailComponent extends Component
         $sponsership = Sponsership::where('event_id' , $event)->get();
         $participants = Brand::where('event_id' , $event)->get();
         $hastag = Hashtag::where('event_id' , $event)->get();
+        $EventCountRate = Rate::where('event_id' , $event)->get();
+
         //dd($hastag);
         
-        return view('livewire.admin.admin-detail-component',['hastag'=>$hastag,'participants'=>$participants,'speaker'=>$speaker,'sponsership'=>$sponsership,'pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
+        return view('livewire.admin.admin-detail-component',['EventCountRate'=>$EventCountRate,'hastag'=>$hastag,'participants'=>$participants,'speaker'=>$speaker,'sponsership'=>$sponsership,'pavillion'=>$pavillion,'category'=>$category,'catevent'=>$catevent,'pendingDetails'=>$pendingDetails,'evento' => $evento])->layout('layouts.admin');
     }
 }

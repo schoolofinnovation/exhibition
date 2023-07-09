@@ -40,6 +40,7 @@ class AdminEventMultiParticipantsComponent extends Component
     public $searchTerm;
     public $checkvalue = [];
     public $hastag;
+    public $hasttag;
 
     public $pavill_id = null;
     public $sponser_id = null;
@@ -149,7 +150,7 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand = new Pavillion();
             $bran = Event::find($this->event_id);
             $brand->event_id = $bran->id;
-            $brand->pavillion_name = $tre;
+            $brand->pavillion_name = trim($tre);
             $brand->slug = str::slug($tre,'-');
             $brand->status = $this->status;
             $brand->user_id = Auth::user()->id;
@@ -168,7 +169,7 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand = new Sponsership();
             $bran = Event::find($this->event_id);
             $brand->event_id = $bran->id;
-            $brand->plan = $tre;
+            $brand->plan = trim($tre);
             $brand->slug = str::slug($tre,'-');
             $brand->status = $this->status;
             $brand->user_id = Auth::user()->id;
@@ -225,7 +226,7 @@ class AdminEventMultiParticipantsComponent extends Component
         foreach($ret as $tre)
         {
             $fattribute = new Expo();
-            $fattribute->tag =    $tre;
+            $fattribute->tag =    trim($tre);
             $fattribute->slug =   Str::slug($tre,'-');
             $fattribute->type =  $this->type;
             $fattribute->status =  $this->status;
@@ -245,7 +246,8 @@ class AdminEventMultiParticipantsComponent extends Component
         foreach($ret as $tre)
         {
             $newEvent = new Hashtag();
-            $newEvent->hastag = $tre;
+            $newEvent->hastag = trim($tre);
+            $newEvent->hasttag = $hasttag;
             $newEvent->event_id = $this->event_id;
             $newEvent->user_id = Auth::user()->id;
             $newEvent->status = $this->status;
@@ -306,7 +308,8 @@ class AdminEventMultiParticipantsComponent extends Component
         $speaker = Speaker::where('event_id', $evento->id)->get();
         $hastago = Hashtag::where('event_id', $evento->id)->get();
         $participants = Brand::where('event_id', $evento->id)->get();
+        $findListedTag = Denco::where('event_id', $evento->id)->get();
         //dd($hastag);
-        return view('livewire.admin.admin-event-multi-participants-component',['participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
+        return view('livewire.admin.admin-event-multi-participants-component',['findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

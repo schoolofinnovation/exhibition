@@ -8,11 +8,15 @@
         
         <div class=" border-0">
               @foreach($resultAdded as $resultAdd)
-                 
+                 @php
+                   $findcountevent = DB::table('dencos')->where('expo_id', $resultAdd->id)->count()
+                 @endphp
+
+                   
                   <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
                   onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
                   wire:click.prevent="eventdelete({{$resultAdd->id}})">
-                  {{$resultAdd -> tag}} <i class="bi bi-x me-2"></i>
+                  {{$resultAdd -> tag}} {{$findcountevent}}<i class="bi bi-x me-2"></i>
                     </a>
               @endforeach
         </div>

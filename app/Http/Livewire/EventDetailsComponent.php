@@ -54,7 +54,7 @@ class EventDetailsComponent extends Component
     {   
         $event = Event::where('slug', $this->slug)->first();
         $postKey = 'post_'.$event->id;
-        if(Session()->has($postKey))
+        if(!Session()->has($postKey))
         {
             $event->increment('view_count' , 10);
             Session()->put ($postKey , 1);

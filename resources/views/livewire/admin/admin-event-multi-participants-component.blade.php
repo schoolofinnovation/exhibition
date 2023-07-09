@@ -360,15 +360,27 @@
                 @if($formm == 'add-hastag')
                     <form wire:submit.prevent="addHastag">
                         <div class="col-sm-6 mb-3">
-                            <label class="form-label" for="unp-standard-price">Create Hashtag 
-                            </label>
+                            <label class="form-label" for="unp-standard-price">Create Hashtag </label>
                             <div class="input-group">
-                            <textarea class="form-control" type="text"  rows="5" wire:model.lazy="hastag"></textarea>
+                               <textarea class="form-control" type="text"  rows="5" wire:model.lazy="hastag"></textarea>
                             </div>
-                            @error('hastag')
                             <div class="form-text">Create hashtag, separate with comma </div>
-                            <div class="form-text">{{$message}}</div>
+                            @error('hastag')
+                                 <div class="form-text">{{$message}}</div>
                             @enderror
+
+                            @if(count(findListedTag)>0)
+                                <div class="col-sm-1">
+                                    <label class="form-label" for="seniority">Tag</label>
+                                        <select class="form-control" type="text"   wire:model.lazy="hasttag"  id="seniority"  placeholder="Provide short title of your request">
+                                        @foreach($findListedTag as $tego)
+                                            <option selected>Choose</option>
+                                            <option value="{{$tego -> expo->tag}}">{{$tego -> expo->tag}}</option>
+                                        @endforeach
+                                        </select>
+                                        @error('eventype') <div class="invalid-feedback"> {{$message}} </div> @enderror
+                                </div>
+                            @endif
                         </div>
                         <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
                     </form>
@@ -377,14 +389,14 @@
                        <span class="badge">#{{$hastag}}</span> 
                     </div>
 
-                    <div class="d-flex badgeseTag pb-2">
-                        @foreach($hastago as $cat)
-                            <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}
-                                <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Hashdelete({{$cat->id}})"> <i class="bi bi-x me-2"></i> </a> 
-                            
-                            </span>
-                        @endforeach
-                        
+                    <div class="container">
+                        <div class="d-flex badgeseTag pb-2">
+                            @foreach($hastago as $cat)
+                                <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}
+                                    <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Hashdelete({{$cat->id}})"> <i class="bi bi-x me-2"></i> </a> 
+                                </span>
+                            @endforeach
+                        </div>
                     </div>
                 @endif
                 

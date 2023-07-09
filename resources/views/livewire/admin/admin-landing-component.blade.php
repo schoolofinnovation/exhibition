@@ -57,6 +57,12 @@
                            <div class="p-3 border rounded border-dark bg-light text-center">User</div>
                         </a> 
                     </div>
+
+                    <div class="col">
+                        <a  href="{{route('admin.dashboard', ['board' => 'views'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Views</div>
+                        </a> 
+                    </div>
                     
                 </div>
             </div>

@@ -99,6 +99,7 @@ class AdminCategoryAddComponent extends Component
         $categor = Category::orderBy('industry','ASC')->get();
 
         $resultAdded = Expo::where('admstatus','1')->get();
+        //$EventcountWithTag = Denco::
         $counteventWithCategory = Denco::where('expo_id', '$resultAdded->id')->count();
 
         return view('livewire.admin.admin-category-add-component', ['counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');

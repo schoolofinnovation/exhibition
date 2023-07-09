@@ -465,9 +465,13 @@
     {{-- Creating review--}}
 
     <div class="container my-3">
+
+      
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="h4 fw-light mb-0"></div> 
+                <div class="h4 fw-light mb-0"> 
+                {{$EventCountRate->count()}}
+                </div> 
                 <div class="round-circle fs-xs">Reviews</div> 
             </div>
 
