@@ -57,7 +57,7 @@ class EventDetailsComponent extends Component
       $poostKey = 'eventID';
       $eid = $event->id;
       Session()->put ($poostKey , $eid);
-      route('event.product',['slug' => $event->slug]);
+      return redirect()->route('event.product',['slug' => $event->slug]);
     } 
 
 
@@ -73,13 +73,9 @@ class EventDetailsComponent extends Component
             Session()->put ($postKey , 1);
         }
 
-       
-       //$data = session()->all();
-        
+      // $data = session()->all();
+       //dd($data);
       
-      
-
-
         $findEvent = $event->id;
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));
         $to = DateTime::createFromFormat('Y-m-d', ($event->enddate));

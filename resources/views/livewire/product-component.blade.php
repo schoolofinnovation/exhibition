@@ -23,6 +23,8 @@
                 <div class="align-content-center pt-4">
                 <a href="" wire:click.prevent="destroyAll()"><i class="bi bi-x"></i></a>    
                 </div>
+
+             
           </div>
         </div>
       </div>
