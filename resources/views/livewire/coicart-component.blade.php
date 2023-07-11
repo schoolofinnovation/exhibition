@@ -335,10 +335,11 @@
                       @if(Cart::instance('cart')->count()>0)
                         @foreach (Cart::instance('cart')->content() as $item)
                           <div class="d-flex align-items-center pb-2 border-bottom">
-                            <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+
+                            <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->slug])}}">
                             <img class="rounded-1" src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                               <div class="ps-1">
-                                <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->image])}}">
+                                <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->slug])}}">
                                 {{$item->model->event->eventname}}</a></h6>
 
                                 <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">

@@ -12,6 +12,7 @@ use App\Models\Rate;
 use App\Models\Speaker;
 use App\Models\Sponsership;
 use App\Models\Ticket;
+use App\Models\Viewso;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -46,12 +47,24 @@ class EventDetailsComponent extends Component
           $request->session()->put ($postKey,1);
       }
     
-      return view('post', compact('post'));
+      return view ('post', compact('post'));
     }
+
+
+    public function insertEventToSess($id)
+    {
+      $event = Event::where('id',$id)->first();
+      $poostKey = 'eventID';
+      $eid = $event->id;
+      Session()->put ($poostKey , $eid);
+      route('event.product',['slug' => $event->slug]);
+    } 
+
 
     use WithPagination;
     public function render()
     {   
+       //$check = Cart::get();
         $event = Event::where('slug', $this->slug)->first();
         $postKey = 'post_'.$event->id;
         if(!Session()->has($postKey))
@@ -59,7 +72,13 @@ class EventDetailsComponent extends Component
             $event->increment('view_count' , 10);
             Session()->put ($postKey , 1);
         }
-        //$data = $request->session()->all();
+
+       
+       //$data = session()->all();
+        
+      
+      
+
 
         $findEvent = $event->id;
         $from = DateTime::createFromFormat('Y-m-d', ($event->startdate));

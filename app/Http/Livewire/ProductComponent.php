@@ -37,6 +37,8 @@ class ProductComponent extends Component
     public function render()
     {
         $event = Event::where('slug', $this->slug)->first();
+        
+    
         $test= $event->id;
         $previous = url()->previous();
 
@@ -46,7 +48,7 @@ class ProductComponent extends Component
         $ticke = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $test)->where('expiry_date', '>=' , $currentDate)->where('expiry_time', '>=' , $currentTime)->get();
         //dd($currentTime,$currentDate, $ticke);
         $tickeo = Ticket::where('admstatus','1')->where('status','0')->where('event_id', NULL)->get();
-        
+        dd( Session()->all());
         return view('livewire.product-component', ['tickeo'=> $tickeo ,'previous'=> $previous , 'event'=>$event,'ticke'=>$ticke])->layout('layouts.eblog');
     }
 }

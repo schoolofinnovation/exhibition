@@ -58,9 +58,16 @@
                                   <div class="fs-xs fw-lighter lh-1">{{$edy->desc}}</div>
                                   <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
                                 </div>
+
                                 <div class="col-3">
-                                  <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">Add</a>
+                                  <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">
+                                  
+                                      Add
+                                  
+                                  </a>
+                                 
                                 </div>
+
                             </div>
                         
                         @endforeach

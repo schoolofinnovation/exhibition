@@ -991,10 +991,10 @@
               <div class="d-flex justify-content-between py-2 px-2">
                <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                   @if( $ticketOrExhibit != 0 )
-                      <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Ticket</a>
+                      <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Book your Ticket</a>
                     @elseif( $ticketOrExhibit == 0 )
-                      {{--<a href="{{route('event.exhibit')}}" class="btn btn-primary btn-sm">Book your Space</a>--}}
-                      <a href="{{route('event.product',['slug' => $event->slug])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                      {{--<a href="{{route('event.exhibit')}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                      <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
                   @endif
               </div>
             </div>
