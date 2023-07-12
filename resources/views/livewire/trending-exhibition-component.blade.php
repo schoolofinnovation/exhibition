@@ -18,10 +18,14 @@
 
       <div class="d-flex badgese">
         @foreach( $finder as $categ) 
+        @php
+           $findcountevent = Denco::where('expo_id', $categ->id)->count()
+        @endphp
+
         {{--<a class="badge  border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $categ->id])}}">
           {{ucwords(trans($categ->tag))}}</a>--}}
           <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->id}})">
-          {{ucwords(trans($categ->tag))}}</a>
+          {{ucwords(trans($categ->tag))}}  {{$findcountevent}} </a>
         @endforeach
       </div>
       
@@ -127,7 +131,7 @@
       });
     </script>
 
-    <script>
+    <script>11
       var slider = tns({
         "container": '.my-Slider3',          
         "responsive": {

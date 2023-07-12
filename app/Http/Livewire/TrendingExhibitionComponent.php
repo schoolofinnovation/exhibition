@@ -27,7 +27,7 @@ class TrendingExhibitionComponent extends Component
       $evento->requestedPage = url()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $event->id]);
       $evento->redirecTlink = url()->current();
       $evento->save();
-      return redirect()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $event->id]);
+      return redirect()->route ('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $event->id]);
     } 
 
     public function render()
@@ -39,7 +39,9 @@ class TrendingExhibitionComponent extends Component
         $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
        
         //$finder = Denco::where('admstatus','1')->where('status','1')->select('expo_id')->groupBy('expo_id')->get();
+        
         $finder = Expo::where('admstatus','1')->where('status','1')->get();
+  
         return view('livewire.trending-exhibition-component',['evento'=>$evento, 'finder'=>$finder]);
     }
 }

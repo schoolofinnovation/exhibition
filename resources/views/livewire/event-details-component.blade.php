@@ -227,13 +227,21 @@
                       </div>
 
                     <span class="badge bg-secondary fs-sm">
-                        @if( Carbon\Carbon::now()->format('d M Y') >=  Carbon\Carbon::parse (event->startdate)->format('d M Y') ) && ( < Carbon\Carbon::now()->format('d M Y') <=  Carbon\Carbon::parse (event->enddate)->format('d M Y'))
-                          Ongo
-                        @elseif(Carbon\Carbon::parse (event->enddate)->format('d M Y') < Carbon\Carbon::now()->format('d M Y'))
-                          Ende
-                        @elseif( Carbon\Carbon::parse (event->startdate)->format('d M Y') > Carbon\Carbon::now()->format('d M Y') <= Carbon\Carbon::parse ($event->enddate)->format('d M Y')  )
-                          Upco
-                        @endif
+                     
+
+                       @if ($current < $to && $current < $from)
+                          upcoming
+                       @elseif ($current == $to && $current < $from) 
+                          ongoing
+                       @elseif ($current > $to && $current < $from) 
+                          ongoing
+                       @elseif ($current > $to && $current == $from) 
+                         ongoing
+                       @elseif ($current > $to && $current > $from)
+                         ended
+                       @endif
+
+                        
                     </span>
 
                     <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>

@@ -157,13 +157,18 @@
                                       @endif 
                                         <div class="round-circle">{{$franchise -> id}}</div> 
                                         <div class="badge bg-secondary fs-xs">
-                                          @if( Carbon\Carbon::now()->format('d M Y') >=  Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') ) && ( < Carbon\Carbon::now()->format('d M Y') <=  Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
-                                            Ongo
+                                          
 
-                                          @elseif(Carbon\Carbon::parse ($franchise->enddate)->format('d M Y') < Carbon\Carbon::now()->format('d M Y'))
-                                            Ende
-                                          @elseif( Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') > Carbon\Carbon::now()->format('d M Y') <= Carbon\Carbon::parse ($event->enddate)->format('d M Y')  )
-                                            Upco
+                                          @if (Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
+                                              upcoming
+                                          @elseif (Carbon\Carbon::now()->format('d M Y') == Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                                              ongoing
+                                          @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                                              ongoing
+                                          @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') == Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                                            ongoing
+                                          @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
+                                            ended
                                           @endif
                                         </div>
 

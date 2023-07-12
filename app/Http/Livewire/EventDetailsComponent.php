@@ -135,13 +135,12 @@ class EventDetailsComponent extends Component
 
          $eventbrand = Brand::where('event_id', $event->id)->where('status','active')->get();
 
-         //$checkCommentop = Carbon::now();
-        // $startdate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-27 00:00:00');
-         //$fromdate = strtotime($event->startdate);
-
-         //$enddate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-29 00:00:00');
-         //$todate= strtotime($event->enddate);
+         $current = strtotime(Carbon::now());
+         $to = strtotime($event->startdate);
+         $from= strtotime($event->enddate);
+         // $startdate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-27 00:00:00');
          
+         //$enddate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-29 00:00:00');
 
          //$subtract = ( $todate - $fromdate);
          //$diffinhours = $enddate ->diffInHours($startdate);
@@ -149,9 +148,8 @@ class EventDetailsComponent extends Component
          
          //$testi = strtotime($checkCommentop);
 
-         //dd($testi, $checkCommentop, $startdate, $fromdate, $enddate,  $todate, $subtract, $diffinhours, $getodata );
-
-        return view('livewire.event-details-component',['eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
+         //dd($fromdate, $todate, $checkCommentop );
+        return view('livewire.event-details-component',[ 'to'=> $to, 'from'=> $from,'current'=> $current, 'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
                                                         'commentedRates' => $commentedRates,
                                                         'detailProductprice' => $detailProductprice,
                                                         'pavillion'=>$pavillion,'category'=>$category,

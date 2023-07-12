@@ -40,12 +40,15 @@ class EventComponent extends Component
         //DB::table('cags')->insert([
         //['admstatus' => '1','user_id' =>'1','status' =>'1','name' =>'expo', 'organisation' => 'Buildings India' , 'slug' => 'buildingsindia.png', 'image' => 'Exhibitions India Group' ],
     
-        $finder = Denco::select('expo_id')->groupBy('expo_id')->get();
+        //$finder = Denco::select('expo_id')->groupBy('expo_id')->get();
         //$categoryo = Denco::select('expo_id')->groupBy('expo_id')->get();
         //$categoryo = Denco::all()->groupBy('expo_id')->count('expo_id');
         //$cate = $categoryo->count();
         //dd($categoryo);
        
+        $finder = Expo::where('admstatus','1')->where('status','1')->get();
+
+        
         return view('livewire.event-component', ['finder' => $finder, 'newlead'=>$newlead,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
     }
 }
