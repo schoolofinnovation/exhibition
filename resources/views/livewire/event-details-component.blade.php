@@ -229,16 +229,10 @@
                     <span class="badge bg-secondary fs-sm">
                       @if(Carbon\Carbon::parse ($event->startdate)->format('d M Y') > Carbon\Carbon::now()->format('d M Y'))
                         Upcoming
-                      @endif
-
-                      @if(Carbon\Carbon::parse ($event->enddate)->format('d M Y') < Carbon\Carbon::now()->format('d M Y'))
+                      @elseif(Carbon\Carbon::parse ($event->enddate)->format('d M Y') < Carbon\Carbon::now()->format('d M Y'))
                         Ended
-                      @endif
-
-                      @if(Carbon\Carbon::parse ($event->startdate)->format('d M Y') == Carbon\Carbon::now()->format('d M Y'))
-                        Ongoing
-                      @else(Carbon\Carbon::parse ($event->enddate)->format('d M Y') == Carbon\Carbon::now()->format('d M Y'))
-                        Ongoing
+                      @elseif( Carbon\Carbon::parse ($event->startdate)->format('d M Y') >= Carbon\Carbon::now()->format('d M Y') <= Carbon\Carbon::parse ($event->enddate)->format('d M Y')  )
+                        Ongoing 
                       @endif
                     </span>
 

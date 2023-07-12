@@ -156,6 +156,15 @@
                                         <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
                                       @endif 
                                         <div class="round-circle">{{$franchise -> id}}</div> 
+                                        <div class="badge bg-secondary fs-sm">
+                                          @if(Carbon\Carbon::parse ($event->startdate)->format('d M Y') > Carbon\Carbon::now()->format('d M Y'))
+                                            Upcoming
+                                          @elseif(Carbon\Carbon::parse ($event->enddate)->format('d M Y') < Carbon\Carbon::now()->format('d M Y'))
+                                            Ended
+                                          @elseif( Carbon\Carbon::parse ($event->startdate)->format('d M Y') >= Carbon\Carbon::now()->format('d M Y') <= Carbon\Carbon::parse ($event->enddate)->format('d M Y')  )
+                                            Ongoing 
+                                          @endif
+                                        </div>
                                         {{--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">try</button>--}}
                                   </div>
 
