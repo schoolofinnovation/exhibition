@@ -5,15 +5,34 @@ namespace App\Http\Livewire;
 use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
+use App\Models\Viewso;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class TrendingExhibitionComponent extends Component
 {
     public $board;
 
+    public function insertEventToSess($id)
+    {
+      $event = Expo::where('id', $id)->first();
+      $evento = new Viewso();
+      if (Auth::check()) 
+        { $evento->user_id = Auth::user()->id; }
+      else
+      { $evento->user_id = 'NULL' ; }
+
+      $evento->view_count = '1';
+      $evento->requestedPage = url()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $event->id]);
+      $evento->redirecTlink = url()->current();
+      $evento->save();
+      return redirect()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $event->id]);
+    } 
+
     public function render()
     {
+     
         $mytime = Carbon::today()->format ("Y-m-d");
         //$lasttime = Carbon::today()->addDays(90)->format ("Y-m-d");
         //dd($lasttime);
