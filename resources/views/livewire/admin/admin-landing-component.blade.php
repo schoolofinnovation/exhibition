@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="col">
-                        <a  href="{{route('admin.dashboard', ['board' => 'views'])}}">
+                        <a  href="{{route('admin.dashboard', ['board' => 'viewso'])}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">Views</div>
                         </a> 
                     </div>

@@ -1313,15 +1313,49 @@
 
       @if($board == 'viewso')
 
-        @foreach( $descRankingViews as $rankio)
-        <div class="container">
-        {{$rankio->id}}
-        {{$rankio->view_count}}
-        {{$rankio->eventname}}
-        </div>
-         
-        @endforeach
+ <div class="row"> 
+  <div>T.Views</div>
+  <div>R.Event/T.event</div>
+ </div>
+       
+          @foreach( $descRankingViews as $franchise)
+              <div class="container  ">
+                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                  <div class="col  pr-0">
+                      
+                        <div class="h4 fw-light mb-0"></div> 
+                        <div class="small text-muted">{{$franchise->view_count}} </div>
+                    
+                      <div class="round-circle">{{$franchise -> id}}</div> 
+                  </div>
+
+                  <div class="col-7  p-0">
+                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                      {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                    <div class="text-muted fs-sm text-start">
+                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
+                      @else
+                        {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
+                      @endif 
+                    </div>  
+                    
+                  </div>
+
+                  <div class="col-3  p-0">
+                    @if(is_null($franchise->image))
+                      <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $franchise->id, 'formm' => 'image' ])}}">
+                          Add</a>
+                    @else
+                      <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                      <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                    @endif
+                  </div>
+                </div>
+              </div>
+          @endforeach
       @endif
+
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">

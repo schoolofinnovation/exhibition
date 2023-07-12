@@ -1003,7 +1003,7 @@
     </main>
 
     @push('scripts')
-          <script type = "application/ld+json">
+    <script type = "application/ld+json">
             {
                   "@context": "https://schema.org",
                   "@type": "Event",
@@ -1032,7 +1032,6 @@
                   ],
 
                   "description": "{{$event->shtdesc}}",
-
                   "offers": {
                     "@type": "Offer",
                     "url": "{{route('event.product',['slug' => $event->slug])}}",
@@ -1049,11 +1048,7 @@
                     "bestRating": "10"
                   },
 
-                  "review": {
-                    "@type": "Review",
-                    "reviewRating" :{"@type":"Rating",
-                    "ratingValue":"{{round($commentedRates->avg('rate') , 1)}}",
-                  },
+                  
 
                   "performer": {
                     "@type": "PerformingGroup",
@@ -1065,8 +1060,11 @@
                     "name": "The Exhibition Network",
                     "url": "https://exhibition.org.in"
                   },
+                  
             }
           </script>
+          
+         
 
           <script type="text/javascript">
 
