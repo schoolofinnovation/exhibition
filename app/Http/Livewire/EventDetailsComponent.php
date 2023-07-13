@@ -73,6 +73,15 @@ class EventDetailsComponent extends Component
             Session()->put ($postKey , 1);
         }
 
+        $graphic = new Viewso();
+        $graphic->view_count = '1';
+        $graphic->event_id = $event->id;
+          if (Auth::check()) 
+          { $graphic->user_id = Auth::user()->id; }
+          else
+          { $graphic->user_id = 'NULL' ; }
+        $graphic->save();
+
       // $data = session()->all();
        //dd($data);
       

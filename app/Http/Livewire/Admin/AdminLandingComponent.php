@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Event;
+use App\Models\Viewso;
 use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -54,6 +55,13 @@ class AdminLandingComponent extends Component
            
     }
 
+    public function updateViewsRecordNewTable ()
+    {
+        $currentTime = Carbon::now()->subHours(24);
+        //Carbon::now()->addDays(90)->format("Y-m-d");
+        $getData = Event::where('view_count','!=', Null)->get();
+    }
+
     public function render()
     {
         $event = Event::get();
@@ -63,7 +71,20 @@ class AdminLandingComponent extends Component
 
         
         $eventsht = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->get();
-        //dd( $evento, $evento->count() );
+        
+        //soon we will update
+        //$currentTime = Carbon::now()->subHours(24);
+        //$getData = Event::where('view_count', '>', '0')->where('updated_at','>', $currentTime)->get();
+
+        //foreach($getData as $updatedData)
+        {
+            //$graphic = new Viewso();
+            //$graphic->view_count = $updatedData->view_count;
+            //$graphic->event_id = $updatedData->id;
+            //$graphic->save();
+        }
+ //dd($getData);
+ 
         return view('livewire.admin.admin-landing-component',['eventsht'=>$eventsht,'event'=>$event,'evento'=>$evento,'eventd'=>$eventd,]);
     }
 }

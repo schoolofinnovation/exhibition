@@ -19,7 +19,7 @@
       <div class="d-flex badgese">
         @foreach( $finder as $categ) 
         @php
-           $findcountevent = Denco::where('expo_id', $categ->id)->count()
+           $findcountevent = DB::table('dencos')->where('expo_id', $categ->id)->count()
         @endphp
 
         {{--<a class="badge  border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $categ->id])}}">
