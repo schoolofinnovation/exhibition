@@ -1342,8 +1342,8 @@
               <div class="container">
 
               @if($franchise->updated_at->format("Y-m-d") == $mytime)
-                <div class="row text-center p-1 gx-0 mb-1 bg-dark text-light shadow-sm  border rounded border-1">
-                  <div class="col  pr-0">
+                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                  <div class="col bg-dark pr-0">
                         <div class="fs-xs  fw-light mb-0">
                           @if (Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
                               upcom

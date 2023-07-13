@@ -586,7 +586,7 @@
                       @foreach ($catego as $category)
                        
                           <li class="dropdown mega-dropdown">
-                              <a class="dropdown-item" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->id])}}">
+                              <a class="dropdown-item" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $category->slug])}}">
                               <i class=" opacity-60 fs-lg mt-n1 me-2"></i> {{ucwords(trans($category->expoindustry))}}</a>
                               
 
