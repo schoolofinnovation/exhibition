@@ -24,10 +24,10 @@ class TrendingExhibitionComponent extends Component
       { $evento->user_id = 'NULL' ; }
 
       $evento->view_count = '1';
-      $evento->requestedPage = url()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $event->id]);
+      $evento->requestedPage = url()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $event->slug]);
       $evento->redirecTlink = url()->current();
       $evento->save();
-      return redirect()->route ('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $event->id]);
+      return redirect()->route ('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $event->slug]);
     } 
 
     public function render()

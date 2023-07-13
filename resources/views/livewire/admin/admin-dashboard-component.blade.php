@@ -1330,9 +1330,22 @@
 
       @if($board == 'viewso')
 
- <div class="row"> 
-  <div>T.Views</div>
-  <div>R.Event/T.event</div>
+ <div class="d-table table-layout-fixed w-100"> 
+  
+  <div>{{$descRankingViews->pluck('view_count')->sum()}} T.Views</div>
+  <div>R.Event/{{$descRankingViews->count()}}T.event</div>
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" 
+          href="{{route('admin.dashboard',['board' => 'event'])}}">
+            <span class="handheld-toolbar-icon">
+            {{$descRankingViews->pluck('view_count')->sum()}}</span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}"> T.Views</span>
+          </a>
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" 
+          href="{{route('admin.dashboard',['board' => 'event'])}}">
+            <span class="handheld-toolbar-icon">
+            {{$descRankingViews->count()}}</span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}"> T.Event</span>
+          </a>
  </div>
        
           @foreach( $descRankingViews as $franchise)

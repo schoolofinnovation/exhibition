@@ -13,7 +13,7 @@ use Livewire\WithPagination;
 
 class ExhibitionCategoryComponent extends Component
 {
-    public $categry_id;
+    public $categry;
     public $eventype;
     use WithPagination;
     public  $pagesize;
@@ -21,9 +21,10 @@ class ExhibitionCategoryComponent extends Component
     //public  $category_slug;
     public $board;
 
-    public function mount($eventype, $categry_id)
+    public function mount($eventype, $categry)
     {
-       $this->categry_id = $categry_id;
+       $findcategory = Expo::find($categry)->first();
+       $this->categry = $findcategory->id;
        $this->eventype = $eventype;
        $this->sorting="default";
        $this->pagesize= 24;
@@ -64,13 +65,13 @@ class ExhibitionCategoryComponent extends Component
         $mytime = Carbon::now();
 
         if($this->sorting == 'date'){
-            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry_id)->orderBy('created_at','DESC')->paginate($this->pagesize); 
+            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry)->orderBy('created_at','DESC')->paginate($this->pagesize); 
         }
         elseif ($this->sorting =='investment'){
-            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry_id)->orderBy('startdate','DESC')->paginate($this->pagesize); 
+            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry)->orderBy('startdate','DESC')->paginate($this->pagesize); 
         }
         elseif ($this->sorting =='area'){
-            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry_id)->orderBy('startdate','ASC')->paginate($this->pagesize); 
+            $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categry)->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
         else{
             $exhibition = Denco :: where('expo_id', $this->categry_id)->get(); 

@@ -374,12 +374,8 @@ public $hastag;
       $visitors = User::orderBy('created_at', 'desc')->get();
 
       $hastago = Hashtag::get();
-
-      $descRankingViews = Event::orderBy('view_count','desc')->get();
-      //$eventhasrank = $descRankingViews->where('view_count', '>', '0')->get();
-      //$groupbyrank = $descRankingViews->groupBy('view_count')->get();
+      $descRankingViews = Event::where('view_count','>','0')->orderBy('view_count','desc')->get();
       
-      //dd($eventhasrank ,$descRankingViews->count() );
 
       $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->limit(10)->orderBy('startdate','asc')->get();
 
