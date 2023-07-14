@@ -232,11 +232,11 @@
                        @if ($current < $to && $current < $from)
                           upcoming
                        @elseif ($current == $to && $current < $from) 
-                          ongoing
+                          first
                        @elseif ($current > $to && $current < $from) 
                           ongoing
                        @elseif ($current > $to && $current == $from) 
-                         ongoing
+                         last 
                        @elseif ($current > $to && $current > $from)
                          ended
                        @endif
