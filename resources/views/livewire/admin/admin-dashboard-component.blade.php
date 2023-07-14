@@ -1345,15 +1345,15 @@
                 <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                   <div class="col bg-dark pr-0">
                         <div class="fs-xs  fw-light mb-0">
-                          @if (Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
+                          @if (Carbon\Carbon::now()->format('d-m-Y') < Carbon\Carbon::parse ($franchise->startdate)->format('d-m-Y') && Carbon\Carbon::now()->format('d-m-Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d-m-Y'))
                               upcom
-                            @elseif (Carbon\Carbon::now()->format('d M Y') == Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                            @elseif (Carbon\Carbon::now()->format('d-m-Y') == Carbon\Carbon::parse ($franchise->startdate)->format('d-m-Y') && Carbon\Carbon::now()->format('d-m-Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d-m-Y')) 
                                 first
-                            @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                            @elseif (Carbon\Carbon::now()->format('d-m-Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d-m-Y') && Carbon\Carbon::now()->format('d-m-Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d-m-Y')) 
                                 ongoi
-                            @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') == Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                            @elseif (Carbon\Carbon::now()->format('d-m-Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d-m-Y') && Carbon\Carbon::now()->format('d-m-Y') == Carbon\Carbon::parse ($franchise->enddate)->format('d-m-Y')) 
                               last
-                            @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
+                            @elseif (Carbon\Carbon::now()->format('d-m-Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d-m-Y') && Carbon\Carbon::now()->format('d-m-Y') > Carbon\Carbon::parse ($franchise->enddate)->format('d-m-Y'))
                               ended
                           @endif
                         </div> 
