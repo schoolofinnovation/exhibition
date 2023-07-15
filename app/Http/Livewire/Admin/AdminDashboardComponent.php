@@ -69,6 +69,7 @@ public $status;
 public $admstatus;
 
 public $hastag;
+
     
     //career
     use WithPagination;

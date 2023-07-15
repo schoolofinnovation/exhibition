@@ -1346,7 +1346,7 @@
        
           
 
-          @if($haveCouponCode == 1)
+          
             @foreach( $upcomingViews as $franchise)
                 <div class="container">
                         
@@ -1456,8 +1456,8 @@
                 </div>
             @endforeach
 
-          @else
-          
+         
+
             @foreach( $descRankingViews as $franchise)
                 <div class="container">
                         
@@ -1566,7 +1566,7 @@
 
                 </div>
             @endforeach
-          @endif
+         
       @endif
 
 
