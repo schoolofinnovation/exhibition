@@ -318,6 +318,10 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
     Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
 
+    //import/export
+    //Route::get('/importExportview', [AdminClientComponent::class,'importExportview'])->name('importExportview');
+    //Route::get('/export', [AdminClientComponent::class,'export'])->name('export');
+    //Route::get('/import', [AdminClientComponent::class,'import'])->name('import');
     
     //Route::get('/oemail', 'App\Http\Controllers\AdminDashboardComponent')->name('admin.email');
     Route::get('/admin/account', AdminAccountComponent::class)->name('admin.account');

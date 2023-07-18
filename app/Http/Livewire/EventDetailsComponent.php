@@ -78,8 +78,8 @@ class EventDetailsComponent extends Component
         $graphic->event_id = $event->id;
           if (Auth::check()) 
           { $graphic->user_id = Auth::user()->id; }
-          else
-          { $graphic->user_id = 'NULL' ; }
+          //else
+          //{ $graphic->user_id = '0' ; }
         $graphic->save();
 
       // $data = session()->all();

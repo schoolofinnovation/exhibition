@@ -184,6 +184,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        //Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -243,6 +244,8 @@ return [
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         'Link' => Spatie\CalendarLinks\Link::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        //'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+       
     ],
 
 ];

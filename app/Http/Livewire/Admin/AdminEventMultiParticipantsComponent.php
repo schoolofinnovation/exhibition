@@ -47,6 +47,8 @@ class AdminEventMultiParticipantsComponent extends Component
     public $partner;
     public $lookingAddImage;
     public $lookingAddParticipants;
+
+   
     
     
     Use WithFileUploads;
@@ -247,7 +249,8 @@ class AdminEventMultiParticipantsComponent extends Component
         {
             $newEvent = new Hashtag();
             $newEvent->hastag = trim($tre);
-            $newEvent->hasttag = $hasttag;
+            //doubt check again
+            $newEvent->hasttag = $this->hasttag;
             $newEvent->event_id = $this->event_id;
             $newEvent->user_id = Auth::user()->id;
             $newEvent->status = $this->status;

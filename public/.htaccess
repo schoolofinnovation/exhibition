@@ -5,6 +5,31 @@
 
     RewriteEngine On
 
+    <Files .env>
+    order allow,deny
+    Deny from all
+    </Files>
+    <Files .env.example>
+    order allow,deny
+    Deny from all
+    </Files>
+    <Files .gitignore>
+    order allow,deny
+    Deny from all
+    </Files>
+    <Files composer.json>
+    order allow,deny
+    Deny from all
+    </Files>
+    <Files composer.lock>
+    order allow,deny
+    Deny from all
+    </Files>
+    <Files .editorconfig>
+    order allow,deny
+    Deny from all
+    </Files>
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
