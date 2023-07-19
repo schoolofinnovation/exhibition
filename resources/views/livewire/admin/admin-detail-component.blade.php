@@ -46,16 +46,20 @@
         <div class="fs-md fw-normal text-start">
 
           <a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-            Last update: <br>{{$evento->updated_at}}</a>
+            Last update: <br class="text-primary">{{$evento->updated_at}}</a>
         </div>
         
             @if(is_null($evento->created_at))
               <div class="text-muted fs-sm text-start">Created by: <br>Admin</div>
             @else
-              <div class="text-muted fs-sm text-start">Created at: <br>{{$evento->created_at}}</div>
+              <div class="text-muted fs-sm text-start">
+                
+               <span class="fs-xs"> Created at:</span> 
+              <br>{{$evento->created_at}}</div>
             @endif
         
-        <div class="text-muted fs-sm text-start"> Edition: {{$evento->edition}} </div>
+        <div class="text-muted fs-xs text-start"> Edition: {{$evento->edition}} </div>
+        <div class="text-muted fs-xs text-start"> Views: {{$evento->view_count}} </div>
       </div>
 
       <div class="col-4 p-0">

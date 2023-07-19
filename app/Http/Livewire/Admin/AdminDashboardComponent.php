@@ -378,7 +378,7 @@ public $hastag;
       $descRankingViews = Event::where('view_count','>','0')->orderBy('view_count','desc')->get();
 
       $mytime = Carbon::now()->format("Y-m-d");
-      $upcomingViews = Event::where('view_count','>','0')->whereDate('startdate','>', $mytime)->whereDate('enddate','>', $mytime)->orderBy('view_count','desc')->get();
+      $upcomingViews = Event::where('view_count','>','0')->whereDate('startdate','>', $mytime)->whereDate('enddate','>', $mytime)->orderBy('updated_at','desc')->get();
       
       //dd($mytime , $ongoingViews);
       

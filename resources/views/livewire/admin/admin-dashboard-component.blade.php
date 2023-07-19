@@ -157,7 +157,7 @@
                                     <div class="round-circle">{{$franchise -> id}}</div> 
                                     <div class="badge bg-secondary fs-xs">
                                       @if (Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
-                                          upcom
+                                          upco
                                       @elseif (Carbon\Carbon::now()->format('d M Y') == Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
                                           first
                                       @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
@@ -184,6 +184,15 @@
                                   @endif 
                                 </div>  
                                 <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                                <div class="text-muted fs-xs text-start"> <span class="bg-primary">{{$franchise -> view_count}}</span> 
+                                <span class="bg-primary">
+                                 @php
+                                    $getvalue = $franchise->id;
+                                    $countReview = DB::table('rates')->where('event_id', $getvalue)->count()
+                                 @endphp
+                                {{$countReview}}
+                                </span>
+                              </div>
                               </div>
 
                               <div class="col-3  p-0">
