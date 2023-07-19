@@ -76,7 +76,7 @@
                                     
                                   @endphp
                                     
-                                      <a href="{{$link->google()}}"><div class="round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                      <a href="{{$link->google()}}"><div class="bg-accent round-circle"><i class="bi bi-bookmark"></i></div> </a>
                               </div>
 
                               <div class="col-7  p-0">
@@ -104,7 +104,7 @@
                 
                     <!-- Reviews tab-->
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
-                      <div class="row">
+                      <div class="row text-center">
                         <i class="bi bi-bookmark"></i>
                         <p>Saving an event will add it to this tab so that you can find it later</p>
                         <a href="" class="btn btn-primary text-capitalize">return to search results</a>

@@ -41,8 +41,27 @@
 
               <div class="card-body p-1">
                 <div class="d-flex justify-content-between">
-                    <div class="product-price"><small>{{$eventoi -> edition}} Edition  
+                    <div class="product-price"><small>{{$eventoi -> edition}}  
                       <i class="bi bi-shield-check" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="certified" aria-label="certified">
+                          <span class="fs-xs">
+                            @php
+                                $to = strtotime($eventoi->startdate);
+                                $from= strtotime($eventoi->enddate);
+                            @endphp
+                            
+
+                            @if ($current < $to && $current < $from)
+                                Upcom
+                              @elseif ($current == $to && $current < $from) 
+                                First
+                              @elseif ($current > $to && $current < $from) 
+                                Ongoi
+                              @elseif ($current > $to && $current == $from) 
+                                Last 
+                              @elseif ($current > $to && $current > $from)
+                                Ended
+                            @endif
+                          </span>
                         <i class="bi bi-lightning-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="upcoming" aria-label="upcoming"></i></i></small>
                       <div class="product-title fs-sm h3 mb-0">
                       <a href="{{route('event.details',['slug' => $eventoi->slug])}}">{{ucwords(trans($eventoi -> eventname))}}

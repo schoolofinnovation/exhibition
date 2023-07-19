@@ -184,13 +184,13 @@
                                   @endif 
                                 </div>  
                                 <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
-                                <div class="text-muted fs-xs text-start"> <span class="bg-primary">{{$franchise -> view_count}}</span> 
+                                <div class="text-muted fs-xs text-start"> <span class="bg-primary">  <i class="bi bi-eye"></i> {{$franchise -> view_count}}</span> 
                                 <span class="bg-primary">
                                  @php
                                     $getvalue = $franchise->id;
                                     $countReview = DB::table('rates')->where('event_id', $getvalue)->count()
                                  @endphp
-                                {{$countReview}}
+                                  <i class="bi bi-pencil"></i> {{$countReview}}
                                 </span>
                               </div>
                               </div>
