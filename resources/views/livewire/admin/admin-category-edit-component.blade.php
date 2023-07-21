@@ -9,13 +9,13 @@
       
                 @foreach($selectedcategory as $catego)
                     @if($franchise->admstatus == '1')
-                    <a class="badge  border-1 text-right border-dark bg-primary text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
-                    {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
-                    </a>
+                        <a class="badge  border-1 text-right border-dark bg-primary text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
+                        {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
+                        </a>
                     @else
-                    <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
-                    {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
-                    </a>
+                        <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
+                        {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
+                        </a>
                     @endif
 
                 @endforeach
@@ -23,7 +23,7 @@
                 <div class="col-lg-8 col-sm-7 ">
                     <input type="text" class="form-control" placeholder="Search your Category..." wire:model.lazy="searchTerm">
                 </div>
-                <a  class="col-lg-4 col-sm-5 btn btn-primary">Search</a>
+                <a  class="col-lg-4  form-control col-sm-5 btn btn-primary">Search</a>
             </div>
         
             @if(is_null($searchTerm))
@@ -44,9 +44,9 @@
                             {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
                             <div class=" col col-auto my-1 px-2"> 
                             @if($franchise->admstatus == '1')   
-                            <input class="badge bg-success m-0 form-check-input" type="checkbox"   value="{{$franchise->id}}"  wire:model="checkvalue">{{$franchise->tag}} 
+                                <input class="form-check-input" type="checkbox"   value="{{$franchise->id}}"  wire:model="checkvalue"> <span class=" badge bg-success">{{$franchise->tag}}</span>  
                             @else
-                            <input class="form-check-input" type="checkbox"   value="{{$franchise->id}}"  wire:model="checkvalue">{{$franchise->tag}}
+                                <input class="form-check-input" type="checkbox"   value="{{$franchise->id}}"  wire:model="checkvalue">{{$franchise->tag}}
                             @endif
                             </div>
                             @endforeach
