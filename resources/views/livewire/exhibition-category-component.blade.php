@@ -53,6 +53,7 @@
                       <!-- details test tickets-->
                       @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
                       <div class="row mb-5 pb-2">
+                        
                         @foreach ($exhibition->where('startdate','>=', $mytime)->where('enddate','>=', $mytime) as $franchise)
                           <div class="container  ">
                             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">

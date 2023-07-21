@@ -66,7 +66,7 @@ class ExhibitionCategoryComponent extends Component
         //dd( $this->categry, $findcategryIDfromExpos->id );
 
         $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
-        $mytime = Carbon::now();
+        $mytime = Carbon::now()->format('y-m-d');
 
         if($this->sorting == 'date'){
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categ)->orderBy('created_at','DESC')->paginate($this->pagesize); 
