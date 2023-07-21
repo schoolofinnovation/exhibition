@@ -8,7 +8,7 @@
                 <small">{{$evento->eventname}}</small>
       
                 @foreach($selectedcategory as $catego)
-                    @if($franchise->admstatus == '1')
+                    @if($catego->admstatus == '1')
                         <a class="badge  border-1 text-right border-dark bg-primary text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
                         {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
                         </a>
@@ -31,8 +31,6 @@
             @else
 
                 @if($searchcat->count() > 0)
-                
-
                 
                     <form wire:submit.prevent="updateEvent">      
                         <div class="mb-5 pb-2">

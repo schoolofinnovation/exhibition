@@ -32,7 +32,7 @@ class TrendingExhibitionComponent extends Component
 
     public function render()
     {
-     
+        $current = strtotime(Carbon::today());
         $mytime = Carbon::today()->format ("Y-m-d");
         //$lasttime = Carbon::today()->addDays(90)->format ("Y-m-d");
         //dd($lasttime);
@@ -42,6 +42,6 @@ class TrendingExhibitionComponent extends Component
         
         $finder = Expo::where('admstatus','1')->where('status','1')->get();
   
-        return view('livewire.trending-exhibition-component',['evento'=>$evento, 'finder'=>$finder]);
+        return view('livewire.trending-exhibition-component',['current'=>$current,'evento'=>$evento, 'finder'=>$finder]);
     }
 }

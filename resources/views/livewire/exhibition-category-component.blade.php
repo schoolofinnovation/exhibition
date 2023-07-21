@@ -1,6 +1,6 @@
 @section('page_title',  ($this->eventype) )
 @section('page_description','Find the business opportunity with The Exhibition Network, World leading event publishing company.')
-@section('page_keyword',  'upcoming  ,Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
+@section('page_keyword',  'upcoming ,Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 
     <main>
       <!--google-->
@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="align-content-center py-2">
-                    <a href="" ><i class="bi bi-search"></i></a>    
+                    <a href=""><i class="bi bi-search"></i></a>    
                     </div>
               </div>
             </div>
