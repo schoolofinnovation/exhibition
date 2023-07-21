@@ -53,7 +53,7 @@
                       <!-- details test tickets-->
                       @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
                       <div class="row mb-5 pb-2">
-                        @foreach ($exhibition as $franchise)
+                        @foreach ($exhibition->where('startdate','>=', $mytime)->where('enddate','>=', $mytime) as $franchise)
                           <div class="container  ">
                             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                               <div class="col  pr-0">
@@ -76,7 +76,7 @@
                                     
                                   @endphp
                                     
-                                      <a href="{{$link->google()}}"><div class="bg-accent round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                      <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
                               </div>
 
                               <div class="col-7  p-0">
