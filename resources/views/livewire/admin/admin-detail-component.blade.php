@@ -229,9 +229,7 @@
                 
             </div>
 
-            <a class="col-7  p-0" href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addParticipants' ])}}">
-              
-            </a>
+            <a class="col-7  p-0" href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addParticipants' ])}}"></a>
 
             <div class="col-3 p-0">
                @if(is_null($evento->organiser))

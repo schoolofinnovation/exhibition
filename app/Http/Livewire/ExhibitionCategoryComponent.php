@@ -90,6 +90,6 @@ class ExhibitionCategoryComponent extends Component
         }
 
         $previous = url()->previous();
-        return view('livewire.exhibition-category-component' ,['previous'=>$previous ,'exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
+        return view('livewire.exhibition-category-component' ,['mytime'=>$mytime,'previous'=>$previous ,'exhibition'=>$exhibition ,'catego'=>$catego])->layout('layouts.eblog');
     }
 }

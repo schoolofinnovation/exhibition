@@ -159,15 +159,13 @@
                     <input type="checkbox" value="1" wire:model="lookingAddParticipants" name="" id=""> Add Participants
                 </div>
 
-@if($lookingAddParticipants == 1)
-                    <form wire:submit.prevent="updateBrand">
-                        <label class="form-label">Add Participants<span class="text-danger">*</span></label> 
-                            <textarea type="text" placeholder="participants" class="form-control" wire:model="brand_name" rows="7"></textarea>
-                            <button class="btn btn-primary btn-shadow d-block w-100 mt-2"  type="submit">Submit</button>
-                    </form>
-@endif
-
-
+                    @if($lookingAddParticipants == 1)
+                        <form wire:submit.prevent="updateBrand">
+                            <label class="form-label">Add Participants<span class="text-danger">*</span></label> 
+                                <textarea type="text" placeholder="participants" class="form-control" wire:model="brand_name" rows="7"></textarea>
+                                <button class="btn btn-primary btn-shadow d-block w-100 mt-2"  type="submit">Submit</button>
+                        </form>
+                    @endif
 
                     <div class="my-3">
                         <div class="small">

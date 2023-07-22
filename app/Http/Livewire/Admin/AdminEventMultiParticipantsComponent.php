@@ -7,6 +7,7 @@ use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Hashtag;
+use App\Models\Participant;
 use App\Models\Pavillion;
 use App\Models\Speaker;
 use App\Models\Sponsership;
@@ -269,16 +270,19 @@ class AdminEventMultiParticipantsComponent extends Component
         //$expoo = explode("," , $sectry );
         $sponso = $this->sponser_id;
         $pavillo = $this->pavill_id;
+        $partne = $this->partner_id;
+
         foreach($tryi as $trey)
         {
-            $fattribute = new Denco();
+            $fattribute = new Participant();
+
             $fattribut = Event::find($this->event_id);
             $fattribute->event_id = $fattribut->id;
-            $fattribute->expo_id = $trey;
+            $fattribute->brand_id = $trey->id;
+            //$fattribute->expo_id = $trey;
             $fattribute->sponsership_id = $sponso;
             $fattribute->pavillion_id = $pavillo;
-            $fattribute->partner = $trey->partner;
-            
+            $fattribute->partner_id = $partne;
             //$fattribute->save();
         }
         

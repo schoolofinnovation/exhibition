@@ -356,7 +356,6 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/admin/optios/add', AdminOptioAddComponent::class)->name('admin.addoptios');
     Route::get('/admin/optios/edit/{optio_id}', AdminOptioEditComponent::class)->name('admin.editoptio');
 
-
     Route::get('/admin/contacts', AdminContactComponent::class)->name('admin.contact');  
     Route::get('/admin/entity', AdminInfoComponent::class)->name('admin.info');
     Route::get('/admin/entity/add', AdminInfoAddComponent::class)->name('admin.infoadd');
