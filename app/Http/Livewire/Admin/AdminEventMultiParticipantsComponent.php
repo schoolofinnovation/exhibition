@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Hashtag;
 use App\Models\Participant;
+use App\Models\Partner;
 use App\Models\Pavillion;
 use App\Models\Speaker;
 use App\Models\Sponsership;
@@ -45,6 +46,8 @@ class AdminEventMultiParticipantsComponent extends Component
 
     public $pavill_id = null;
     public $sponser_id = null;
+    public $partner_id = null;
+
     public $partner;
     public $lookingAddImage;
     public $lookingAddParticipants;
@@ -315,8 +318,9 @@ class AdminEventMultiParticipantsComponent extends Component
         $speaker = Speaker::where('event_id', $evento->id)->get();
         $hastago = Hashtag::where('event_id', $evento->id)->get();
         $participants = Brand::where('event_id', $evento->id)->get();
+        $partners = Partner::where('event_id', $evento->id)->get();
         $findListedTag = Denco::where('event_id', $evento->id)->get();
         //dd($hastag);
-        return view('livewire.admin.admin-event-multi-participants-component',['findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
+        return view('livewire.admin.admin-event-multi-participants-component',['partners'=>$partners,'findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

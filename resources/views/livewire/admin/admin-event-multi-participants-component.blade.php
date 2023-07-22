@@ -198,8 +198,9 @@
                         @if($sponser->count() > 0)
                             <select class="form-select flex-shrink-0"  wire:model="sponser_id">
                             <option>Categories</option>
+                            <option  value="no">No</option>
                                 @foreach ($sponser as $sponseroo)
-                                <option  value="no">No</option>
+                                
                                 <option  value="{{$sponseroo->id}}">{{$sponseroo->plan}}</option>
                                 @endforeach 
                             </select>
@@ -210,8 +211,9 @@
                         @if($pavillion->count() > 0)
                         <select class="form-select flex-shrink-0"  wire:model="pavill_id">
                           <option>Pavillion</option>
+                          <option  value="no">No</option>
                                 @foreach ($pavillion as $pavill)
-                                    <option  value="no">No</option>
+                                  
                                     <option  value="{{$pavill->id}}">{{$pavill->pavillion_name}}</option>
                                 @endforeach 
                         </select>
@@ -219,6 +221,19 @@
                         <small>Please active Pavillion plan <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addPavillion'])}}"> Click</a></small>
                         @endif
 
+                        @if($partners->count() > 0)
+                        <select class="form-select flex-shrink-0"  wire:model="partner_id">
+                          <option>Pavillion</option>
+                          <option  value="no">No</option>
+                                @foreach ($partners as $pavill)
+                                    
+                                    <option  value="{{$pavill->id}}">{{$pavill->pavillion_name}}</option>
+                                @endforeach 
+                        </select>
+                        @else
+                        <small>Please active Pavillion plan <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addPavillion'])}}"> Click</a></small>
+                        @endif
+                        
                         <input type="text" placeholder="partner" wire:model="partner"> </input>
 
 
