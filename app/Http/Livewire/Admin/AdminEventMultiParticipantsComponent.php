@@ -281,12 +281,12 @@ class AdminEventMultiParticipantsComponent extends Component
 
             $fattribut = Event::find($this->event_id);
             $fattribute->event_id = $fattribut->id;
-            $fattribute->brand_id = $trey->id;
+            $fattribute->brand_id = $trey;
             //$fattribute->expo_id = $trey;
             $fattribute->sponsership_id = $sponso;
             $fattribute->pavillion_id = $pavillo;
             $fattribute->partner_id = $partne;
-            //$fattribute->save();
+            $fattribute->save();
         }
         
         dd($fattribute);
