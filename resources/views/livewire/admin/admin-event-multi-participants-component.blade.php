@@ -252,7 +252,11 @@
                     @foreach($pavillion as $pav)
                                     @php
                                       $getReferenceBrands = DB::table('participants')->where('event_id' , $event_id)->where('pavillion_id' , $pav->id)->get()
-                                    @endphp 
+                                     $getbrand = $getReferenceBrands->id
+                                     $findbrand = DB::table('brands')->find('$getReferenceBrands->id')
+
+                                      @endphp 
+                                      {{$findbrand}}
                         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
                             <div class="col  pr-0">
                                 <div class="h4 fw-light mb-0"></div> 
@@ -272,7 +276,7 @@
                                         </div>
                                 @endif
                                 <div class=" col col-auto my-1 px-2"> 
-                                    <img src="{{url('public/assets/image/exhibition/'.$getReferenceBrands->brand->brand_logo)}}" alt="#" width="50px">{{$getReferenceBrands->brand->brand_name}}
+                                    <img src="{{url('public/assets/image/exhibition/'.$getReferenceBrands->brand_logo)}}" alt="#" width="50px">{{$getReferenceBrands->brand->brand_name}}
                                 </div>
                             </div>
 
