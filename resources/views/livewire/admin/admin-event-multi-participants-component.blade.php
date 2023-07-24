@@ -307,7 +307,9 @@
                                     
                                 @if(is_null($pav->desc))
                                     <div class="text-muted fs-sm text-start">{{$pav->plan}} </div>
-                                    {{$getReferenceBrands->brand_id}}
+                                    @foreach($getReferenceBrands as $cget)
+                                    {{$cget->brand_id}}
+                                    @endforeach
                                 @else
                                     <div class="fs-md fw-normal text-start">
                                     {{$evento->pavillion_name}}<br>
