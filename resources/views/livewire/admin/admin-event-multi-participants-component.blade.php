@@ -248,8 +248,11 @@
                         <input type="text" placeholder="pavillion" wire:model="pavillion_name">
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
-
+                   
                     @foreach($pavillion as $pav)
+                                    @php
+                                      $getReferenceBrands = DB::table('participants')->where('event_id' , $event_id)->where('pavillion_id' , $pav->id)->get()
+                                    @endphp 
                         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
                             <div class="col  pr-0">
                                 <div class="h4 fw-light mb-0"></div> 
@@ -259,7 +262,7 @@
                             </div>
 
                             <div class="col-7  p-0">
-                               {{--@if(is_null($pav->desc))
+                               @if(is_null($pav->desc))
                                         <div class="text-muted fs-sm text-start">{{$pav->pavillion_name}} </div>
                                     @else
                                         <div class="fs-md fw-normal text-start">
@@ -267,9 +270,9 @@
                                         
                                         {{$evento->desc}}
                                         </div>
-                                @endif--}}
+                                @endif
                                 <div class=" col col-auto my-1 px-2"> 
-                                    <img src="{{url('public/assets/image/exhibition/'.$pav->brand_logo)}}" alt="#" width="50px">{{$pav->brand_name}}
+                                    <img src="{{url('public/assets/image/exhibition/'.$getReferenceBrands->brand->brand_logo)}}" alt="#" width="50px">{{$getReferenceBrands->brand->brand_name}}
                                 </div>
                             </div>
 
@@ -315,6 +318,10 @@
                                     {{$evento->pavillion_name}}<br>
                                     
                                     {{$evento->desc}}
+
+                                    @foreach($getReferenceBrands as $cget)
+                                    {{$cget->brand_id}}
+                                    @endforeach
                                     </div>
                                 @endif
                             </div>
