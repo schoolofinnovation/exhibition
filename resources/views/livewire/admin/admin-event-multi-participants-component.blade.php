@@ -316,9 +316,10 @@
                                 @if(is_null($pav->desc))
                                     <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm"> <i class="bi bi-plus"></i> </a>
                                 
-                                    <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="SponserDelete({{$participant->id}})" class="btn btn-primary btn-sm"> <i class="bi bi-x me-2"></i> </a>
+                                    <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="SponserDelete({{$pav->id}})" class="btn btn-primary btn-sm"> <i class="bi bi-x me-2"></i> </a>
                                 @else
                                     <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="SponserDelete({{$pav->id}})" class="btn btn-primary btn-sm"> <i class="bi bi-x me-2"></i> </a>
                                 @endif
                             </div>
                         </div>
