@@ -289,14 +289,18 @@ class AdminEventMultiParticipantsComponent extends Component
             $fattribute->save();
         }
         
-        dd($fattribute);
-       
         session()->flash('message','Event has been updated succesfully!!');
-        return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
+        return redirect()->route('adminevent.detail', ['slug' => $fattribut->slug]);
     }
 
     public function Imagedelete($id)
     {   $job = Brand::find($id);
+        $job->delete();
+        session()->flash('message','info has been deleted Successfully');
+    }
+
+    public function SponserDelete($id)
+    {   $job = Sponsership::find($id);
         $job->delete();
         session()->flash('message','info has been deleted Successfully');
     }

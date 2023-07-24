@@ -27,6 +27,7 @@ class CreateParticipantsTable extends Migration
             $table->bigInteger('partner_id')->unsigned()->nullable();
             $table->foreign('partner_id')->references('id')->on('partners')->onDelete('cascade');
 
+            
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
