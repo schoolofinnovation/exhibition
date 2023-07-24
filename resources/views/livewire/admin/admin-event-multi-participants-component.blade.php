@@ -259,7 +259,7 @@
                             </div>
 
                             <div class="col-7  p-0">
-                               {{ --@if(is_null($pav->desc))
+                               {{--@if(is_null($pav->desc))
                                         <div class="text-muted fs-sm text-start">{{$pav->pavillion_name}} </div>
                                     @else
                                         <div class="fs-md fw-normal text-start">
@@ -269,7 +269,7 @@
                                         </div>
                                 @endif--}}
                                 <div class=" col col-auto my-1 px-2"> 
-                                    <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
+                                    <img src="{{url('public/assets/image/exhibition/'.$pav->brand_logo)}}" alt="#" width="50px">{{$pav->brand_name}}
                                 </div>
                             </div>
 
