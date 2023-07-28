@@ -25,6 +25,7 @@ use App\Models\ProductAttribute;
 use App\Models\Sector;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\Want;
 use Carbon\Carbon;
 use Cartalyst\Stripe\Api\Orders;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,7 @@ class AdminDashboardComponent extends Component
   public $statement;
 
   public $businessstatement;
+ 
   
 public $frequency;
 public $subscriber;
@@ -387,7 +389,21 @@ public $hastag;
       $hastago = Hashtag::get();
       $descRankingViews = Event::where('view_count','>','0')->orderBy('view_count','desc')->get();
 
+      
+      $current = strtotime(Carbon::now());
+      
+      $mytime = Carbon::now()->format("H:i:s");
+     
+      if($mytime = "23:08:00")
+      {
+        $savedata = new Want();
+        $savedata->business = $descRankingViews->pluck('view_count')->sum();
+        $savedata->save();
+      }
+    
+
       $mytime = Carbon::now()->format("Y-m-d");
+
       $upcomingViews = Event::where('view_count','>','0')->whereDate('startdate','>', $mytime)->whereDate('enddate','>', $mytime)->orderBy('updated_at','desc')->get();
       
       //dd($mytime , $ongoingViews);
@@ -440,7 +456,9 @@ public $hastag;
       }
      
 
-      $current = strtotime(Carbon::now());
+      
+
+      
 
 
         return view('livewire.admin.admin-dashboard-component',['upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
