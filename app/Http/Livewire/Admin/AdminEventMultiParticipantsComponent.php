@@ -14,6 +14,7 @@ use App\Models\Speaker;
 use App\Models\Sponsership;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
@@ -325,6 +326,9 @@ class AdminEventMultiParticipantsComponent extends Component
         $partners = Partner::where('event_id', $evento->id)->get();
         $findListedTag = Denco::where('event_id', $evento->id)->get();
         //dd($hastag);
+
+        //$getReferenceBrands = DB::table('participants')->where('event_id' , $this->event_id)->where('pavillion_id' , $pavillion->id)->get();
+
         return view('livewire.admin.admin-event-multi-participants-component',['partners'=>$partners,'findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

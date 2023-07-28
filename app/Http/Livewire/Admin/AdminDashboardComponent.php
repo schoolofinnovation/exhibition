@@ -214,7 +214,7 @@ public $hastag;
     public function updateInspectionStatus($id, $status) 
     {
       $visited = Event::find($id);
-      $visited->status = $status;
+      $visited->inspection = $status;
       $visited->save();
       session()->flash('message','info has been deleted Successfully');
       return redirect()->route('admin.dashboard', ['board' => 'client']);
@@ -306,6 +306,16 @@ public $hastag;
       session()->flash('message','User  has been  deleted successfully');
     }
 
+    public function UpgradeDesc()
+    {  
+       $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->orderBy('startdate','asc')->get();
+
+       
+
+    }
+
+    //dd($rti);
+
     public function render()
     {
       //current Event
@@ -382,8 +392,54 @@ public $hastag;
       
       //dd($mytime , $ongoingViews);
       
-      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->limit(10)->orderBy('startdate','asc')->get();
+      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->orderBy('startdate','asc')->get();
+      foreach($eventShtdesc as $updatco)
+      {
+
+        $statementID = Event::find($updatco->id);
+        
+        $statementEventName = trim($statementID->eventname); 
+        $statementEventVenue = trim($statementID->venue); 
+        $statementEventCity = trim($statementID->city); 
+        $statementEventType= trim($statementID->eventype); 
+        $statementEventTagline = trim($statementID->tagline); 
+        $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)->format('D,d M Y')); 
+        $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('D,d M Y'));
+        
+
+        $mytime = Carbon::today()->format("Y-m-d");
+        $mymonth = Carbon::now()->addDays(30)->format("m");
+
+         //three months prior
+         //$during =  'Join us at upcoming [exhibtion_type] [Exhibition Title], held from [Exhibtion start date] to [Exhibition End Date] at [Exhibtiion Venue]. Get your ticket now and be a part of the [tag] industry event.';
+
+         //post Expo timer with dates
+         //$end =  'Download business directory exhibition and find reference for expand your business. Share your reviews and rate your experience.';
+
+         //post Expo timer with dates $statementEventName.''.$statementEventName 'public/exhibition/'.$eventoi->image
+         $start = 'The '. $statementEventTagline. 'premier business event for industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your ticket now and be a part of the industry event.';
+         
+         //$visited = User::find($id);
+          $statementID = Event::find($updatco->id);
+          $statementID->shtdesc = $start;
+          $statementID->save();
+
+     //  if($mytime < $statementEventStartDate )
+     //   {
+     //     $rti = Str::replace('exhibtion_type','$statementEventType', $start);
+     //   }
+     //   elseif ($mytime < $statementEventStartDate )
+     //   {
+     //     $rti = Str::replace(' ','', $during);
+     //   }
+     //   elseif ($mytime > $statementEventEndDate )
+     //   {
+     //     $rti = Str::replace(' ','', $end);
+     //   }
       
+      }
+     
+
       $current = strtotime(Carbon::now());
 
 

@@ -1309,7 +1309,13 @@
                       {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
                     @endif 
                   </div>  
-                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                  <div class="text-muted fs-sm text-start">
+                    @if(is_null($franchise -> venue) )
+                     
+                    @else
+                    {{ucfirst(trans($franchise -> venue))}}
+                    @endif
+                  , {{ucfirst(trans($franchise -> city))}}</div>
                 </div>
 
                 <div class="col-3  p-0">

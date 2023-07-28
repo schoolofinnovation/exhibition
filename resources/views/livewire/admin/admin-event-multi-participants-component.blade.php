@@ -251,12 +251,15 @@
                    
                     @foreach($pavillion as $pav)
                                     @php
-                                      $getReferenceBrands = DB::table('participants')->where('event_id' , $event_id)->where('pavillion_id' , $pav->id)->get()
-                                     $getbrand = $getReferenceBrands->id
-                                     $findbrand = DB::table('brands')->find('$getReferenceBrands->id')
+                                      $getReferenceBrands = DB::table('participants')->where('event_id' , $event_id)->where('pavillion_id' , $pav->id)->get();
+                                        $getbrand = $getReferenceBrands->pluck('brand_id');
+
+                                    @foreach($getbrand as $findbrand)
+                                     $findobrand = DB::table('brands')->where('id', $findbrand->id);
+                                    @endforeach
 
                                       @endphp 
-                                      {{$findbrand}}
+                                      {{$findobrand}}
                         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
                             <div class="col  pr-0">
                                 <div class="h4 fw-light mb-0"></div> 

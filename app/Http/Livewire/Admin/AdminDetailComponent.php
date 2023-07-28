@@ -60,6 +60,15 @@ class AdminDetailComponent extends Component
       session()->flash('message',' Status Successfully Changed');
     } 
 
+    //forupdating postponse, Cancelled
+    public function updateEvent($id, $status) 
+    {
+      $eVent = Event::find($id);
+      $eVent->latestupdat = $status;
+      $eVent->save();
+      session()->flash('message',' Status Successfully Changed');
+    } 
+
     public function updateIDstatus($id) 
     {
       $eVent = Event::find($id);
