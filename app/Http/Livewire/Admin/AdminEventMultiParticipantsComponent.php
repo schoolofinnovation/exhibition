@@ -53,10 +53,8 @@ class AdminEventMultiParticipantsComponent extends Component
     public $partner;
     public $lookingAddImage;
     public $lookingAddParticipants;
-
+    
    
-    
-    
     Use WithFileUploads;
 
     public function mount($event_id, $formm )
@@ -69,6 +67,7 @@ class AdminEventMultiParticipantsComponent extends Component
         $this->formm = $formm;
         $this->status = '1';
         $this->admstatus = '0';
+       
     }
 
     public function generateSlug()
@@ -322,10 +321,9 @@ class AdminEventMultiParticipantsComponent extends Component
     public $link;
     
 
-    public function AddBrandAttend($checkvalue)
+    public function AddBrandAttend()
     {
-
-       if(is_null($checkvalue))
+       if(is_null($this->checkvalue))
        {
         $brandAttend = new Brand();
         $brandAttend->brand_name = trim($this->brand_name);
@@ -337,10 +335,12 @@ class AdminEventMultiParticipantsComponent extends Component
        {
         $brandAtt = Brand::find($this->checkvalue);
         $brandAtt->brand_name = trim($this->brand_name);
-        $brandAtt->slug = Str::slug($this->brand_name,'-');;
+        $brandAtt->slug = Str::slug($this->brand_name,'-');
         $brandAtt->official_website = $this->link;
         $brandAtt->save();
        }
+
+       //dd($this->checkvalue, $brandAtt);
     //    $brandAttend = new Brand();
     //    $brandAttend->brand_name = trim($this->brand_name);
     //    $brandAttend->event_id = $this->event_id;
