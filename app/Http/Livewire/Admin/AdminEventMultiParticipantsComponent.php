@@ -382,6 +382,7 @@ class AdminEventMultiParticipantsComponent extends Component
         $speaker = Speaker::where('event_id', $evento->id)->get();
         $hastago = Hashtag::where('event_id', $evento->id)->get();
         $participants = Brand::where('event_id', $evento->id)->get();
+        
         $partners = Partner::where('event_id', $evento->id)->get();
         $findListedTag = Denco::where('event_id', $evento->id)->get();
         //dd($hastag);

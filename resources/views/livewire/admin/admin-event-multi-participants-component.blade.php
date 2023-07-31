@@ -746,11 +746,21 @@
                         <div class="row mb-5 pb-2" wire:model="checkvalue">
                             @foreach ($participants as $participant) 
                                 {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
-                                    
+                                    @php 
+                                       $findoutsponsored = DB::table('participants')->where('event_id', $event_id->id)->where('brand_id' , $participant->id)->where('status','1')->where('admstatus','1')->get();
+                                    @endphp
+
+
                                 <div class=" col col-auto my-1 px-2"> 
-                                    <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}} 
+                                    <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> 
+                                        @if(!is_null($findoutsponsored->sponsership_id))
+                                            <span class="badge badge-primary text-light fs-sm"> {{ $findoutsponsored->sponsership_id}} {{$participant->brand_name}}</span>
+                                        @endif
+                                     
+
                                     <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
-                                    <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
+                                    <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
+                                    <span class="fs-sm"></span> {{$participant->brand_name}}
                                 </div>
                             @endforeach
                             <div>@json($checkvalue)</div>
