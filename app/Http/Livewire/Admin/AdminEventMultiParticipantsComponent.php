@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
+use App\Models\Contact;
 use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
@@ -310,6 +311,26 @@ class AdminEventMultiParticipantsComponent extends Component
     {   $job = Hashtag::find($id);
         $job->delete();
         session()->flash('message','info has been deleted Successfully');
+    }
+
+    //client
+    public function AddBrandAttend()
+    {
+       $brandAttend = new Brand();
+       $brandAttend->brand_name = trim($this->brand_name);
+       $brandAttend->event_id = $this->event_id;
+       $brandAttend->official_website = $this->link;
+       $brandAttend->save();
+
+       $ContactDetail = new Contact();
+       $ContactDetail->brand_id = $brandAttend->id;
+       $ContactDetail->email = $this->email;
+       $ContactDetail->name = trim($this->name); 
+       $ContactDetail->phone = $this->contact;
+       $ContactDetail->designation = trim($this->designation);
+       $ContactDetail->save();
+
+       return redirect()->route('admin.dashboard', ['board' => 'client']);
     }
 
     public function render()

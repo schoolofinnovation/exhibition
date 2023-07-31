@@ -394,7 +394,7 @@ public $hastag;
       
       $mytime = Carbon::now()->format("H:i:s");
      
-      if($mytime = "23:08:00")
+      if($mytime == "23:59:00")
       {
         $savedata = new Want();
         $savedata->business = $descRankingViews->pluck('view_count')->sum();

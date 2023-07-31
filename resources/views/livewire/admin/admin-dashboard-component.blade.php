@@ -801,7 +801,7 @@
 
 <!-- Start Cleint-->
       @if($board == 'client')
-        {{--<div class="container">
+        <!-- <div class="container">
           <form wire:submit.prevent="emailSend">
              
               <div class="col-lg-4 col-md-4 ">
@@ -827,42 +827,74 @@
              <button type="submit"></button>
             </div>
           </form>
-        </div>--}}
-       
-    
-        <div class="container my-5">
-              <div class="small"> List meet-up brand</div>        
+        </div> --><div class="container">
+        @foreach($findInspection as $franchise)
+          
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+              <div class="col  pr-0">
+                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                    <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
+                  @else
+                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M y')}} </div>
+                  @endif 
+                    <div class="round-circle">{{$franchise -> id}}</div> 
+                    <div class="badge bg-secondary fs-xs">
+                      @if (Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
+                          upco
+                      @elseif (Carbon\Carbon::now()->format('d M Y') == Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                          first
+                      @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') < Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                          ongoi
+                      @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') == Carbon\Carbon::parse ($franchise->enddate)->format('d M Y')) 
+                        last
+                      @elseif (Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->startdate)->format('d M Y') && Carbon\Carbon::now()->format('d M Y') > Carbon\Carbon::parse ($franchise->enddate)->format('d M Y'))
+                        end
+                      @endif
+                    </div>
 
-              <form wire:submit.prevent="AddBrandAttend">
 
-                    <select class="form-control mb-1" type="text"   wire:model.lazy="event_id" >
-                        <option selected>Choose</option>
-                      @foreach($findInspection as $findoo)
-                        <option value="{{$findoo -> id}}">{{$findoo -> eventname}}</option>
-                      @endforeach
-                    </select>
-                       
+                    {{--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">try</button>--}}
+              </div>
 
-                <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
-                <input type="text" class="form-control mb-1" wire:model.lazy="country" placeholder="country">
-                <input type="text" class="form-control mb-1" wire:model.lazy="link" placeholder="link">
+              <div class="col-7  p-0">
+                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                  {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                <div class="text-muted fs-sm text-start">
+                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M You')}}
+                  @else
+                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y')}}
+                  @endif 
+                </div>  
+                <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise -> venue))}}, {{ucfirst(trans($franchise -> city))}}</div>
+                <div class="text-muted fs-xs text-start"> <span class="bg-primary">  <i class="bi bi-eye"></i> {{$franchise -> view_count}}</span> 
+                <span class="bg-primary">
+                  @php
+                    $getvalue = $franchise->id;
+                    $countReview = DB::table('rates')->where('event_id', $getvalue)->count()
+                  @endphp
+                  <i class="bi bi-pencil"></i> {{$countReview}}
+                </span>
+              </div>
+              </div>
 
-                <input type="text" class="form-control mb-1" wire:model.lazy="name" placeholder="name">
-                <input type="text" class="form-control mb-1" wire:model.lazy="contact" placeholder="contact">
-                <input type="email" class="form-control mb-1" wire:model.lazy="email" placeholder="email">
-                <input type="text" class="form-control mb-1" wire:model.lazy="designation" placeholder="designation">
-                
-               {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
-                <input type="text" class="form-control mb-1" wire:model.lazy="size" placeholder="size">
-                <input type="text" class="form-control mb-1" wire:model.lazy="grade" placeholder="grade">
-                <textarea type="text" class="form-control mb-1" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+              <div class="col-3  p-0">
+                @if(is_null($franchise->image))
+                  <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $franchise->id, 'formm' => 'image' ])}}">Add</a>
+                  <a class="card-img-top d-block overflow-hidden" href="{{route('admin.multipartners',['event_id' => $franchise->id, 'formm' => 'client' ])}}">Meetups</a>
+                @else
 
-                <input type="text" class="form-control mb-1" wire:model.lazy="email_request" placeholder="email_request">
-                <input type="text" class="form-control mb-1" wire:model.lazy="service_request" placeholder="service_request">--}}
-
-                <button class="btn btn-primary mt-2" type="submit">Submit</button>
-              </form>
+                  <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                  <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                @endif
+              </div>
+            </div>
+          
+        @endforeach
         </div>
+        
       @endif
 <!--Stop Client-->
 
