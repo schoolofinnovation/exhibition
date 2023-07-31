@@ -333,7 +333,7 @@ class AdminEventMultiParticipantsComponent extends Component
         $brandAttend->official_website = $this->link;
         $brandAttend->save();
        }
-       elseif($checkvalue)
+       else
        {
         $brandAtt = Brand::find($this->checkvalue);
         $brandAtt->brand_name = trim($this->brand_name);
