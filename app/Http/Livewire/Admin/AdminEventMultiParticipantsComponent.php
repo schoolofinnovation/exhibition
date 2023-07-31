@@ -314,6 +314,13 @@ class AdminEventMultiParticipantsComponent extends Component
     }
 
     //client
+
+    public $country;
+    public $contact;
+    public $email;
+    public $designation;
+    public $link;
+
     public function AddBrandAttend()
     {
        $brandAttend = new Brand();
