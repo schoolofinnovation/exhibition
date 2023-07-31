@@ -320,14 +320,32 @@ class AdminEventMultiParticipantsComponent extends Component
     public $email;
     public $designation;
     public $link;
+    
 
-    public function AddBrandAttend()
+    public function AddBrandAttend($checkvalue)
     {
-       $brandAttend = new Brand();
-       $brandAttend->brand_name = trim($this->brand_name);
-       $brandAttend->event_id = $this->event_id;
-       $brandAttend->official_website = $this->link;
-       $brandAttend->save();
+
+       if(is_null($checkvalue))
+       {
+        $brandAttend = new Brand();
+        $brandAttend->brand_name = trim($this->brand_name);
+        $brandAttend->event_id = $this->event_id;
+        $brandAttend->official_website = $this->link;
+        $brandAttend->save();
+       }
+       elseif($checkvalue)
+       {
+        $brandAtt = Brand::find($this->checkvalue);
+        $brandAtt->brand_name = trim($this->brand_name);
+        $brandAtt->slug = $this->slug;
+        $brandAtt->official_website = $this->link;
+        $brandAtt->save();
+       }
+    //    $brandAttend = new Brand();
+    //    $brandAttend->brand_name = trim($this->brand_name);
+    //    $brandAttend->event_id = $this->event_id;
+    //    $brandAttend->official_website = $this->link;
+    //    $brandAttend->save();
 
        $ContactDetail = new Contact();
        $ContactDetail->brand_id = $brandAttend->id;
