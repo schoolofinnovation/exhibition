@@ -337,7 +337,7 @@ class AdminEventMultiParticipantsComponent extends Component
        {
         $brandAtt = Brand::find($this->checkvalue);
         $brandAtt->brand_name = trim($this->brand_name);
-        $brandAtt->slug = $this->slug;
+        $brandAtt->slug = Str::slug($this->brand_name,'-');;
         $brandAtt->official_website = $this->link;
         $brandAtt->save();
        }

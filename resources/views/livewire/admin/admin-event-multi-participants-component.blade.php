@@ -181,12 +181,12 @@
                         <div class="row mb-5 pb-2" wire:model="checkvalue">
 
                             @foreach ($participants as $participant) 
-                            {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
-                            <div class=" col col-auto my-1 px-2"> 
-                                <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}} 
-                                <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
-                                <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
-                            </div>
+                                {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                                <div class=" col col-auto my-1 px-2"> 
+                                    <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}} 
+                                    <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
+                                    <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
+                                </div>
                             @endforeach
                             <div>@json($checkvalue)</div>
                             
@@ -736,20 +736,24 @@
                        
 
                 <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
-
-                @foreach ($participants as $participant) 
-                    {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
-                        
-                    <div class=" col col-auto my-1 px-2"> 
-                        <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}} 
-                        <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
-                        <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
-                    </div>
+                
+                <div class="row mb-5 pb-2" wire:model="checkvalue">
+                    @foreach ($participants as $participant) 
+                        {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                            
+                        <div class=" col col-auto my-1 px-2"> 
+                            <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> {{$participant->brand_name}} 
+                            <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
+                            <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
+                        </div>
                     @endforeach
                     <div>@json($checkvalue)</div>
-                    
+                </div>
+
                 <input type="text" class="form-control mb-1" wire:model.lazy="country" placeholder="country">
                 <input type="text" class="form-control mb-1" wire:model.lazy="link" placeholder="link">
+                
+                <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
 
                 <input type="text" class="form-control mb-1" wire:model.lazy="name" placeholder="name">
                 <input type="text" class="form-control mb-1" wire:model.lazy="contact" placeholder="contact">

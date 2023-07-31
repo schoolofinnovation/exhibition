@@ -886,7 +886,7 @@
                   <a class="card-img-top d-block overflow-hidden" href="{{route('admin.multipartners',['event_id' => $franchise->id, 'formm' => 'client' ])}}">Meetups</a>
                 @else
 
-                  <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                  <a class="card-img-top d-block overflow-hidden" href="{{route('admin.multipartners',['event_id' => $franchise->id, 'formm' => 'client' ])}}">
                   <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
                 @endif
               </div>
