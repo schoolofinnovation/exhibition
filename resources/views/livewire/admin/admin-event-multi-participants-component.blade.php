@@ -194,11 +194,10 @@
 
                         @if($sponser->count() > 0)
                             <select class="form-select flex-shrink-0"  wire:model="sponser_id">
-                            <option>Categories</option>
-                            <option  value="no">No</option>
+                                <option>Categories</option>
+                                <option  value="no">No</option>
                                 @foreach ($sponser as $sponseroo)
-                                
-                                <option  value="{{$sponseroo->id}}">{{$sponseroo->plan}}</option>
+                                    <option  value="{{$sponseroo->id}}">{{$sponseroo->plan}}</option>
                                 @endforeach 
                             </select>
                         @else
@@ -206,14 +205,14 @@
                         @endif
 
                         @if($pavillion->count() > 0)
-                        <select class="form-select flex-shrink-0"  wire:model="pavill_id">
-                          <option>Pavillion</option>
-                          <option  value="no">No</option>
-                                @foreach ($pavillion as $pavill)
-                                  
-                                    <option  value="{{$pavill->id}}">{{$pavill->pavillion_name}}</option>
-                                @endforeach 
-                        </select>
+                            <select class="form-select flex-shrink-0"  wire:model="pavill_id">
+                            <option>Pavillion</option>
+                            <option  value="no">No</option>
+                                    @foreach ($pavillion as $pavill)
+                                    
+                                        <option  value="{{$pavill->id}}">{{$pavill->pavillion_name}}</option>
+                                    @endforeach 
+                            </select>
                         @else
                         <small>Please active Pavillion plan <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addPavillion'])}}"> Click</a></small>
                         @endif
@@ -715,80 +714,80 @@
 
                 @if($formm == 'client')
                 <div class="container my-5">
-              <div class="small"> List meet-up brands, update contacts what we get during expo visit.</div>   
+                    <div class="small"> List meet-up brands, update contacts what we get during expo visit.</div>   
 
-              <form wire:submit.prevent="participantToAdd">
-                <div class="row mb-5 pb-2" wire:model="checkvalue">
-
-                    
-                </div>
-              </form>
-
-
-              <form wire:submit.prevent="AddBrandAttend">
-
-                    {{-- <select class="form-control mb-1" type="text"   wire:model.lazy="event_id" >
-                        <option selected>Choose</option>
-                      @foreach($findInspection as $findoo)
-                        <option value="{{$findoo -> id}}">{{$findoo -> eventname}}</option>
-                      @endforeach
-                    </select> --}}
-                       
-                {{--find out brand with  name--}}
-                <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
-
-                    <div class="small">
-                        <input type="checkbox" value="1" wire:model="lookingAddFromIMage" name="" id=""> Add Participants
-                    </div>
-
-                    @if($lookingAddFromIMage == 1)
-
+                    <form wire:submit.prevent="participantToAdd">
                         <div class="row mb-5 pb-2" wire:model="checkvalue">
-                            @foreach ($participants as $participant) 
-                                {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
-                                    @php 
-                                       $findoutsponsored = DB::table('participants')->where('event_id', $event_id->id)->where('brand_id' , $participant->id)->where('status','1')->where('admstatus','1')->get();
-                                    @endphp
 
-
-                                <div class=" col col-auto my-1 px-2"> 
-                                    <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> 
-                                        @if(!is_null($findoutsponsored->sponsership_id))
-                                            <span class="badge badge-primary text-light fs-sm"> {{ $findoutsponsored->sponsership_id}} {{$participant->brand_name}}</span>
-                                        @endif
-                                     
-
-                                    <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
-                                    <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
-                                    <span class="fs-sm"></span> {{$participant->brand_name}}
-                                </div>
-                            @endforeach
-                            <div>@json($checkvalue)</div>
+                            
                         </div>
+                    </form>
 
-                    @endif
 
-                <input type="text" class="form-control mb-1" wire:model.lazy="country" placeholder="country">
-                <input type="text" class="form-control mb-1" wire:model.lazy="link" placeholder="link">
+                    <form wire:submit.prevent="AddBrandAttend">
 
-                <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
+                            {{-- <select class="form-control mb-1" type="text"   wire:model.lazy="event_id" >
+                                <option selected>Choose</option>
+                            @foreach($findInspection as $findoo)
+                                <option value="{{$findoo -> id}}">{{$findoo -> eventname}}</option>
+                            @endforeach
+                            </select> --}}
+                            
+                        {{--find out brand with  name--}}
+                        <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
 
-                <input type="text" class="form-control mb-1" wire:model.lazy="name" placeholder="name">
-                <input type="text" class="form-control mb-1" wire:model.lazy="contact" placeholder="contact">
-                <input type="email" class="form-control mb-1" wire:model.lazy="email" placeholder="email">
-                <input type="text" class="form-control mb-1" wire:model.lazy="designation" placeholder="designation">
-                
-               {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
-                <input type="text" class="form-control mb-1" wire:model.lazy="size" placeholder="size">
-                <input type="text" class="form-control mb-1" wire:model.lazy="grade" placeholder="grade">
-                <textarea type="text" class="form-control mb-1" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+                            <div class="small">
+                                <input type="checkbox" value="1" wire:model="lookingAddFromIMage" name="" id=""> Add Participants
+                            </div>
 
-                <input type="text" class="form-control mb-1" wire:model.lazy="email_request" placeholder="email_request">
-                <input type="text" class="form-control mb-1" wire:model.lazy="service_request" placeholder="service_request">--}}
+                            @if($lookingAddFromIMage == 1)
 
-                <button class="btn btn-primary mt-2" type="submit">Submit</button>
-              </form>
-        </div>
+                                <div class="row mb-5 pb-2" wire:model="checkvalue">
+                                    @foreach ($participants as $participant) 
+                                        {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                                            @php 
+                                            $findoutsponsored = DB::table('participants')->where('event_id', $event_id)->where('brand_id' , $participant->id)->pluck('sponsership_id');
+                                            @endphp
+
+                                               
+                                        <div class=" col col-auto my-1 px-2"> 
+                                            <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> 
+                                            @if(is_null($findoutsponsored))
+                                            
+                                            @else
+                                            <span class="badge  border-1 text-right border-dark text-dark mr-1"> {{$findoutsponsored->Sponser->plan}}</span>
+                                            @endif
+                                            <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
+                                            <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
+                                            <span class="fs-sm"></span> {{$participant->brand_name}}
+                                        </div>
+                                    @endforeach
+                                    <div>@json($checkvalue)</div>
+                                </div>
+
+                            @endif
+
+                        <input type="text" class="form-control mb-1" wire:model.lazy="country" placeholder="country">
+                        <input type="text" class="form-control mb-1" wire:model.lazy="link" placeholder="link">
+
+                        <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
+
+                        <input type="text" class="form-control mb-1" wire:model.lazy="name" placeholder="name">
+                        <input type="text" class="form-control mb-1" wire:model.lazy="contact" placeholder="contact">
+                        <input type="email" class="form-control mb-1" wire:model.lazy="email" placeholder="email">
+                        <input type="text" class="form-control mb-1" wire:model.lazy="designation" placeholder="designation">
+                        
+                    {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
+                        <input type="text" class="form-control mb-1" wire:model.lazy="size" placeholder="size">
+                        <input type="text" class="form-control mb-1" wire:model.lazy="grade" placeholder="grade">
+                        <textarea type="text" class="form-control mb-1" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+
+                        <input type="text" class="form-control mb-1" wire:model.lazy="email_request" placeholder="email_request">
+                        <input type="text" class="form-control mb-1" wire:model.lazy="service_request" placeholder="service_request">--}}
+
+                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    </form>
+                </div>
                 @endif
             </div>
         </section>
