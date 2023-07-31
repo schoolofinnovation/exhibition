@@ -53,6 +53,7 @@ class AdminEventMultiParticipantsComponent extends Component
     public $partner;
     public $lookingAddImage;
     public $lookingAddParticipants;
+    public $lookingAddFromIMage;
     
    
     Use WithFileUploads;
@@ -325,19 +326,37 @@ class AdminEventMultiParticipantsComponent extends Component
     {
        if(is_null($this->checkvalue))
        {
-        $brandAttend = new Brand();
+        $brandAttend = new Brand ();
         $brandAttend->brand_name = trim($this->brand_name);
         $brandAttend->event_id = $this->event_id;
         $brandAttend->official_website = $this->link;
         $brandAttend->save();
+
+        $ContactDetail = new Contact();
+        $ContactDetail->brand_id = $brandAttend->id;
+        
+        $ContactDetail->email = $this->email;
+        $ContactDetail->name = trim($this->name); 
+        $ContactDetail->phone = $this->contact;
+        $ContactDetail->designation = trim($this->designation);
+        $ContactDetail->save();
        }
        else
        {
-        $brandAtt = Brand::find($this->checkvalue);
+        $brandAtt = Brand::find($this->checkvalue)->first();
         $brandAtt->brand_name = trim($this->brand_name);
         $brandAtt->slug = Str::slug($this->brand_name,'-');
         $brandAtt->official_website = $this->link;
         $brandAtt->save();
+
+        $ContactDetail = new Contact();
+        $ContactDetail->brand_id = $brandAtt->id;
+        
+        $ContactDetail->email = $this->email;
+        $ContactDetail->name = trim($this->name); 
+        $ContactDetail->phone = $this->contact;
+        $ContactDetail->designation = trim($this->designation);
+        $ContactDetail->save();
        }
 
        //dd($this->checkvalue, $brandAtt);
@@ -347,13 +366,7 @@ class AdminEventMultiParticipantsComponent extends Component
     //    $brandAttend->official_website = $this->link;
     //    $brandAttend->save();
 
-       $ContactDetail = new Contact();
-       $ContactDetail->brand_id = $brandAttend->id;
-       $ContactDetail->email = $this->email;
-       $ContactDetail->name = trim($this->name); 
-       $ContactDetail->phone = $this->contact;
-       $ContactDetail->designation = trim($this->designation);
-       $ContactDetail->save();
+       
 
        return redirect()->route('admin.dashboard', ['board' => 'client']);
     }
