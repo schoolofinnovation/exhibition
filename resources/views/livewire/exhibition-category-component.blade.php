@@ -51,56 +51,243 @@
                     <!-- Product details tab-->
                     <div class="tab-pane fade show active" id="details" role="tabpanel">
                       <!-- details test tickets-->
-                      @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
+                      @php
+                            $witems = Cart::instance('wishlist')->content()->pluck('id'); 
+                      @endphp
+
                       <div class="row mb-5 pb-2">
-
-                        @foreach ($exhibition->where('startdate','>=', $mytime)->where('enddate','>=', $mytime) as $franchise)
                         
-                          <div class="container  ">
-                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                              <div class="col  pr-0">
-                                  @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
-                                  @else
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
 
-                                  @endif 
-                                  @php 
-                                    $from = DateTime::createFromFormat('Y-m-d', ($franchise->event->startdate));
-                                    $to = DateTime::createFromFormat('Y-m-d', ($franchise->event->enddate));
-                                    $name = $franchise->event->eventname;
-                                    $venue = $franchise->event->venue;
-                                    $city = $franchise->event->city;
-                                    $country = $franchise->event->country;
-                                    $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
-                                    
-                                  @endphp
-                                    
-                                      <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
-                              </div>
+                        @foreach ($exhibition as $franchise)
+                          @if ($mytime < $franchise->event->startdate  && $mytime < $franchise->event->enddate)
+                                <div class="container">
+                                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                    <div class="col  pr-0">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+                                          @else
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
 
-                              <div class="col-7  p-0">
-                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
-                                  {{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</a></div>
-                                <div class="text-muted fs-sm text-start">
-                                  @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
-                                    {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
-                                  @else
-                                    {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
-                                  @endif 
-                                </div>  
-                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise->event->venue))}}, {{ucfirst(trans($franchise->event->city))}}</div>
-                              </div>
+                                        @endif 
+                                        @php 
+                                          $from = DateTime::createFromFormat('Y-m-d', ($franchise->event->startdate));
+                                          $to = DateTime::createFromFormat('Y-m-d', ($franchise->event->enddate));
+                                          $name = $franchise->event->eventname;
+                                          $venue = $franchise->event->venue;
+                                          $city = $franchise->event->city;
+                                          $country = $franchise->event->country;
+                                          $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                          
+                                        @endphp
+                                          
+                                            <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                    </div>
 
-                              <div class="col-3  p-0">
-                                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
-                                    <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
-                              </div>
-                            </div>
-                          </div>
+                                    <div class="col-7  p-0">
+                                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                        {{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</a></div>
+                                      <div class="text-muted fs-sm text-start">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @else
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @endif 
+                                      </div>  
+                                      <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise->event->venue))}}, {{ucfirst(trans($franchise->event->city))}}</div>
+                                    </div>
+
+                                    <div class="col-3  p-0">
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                          <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                                    </div>
+                                  </div>
+                                </div>
+                            @elseif ($mytime == $franchise->event->startdate  && $mytime < $franchise->event->enddate) 
+                                <div class="container">
+                                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                    <div class="col  pr-0">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+                                          @else
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+
+                                        @endif 
+                                        @php 
+                                          $from = DateTime::createFromFormat('Y-m-d', ($franchise->event->startdate));
+                                          $to = DateTime::createFromFormat('Y-m-d', ($franchise->event->enddate));
+                                          $name = $franchise->event->eventname;
+                                          $venue = $franchise->event->venue;
+                                          $city = $franchise->event->city;
+                                          $country = $franchise->event->country;
+                                          $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                          
+                                        @endphp
+                                          
+                                            <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                    </div>
+
+                                    <div class="col-7  p-0">
+                                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                        {{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</a></div>
+                                      <div class="text-muted fs-sm text-start">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @else
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @endif 
+                                      </div>  
+                                      <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise->event->venue))}}, {{ucfirst(trans($franchise->event->city))}}</div>
+                                    </div>
+
+                                    <div class="col-3  p-0">
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                          <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                                    </div>
+                                  </div>
+                                </div>
+                            @elseif ($mytime > $franchise->event->startdate  && $mytime < $franchise->event->enddate) 
+                                <div class="container">
+                                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                    <div class="col  pr-0">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+                                          @else
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+
+                                        @endif 
+                                        @php 
+                                          $from = DateTime::createFromFormat('Y-m-d', ($franchise->event->startdate));
+                                          $to = DateTime::createFromFormat('Y-m-d', ($franchise->event->enddate));
+                                          $name = $franchise->event->eventname;
+                                          $venue = $franchise->event->venue;
+                                          $city = $franchise->event->city;
+                                          $country = $franchise->event->country;
+                                          $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                          
+                                        @endphp
+                                          
+                                            <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                    </div>
+
+                                    <div class="col-7  p-0">
+                                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                        {{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</a></div>
+                                      <div class="text-muted fs-sm text-start">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @else
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @endif 
+                                      </div>  
+                                      <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise->event->venue))}}, {{ucfirst(trans($franchise->event->city))}}</div>
+                                    </div>
+
+                                    <div class="col-3  p-0">
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                          <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                                    </div>
+                                  </div>
+                                </div>
+                            @elseif ($mytime > $franchise->event->startdate  && $mytime == $franchise->event->enddate) 
+                                <div class="container">
+                                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                    <div class="col  pr-0">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+                                          @else
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+
+                                        @endif 
+                                        @php 
+                                          $from = DateTime::createFromFormat('Y-m-d', ($franchise->event->startdate));
+                                          $to = DateTime::createFromFormat('Y-m-d', ($franchise->event->enddate));
+                                          $name = $franchise->event->eventname;
+                                          $venue = $franchise->event->venue;
+                                          $city = $franchise->event->city;
+                                          $country = $franchise->event->country;
+                                          $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                          
+                                        @endphp
+                                          
+                                            <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                    </div>
+
+                                    <div class="col-7  p-0">
+                                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                        {{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</a></div>
+                                      <div class="text-muted fs-sm text-start">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @else
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @endif 
+                                      </div>  
+                                      <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise->event->venue))}}, {{ucfirst(trans($franchise->event->city))}}</div>
+                                    </div>
+
+                                    <div class="col-3  p-0">
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                          <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                                    </div>
+                                  </div>
+                                </div> 
+                            @elseif ($mytime > $franchise->event->startdate  && $mytime > $franchise->event->enddate)
+                                <!-- <div class="container">
+                                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                    <div class="col  pr-0">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+                                          @else
+                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->event->startdate)->format('d')}}</div> 
+                                            <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->event->startdate)->format('M')}} </div>
+
+                                        @endif 
+                                        @php 
+                                          $from = DateTime::createFromFormat('Y-m-d', ($franchise->event->startdate));
+                                          $to = DateTime::createFromFormat('Y-m-d', ($franchise->event->enddate));
+                                          $name = $franchise->event->eventname;
+                                          $venue = $franchise->event->venue;
+                                          $city = $franchise->event->city;
+                                          $country = $franchise->event->country;
+                                          $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                          
+                                        @endphp
+                                          
+                                            <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                    </div>
+
+                                    <div class="col-7  p-0">
+                                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                        {{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</a></div>
+                                      <div class="text-muted fs-sm text-start">
+                                        @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @else
+                                          {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M')}}
+                                        @endif 
+                                      </div>  
+                                      <div class="text-muted fs-sm text-start">{{ucfirst(trans($franchise->event->venue))}}, {{ucfirst(trans($franchise->event->city))}}</div>
+                                    </div>
+
+                                    <div class="col-3  p-0">
+                                      <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                                          <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                                    </div>
+                                  </div>
+                                </div> -->
+                          @endif
                         @endforeach
+
+
                       </div>
                     </div>
                 
@@ -185,106 +372,106 @@
             <!-- Products grid-->
             <div class="row mx-n2">
             @php $witems = Cart::instance('wishlist')->content()->pluck('id');  @endphp
-            @foreach ($exhibition as $franchise)
-              <!-- Product-->
-              <div class="col-md-4 col-sm-6 px-2 mb-4">
+              @foreach ($exhibition as $franchise)
+                <div class="col-md-4 col-sm-6 px-2 mb-4">
 
-                <div class="card product-card"> <!--<span class="badge bg-danger badge-shadow">Sale</span>-->
-                  <div class="product-card-actions d-flex align-items-center">
-                    <a class="btn-action nav-link-style me-2" href=""><i class="bi bi-shuffle me-1"></i>Compare</a>
-                      @if($witems->contains($franchise->id))
-                          <button class="btn-wishlist btn-sm" type="button" href="" wire:click.prevent="removefromWishlist({{$franchise->id}})" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
-                          <i class=" bi bi-heart-fill"></i></button>
-                      @else
-                          <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
-                          <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->eventname}}',{{$franchise->max_pass}})">
-                            <i class=" bi bi-heart"></i></a></button>
-                      @endif
-                  </div>
-
-                  <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
-                  <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
-                  
-                  <div class="card-body py-2">
-                        <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
-                          </a>
-                          <!--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->event->brand_name, 24)}}</a></h3>-->
-                    
-                      <div class="d-flex justify-content-between">
-                        <div class="product-price"><h3 class="product-title fs-sm">
-                          <a href="{{route('event.details',['slug' => $franchise->event->slug])}}"><strong>{{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</strong></a></h3></div>
-                        <div class="star-rating align-center">
-                        <!--untitled-1 line 558 -574-->
-                        </div>
-                      </div>
-
-                          <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text">
-                            <small> <i class="bi bi-calendar3"></i>
-                            @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
-                                {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M Y ')}}
-                              @else
-                                {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M Y')}}
-                              @endif 
-                            </small></span>
-                              <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
-                            </div>
-                            
-                            <div class="star-rating">
-                            <span class="text">
-                            <small></small></span>
-                            </div>
-                          </div>
-
-                          <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text">
-                            <small><i class="bi bi-geo-alt-fill fs-sm"></i>{{$franchise -> venue}}, {{$franchise -> city}}</small></span>
-                              <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
-                            </div>
-
-                            
-                            <div class="star-rating">
-                            <span class="text">
-                            <small></small></span>
-                            </div>
-                          </div>
-                  </div>
-
-                  <div class="card-body card-body-hidden">
-                    <div class="text-center pb-2">
-                      <!--<div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color1" id="white" checked="">
-                        <label class="form-option-label rounded-circle" for="white"><span class="form-option-color rounded-circle" style="background-color: #eaeaeb;"></span></label>
-                      </div>
-                      <div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color1" id="blue">
-                        <label class="form-option-label rounded-circle" for="blue"><span class="form-option-color rounded-circle" style="background-color: #d1dceb;"></span></label>
-                      </div>
-                      <div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color1" id="yellow">
-                        <label class="form-option-label rounded-circle" for="yellow"><span class="form-option-color rounded-circle" style="background-color: #f4e6a2;"></span></label>
-                      </div>
-                      <div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color1" id="pink">
-                        <label class="form-option-label rounded-circle" for="pink"><span class="form-option-color rounded-circle" style="background-color: #f3dcff;"></span></label>
-                      </div>-->
+                  <div class="card product-card"> <!--<span class="badge bg-danger badge-shadow">Sale</span>-->
+                    <div class="product-card-actions d-flex align-items-center">
+                      <a class="btn-action nav-link-style me-2" href=""><i class="bi bi-shuffle me-1"></i>Compare</a>
+                        @if($witems->contains($franchise->id))
+                            <button class="btn-wishlist btn-sm" type="button" href="" wire:click.prevent="removefromWishlist({{$franchise->id}})" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
+                            <i class=" bi bi-heart-fill"></i></button>
+                        @else
+                            <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
+                            <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->eventname}}',{{$franchise->max_pass}})">
+                              <i class=" bi bi-heart"></i></a></button>
+                        @endif
                     </div>
 
-                    <div class="d-flex mb-2">
+                    <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                    <img src="{{url('public/assets/image/exhibition/'.$franchise->event->image)}}" alt="{{Str::limit($franchise->event->eventname, 24)}}"></a>
+                    
+                    <div class="card-body py-2">
+                          <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->event->slug])}}">
+                            </a>
+                            <!--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->event->brand_name, 24)}}</a></h3>-->
                       
-                      <a class=" text-center btn btn-primary btn-sm mx-1" type="button" href="{{route('event.details',['slug' => $franchise->event->slug])}}"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a></li>
-                      <a class=" text-center btn btn-primary btn-sm mx-1" type="button" 
-                      href="#" wire:click.prevent="store({{$franchise->event->id}},'{{$franchise->event->eventname}}',{{$franchise->event->max_pass}})">
-                      <i class=" bi bi-cart fs-sm me-1"></i>Apply</a></li>
-                      
+                        <div class="d-flex justify-content-between">
+                          <div class="product-price"><h3 class="product-title fs-sm">
+                            <a href="{{route('event.details',['slug' => $franchise->event->slug])}}"><strong>{{ucwords(trans(Str::limit($franchise->event->eventname, 24)))}}</strong></a></h3></div>
+                          <div class="star-rating align-center">
+                          <!--untitled-1 line 558 -574-->
+                          </div>
+                        </div>
+
+                            <div class="d-flex justify-content-between">
+                              <div class="product-price"><span class="text">
+                              <small> <i class="bi bi-calendar3"></i>
+                              @if(Carbon\Carbon::parse ($franchise->event->startdate)->format('M') != Carbon\Carbon::parse ($franchise->event->enddate)->format('M'))
+                                  {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M Y ')}}
+                                @else
+                                  {{Carbon\Carbon::parse ($franchise->event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->event->enddate)->format('D, d M Y')}}
+                                @endif 
+                              </small></span>
+                                <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
+                              </div>
+                              
+                              <div class="star-rating">
+                              <span class="text">
+                              <small></small></span>
+                              </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                              <div class="product-price"><span class="text">
+                              <small><i class="bi bi-geo-alt-fill fs-sm"></i>{{$franchise -> venue}}, {{$franchise -> city}}</small></span>
+                                <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
+                              </div>
+
+                              
+                              <div class="star-rating">
+                              <span class="text">
+                              <small></small></span>
+                              </div>
+                            </div>
+                    </div>
+
+                    <div class="card-body card-body-hidden">
+                      <div class="text-center pb-2">
+                        <!--<div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color1" id="white" checked="">
+                          <label class="form-option-label rounded-circle" for="white"><span class="form-option-color rounded-circle" style="background-color: #eaeaeb;"></span></label>
+                        </div>
+                        <div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color1" id="blue">
+                          <label class="form-option-label rounded-circle" for="blue"><span class="form-option-color rounded-circle" style="background-color: #d1dceb;"></span></label>
+                        </div>
+                        <div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color1" id="yellow">
+                          <label class="form-option-label rounded-circle" for="yellow"><span class="form-option-color rounded-circle" style="background-color: #f4e6a2;"></span></label>
+                        </div>
+                        <div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color1" id="pink">
+                          <label class="form-option-label rounded-circle" for="pink"><span class="form-option-color rounded-circle" style="background-color: #f3dcff;"></span></label>
+                        </div>-->
                       </div>
-                      <div class="text-center"><a class="nav-link-style fs-ms" href="{{route('event.details',['slug' => $franchise->event->slug])}}" data-bs-toggle="modal"><i class=" bi bi-eye align-middle me-1"></i>Contact details</a></div> 
-                   
+
+                      <div class="d-flex mb-2">
+                        
+                        <a class=" text-center btn btn-primary btn-sm mx-1" type="button" href="{{route('event.details',['slug' => $franchise->event->slug])}}"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a></li>
+                        <a class=" text-center btn btn-primary btn-sm mx-1" type="button" 
+                        href="#" wire:click.prevent="store({{$franchise->event->id}},'{{$franchise->event->eventname}}',{{$franchise->event->max_pass}})">
+                        <i class=" bi bi-cart fs-sm me-1"></i>Apply</a></li>
+                        
+                        </div>
+                        <div class="text-center"><a class="nav-link-style fs-ms" href="{{route('event.details',['slug' => $franchise->event->slug])}}" data-bs-toggle="modal"><i class=" bi bi-eye align-middle me-1"></i>Contact details</a></div> 
+                    
+                    </div>
+                  
                   </div>
-                
+
+                  <hr class="d-sm-none">
                 </div>
-                <hr class="d-sm-none">
-              </div>
               @endforeach
             </div>
 
@@ -432,3 +619,9 @@
         });
       </script>
     @endpush
+
+
+
+    
+                              
+                      

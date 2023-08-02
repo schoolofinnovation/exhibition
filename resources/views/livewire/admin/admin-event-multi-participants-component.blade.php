@@ -746,7 +746,7 @@
                                     @foreach ($participants as $participant) 
                                         {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
                                             @php 
-                                            $findoutsponsored = DB::table('participants')->where('event_id', $event_id)->where('brand_id' , $participant->id)->pluck('sponsership_id');
+                                            $findoutsponsored = DB::table('participants')->where('event_id', $event_id)->where('brand_id' , $participant->id)->value('sponsership_id');
                                             @endphp
 
                                                
@@ -755,7 +755,7 @@
                                             @if(is_null($findoutsponsored))
                                             
                                             @else
-                                            <span class="badge  border-1 text-right border-dark text-dark mr-1"> {{$findoutsponsored->Sponser->plan}}</span>
+                                            <span class="badge  border-1 text-right border-dark text-dark mr-1"> {{$findoutsponsored}}</span>
                                             @endif
                                             <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
                                             <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">

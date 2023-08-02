@@ -197,13 +197,13 @@
                             @php
                                 $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
                                 $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
-                                $checkCommentop = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
+                                $checkCommentop = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->value('rate');
                             @endphp
 
                             @if(count($checkComment) > '0')
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">
                                 <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkCommentop->rate}}/10</a></span>
+                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkCommentop}}/10</a></span>
                               </li>
                             @else
                               <li class="d-flex justify-content-between px-2 m-0 lh-1">

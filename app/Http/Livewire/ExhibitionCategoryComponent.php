@@ -66,7 +66,7 @@ class ExhibitionCategoryComponent extends Component
         //dd( $this->categry, $findcategryIDfromExpos->id );
 
         $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
-        $mytime = Carbon::now()->format('y-m-d');
+        $mytime = Carbon::now()->format('Y-m-d');
 
         if($this->sorting == 'date'){
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categ)->orderBy('created_at','DESC')->paginate($this->pagesize); 
@@ -79,9 +79,12 @@ class ExhibitionCategoryComponent extends Component
         }
         else{
             $exhibition = Denco :: where('expo_id', $findcategryIDfromExpos->id)->get(); 
-            
-           // $exhibition = Event::where('id', [$seco->event_id])->where('eventype', $this->eventype)->paginate($this->pagesize); 
-        //dd($seco);
+          // $exhibition = Event::where('id', $exhibit)->orderBy('startdate','ASC')->get();
+           // $exhibitionfinder = Event::where('id', [$seco->event_id])->where('eventype', $this->eventype)->paginate($this->pagesize); 
+             
+           //$find//upcomingexpo = $exhibition->get; 
+
+        //dd($exhibit, $exhibition);
         }
         
         if(Auth::check())

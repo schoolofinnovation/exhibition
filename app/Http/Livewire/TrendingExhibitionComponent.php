@@ -21,7 +21,7 @@ class TrendingExhibitionComponent extends Component
       if (Auth::check()) 
         { $evento->user_id = Auth::user()->id; }
       else
-      { $evento->user_id = 'NULL' ; }
+      { $evento->user_id = NULL ; }
 
       $evento->view_count = '1';
       $evento->requestedPage = url()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $event->slug]);

@@ -10,8 +10,5 @@ class Sponsership extends Model
     use HasFactory;
     protected $table = "sponserships";
 
-    public function Sponser()
-    {
-        return $this->belongsTo(Participant::class);
-    }
+   
 }
