@@ -308,13 +308,7 @@ public $hastag;
       session()->flash('message','User  has been  deleted successfully');
     }
 
-    public function UpgradeDesc()
-    {  
-       $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->orderBy('startdate','asc')->get();
-
-       
-
-    }
+    
 
     //dd($rti);
 

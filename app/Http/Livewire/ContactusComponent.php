@@ -71,7 +71,7 @@ class ContactusComponent extends Component
         $contact -> seniority = $this -> seniority;
         $contact -> save();
         session()->flash('message', 'Thank you for getting in touch !!!' );
-        $this->sendEmail($contact);
+        //$this->sendEmail($contact);
         $this->reset();
         return redirect()->route('contact', ['board' => 'thank-you-for-reaching-out-to-us']);
         //return back()->withinput();

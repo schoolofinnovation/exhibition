@@ -207,7 +207,7 @@
                 <div class="fs-sm text-primary mt-5">In the meantime, feel free to explore more about our services on  <a href="{{asset('/')}}">our website</a>. We appreciate your interest in The Exhibition Network</div>
               </div>
           @else
-              @livewire('contactus-component')
+              
           @endif
         </div>
       </div>

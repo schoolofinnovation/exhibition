@@ -73,7 +73,7 @@
 
           <a href="#" wire:click.prevent="updateEvent({{$evento->id}},'canceal')" class="btn btn-primary btn-sm">Canceal</a>
           <a href="#" wire:click.prevent="updateEvent({{$evento->id}},'postpone')" class="btn btn-primary btn-sm">Postpone</a>
-
+          <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="Upgrade({{$evento->id}})"> upgrade</a>
           
       </div>
      </div>

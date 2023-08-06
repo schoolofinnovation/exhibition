@@ -1366,8 +1366,7 @@
       @endif
 
       @if($board == 'upgradeContent')
-      
-       
+          
       @endif
 
       @if($board == 'viewso')
