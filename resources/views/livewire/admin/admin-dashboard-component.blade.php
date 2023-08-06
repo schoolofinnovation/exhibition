@@ -1365,6 +1365,11 @@
         </div>
       @endif
 
+      @if($board == 'upgradeContent')
+      
+       
+      @endif
+
       @if($board == 'viewso')
 
         <div class="d-table table-layout-fixed w-100"> 

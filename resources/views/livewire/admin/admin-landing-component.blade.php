@@ -98,9 +98,12 @@
                             <div class="p-3 border rounded border-dark bg-light text-center">Sht Desc</div>
                         </a> 
                     </div>
-                   
-                   
-                    
+
+                    <div class="col">
+                         <a href="{{route('admin.dashboard', ['board' => 'upgradeContent'])}}">
+                            <div class="p-3 border rounded border-dark bg-light text-center">Error free</div>
+                        </a> 
+                    </div>
                 </div>
             </div>
           </div>

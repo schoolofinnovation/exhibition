@@ -78,13 +78,11 @@ class ExhibitionCategoryComponent extends Component
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categ)->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
         else{
-            $exhibition = Denco :: where('expo_id', $findcategryIDfromExpos->id)->get(); 
-          // $exhibition = Event::where('id', $exhibit)->orderBy('startdate','ASC')->get();
-           // $exhibitionfinder = Event::where('id', [$seco->event_id])->where('eventype', $this->eventype)->paginate($this->pagesize); 
-             
-           //$find//upcomingexpo = $exhibition->get; 
-
-        //dd($exhibit, $exhibition);
+            $exhibition = Denco :: where('expo_id', $findcategryIDfromExpos->id)->pluck('event_id'); 
+            //$findsqnc = $exhibition->event()->orderBy('startdate','ASC')->get();
+           // $collection = collect($exhibition);
+            //$finer = $collection->event()->get();
+           //dd( $exhibition, $collection, $finer);
         }
         
         if(Auth::check())
