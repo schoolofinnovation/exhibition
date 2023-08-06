@@ -1366,7 +1366,9 @@
       @endif
 
       @if($board == 'upgradeContent')
-          
+
+      upgrade Error
+      <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="Upgrade"> upgrade</a>
       @endif
 
       @if($board == 'viewso')

@@ -140,10 +140,10 @@ class AdminDetailComponent extends Component
         $statementEventSlug = trim($statementID->slug); 
         $statementEventVenue = trim($statementID->venue); 
         $statementEventCity = trim($statementID->city); 
-        $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)); 
-        $statementEventEndDate = trim(Carbon::parse ($statementID->enddate));
+        $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)->format('Y-m-d')); 
+        $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('Y-m-d'));
 
-        
+       
         $statementID = Event::find($id);
 
         $statementID->eventname =  $statementEventName;
@@ -158,7 +158,7 @@ class AdminDetailComponent extends Component
 
     }
 
-    
+
     use WithPagination;
     public function render()
     {

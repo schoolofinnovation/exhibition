@@ -308,7 +308,34 @@ public $hastag;
       session()->flash('message','User  has been  deleted successfully');
     }
 
-    
+    public function Upgrade()
+    {  
+       $eventShtdesc = Event::where('status','1')->where('admstatus','1')->orderBy('startdate','asc')->get();
+       foreach($eventShtdesc as $errorimprove)
+       {
+        $statementID = Event::find($errorimprove->id);
+        
+        $statementEventName = trim($statementID->eventname); 
+        $statementEventSlug = trim($statementID->slug); 
+        $statementEventVenue = trim($statementID->venue); 
+        $statementEventCity = trim($statementID->city); 
+        $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)->format('Y-m-d')); 
+        $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('Y-m-d'));
+
+        
+        $statementID = Event::find($errorimprove->id);
+
+        $statementID->eventname =  $statementEventName;
+        $statementID->slug =  $statementEventSlug;
+        $statementID->venue =  $statementEventVenue;
+        $statementID->city = $statementEventCity;
+        $statementID->startdate = $statementEventStartDate;
+        $statementID->enddate = $statementEventEndDate;
+
+        $statementID->save();
+       }
+
+    }
 
     //dd($rti);
 

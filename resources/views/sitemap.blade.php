@@ -8,5 +8,16 @@
          <changefreq>daily</changefreq>
       </url>
    @endforeach
+
+   @foreach ($postie as $sitemap)
+      <url>
+         <loc>{{url('/rating/'.$sitemap->slug)}}</loc>
+         <priority>1.0</priority>
+         <lastmod>{{gmdate('Y-m-d\TH:i:s\Z',strtotime($sitemap->updated_at))}}</lastmod>
+         <changefreq>daily</changefreq>
+      </url>
+   @endforeach
+
+  
 </urlset>
 
