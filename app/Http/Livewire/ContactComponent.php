@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class ContactComponent extends Component
 {
+    public $board;
     //orderBy('id','DESC')->get();
     public function render()
     {

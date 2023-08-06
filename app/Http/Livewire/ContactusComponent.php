@@ -73,7 +73,8 @@ class ContactusComponent extends Component
         session()->flash('message', 'Thank you for getting in touch !!!' );
         $this->sendEmail($contact);
         $this->reset();
-        return back()->withinput();
+        return redirect()->route('contact', ['board' => 'thank-you-for-reaching-out-to-us']);
+        //return back()->withinput();
     }
 
     public function render()

@@ -59,7 +59,7 @@
                 <h3 class="h6 mb-3">Email addresses</h3>
                 <ul class="list-unstyled fs-sm mb-0">
                   <li><span class="text-muted me-1">Official</span> <br><a class="nav-link-style" href="mailto:+108044357260">{{$email->email}}</a></li>
-                  <!--<li class="mb-0"><span class="text-muted me-1">Support:</span><a class="nav-link-style" href="mailto:support@example.com">support@example.com</a></li>-->
+                  <!--<li class="mb-0"><span class="text-muted me-1">Support:</span><a class="nav-link-style" href="mailto:support@exhibition.org.in">support@exhibition.org.in</a></li>-->
                 </ul>
               </div>
             </div>
@@ -79,7 +79,7 @@
               <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/03.jpg" width="96" alt="Jonathan Doe">
                 <div class="ps-3">
                   <h6 class="fs-base pt-1 mb-1">Jonathan Doe</h6>
-                  <p class="fs-ms text-muted mb-0">CEO, Co-founder</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:johndoe@example.com"><i class="ci-mail me-2"></i>johndoe@example.com</a>
+                  <p class="fs-ms text-muted mb-0">CEO, Co-founder</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:johndoe@exhibition.org.in"><i class="ci-mail me-2"></i>johndoe@exhibition.org.in</a>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
               <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/04.jpg" width="96" alt="Barbara Palson">
                 <div class="ps-3">
                   <h6 class="fs-base pt-1 mb-1">Barbara Palson</h6>
-                  <p class="fs-ms text-muted mb-0">Chief of Marketing</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.palson@example.com"><i class="ci-mail me-2"></i>b.palson@example.com</a>
+                  <p class="fs-ms text-muted mb-0">Chief of Marketing</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.palson@exhibition.org.in"><i class="ci-mail me-2"></i>b.palson@exhibition.org.in</a>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@
               <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/06.jpg" width="96" alt="William Smith">
                 <div class="ps-3">
                   <h6 class="fs-base pt-1 mb-1">William Smith</h6>
-                  <p class="fs-ms text-muted mb-0">Financial director</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:w.smith@example.com"><i class="ci-mail me-2"></i>w.smith@example.com</a>
+                  <p class="fs-ms text-muted mb-0">Financial director</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:w.smith@exhibition.org.in"><i class="ci-mail me-2"></i>w.smith@exhibition.org.in</a>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@
               <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/02.jpg" width="96" alt="Amanda Gallaher">
                 <div class="ps-3">
                   <h6 class="fs-base pt-1 mb-1">Amanda Gallaher</h6>
-                  <p class="fs-ms text-muted mb-0">Lead UX designer</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:a.gallaher@example.com"><i class="ci-mail me-2"></i>a.gallaher@example.com</a>
+                  <p class="fs-ms text-muted mb-0">Lead UX designer</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:a.gallaher@exhibition.org.in"><i class="ci-mail me-2"></i>a.gallaher@exhibition.org.in</a>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@
               <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/01.jpg" width="96" alt="Benjamin Miller">
                 <div class="ps-3">
                   <h6 class="fs-base pt-1 mb-1">Benjamin Miller</h6>
-                  <p class="fs-ms text-muted mb-0">Website development</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>b.miller@example.com</a>
+                  <p class="fs-ms text-muted mb-0">Website development</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@exhibition.org.in"><i class="ci-mail me-2"></i>b.miller@exhibition.org.in</a>
                 </div>
               </div>
             </div>
@@ -119,7 +119,7 @@
               <div class="d-flex align-items-center"><img class="rounded-circle" src="img/team/07.jpg" width="96" alt="Miguel Rodrigez">
                 <div class="ps-3">
                   <h6 class="fs-base pt-1 mb-1">Miguel Rodrigez</h6>
-                  <p class="fs-ms text-muted mb-0">Content manager</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@example.com"><i class="ci-mail me-2"></i>m.rodrigez@example.com</a>
+                  <p class="fs-ms text-muted mb-0">Content manager</p><a class="nav-link-style fs-ms text-nowrap" href="mailto:b.miller@exhibition.org.in"><i class="ci-mail me-2"></i>m.rodrigez@exhibition.org.in</a>
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@
         <h2 class="h1 text-center mb-2">
         Want to work together?</h2>
         <p class="fs-sm text-muted text-center">Drop us a line at</p>
-                <div class="fs-sm text-primary text-center">newbusiness@councilofinnovation.com<i class=" bi bi-chevron-right align-middle ms-1"></i></div>
+                <div class="fs-sm text-primary text-center">team@exhibition.org.in<i class=" bi bi-chevron-right align-middle ms-1"></i></div>
                 <p class="fs-sm text-muted text-center">and we’ll see how we can help you.</p>
        
         <div class="row pt-4">
@@ -147,7 +147,7 @@
                     <div class="ps-3"><span class="fs-ms text-muted">Call us</span><a class="d-block text-heading fs-sm" href="tel:+178632256040">{{$corporate->phone}}</a></div>
                   </li>
                   <li class="d-flex pt-2"><i class="bi bi-envelope fs-lg mt-2 mb-0 text-primary"></i>
-                    <div class="ps-3"><span class="fs-ms text-muted">Write us</span><a class="d-block text-heading fs-sm" href="mailto:orlando@example.com">{{$corporate->email}}</a></div>
+                    <div class="ps-3"><span class="fs-ms text-muted">Write us</span><a class="d-block text-heading fs-sm" href="mailto:orlando@exhibition.org.in">{{$corporate->email}}</a></div>
                   </li>
                 </ul>
               </div>
@@ -165,7 +165,7 @@
                     <div class="ps-3"><span class="fs-ms text-muted">Call us</span><a class="d-block text-heading fs-sm" href="tel:+184725276533">{{$head->phone}}</a></div>
                   </li>
                   <li class="d-flex pt-2"><i class="bi bi-envelope fs-lg mt-2 mb-0 text-primary"></i>
-                    <div class="ps-3"><span class="fs-ms text-muted">Write us</span><a class="d-block text-heading fs-sm" href="mailto:chicago@example.com">{{$head->email}}</a></div>
+                    <div class="ps-3"><span class="fs-ms text-muted">Write us</span><a class="d-block text-heading fs-sm" href="mailto:chicago@exhibition.org.in">{{$head->email}}</a></div>
                   </li>
                 </ul>
               </div>
@@ -183,7 +183,7 @@
                     <div class="ps-3"><span class="fs-ms text-muted">Call us</span><a class="d-block text-heading fs-sm" href="tel:+1212477690000">{{$branch->phone}}</a></div>
                   </li>
                   <li class="d-flex pt-2"><i class="bi bi-envelope fs-lg mt-2 mb-0 text-primary"></i>
-                    <div class="ps-3"><span class="fs-ms text-muted">Write us</span><a class="d-block text-heading fs-sm" href="mailto:newyork@example.com">{{$branch->email}}</a></div>
+                    <div class="ps-3"><span class="fs-ms text-muted">Write us</span><a class="d-block text-heading fs-sm" href="mailto:newyork@exhibition.org.in">{{$branch->email}}</a></div>
                   </li>
                 </ul>
               </div>
@@ -201,8 +201,14 @@
              </iframe>
           </div>
           
-          @livewire('contactus-component')
-
+          @if($board == 'thank-you-for-reaching-out-to-us')
+              <div class="col-lg-6 px-4 px-xl-5 py-5 border-top">
+                <h2 class="h4 my-5"> Thank you for reaching out to us! Your inquiry is important to us, and we will get back to you shortly. </h2>
+                <div class="fs-sm text-primary mt-5">In the meantime, feel free to explore more about our services on  <a href="{{asset('/')}}">our website</a>. We appreciate your interest in The Exhibition Network</div>
+              </div>
+          @else
+              @livewire('contactus-component')
+          @endif
         </div>
       </div>
       </div>
