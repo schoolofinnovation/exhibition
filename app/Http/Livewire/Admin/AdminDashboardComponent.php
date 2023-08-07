@@ -334,7 +334,6 @@ public $hastag;
 
         $statementID->save();
        }
-
     }
 
     //dd($rti);
