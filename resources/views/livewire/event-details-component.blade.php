@@ -907,7 +907,7 @@
             </section>
            @endif
 
-          <!-- Card group sec_last-->
+          <!-- copy Card group sec_last-->
             <section class="container py-5">
 
               <!-- Card group -->
@@ -947,9 +947,9 @@
 
             <section class="card text-center py-5 border-0">
               <div class="card-body">
-                <h5 class="card-title h2">Buy  your Expo 2022 Tickets Now </h5>
-                <p class="card-text fs-sm text-muted">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-sm btn-primary">Buy access pass</a>
+                <h5 class="card-title h2">Buy your Expo 2023 Tickets Now </h5>
+                <p class="card-text fs-sm text-muted">Connect with The Exhibtion Network: Exhibtion Magazine - Where You Meet the Right People at the Right Time and Right Place.</p>
+                <a href="#" class="btn btn-sm btn-primary">Expand your Reach</a>
               </div>
             </section>
             
@@ -960,33 +960,46 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
                     <div class="card-body">
-                      <h5 class="card-title">World Expos' History</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                      <h5 class="card-title">Find Business</h5>
+                      <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
+                      <a href="#" class="btn btn-sm btn-primary">Get Directory</a>
                     </div>
                   </div>
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
                     <div class="card-body">
-                      <h5 class="card-title">Expo 2023 Story</h5>
-                      <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                      <h5 class="card-title">The Exhibition Magazine</h5>
+                       <p class="card-text fs-sm text-muted"><!--Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact. -->
+
+                      Elevate your brand's visibility and influence by featuring in The Exhibition Magazine. Reach a select audience of industry insiders, enthusiasts, and decision-makers who align with your values. With our Smart Presence Solution, your brand will be positioned in front of the Right People, at the Right Time and in the Right Place.
+                      </p>
+                      <a href="#" class="btn btn-sm btn-primary">Advertise</a>
                     </div>
                   </div>
 
-                  <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
                     <div class="card-body">
-                      <h5 class="card-title">After Expo</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                      <h5 class="card-title">Build a Network</h5>
+                      <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
+                      <a href="#" class="btn btn-sm btn-primary">Join Right Place</a>
                     </div>
                   </div>
+
+                  <div class="card border-0">
+                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
+                    <div class="card-body">
+                      <h5 class="card-title">Business Brand Managers</h5>
+                      <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
+                      <a href="#" class="btn btn-sm btn-primary">Hire Us.</a>
+                    </div>
+                  </div>
+
+                  
                 </div>
             </section>
 
@@ -1005,7 +1018,7 @@
     </main>
 
     @push('scripts')
-    <script type = "application/ld+json">
+      <script type = "application/ld+json">
             {
                   "@context": "https://schema.org",
                   "@type": "Event",
@@ -1364,6 +1377,7 @@
                   "autoplay":false,
                   "mouseDrag":true,
                   "controls": false,
+                  "fixedWidth": 200,
                 },
                 "500": {
                   "items": 3,
