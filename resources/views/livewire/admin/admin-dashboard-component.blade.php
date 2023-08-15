@@ -51,7 +51,7 @@
       </div>--}}
        
 <!--Mobile event start View-->      
-    @if($board == 'event')           
+    @if($board == 'event')          
       <div class="container d-lg-none">
         <div class="row">
           <div class="col-md-6 offset-md-3">

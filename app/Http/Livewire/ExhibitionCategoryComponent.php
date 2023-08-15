@@ -8,6 +8,7 @@ use App\Models\Expo;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -78,11 +79,56 @@ class ExhibitionCategoryComponent extends Component
             $exhibition = Event ::where('eventype', $this->eventype)->whereDate('enddate', '>=',$mytime)->where('admstatus','1')->where('status','1')->where('category_id', $this->categ)->orderBy('startdate','ASC')->paginate($this->pagesize); 
         }
         else{
-            $exhibition = Denco :: where('expo_id', $findcategryIDfromExpos->id)->pluck('event_id'); 
+           // $exhibition = Denco :: where('expo_id', $findcategryIDfromExpos->id)->get(); 
             //$findsqnc = $exhibition->event()->orderBy('startdate','ASC')->get();
            // $collection = collect($exhibition);
             //$finer = $collection->event()->get();
-           //dd( $exhibition, $collection, $finer);
+           
+            $exhibition = DB::table('events')
+           ->join('dencos','dencos.event_id','=','events.id')
+           ->join('expos','expos.id' ,'=','dencos.expo_id')
+           ->select('events.id as EventName','expos.id as Category','events.startdate as EventDate')->where('expos.id', 588)
+           ->orderBy('events.startdate','DESC')
+           ->get();
+
+
+        //    $result = DB::table('events')
+        //    ->join('dencos','dencos.event_id','=','events.id')
+        //    ->join('expos','expos.id' ,'=','dencos.expo_id')
+        //    ->select('events.eventname as EventName','expos.tag as Category','events.startdate as EventDate')
+        //    ->orderBy('events.startdate','ASC')
+        //    ->get();
+
+           
+
+        //    $categoryresult = DB::table('events')
+        //    ->join('dencos','dencos.event_id','=','events.id')
+        //    ->join('expos','expos.id' ,'=','dencos.expo_id')
+        //    ->select('expos.id as Category', DB::raw('count(events.id) as total'))
+        //    ->orderBy('total','desc')
+        //    ->groupBy('expos.id')
+        //    ->get();
+
+        //    $getnamecategoryresult = DB::table('events')
+        //    ->join('dencos','dencos.event_id','=','events.id')
+        //    ->join('expos','expos.id' ,'=','dencos.expo_id')
+        //    ->select('expos.id as Category', DB::raw('count(events.id) as total'), DB::raw('GROUP_CONCAT(events.eventname) as Eventlo'),DB::raw('GROUP_CONCAT(events.startdate) as Evento'))
+        //    ->orderBy('total','desc')
+        //    ->groupBy('expos.id')
+        //    ->get();
+
+        //    $singlecategoryresult = DB::table('events')
+        //    ->join('dencos','dencos.event_id','=','events.id')
+        //    ->join('expos','expos.id' ,'=','dencos.expo_id')
+        //    ->select('expos.id as Category', DB::raw('count(events.id) as total'), DB::raw('GROUP_CONCAT(events.startdate) as Evento'))
+        //    ->orderBy('Evento','asc')
+        //    ->groupBy('expos.id')
+        //    ->having('expos.id','=',588)
+        //    ->get();
+
+
+           //dd($singlecategorywithdateresult, $result,  $categoryresult , $getnamecategoryresult, $singlecategoryresult);
+           
         }
         
         if(Auth::check())
