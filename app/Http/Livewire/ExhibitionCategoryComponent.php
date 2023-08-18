@@ -87,9 +87,11 @@ class ExhibitionCategoryComponent extends Component
             $exhibition = DB::table('events')
            ->join('dencos','dencos.event_id','=','events.id')
            ->join('expos','expos.id' ,'=','dencos.expo_id')
-           ->select('events.id as EventName','expos.id as Category','events.startdate as EventDate')->where('expos.id', 588)
+           ->select('events.id as EventName','expos.id as Category','events.startdate as EventDate')->where('expos.id', $findcategryIDfromExpos->id)
            ->orderBy('events.startdate','DESC')
            ->get();
+
+          
 
 
         //    $result = DB::table('events')
