@@ -1377,7 +1377,7 @@
                   "autoplay":false,
                   "mouseDrag":true,
                   "controls": false,
-                  "fixedWidth": 200,
+                  "fixedWidth": 280,
                 },
                 "500": {
                   "items": 3,

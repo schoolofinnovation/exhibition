@@ -17,7 +17,7 @@
       </div>
 
       <div class="d-flex badgese">
-        @foreach( $finder as $categ) 
+        <!-- @foreach( $finder as $categ) 
         @php
            $findcountevent = DB::table('dencos')->where('expo_id', $categ->id)->count()
         @endphp
@@ -26,8 +26,19 @@
           {{ucwords(trans($categ->tag))}}</a>--}}
           <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->id}})">
           {{ucwords(trans($categ->tag))}}  {{$findcountevent}} </a>
+        @endforeach -->
+
+        @foreach( $getnamecategoryresult as $categ) 
+        @php
+           $findcountevent = DB::table('expos')->where('id', $categ->Category)->first()
+        @endphp
+
+          <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
+            {{ucwords(trans($findcountevent->tag))}}  {{$categ->total}}</a>
+        
         @endforeach
       </div>
+      
       
       <div class="row g-0 py-0 mx-n2 my-Slider3"> 
         {{-- px-2 mb-1 --}}
@@ -117,6 +128,8 @@
           </div>
         @endforeach
       </div>
+
+      
     </section>
 </main>
 

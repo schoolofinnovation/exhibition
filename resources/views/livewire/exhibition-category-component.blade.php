@@ -398,7 +398,7 @@
                                       <i class=" bi bi-heart-fill"></i></button>
                                   @else
                                       <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
-                                      <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->eventname}}',{{$franchise->max_pass}})">
+                                      <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->eventname}}', 1)">
                                         <i class=" bi bi-heart"></i></a></button>
                                   @endif
                               </div>
@@ -409,7 +409,7 @@
                               <div class="card-body py-2">
                                     <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->slug])}}">
                                       </a>
-                                      <!--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->brand_name, 24)}}</a></h3>-->
+                                      {{--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->brand_name, 24)}}</a></h3>--}}
                                 
                                   <div class="d-flex justify-content-between">
                                     <div class="product-price"><h3 class="product-title fs-sm">
@@ -475,7 +475,7 @@
                                   
                                   <a class=" text-center btn btn-primary btn-sm mx-1" type="button" href="{{route('event.details',['slug' => $franchise->slug])}}"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a></li>
                                   <a class=" text-center btn btn-primary btn-sm mx-1" type="button" 
-                                  href="#" wire:click.prevent="store({{$franchise->id}},'{{$franchise->eventname}}',{{$franchise->max_pass}})">
+                                  href="#" wire:click.prevent="store({{$franchise->id}},'{{$franchise->eventname}}', 1)">
                                   <i class=" bi bi-cart fs-sm me-1"></i>Apply</a></li>
                                   
                                   </div>
