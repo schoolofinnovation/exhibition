@@ -67,7 +67,7 @@
                     @foreach (Cart::instance('cart')->content() as $item)
                       <div class="d-flex align-items-center pb-2 border-bottom">
                         <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$findevent->slug])}}">
-                        <img class="rounded-1" src="{{asset('public/exhibition') }}/{{$findevent->image}}" alt="{{Str::limit($findevent->eventname, 24)}}"  width="64" ></a>
+                        <img class="rounded-1" src="{{asset('public//assets/image/exhibition') }}/{{$findevent->image}}" alt="{{Str::limit($findevent->eventname, 24)}}"  width="64" ></a>
                         
                         <div class="ps-1">
                             <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$findevent->slug])}}">

@@ -3,6 +3,13 @@
     @section('page_description','Job')
     @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
     <main>     
+
+    @php
+                    $data = session()->get('eventID');  
+                    $findevent = DB::table('events')->where('id', $data)->first()
+
+                    @endphp
+
       <!-- Page Title-->
       <div class="page-title-overlap bg-accent pt-4">
         <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
@@ -336,11 +343,11 @@
                         @foreach (Cart::instance('cart')->content() as $item)
                           <div class="d-flex align-items-center pb-2 border-bottom">
 
-                            <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$item->model->event->slug])}}">
-                            <img class="rounded-1" src="{{asset ('exhibition') }}/{{$item->model->event->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
+                            <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$findevent->slug])}}">
+                            <img class="rounded-1" src="{{asset ('exhibition') }}/{{$findevent->image}}" alt="{{Str::limit($item->model->brand_name, 24)}}" alt="{{$item->model->code}}" width="64" ></a>
                               <div class="ps-1">
-                                <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$item->model->event->slug])}}">
-                                {{$item->model->event->eventname}}</a></h6>
+                                <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$findevent->slug])}}">
+                                {{$findevent->eventname}}</a></h6>
 
                                 <div class="widget-product-meta"><span class="text-dark  border-end pe-2 me-2">
                                     @if($item->model->sale_price > 0 &&  $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
