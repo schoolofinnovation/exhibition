@@ -62,7 +62,7 @@ class CheckoutComponent extends Component
       if(Auth::check())
         { return redirect()->route('coicart'); }
       else
-        { return redirect()->route('login'); }
+        { return redirect()->route('event.exhibit'); }
     }
 
     public function setAmountForCheckout()
@@ -156,6 +156,9 @@ class CheckoutComponent extends Component
       }     
 
       $this->setAmountForCheckout(); 
+
+      // $data = session()->all();
+      //  dd($data);
       return view('livewire.checkout-component')->layout('layouts.eblog');
     }
 }

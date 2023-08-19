@@ -36,7 +36,7 @@
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab"> Saved Events</a></li>
               </ul>
 
-                <div class="d-flex badgese pb-2">
+                <!-- <div class="d-flex badgese pb-2">
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
@@ -44,7 +44,7 @@
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
-                </div>
+                </div> -->
 
                 <div class="tab-content pt-1">
                 

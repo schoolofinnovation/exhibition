@@ -18,6 +18,15 @@
       </url>
    @endforeach
 
+   @foreach ($categoryresult as $sitemap)
+      <url>
+         <loc>{{url('/exhibition/expo'.$sitemap->tag)}}</loc>
+         <priority>1.0</priority>
+         <lastmod>{{gmdate('Y-m-d\TH:i:s\Z',strtotime($sitemap->updated_at))}}</lastmod>
+         <changefreq>daily</changefreq>
+      </url>
+   @endforeach
+
   
 </urlset>
 

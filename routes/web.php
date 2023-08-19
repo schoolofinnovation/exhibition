@@ -249,6 +249,7 @@ Route::get('/leadership', TeamComponent::class)->name('team');
 
 //catch lead participants
 Route::get('/exhibit', ExhibitComponent::class)->name('event.exhibit');
+
 //catch exhibition data
 Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');
 

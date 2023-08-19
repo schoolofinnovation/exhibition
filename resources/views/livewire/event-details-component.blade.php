@@ -964,7 +964,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Find Business</h5>
                       <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Get Directory</a>
+                      <a href="{{route('event.exhibit')}}" class="btn btn-sm btn-primary">Get Directory</a>
                     </div>
                   </div>
 
@@ -977,7 +977,7 @@
 
                       Elevate your brand's visibility and influence by featuring in The Exhibition Magazine. Reach a select audience of industry insiders, enthusiasts, and decision-makers who align with your values. With our Smart Presence Solution, your brand will be positioned in front of the Right People, at the Right Time and in the Right Place.
                       </p>
-                      <a href="#" class="btn btn-sm btn-primary">Advertise</a>
+                      <a href="{{route('event.exhibit')}}" class="btn btn-sm btn-primary">Advertise</a>
                     </div>
                   </div>
 
@@ -986,7 +986,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Build a Network</h5>
                       <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Join Right Place</a>
+                      <a href="{{route('event.exhibit')}}" class="btn btn-sm btn-primary">Join Right Place</a>
                     </div>
                   </div>
 
@@ -995,7 +995,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Business Brand Managers</h5>
                       <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Hire Us.</a>
+                      <a href="{{route('event.exhibit')}}" class="btn btn-sm btn-primary">Hire Us.</a>
                     </div>
                   </div>
 
