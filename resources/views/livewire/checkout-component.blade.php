@@ -67,7 +67,7 @@
                     @foreach (Cart::instance('cart')->content() as $item)
                       <div class="d-flex align-items-center pb-2 border-bottom">
                         <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$findevent->slug])}}">
-                        <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$findevent->image}}" alt="{{Str::limit($findevent->eventname, 24)}}"  width="64" ></a>
+                        <img class="rounded-1" src="{{asset('public/exhibition') }}/{{$findevent->image}}" alt="{{Str::limit($findevent->eventname, 24)}}"  width="64" ></a>
                         
                         <div class="ps-1">
                             <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$findevent->slug])}}">
@@ -97,10 +97,10 @@
                         <li class="d-flex justify-content-between align-items-center">
                           <span class="me-2"> Date </span>
                           <span class="text-end">
-                            @if(Carbon\Carbon::parse ($item->model->startdate)->format('M') != Carbon\Carbon::parse ($item->model->enddate)->format('M'))
-                                {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y ')}}
+                            @if(Carbon\Carbon::parse ($findevent->startdate)->format('M') != Carbon\Carbon::parse ($findevent->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($findevent->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($findevent->enddate)->format('D, d M Y ')}}
                               @else
-                                {{Carbon\Carbon::parse ($item->model->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($item->model->enddate)->format('D, d M Y')}}
+                                {{Carbon\Carbon::parse ($findevent->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($findevent->enddate)->format('D, d M Y')}}
                             @endif 
                           </span>
                         </li>
