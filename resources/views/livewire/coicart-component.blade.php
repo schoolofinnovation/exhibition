@@ -377,7 +377,7 @@
                             <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> 10:00</span></li>
                             <li class="d-flex justify-content-between align-items-center"><span class="me-2"> Venue 
                             </span>
-                            <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$item->model->event->venue}} : {{$item->model->event->city}}</span></li>
+                            <span class="text-end"><small><i class="bi bi-currency-rupee"></i></small> {{$findevent->venue}} : {{$findevent->city}}</span></li>
                             
                             <li class="align-items-center">
                               
