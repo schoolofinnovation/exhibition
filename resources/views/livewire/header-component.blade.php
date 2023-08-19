@@ -513,7 +513,7 @@
                                   </div>
                               </div>
                             @elseif(Auth::user()->utype === 'USR')
-                            <div class=" ms-1 toggle" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                              <div class=" ms-1 toggle" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                                 <div class="navbar-tool ms-1">
                                     <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="{{route('login')}}" data-bs-toggle="modal">
 
@@ -555,8 +555,102 @@
                           <div class="navbar-tool-text ms-n3" ><small>Hello, Sign in</small>My Account</div>
                         </a>
 
+                              <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
+                                  
+                                  <div class="offcanvas-header">
+                                    <div class="offcanvas-title h5" id="offcanvasExampleLabel">List your Show <br>
+                                    <span class="fs-xs fw-lighter">Got an event? Partner with us</span></div>
+                                    
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                  </div>
+                              
+                                  <div class="list-group list-group-flush border-bottom scrollarea">
 
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Notifications</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <!--<div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>-->
+                                      </a>
 
+                                      <a href="{{route('user.Orders')}}" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Your Orders</normal>
+                                          <small>
+                                          @if (Auth::check()) 
+                                            <i class="bi bi-chevron-right"></i>
+                                            @else
+                                            <i class="bi bi-lock-fill"></i>
+                                            
+                                            @endif
+                                          </small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">View all your booking & purchases</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">COI Recommends</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter">Get COI business picked just for you</div>
+                                      </a>
+
+                                      <a href="{{route('admin.global')}}" class=" border-0 list-group-item list-group-item-action {{'admin/global' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Global</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Satisfy your palates</div>
+                                      </a>
+
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Luggage, Travel & Stay</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Plan your business trip headache's</div>
+                                      </a>
+                                                                                    
+                                      <a href="#" class=" border-0 list-group-item list-group-item-action {{'user/orders' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Rewards</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                                      </a>
+
+                                      <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Offers</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View your rewards & unlock new ones</div>
+                                      </a>
+
+                                      <a href="{{route('user.profile')}}" class="list-group-item list-group-item-action {{'user/profile' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Accounts & Settings</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">Location, Payments, permissions & More</div>
+                                      </a>
+                                      
+                                      <a href="#" class="list-group-item list-group-item-action {{'user/account' == request()->path() ? 'active' : '' }} py-1 lh-sm" aria-current="true">
+                                        <div class="d-flex w-100 align-items-center justify-content-between">
+                                          <normal class="mb-1">Help & Support</normal>
+                                          <small><i class="bi bi-chevron-right"></i></small>
+                                        </div>
+                                        <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
+                                      </a>
+                                    
+                                      
+                                    
+
+                                  </div>
+                                    
+                              </div>
                     @endif
 
 
@@ -926,7 +1020,6 @@
 
                     </div>
                   </div>
-
 
                 </div>
               </div>

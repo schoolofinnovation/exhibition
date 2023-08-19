@@ -180,9 +180,9 @@
           
 
           <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
-          <span class="handheld-toolbar-label">Menu</span>
-        </a>
+            <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
+            <span class="handheld-toolbar-label">Menu</span>
+          </a>
       @elseif(Route::currentRouteName() === 'coi.exhibition' )
           <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>
@@ -213,7 +213,7 @@
             <span class="handheld-toolbar-label">Home</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="shop-sidebar" data-bs-target="#shop-sidebar" aria-controls="offcanvasRight">
+          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#shopsidebar" role="button" aria-controls="offcanvasExample">
             <span class="handheld-toolbar-icon"><i class="bi bi-calendar4-week"></i></span>
             <span class="handheld-toolbar-label">Filter</span>
           </a>
@@ -223,18 +223,20 @@
               <span class="handheld-toolbar-label">Add</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+         
+
+          <!-- <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
+          <span class="handheld-toolbar-label">Menu</span>
+        </a> -->
+
+          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
             <span class="handheld-toolbar-label">Menu</span>
           </a>
-
-          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
-          <span class="handheld-toolbar-label">Menu</span>
-        </a>
       @endif
           
-           
+               
          
 
           {{--@if(Cart::instance('cart')->count() > 0)
