@@ -294,7 +294,8 @@ class CoicartComponent extends Component
             return redirect()->route('franchise.Coi');
         }
     }
-
+// $data = session()->all();
+      //  dd($data);
 
     public function render()
     {

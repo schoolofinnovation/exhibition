@@ -438,13 +438,26 @@
         </div>
 
         <!-- Navigation (mobile)-->
-        <div class="row d-lg-none">
+        <!-- <div class="row d-lg-none">
           <div class="col-lg-8">
             <div class="d-flex pt-4 mt-3">
               <div class="w-50 pe-3"><a class="btn btn-secondary d-block w-100" href="{{route('checkout')}}"><i class=" bi bi-arrow-left mt-sm-0 me-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none">Back</span></a></div>
               <div class="w-50 ps-2"><a class="btn btn-primary d-block w-100" type="submit"><span class="d-none d-sm-inline">Proceed to Shipping</span><span class="d-inline d-sm-none">Next</span><i class="ci-arrow-right mt-sm-0 ms-1"></i></a></div>
             </div>
           </div>
+        </div> -->
+
+            <div class="handheld-toolbar bg-secondary">
+             
+              <div class="row d-lg-none">
+          <div class="col-lg-8">
+            <div class="d-flex">
+              <div class="w-10 pe-3"><a class="btn btn-secondary d-block w-100" href="{{route('checkout')}}"><i class=" bi bi-arrow-left mt-sm-0 me-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none"> <i class="bi bi-chevron-right"></i> </span></a></div>
+              <div class="w-90 ps-2"><a class="btn btn-primary d-block w-100" type="submit"><span class="d-none d-sm-inline">Proceed to Shipping</span><span class="d-inline d-sm-none">Next</span><i class="ci-arrow-right mt-sm-0 ms-1"></i></a></div>
+            </div>
+          </div>
         </div>
+              </div>
+            </div>
       </div>
     </main>
