@@ -291,14 +291,15 @@ class CoicartComponent extends Component
         }
         elseif (!session()->get('checkout'))
         {
-            return redirect()->route('franchise.Coi');
+            return redirect()->route('business.exhibition');
         }
     }
-// $data = session()->all();
-      //  dd($data);
+     
 
     public function render()
     {
+        $data = session()->all();
+        dd($data);
         $this->verifyForCheckout();
         return view('livewire.coicart-component')->layout('layouts.eblog');
     }

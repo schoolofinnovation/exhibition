@@ -247,8 +247,8 @@ Route::get('/contact/{board?}', ContactComponent::class)->name('contact');
 Route::get('/about-us', AboutComponent::class)->name('about');
 Route::get('/leadership', TeamComponent::class)->name('team');
 
-//catch lead participants
-Route::get('/exhibit', ExhibitComponent::class)->name('event.exhibit');
+//catch lead participants || help to login to get contact details
+Route::get('/exhibit/{board}', ExhibitComponent::class)->name('event.exhibit');
 
 //catch exhibition data
 Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');

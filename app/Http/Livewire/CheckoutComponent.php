@@ -62,9 +62,10 @@ class CheckoutComponent extends Component
       if(Auth::check())
         { return redirect()->route('coicart'); }
       else
-        { return redirect()->route('event.exhibit'); }
+        { return redirect()->route('event.exhibit', ['board' => 'ticket']); }
     }
 
+   
     public function setAmountForCheckout()
     {
        if(!Cart::instance('cart')->count() > 0)
