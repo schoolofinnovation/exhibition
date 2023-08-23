@@ -49,7 +49,9 @@ class ExhibitComponent extends Component
         $newEvent->admstatus = $this->admstatus;
         $newEvent->save();
 
-        return redirect()->back();
+        //return redirect()->route('coicart');thankyou
+        return redirect()->route('event.exhibit', ['board' => 'thankyou']);
+        //{{route('event.exhibit', ['board' => 'business'])}}
         session()->flash('message','Thanks for sharing your review.');
         
     }
