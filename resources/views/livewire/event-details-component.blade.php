@@ -4,7 +4,7 @@
 
     <main>
             <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
-              style="background-image: url('{{('/image/test.jpg')}}');">
+              style="background-image: url('{{('/image/test.jpg')}}')">
                 
                 <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem; padding-left: 0.625rem; padding-right: 1rem;
                   padding-bottom: 0.425rem;
@@ -53,13 +53,19 @@
                           <h5 class="text-light fw-light fs-xs mt-3">Book business Space with us. <br>Get pre-post business.</h5>
                           <ul class="list-unstyled text-light mb-0 mt-2">
                                 <li class="d-flex">
-                                  @if( $ticketOrExhibit != 0 )
-                                  <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
-                                  href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
-                                  @else ( $ticketOrExhibit == 0 )
-                                  <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
-                                  href="{{route('event.exhibit', ['board' => 'business'])}}">Exhibit</a>
-                                  @endif
+                                @if( $event->businessrevenue == 'visitor' )
+                                    @if( $ticketOrExhibit != 0 )
+                                        <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                        href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
+                                      @else ( $ticketOrExhibit == 0 )
+                                        <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                        href="{{route('event.exhibit', ['board' => 'business'])}}">Exhibit</a>
+                                    @endif
+                                  @else
+                                    <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                        href="{{route('event.exhibit', ['board' => 'business'])}}">Exhibit</a>
+                                @endif
+
                                   <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
                                 </li>
                           </ul>
@@ -139,15 +145,20 @@
                         
                         <ul class="list-unstyled text-light mb-0 mt-2">
                               <li class="d-flex">
-                              @if( $ticketOrExhibit != 0 )
-                                <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
-                                href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
-                              @else( $ticketOrExhibit == 0 )
-                              <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
-                                href="{{route('event.product',['slug' => $event->slug])}}">Exhibit</a>
-                              @endif
-                              <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
-                              <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
+                                  @if( $event->businessrevenue == 'visitor' )
+                                    @if( $ticketOrExhibit != 0 )
+                                          <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                          href="{{route('event.product',['slug' => $event->slug])}}">Book Tickets</a>
+                                        @else( $ticketOrExhibit == 0 )
+                                          <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                          href="{{route('event.exhibit', ['board' => 'business'])}}">Exhibit</a>
+                                    @endif
+                                  @else
+                                    <a class="btn btn-primary btn-sm mx-2 d-none d-sm-block" type="button" 
+                                          href="{{route('event.exhibit', ['board' => 'business'])}}">Exhibit</a>
+                                  @endif  
+                                <a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>
+                                <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
                               </li>
                         </ul>
 
@@ -271,11 +282,15 @@
                     </span>
 
                     <span>
-                      @if( $ticketOrExhibit != 0 )
-                        <a class="btn btn-primary btn-sm" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
-                        @elseif( $ticketOrExhibit == 0 )
-                        <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your space </a>
-                      @endif
+                    @if( $event->businessrevenue == 'visitor' )       
+                        @if( $ticketOrExhibit != 0 )
+                          <a class="btn btn-primary btn-sm" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
+                            @elseif( $ticketOrExhibit == 0 )
+                          <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                        @endif
+                      @else
+                        <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                    @endif
                     </span>
                   
                     
@@ -377,30 +392,30 @@
 
                       <h5 class="mb-3">Programme for People and Planet</h5>
                       <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                        <li>Inspiring collective and meaningful action to address the world's most critical Challenges and opportunities.</li>
-                      <li>
-                        <div class="card ">
-                        <div class="expo_Initiat">
-                            <div class="card-body ">
-                              <h5 class="card-title">Sustainability District</h5>
-                              <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                            </div>
+                            <li>Inspiring collective and meaningful action to address the world's most critical Challenges and opportunities.</li>
+                          <li>
+                            <div class="card ">
+                            <div class="expo_Initiat">
+                                <div class="card-body ">
+                                  <h5 class="card-title">Sustainability District</h5>
+                                  <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                </div>
 
-                            <div class="card-body">
-                              <h5 class="card-title">Mobility District</h5>
-                              <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                            </div>
+                                <div class="card-body">
+                                  <h5 class="card-title">Mobility District</h5>
+                                  <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                </div>
 
-                            <div class="card-body">
-                              <h5 class="card-title">Opportunity District</h5>
-                              <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                            </div>                  
-                        </div>
-                      </div>
-                    </li>
+                                <div class="card-body">
+                                  <h5 class="card-title">Opportunity District</h5>
+                                  <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                </div>                  
+                            </div>
+                          </div>
+                        </li>
                       </ul>
                     
                 </div>
@@ -1007,18 +1022,22 @@
             <div class="handheld-toolbar bg-secondary">
               <div class="d-flex justify-content-between py-2 px-2">
                <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                @if( $event->businessrevenue == 'visitor' )  
                   @if( $ticketOrExhibit != 0 )
                       <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Book your Ticket</a>
                     @elseif( $ticketOrExhibit == 0 )
                       {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
                       <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
                   @endif
+                @else
+                <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                @endif
               </div>
             </div>
     </main>
 
     @push('scripts')
-      <script type = "application/ld+json">
+          <script type = "application/ld+json">
             {
                   "@context": "https://schema.org",
                   "@type": "Event",
@@ -1056,14 +1075,6 @@
                     "validFrom": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}"
                   },
 
-                  "aggregateRating": {
-                    "@type": "AggregateRating",
-                    "ratingValue": "{{round($commentedRates->avg('rate') , 1)}}",
-                    "ratingCount": "{{$commentedRates->count()}}",
-                    "bestRating": "10"
-                  },
-
-                  
 
                   "performer": {
                     "@type": "PerformingGroup",
@@ -1075,6 +1086,42 @@
                     "name": "The Exhibition Network",
                     "url": "https://exhibition.org.in"
                   },
+                  
+            }
+          </script>
+
+          <script type = "application/ld+json">
+            {
+                  "@context": "https://schema.org",
+                  "@type": "Event",
+                  "name": "{{$event->eventname}}",
+                  "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
+                  "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('Y-m-d')}}",
+                  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                  "eventStatus": "https://schema.org/EventScheduled",
+
+                  "location": [{
+                    "@type": "Place",
+                    "name": "{{$event->venue}}",
+
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "{{$event->venue}}",
+                      "addressLocality": "{{$event->venue}}",
+                      "postalCode": "110011",
+                      "addressRegion": "{{$event->city}}",
+                      "addressCountry": "IN"
+                    }
+                  }],
+
+
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "{{round($commentedRates->avg('rate') , 1)}}",
+                    "ratingCount": "{{$commentedRates->count()}}",
+                    "bestRating": "10"
+                  },
+
                   
             }
           </script>

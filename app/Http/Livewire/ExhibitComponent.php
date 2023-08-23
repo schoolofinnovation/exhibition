@@ -54,6 +54,8 @@ class ExhibitComponent extends Component
         
     }
 
+
+    
     public function addTicket()
     {
         $this->validate([

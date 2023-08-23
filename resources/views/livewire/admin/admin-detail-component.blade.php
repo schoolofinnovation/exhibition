@@ -74,7 +74,15 @@
           <a href="#" wire:click.prevent="updateEvent({{$evento->id}},'canceal')" class="btn btn-primary btn-sm">Canceal</a>
           <a href="#" wire:click.prevent="updateEvent({{$evento->id}},'postpone')" class="btn btn-primary btn-sm">Postpone</a>
           <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="Upgrade({{$evento->id}})"> upgrade</a>
-          
+
+          <small>Active BusinessModel</small>
+          @if(is_null($evento->businessrevenue))
+            <a href="#" wire:click.prevent="updatebusinessrevenue({{$evento->id}},'exhibitor')" class="btn btn-primary btn-sm">Exhibitor</a>
+            @elseif($evento->businessrevenue == 'exhibitor')
+            <a href="#" wire:click.prevent="updatebusinessrevenue({{$evento->id}},'visitor')" class="btn btn-primary btn-sm">Visitor</a>
+            @else
+            <a href="#" wire:click.prevent="updatebusinessrevenue({{$evento->id}},'exhibitor')" class="btn btn-primary btn-sm">Exhibitor</a>
+          @endif
       </div>
      </div>
     </div>
