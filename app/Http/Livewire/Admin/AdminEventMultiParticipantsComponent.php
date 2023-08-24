@@ -43,6 +43,7 @@ class AdminEventMultiParticipantsComponent extends Component
     public $name;
     public $searchTerm;
     public $checkvalue = [];
+    
     public $hastag;
     public $hasttag;
 
@@ -256,7 +257,7 @@ class AdminEventMultiParticipantsComponent extends Component
             $newEvent = new Hashtag();
             $newEvent->hastag = trim($tre);
             //doubt check again
-            $newEvent->hasttag = $this->hasttag;
+            //$newEvent->hasttag = $this->hashag;
             $newEvent->event_id = $this->event_id;
             $newEvent->user_id = Auth::user()->id;
             $newEvent->status = $this->status;
@@ -384,6 +385,7 @@ class AdminEventMultiParticipantsComponent extends Component
         $participants = Brand::where('event_id', $evento->id)->get();
         
         $partners = Partner::where('event_id', $evento->id)->get();
+
         $findListedTag = Denco::where('event_id', $evento->id)->get();
         //dd($hastag);
 

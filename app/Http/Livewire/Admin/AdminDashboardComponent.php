@@ -494,7 +494,7 @@ public $hastag;
       }
      
 
-      $businessOrder = Lead::orderBy('updated_at','ASC')->get();
+      $businessOrder = Lead::orderBy('updated_at','DESC')->get();
 
       
 

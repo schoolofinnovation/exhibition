@@ -397,25 +397,14 @@
                         <div class="col-sm-6 mb-3">
                             <label class="form-label" for="unp-standard-price">Create Hashtag </label>
                             <div class="input-group">
-                               <textarea class="form-control" type="text"  rows="5" wire:model.lazy="hastag"></textarea>
+                               <textarea class="form-control" type="text"  rows="5" wire:model.lazy="hastag"> </textarea>
                             </div>
                             <div class="form-text">Create hashtag, separate with comma </div>
                             @error('hastag')
                                  <div class="form-text">{{$message}}</div>
                             @enderror
 
-                            @if(count(findListedTag)>0)
-                                <div class="col-sm-1">
-                                    <label class="form-label" for="seniority">Tag</label>
-                                        <select class="form-control" type="text"   wire:model.lazy="hasttag"  id="seniority"  placeholder="Provide short title of your request">
-                                        @foreach($findListedTag as $tego)
-                                            <option selected>Choose</option>
-                                            <option value="{{$tego -> expo->tag}}">{{$tego -> expo->tag}}</option>
-                                        @endforeach
-                                        </select>
-                                        @error('eventype') <div class="invalid-feedback"> {{$message}} </div> @enderror
-                                </div>
-                            @endif
+                           
                         </div>
                         <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
                     </form>
@@ -434,6 +423,19 @@
                         </div>
                     </div>
                 @endif
+
+                 <!-- @if(count($findListedTag) > 0)
+                                <div class="col-sm-1">
+                                    <label class="form-label" for="seniority">Tag</label>
+                                        <select class="form-control" type="text"   wire:model.lazy="hashag">
+                                        @foreach($findListedTag as $tego)
+                                            <option selected>Choose</option>
+                                            <option value="{{$tego ->expo->tag}}">{{$tego -> expo->tag}}</option>
+                                        @endforeach
+                                        </select>
+                                        @error('eventype') <div class="invalid-feedback"> {{$message}} </div> @enderror
+                                </div>
+                            @endif -->
                 
                 @if($formm == 'detailPavillion')
 
