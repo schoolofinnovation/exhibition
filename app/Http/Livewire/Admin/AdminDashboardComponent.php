@@ -304,7 +304,7 @@ public $hastag;
     
     public function updateCallingStatus($id, $response) 
     {
-      $visited = BusinessCalledo::find($id);
+      $visited = New BusinessCalledo();
       $visited->lead_id = $id;
       $visited->user_id = Auth::user()->id;
       $visited->response = $response;
@@ -313,7 +313,8 @@ public $hastag;
       $visited->admstatus = '0';
       $visited->save();
       session()->flash('message','info has been deleted Successfully');
-      return redirect()->route('admin.dashboard', ['board' => 'visitor']);
+      return redirect()->back();
+      //return redirect()->route('admin.dashboard', ['board' => 'visitor']);
     } 
 
     public function Magazinedelete($id)

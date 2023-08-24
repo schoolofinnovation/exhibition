@@ -1656,20 +1656,25 @@
                           <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}"></a>
                         @endif--}}
                     <span>
+                      @php
+                        $businesslead = DB::table('BusinessCalledo')->where('lead_id',$evento->id)->latest()->get()
+                      @endphp
+
                       <a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      @if (is_null($evento->response))
-                       New
-                      @else
-                      {{$evento->response}}
+                      
+                      @if (is_null($businesslead->response))
+                        New
+                        @else
+                        {{$businesslead->response}}
                       @endif
                       </a>
                      
                       <ul class="dropdown-menu" width="auto">
 
-                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'Interest')">Interest</a></li>
-                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'Check')">Check</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'interest')">Interest</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'check')">Check</a></li>
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'callback')">callback</a></li>
-                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'Ringing')">Ringing</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'ringing')">Ringing</a></li>
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'Not')">Not</a></li>
                       
                       </ul>

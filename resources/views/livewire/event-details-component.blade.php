@@ -1093,29 +1093,7 @@
 
           <script type = "application/ld+json">
             {
-                  "@context": "https://schema.org",
-                  "@type": "Event",
-                  "name": "{{$event->eventname}}",
-                  "startDate": "{{Carbon\Carbon::parse ($event->startdate)->format('Y-m-d')}}",
-                  "endDate": "{{Carbon\Carbon::parse ($event->enddate)->format('Y-m-d')}}",
-                  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-                  "eventStatus": "https://schema.org/EventScheduled",
-
-                  "location": [{
-                    "@type": "Place",
-                    "name": "{{$event->venue}}",
-
-                    "address": {
-                      "@type": "PostalAddress",
-                      "streetAddress": "{{$event->venue}}",
-                      "addressLocality": "{{$event->venue}}",
-                      "postalCode": "110011",
-                      "addressRegion": "{{$event->city}}",
-                      "addressCountry": "IN"
-                    }
-                  }],
-
-
+              
                   "aggregateRating": {
                     "@type": "AggregateRating",
                     "ratingValue": "{{round($commentedRates->avg('rate') , 1)}}",
