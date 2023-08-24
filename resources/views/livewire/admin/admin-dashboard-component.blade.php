@@ -1630,21 +1630,19 @@
                       <div class="p fw-light mb-0">{{$evento->type}}</div> 
                       <div class="small text-muted">{{$evento->id}}</div>
                     
-                    @if(is_null($evento->email_verified_at))   
-                        <div class="round-circle">0</div> 
-                      @else
+                   
                         <div class="round-circle">1</div> 
-                    @endif
+                
                     
                 </div>
 
                 <div class="col-7  p-0">
                   <div class="fs-md fw-normal text-start"><a class="text-dark" href="">
-                      {{ucwords(trans(Str::limit($evento->name, 24)))}} {{$evento->phone}}</a></div>
+                      {{$evento->phone}}</a></div>
                   <div class="text-muted fs-sm text-start">
                       {{$evento->email}} <br>
                     
-                      <span class="fs-xs bg-success">{{ $evento->created_at->format('D M  H:m')}}</span>
+                      <span class="fs-xs bg-success">{{ $evento->created_at->format('D d M  H:m')}}</span>
                      
                   </div>  
                   <div class="text-muted fs-sm text-start"></div>
@@ -1658,7 +1656,13 @@
                           <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}"></a>
                         @endif--}}
                     <span>
-                      <a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{$evento->utype}}</a>
+                      <a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      @if (is_null($evento->response))
+                       New
+                      @else
+                      {{$evento->response}}
+                      @endif
+                      </a>
                      
                       <ul class="dropdown-menu" width="auto">
 
