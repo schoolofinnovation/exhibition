@@ -6,6 +6,7 @@ use App\Mail\EventToClient;
 use App\Mail\MonthlyEvent;
 use App\Models\Appliedjob;
 use App\Models\Brand;
+use App\Models\BusinessCalledo;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Contact;
@@ -299,7 +300,21 @@ public $hastag;
       $visited->save();
       session()->flash('message','info has been deleted Successfully');
       return redirect()->route('admin.dashboard', ['board' => 'visitor']);
-    }  
+    } 
+    
+    public function updateCallingStatus($id, $response) 
+    {
+      $visited = BusinessCalledo::find($id);
+      $visited->lead_id = $id;
+      $visited->user_id = Auth::user()->id;
+      $visited->response = $response;
+     // $visited->comment = $utype;
+      $visited->status = '1';
+      $visited->admstatus = '0';
+      $visited->save();
+      session()->flash('message','info has been deleted Successfully');
+      return redirect()->route('admin.dashboard', ['board' => 'visitor']);
+    } 
 
     public function Magazinedelete($id)
     {
@@ -307,9 +322,11 @@ public $hastag;
       $user->delete();
       session()->flash('message','User  has been  deleted successfully');
     }
-
+ 
+    //need to upgrade with category
     public function Upgrade()
     {  
+       
        $eventShtdesc = Event::where('status','1')->where('admstatus','1')->orderBy('startdate','asc')->get();
        foreach($eventShtdesc as $errorimprove)
        {
@@ -476,12 +493,12 @@ public $hastag;
       }
      
 
-      
+      $businessOrder = Lead::orderBy('updated_at','ASC')->get();
 
       
 
 
-        return view('livewire.admin.admin-dashboard-component',['upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',['businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         

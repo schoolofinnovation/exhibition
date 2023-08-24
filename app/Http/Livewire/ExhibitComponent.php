@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -48,6 +49,11 @@ class ExhibitComponent extends Component
         $newEvent->status = $this->status;
         $newEvent->admstatus = $this->admstatus;
         $newEvent->save();
+
+        $logino = new User();
+        $logino->email = $this->email;
+        $logino->phone = $this->phone;
+        $logino->save();
 
         //return redirect()->route('coicart');thankyou
         return redirect()->route('event.exhibit', ['board' => 'thankyou']);

@@ -10,6 +10,11 @@
                         </a> 
                     </div>
                     <div class="col">
+                         <a href="{{route('admin.dashboard', ['board' => 'order'])}}">
+                            <div class="p-3 border rounded border-dark bg-light text-center">Order</div>
+                        </a> 
+                    </div>
+                    <div class="col">
                          <a href="{{route('admin.dashboard', ['board' => 'job'])}}">
                             <div class="p-3 border rounded border-dark bg-light text-center">Job</div>
                         </a> 
@@ -17,7 +22,7 @@
                    
                     <div class="col">
                          <a href="{{route('admin.dashboard', ['board' => 'client'])}}">
-                            <div class="p-3 border rounded border-dark bg-light text-center">Client</div>
+                            <div class="p-3 border rounded border-dark bg-light text-center">Visitor</div>
                         </a> 
                     </div>
                     
