@@ -263,7 +263,9 @@ class AdminEventMultiParticipantsComponent extends Component
             $newEvent->status = $this->status;
             $newEvent->admstatus = $this->admstatus;
             $newEvent->save();
+
         }
+        $this->reset();
         return redirect()->back();
         session()->flash('message','Thanks for sharing your review.');
         
