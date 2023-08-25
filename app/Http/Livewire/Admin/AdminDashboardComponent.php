@@ -250,6 +250,7 @@ public $hastag;
       return redirect()->back();
     }
 
+   
 
     public function added()
     {
@@ -324,10 +325,42 @@ public $hastag;
       session()->flash('message','User  has been  deleted successfully');
     }
  
+    public function eventodelete($id)
+    {   //$job = Expo::find($id);
+        
+        $finder = Denco::where('expo_id', $id)->get();
+        $result =  $finder->pluck('event_id');
+        //$eventShtdesc = Event::where('status','1')->where('admstatus','1')->orderBy('startdate','asc')->get();
+        foreach($result as $errorimprove)
+        {
+        $statementID = Event::find($errorimprove->id);
+        
+        $statementEventName = trim($statementID->eventname); 
+        $statementEventSlug = trim($statementID->slug); 
+        $statementEventVenue = trim($statementID->venue); 
+        $statementEventCity = trim($statementID->city); 
+        $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)->format('Y-m-d')); 
+        $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('Y-m-d'));
+
+        
+        $statementID = Event::find($errorimprove->id);
+
+        $statementID->eventname =  $statementEventName;
+        $statementID->slug =  $statementEventSlug;
+        $statementID->venue =  $statementEventVenue;
+        $statementID->city = $statementEventCity;
+        $statementID->startdate = $statementEventStartDate;
+        $statementID->enddate = $statementEventEndDate;
+
+        $statementID->save();
+        }
+        
+    }
+
     //need to upgrade with category
     public function Upgrade()
     {  
-       
+
        $eventShtdesc = Event::where('status','1')->where('admstatus','1')->orderBy('startdate','asc')->get();
        foreach($eventShtdesc as $errorimprove)
        {
@@ -355,6 +388,8 @@ public $hastag;
     }
 
     //dd($rti);
+
+    
 
     public function render()
     {
@@ -495,11 +530,15 @@ public $hastag;
      
 
       $businessOrder = Lead::orderBy('updated_at','DESC')->get();
-
+      $searchTerm = '%'.$this->searchTerm. '%';
+              $searchcat = Expo::where('tag','LIKE', $searchTerm)
+                          ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
       
+                          $resultAdded = Expo::where('admstatus','1')->get();
+                          //$EventcountWithTag = Denco::
+                          $counteventWithCategory = Denco::where('expo_id', '$resultAdded->id')->count();
 
-
-        return view('livewire.admin.admin-dashboard-component',['businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',['counteventWithCategory'=> $counteventWithCategory,'resultAdded'=> $resultAdded, 'searchcat'=> $searchcat,'businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         
