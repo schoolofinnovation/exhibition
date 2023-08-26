@@ -271,6 +271,9 @@ class AdminEventMultiParticipantsComponent extends Component
         
     }
 
+
+
+
     public function participantToAdd()
     {
         $sectry = json_encode($this->checkvalue);

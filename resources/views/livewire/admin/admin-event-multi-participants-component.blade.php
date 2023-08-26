@@ -244,7 +244,7 @@
 
                 @if($formm == 'addPavillion')
                     <form wire:submit.prevent="updatePavillion">
-                        <input type="text" placeholder="pavillion" wire:model.lazy="pavillion_name">
+                        <input type="text"  class="form-control" placeholder="pavillion" wire:model.lazy="pavillion_name">
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </form>
                    
@@ -269,9 +269,10 @@
                                 {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
                             </div>
 
-                            <div class="col-7  p-0">
+                            <a class="col-7  p-0" href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}">
+                            <!-- <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a> -->
                                @if(is_null($pav->desc))
-                                        <div class="text-muted fs-sm text-start">{{$pav->pavillion_name}} </div>
+                                        <a class="text-muted fs-sm text-start" href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}">{{$pav->pavillion_name}} </a>
                                     @else
                                         <div class="fs-md fw-normal text-start">
                                         {{$evento->pavillion_name}}<br>
@@ -282,15 +283,25 @@
                                 <div class=" col col-auto my-1 px-2"> 
                                     {{-- <img src="{{url('public/assets/image/exhibition/'.$getReferenceBrands->brand_logo)}}" alt="#" width="50px">{{$getReferenceBrands->brand->brand_name}} --}}
                                 </div>
-                            </div>
 
-                            <div class="col-3 p-0">
-                            @if(is_null($pav->desc))
-                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
-                            @else
-                                <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
-                            @endif
-                            </div>
+                                <div class="col-3  p-0">
+                                    @if(is_null($pav->image))
+                                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $franchise->id, 'formm' => 'image' ])}}">
+                                            Add</a>
+                                    @else
+                                        <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
+                                        <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+                                    @endif
+                                </div>
+                            </a>
+
+                            {{-- <div class="col-3 p-0">
+                                @if(is_null($pav->desc))
+                                    <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                                @else
+                                    <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                                @endif
+                            </div> --}}
                         </div>
                     @endforeach
                 @endif

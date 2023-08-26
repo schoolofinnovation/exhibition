@@ -1,7 +1,16 @@
 <main>
     @if($formm == 'detailPavillion')
-        <form wire:submit.prevent="">
+        <form wire:submit.prevent="updatePavillion">
+              <input  class="form-control" type="text">
 
+              <input  class="form-control" type="text" wire:model="desc">
+
+              <input  class="form-control" type="number" wire:model="nostall">
+
+              <input  class="form-control" type="date" wire:model="startdate">
+              <input  class="form-control" type="date" wire:model="enddate">
+
+              <button class="form-control" type="submit" class="btn btn-primary">Submit</button>
         </form>
     @endif
 

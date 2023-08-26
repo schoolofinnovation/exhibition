@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Brand;
 use App\Models\Contact;
 use App\Models\Event;
+use App\Models\Pavillion;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class AdminEventMultiDetailComponent extends Component
@@ -44,12 +46,17 @@ class AdminEventMultiDetailComponent extends Component
 
     public $hastag;
 
+    public $formm;
 
-    public function mount($event_id)
+    public $id;
+
+
+    public function mount($event_id, $id)
     {
         $this->event_id = $event_id;
         //$this->month = Carbon::today()->format("m");
         //$this->visited = '1';
+        $this->id = $id;
     }
 
     //need to be delete shifted to admin-event-multi-particiapants
@@ -74,12 +81,28 @@ class AdminEventMultiDetailComponent extends Component
        return redirect()->route('admin.dashboard', ['board' => 'client']);
     }
 
+
+    public function updatePavillion($id)
+    {
+        $abc = Pavillion::find($id);
+
+        $edc = Event::find( $this->event_id);
+
+        $abc->business = $this->business;
+        $abc->nostall = $this->nostall;
+        $abc->desc = $this->desc;
+        $abc->startdate = $edc->startdate;
+        $abc->enddate =  $edc->enddate;
+
+        $abc->status = '1';
+        $abc->admstatus = '1';
+        $abc->user_id = Auth::user()->id;
+        $abc->save();
+    }
+
     public function render()
     {
         $event = Event::find($this->event_id);
-
-
-
         return view('livewire.admin.admin-event-multi-detail-component',['event' => $event]);
     }
 }
