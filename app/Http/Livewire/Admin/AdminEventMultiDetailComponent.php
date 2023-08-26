@@ -51,12 +51,12 @@ class AdminEventMultiDetailComponent extends Component
     public $did ; 
 
 
-    public function mount($event_id, $id)
+    public function mount($event_id, $did)
     {
         $this->event_id = $event_id;
         //$this->month = Carbon::today()->format("m");
         //$this->visited = '1';
-        $this->id = $id;
+        $this->did = $did;
     }
 
     //need to be delete shifted to admin-event-multi-particiapants
@@ -82,9 +82,9 @@ class AdminEventMultiDetailComponent extends Component
     }
 
 
-    public function updatePavillion($id)
+    public function updatePavillion($did)
     {
-        $abc = Pavillion::find($id);
+        $abc = Pavillion::find($did);
 
         $edc = Event::find( $this->event_id);
 
