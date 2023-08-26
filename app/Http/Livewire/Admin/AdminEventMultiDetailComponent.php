@@ -53,7 +53,7 @@ class AdminEventMultiDetailComponent extends Component
     public $business;
     public $nostall;
     public $startdate;
-    public $enddate;
+    public $lastdate;
 
 
     public function mount($event_id, $did)
@@ -96,7 +96,7 @@ class AdminEventMultiDetailComponent extends Component
             $abc->nostall = $this->nostall;
             $abc->desc = $this->desc;
             $abc->startdate = $edc->startdate;
-            $abc->enddate =  $edc->enddate;
+            $abc->lastdate =  $edc->lastdate;
 
         $abc->status = '1';
         $abc->admstatus = '1';
