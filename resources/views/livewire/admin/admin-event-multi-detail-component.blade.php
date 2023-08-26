@@ -10,7 +10,7 @@
               <input  class="form-control" type="number" placeholder="nostall"   wire:model.lazy="nostall">
 
               <input  class="form-control" type="date" placeholder="startdate"   wire:model.lazy="startdate">
-              <input  class="form-control" type="date" placeholder="lastate"   wire:model.lazy="enddate">
+              <input  class="form-control" type="date" placeholder="lastate"   wire:model.lazy="lastdate">
 
               <button  type="submit" class="btn btn-primary form-control">Submit</button>
         </form>
