@@ -19,10 +19,12 @@ class SitemapController extends Controller
         $categoryresult = DB::table('events')
            ->join('dencos','dencos.event_id','=','events.id')
            ->join('expos','expos.id' ,'=','dencos.expo_id')
-           ->select('expos.tag as Category', DB::raw('count(events.id) as total'))
-           ->orderBy('total','desc')
+           ->select('expos.tag as Category')
+           ->orderBy('Category','desc')
            ->groupBy('expos.tag')
            ->get();
+
+          // dd($categoryresult);
 
         return response()->view('sitemap',compact('postie','categoryresult'))->header('Content-Type','text/xml');
     }

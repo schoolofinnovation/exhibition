@@ -333,7 +333,7 @@ public $hastag;
         //$eventShtdesc = Event::where('status','1')->where('admstatus','1')->orderBy('startdate','asc')->get();
         foreach($result as $errorimprove)
         {
-        $statementID = Event::find($errorimprove->id);
+        $statementID = Event::find($errorimprove);
         
         $statementEventName = trim($statementID->eventname); 
         $statementEventSlug = trim($statementID->slug); 
@@ -343,7 +343,7 @@ public $hastag;
         $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('Y-m-d'));
 
         
-        $statementID = Event::find($errorimprove->id);
+        $statementID = Event::find($errorimprove);
 
         $statementID->eventname =  $statementEventName;
         $statementID->slug =  $statementEventSlug;

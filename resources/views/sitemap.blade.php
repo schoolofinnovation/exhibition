@@ -19,12 +19,19 @@
    @endforeach
 
    @foreach ($categoryresult as $sitemap)
+      @php
+         $findupdated = DB::table('expos')->where('tag', $sitemap->Category)->get();
+         $findSlug = $findupdated->pluck('slug');
+         $findSl = $findupdated->pluck('updated_at');
+      @endphp
+      @foreach ($findupdated as $sitemapo)
       <url>
-         <loc>{{url('/exhibition/expo'.$sitemap->tag)}}</loc>
+         <loc>{{url('/exhibition/expo/'.$sitemapo->slug)}}</loc>
          <priority>1.0</priority>
-         <lastmod>{{gmdate('Y-m-d\TH:i:s\Z',strtotime($sitemap->updated_at))}}</lastmod>
+         <lastmod>{{gmdate('Y-m-d\TH:i:s\Z',strtotime($sitemapo->updated_at))}}</lastmod>
          <changefreq>daily</changefreq>
       </url>
+      @endforeach
    @endforeach
 
   

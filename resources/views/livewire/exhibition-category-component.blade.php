@@ -1,4 +1,4 @@
-@section('page_title',  ($this->eventype) )
+@section('page_title',  ($this->categry) )
 @section('page_description','Find the business opportunity with The Exhibition Network, World leading event publishing company.')
 @section('page_keyword',  'upcoming ,Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
 
