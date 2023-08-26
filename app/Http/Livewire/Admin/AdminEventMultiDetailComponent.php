@@ -91,17 +91,22 @@ class AdminEventMultiDetailComponent extends Component
     {
         $abc = Pavillion::find($this->did);
 
-            $edc = Event::find($this->event_id)->first();
+           // $edc = Event::find($this->event_id)->first();
+           // $start = $edc->startdate;
+            //$last = $edc->enddate;
             $abc->business = $this->business;
             $abc->nostall = $this->nostall;
             $abc->desc = $this->desc;
-            $abc->startdate = $edc->startdate;
-            $abc->lastdate =  $edc->lastdate;
-
+            $abc->startdate = $this->startdate;
+            $abc->lastdate =  $this->lastdate;
+        $abc->event_id = Event::find($this->event_id)->first();
         $abc->status = '1';
         $abc->admstatus = '1';
         $abc->user_id = Auth::user()->id;
         $abc->save();
+        $this->reset();
+        return redirect()->route('admin.multipartners', ['event_id' =>  $this->event_id , 'formm' => 'addPavillion']);
+       // Route::get('/admin/participants/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
     }
 
     public function render()

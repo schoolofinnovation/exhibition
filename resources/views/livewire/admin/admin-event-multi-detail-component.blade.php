@@ -2,15 +2,28 @@
 
   <div class="container">
     @if($formm == 'detailPavillion')
-        <form wire:submit.prevent="updatePavillion">
-              <input  class="form-control" type="text" placeholder="business"   wire:model.lazy="business">
+    
+        <form wire:submit.prevent="updatePavillion" class=" my-5">
 
-              <input  class="form-control" type="text" placeholder="desc"   wire:model.lazy="desc">
+          @php
+            $abc = DB::table('pavillions')->find($this->did)->pluck('pavillion_name');
+          @endphp
 
-              <input  class="form-control" type="number" placeholder="nostall"   wire:model.lazy="nostall">
+                <h5> {{$abc->pavillion_name}} </h5>
+                <label for="">Business Industry</label>
+                <input  class="form-control" type="text" placeholder="business"   wire:model.lazy="business">
+                
+                <label for="">Describe About Audience</label>
+                <input  class="form-control" type="text" placeholder="desc"   wire:model.lazy="desc">
 
-              <input  class="form-control" type="date" placeholder="startdate"   wire:model.lazy="startdate">
-              <input  class="form-control" type="date" placeholder="lastate"   wire:model.lazy="lastdate">
+                <label for="">Number of stalls</label>
+                <input  class="form-control" type="number" placeholder="nostall"   wire:model.lazy="nostall">
+
+                <label for="">Start Date to be Booking</label>
+                <input  class="form-control" type="date" placeholder="startdate"   wire:model.lazy="startdate">
+
+                <label for="">Last Date to be Booking</label>
+                <input  class="form-control" type="date" placeholder="lastate"   wire:model.lazy="lastdate">
 
               <button  type="submit" class="btn btn-primary form-control">Submit</button>
         </form>
