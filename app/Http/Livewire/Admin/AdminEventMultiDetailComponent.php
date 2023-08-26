@@ -87,17 +87,16 @@ class AdminEventMultiDetailComponent extends Component
     }
 
 
-    public function updatePavillion($did)
+    public function updatePavillion( )
     {
-        $abc = Pavillion::find($did);
+        $abc = Pavillion::find($this->did);
 
-        $edc = Event::find( $this->event_id);
-
-        $abc->business = $this->business;
-        $abc->nostall = $this->nostall;
-        $abc->desc = $this->desc;
-        $abc->startdate = $edc->startdate;
-        $abc->enddate =  $edc->enddate;
+            $edc = Event::find($this->event_id)->first();
+            $abc->business = $this->business;
+            $abc->nostall = $this->nostall;
+            $abc->desc = $this->desc;
+            $abc->startdate = $edc->startdate;
+            $abc->enddate =  $edc->enddate;
 
         $abc->status = '1';
         $abc->admstatus = '1';
