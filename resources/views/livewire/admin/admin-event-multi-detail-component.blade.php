@@ -1,14 +1,16 @@
 <main>
+
+  <div class="container">
     @if($formm == 'detailPavillion')
         <form wire:submit.prevent="updatePavillion">
-              <input  class="form-control" type="text">
+              <input  class="form-control" type="text" placeholder="business"   wire:model="business">
 
-              <input  class="form-control" type="text" wire:model="desc">
+              <input  class="form-control" type="text" placeholder="desc"   wire:model="desc">
 
-              <input  class="form-control" type="number" wire:model="nostall">
+              <input  class="form-control" type="number" placeholder="nostall"   wire:model="nostall">
 
-              <input  class="form-control" type="date" wire:model="startdate">
-              <input  class="form-control" type="date" wire:model="enddate">
+              <input  class="form-control" type="date" placeholder="startdate"   wire:model="startdate">
+              <input  class="form-control" type="date" placeholder="enddate"   wire:model="enddate">
 
               <button class="form-control" type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -77,8 +79,6 @@
               </form>
         </div>
     @endif
-
-
-    
+  </div>
 
 </main>
