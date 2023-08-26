@@ -72,6 +72,21 @@ class AdminEventMultiParticipantsComponent extends Component
        
     }
 
+    
+    public function dateImage()
+    {
+        $fattribute = Event::find($this->event_id);
+       
+        $newimage = Carbon::now()->timestamp.'.'.$this->image->extension();
+        $this->image->storeAs('exhibition', $newimage);
+        $fattribute->image = $newimage;
+
+        $fattribute->save();
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
+    }
+
+
     public function generateSlug()
     {
         $this->slug = Str::slug($this->pavillion_name,'-');

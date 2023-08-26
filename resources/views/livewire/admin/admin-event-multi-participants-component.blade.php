@@ -269,10 +269,10 @@
                                 {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
                             </div>
 
-                            <a class="col-7  p-0" href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}">
-                            <!-- <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a> -->
+                            <a class="col-7  p-0" href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'did'=> $pav->id, 'formm' => 'detailPavillion'])}}">
+                            <!-- <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'did'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a> -->
                                @if(is_null($pav->desc))
-                                        <a class="text-muted fs-sm text-start" href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}">{{$pav->pavillion_name}} </a>
+                                        <a class="text-muted fs-sm text-start" href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'did'=> $pav->id, 'formm' => 'detailPavillion'])}}">{{$pav->pavillion_name}} </a>
                                     @else
                                         <div class="fs-md fw-normal text-start">
                                         {{$evento->pavillion_name}}<br>
@@ -297,13 +297,17 @@
 
                             {{-- <div class="col-3 p-0">
                                 @if(is_null($pav->desc))
-                                    <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
+                                    <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'did'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Add</a>
                                 @else
-                                    <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'id'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{{route('admin.multiSubDetails',['event_id' => $evento->id, 'did'=> $pav->id, 'formm' => 'detailPavillion'])}}" class="btn btn-primary btn-sm">Edit</a>
                                 @endif
                             </div> --}}
                         </div>
                     @endforeach
+                @endif
+
+
+                @if($formm = 'image')
                 @endif
 
                 @if($formm == 'addSponsership')

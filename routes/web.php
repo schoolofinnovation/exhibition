@@ -308,7 +308,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/admin/multi/{event_id}/detail/{formm}', AdminEventMultipleAddComponent::class)->name('admin.eventMultiEdit');
     Route::get('/admin/participants/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
     //client-data-update
-    Route::get('/admin/sub-details/{event_id}/add/{id}/business/{formm}', AdminEventMultiDetailComponent::class)->name('admin.multiSubDetails');
+    Route::get('/admin/sub-details/{event_id}/add/{did}/business/{formm}', AdminEventMultiDetailComponent::class)->name('admin.multiSubDetails');
 
     //testing
     Route::get('/admin/magazine/{slug}/addon/{formm}', MagazineUpgradingComponent::class)->name('admin.magazine');
