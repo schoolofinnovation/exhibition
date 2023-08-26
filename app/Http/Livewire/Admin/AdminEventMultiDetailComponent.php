@@ -48,7 +48,12 @@ class AdminEventMultiDetailComponent extends Component
 
     public $formm;
 
-    public $did ; 
+    public $did;
+    
+    public $business;
+    public $nostall;
+    public $startdate;
+    public $enddate;
 
 
     public function mount($event_id, $did)

@@ -3,16 +3,16 @@
   <div class="container">
     @if($formm == 'detailPavillion')
         <form wire:submit.prevent="updatePavillion">
-              <input  class="form-control" type="text" placeholder="business"   wire:model="business">
+              <input  class="form-control" type="text" placeholder="business"   wire:model.lazy="business">
 
-              <input  class="form-control" type="text" placeholder="desc"   wire:model="desc">
+              <input  class="form-control" type="text" placeholder="desc"   wire:model.lazy="desc">
 
-              <input  class="form-control" type="number" placeholder="nostall"   wire:model="nostall">
+              <input  class="form-control" type="number" placeholder="nostall"   wire:model.lazy="nostall">
 
-              <input  class="form-control" type="date" placeholder="startdate"   wire:model="startdate">
-              <input  class="form-control" type="date" placeholder="enddate"   wire:model="enddate">
+              <input  class="form-control" type="date" placeholder="startdate"   wire:model.lazy="startdate">
+              <input  class="form-control" type="date" placeholder="enddate"   wire:model.lazy="enddate">
 
-              <button class="form-control" type="submit" class="btn btn-primary">Submit</button>
+              <button  type="submit" class="btn btn-primary form-control">Submit</button>
         </form>
     @endif
 
