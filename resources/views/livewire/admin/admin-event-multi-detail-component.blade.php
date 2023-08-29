@@ -6,7 +6,7 @@
         <form wire:submit.prevent="updatePavillion" class=" my-5">
 
           @php
-            $abc = DB::table('pavillions')->find($this->did)->pluck('pavillion_name');
+            $abc = DB::table('pavillions')->find($this->did);
           @endphp
 
                 <h5> {{$abc->pavillion_name}} </h5>

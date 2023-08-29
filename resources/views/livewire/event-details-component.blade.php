@@ -609,8 +609,6 @@
               </div>
             </section>
 
-            
-
             <!-- Product description + Reviews + Comments-->
             <section class="container mb-4 mb-lg-5">
               <div class="tab-content pt-2">
@@ -1048,7 +1046,7 @@
                   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                   "eventStatus": "https://schema.org/EventScheduled",
 
-                  "location": [{
+                  "location": {
                     "@type": "Place",
                     "name": "{{$event->venue}}",
 
@@ -1060,7 +1058,7 @@
                       "addressRegion": "{{$event->city}}",
                       "addressCountry": "IN"
                     }
-                  }],
+                  },
 
                   "image": [
                     "{{url('assets/image/exhibition/'.$event->image)}}"
@@ -1087,25 +1085,16 @@
                     "name": "The Exhibition Network",
                     "url": "https://exhibition.org.in"
                   },
-                  
-            }
-          </script>
 
-          <script type = "application/ld+json">
-            {
-              
                   "aggregateRating": {
                     "@type": "AggregateRating",
                     "ratingValue": "{{round($commentedRates->avg('rate') , 1)}}",
                     "ratingCount": "{{$commentedRates->count()}}",
                     "bestRating": "10"
-                  },
-
+                  }
                   
             }
           </script>
-          
-         
 
           <script type="text/javascript">
 

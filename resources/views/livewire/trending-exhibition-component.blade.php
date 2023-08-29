@@ -17,16 +17,7 @@
       </div>
 
       <div class="d-flex badgese">
-        <!-- @foreach( $finder as $categ) 
-        @php
-           $findcountevent = DB::table('dencos')->where('expo_id', $categ->id)->count()
-        @endphp
-
-        {{--<a class="badge  border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $categ->slug])}}">
-          {{ucwords(trans($categ->tag))}}</a>--}}
-          <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->id}})">
-          {{ucwords(trans($categ->tag))}}  {{$findcountevent}} </a>
-        @endforeach -->
+       
 
         @foreach( $getnamecategoryresult as $categ) 
         @php
