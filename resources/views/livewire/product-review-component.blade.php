@@ -1,4 +1,5 @@
-@section('page_title',($event->eventname))
+@section('page_title' , ($event->eventname) Registration)
+@section('page_keyword', (upcoming expo))
 <main>
     <div class="bg-secondary">
       <div class=" container">

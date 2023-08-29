@@ -195,6 +195,12 @@ public $hastag;
       session()->flash('message','User  has been  deleted successfully');
     }
 
+    public function Reviewdelet($id)
+    { $user = Comment::find($id);
+      $user->delete();
+      session()->flash('message','User  has been  deleted successfully');
+    }
+
     public function AddBrandAttend()
     {
        $brandAttend = new Brand();
@@ -230,7 +236,9 @@ public $hastag;
 
         //$string = '9. "xyz" 8."ert" ';
         $testing = trim(preg_replace_array ( '/[0-9._]+/', [] , $this->businessstatement));
-        $rti = Str::replace('" "',',', $testing );
+        $rti = Str::replace('"-"',',', $testing );
+        //$rti = Str::replace('" "',',', $testing );
+        //$rti = Str::replace('" "',',', $testing );
         $rtis = Str::replace('""',',', $rti );
         $rtii = Str::replace('"','**', $rtis );
         $erto = trim($rtii);

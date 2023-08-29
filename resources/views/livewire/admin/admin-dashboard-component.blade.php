@@ -178,7 +178,7 @@
                                   {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
                                 <div class="text-muted fs-sm text-start">
                                   @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M You')}}
+                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y')}}
                                   @else
                                     {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y')}}
                                   @endif 
@@ -1197,17 +1197,18 @@
 
           <form wire:submit.prevent = "createStatement">
              <textarea class="form-control" type="text" rows="9" wire:model.lazy = "businessstatement"></textarea>
-             <button type="submit" class="form-control "  >Submit</button>
+             <button type="submit" class="form-control"  >Submit</button>
            </form>
         
 
         @foreach($nEwComment as $comment)
        
-        <div class="bg-secondary mb-2 lh-1 fs-sm" >
-         {{$comment ->statement}}
+          <div class="bg-secondary mb-2 lh-1 fs-sm" >
+            {{$comment ->statement}}
+        
+          <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Reviewdelet({{$comment->id}})">
         </div>
        
-        
         @endforeach
         </div>
       @endif
