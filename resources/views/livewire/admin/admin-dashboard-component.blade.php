@@ -1206,7 +1206,7 @@
           <div class="bg-secondary mb-2 lh-1 fs-sm" >
             {{$comment ->statement}}
         
-          <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Reviewdelet({{$comment->id}})">
+          <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Reviewdelet({{$comment->id}})"> Delete</a>
         </div>
        
         @endforeach
