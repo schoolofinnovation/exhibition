@@ -242,7 +242,7 @@ public $hastag;
         $rtis = Str::replace('""',',', $rti );
         $rtii = Str::replace('"','**', $rtis );
         $erto = trim($rtii);
-        $ret = explode("#*#", $erto);
+        $ret = explode("-", $erto);
 
       foreach($ret as $tre)
       {
