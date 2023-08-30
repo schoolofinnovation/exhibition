@@ -110,7 +110,7 @@ public $howMany;
     public function tryingfaker($eventreview)
     {
 
-      for($i = 0; $i < 10; $i++)
+      for($i = 0; $i < $this->howMany; $i++)
       {
         $indoyui = Event::where('slug', $eventreview)->first();
         $trynigtocreate = collect([4,5,6,7,8,9]);
