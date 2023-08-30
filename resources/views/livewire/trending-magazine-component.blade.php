@@ -15,10 +15,10 @@
             </div>
             
              <div class="d-flex badgeseMagaz">
-                @foreach( $finder as $categ) 
+                {{-- @foreach( $finder as $categ) 
                   <a class="badge border-1 text-right border-dark text-dark mr-1" href="{{route('coi.exhibitioncategory',['eventype' => 'magazine', 'categry' => $categ->slug])}}">
                   {{ucwords(trans($categ->tag))}}</a>
-                @endforeach
+                @endforeach --}}
               </div>
               
             <!-- Grid-->
