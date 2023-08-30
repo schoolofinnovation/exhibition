@@ -93,6 +93,7 @@ public $howMany;
     public function bulkReview()
     {
       
+
        $monthwise = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $this->monthly)->orderBy('startdate','ASC')->get();
 
        foreach ($monthwise as $evnto)
@@ -100,8 +101,11 @@ public $howMany;
           $eventreview = $evnto->slug;
           $this->tryingfaker($eventreview);
        }
+
+     
     }
 
+ 
 
     public function tryingfaker($eventreview)
     {

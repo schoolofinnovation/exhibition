@@ -141,50 +141,7 @@ class AdminDetailComponent extends Component
     }
 
     
-    public function bulk()
-    {
-      //$findComment = Comment::where('admstatus','1')->where('status','1')->get();
-        
-      //$usero->opinion =  $findComment->random();
-      
-      for($i = 0; $i < $this->howMany; $i++)
-      {
-        $indoyui = Event::where('slug', $this->slug)->first();
-
-        $usero =  new Rate ();
-        $trynigtocreate = collect([4,5,6,7,8,9]);
-        $usero->rate = $trynigtocreate->random();
-
-        $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', $indoyui->id)->get();
-        $findhastagID = $findhastag->random();
-        $usero->hasttag = $findhastagID->hastag; 
-        
-        $findComment = Comment::where('admstatus','1')->where('status','1')->get();
-        $findCommentID = $findComment->random();
-        $usero->opinion =  $findCommentID->statement;
-       
-        $usero->event_id = $indoyui->id;
-
-        $uertyui = User::where('utype', 'USR')->get();
-        $useroID = $uertyui->random();
-        $usero->user_id = $useroID->id;
-
-        $usero->status = '1'; 
-        $usero->admstatus = '1';
-
-        $currenttime = Carbon::now();
-        $currento =  strtotime($currenttime);
-        $Subtracttime =  Carbon::now()->subHours(24);
-        $Subtracttimeo = strtotime($Subtracttime);
-        $getmid = rand($currento, $Subtracttimeo);
-        $finall = date('Y/m/d h:i:s', $getmid);
-        
-        $usero->created_at = $finall;
-        $usero->updated_at = $finall;
-        $usero->save();
-      }
-      
-    }
+   
 
     public function Upgrade($id)
     {  

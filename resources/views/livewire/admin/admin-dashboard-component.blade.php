@@ -1710,6 +1710,7 @@
                       
                         <div class="d-flex flex-nowrap align-items-center pb-3">
                            
+                        <form wire:submit.prevent="bulkReview">
                               <select class="form-select form-select-sm me-2"  wire:model="monthly">
                                 <option>Choose...</option>
                                 <option value="01">Jan-01</option>
@@ -1725,7 +1726,8 @@
                                 <option value="11">Nov-11</option>
                                 <option value="12">Dec-12</option>
                               </select>
-
+                              <input type="submit" class="form-control btn btn-primary">
+                        </form>
                          
                         </div> 
                       
