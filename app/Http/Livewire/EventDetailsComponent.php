@@ -147,6 +147,10 @@ class EventDetailsComponent extends Component
          $current = strtotime(Carbon::now());
          $to = strtotime($event->startdate);
          $from= strtotime($event->enddate);
+
+         $Createkeywords = $event->eventname ;
+         dd($Createkeywords);
+        
          // $startdate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-27 00:00:00');
          
          //$enddate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-29 00:00:00');

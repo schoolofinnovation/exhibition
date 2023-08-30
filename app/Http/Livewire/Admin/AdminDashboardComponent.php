@@ -106,11 +106,11 @@ public $howMany;
     public function tryingfaker($eventreview)
     {
 
-      for($i = 0; $i < $this->howMany; $i++)
+      for($i = 0; $i < 10; $i++)
       {
         $indoyui = Event::where('slug', $eventreview)->first();
         $trynigtocreate = collect([4,5,6,7,8,9]);
-        $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', $indoyui->id)->get();
+        $findhastag = Hashtag::where('admstatus','0')->where('status','1')->get();
         $findhastagID = $findhastag->random();
         $findComment = Comment::where('admstatus','1')->where('status','1')->get();
         $findCommentID = $findComment->random();
