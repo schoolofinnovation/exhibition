@@ -27,6 +27,7 @@ use App\Models\Sector;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\Want;
+use App\Models\Rate;
 use Carbon\Carbon;
 use Cartalyst\Stripe\Api\Orders;
 use Illuminate\Support\Facades\Auth;
@@ -73,6 +74,10 @@ public $admstatus;
 
 public $hastag;
 
+public $rate;
+public $hasttag;
+public $monthly;
+public $howMany;
     
     //career
     use WithPagination;
@@ -81,9 +86,60 @@ public $hastag;
     {
         $this->board = $board;
         $this->month = Carbon::today()->format("m");
+        $this->monthly = Carbon::today()->format("m");
         $this->visited = '1';
     }
     
+    public function bulkReview()
+    {
+      
+       $monthwise = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $this->monthly)->orderBy('startdate','ASC')->get();
+
+       foreach ($monthwise as $evnto)
+       {
+          $eventreview = $evnto->slug;
+          $this->tryingfaker($eventreview);
+       }
+    }
+
+
+    public function tryingfaker($eventreview)
+    {
+
+      for($i = 0; $i < $this->howMany; $i++)
+      {
+        $indoyui = Event::where('slug', $eventreview)->first();
+        $trynigtocreate = collect([4,5,6,7,8,9]);
+        $findhastag = Hashtag::where('admstatus','0')->where('status','1')->where('event_id', $indoyui->id)->get();
+        $findhastagID = $findhastag->random();
+        $findComment = Comment::where('admstatus','1')->where('status','1')->get();
+        $findCommentID = $findComment->random();
+        $uertyui = User::where('utype', 'USR')->get();
+        $useroID = $uertyui->random();
+        $currenttime = Carbon::now();
+        $currento =  strtotime($currenttime);
+        $Subtracttime =  Carbon::now()->subHours(24);
+        $Subtracttimeo = strtotime($Subtracttime);
+        $getmid = rand($currento, $Subtracttimeo);
+        $finall = date('Y/m/d h:i:s', $getmid);
+
+        $usero = new Rate();
+       
+        $usero->rate = $trynigtocreate->random();
+        $usero->hasttag = $findhastagID->hastag; 
+        $usero->opinion =  $findCommentID->statement;
+        $usero->event_id = $indoyui->id;
+        $usero->user_id = $useroID->id;
+        $usero->status = '1'; 
+        $usero->admstatus = '1';
+        $usero->created_at = $finall;
+        $usero->updated_at = $finall;
+        $usero->save();
+      }
+      
+    }
+
+
     public function updateJobstatus($id, $status) 
     {
       $order = Job::find($id);
@@ -99,7 +155,6 @@ public $hastag;
       $franchise->status = $status;
       $franchise->save();
       session()->flash('message','info has been deleted Successfully');
-     
     }  
 
     public function updateCouponstatus($id, $status) 
@@ -180,7 +235,6 @@ public $hastag;
         session()->flash('message','info has been deleted Successfully');
     }
 
-
     public function updateEventstatus($id, $status) 
     {
       $eVent = Event::find($id);
@@ -258,7 +312,7 @@ public $hastag;
       return redirect()->back();
     }
 
-   
+  
 
     public function added()
     {
