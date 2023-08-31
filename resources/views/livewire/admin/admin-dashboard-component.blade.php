@@ -1726,7 +1726,7 @@
                                 <option value="11">Nov-11</option>
                                 <option value="12">Dec-12</option>
                               </select>
-                              <input type="text" wire:model.lazy="$howMany" class="form-control">
+                              <input type="text" wire:model.lazy="howMany" placeholder="how Many" class="form-control">
                               <input type="submit" class="form-control btn btn-primary">
                         </form>
                          

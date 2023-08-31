@@ -455,8 +455,6 @@ public $howMany;
 
     //dd($rti);
 
-    
-
     public function render()
     {
       //current Event

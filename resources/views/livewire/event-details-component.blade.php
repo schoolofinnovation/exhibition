@@ -1,6 +1,6 @@
 @section('page_title', ($event->eventname))
 @section('page_description', ($event->shtdesc))
-@section('page_keyword',  '($event->eventname) , The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
+@section('page_keyword',  'The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
     <main>
             <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
@@ -107,8 +107,29 @@
                   </div>
             </section>
 
-            <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
-              <div class="container pt-4 mb-3 mb-lg-0">
+            
+            <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-0 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
+            
+              <div class="container  mb-lg-0 bg-primary" >
+                <div class="d-flex justify-content-between py-2 px-2">
+                    <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                      @if( $event->businessrevenue == 'visitor' )  
+                        @if( $ticketOrExhibit != 0 )
+                            <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                          @elseif( $ticketOrExhibit == 0 )
+                            {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                          
+                            <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                        @endif
+                      @else
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                      @endif
+                  </div>
+                  <!-- <div class="container">
+                  Expand your Businesss       
+                  </div> -->
+              </div>
+              <div class="container pt-0 mb-3 mb-lg-0">
                 <div class="row gy-0">
                 
                 
@@ -120,14 +141,30 @@
                   </div>
                   <div class="col-lg-7 col-md-6 col-sm-8">
                     <div class="col-lg-6 col-md-6 border border-white border-1 px-3 py-5">
-                        <h5 class="text-light fw-normal pt-2 pb-0">
-                        @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                    <span class="badge badge-primary bg-primary fs-sm">
+                     
+
+                     @if ($current < $to && $current < $from)
+                       Upcoming
+                     @elseif ($current == $to && $current < $from) 
+                       First Day
+                     @elseif ($current > $to && $current < $from) 
+                       Ongoing
+                     @elseif ($current > $to && $current == $from) 
+                       Last Business Day 
+                     @elseif ($current > $to && $current > $from)
+                       ended
+                     @endif
+
+                      
+                  </span>
+                        <div class="text-light fw-normal fs-md pt-2 pb-0">
+                            @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
                               {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y ')}}
                             @else
                               {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
                             @endif 
-                              
-                        </h5>
+                        </div>
                         
                         <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
                         <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
@@ -313,9 +350,10 @@
                   <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
             </div>
 
-            <!--Applicable Offers-->
+           
+
             <div class="container d-lg-none">
-                <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
+                <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
                 
               <div class=" my-sliderOffers">
                   <ul class="list-unstyled fs-sm  p-2">
@@ -338,7 +376,6 @@
               </div>
 
             </div>
-
             <hr class="mt-md-2 mb-2">
 
             <!-- for big screens Product description + Reviews + Comments-->  
@@ -958,6 +995,71 @@
               </div>
             </section>
 
+            <!-- copy Card group sec_last-->
+            <section class="container py-5">
+
+              <!-- Card group -->
+              <div class="card-group sec_last">
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Reflections on {{$event->eventname}} Brand Collection and Business cultural Property Brands Opportunities.  </h5>
+                      <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
+                      <a href="#" class="text-primary fw-bold">Read More</a>
+                    </div>
+                  </div>
+
+                  
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Backdoor brand Studio</h5>
+                      <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
+                      <a href="#" class="text-primary fw-bold">Learn more</a>
+                    </div>
+                  </div>
+
+                   <!-- Card -->
+                   <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Plan to {{$event->eventname}}</h5>
+                      <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('m D, d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
+                      <a href="#" class="text-primary fw-bold">Plan your visit</a>
+                    </div>
+                  </div>
+
+
+                   <!-- Card -->
+                   <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Membership at The Exhibition Network</h5>
+                      <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
+                      <a href="#" class="text-primary fw-bold">See the benefits</a>
+                    </div>
+                  </div>
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">New at {{$event->eventname}}</h5>
+                      <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
+                      <a href="#" class="text-primary fw-bold">Go somewhere</a>
+                    </div>
+                  </div>
+
+
+                 
+              </div>
+            </section>
+
+
             <section class="card text-center py-5 border-0">
               <div class="card-body">
                 <h5 class="card-title h2">Buy your Expo 2023 Tickets Now </h5>
@@ -1016,23 +1118,161 @@
                 </div>
             </section>
 
-            <!--footer-->
-            <div class="handheld-toolbar bg-secondary">
-              <div class="d-flex justify-content-between py-2 px-2">
-               <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
-                @if( $event->businessrevenue == 'visitor' )  
-                  @if( $ticketOrExhibit != 0 )
-                      <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Book your Ticket</a>
-                    @elseif( $ticketOrExhibit == 0 )
-                      {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
-                     
-                      <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
-                  @endif
-                @else
-                <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
-                @endif
+            <li class="d-flex justify-content-between px-2 m-0 lh-1">
+              <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
+              <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Join Today</a></span>
+            </li>
+
+             <!--Applicable Offers-->
+             <div class="container d-lg-none">
+                <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
+                
+              <div class=" my-sliderOffers">
+                  <ul class="list-unstyled fs-sm  p-2">
+                      <li class="d-flex justify-content-between p-0 m-0">
+                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                  </ul>
+
+                  <ul class="list-unstyled fs-sm  p-2">
+                      <li class="d-flex justify-content-between p-0 m-0">
+                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                  </ul>
+                
+                  <ul class="list-unstyled fs-sm  p-2">
+                    <li class="d-flex justify-content-between p-0 m-0">
+                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                  </ul>
               </div>
+
             </div>
+
+            <section class="container py-5">
+              <div class="text-dark fw-bold fs-md">More to Explore</div>
+              <!-- Card group -->
+              <div class="card-group sec_last">
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Business Perspectives</h5>
+                      <!-- <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
+                      <a href="#" class="text-primary fw-bold">Read More</a> -->
+                    </div>
+                  </div>
+
+                  
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Business Guides</h5>
+                      <!-- <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
+                      <a href="#" class="text-primary fw-bold">Learn more</a> -->
+                    </div>
+                  </div>
+
+                   <!-- Card -->
+                   <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Learning Resources</h5>
+                      <!-- <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('m D, d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
+                      <a href="#" class="text-primary fw-bold">Plan your visit</a> -->
+                    </div>
+                  </div>
+
+
+                   <!-- Card -->
+                   <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Group Tours</h5>
+                      <!-- <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
+                      <a href="#" class="text-primary fw-bold">See the benefits</a> -->
+                    </div>
+                  </div>
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Publications</h5>
+                      <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
+                      <a href="#" class="text-primary fw-bold">Go somewhere</a> -->
+                    </div>
+                  </div>
+
+                  <div class="card border-0">
+                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Conversation and Scientific Research</h5>
+                      <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
+                      <a href="#" class="text-primary fw-bold">Go somewhere</a> -->
+                    </div>
+                  </div>
+
+                 
+              </div>
+            </section>
+
+            <!--footer-->
+            @if($event->eventype == 'award')
+              <div class="handheld-toolbar bg-secondary">
+                <div class="d-flex justify-content-between py-2 px-2">
+                  <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                    @if( $event->businessrevenue == 'visitor' )  
+                      @if( $ticketOrExhibit != 0 )
+                          <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                        @elseif( $ticketOrExhibit == 0 )
+                          {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                        
+                          <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                      @endif
+                    @else
+                    <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                    @endif
+                </div>
+              </div>
+            @elseif($event->eventype == 'conference')
+              <div class="handheld-toolbar bg-secondary">
+                <div class="d-flex justify-content-between py-2 px-2">
+                <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                  @if( $event->businessrevenue == 'visitor' )  
+                    @if( $ticketOrExhibit != 0 )
+                        <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                      @elseif( $ticketOrExhibit == 0 )
+                        {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                      
+                        <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                    @endif
+                  @else
+                  <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                  @endif
+                </div>
+              </div>
+            @elseif($event->eventype == 'expo')
+              <div class="handheld-toolbar bg-secondary">
+                <div class="d-flex justify-content-between py-2 px-2">
+                  <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                    @if( $event->businessrevenue == 'visitor' )  
+                      @if( $ticketOrExhibit != 0 )
+                          <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                        @elseif( $ticketOrExhibit == 0 )
+                          {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                        
+                          <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                      @endif
+                    @else
+                    <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                    @endif
+                  </div>
+              </div>
+            @endif
     </main>
 
     @push('scripts')
