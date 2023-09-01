@@ -355,11 +355,21 @@
             <div class="container d-lg-none">
                 <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
                 
-              <!-- <div class=" my-sliderOffers"> -->
+                <div class="locationhours">
                   <ul class="list-unstyled fs-sm  p-2">
                       <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                          <span class="text-dark fw-medium fs-sm">  Pavillion <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                          <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span>
+
+                          Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                          closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+
+                          <div class="d-flex badgeseTag">
+                            @foreach($category as $cat)
+                              <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                            @endforeach
+                          </div>
+                      </li>
                   </ul>
 
                   <ul class="list-unstyled fs-sm  p-2">
@@ -1123,31 +1133,7 @@
               <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Join Today</a></span>
             </li> -->
 
-             <!--Applicable Offers-->
-             <div class="container d-lg-none">
-                <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
-                
-              <div class="my-sliderOffers">
-                  <ul class="list-unstyled fs-sm  p-2">
-                      <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                  </ul>
-
-                  <ul class="list-unstyled fs-sm  p-2">
-                      <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                  </ul>
-                
-                  <ul class="list-unstyled fs-sm  p-2">
-                    <li class="d-flex justify-content-between p-0 m-0">
-                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                  </ul>
-              </div>
-
-            </div>
+            
 
             <section class="container py-5">
               <div class="text-dark fw-bold fs-md">More to Explore</div>
@@ -1155,7 +1141,7 @@
               <div class="card-group moretoexplore">
 
                   <!-- Card -->
-                  <div class="card border-0">
+                  <div class="card border-0 gx-1">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <h5 class="card-footer">Business Perspectives</h5>
@@ -1224,6 +1210,32 @@
                  
               </div>
             </section>
+
+             <!--Applicable Offers-->
+             <div class="container d-lg-none">
+                <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
+                
+              <div class="my-sliderOffers">
+                  <ul class="list-unstyled fs-sm  p-2">
+                      <li class="d-flex justify-content-between p-0 m-0">
+                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                  </ul>
+
+                  <ul class="list-unstyled fs-sm  p-2">
+                      <li class="d-flex justify-content-between p-0 m-0">
+                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                  </ul>
+                
+                  <ul class="list-unstyled fs-sm  p-2">
+                    <li class="d-flex justify-content-between p-0 m-0">
+                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                  </ul>
+              </div>
+
+            </div>
 
             <!--footer-->
             @if($event->eventype == 'award')
@@ -1473,6 +1485,35 @@
           <script>
             var slider = tns({
               "container": '.my-sliderOffers',  
+              "responsive": {
+                "350": {
+                  "items": 1,
+                  "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": false,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
+                  "nav": false,
+                 
+                },
+                "500": {
+                  "items": 3,
+                  "controls": false,
+                  "mouseDrag": true,
+                  "autoplay": true,
+                  "autoplayButtonOutput":false,
+                  "autoplayHoverPause": true,
+                }
+              },
+              
+              
+              
+            });
+          </script>
+
+           <script>
+            var slider = tns({
+              "container": '.locationhours',  
               "responsive": {
                 "350": {
                   "items": 1,
