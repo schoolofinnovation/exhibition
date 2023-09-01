@@ -301,8 +301,6 @@
 
                       <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
                     </div>
-                     
-                    
             </div>  
 
             <div class="container d-none d-sm-block">
@@ -352,71 +350,72 @@
                   <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
             </div>
 
-           
 
             <div class="container mt-4 d-lg-none">
-                <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
-                
-                <div class=" card-group locationhours">
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Pavillion</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="fs-md"> <span class="fw-bold">Hours:</span>  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
-                          <p class="fs-md"> <span class="fw-bold">closed:</span> {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
-                      <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
-                      <div class="d-flex badgeseTag">
-                            @foreach($category as $cat)
-                              <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
-                            @endforeach
-                          </div>
-                    </div>
+              <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
+              
+              <div class=" card-group locationhours">
+
+                <div class="card border-0">
+                  <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                  <div class="card-body">
+                    <h5 class="card-title">Pavillion</h5>
+                    <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="fs-sm"> <span class="fw-bold">Hours:</span>  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
+                        <p class="fs-sm"> <span class="fw-bold">Closed:</span> {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
+                    <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
+                    <div class="d-flex badgeseTag">
+                          @foreach($category as $cat)
+                            <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                          @endforeach
+                        </div>
                   </div>
+                </div>
 
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Pavillion</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-                          closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-                      <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
-                      <div class="d-flex badgeseTag">
-                            @foreach($category as $cat)
-                              <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
-                            @endforeach
-                          </div>
-                    </div>
+                <div class="card border-0">
+                  <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                  <div class="card-body">
+                    <h5 class="card-title">Pavillion</h5>
+                    <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                        closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                        <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
+                        <div class="d-flex badgeseTag">
+                          @foreach($category as $cat)
+                            <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                          @endforeach
+                        </div>
                   </div>
-<!-- 
-                  <ul class="list-unstyled fs-sm  p-2">
-                      <li class="d-flex justify-content-between p-0 m-0">
-                          <span class="text-dark fw-medium fs-sm">  Pavillion <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                          <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span>
+                </div>
+                  <!-- 
+                    <ul class="list-unstyled fs-sm  p-2">
+                        <li class="d-flex justify-content-between p-0 m-0">
+                            <span class="text-dark fw-medium fs-sm">  Pavillion <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                            <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span>
 
-                          Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-                          closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                            Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                            closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
 
-                          <div class="d-flex badgeseTag">
-                            @foreach($category as $cat)
-                              <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
-                            @endforeach
-                          </div>
-                      </li>
-                  </ul>
+                            <div class="d-flex badgeseTag">
+                              @foreach($category as $cat)
+                                <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                              @endforeach
+                            </div>
+                        </li>
+                    </ul>
 
-                  <ul class="list-unstyled fs-sm  p-2">
+                    <ul class="list-unstyled fs-sm  p-2">
+                        <li class="d-flex justify-content-between p-0 m-0">
+                        <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                        <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                    </ul>
+                  
+                    <ul class="list-unstyled fs-sm  p-2">
                       <li class="d-flex justify-content-between p-0 m-0">
                       <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
                       <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                  </ul>
-                
-                  <ul class="list-unstyled fs-sm  p-2">
-                    <li class="d-flex justify-content-between p-0 m-0">
-                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                  </ul> -->
+                    </ul> 
+                  -->
               </div>
 
             </div>
@@ -917,10 +916,18 @@
               </div>
             </section>
 
-            <hr class="mt-md-2 mb-2">
+            <div class="row mb-5 pb-2">
+                @foreach ($participants as $participant) 
+                    {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                    <div class=" col col-auto my-1 px-2"> 
+                        <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
+                    </div>
+                @endforeach  
+            </div>
             
             <!--exhibitor-->
             @if(count($eventbrand) > 0)
+            <hr class="mt-md-2 mb-2">
             <section class="container pt-2 pt-md-5">
               <h6 class="text-left mb-2"> Participants</h6>
               <div class="my-sliderexpo d-none d-sm-block">
@@ -975,10 +982,9 @@
               </section>
             @endif
 
-            <hr class="mt-md-2 mb-2">
-
            <!-- Partner-->
            @if(count($eventbrand)>0)
+           <hr class="mt-md-2 mb-2">
             <section class="container py-2 pt-md-5">
               <h6 class="text-left mb-2">Partner</h6>
               <div class="my-sliderPartner">
@@ -1113,13 +1119,13 @@
             </section>
             
           <!-- Card group last-->
-             <section class="container py-5">
+            <!-- <section class="container py-5">
                 
                 <div class="card-group last" >
 
-                  <!-- Card -->
+                 
                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Find Business</h5>
                       <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
@@ -1127,12 +1133,11 @@
                     </div>
                   </div>
 
-                  <!-- Card -->
                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">The Exhibition Magazine</h5>
-                       <p class="card-text fs-sm text-muted"><!--Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact. -->
+                       <p class="card-text fs-sm text-muted">Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact.
 
                       Elevate your brand's visibility and influence by featuring in The Exhibition Magazine. Reach a select audience of industry insiders, enthusiasts, and decision-makers who align with your values. With our Smart Presence Solution, your brand will be positioned in front of the Right People, at the Right Time and in the Right Place.
                       </p>
@@ -1141,7 +1146,7 @@
                   </div>
 
                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
+                     <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Build a Network</h5>
                       <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
@@ -1150,7 +1155,7 @@
                   </div>
 
                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Business Brand Managers</h5>
                       <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
@@ -1160,7 +1165,7 @@
 
                   
                 </div>
-            </section>
+            </section> -->
 
             <!-- <li class="d-flex justify-content-between px-2 m-0 lh-1">
               <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
@@ -1197,11 +1202,11 @@
                     <div class="card-img-overlay">
                       <h5 class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <h5 class="card-title">Business Guides</h5>
-                      <!-- <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
-                      <a href="#" class="text-primary fw-bold">Learn more</a> -->
-                    </div>
+                      <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
+                      <a href="#" class="text-primary fw-bold">Learn more</a>
+                    </div> -->
                   </div>
 
                    <!-- Card -->
@@ -1210,11 +1215,11 @@
                     <div class="card-img-overlay">
                       <h5 class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <h5 class="card-title">Learning Resources</h5>
-                      <!-- <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('m D, d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
-                      <a href="#" class="text-primary fw-bold">Plan your visit</a> -->
-                    </div>
+                      <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('m D, d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
+                      <a href="#" class="text-primary fw-bold">Plan your visit</a>
+                    </div> -->
                   </div>
 
 
@@ -1224,11 +1229,11 @@
                     <div class="card-img-overlay">
                       <h5 class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <h5 class="card-title">Group Tours</h5>
-                      <!-- <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
-                      <a href="#" class="text-primary fw-bold">See the benefits</a> -->
-                    </div>
+                      <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
+                      <a href="#" class="text-primary fw-bold">See the benefits</a>
+                    </div> -->
                   </div>
 
                   <!-- Card -->
@@ -1237,11 +1242,11 @@
                     <div class="card-img-overlay">
                       <h5 class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <h5 class="card-title">Publications</h5>
-                      <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
-                      <a href="#" class="text-primary fw-bold">Go somewhere</a> -->
-                    </div>
+                      <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
+                      <a href="#" class="text-primary fw-bold">Go somewhere</a>
+                    </div> -->
                   </div>
 
                   <div class="card border-0">
@@ -1249,11 +1254,11 @@
                     <div class="card-img-overlay">
                       <h5 class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <h5 class="card-title">Conversation and Scientific Research</h5>
-                      <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
-                      <a href="#" class="text-primary fw-bold">Go somewhere</a> -->
-                    </div>
+                      <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
+                      <a href="#" class="text-primary fw-bold">Go somewhere</a>
+                    </div> -->
                   </div>
 
                  
@@ -1261,7 +1266,7 @@
             </section>
 
              <!--Applicable Offers-->
-             <div class="container d-lg-none">
+             <div class="container mb-3 d-lg-none">
                 <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
                 
               <div class="my-sliderOffers">
