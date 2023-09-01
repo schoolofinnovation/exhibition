@@ -355,7 +355,39 @@
             <div class="container d-lg-none">
                 <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
                 
-                <div class="locationhours">
+                <div class=" card-group locationhours">
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Pavillion</h5>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                          closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                      <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
+                      <div class="d-flex badgeseTag">
+                            @foreach($category as $cat)
+                              <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                            @endforeach
+                          </div>
+                    </div>
+                  </div>
+
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Pavillion</h5>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                          Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                          closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                      <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
+                      <div class="d-flex badgeseTag">
+                            @foreach($category as $cat)
+                              <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                            @endforeach
+                          </div>
+                    </div>
+                  </div>
+<!-- 
                   <ul class="list-unstyled fs-sm  p-2">
                       <li class="d-flex justify-content-between p-0 m-0">
                           <span class="text-dark fw-medium fs-sm">  Pavillion <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
@@ -382,7 +414,7 @@
                     <li class="d-flex justify-content-between p-0 m-0">
                     <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                  </ul>
+                  </ul> -->
               </div>
 
             </div>
