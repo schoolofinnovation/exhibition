@@ -1029,7 +1029,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Plan to {{$event->eventname}}</h5>
                       <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('M d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
-                      <a href="#" class="text-primary fw-normal"><u>Plan your visit<u></a>
+                      <a href="#" class="text-primary fw-normal">Plan your visit</a>
                     </div>
                   </div>
 
@@ -1069,7 +1069,7 @@
             </section>
             
           <!-- Card group last-->
-            <!-- <section class="container py-5">
+             <section class="container py-5">
                 
                 <div class="card-group last" >
 
@@ -1157,6 +1157,7 @@
                   <!-- Card -->
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class="card-img-top" alt="Card image">
+                    <h5 class="card-title">Business Perspectives</h5>
                     <div class="card-body">
                       <h5 class="card-title">Business Perspectives</h5>
                       <!-- <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
