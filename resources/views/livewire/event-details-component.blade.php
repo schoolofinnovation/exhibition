@@ -519,7 +519,7 @@
 
                         <!-- Card -->
                         <div class="col-4 card border-0 px-0">
-                          <img src="pat-to-image" class="card-img-top" alt="Card image">
+                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                           <div class="card-body">
                             <h5 class="card-title">Country Pavillions</h5>
                             <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -529,7 +529,7 @@
 
                         <!-- Card -->
                         <div class="col-4 card border-0 px-0">
-                          <img src="pat-to-image" class="card-img-top" alt="Card image">
+                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                           <div class="card-body">
                             <h5 class="card-title">Partner Pavillions</h5>
                             <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -551,7 +551,7 @@
 
                         <!-- Card -->
                         <div class="col-4 card border-0 px-0">
-                          <img src="pat-to-image" class="card-img-top" alt="Card image">
+                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                           <div class="card-body">
                             <h5 class="card-title">Country Pavillions</h5>
                             <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -561,7 +561,7 @@
 
                         <!-- Card -->
                         <div class="col-4 card border-0 px-0">
-                          <img src="pat-to-image" class="card-img-top" alt="Card image">
+                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                           <div class="card-body">
                             <h5 class="card-title">Partner Pavillions</h5>
                             <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -965,7 +965,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">World Expos' History</h5>
                       <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -975,7 +975,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Expo 2023 Story</h5>
                       <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -985,7 +985,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">After Expo</h5>
                       <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -1003,7 +1003,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?discussion, initiatives" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Reflections on {{$event->eventname}} Brand Collection and Business cultural Property Brands Opportunities.  </h5>
                       <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
@@ -1015,7 +1015,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?brand, studio" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Backdoor brand Studio</h5>
                       <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
@@ -1025,18 +1025,18 @@
 
                    <!-- Card -->
                    <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?visit, exhibition" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Plan to {{$event->eventname}}</h5>
-                      <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('m D, d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
-                      <a href="#" class="text-primary fw-bold">Plan your visit</a>
+                      <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('M d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
+                      <a href="#" class="text-primary fw-normal"><u>Plan your visit<u></a>
                     </div>
                   </div>
 
 
                    <!-- Card -->
                    <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?Membership, benefits" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Membership at The Exhibition Network</h5>
                       <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
@@ -1046,7 +1046,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">New at {{$event->eventname}}</h5>
                       <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
@@ -1069,13 +1069,13 @@
             </section>
             
           <!-- Card group last-->
-            <section class="container py-5">
+            <!-- <section class="container py-5">
                 
                 <div class="card-group last" >
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
+                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
                     <div class="card-body">
                       <h5 class="card-title">Find Business</h5>
                       <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
@@ -1085,7 +1085,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
+                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
                     <div class="card-body">
                       <h5 class="card-title">The Exhibition Magazine</h5>
                        <p class="card-text fs-sm text-muted"><!--Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact. -->
@@ -1097,7 +1097,7 @@
                   </div>
 
                   <div class="card border-0">
-                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
+                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
                     <div class="card-body">
                       <h5 class="card-title">Build a Network</h5>
                       <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
@@ -1106,7 +1106,7 @@
                   </div>
 
                   <div class="card border-0">
-                    <!-- <img src="pat-to-image" class="card-img-top" alt="Card image"> -->
+                    <!-- <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image"> -->
                     <div class="card-body">
                       <h5 class="card-title">Business Brand Managers</h5>
                       <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
@@ -1116,12 +1116,12 @@
 
                   
                 </div>
-            </section>
+            </section> -->
 
-            <li class="d-flex justify-content-between px-2 m-0 lh-1">
+            <!-- <li class="d-flex justify-content-between px-2 m-0 lh-1">
               <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
               <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Join Today</a></span>
-            </li>
+            </li> -->
 
              <!--Applicable Offers-->
              <div class="container d-lg-none">
@@ -1156,7 +1156,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?business, perspectives" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Business Perspectives</h5>
                       <!-- <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
@@ -1168,7 +1168,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?business, guides" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Business Guides</h5>
                       <!-- <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
@@ -1178,7 +1178,7 @@
 
                    <!-- Card -->
                    <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Learning Resources</h5>
                       <!-- <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('m D, d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
@@ -1189,7 +1189,7 @@
 
                    <!-- Card -->
                    <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?Group, business tours" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Group Tours</h5>
                       <!-- <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
@@ -1199,7 +1199,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?magazine, advertise" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Publications</h5>
                       <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
@@ -1208,7 +1208,7 @@
                   </div>
 
                   <div class="card border-0">
-                    <img src="pat-to-image" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?networking, research" class="card-img-top" alt="Card image">
                     <div class="card-body">
                       <h5 class="card-title">Conversation and Scientific Research</h5>
                       <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
