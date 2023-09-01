@@ -355,7 +355,7 @@
             <div class="container d-lg-none">
                 <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
                 
-              <div class=" my-sliderOffers">
+              <!-- <div class=" my-sliderOffers"> -->
                   <ul class="list-unstyled fs-sm  p-2">
                       <li class="d-flex justify-content-between p-0 m-0">
                       <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
@@ -1116,7 +1116,7 @@
 
                   
                 </div>
-            </section> -->
+            </section>
 
             <!-- <li class="d-flex justify-content-between px-2 m-0 lh-1">
               <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
@@ -1127,7 +1127,7 @@
              <div class="container d-lg-none">
                 <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
                 
-              <div class=" my-sliderOffers">
+              <div class="my-sliderOffers">
                   <ul class="list-unstyled fs-sm  p-2">
                       <li class="d-flex justify-content-between p-0 m-0">
                       <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
@@ -1152,12 +1152,16 @@
             <section class="container py-5">
               <div class="text-dark fw-bold fs-md">More to Explore</div>
               <!-- Card group -->
-              <div class="card-group sec_last">
+              <div class="card-group moretoexplore">
 
                   <!-- Card -->
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class="card-img-top" alt="Card image">
+                    <div class="card-img-overlay">
                     <h5 class="card-title">Business Perspectives</h5>
+                    </div>
+                    
+                    
                     <div class="card-body">
                       <h5 class="card-title">Business Perspectives</h5>
                       <!-- <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
@@ -1625,6 +1629,28 @@
           <script>
             var slider = tns({
               "container": '.last',  
+              "responsive": {
+                "300": {
+                  "items": 1,
+                  "controls": false,
+                  "nav": false,
+                  "autoplay":false,
+                  "mouseDrag":true,
+                  "controls": false,
+                  "fixedWidth": 280,
+                },
+                "500": {
+                  "items": 3,
+                  "nav": false,
+                }
+              },
+              
+            });
+          </script>
+
+<script>
+            var slider = tns({
+              "container": '.moretoexplore',  
               "responsive": {
                 "300": {
                   "items": 1,
