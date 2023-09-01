@@ -1050,7 +1050,7 @@
                     <div class="card-body">
                       <h5 class="card-title">New at {{$event->eventname}}</h5>
                       <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
-                      <a href="#" class="text-primary fw-bold">Go somewhere</a>
+                      <a href="#" class="text-primary  fs-sm fw-bold">Go somewhere</a>
                     </div>
                   </div>
 
@@ -1158,15 +1158,15 @@
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                    <h5 class="card-title">Business Perspectives</h5>
+                      <h5 class="card-footer">Business Perspectives</h5>
                     </div>
                     
                     
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <h5 class="card-title">Business Perspectives</h5>
-                      <!-- <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
-                      <a href="#" class="text-primary fw-bold">Read More</a> -->
-                    </div>
+                      <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
+                      <a href="#" class="text-primary fw-bold">Read More</a>
+                    </div> -->
                   </div>
 
                   
