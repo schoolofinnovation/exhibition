@@ -240,7 +240,7 @@
                         </div>
                       @endif
                    
-                    <ul class="list-unstyled  bg-secondary py-2">
+                    <ul class="list-unstyled  bg-secondary py-1">
                           @if(Auth::check())
                             @php
                                 $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
@@ -267,7 +267,7 @@
                               </li>
                           @endif
                     </ul>
-
+<!-- 
                       <div class="d-flex badgeseTag">
                         @foreach($category as $cat)
                           <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
@@ -290,16 +290,18 @@
                        @endif
 
                         
-                    </span>
+                    </span> -->
 
-                    <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
+                   
                     <div class="fs-xs fw-normal">
                       @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
                        @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
                       {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
-                    </div>
+                      <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
 
-                    <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
+                      <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
+                    </div>
+                     
                     
             </div>  
 
@@ -352,7 +354,7 @@
 
            
 
-            <div class="container d-lg-none">
+            <div class="container mt-4 d-lg-none">
                 <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
                 
                 <div class=" card-group locationhours">
@@ -361,8 +363,8 @@
                     <div class="card-body">
                       <h5 class="card-title">Pavillion</h5>
                       <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-                          closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                          <p class="fs-md"> <span class="fw-bold">Hours:</span>  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
+                          <p class="fs-md"> <span class="fw-bold">closed:</span> {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
                       <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
                       <div class="d-flex badgeseTag">
                             @foreach($category as $cat)
@@ -1000,12 +1002,12 @@
            @endif
 
           <!-- copy Card group sec_last-->
-            <section class="container py-5">
+            <!-- <section class="container py-5">
 
-              <!-- Card group -->
+              
               <div class="card-group sec_last">
 
-                  <!-- Card -->
+                
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
@@ -1015,7 +1017,7 @@
                     </div>
                   </div>
 
-                  <!-- Card -->
+                
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
@@ -1025,7 +1027,7 @@
                     </div>
                   </div>
 
-                  <!-- Card -->
+                
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                     <div class="card-body">
@@ -1035,7 +1037,7 @@
                     </div>
                   </div>
               </div>
-            </section>
+            </section> -->
 
             <!-- copy Card group sec_last-->
             <section class="container py-5">
@@ -1176,7 +1178,7 @@
                   <div class="card border-0 gx-1">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-footer">Business Perspectives</h5>
+                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
                     
                     
@@ -1192,6 +1194,9 @@
                   <!-- Card -->
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?business, guides" class="card-img-top" alt="Card image">
+                    <div class="card-img-overlay">
+                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                    </div>
                     <div class="card-body">
                       <h5 class="card-title">Business Guides</h5>
                       <!-- <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
@@ -1202,6 +1207,9 @@
                    <!-- Card -->
                    <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image">
+                    <div class="card-img-overlay">
+                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                    </div>
                     <div class="card-body">
                       <h5 class="card-title">Learning Resources</h5>
                       <!-- <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('m D, d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
@@ -1213,6 +1221,9 @@
                    <!-- Card -->
                    <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?Group, business tours" class="card-img-top" alt="Card image">
+                    <div class="card-img-overlay">
+                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                    </div>
                     <div class="card-body">
                       <h5 class="card-title">Group Tours</h5>
                       <!-- <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
@@ -1223,6 +1234,9 @@
                   <!-- Card -->
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?magazine, advertise" class="card-img-top" alt="Card image">
+                    <div class="card-img-overlay">
+                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                    </div>
                     <div class="card-body">
                       <h5 class="card-title">Publications</h5>
                       <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
@@ -1232,6 +1246,9 @@
 
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?networking, research" class="card-img-top" alt="Card image">
+                    <div class="card-img-overlay">
+                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                    </div>
                     <div class="card-body">
                       <h5 class="card-title">Conversation and Scientific Research</h5>
                       <!-- <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
