@@ -919,9 +919,9 @@
 
 
 
-            <div class="container">
-              <small class="text-center text-primary fs-sm fw-light">Right Place, Right Time, Right People</small>
-              <h1 class="text-center fw-bold lh-1">Market Leaders Reply on Great Place To Business</h1>
+            <div class="container text-center">
+              <small class="text-primary fs-sm fw-light">Right Place, Right Time, Right People</small>
+              <h1 class="text-center fw-bold display-3 lh-1">Market Leaders Rely on Great Place To Business</h1>
             </div> 
 
 
@@ -931,7 +931,7 @@
                   @foreach ($eventbrand as $participant) 
                       {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
                       <div class=" col col-auto my-1 px-2"> 
-                          <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
+                          <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="60px">
                       </div>
                   @endforeach  
               </div>
@@ -1188,13 +1188,13 @@
             
 
             <section class="container py-5">
-              <div class="text-dark fw-bold fs-md">More to Explore</div>
+              <div class="text-dark fw-bold fs-md h1">More to Explore</div>
               <!-- Card group -->
               <div class="card-group moretoexplore">
 
                   <!-- Card -->
                   <div class="card border-0 gx-1">
-                    <img src="https://source.unsplash.com/1600x900/?business, perspectives" class="card-img-top" alt="Card image">
+                    <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <h5 class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
@@ -1213,7 +1213,7 @@
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?business, guides" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                      <h5 class="card-footer text-secondary">Business Guides</h5>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Business Guides</h5>
@@ -1226,7 +1226,7 @@
                    <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                      <h5 class="card-footer text-secondary">Learning Resources</h5>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Learning Resources</h5>
@@ -1240,7 +1240,7 @@
                    <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?Group, business tours" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                      <h5 class="card-footer text-secondary">Group Tours</h5>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Group Tours</h5>
@@ -1253,7 +1253,7 @@
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?magazine, advertise" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                      <h5 class="card-footer text-secondary">Publications</h5>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Publications</h5>
@@ -1265,7 +1265,7 @@
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?networking, research" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                      <h5 class="card-footer text-secondary">Conversation and Scientific Research</h5>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Conversation and Scientific Research</h5>
