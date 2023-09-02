@@ -1,9 +1,6 @@
 @section('page_title', ($event->eventname))
 @section('page_description', ($event->shtdesc))
-@section('page_keyword',  'The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, 
-                            business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. 
-                            Browse and connect with visitors attending, participating exhibitors and view profiles of speakers 
-                            and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
+@section('page_keyword',  'The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
     <main>
             <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
@@ -114,23 +111,18 @@
             <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-0 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
             
               <div class="container  mb-lg-0 bg-primary" >
-                <div class="d-flex justify-content-between py-2 px-2">
-                    <div class="text-dark  pl-3 lh-1 bg-accent">
-                      <span class = "fw-medium fs-sm">
-
-                      </span><br>
-                      <span class=" fw-bold fs-xs text-accent">Great<br>Place<br>To<br>Visit</span>
-                    </div>
+                <div class="d-flex justify-content-between py-2">
+                    <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                       @if( $event->businessrevenue == 'visitor' )  
                         @if( $ticketOrExhibit != 0 )
-                            <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-outline-primary btn-sm">Plan Your Visit</a>
+                            <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
                           @elseif( $ticketOrExhibit == 0 )
-                            {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-primary btn-sm">Plan Your Visit</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                            {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
                           
-                            <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Plan Your Visit</a>
+                            <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
                         @endif
                       @else
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-primary btn-sm">Plan Your Visit</a>
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
                       @endif
                   </div>
                   <!-- <div class="container">
@@ -275,7 +267,7 @@
                               </li>
                           @endif
                     </ul>
-<!-- 
+                    <!-- 
                       <div class="d-flex badgeseTag">
                         @foreach($category as $cat)
                           <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
@@ -937,7 +929,7 @@
             @if(count($eventbrand) > 0)
             <hr class="mt-md-2 mb-2">
             <section class="container pt-2 pt-md-5">
-              <h1 class="text-left mb-2">Market Leaders Rely on Great Business To Work</h6>
+              <h6 class="text-left mb-2"> Participants</h6>
               <div class="my-sliderexpo d-none d-sm-block">
                     @foreach ($eventbrand as $franchise)
                         <div class="col-sm-3 mb-grid-gutter">
