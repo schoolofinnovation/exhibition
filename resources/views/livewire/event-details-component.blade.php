@@ -112,17 +112,17 @@
             
               <div class="container  mb-lg-0 bg-primary" >
                 <div class="d-flex justify-content-between py-2">
-                    <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                    <div class="text-dark  pl-3 lh-1">  <span class= "fw-bold text-light fs-sm ">Great Place To Visit</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                       @if( $event->businessrevenue == 'visitor' )  
                         @if( $ticketOrExhibit != 0 )
-                            <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                            <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-outline-light btn-sm">Plan Your Visit</a>
                           @elseif( $ticketOrExhibit == 0 )
-                            {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                            {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Plan Your Visit</a>{{route('event.product',['slug' => $event->slug])}}--}}
                           
-                            <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                            <a href="#" class="btn btn-outline-light btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Plan Your Visit</a>
                         @endif
                       @else
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Plan Your Visit</a>
                       @endif
                   </div>
                   <!-- <div class="container">
@@ -916,6 +916,15 @@
                   </div>
               </div>
             </section>
+
+
+
+            <div class="container">
+              <small class="text-center text-primary fs-sm fw-light">Right Place, Right Time, Right People</small>
+              <h1 class="text-center fw-bold lh-1">Market Leaders Reply on Great Place To Business</h1>
+            </div> 
+
+
             @if(count($eventbrand) > 0)
             <section class="container mb-4 mb-lg-5">
               <div class="row mb-5 pb-2">
