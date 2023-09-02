@@ -916,15 +916,18 @@
                   </div>
               </div>
             </section>
-
-            <div class="row mb-5 pb-2">
-                @foreach ($eventbrand as $participant) 
-                    {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
-                    <div class=" col col-auto my-1 px-2"> 
-                        <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
-                    </div>
-                @endforeach  
-            </div>
+            @if(count($eventbrand) > 0)
+            <section class="container mb-4 mb-lg-5">
+              <div class="row mb-5 pb-2">
+                  @foreach ($eventbrand as $participant) 
+                      {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                      <div class=" col col-auto my-1 px-2"> 
+                          <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
+                      </div>
+                  @endforeach  
+              </div>
+            </section>
+            @endif
             
             <!--exhibitor-->
             @if(count($eventbrand) > 0)
@@ -1267,7 +1270,7 @@
             </section>
 
              <!--Applicable Offers-->
-             <div class="container mb-3 d-lg-none">
+             <div class="container mb-5 d-lg-none">
                 <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
                 
               <div class="my-sliderOffers">
@@ -1293,10 +1296,43 @@
             </div>
 
             <!--footer-->
-            
-            
+            @if($event->eventype == 'award')
               <div class="handheld-toolbar bg-secondary">
-                <div class="d-flex justify-content-between py-2 px-0">
+                <div class="d-flex justify-content-between py-2 px-2">
+                  <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                    @if( $event->businessrevenue == 'visitor' )  
+                      @if( $ticketOrExhibit != 0 )
+                          <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                        @elseif( $ticketOrExhibit == 0 )
+                          {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                        
+                          <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                      @endif
+                    @else
+                    <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                    @endif
+                </div>
+              </div>
+            @elseif($event->eventype == 'conference')
+              <div class="handheld-toolbar bg-secondary">
+                <div class="d-flex justify-content-between py-2 px-2">
+                <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                  @if( $event->businessrevenue == 'visitor' )  
+                    @if( $ticketOrExhibit != 0 )
+                        <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                      @elseif( $ticketOrExhibit == 0 )
+                        {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                      
+                        <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                    @endif
+                  @else
+                  <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                  @endif
+                </div>
+              </div>
+            @elseif($event->eventype == 'expo')
+              <div class="handheld-toolbar bg-secondary">
+                <div class="d-flex justify-content-between py-2 px-2">
                   <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                     @if( $event->businessrevenue == 'visitor' )  
                       @if( $ticketOrExhibit != 0 )
@@ -1311,7 +1347,7 @@
                     @endif
                   </div>
               </div>
-            
+            @endif
     </main>
 
     @push('scripts')
