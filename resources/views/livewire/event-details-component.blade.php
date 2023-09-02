@@ -129,6 +129,7 @@
                   Expand your Businesss       
                   </div> -->
               </div>
+
               <div class="container pt-0 mb-3 mb-lg-0">
                 <div class="row gy-0">
                 
@@ -1292,43 +1293,10 @@
             </div>
 
             <!--footer-->
-            @if($event->eventype == 'award')
+            
+            
               <div class="handheld-toolbar bg-secondary">
-                <div class="d-flex justify-content-between py-2 px-2">
-                  <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
-                    @if( $event->businessrevenue == 'visitor' )  
-                      @if( $ticketOrExhibit != 0 )
-                          <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
-                        @elseif( $ticketOrExhibit == 0 )
-                          {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
-                        
-                          <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
-                      @endif
-                    @else
-                    <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
-                    @endif
-                </div>
-              </div>
-            @elseif($event->eventype == 'conference')
-              <div class="handheld-toolbar bg-secondary">
-                <div class="d-flex justify-content-between py-2 px-2">
-                <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
-                  @if( $event->businessrevenue == 'visitor' )  
-                    @if( $ticketOrExhibit != 0 )
-                        <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
-                      @elseif( $ticketOrExhibit == 0 )
-                        {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
-                      
-                        <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
-                    @endif
-                  @else
-                  <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
-                  @endif
-                </div>
-              </div>
-            @elseif($event->eventype == 'expo')
-              <div class="handheld-toolbar bg-secondary">
-                <div class="d-flex justify-content-between py-2 px-2">
+                <div class="d-flex justify-content-between py-2 px-0">
                   <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                     @if( $event->businessrevenue == 'visitor' )  
                       @if( $ticketOrExhibit != 0 )
@@ -1343,7 +1311,7 @@
                     @endif
                   </div>
               </div>
-            @endif
+            
     </main>
 
     @push('scripts')
