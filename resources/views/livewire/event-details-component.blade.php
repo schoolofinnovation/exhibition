@@ -928,39 +928,39 @@
             
             <!--exhibitor-->
             @if(count($eventbrand) > 0)
-            <hr class="mt-md-2 mb-2">
-            <section class="container pt-2 pt-md-5">
-              <h6 class="text-left mb-2"> Participants</h6>
-              <div class="my-sliderexpo d-none d-sm-block">
-                    @foreach ($eventbrand as $franchise)
-                        <div class="col-sm-3 mb-grid-gutter">
-                          <div class="card product-card-alt">
-                                  
-                                <div class="product-thumb p-3">
-                                  
-                                  
-                                    <div class="product-card-actions p-2">
+              <hr class="mt-md-2 mb-2">
+              <section class="container pt-2 pt-md-5">
+                <h6 class="text-left mb-2"> Participants</h6>
+                <div class="my-sliderexpo d-none d-sm-block">
+                      @foreach ($eventbrand as $franchise)
+                          <div class="col-sm-3 mb-grid-gutter">
+                            <div class="card product-card-alt">
                                     
-                                      <div class="fs-sm text-light" href="">Booth 3</div>
-                                      <div class="fs-sm text-light" href="">Elite Sponsor</div>
-                                      <div class="fs-sm text-light" href="">View Website</div>
-                                    </div>
+                                  <div class="product-thumb p-3">
+                                    
+                                    
+                                      <div class="product-card-actions p-2">
+                                      
+                                        <div class="fs-sm text-light" href="">Booth 3</div>
+                                        <div class="fs-sm text-light" href="">Elite Sponsor</div>
+                                        <div class="fs-sm text-light" href="">View Website</div>
+                                      </div>
 
-                                    <a class="product-thumb-overlay" href=""></a>
+                                      <a class="product-thumb-overlay" href=""></a>
 
-                                    <img class="p-3" width="auto" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
-                                </div>  
+                                      <img class="p-3" width="auto" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                                  </div>  
+                            </div>
                           </div>
-                        </div>
-                    @endforeach
-              </div>
+                      @endforeach
+                </div>
 
-              <div class="my-sliderexpo d-lg-none">
-                  <a class="d-flex align-items-center" href="#">
-                    <img class="rounded-circle" width="90%" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
-                  </a>
-              </div>
-            </section>
+                <div class="my-sliderexpo d-lg-none">
+                    <a class="d-flex align-items-center" href="#">
+                      <img class="rounded-circle" width="90%" src="{{url('public/assets/images/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                    </a>
+                </div>
+              </section>
             @endif
 
             @if($speaker->count() > 0 )
@@ -985,7 +985,7 @@
 
            <!-- Partner-->
            @if(count($eventbrand)>0)
-           <hr class="mt-md-2 mb-2">
+            <hr class="mt-md-2 mb-2">
             <section class="container py-2 pt-md-5">
               <h6 class="text-left mb-2">Partner</h6>
               <div class="my-sliderPartner">
@@ -1446,6 +1446,7 @@
              
             });
           </script>
+
         <!--speaker-->
           <script>
             var slider = tns({
@@ -1711,7 +1712,7 @@
             });
           </script>
 
-<script>
+          <script>
             var slider = tns({
               "container": '.moretoexplore',  
               "responsive": {
@@ -1889,4 +1890,5 @@
           </script>
         
     @endpush
+
 </main>
