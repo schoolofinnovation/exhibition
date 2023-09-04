@@ -31,7 +31,9 @@
 
                     <div class="ps-3">
                     <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">{{$finduserdetails->name}}</p>
+                        <p class="fs-md mb-0">{{$finduserdetails->name}}
+                        src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->name}}"
+                        </p>
                         <a class="nav-link-style fs-sm fw-medium" href="#">
                         <i class="bi bi-star me-2"></i>{{$busness->rate}}/10</a>
                     </div>

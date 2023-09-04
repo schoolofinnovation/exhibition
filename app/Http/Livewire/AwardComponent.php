@@ -19,7 +19,7 @@ class AwardComponent extends Component
     {
         $eventID = Event::where('slug', $this->slug)->first();
         $getIDEvent = $eventID->id;
-        $eventrate = Rate::where('event_id', $getIDEvent)->order('updated_at', 'desc')->get();
+        $eventrate = Rate::where('event_id', $getIDEvent)->orderBy('updated_at', 'desc')->get();
 
         return view('livewire.award-component', ['eventrate' => $eventrate]);
     }
