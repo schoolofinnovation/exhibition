@@ -297,7 +297,7 @@
                     <div class="fs-xs fw-normal">
                       @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
                        @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
-                      {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
+                      {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} Days
                       <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
 
                       <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
@@ -362,8 +362,8 @@
                   <div class="card-body">
                     <h5 class="card-title">Pavillion</h5>
                     <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="fs-sm"> <span class="fw-bold">Hours:</span>  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
-                        <p class="fs-sm"> <span class="fw-bold">Closed:</span> {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
+                        <p class="fs-xs"> <span class="fs-xs fw-bold">Hours:</span> 10:00 - 11:00  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
+                        <p class="fs-xs"> <span class="fs-xs fw-bold">Closed:</span> 10:00 - 11:00 {{Carbon\Carbon::parse ($event->enddate)->format('D, d M')}}</p> 
                     <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
                     <div class="d-flex badgeseTag">
                           @foreach($category as $cat)
@@ -1340,22 +1340,47 @@
                 </div>
               </div>
             @elseif($event->eventype == 'expo')
-              <div class="handheld-toolbar bg-secondary">
-                <div class="d-flex justify-content-between py-2 px-2">
-                  <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
-                    @if( $event->businessrevenue == 'visitor' )  
-                      @if( $ticketOrExhibit != 0 )
-                          <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
-                        @elseif( $ticketOrExhibit == 0 )
-                          {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
-                        
-                          <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+
+              @if($event->businessrevenue == 'exhibitor')
+                <div class="handheld-toolbar bg-secondary">
+                  <div class="d-flex justify-content-between py-2 px-2">
+                    <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                      @if( $event->businessrevenue == 'visitor' )  
+                        @if( $ticketOrExhibit != 0 )
+                            <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                          @elseif( $ticketOrExhibit == 0 )
+                            {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                          
+                            <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                        @endif
+                      @else
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
                       @endif
-                    @else
-                    <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
-                    @endif
-                  </div>
-              </div>
+                    </div>
+                </div>
+              @else
+                <div class="handheld-toolbar bg-secondary">
+                  <div class="d-flex justify-content-between py-2 px-2">
+                    <div class="text-dark  pl-3 lh-1">
+                      <span class = "fw-medium fs-sm"> @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
+                       @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
+                      {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))->addDays(1)}} Days</span><br>
+                      <span class=" fw-normal fs-xs">Get extra ad-ons</span></div>
+                      @if( $event->businessrevenue == 'visitor' )  
+                        @if( $ticketOrExhibit != 0 )
+                            <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-primary btn-sm">Plan Your Visit</a>
+                          @elseif( $ticketOrExhibit == 0 )
+                            {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>{{route('event.product',['slug' => $event->slug])}}--}}
+                          
+                            <a href="#" class="btn btn-primary btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Book your Space</a>
+                        @endif
+                      @else
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-primary btn-sm">Book your Space</a>
+                      @endif
+                    </div>
+                </div>
+              @endif
+
             @endif
     </main>
 

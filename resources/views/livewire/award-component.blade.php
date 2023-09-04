@@ -46,7 +46,7 @@
                         12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i>
                         </span> -->
 
-                        <span class="fs-ms text-muted">{{$busness->updated_at}} 
+                        <span class="fs-ms text-muted">{{ Carbon\Carbon::parse($busness->updated_at)->diffForHumans()}}
                         </span>
                     </div>
                     
