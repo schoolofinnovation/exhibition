@@ -27,12 +27,12 @@
                @endphp
 
                @foreach($finduserdetails as $detailio)
-                <div class=" border-1 d-flex align-items-start py-2 mt-2 border-bottom">
-                    <img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" width="50" alt="{{Auth::user()->name}}">
+                <div class=" border-0 d-flex align-items-start py-2 mt-2 border-bottom">
+                    <img class="rounded-circle" src="{{$detailio->profile_photo_url}}" width="50" alt="{{$detailio->name}}">
 
                     <div class="ps-3">
                     <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">{{$detailio->name}}
+                        <p class="fs-md mb-0 text-mute">{{$detailio->name}}
                         <!-- src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->name}}" -->
                         </p>
                         <a class="nav-link-style fs-sm fw-medium" href="#">
@@ -41,12 +41,12 @@
                     <h4 class="fs-md mb-3">{{$busness->opinion}}</h4>
                     
                     <div class="d-flex justify-content-between align-items-center">
-                        <span class="fs-ms text-muted">
+                        <!-- <span class="fs-ms text-muted">
                         9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>
                         12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i>
-                        </span>
+                        </span> -->
 
-                        <span class="fs-ms text-muted">Sep 7, 2019 
+                        <span class="fs-ms text-muted">{{$busness->updated_at}} 
                         </span>
                     </div>
                     
