@@ -170,11 +170,11 @@
                         <h1 class="text-primary mb-3">{{$event->eventname}}</h1>
                         <h5 class="text-light fw-normal">{{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} </h5>
 
-                        @if(count($eventbrand) > 0)
+                        @if(count($sponserbrand) > 0)
                             <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
                             <div class="d-flex bg-transparent border-bottom"> 
-                              @foreach($eventbrand as $franchise)
-                                  <img class="p-1" width="24%" src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                              @foreach($sponserbrand as $franchise)
+                                  <img class="p-1" width="24%" src="{{url('public/assets/image/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
                               @endforeach
                             </div>
                         @endif
@@ -216,7 +216,6 @@
                     <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Understanding</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Directory</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li>
                 </ul>
             </section>
@@ -357,12 +356,12 @@
               <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
               
               <div class=" card-group locationhours">
-
+                @foreach( $pavillion as $pavo)
                 <div class="card border-0">
                   <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
                   <div class="card-body">
-                    <h5 class="card-title">Pavillion</h5>
-                    <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{$pavo -> pavillion_name}}</h5>
+                    <p class="card-text fs-sm text-muted">{{$pavo -> desc}}</p>
                         <p class="fs-xs"> <span class="fs-xs fw-bold">Hours:</span> 10:00 - 11:00  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
                         <p class="fs-xs"> <span class="fs-xs fw-bold">Closed:</span> 10:00 - 11:00 {{Carbon\Carbon::parse ($event->enddate)->format('D, d M')}}</p> 
                     <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
@@ -373,6 +372,7 @@
                         </div>
                   </div>
                 </div>
+                @endforeach
 
                 <div class="card border-0">
                   <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
