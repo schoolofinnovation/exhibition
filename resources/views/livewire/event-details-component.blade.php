@@ -925,18 +925,184 @@
               <h1 class="text-center fw-bold display-3 lh-1">Market Leaders Rely on Great Place To Business</h1>
             </div> 
 
+<!-- copy Card group sec_last-->
+<section class="container py-5">
+              <!-- Card group -->
+              <div class="card-group sec_last">
 
-            @if(count($eventbrand) > 0)
-            <section class="container mb-4 mb-lg-5">
-              <div class="row mb-5 pb-2">
-                  @foreach ($eventbrand as $participant) 
-                      {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
-                      <div class=" col col-auto my-1 px-2"> 
-                          <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="60px">
-                      </div>
-                  @endforeach  
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?discussion, initiatives" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Reflections on {{$event->eventname}} Brand Collection and Business cultural Property Brands Opportunities.  </h5>
+                      <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
+                      <a href="#" class="text-primary fw-bold">Read More</a>
+                    </div>
+                  </div>
+
+                  
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?brand, studio" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Backdoor brand Studio</h5>
+                      <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
+                      <a href="#" class="text-primary fw-bold">Learn more</a>
+                    </div>
+                  </div>
+
+                   <!-- Card -->
+                   <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?visit, exhibition" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Plan to {{$event->eventname}}</h5>
+                      <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('M d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
+                      <a href="#" class="text-primary fw-normal">Plan your visit</a>
+                    </div>
+                  </div>
+
+
+                   <!-- Card -->
+                   <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Membership, benefits" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Membership at The Exhibition Network</h5>
+                      <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
+                      <a href="#" class="text-primary fw-bold">See the benefits</a>
+                    </div>
+                  </div>
+
+                  <!-- Card -->
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">New at {{$event->eventname}}</h5>
+                      <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
+                      <a href="#" class="text-primary  fs-sm fw-bold">Go somewhere</a>
+                    </div>
+                  </div>
+
+
+                 
               </div>
             </section>
+            
+
+          <!-- copy Card group sec_last-->
+            <!-- <section class="container py-5">
+
+              
+              <div class="card-group sec_last">
+
+                
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">World Expos' History</h5>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+
+                
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Expo 2023 Story</h5>
+                      <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
+                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+
+                
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">After Expo</h5>
+                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+              </div>
+            </section> -->
+
+            
+
+
+            <section class="card text-center py-5 border-0">
+              <div class="card-body">
+                <h5 class="card-title h2">Buy your Expo 2023 Tickets Now </h5>
+                <p class="card-text fs-sm text-muted">Connect with The Exhibtion Network: Exhibtion Magazine - Where You Meet the Right People at the Right Time and Right Place.</p>
+                <a href="#" class="btn btn-sm btn-primary">Expand your Reach</a>
+              </div>
+            </section>
+            
+          <!-- Card group last-->
+            <!-- <section class="container py-5">
+                
+                <div class="card-group last" >
+
+                 
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Find Business</h5>
+                      <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Get Directory</a>
+                    </div>
+                  </div>
+
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">The Exhibition Magazine</h5>
+                       <p class="card-text fs-sm text-muted">Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact.
+
+                      Elevate your brand's visibility and influence by featuring in The Exhibition Magazine. Reach a select audience of industry insiders, enthusiasts, and decision-makers who align with your values. With our Smart Presence Solution, your brand will be positioned in front of the Right People, at the Right Time and in the Right Place.
+                      </p>
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Advertise</a>
+                    </div>
+                  </div>
+
+                  <div class="card border-0">
+                     <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Build a Network</h5>
+                      <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Join Right Place</a>
+                    </div>
+                  </div>
+
+                  <div class="card border-0">
+                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Business Brand Managers</h5>
+                      <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Hire Us.</a>
+                    </div>
+                  </div>
+
+                  
+                </div>
+            </section> -->
+
+            <!-- <li class="d-flex justify-content-between px-2 m-0 lh-1">
+              <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
+              <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Join Today</a></span>
+            </li> -->
+
+            @if(count($eventbrand) > 0)
+              <section class="container mb-4 mb-lg-5">
+                <div class="row mb-5 pb-2">
+                    @foreach ($eventbrand as $participant) 
+                        {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                        <div class=" col col-auto my-1 px-2"> 
+                            <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="60px">
+                        </div>
+                    @endforeach  
+                </div>
+              </section>
             @endif
             
             <!--exhibitor-->
@@ -1021,173 +1187,6 @@
             </section>
            @endif
 
-          <!-- copy Card group sec_last-->
-            <!-- <section class="container py-5">
-
-              
-              <div class="card-group sec_last">
-
-                
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">World Expos' History</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-
-                
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Expo 2023 Story</h5>
-                      <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-
-                
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">After Expo</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-              </div>
-            </section> -->
-
-            <!-- copy Card group sec_last-->
-            <section class="container py-5">
-
-              <!-- Card group -->
-              <div class="card-group sec_last">
-
-                  <!-- Card -->
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?discussion, initiatives" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Reflections on {{$event->eventname}} Brand Collection and Business cultural Property Brands Opportunities.  </h5>
-                      <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
-                      <a href="#" class="text-primary fw-bold">Read More</a>
-                    </div>
-                  </div>
-
-                  
-
-                  <!-- Card -->
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?brand, studio" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Backdoor brand Studio</h5>
-                      <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
-                      <a href="#" class="text-primary fw-bold">Learn more</a>
-                    </div>
-                  </div>
-
-                   <!-- Card -->
-                   <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?visit, exhibition" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Plan to {{$event->eventname}}</h5>
-                      <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('M d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
-                      <a href="#" class="text-primary fw-normal">Plan your visit</a>
-                    </div>
-                  </div>
-
-
-                   <!-- Card -->
-                   <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Membership, benefits" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Membership at The Exhibition Network</h5>
-                      <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
-                      <a href="#" class="text-primary fw-bold">See the benefits</a>
-                    </div>
-                  </div>
-
-                  <!-- Card -->
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">New at {{$event->eventname}}</h5>
-                      <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
-                      <a href="#" class="text-primary  fs-sm fw-bold">Go somewhere</a>
-                    </div>
-                  </div>
-
-
-                 
-              </div>
-            </section>
-
-
-            <section class="card text-center py-5 border-0">
-              <div class="card-body">
-                <h5 class="card-title h2">Buy your Expo 2023 Tickets Now </h5>
-                <p class="card-text fs-sm text-muted">Connect with The Exhibtion Network: Exhibtion Magazine - Where You Meet the Right People at the Right Time and Right Place.</p>
-                <a href="#" class="btn btn-sm btn-primary">Expand your Reach</a>
-              </div>
-            </section>
-            
-          <!-- Card group last-->
-            <!-- <section class="container py-5">
-                
-                <div class="card-group last" >
-
-                 
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Find Business</h5>
-                      <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Get Directory</a>
-                    </div>
-                  </div>
-
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">The Exhibition Magazine</h5>
-                       <p class="card-text fs-sm text-muted">Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact.
-
-                      Elevate your brand's visibility and influence by featuring in The Exhibition Magazine. Reach a select audience of industry insiders, enthusiasts, and decision-makers who align with your values. With our Smart Presence Solution, your brand will be positioned in front of the Right People, at the Right Time and in the Right Place.
-                      </p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Advertise</a>
-                    </div>
-                  </div>
-
-                  <div class="card border-0">
-                     <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Build a Network</h5>
-                      <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Join Right Place</a>
-                    </div>
-                  </div>
-
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Business Brand Managers</h5>
-                      <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Hire Us.</a>
-                    </div>
-                  </div>
-
-                  
-                </div>
-            </section> -->
-
-            <!-- <li class="d-flex justify-content-between px-2 m-0 lh-1">
-              <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
-              <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Join Today</a></span>
-            </li> -->
-
-            
-
             <section class="container py-5">
               <div class="text-dark fw-bold fs-md h1">More to Explore</div>
               <!-- Card group -->
@@ -1195,7 +1194,7 @@
 
                   <!-- Card -->
                   <div class="card border-0 gx-1">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <div class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
@@ -1212,7 +1211,7 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?business, guides" class="card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?business, guides" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <div class="card-footer text-secondary h3">Business Guides</div>
                     </div>
@@ -1225,7 +1224,7 @@
 
                    <!-- Card -->
                    <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <div class="card-footer text-secondary h3">Learning Resources</div>
                     </div>
