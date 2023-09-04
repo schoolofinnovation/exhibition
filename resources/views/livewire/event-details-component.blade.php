@@ -297,7 +297,7 @@
                     <div class="fs-xs fw-normal">
                       @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
                        @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
-                      {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} Days
+                      {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
                       <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
 
                       <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
@@ -920,7 +920,7 @@
 
 
             <div class="container text-center">
-              <small class="text-primary fs-sm fw-light">Right Place, Right Time, Right People</small>
+              <small class="text-primary fs-sm fw-normal">Right Place, Right Time, Right People</small>
               <h1 class="text-center fw-bold display-3 lh-1">Market Leaders Rely on Great Place To Business</h1>
             </div> 
 
@@ -1194,9 +1194,9 @@
 
                   <!-- Card -->
                   <div class="card border-0 gx-1">
-                    <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image">
+                    <!-- <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image"> -->
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Business Perspectives</h5>
+                      <div class="card-footer text-secondary">Business Perspectives</h5>
                     </div>
                     
                     
@@ -1211,9 +1211,9 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?business, guides" class="card-img-top" alt="Card image">
+                    <!-- <img src="https://source.unsplash.com/1600x900/?business, guides" class="card-img-top" alt="Card image"> -->
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Business Guides</h5>
+                      <div class="card-footer text-secondary h3">Business Guides</div>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Business Guides</h5>
@@ -1224,9 +1224,9 @@
 
                    <!-- Card -->
                    <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image">
+                    <!-- <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image"> -->
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Learning Resources</h5>
+                      <div class="card-footer text-secondary h3">Learning Resources</div>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Learning Resources</h5>
@@ -1238,9 +1238,9 @@
 
                    <!-- Card -->
                    <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Group, business tours" class="card-img-top" alt="Card image">
+                    <!-- <img src="https://source.unsplash.com/1600x900/?Group, business tours" class="card-img-top" alt="Card image"> -->
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Group Tours</h5>
+                      <div class="card-footer text-secondary h3">Group Tours</div>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Group Tours</h5>
@@ -1251,9 +1251,9 @@
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?magazine, advertise" class="card-img-top" alt="Card image">
+                    <!-- <img src="https://source.unsplash.com/1600x900/?magazine, advertise" class="card-img-top" alt="Card image"> -->
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Publications</h5>
+                      <div class="card-footer text-secondary h3">Publications</div>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Publications</h5>
@@ -1263,9 +1263,9 @@
                   </div>
 
                   <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?networking, research" class="card-img-top" alt="Card image">
+                    <!-- <img src="https://source.unsplash.com/1600x900/?networking, research" class="card-img-top" alt="Card image"> -->
                     <div class="card-img-overlay">
-                      <h5 class="card-footer text-secondary">Conversation and Scientific Research</h5>
+                      <div class="card-footer text-secondary h3">Conversation and Scientific Research</div>
                     </div>
                     <!-- <div class="card-body">
                       <h5 class="card-title">Conversation and Scientific Research</h5>
@@ -1362,9 +1362,7 @@
                 <div class="handheld-toolbar bg-secondary">
                   <div class="d-flex justify-content-between py-2 px-2">
                     <div class="text-dark  pl-3 lh-1">
-                      <span class = "fw-medium fs-sm"> @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
-                       @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
-                      {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))->addDays(1)}} Days</span><br>
+                      <span class = "fw-medium fs-sm">Expand your Business</span><br>
                       <span class=" fw-normal fs-xs">Get extra ad-ons</span></div>
                       @if( $event->businessrevenue == 'visitor' )  
                         @if( $ticketOrExhibit != 0 )

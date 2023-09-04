@@ -142,7 +142,7 @@ class EventDetailsComponent extends Component
          $commentedRates = Rate::where('admstatus','1')->where('status','1')->where('event_id', $event->id)->get();
          $rateRating = $commentedRates->pluck('rate');
 
-         $eventbrand = Brand::where('event_id', $event->id)->limit('25')->get();
+         $eventbrand = Brand::where('event_id', $event->id)->limit('4')->get();
 
          $current = strtotime(Carbon::now());
          $to = strtotime($event->startdate);
