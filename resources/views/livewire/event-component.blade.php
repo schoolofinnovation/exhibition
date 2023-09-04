@@ -1,6 +1,5 @@
-@section('page_title', 'Introducing Great Place To Business India s First Ever Event Publishing Platform')
-@section('page_description', 'Join the Swiss-based Exhibition Network and connect with the world of exhibitions and conferences. 
-Stay up to date with the latest updates and news, and be a part of the dynamic exhibition industry')
+@section('page_title', 'The Exhibition Network')
+@section('page_description', 'Introducing Great Place To Business India First Ever Event Publishing Platform.')
 @section('page_keyword', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers.  Manage, sell event tickets and promote your event on exhbition.org.in, exhibition')
 
 <main>    
@@ -18,13 +17,13 @@ Stay up to date with the latest updates and news, and be a part of the dynamic e
 
                       </div>
 
-                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Free</span>
+                      <!-- <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Free</span>
                         {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
-                        <!-- <h1 class="mb-1 display-1"> Great starts here.</h1> -->
+                         <h1 class="mb-1 display-1"> Great starts here.</h1>
                         <p class=" fw-light lh-1">Introducing Great Place To Business India's First Ever Event Publishing Platform</p>
                         <a class="btn btn-accent mt-4" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Expand your Business <i class="bi bi-chevron-right fs-ms ms-1"></i></a>
 
-                      </div>
+                      </div> -->
                       <!-- <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Free</span>
                         {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
                         <h1 class="mb-1"> Add to calender <br> button</h1>

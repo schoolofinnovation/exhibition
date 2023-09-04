@@ -24,7 +24,6 @@
 
                @php
                   $finduserdetails = DB::table('users')->where('id' , $busness->user_id)->get();
-
                @endphp
                 <div class=" border-1 d-flex align-items-start py-2 mt-2 border-bottom">
                     <img class="rounded-circle" src="#" width="50" alt="">

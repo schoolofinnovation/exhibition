@@ -20,12 +20,17 @@
        
 
         @foreach( $getnamecategoryresult as $categ) 
-        @php
-           $findcountevent = DB::table('expos')->where('id', $categ->Category)->first()
-        @endphp
+          @php
+            $findcountevent = DB::table('expos')->where('id', $categ->Category)->where('admstatus',1)->get();
+          @endphp
+       
+        
+        @foreach($findcountevent as $finderlo)
+            <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
+            {{ucwords(trans($finderlo->tag))}}  {{$categ->total}}</a>
+        @endforeach
 
-          <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
-            {{ucwords(trans($findcountevent->tag))}}  {{$categ->total}}</a>
+        
         
         @endforeach
       </div>
