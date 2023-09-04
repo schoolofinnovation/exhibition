@@ -1,7 +1,6 @@
 <main>
    
 
-
     <div class=" container col-lg-8">
               <div class="d-flex justify-content-between align-items-center mb-2">
                     <h6 class="fs-md mb-0">Top reviews</h6>
@@ -11,7 +10,7 @@
 
                 <div class="fs-xs fw-normal">Summary of {{count($eventrate)}} reviews.</div> 
                 
-                    <div class="d-flex badgese pb-2">
+                    <!-- <div class="d-flex badgese pb-2">
                         <span class="badge border border-1 text-right border-dark text-dark mr-1">Today  <span class="bg-"> 2935</span> </span>
                         <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
                         <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
@@ -19,15 +18,20 @@
                         <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
                         <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
                         <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
-                    </div>
+                    </div> -->
               <!-- comment-->
               @foreach($eventrate as $busness)
+
+               @php
+                  $finduserdetails = db::table('users')->where('id' , $busness->user_id)->get();
+
+               @endphp
                 <div class=" border-1 d-flex align-items-start py-2 mt-2 border-bottom">
                     <img class="rounded-circle" src="#" width="50" alt="">
 
                     <div class="ps-3">
                     <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">{{$busness->user_id}}</p>
+                        <p class="fs-md mb-0">{{$finduserdetails->name}}</p>
                         <a class="nav-link-style fs-sm fw-medium" href="#">
                         <i class="bi bi-star me-2"></i>{{$busness->rate}}/10</a>
                     </div>
@@ -39,7 +43,7 @@
                         12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i>
                         </span>
 
-                        <span class="fs-ms text-muted">Sep 7, 2019 <i class=" bi bi-share align-middle me-2"></i>
+                        <span class="fs-ms text-muted">Sep 7, 2019 
                         </span>
                     </div>
                     

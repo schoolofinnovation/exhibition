@@ -1,4 +1,4 @@
-@section('page_title', 'Introducing Great Place To Business India's First Ever Event Publishing Platform')
+@section('page_title', 'Introducing Great Place To Business India s First Ever Event Publishing Platform')
 @section('page_description', 'Join the Swiss-based Exhibition Network and connect with the world of exhibitions and conferences. 
 Stay up to date with the latest updates and news, and be a part of the dynamic exhibition industry')
 @section('page_keyword', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers.  Manage, sell event tickets and promote your event on exhbition.org.in, exhibition')
