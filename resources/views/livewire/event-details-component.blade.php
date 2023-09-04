@@ -928,7 +928,7 @@
 <!-- copy Card group sec_last-->
 <section class="container py-5">
               <!-- Card group -->
-              <div class="card-group sec_last">
+              <div class="card-group">
 
                   <!-- Card -->
                   <div class="card border-0">
