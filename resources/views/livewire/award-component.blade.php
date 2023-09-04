@@ -25,12 +25,14 @@
                @php
                   $finduserdetails = DB::table('users')->where('id' , $busness->user_id)->get();
                @endphp
+
+               @foreach($finduserdetails as $detailio)
                 <div class=" border-1 d-flex align-items-start py-2 mt-2 border-bottom">
-                    <img class="rounded-circle" src="#" width="50" alt="">
+                    <img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" width="50" alt="{{Auth::user()->name}}">
 
                     <div class="ps-3">
                     <div class="d-flex justify-content-between align-items-end mb-2">
-                        <p class="fs-md mb-0">{{$finduserdetails->name}}
+                        <p class="fs-md mb-0">{{$detailio->name}}
                         <!-- src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->name}}" -->
                         </p>
                         <a class="nav-link-style fs-sm fw-medium" href="#">
@@ -60,6 +62,8 @@
 
                     </div>
                 </div>
+                @endforeach
+
               @endforeach
 
               <!-- Post comment form
