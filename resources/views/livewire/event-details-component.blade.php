@@ -174,7 +174,7 @@
                             <span class="text-light fs-sm fw-light"> <small>Powered by The Exhibtion Network</small></span>
                             <div class="d-flex bg-transparent border-bottom"> 
                               @foreach($eventbrand as $franchise)
-                                  <img class="p-1" width="24%" src="{{url('public/assets/exhibition/'.$franchise->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
+                                  <img class="p-1" width="24%" src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}"  alt="{{Str::limit($franchise->brand_name, 24)}}">
                               @endforeach
                             </div>
                         @endif
@@ -213,10 +213,11 @@
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Exhibit</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Understanding</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Meet-up</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Start-up</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Directory</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li>
                 </ul>
             </section>
     
@@ -1341,7 +1342,7 @@
               </div>
             @elseif($event->eventype == 'expo')
 
-              @if($event->businessrevenue == 'exhibitor')
+              @if($event->businessrevenue == 'visitor')
                 <div class="handheld-toolbar bg-secondary">
                   <div class="d-flex justify-content-between py-2 px-2">
                     <div class="text-dark  pl-3 lh-1">  <span class = "fw-medium fs-sm">Rs.{{$productPrice}}</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
@@ -1362,7 +1363,7 @@
                 <div class="handheld-toolbar bg-secondary">
                   <div class="d-flex justify-content-between py-2 px-2">
                     <div class="text-dark  pl-3 lh-1">
-                      <span class = "fw-medium fs-sm">Expand your Business</span><br>
+                      <span class = "fw-medium fs-sm">Connect at 999 185 6776</span><br>
                       <span class=" fw-normal fs-xs">Get extra ad-ons</span></div>
                       @if( $event->businessrevenue == 'visitor' )  
                         @if( $ticketOrExhibit != 0 )
