@@ -216,7 +216,7 @@
                     <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Understanding</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li> -->
                 </ul>
             </section>
     
@@ -925,8 +925,8 @@
               <h1 class="text-center fw-bold display-3 lh-1">Market Leaders Rely on Great Place To Business</h1>
             </div> 
 
-<!-- copy Card group sec_last-->
-<section class="container py-5">
+            <!-- copy Card group sec_last-->
+            <section class="container py-5">
               <!-- Card group -->
               <div class="card-group">
 
@@ -958,7 +958,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Plan to {{$event->eventname}}</h5>
                       <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('M d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
-                      <a href="#" class="text-primary fw-normal">Plan your visit</a>
+                      <a href="#" class="text-primary fw-bold">Plan your visit</a>
                     </div>
                   </div>
 
@@ -1191,12 +1191,23 @@
               <div class="text-dark fw-bold fs-md h1">More to Explore</div>
               <!-- Card group -->
               <div class="card-group moretoexplore">
-
+                  <!-- Card -->
+                  <div class="card border-0">
+                      <img src="https://source.unsplash.com/1600x900/?Group, business tours" class="card-img-top" alt="Card image">
+                    <div class="card-img-overlay">
+                      <div class="card-footer text-secondary h3">Group Tours</div>
+                    </div>
+                    <!-- <div class="card-body">
+                      <h5 class="card-title">Group Tours</h5>
+                      <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
+                      <a href="#" class="text-primary fw-bold">See the benefits</a>
+                    </div> -->
+                  </div>
                   <!-- Card -->
                   <div class="card border-0 gx-1">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <div class="card-footer text-secondary">Business Perspectives</h5>
+                      <div class="card-footer text-secondary h3">Business Perspectives</h5>
                     </div>
                     
                     
@@ -1236,22 +1247,11 @@
                   </div>
 
 
-                   <!-- Card -->
-                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?Group, business tours" class="card-img-top" alt="Card image"> -->
-                    <div class="card-img-overlay">
-                      <div class="card-footer text-secondary h3">Group Tours</div>
-                    </div>
-                    <!-- <div class="card-body">
-                      <h5 class="card-title">Group Tours</h5>
-                      <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
-                      <a href="#" class="text-primary fw-bold">See the benefits</a>
-                    </div> -->
-                  </div>
+                   
 
                   <!-- Card -->
                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?magazine, advertise" class="card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?magazine, advertise" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <div class="card-footer text-secondary h3">Publications</div>
                     </div>
@@ -1263,7 +1263,7 @@
                   </div>
 
                   <div class="card border-0">
-                    <!-- <img src="https://source.unsplash.com/1600x900/?networking, research" class="card-img-top" alt="Card image"> -->
+                    <img src="https://source.unsplash.com/1600x900/?networking, research" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <div class="card-footer text-secondary h3">Conversation and Scientific Research</div>
                     </div>
@@ -1285,19 +1285,19 @@
               <div class="my-sliderOffers">
                   <ul class="list-unstyled fs-sm  p-2">
                       <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                      <span class="text-dark fw-medium fs-sm">Advertise your Business<br><span class="text-muted fw-light fs-sm">Right Place, Right Time, Right People</span></span>
+                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light">Offer</a></span></li>
                   </ul>
 
                   <ul class="list-unstyled fs-sm  p-2">
                       <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                      <span class="text-dark fw-medium fs-sm">Presence your Business<br><span class="text-muted fw-light fs-sm">Next Three your Industry Expo</span></span>
                       <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
                   </ul>
                 
                   <ul class="list-unstyled fs-sm  p-2">
                     <li class="d-flex justify-content-between p-0 m-0">
-                    <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                    <span class="text-dark fw-medium fs-sm">Get Membership<br><span class="text-muted fw-light fs-sm">Eye on Business Competition Opportunity.</span></span>
                     <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
                   </ul>
               </div>
@@ -1362,7 +1362,7 @@
                 <div class="handheld-toolbar bg-secondary">
                   <div class="d-flex justify-content-between py-2 px-2">
                     <div class="text-dark  pl-3 lh-1">
-                      <span class = "fw-medium fs-sm">Connect at 999 185 6776</span><br>
+                      <span class = "fw-medium fs-sm">Call us 999 185 6776</span><br>
                       <span class=" fw-normal fs-xs">Get extra ad-ons</span></div>
                       @if( $event->businessrevenue == 'visitor' )  
                         @if( $ticketOrExhibit != 0 )

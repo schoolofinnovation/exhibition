@@ -119,7 +119,7 @@ class EventDetailsComponent extends Component
         $speaker = Speaker::where('admstatus','1')->where('status','1')->where('event_id',$event->id)->where('entity','speaker')->get();
         $sponSer = Sponsership::where('admstatus','0')->where('status','1')->get();
         $premium = Franchise::where('status', 'active')->where('featured','premium')->limit(1);
-        $pavillion = Pavillion::where('admstatus','0')->where('status','1')->where('event_id',$event->id)->get();
+        $pavillion = Pavillion::where('event_id',$event->id)->get();
 
         
 
