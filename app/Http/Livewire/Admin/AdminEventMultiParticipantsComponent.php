@@ -400,7 +400,9 @@ class AdminEventMultiParticipantsComponent extends Component
                     ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
         $pavillion = Pavillion::where('event_id', $evento->id)->get();
         $sponser = Sponsership::where('event_id', $evento->id)->get();
+
         $speaker = Speaker::where('event_id', $evento->id)->get();
+        $suggestedSpeaker = Speaker::get();
         $hastago = Hashtag::where('event_id', $evento->id)->get();
         $participants = Brand::where('event_id', $evento->id)->get();
         
@@ -411,6 +413,6 @@ class AdminEventMultiParticipantsComponent extends Component
 
         //$getReferenceBrands = DB::table('participants')->where('event_id' , $this->event_id)->where('pavillion_id' , $pavillion->id)->get();
 
-        return view('livewire.admin.admin-event-multi-participants-component',['partners'=>$partners,'findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
+        return view('livewire.admin.admin-event-multi-participants-component',['suggestedSpeaker'=>$suggestedSpeaker,'partners'=>$partners,'findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }

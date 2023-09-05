@@ -1193,7 +1193,8 @@
            @endif
 
             <section class="container py-5">
-              <div class="text-dark fw-bold fs-md h1">More to Explore</div>
+            <div class="text-dark text-center fw-bold fs-md h1">Our Offerings</div>
+              <div class="text-dark text-center fw-bold fs-md h5">More to Explore</div>
               <!-- Card group -->
               <div class="card-group moretoexplore">
                   <!-- Card -->
@@ -1208,8 +1209,9 @@
                       <a href="#" class="text-primary fw-bold">See the benefits</a>
                     </div> -->
                   </div>
+
                   <!-- Card -->
-                  <div class="card border-0 gx-1">
+                  <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <div class="card-footer text-secondary h3">Business Perspectives</h5>
@@ -1222,8 +1224,6 @@
                       <a href="#" class="text-primary fw-bold">Read More</a>
                     </div> -->
                   </div>
-
-                  
 
                   <!-- Card -->
                   <div class="card border-0">
@@ -1239,7 +1239,7 @@
                   </div>
 
                    <!-- Card -->
-                   <div class="card border-0">
+                  <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?learning, resources" class="card-img-top" alt="Card image">
                     <div class="card-img-overlay">
                       <div class="card-footer text-secondary h3">Learning Resources</div>
@@ -1250,9 +1250,6 @@
                       <a href="#" class="text-primary fw-bold">Plan your visit</a>
                     </div> -->
                   </div>
-
-
-                   
 
                   <!-- Card -->
                   <div class="card border-0">
@@ -1278,7 +1275,6 @@
                       <a href="#" class="text-primary fw-bold">Go somewhere</a>
                     </div> -->
                   </div>
-
                  
               </div>
             </section>
