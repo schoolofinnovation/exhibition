@@ -114,15 +114,16 @@
                 <div class="d-flex justify-content-between py-2">
                     <div class="text-dark  pl-3 lh-1">  <span class= "fw-bold text-light fs-sm ">Great Place To Visit</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                       @if( $event->businessrevenue == 'visitor' )  
-                        @if( $ticketOrExhibit != 0 )
+                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Book a Space</a>
+                      @else
+                      
+                      @if( $ticketOrExhibit != 0 )
                             <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-outline-light btn-sm">Plan Your Visit</a>
                           @elseif( $ticketOrExhibit == 0 )
                             {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Plan Your Visit</a>{{route('event.product',['slug' => $event->slug])}}--}}
                           
                             <a href="#" class="btn btn-outline-light btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Plan Your Visit</a>
                         @endif
-                      @else
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Plan Your Visit</a>
                       @endif
                   </div>
                   <!-- <div class="container">
@@ -215,8 +216,10 @@
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Understanding</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#comments" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li> -->
+                    @if(count($eventbrand) > 0)
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
+                    @endif
+                    <!-- <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li>  comment-->
                 </ul>
             </section>
     
@@ -294,13 +297,15 @@
                     </span> -->
 
                    
-                    <div class="fs-xs fw-normal">
-                      @if($event->exhibitors != null) + {{$event->exhibitors}} Exhibitors @endif |
-                       @if($event->exhibitors != null) + {{$event->auidence}} Visitors @endif
+                    <div>
+                      @if($event->exhibitors != null) <span class="fs-xs fw-bold"> + {{$event->exhibitors}}</span> <span class="fs-xs fw-normal">Exhibitors</span>  @endif |
+                       @if($event->exhibitors != null) <span class="fs-xs fw-bold">+ {{$event->auidence}}</span> <span class="fs-xs fw-normal"> Visitors </span>@endif
                       {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
-                      <p class="fs-md"> {{Str::limit($event->eventname,289)}}</p>
+                      <p class="fs-md fw-bolder"> {{Str::limit($event->eventname,289)}}</p>
 
-                      <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,170)}}</div> 
+                      <p class="fs-md fw-bold"> {{Str::limit($event->tagline,289)}}</p>
+                      <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,289)}}</div> 
+                      <!-- 170 -->
                     </div>
             </div>  
 
@@ -351,14 +356,14 @@
                   <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
             </div>
 
-
+<!-- pavillion -->
             <div class="container mt-4 d-lg-none">
               <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
               
               <div class=" card-group locationhours">
                 @foreach( $pavillion as $pavo)
                 <div class="card border-0">
-                  <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                  <img src="https://source.unsplash.com/1600x900/?{{$pavo -> pavillion_name}}, office" class="card-img-top" alt="Card image">
                   <div class="card-body">
                     <h5 class="card-title">{{$pavo -> pavillion_name}}</h5>
                     <p class="card-text fs-sm text-muted">{{$pavo -> desc}}</p>
@@ -423,7 +428,7 @@
             </div>
             <hr class="mt-md-2 mb-2">
 
-            <!-- for big screens Product description + Reviews + Comments-->  
+            <!--participants-->  
             <section class="container py-4 py-md-5 my-2 d-none d-sm-block">
               <div class="row text-center text-sm-start">
                 <div class="col-lg-3 col-md-4 col-sm-4 bg-secondary">
@@ -989,43 +994,43 @@
             </section>
             
 
-          <!-- copy Card group sec_last-->
-            <!-- <section class="container py-5">
+                    <!-- copy Card group sec_last-->
+                      <!-- <section class="container py-5">
 
-              
-              <div class="card-group sec_last">
+                        
+                        <div class="card-group sec_last">
 
-                
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">World Expos' History</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
+                          
+                            <div class="card border-0">
+                              <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                              <div class="card-body">
+                                <h5 class="card-title">World Expos' History</h5>
+                                <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                              </div>
+                            </div>
 
-                
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Expo 2023 Story</h5>
-                      <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
+                          
+                            <div class="card border-0">
+                              <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                              <div class="card-body">
+                                <h5 class="card-title">Expo 2023 Story</h5>
+                                <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                              </div>
+                            </div>
 
-                
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">After Expo</h5>
-                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                      <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-              </div>
-            </section> -->
+                          
+                            <div class="card border-0">
+                              <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                              <div class="card-body">
+                                <h5 class="card-title">After Expo</h5>
+                                <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                              </div>
+                            </div>
+                        </div>
+                      </section> -->
 
             
 
@@ -1038,62 +1043,62 @@
               </div>
             </section>
             
-          <!-- Card group last-->
-            <!-- <section class="container py-5">
-                
-                <div class="card-group last" >
+                    <!-- Card group last-->
+                      <!-- <section class="container py-5">
+                          
+                          <div class="card-group last" >
 
-                 
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Find Business</h5>
-                      <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Get Directory</a>
-                    </div>
-                  </div>
+                          
+                            <div class="card border-0">
+                              <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                              <div class="card-body">
+                                <h5 class="card-title">Find Business</h5>
+                                <p class="card-text fs-sm text-muted">Looking to partner with the right exhibitors for your event or business? Our Service connects you with a comprehensive exhibtor profiles. Find the perfect match for your needs whether you're organizing an event or seeking collaboration opportunities.</p>
+                                <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Get Directory</a>
+                              </div>
+                            </div>
 
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">The Exhibition Magazine</h5>
-                       <p class="card-text fs-sm text-muted">Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact.
+                            <div class="card border-0">
+                              <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                              <div class="card-body">
+                                <h5 class="card-title">The Exhibition Magazine</h5>
+                                <p class="card-text fs-sm text-muted">Unlock unparalleled visibility for your business by advertising in the prestigious Exhibition Magazine. Reach a Diverse and engaged audience that shares your passion for innovation and creativity. Showcase your brand on a platform that resonates with forward-thinkers and industry leaders, and seize the opportunity to connect, inspire, and leave an enduring impact.
 
-                      Elevate your brand's visibility and influence by featuring in The Exhibition Magazine. Reach a select audience of industry insiders, enthusiasts, and decision-makers who align with your values. With our Smart Presence Solution, your brand will be positioned in front of the Right People, at the Right Time and in the Right Place.
-                      </p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Advertise</a>
-                    </div>
-                  </div>
+                                Elevate your brand's visibility and influence by featuring in The Exhibition Magazine. Reach a select audience of industry insiders, enthusiasts, and decision-makers who align with your values. With our Smart Presence Solution, your brand will be positioned in front of the Right People, at the Right Time and in the Right Place.
+                                </p>
+                                <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Advertise</a>
+                              </div>
+                            </div>
 
-                  <div class="card border-0">
-                     <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Build a Network</h5>
-                      <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Join Right Place</a>
-                    </div>
-                  </div>
+                            <div class="card border-0">
+                              <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                              <div class="card-body">
+                                <h5 class="card-title">Build a Network</h5>
+                                <p class="card-text fs-sm text-muted">Join The Exhibition Network and skip the queue at business events. No more business cards - exchange proposals and introductions hassle-free. Streamline your brand approach, enchance ROI. Elevate your business connections for elevated success.</p>
+                                <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Join Right Place</a>
+                              </div>
+                            </div>
 
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Business Brand Managers</h5>
-                      <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Hire Us.</a>
-                    </div>
-                  </div>
+                            <div class="card border-0">
+                              <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                              <div class="card-body">
+                                <h5 class="card-title">Business Brand Managers</h5>
+                                <p class="card-text fs-sm text-muted">Let our expert Business Brand Managers guide your brand to success. From identifying the perfect platforms for your capabilities to crafting strategic messages, we ensure your brand's message resonates with thee right audience. Seamlessly align your business goals with targeted placements and engagements to maximize your impact and growth potential.</p>
+                                <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-sm btn-primary">Hire Us.</a>
+                              </div>
+                            </div>
 
-                  
-                </div>
-            </section> -->
+                            
+                          </div>
+                      </section> -->
 
-            <!-- <li class="d-flex justify-content-between px-2 m-0 lh-1">
-              <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
-              <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Join Today</a></span>
-            </li> -->
+                      <!-- <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                        <span class="text-dark fw-medium fs-sm">  Become a Member <br><span class="text-muted fw-light fs-xs">Enjoy unlimited free registration for you and your guest(s) on every visit.</span></span>
+                        <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Join Today</a></span>
+                      </li> -->
 
             @if(count($eventbrand) > 0)
-              <section class="container mb-4 mb-lg-5">
+              <section class="container mb-4 mb-lg-5" >
                 <div class="row mb-5 pb-2">
                     @foreach ($eventbrand as $participant) 
                         {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
