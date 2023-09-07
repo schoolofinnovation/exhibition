@@ -1,10 +1,4 @@
     <main>
-      
-
-                   
-
-                    
-
 
         @if($formm == 'pavilliondashboard')
             @foreach($pavillion as $pav)
@@ -159,6 +153,72 @@
         <section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
             <div class=" ps-lg-0 pe-xl-5">
            
+                @if($formm == 'addSpeaker')
+                    <form wire:submit.prevent="updateSpeaker">
+                        <input type="text" class="form-control" placeholder="Speaker" wire:model="name">
+                        <button class="btn btn-primary mt-2"  class="form-control" type="submit">Submit</button>
+                    </form>
+
+                    @foreach($speaker as $pav)
+                        
+                    
+                        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                            <div class="col  pr-0">
+                                <div class="h4 fw-light mb-0">Pav</div> 
+                            
+                                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                            </div>
+
+                            <div class="col-7  p-0">
+                            @if(is_null($pav->desc))
+                                <div class="text-muted fs-sm text-start">{{$pav->name}} </div>
+                            @else
+                                <div class="fs-md fw-normal text-start">
+                                {{$evento->name}}<br>
+                                
+                                {{$evento->organisation}}
+                                </div>
+                            @endif
+                            </div>
+
+                            <div class="col-3 p-0">
+                            @if(is_null($pav->desc))
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Add</a>
+                            @else
+                                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Edit</a>
+                            @endif
+                            </div>
+                        </div>
+                        
+                    @endforeach
+                    <h1>Suggested Speaker</h1>
+                    <div class="row">
+
+                        <!-- Bestsellers-->
+                        <div class="col-md-4 col-sm-6 mb-2 py-1">
+                            <div class="widget">
+                                @foreach ($suggestedSpeaker as $franchise)
+                                    <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                                        <div class="d-flex align-items-center position-relative">
+                                        
+                                        <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
+                                        <div class="ms-2">
+                                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
+                                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                                        <!--<span class="fs-xs text-muted">730 followers</span>-->
+                                        </div>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                    
+                    </div>
+                @endif
+
                 @if($formm == 'addParticipants')
                     <div class="small">
                         <input type="checkbox" value="1" wire:model="lookingAddParticipants" name="" id=""> Add Participants
@@ -314,10 +374,6 @@
                     @endforeach
                 @endif
 
-
-                @if($formm = 'image')
-                @endif
-
                 @if($formm == 'addSponsership')
                     <form wire:submit.prevent="updateSponsership">
                         <input type="text" placeholder="plan" wire:model="plan">
@@ -373,8 +429,6 @@
 
 
                 @endif
-
-                <!-- speaker -->
 
                 @if($formm == 'add-hastag')
                     <form wire:submit.prevent="addHastag">
@@ -776,73 +830,7 @@
                     </div>
                 @endif
 
-                 
-
-                    @if($formm = 'addSpeaker')
-                        <form wire:submit.prevent="updateSpeaker">
-                            <input type="text" class="form-control" placeholder="Speaker" wire:model="name">
-                            <button class="btn btn-primary mt-2"  class="form-control" type="submit">Submit</button>
-                        </form>
-
-                        @foreach($speaker as $pav)
-                            
-                        
-                            <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-                                <div class="col  pr-0">
-                                    <div class="h4 fw-light mb-0">Pav</div> 
-                                
-                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
-                                </div>
-
-                                <div class="col-7  p-0">
-                                @if(is_null($pav->desc))
-                                    <div class="text-muted fs-sm text-start">{{$pav->name}} </div>
-                                @else
-                                    <div class="fs-md fw-normal text-start">
-                                    {{$evento->name}}<br>
-                                    
-                                    {{$evento->organisation}}
-                                    </div>
-                                @endif
-                                </div>
-
-                                <div class="col-3 p-0">
-                                @if(is_null($pav->desc))
-                                    <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Add</a>
-                                @else
-                                    <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Edit</a>
-                                @endif
-                                </div>
-                            </div>
-                            
-                        @endforeach
-                        <h1>Suggested Speaker</h1>
-                        <div class="row">
-
-                            <!-- Bestsellers-->
-                            <div class="col-md-4 col-sm-6 mb-2 py-1">
-                                <div class="widget">
-                                    @foreach ($suggestedSpeaker as $franchise)
-                                        <div class="d-flex align-items-center justify-content-between w-100 mb-2">
-                                            <div class="d-flex align-items-center position-relative">
-                                            
-                                            <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
-                                            <div class="ms-2">
-                                                <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
-                                                <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
-                                            <!--<span class="fs-xs text-muted">730 followers</span>-->
-                                            </div>
-                                            </div>
-                                            <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                        
-                        </div>
-                    @endif
+                   
             </div>
         </section>
 
