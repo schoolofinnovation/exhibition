@@ -114,10 +114,10 @@
                 <div class="d-flex justify-content-between py-2">
                     <div class="text-dark  pl-3 lh-1">  <span class= "fw-bold text-light fs-sm ">Great Place To Visit</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
                       @if( $event->businessrevenue == 'visitor' )  
-                      <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Book a Space</a>
+                          <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Book a Space</a>
                       @else
                       
-                      @if( $ticketOrExhibit != 0 )
+                        @if( $ticketOrExhibit != 0 )
                             <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-outline-light btn-sm">Plan Your Visit</a>
                           @elseif( $ticketOrExhibit == 0 )
                             {{--<a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Plan Your Visit</a>{{route('event.product',['slug' => $event->slug])}}--}}
@@ -125,6 +125,10 @@
                             <a href="#" class="btn btn-outline-light btn-sm"  wire:click.prevent="insertEventToSess({{$event->id}})">Plan Your Visit</a>
                         @endif
                       @endif
+
+                      <a class="navbar-tool navbar-stuck-toggler" href=""><span class="navbar-tool-tooltip">Toggle menu</span>
+                        <div class="navbar-tool-icon-box"><i class="navbar-tool-icon bi bi-list"></i></div>
+                      </a>
                   </div>
                   <!-- <div class="container">
                   Expand your Businesss       
@@ -301,12 +305,13 @@
                       @if($event->exhibitors != null) <span class="fs-xs fw-bold"> + {{$event->exhibitors}}</span> <span class="fs-xs fw-normal">Exhibitors</span>  @endif |
                        @if($event->exhibitors != null) <span class="fs-xs fw-bold">+ {{$event->auidence}}</span> <span class="fs-xs fw-normal"> Visitors </span>@endif
                       {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
-                      <p class="fs-md fw-bolder"> {{Str::limit($event->eventname,289)}}</p>
+                      <div class="fs-lg fw-bolder"> {{Str::limit($event->eventname,289)}}</div>
 
-                      <p class="fs-md fw-bold"> {{Str::limit($event->tagline,289)}}</p>
-                      <div class="fs-xs fw-normal pb-2 pt-2">{{Str::limit($event->shtdesc,289)}}</div> 
+                      <p class="fs-md fw-bold mt-0"> {{Str::limit($event->tagline,289)}}</p>
+                      <div class="fs-xs fw-normal pb-2 pt-0">{{Str::limit($event->shtdesc,289)}}</div> 
                       <!-- 170 -->
                     </div>
+
             </div>  
 
             <div class="container d-none d-sm-block">
@@ -1193,7 +1198,7 @@
            @endif
 
             <section class="container py-5">
-            <div class="text-dark text-center fw-bold fs-md h1">Our Offerings</div>
+            <div class="text-dark text-center fw-bold fs-md display-3">Our Offerings</div>
               <div class="text-dark text-center fw-bold fs-md h5">More to Explore</div>
               <!-- Card group -->
               <div class="card-group moretoexplore">
@@ -1214,7 +1219,7 @@
                   <div class="card border-0">
                     <img src="https://source.unsplash.com/1600x900/?business, perspectives" class=" bg-dark bg-opacity-50 card-img-top" alt="Card image">
                     <div class="card-img-overlay">
-                      <div class="card-footer text-secondary h3">Business Perspectives</h5>
+                      <div class="card-footer text-secondary h3">Business Perspectives</div>
                     </div>
                     
                     

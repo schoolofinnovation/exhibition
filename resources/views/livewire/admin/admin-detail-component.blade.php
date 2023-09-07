@@ -74,6 +74,16 @@
           <a href="#" wire:click.prevent="updateEvent({{$evento->id}},'canceal')" class="btn btn-primary btn-sm">Canceal</a>
           <a href="#" wire:click.prevent="updateEvent({{$evento->id}},'postpone')" class="btn btn-primary btn-sm">Postpone</a>
           <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="Upgrade({{$evento->id}})"> upgrade</a>
+          
+          <form wire:submit.prevent="tryingfaker">
+                <div class="col-7  p-0">
+                      <input type="text" wire:model.lazy="howMany">
+                </div>
+
+                <div class="col-3 p-0">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
 
           <small>Active BusinessModel</small>
           @if(is_null($evento->businessrevenue))
@@ -139,6 +149,34 @@
                 <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'tag'])}}" class="btn btn-primary btn-sm">Add</a>
                @else
                 <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'tag'])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
+
+    {{--facts--}}
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0">Facts</div> 
+                
+                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+            </div>
+
+            <div class="col-7  p-0">
+            @if(is_null($evento->tagline))
+                <div class="text-muted fs-sm text-start">Short Story should be more convincing </div>
+              @else
+                <div class="fs-md fw-normal text-start">{{$evento->tagline}}</div>
+              @endif
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($evento->tagline))
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'facts'])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'facts'])}}" class="btn btn-primary btn-sm">Edit</a>
                @endif
             </div>
         </div>
