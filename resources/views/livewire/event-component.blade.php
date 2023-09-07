@@ -9,14 +9,14 @@
 
                 <div class="col-md-4">
                   <div class="row my-Slider4">
-                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-primary">Join The Network</span>
+                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="text-primary">Right Place, Right Time, Right People</span>
                         
                       <!-- <span class="badge bg-danger">Free</span> -->
                       
                       {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
-                        <h1 class="mb-1 display-1"> Great starts here.</h1>
+                        <div class="mb-1 display-1"> Great starts here.</div>
                         <p class=" fw-light lh-1 mt-5">Join our movement to Make India a Great Place To Business</p>
-                        <a class="btn btn-outline-primary mt-2" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Right Peaple, Right Place, Right Time<i class="bi bi-chevron-right fs-ms ms-1"></i></a>
+                        <a class="btn btn-outline-primary mt-2" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Connect Us<i class="bi bi-chevron-right fs-ms ms-1"></i></a>
 
                       </div>
 
