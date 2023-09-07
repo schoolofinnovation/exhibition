@@ -1,4 +1,11 @@
     <main>
+      
+
+                   
+
+                    
+
+
         @if($formm == 'pavilliondashboard')
             @foreach($pavillion as $pav)
                 <div class="container my-3">
@@ -148,10 +155,7 @@
         @endif
 
 
-        @if($formm == 'addSpeaker')
-                 
-        @endif
-
+        
         <section class="container col-lg-8 pt-lg-4 pb-4 mb-3">
             <div class=" ps-lg-0 pe-xl-5">
            
@@ -695,88 +699,150 @@
                 @endif
 
                 @if($formm == 'client')
-                <div class="container my-5">
-                    <div class="small"> List meet-up brands, update contacts what we get during expo visit.</div>   
+                    <div class="container my-5">
+                        <div class="small"> List meet-up brands, update contacts what we get during expo visit.</div>   
 
-                    <form wire:submit.prevent="participantToAdd">
-                        <div class="row mb-5 pb-2" wire:model="checkvalue">
+                        <form wire:submit.prevent="participantToAdd">
+                            <div class="row mb-5 pb-2" wire:model="checkvalue">
 
-                            
-                        </div>
-                    </form>
-
-
-                    <form wire:submit.prevent="AddBrandAttend">
-
-                            {{-- <select class="form-control mb-1" type="text"   wire:model.lazy="event_id" >
-                                <option selected>Choose</option>
-                            @foreach($findInspection as $findoo)
-                                <option value="{{$findoo -> id}}">{{$findoo -> eventname}}</option>
-                            @endforeach
-                            </select> --}}
-                            
-                        {{--find out brand with  name--}}
-                        <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
-
-                            <div class="small">
-                                <input type="checkbox" value="1" wire:model="lookingAddFromIMage" name="" id=""> Add Participants
+                                
                             </div>
+                        </form>
 
-                            @if($lookingAddFromIMage == 1)
 
-                                <div class="row mb-5 pb-2" wire:model="checkvalue">
-                                    @foreach ($participants as $participant) 
-                                        {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
-                                            @php 
-                                            $findoutsponsored = DB::table('participants')->where('event_id', $event_id)->where('brand_id' , $participant->id)->value('sponsership_id');
-                                            @endphp
+                        <form wire:submit.prevent="AddBrandAttend">
 
-                                               
-                                        <div class=" col col-auto my-1 px-2"> 
-                                            <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> 
-                                            @if(is_null($findoutsponsored))
-                                            
-                                            @else
-                                            <span class="badge  border-1 text-right border-dark text-dark mr-1"> {{$findoutsponsored}}</span>
-                                            @endif
-                                            <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
-                                            <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
-                                            <span class="fs-sm"></span> {{$participant->brand_name}}
-                                        </div>
-                                    @endforeach
-                                    <div>@json($checkvalue)</div>
+                                {{-- <select class="form-control mb-1" type="text"   wire:model.lazy="event_id" >
+                                    <option selected>Choose</option>
+                                @foreach($findInspection as $findoo)
+                                    <option value="{{$findoo -> id}}">{{$findoo -> eventname}}</option>
+                                @endforeach
+                                </select> --}}
+                                
+                            {{--find out brand with  name--}}
+                            <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
+
+                                <div class="small">
+                                    <input type="checkbox" value="1" wire:model="lookingAddFromIMage" name="" id=""> Add Participants
                                 </div>
 
-                            @endif
+                                @if($lookingAddFromIMage == 1)
 
-                        <input type="text" class="form-control mb-1" wire:model.lazy="country" placeholder="country">
-                        <input type="text" class="form-control mb-1" wire:model.lazy="link" placeholder="link">
+                                    <div class="row mb-5 pb-2" wire:model="checkvalue">
+                                        @foreach ($participants as $participant) 
+                                            {{--<div class="col-auto text-center border border-1 my-1 mx-1">--}}
+                                                @php 
+                                                $findoutsponsored = DB::table('participants')->where('event_id', $event_id)->where('brand_id' , $participant->id)->value('sponsership_id');
+                                                @endphp
 
-                        <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
+                                                
+                                            <div class=" col col-auto my-1 px-2"> 
+                                                <input class="form-check-input" type="checkbox"   value="{{$participant->id}}"  wire:model="checkvalue"> 
+                                                @if(is_null($findoutsponsored))
+                                                
+                                                @else
+                                                <span class="badge  border-1 text-right border-dark text-dark mr-1"> {{$findoutsponsored}}</span>
+                                                @endif
+                                                <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
+                                                <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">
+                                                <span class="fs-sm"></span> {{$participant->brand_name}}
+                                            </div>
+                                        @endforeach
+                                        <div>@json($checkvalue)</div>
+                                    </div>
 
-                        <input type="text" class="form-control mb-1" wire:model.lazy="name" placeholder="name">
-                        <input type="text" class="form-control mb-1" wire:model.lazy="contact" placeholder="contact">
-                        <input type="email" class="form-control mb-1" wire:model.lazy="email" placeholder="email">
-                        <input type="text" class="form-control mb-1" wire:model.lazy="designation" placeholder="designation">
-                        
-                    {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
-                        <input type="text" class="form-control mb-1" wire:model.lazy="size" placeholder="size">
-                        <input type="text" class="form-control mb-1" wire:model.lazy="grade" placeholder="grade">
-                        <textarea type="text" class="form-control mb-1" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+                                @endif
 
-                        <input type="text" class="form-control mb-1" wire:model.lazy="email_request" placeholder="email_request">
-                        <input type="text" class="form-control mb-1" wire:model.lazy="service_request" placeholder="service_request">--}}
+                            <input type="text" class="form-control mb-1" wire:model.lazy="country" placeholder="country">
+                            <input type="text" class="form-control mb-1" wire:model.lazy="link" placeholder="link">
 
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                    </form>
-                </div>
+                            <input type="text" class="form-control mb-1" wire:model.lazy="brand_name" placeholder="brand_name">
+
+                            <input type="text" class="form-control mb-1" wire:model.lazy="name" placeholder="name">
+                            <input type="text" class="form-control mb-1" wire:model.lazy="contact" placeholder="contact">
+                            <input type="email" class="form-control mb-1" wire:model.lazy="email" placeholder="email">
+                            <input type="text" class="form-control mb-1" wire:model.lazy="designation" placeholder="designation">
+                            
+                        {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
+                            <input type="text" class="form-control mb-1" wire:model.lazy="size" placeholder="size">
+                            <input type="text" class="form-control mb-1" wire:model.lazy="grade" placeholder="grade">
+                            <textarea type="text" class="form-control mb-1" wire:model.lazy="reminder" placeholder="reminder"></textarea>
+
+                            <input type="text" class="form-control mb-1" wire:model.lazy="email_request" placeholder="email_request">
+                            <input type="text" class="form-control mb-1" wire:model.lazy="service_request" placeholder="service_request">--}}
+
+                            <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                        </form>
+                    </div>
                 @endif
 
-                 @if($formm == 'addSpeaker')
-                   <div class="container">
-                    Business
-                   </div>
-                 @endif
+                 
+
+                    @if($formm = 'addSpeaker')
+                        <form wire:submit.prevent="updateSpeaker">
+                            <input type="text" class="form-control" placeholder="Speaker" wire:model="name">
+                            <button class="btn btn-primary mt-2"  class="form-control" type="submit">Submit</button>
+                        </form>
+
+                        @foreach($speaker as $pav)
+                            
+                        
+                            <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    <div class="h4 fw-light mb-0">Pav</div> 
+                                
+                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                                </div>
+
+                                <div class="col-7  p-0">
+                                @if(is_null($pav->desc))
+                                    <div class="text-muted fs-sm text-start">{{$pav->name}} </div>
+                                @else
+                                    <div class="fs-md fw-normal text-start">
+                                    {{$evento->name}}<br>
+                                    
+                                    {{$evento->organisation}}
+                                    </div>
+                                @endif
+                                </div>
+
+                                <div class="col-3 p-0">
+                                @if(is_null($pav->desc))
+                                    <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Add</a>
+                                @else
+                                    <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'detailSpeaker'])}}" class="btn btn-primary btn-sm">Edit</a>
+                                @endif
+                                </div>
+                            </div>
+                            
+                        @endforeach
+                        <h1>Suggested Speaker</h1>
+                        <div class="row">
+
+                            <!-- Bestsellers-->
+                            <div class="col-md-4 col-sm-6 mb-2 py-1">
+                                <div class="widget">
+                                    @foreach ($suggestedSpeaker as $franchise)
+                                        <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                                            <div class="d-flex align-items-center position-relative">
+                                            
+                                            <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
+                                            <div class="ms-2">
+                                                <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
+                                                <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                                            <!--<span class="fs-xs text-muted">730 followers</span>-->
+                                            </div>
+                                            </div>
+                                            <button class="btn btn-sm btn-outline-secondary ms-2">Follow</button>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                        
+                        </div>
+                    @endif
             </div>
         </section>
 
