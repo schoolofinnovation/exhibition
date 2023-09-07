@@ -94,7 +94,7 @@ public $howMany;
     {
       
 
-       $monthwise = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $this->monthly)->orderBy('startdate','ASC')->get();
+       $monthwise = Event::whereYear('startdate','>=','2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $this->monthly)->orderBy('startdate','ASC')->get();
 
        foreach ($monthwise as $evnto)
        {
