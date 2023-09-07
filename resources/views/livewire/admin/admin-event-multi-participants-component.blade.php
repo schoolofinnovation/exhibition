@@ -302,6 +302,18 @@
                         </form>
                     @endif
 
+                    <div class="small">
+                        <input type="checkbox" value="1" wire:model="lookingAddorganisation" name="" id=""> Add Participants
+                    </div>
+
+                    @if($lookingAddorganisation == 1)
+                        <form wire:submit.prevent="updateOrganisation">
+                            <label class="form-label">Add Organisation<span class="text-danger">*</span></label> 
+                                <textarea type="text" placeholder="Organisation" class="form-control" wire:model="organisation" rows="7"></textarea>
+                                <button class="btn btn-primary btn-shadow d-block w-100 mt-2"  type="submit">Submit</button>
+                        </form>
+                    @endif
+
                     <div class="my-3">
                         <div class="small">
                             <input type="checkbox" value="1" wire:model="lookingAddImage" > Add Images

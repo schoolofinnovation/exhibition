@@ -110,12 +110,19 @@
             
             <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-0 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
             
-              <div class="container  mb-lg-0 bg-primary" >
+              <div class="container  mb-lg-0 bg-primary">
+
                 <div class="d-flex justify-content-between py-2">
-                    <div class="text-dark  pl-3 lh-1">  <span class= "fw-bold text-light fs-sm ">Great Place To Visit</span><br><span class=" fw-normal fs-xs">Onwards</span></div>
+                      <div class="z-2 text-dark  pl-3 lh-1"> 
+                       <span class= "fw-bold text-light fs-sm ">
+                        Great
+                        <br>Place <br>To <br>Visit</span><br><span class=" fw-normal fs-xs">Onwards</span>
+                      </div>
+
+
                       @if( $event->businessrevenue == 'visitor' )  
                           <a href="{{route('event.exhibit', ['board' => 'business'])}}" class="btn btn-outline-light btn-sm">Book a Space</a>
-                      @else
+                        @else
                       
                         @if( $ticketOrExhibit != 0 )
                             <a href="#"  wire:click.prevent="insertEventToSess({{$event->id}})" class="btn btn-outline-light btn-sm">Plan Your Visit</a>
@@ -129,8 +136,10 @@
                       <!-- <a class="navbar-tool navbar-stuck-toggler" href=""><span class="navbar-tool-tooltip">Toggle menu</span>
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon bi bi-list"></i></div>
                       </a> -->
-                      <a href=""><i class="navbar-tool-icon bi bi-list"></i></a>
+                      <i class="navbar-tool-icon bi bi-list"></i>
                   </div>
+
+
                   <!-- <div class="container">
                   Expand your Businesss       
                   </div> -->
@@ -1387,6 +1396,11 @@
               @endif
 
             @endif
+
+            <!-- brand -->
+            <div class="container">
+              
+            </div>
     </main>
 
     @push('scripts')

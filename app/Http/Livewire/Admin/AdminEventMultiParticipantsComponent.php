@@ -55,6 +55,8 @@ class AdminEventMultiParticipantsComponent extends Component
     public $lookingAddImage;
     public $lookingAddParticipants;
     public $lookingAddFromIMage;
+
+    public $organisation;
     
    
     Use WithFileUploads;
@@ -138,6 +140,27 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand->status = $this->status;
             $brand->user_id = Auth::user()->id;
             $brand->save();
+            $this->reset();
+        }
+
+    }
+
+    public function updateOrganisation()
+    {
+        $rti = Str::replace('  ',' ',$this->brand_name);
+        $ret = explode(",", $rti);
+
+        foreach($ret as $tre)
+        {
+            $brand = new Brand();
+            $bran = Event::find($this->event_id);
+            $brand->event_id = $bran->id;
+            $brand->organisation = trim($tre);
+            $brand->slug = str::slug($tre,'-');
+            $brand->status = $this->status;
+            $brand->user_id = Auth::user()->id;
+            $brand->save();
+            $this->reset();
         }
 
     }
