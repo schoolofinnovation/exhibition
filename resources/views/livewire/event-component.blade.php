@@ -9,11 +9,14 @@
 
                 <div class="col-md-4">
                   <div class="row my-Slider4">
-                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Free</span>
-                        {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
+                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-primary">Join The Network</span>
+                        
+                      <!-- <span class="badge bg-danger">Free</span> -->
+                      
+                      {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
                         <h1 class="mb-1 display-1"> Great starts here.</h1>
-                        <p class=" fw-light lh-1">Join our movement to Make India a Great Place To Business</p>
-                        <a class="btn btn-accent mt-4" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Get your button <i class="bi bi-chevron-right fs-ms ms-1"></i></a>
+                        <p class=" fw-light lh-1 mt-5">Join our movement to Make India a Great Place To Business</p>
+                        <a class="btn btn-outline-primary mt-2" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Right Peaple, Right Place, Right Time<i class="bi bi-chevron-right fs-ms ms-1"></i></a>
 
                       </div>
 
