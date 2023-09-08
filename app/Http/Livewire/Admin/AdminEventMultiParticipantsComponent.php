@@ -54,6 +54,7 @@ class AdminEventMultiParticipantsComponent extends Component
     public $partner;
     public $lookingAddImage;
     public $lookingAddParticipants;
+    public $lookingAddorganisation;
     public $lookingAddFromIMage;
 
     public $organisation;

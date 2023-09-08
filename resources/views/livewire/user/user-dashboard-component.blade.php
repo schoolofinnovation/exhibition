@@ -47,6 +47,24 @@
 
 
   @if($board == 'dashboard')   
+  <div class="container d-lg-none">
+      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+        <div class="d-flex justify-content-between px-0 m-0 lh-1">
+          <span class="fs-sm">Places based on your<br><span class="fw-medium h5">Industry</span></span>
+         
+
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+            <ul class="dropdown-menu" width="auto">
+              <li><a class="dropdown-item" href="#">More</a></li>
+              <li><a class="dropdown-item" href="#">Exhibit</a></li>
+              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+            </ul>
+          </span>
+
+        </div>
+      </div>
+
+    
     @foreach($eventoo as $evento)
         <div class="container my-3">
             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
@@ -83,6 +101,287 @@
             </div>
         </div>
     @endforeach
+  </div>
+
+  <div class="container d-lg-none">
+      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+        <div class="d-flex justify-content-between px-0 m-0 lh-1">
+          <span class="fs-sm">Places based on your<br><span class="fw-medium h5">Search</span></span>
+         
+
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+            <ul class="dropdown-menu" width="auto">
+              <li><a class="dropdown-item" href="#">More</a></li>
+              <li><a class="dropdown-item" href="#">Exhibit</a></li>
+              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+            </ul>
+          </span>
+
+        </div>
+      </div>
+
+    
+    @foreach($eventoo as $evento)
+        <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                      @else
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                    @endif 
+                    <div class="round-circle">{{$evento->edition}}</div> 
+                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @else
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @endif 
+                  </div>  
+                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                </div>
+
+                <div class="col-3  p-0">
+                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+  </div>
+
+  <div class="container d-lg-none">
+      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+        <div class="d-flex justify-content-between px-0 m-0 lh-1">
+          <span class="fs-sm">Explore more Places you may like<br><span class="fw-medium h5">Search</span></span>
+         
+
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+            <ul class="dropdown-menu" width="auto">
+              <li><a class="dropdown-item" href="#">More</a></li>
+              <li><a class="dropdown-item" href="#">Exhibit</a></li>
+              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+            </ul>
+          </span>
+
+        </div>
+      </div>
+
+    
+    @foreach($eventoo as $evento)
+        <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                      @else
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                    @endif 
+                    <div class="round-circle">{{$evento->edition}}</div> 
+                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @else
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @endif 
+                  </div>  
+                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                </div>
+
+                <div class="col-3  p-0">
+                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+  </div>
+
+  <div class="container d-lg-none">
+      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+        <div class="d-flex justify-content-between px-0 m-0 lh-1">
+          <span class="fs-sm">Early Access places<br><span class="fw-medium small">Fresh places from Organizer Searches</span></span>
+         
+
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+            <ul class="dropdown-menu" width="auto">
+              <li><a class="dropdown-item" href="#">More</a></li>
+              <li><a class="dropdown-item" href="#">Exhibit</a></li>
+              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+            </ul>
+          </span>
+
+        </div>
+      </div>
+
+    
+    @foreach($eventoo as $evento)
+        <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                      @else
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                    @endif 
+                    <div class="round-circle">{{$evento->edition}}</div> 
+                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @else
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @endif 
+                  </div>  
+                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                </div>
+
+                <div class="col-3  p-0">
+                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+  </div>
+
+  <div class="container d-lg-none">
+      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+        <div class="d-flex justify-content-between px-0 m-0 lh-1">
+          <span class="fs-sm">Join for Right People<br><span class="fw-medium h5">Top Places</span></span>
+         
+
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+            <ul class="dropdown-menu" width="auto">
+              <li><a class="dropdown-item" href="#">More</a></li>
+              <li><a class="dropdown-item" href="#">Exhibit</a></li>
+              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+            </ul>
+          </span>
+
+        </div>
+      </div>
+
+    
+    @foreach($eventoo as $evento)
+        <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                      @else
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                    @endif 
+                    <div class="round-circle">{{$evento->edition}}</div> 
+                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @else
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @endif 
+                  </div>  
+                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                </div>
+
+                <div class="col-3  p-0">
+                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+  </div>
+
+  <div class="container d-lg-none">
+      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+        <div class="d-flex justify-content-between px-0 m-0 lh-1">
+          <span class="fs-sm">Daily Updates<br><span class="fw-medium h5">Powered By COI</span></span>
+         
+
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+            <ul class="dropdown-menu" width="auto">
+              <li><a class="dropdown-item" href="#">More</a></li>
+              <li><a class="dropdown-item" href="#">Exhibit</a></li>
+              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+            </ul>
+          </span>
+
+        </div>
+      </div>
+
+    
+    @foreach($eventoo as $evento)
+        <div class="container my-3">
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                      @else
+                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                    @endif 
+                    <div class="round-circle">{{$evento->edition}}</div> 
+                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                </div>
+
+                <div class="col-7  p-0">
+                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                  <div class="text-muted fs-sm text-start">
+                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @else
+                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                      @endif 
+                  </div>  
+                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                </div>
+
+                <div class="col-3  p-0">
+                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+  </div>
 
       <div class="container d-lg-none">
            <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
@@ -108,6 +407,49 @@
         </div>
 
       </div>
+
+      <div class="container d-lg-none">
+           <div class="text-dark fw-medium fs-sm">Add Your Event</div> 
+           
+        <div class=" my-sliderOffers">
+            <ul class="list-unstyled fs-sm  p-2">
+                <li class="d-flex justify-content-between p-0 m-0">
+                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+            </ul>
+
+            <ul class="list-unstyled fs-sm  p-2">
+                <li class="d-flex justify-content-between p-0 m-0">
+                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+            </ul>
+          
+            <ul class="list-unstyled fs-sm  p-2">
+              <li class="d-flex justify-content-between p-0 m-0">
+              <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+              <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+            </ul>
+        </div>
+
+      </div>
+
+      <div class="container d-lg-none">
+           <div class="text-dark fw-medium fs-sm">Share your Experience</div> 
+           
+        <div class=" my-sliderOffers">
+            <ul class="list-unstyled fs-sm  p-2">
+                <li class="d-flex justify-content-between p-0 m-0">
+                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Write your Advice</a></span></li>
+            </ul>
+
+            
+        </div>
+
+      </div>
+
+      <h1>70% space booked without any follow-up calls</h1>
+      <small>New places on The Exhibitor Network are booked by directly reaching out to New Brands wihtout any follow-up calls. Learn how you can make the best of this opportunity</small>
   @endif
 
       <!--header-->
@@ -711,68 +1053,78 @@
 
   @if( $board == 'profile')
 
-
-  <div class="container mb-5">
-    <div class="row">  
-       <a href="http://" class="">Done</a>
-       <a href="http://" class="">Export</a>
-    </div>  
-  
-    <div class="text-center">
-      <img src="path-to-image" class="d-inline-block rounded-circle mb-3" width="96" alt="Amanda Gallaher">
-      <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
-      <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
-      <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
-        <i class="ci-twitter"></i>
-      </a>
-      <a href="#" class="btn-social bs-messenger bs-outline bs-sm">
-        <i class="ci-messenger"></i>
-      </a>
-      <a href="#" class="btn-social bs-pinterest bs-outline bs-sm">
-        <i class="ci-pinterest"></i>
-      </a>
-      <a href="#" class="btn-social bs-linkedin bs-outline bs-sm">
-        <i class="ci-linkedin"></i>
-      </a>
-    </div>
-
-    <div class="row my-3 ">
-      <div class=" col fs-xs text-center">mobile</div>
-      <div class=" col fs-xs text-center">call</div>
-      <div class=" col fs-xs text-center">whats App</div>
-      <div class=" col fs-xs text-center">mail</div>
-    </div>
-
-    <div class="card ">
-      <div class="card-body">
-        <ul class="list-unstyled mb-0">
-          <li class="d-flex pb-3 border-bottom">
-            <i class="ci-location fs-lg mt-2 mb-0 text-primary"></i>
-            <div class="ps-3">
-              <span class="fs-ms text-muted">Find us</span>
-              <a href="#" class="d-block text-heading fs-sm">769, Industrial Dr, West Chicago, IL 60185, USA</a>
-            </div>
-          </li>
-          <li class="d-flex pt-2 pb-3 border-bottom">
-            <i class="ci-phone fs-lg mt-2 mb-0 text-primary"></i>
-            <div class="ps-3">
-              <span class="fs-ms text-muted">Call us</span>
-              <a href="tel:+184725276533" class="d-block text-heading fs-sm">+1 (847) 252 765 33</a>
-            </div>
-          </li>
-          <li class="d-flex pt-2m">
-            <i class="ci-mail fs-lg mt-2 mb-0 text-primary"></i>
-            <div class="ps-3">
-              <span class="fs-ms text-muted">Write us</span>
-              <a href="mailto:email@example.com" class="d-block text-heading fs-sm">email@example.com</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <div class="container mb-5">
+      <div class="row">  
+        <a href="http://" class="">Done</a>
+        <a href="http://" class="">Export</a>
+      </div>  
     
-  </div>
+      <div class="text-center">
+        <img src="path-to-image" class="d-inline-block rounded-circle mb-3" width="96" alt="Amanda Gallaher">
+        <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
+        <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
+        <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
+          <i class="ci-twitter"></i>
+        </a>
+        <a href="#" class="btn-social bs-messenger bs-outline bs-sm">
+          <i class="ci-messenger"></i>
+        </a>
+        <a href="#" class="btn-social bs-pinterest bs-outline bs-sm">
+          <i class="ci-pinterest"></i>
+        </a>
+        <a href="#" class="btn-social bs-linkedin bs-outline bs-sm">
+          <i class="ci-linkedin"></i>
+        </a>
+      </div>
 
+      <div class="row my-3 ">
+        <div class=" col fs-xs text-center">mobile</div>
+        <div class=" col fs-xs text-center">call</div>
+        <div class=" col fs-xs text-center">whats App</div>
+        <div class=" col fs-xs text-center">mail</div>
+      </div>
+
+      <div class="card ">
+        <div class="card-body">
+          <ul class="list-unstyled mb-0">
+            <li class="d-flex pb-3 border-bottom">
+              <i class="ci-location fs-lg mt-2 mb-0 text-primary"></i>
+              <div class="ps-3">
+                <span class="fs-ms text-muted">Find us</span>
+                <a href="#" class="d-block text-heading fs-sm">769, Industrial Dr, West Chicago, IL 60185, USA</a>
+              </div>
+            </li>
+            <li class="d-flex pt-2 pb-3 border-bottom">
+              <i class="ci-phone fs-lg mt-2 mb-0 text-primary"></i>
+              <div class="ps-3">
+                <span class="fs-ms text-muted">Call us</span>
+                <a href="tel:+184725276533" class="d-block text-heading fs-sm">+1 (847) 252 765 33</a>
+              </div>
+            </li>
+            <li class="d-flex pt-2m">
+              <i class="ci-mail fs-lg mt-2 mb-0 text-primary"></i>
+              <div class="ps-3">
+                <span class="fs-ms text-muted">Write us</span>
+                <a href="mailto:email@example.com" class="d-block text-heading fs-sm">email@example.com</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+    <div class="container mb-5">
+      <form wire:submit.prevent="userDetail">
+        <input type="text" class="form-control mb-1" wire:model="name" placeholder="name">
+        <input type="text" class="form-control mb-1" wire:model="designation" placeholder="designation">
+        <input type="text" class="form-control mb-1" wire:model="organisation" placeholder="organisation">
+        <input type="text" class="form-control mb-1" wire:model="gst" placeholder="gst">
+        <input type="text" class="form-control mb-1" wire:model="address" placeholder="address">
+        <input type="text" class="form-control mb-1" wire:model="email" placeholder="email">
+        <input type="text" class="form-control mb-1" wire:model="phone" placeholder="phone">
+        <button type="submit" class="form-control btn btn-primary">Submit</button>
+      </form>
+    </div>
   @endif
 
   @if($board == 'SaveContact')
@@ -866,7 +1218,19 @@
           <i class="ci-filter-alt"></i></span>
           <span class="handheld-toolbar-label">Profile</span>
         </a>
-       
+
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Add your Event</span></a>
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Advertise</span></a>
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Business</span></a>
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Partner</span></a>
 
         <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>

@@ -14,6 +14,7 @@ use App\Models\Order;
 use App\Models\Sector;
 use App\Models\Service;
 use App\Models\Shop;
+use App\Models\Sprofile;
 use App\Models\Usage;
 use App\Models\Want;
 use Carbon\Carbon;
@@ -173,6 +174,24 @@ class UserDashboardComponent extends Component
         return redirect()->route('user.dashboard');
     }
 
+    public function userDetail()
+    {
+        $shop = new Sprofile();
+        $shop->name = $this->pincode;
+        $shop->designation = $this->shtype;
+        $shop->organisation = $this->pincode;
+        $shop->gst = $this->shtype;
+        $shop->address = $this->pincode;
+
+        $shop->email = $this->shtype;
+        $shop->phone = Auth::user()->id;
+        $shop->user_id = Auth::user()->id;
+        $shop->customer_code = $this->code;
+        $shop->save();
+        
+        session()->flash('message','Thanks, Your details has been uploaded.'); 
+        return redirect()->route('user.dashboard');
+    }
 
     public function addLevel(){   
         $shop = new Want();
