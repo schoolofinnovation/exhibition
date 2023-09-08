@@ -387,9 +387,6 @@
                         <button class="btn btn-primary mt-2" type="submit">Submit</button>
                     </form>
                     
-                    <div class="container my-5">
-
-                    </div>
                 @endif
 
                 @if($formm == 'addPavillion')
@@ -533,7 +530,7 @@
                        <span class="badge">#{{$hastag}}</span> 
                     </div>
 
-                    <div class="container">
+                  
                         <div class="d-flex badgeseTag pb-2">
                             @foreach($hastago as $cat)
                                 <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->hastag}}
@@ -541,7 +538,7 @@
                                 </span>
                             @endforeach
                         </div>
-                    </div>
+                  
                 @endif
 
                  <!-- @if(count($findListedTag) > 0)

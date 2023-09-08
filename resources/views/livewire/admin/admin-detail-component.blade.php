@@ -88,8 +88,9 @@
       </div>
      </div>
     </div>
+
     <div class="container">
-    <form wire:submit.prevent="tryingfaker">
+                <form wire:submit.prevent="withoutHashtag">
                     <div class="col-7  p-0">
                           <input type="text" wire:model.lazy="howMany">
                     </div>

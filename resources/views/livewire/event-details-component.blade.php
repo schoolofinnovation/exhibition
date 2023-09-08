@@ -114,9 +114,8 @@
 
                 <div class="d-flex justify-content-between py-2">
                       <div class="z-2 text-dark  pl-3 lh-1"> 
-                       <span class= "fw-bold text-light fs-sm ">
-                        Great
-                        <br>Place <br>To <br>Visit</span><br><span class=" fw-normal fs-xs">Onwards</span>
+                       <span class= "fw-bold text-light fs-xs ">
+                        Great Place To Visit</span><br><span class="text-light fw-normal fs-xs">Business</span>
                       </div>
 
 
@@ -136,7 +135,7 @@
                       <!-- <a class="navbar-tool navbar-stuck-toggler" href=""><span class="navbar-tool-tooltip">Toggle menu</span>
                         <div class="navbar-tool-icon-box"><i class="navbar-tool-icon bi bi-list"></i></div>
                       </a> -->
-                      <i class="navbar-tool-icon bi bi-list"></i>
+                      <!-- <i class="navbar-tool-icon bi bi-list"></i> -->
                   </div>
 
 

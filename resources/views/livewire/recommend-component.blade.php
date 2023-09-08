@@ -24,7 +24,7 @@
                             <!-- Product-->
                             <div class="col-sm-2 mb-grid-gutter">
                                 <div class=" rounded-circle flex-shrink-0" style="width: 6.375rem;">
-                                      <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="{{route('franchise.details',['slug' => $user->slug])}}">
+                                      <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="#">
                                 </div>
                             </div>
                           @endforeach
@@ -36,7 +36,7 @@
                             <!-- Product-->
                             <div class="col-sm-2 mb-grid-gutter">
                                 <div class=" rounded-circle flex-shrink-0" style="width: 6.375rem;">
-                                      <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="{{route('franchise.details',['slug' => $user->slug])}}">
+                                      <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="#">
                                 </div>
                             </div>
                           @endforeach
@@ -50,7 +50,7 @@
                           <!-- Product-->
                           <div class="col-sm-2 mb-grid-gutter">
                               <div class=" rounded-circle flex-shrink-0" style="width: 6.375rem;">
-                                    <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="{{route('franchise.details',['slug' => $user->slug])}}">
+                                    <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="#">
                               </div>
                           </div>
                         @endforeach
@@ -63,7 +63,7 @@
                         <!-- Product-->
                         <div class="col-sm-2 mb-grid-gutter">
                             <div class=" rounded-circle flex-shrink-0" style="width: 6.375rem;">
-                                  <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="{{route('franchise.details',['slug' => $user->slug])}}">
+                                  <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="#">
                             </div>
                         </div>
                       @endforeach

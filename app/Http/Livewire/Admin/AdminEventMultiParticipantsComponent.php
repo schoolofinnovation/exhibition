@@ -61,6 +61,8 @@ class AdminEventMultiParticipantsComponent extends Component
    
     Use WithFileUploads;
 
+
+
     public function mount($event_id, $formm )
     {
         $fattribute = Event::find($event_id);
@@ -74,6 +76,15 @@ class AdminEventMultiParticipantsComponent extends Component
        
     }
 
+    public function business()
+    {
+        //   ($this->checkvalue, $brandAtt;
+          $brandAttend = new Brand();
+          $brandAttend->brand_name = trim($this->brand_name);
+          $brandAttend->event_id = $this->event_id;
+          $brandAttend->official_website = $this->link;
+          $brandAttend->save();
+    }
     
     public function dateImage()
     {
@@ -403,17 +414,12 @@ class AdminEventMultiParticipantsComponent extends Component
         $ContactDetail->save();
        }
 
-       //dd($this->checkvalue, $brandAtt);
-    //    $brandAttend = new Brand();
-    //    $brandAttend->brand_name = trim($this->brand_name);
-    //    $brandAttend->event_id = $this->event_id;
-    //    $brandAttend->official_website = $this->link;
-    //    $brandAttend->save();
-
-       
-
+     
        return redirect()->route('admin.dashboard', ['board' => 'client']);
     }
+
+
+   
 
     public function render()
     {
@@ -421,7 +427,9 @@ class AdminEventMultiParticipantsComponent extends Component
         $searchTerm = '%'.$this->searchTerm. '%';
         $searchcat = Expo::where('tag','LIKE', $searchTerm)
                     ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
+
         $pavillion = Pavillion::where('event_id', $evento->id)->get();
+
         $sponser = Sponsership::where('event_id', $evento->id)->get();
 
         $speaker = Speaker::where('event_id', $evento->id)->get();
