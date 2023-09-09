@@ -156,6 +156,8 @@ use App\Http\Livewire\GoogleComponent;
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
 
 use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\User\UserEventClaimComponent;
+use App\Http\Livewire\User\UserEventDetailsComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserProfileComponent;
@@ -287,6 +289,11 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
   //User
   Route::middleware(['auth:sanctum', 'verified'])->group( function () {
     Route::get('/user/dashboard/{board}', UserDashboardComponent::class)->name('user.dashboard');
+
+    Route::get('/user/add-your-business', UserEventClaimComponent::class)->name('user.claim');
+    Route::get('/user/business/details', UserEventDetailsComponent::class)->name('user.details');
+    
+
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.Orders');
     Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');

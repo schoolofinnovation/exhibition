@@ -1,17 +1,14 @@
-@section('page_title', 'Add your Event')
-@section('page_description', ' Add your Event, Join the Swiss-based Exhibition Network and connect with the world of exhibitions and conferences. Stay up to date with the latest updates and news, and be a part of the dynamic exhibition industry')
-@section('page_keyword', ', Add your Event, World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
-
 <main>
-    @if($board == 'add-your-event')
+
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">
-                <p>Find your Event</p>
+                <p class="fw-bold">Find your Event</p>
 
                 <div class="col-lg-8 col-sm-7">
-                <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
+                   <input type="text" class="form-control my-1" placeholder="Search your Event..." wire:model.lazy="searchTerm">
+                   <button class="btn btn-primary form-control" type="">Search</button>
                 </div>
-                <div class="col-lg-4 col-sm-5"><a  class="btn btn-primary">Search</a></div>
+                <!-- <div class="col-lg-4 col-sm-5"><a  class="btn btn-primary">Search</a></div> -->
             </div>
         </div>
     
@@ -24,40 +21,42 @@
                             <div class="row mb-5 pb-2 d-lg-none">
                                 @foreach ($monthwise as $franchise) 
                                     <div class="container  ">
-                                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                        <div class="col  pr-0">
-                                            @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                            <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                                            @else
-                                            <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                            <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                        <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                            <div class="col  pr-0">
+                                                @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                                <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                                @else
+                                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
 
-                                            @endif 
-                                            <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                                        </div>
+                                                @endif 
+                                                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                            </div>
 
-                                        <div class="col-7  p-0">
-                                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                            {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
-                                        <div class="text-muted fs-sm text-start">
-                                            @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                            {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                            @else
-                                            {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                            @endif 
-                                        </div>  
-                                        <div class="text-muted fs-sm text-start"></div>
-                                        </div>
+                                            <div class="col-7  p-0">
+                                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                                {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                            <div class="text-muted fs-sm text-start">
+                                                @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                                @else
+                                                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                                @endif 
+                                            </div>  
+                                            <div class="text-muted fs-sm text-start"></div>
+                                            </div>
 
-                                        <div class="col-3  p-0">
-                                            {{--<a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                                <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>--}}
-                                                
-                                            <a class="round-circle" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                                <i class="bi bi-chevron-double-right"></i></a> 
+                                            <div class="col-3  p-0">
+                                                {{--<a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                                    <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>--}}
+                                                    
+                                                <!-- <a class="round-circle" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                                    <i class="bi bi-chevron-double-right"></i></a>  -->
+                                                    <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Claim</a>
+
+                                                </div>
                                         </div>
-                                    </div>
                                     </div>
                                 @endforeach
                             </div>
@@ -197,7 +196,7 @@
                         @endif
                     @endif
         </div>
-    @endif
+    
 
 
     @if($board == 'thank-you')

@@ -1219,9 +1219,11 @@
           <span class="handheld-toolbar-label">Profile</span>
         </a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.claim')}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
         <span class="handheld-toolbar-label">Add your Event</span></a>
+
+
         <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
         <span class="handheld-toolbar-label">Advertise</span></a>
