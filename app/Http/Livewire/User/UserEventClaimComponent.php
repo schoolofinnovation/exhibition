@@ -39,7 +39,21 @@ class UserEventClaimComponent extends Component
        
     }
 
-    public function newlist(){   
+    public function claimer($id)
+    {
+       
+        $findEvent = Event::find($id)->value('id');
+        $claiming = New Usage();
+        $claiming->user_id = Auth::user()->id;
+        $claiming->event_id =  $findEvent;
+        $claiming->status = '1';
+        $claiming->admstatus = '0';
+       
+        $claiming->save();
+    }
+
+    public function newlist()
+    {   
         $event = new Event();
         $event->eventname = $this->eventname;
         $event->slug = $this->slug;
@@ -59,18 +73,7 @@ class UserEventClaimComponent extends Component
     }
 
    
-    public function claimer($id)
-    {
-        $findEvent = Event::find($id)->value('id');
-        $claiming = New Usage();
-        $claiming->user_id = Auth::user()->id;
-        $claiming->event_id =  $findEvent->id;
-        $claiming->status = '1';
-        $claiming->admstatus = '0';
-        $claiming->save();
-        $this->reset();
-    }
-
+    
     // public function sendEmail($event)
     // {
     //    //Mail::to($event->email)->bcc('exhibitionnetwork@gmail.com')->send(new EventToClient ($event));
