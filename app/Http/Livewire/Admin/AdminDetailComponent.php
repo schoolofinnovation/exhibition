@@ -137,7 +137,7 @@ class AdminDetailComponent extends Component
         $usero->updated_at = $finall;
         $usero->save();
       }
-      
+      $this->reset();
     }
 
     public function withoutHashtag()
@@ -181,9 +181,9 @@ class AdminDetailComponent extends Component
         $usero->created_at = $finall;
         $usero->updated_at = $finall;
         $usero->save();
-        $this->reset();
+        
       }
-      
+      $this->reset();
     }
 
     
