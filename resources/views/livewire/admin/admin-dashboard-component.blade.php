@@ -1705,7 +1705,7 @@
 
       @if($board == 'bulkReview')
         
-      <div class="tab-pane fade show active" id="details" role="tabpanel">
+                    <div class="tab-pane fade show active" id="details" role="tabpanel">
                       <!-- details test tickets-->
                       
                         <div class="d-flex flex-nowrap align-items-center pb-3">
@@ -1733,6 +1733,10 @@
                         </div> 
                       
                     </div>
+      @endif
+
+      @if($board == 'organizer')
+          
       @endif
 
     <div class="handheld-toolbar">

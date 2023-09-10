@@ -55,7 +55,7 @@ class EventRateNowComponent extends Component
 
     public function render()
     {
-        $event = Event::where('slug', $this->slug)->first();  
+        $event = Event::where('slug', $this->slug)->value('id');  
         $hashtag = Hashtag:: where('status', '1')->where('event_id', $event->id)->orWhere('event_id', NULL)->get();
         $previous = url()->previous();
 

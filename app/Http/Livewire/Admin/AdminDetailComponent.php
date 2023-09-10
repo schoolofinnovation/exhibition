@@ -183,6 +183,9 @@ class AdminDetailComponent extends Component
         $usero->save();
         
       }
+
+      
+      return redirect()->back();
       $this->reset();
     }
 

@@ -75,6 +75,12 @@
                         </a> 
                     </div>
 
+                    <div class="col">
+                        <a  href="{{route('admin.dashboard', ['board' => 'organizer'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Org Req</div>
+                        </a> 
+                    </div>
+
                     
                 </div>
             </div>

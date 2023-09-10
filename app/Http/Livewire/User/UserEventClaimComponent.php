@@ -61,12 +61,14 @@ class UserEventClaimComponent extends Component
    
     public function claimer($id)
     {
-        $findEvent = Event::find($id)->first();
+        $findEvent = Event::find($id)->value('id');
         $claiming = New Usage();
         $claiming->user_id = Auth::user()->id;
         $claiming->event_id =  $findEvent->id;
         $claiming->status = '1';
         $claiming->admstatus = '0';
+        $claiming->save();
+        $this->reset();
     }
 
     // public function sendEmail($event)
