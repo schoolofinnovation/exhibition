@@ -63,7 +63,7 @@ class ExhibitionCategoryComponent extends Component
     public function render()
     {
         
-        $findcategryIDfromExpos = Expo::where('slug', $this->categry)->first();
+        $findcategryIDfromExpos = Expo::where('slug', $this->categry)->value('id');
         //dd( $this->categry, $findcategryIDfromExpos->id );
 
         $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
@@ -87,7 +87,7 @@ class ExhibitionCategoryComponent extends Component
             $exhibition = DB::table('events')
            ->join('dencos','dencos.event_id','=','events.id')
            ->join('expos','expos.id' ,'=','dencos.expo_id')
-           ->select('events.id as EventName','expos.id as Category','events.startdate as EventDate')->where('expos.id', $findcategryIDfromExpos->id)
+           ->select('events.id as EventName','expos.id as Category','events.startdate as EventDate')->where('expos.id', $findcategryIDfromExpos)
            ->orderBy('events.startdate','ASC')
            ->get();
 

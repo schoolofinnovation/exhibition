@@ -226,10 +226,9 @@ class AdminDetailComponent extends Component
         $pendingDetails = $evento;
         $catevent = Category::get();
 
-        $category = Denco::where('event_id', $evento->id)->get();
-        
         $event = Event::where('slug', $this->slug)->value('id');
-
+        $category = Denco::where('event_id', $event)->get();
+        
         $speaker = Speaker::where('event_id',  $event)->get();
         $pavillion = Pavillion::where('event_id',  $event)->get();
         $sponsership = Sponsership::where('event_id' , $event)->get();

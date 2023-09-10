@@ -24,8 +24,8 @@ class EventRateNowComponent extends Component
     public function mount($slug)
     {
        $this->slug = $slug;
-       $def= Event::where('slug', $this->slug)->first();
-       $this->event_id = $def->id;
+       $def= Event::where('slug', $this->slug)->value('id');
+       $this->event_id = $def;
        $this->admstatus= '0';  
        $this->status = 1;  
     }
