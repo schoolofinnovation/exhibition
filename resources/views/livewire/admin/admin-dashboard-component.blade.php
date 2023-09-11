@@ -1736,7 +1736,60 @@
       @endif
 
       @if($board == 'organizer')
-          
+          <div class="container">
+            <div class="fw-bold mb-0 lh-0 pb-0">Requested Event</div>
+            <div class="lh-0 mt-0 small">customize as your business</div>
+        </div>
+                @foreach ($checkSelected as $fibder) 
+
+                    @php
+                    $franchiseo = DB::table('events')->where('id' , $fibder -> event_id)->get();
+                    @endphp
+
+                    @foreach($franchiseo as $franchise )
+                        <div class="container  ">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                    @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+
+                                    @endif 
+                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                </div>
+
+                                <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                                    {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @else
+                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                    @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start"></div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                   
+
+                                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                                      <ul class="dropdown-menu" width="auto">
+                                        <li><a class="dropdown-item" href="#">Reject</a></li>
+                                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Accept</a></li>    
+
+                                      </ul>
+                                    </span>
+                                    </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                @endforeach
       @endif
 
     <div class="handheld-toolbar">

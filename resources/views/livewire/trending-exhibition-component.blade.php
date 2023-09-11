@@ -25,13 +25,11 @@
           @endphp
        
         
-        @foreach($findcountevent as $finderlo)
-            <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
-            {{ucwords(trans($finderlo->tag))}}  {{$categ->total}}</a>
-        @endforeach
+          @foreach($findcountevent as $finderlo)
+              <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
+              {{ucwords(trans($finderlo->tag))}}  {{$categ->total}}</a>
+          @endforeach
 
-        
-        
         @endforeach
       </div>
       

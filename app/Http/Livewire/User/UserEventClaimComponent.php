@@ -43,11 +43,13 @@ class UserEventClaimComponent extends Component
 
     public function claimer($id)
     {
-       
-        $findEvent = Event::find($id)->value ('id');
+
+            //    dd($id);
+            //     $findEvent = Event::find($id)->first();
+
         $claiming = New Usage();
         $claiming->user_id = Auth::user()->id;
-        $claiming->event_id =  $findEvent;
+        $claiming->event_id =  $id;
         $claiming->status = '1';
         $claiming->admstatus = '0';
        
@@ -83,10 +85,13 @@ class UserEventClaimComponent extends Component
 
     public function render()
     {
+        $user = Auth::user()->id;
+        $checkSelected = Usage::where('user_id', $user)->get();
+
             $searchTerm = '%'.$this->searchTerm. '%';
             $monthwise = Event::where('eventname','LIKE', $searchTerm)
                         ->where('status','1')->orderBy('startdate','ASC')->get();
 
-        return view('livewire.user.user-event-claim-component',['monthwise' => $monthwise])->layout('layouts.eblog');
+        return view('livewire.user.user-event-claim-component',['monthwise' => $monthwise, 'checkSelected' => $checkSelected])->layout('layouts.eblog');
     }
 }
