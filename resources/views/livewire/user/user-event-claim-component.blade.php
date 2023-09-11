@@ -89,11 +89,13 @@
                                 @foreach ($monthwise as $userRequestedID) 
 
                                     @php
-                                        $searchID = $userRequestedID->id;
-                                        $franchiseo = DB::table('usages')->where('user_id', Auth::user()->id)->whereNot('event_id', $searchID)->get();
+                                        
+                                        $franchiseo = DB::table('usages')->where('user_id', Auth::user()->id)->get();
+                                        $searchID = $userRequestedID->where('id', '!=', $franchiseo->event_id )->get();
+                                        
                                     @endphp
 
-                                    @foreach ($franchiseo as $franchise) 
+                                    @foreach ($searchID as $franchise) 
                                         <div class="container">
                                             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                                 <div class="col  pr-0">
