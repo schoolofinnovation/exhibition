@@ -29,6 +29,8 @@ class UserEventClaimComponent extends Component
     public $board;
     public $country;
 
+    public $opertingstatus = 'claimed';
+
     public function generateSlug()
     {
         $this->slug = Str::slug($this->eventname,'-');
@@ -42,7 +44,7 @@ class UserEventClaimComponent extends Component
     public function claimer($id)
     {
        
-        $findEvent = Event::find($id)->value('id');
+        $findEvent = Event::find($id)->value ('id');
         $claiming = New Usage();
         $claiming->user_id = Auth::user()->id;
         $claiming->event_id =  $findEvent;
