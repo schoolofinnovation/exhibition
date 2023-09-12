@@ -43,7 +43,9 @@ class AdminEventBrandDetailComponent extends Component
        $updatedetail = Brand::find($this->brand_id);
        $updatedetail->brand_name = $this->brand_name;
        $updatedetail->brand_logo = $this->brand_logo;
+
        $updatedetail->organisation = $this->organisation;
+       
        $updatedetail->industry = $this->industry;
        $updatedetail->user_id = Auth::user()->id;
        $updatedetail->status = '1';
