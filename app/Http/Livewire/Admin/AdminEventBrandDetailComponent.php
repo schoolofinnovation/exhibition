@@ -22,6 +22,9 @@ class AdminEventBrandDetailComponent extends Component
     public $brand_id;
     public $user_id;
 
+    public $status;
+    public $admstatus;
+
     public $formm;
 
     public function mount($brand_id)
@@ -35,6 +38,9 @@ class AdminEventBrandDetailComponent extends Component
        $this->organisation = $fattribute->organisation;
        $this->industry = $fattribute->industry;
 
+       $this->status = '1';
+       $this->admstatus = '1';
+
     }
 
 
@@ -45,10 +51,10 @@ class AdminEventBrandDetailComponent extends Component
        $updatedetail->brand_logo = $this->brand_logo;
 
        $updatedetail->organisation = $this->organisation;
-       
+
        $updatedetail->industry = $this->industry;
        $updatedetail->user_id = Auth::user()->id;
-       $updatedetail->status = '1';
+       $updatedetail->status = $this->status;
        $updatedetail->save();
 
 
@@ -61,15 +67,18 @@ class AdminEventBrandDetailComponent extends Component
 
        $updated->brand_id = $this->brand_id;
 
-       $updatedetail->status = '1';
-       $updatedetail->admstatus = '1';
+       $updated->status = $this->status;
+       $updated->admstatus = $this->admstatus;
        $updated->save();
-
+        
+       //return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
+       return redirect()->url()->previous();
 
     }
 
     public function render()
     {
-        return view('livewire.admin.admin-event-brand-detail-component');
+        $getContact = Bcontact::where('brand_id', $this->brand_id)->get();
+        return view('livewire.admin.admin-event-brand-detail-component', ['getContact' => $getContact]);
     }
 }
