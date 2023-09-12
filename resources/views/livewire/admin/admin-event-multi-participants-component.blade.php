@@ -834,40 +834,38 @@
                 @if($formm == 'client')
                     <div class="container my-5">
                         <div class="small"> List meet-up brands, update contacts what we get during expo visit.</div>   
+                            
+                        <input type="text" wire:model.lazy="" class="form-control" placeholder="search brand">
+                        <button> <i class="bi bi-search"></i> </button>
 
+                            @foreach ($findreferenceBrand as $evento)
+                                <div class="my-1">
+                                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                        <div class="col  pr-0">
+                                            @if(is_null($evento->brand_logo))
+                                                    <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
+                                                @else
+                                                <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">
+                                                <img src="{{url('public/assets/image/exhibition/'.$evento->brand_logo)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                                            @endif
+                                        </div>
 
-                        @foreach ($findreferenceBrand as $evento)
-                        <div class="container my-3">
-                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                <div class="col  pr-0">
-                                    
-                                    <div class="h4 fw-light mb-0">1</div> 
-                                    <div class="small text-muted">2</div>
-                                   
-                                    <div class="round-circle">5/div> 
-                                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                                        <div class="col-7  p-0">
+                                        <div class="fs-md fw-normal text-start">
+                                            <a class="text-dark" href="#">
+                                            {{$evento->brand_name}}</a></div>
+                                        <div class="text-muted fs-sm text-start">
+                                        {{$evento->organisation}}
+                                        </div>  
+                                        <div class="text-muted fs-sm text-start"></div>
+                                        </div>
+
+                                        <div class="col-3  p-0">
+                                            <a href="{{route('admin.brandDetail',['brand_id' => $evento->id])}}" class="btn btn-primary">Add</a>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="col-7  p-0">
-                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                                    {{ucwords(trans(Str::limit($evento->brand_name, 24)))}}</a></div>
-                                <div class="text-muted fs-sm text-start">
-                                   {{$evento->organisation}}
-                                </div>  
-                                <div class="text-muted fs-sm text-start"></div>
-                                </div>
-
-                                <div class="col-3  p-0">
-                                    @if(is_null($evento->brand_logo))
-                                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
-                                    @else
-                                    <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">
-                                    <img src="{{url('public/assets/image/exhibition/'.$evento->brand_logo)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                            @endforeach
 
 
                         <form wire:submit.prevent="participantToAdd">
