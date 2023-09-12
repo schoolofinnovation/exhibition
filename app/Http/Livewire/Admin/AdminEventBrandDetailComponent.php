@@ -76,6 +76,14 @@ class AdminEventBrandDetailComponent extends Component
 
     }
 
+
+    public function del($id)
+    {
+       $delee = Bcontact::find($id);
+       $delee->delete();
+    }
+
+
     public function render()
     {
         $getContact = Bcontact::where('brand_id', $this->brand_id)->get();
