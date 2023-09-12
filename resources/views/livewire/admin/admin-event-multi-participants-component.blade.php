@@ -835,6 +835,41 @@
                     <div class="container my-5">
                         <div class="small"> List meet-up brands, update contacts what we get during expo visit.</div>   
 
+
+                        @foreach ($findreferenceBrand as $evento)
+                        <div class="container my-3">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    
+                                    <div class="h4 fw-light mb-0">1</div> 
+                                    <div class="small text-muted">2</div>
+                                   
+                                    <div class="round-circle">5/div> 
+                                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                                </div>
+
+                                <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                    {{ucwords(trans(Str::limit($evento->brand_name, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                   {{$evento->organisation}}
+                                </div>  
+                                <div class="text-muted fs-sm text-start"></div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                    @if(is_null($evento->brand_logo))
+                                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
+                                    @else
+                                    <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">
+                                    <img src="{{url('public/assets/image/exhibition/'.$evento->brand_logo)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
                         <form wire:submit.prevent="participantToAdd">
                             <div class="row mb-5 pb-2" wire:model="checkvalue">
 
@@ -896,7 +931,7 @@
                             <input type="email" class="form-control mb-1" wire:model.lazy="email" placeholder="email">
                             <input type="text" class="form-control mb-1" wire:model.lazy="designation" placeholder="designation">
                             
-                        {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
+                            {{-- <textarea type="text" class="form-control mb-1" wire:model.lazy="comment" placeholder="comment"></textarea>
                             <input type="text" class="form-control mb-1" wire:model.lazy="size" placeholder="size">
                             <input type="text" class="form-control mb-1" wire:model.lazy="grade" placeholder="grade">
                             <textarea type="text" class="form-control mb-1" wire:model.lazy="reminder" placeholder="reminder"></textarea>

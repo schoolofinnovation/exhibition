@@ -90,8 +90,8 @@
 
                                     @php
                                         
-                                        $franchiseo = DB::table('usages')->where('user_id', Auth::user()->id)->get();
-                                        $searchID = $userRequestedID->where('id', '!=', $franchiseo->event_id )->get();
+                                        $franchiseo = DB::table('usages')->where('user_id', Auth::user()->id)->pluck('event_id');
+                                        $searchID = $userRequestedID->where('id', '!=', $franchiseo)->get();
                                         
                                     @endphp
 

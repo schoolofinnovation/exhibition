@@ -443,8 +443,10 @@ class AdminEventMultiParticipantsComponent extends Component
         $findListedTag = Denco::where('event_id', $evento->id)->get();
         //dd($hastag);
 
+        $findreferenceBrand = Brand::where('event_id', $this->event_id )->get();
+       
         //$getReferenceBrands = DB::table('participants')->where('event_id' , $this->event_id)->where('pavillion_id' , $pavillion->id)->get();
 
-        return view('livewire.admin.admin-event-multi-participants-component',['suggestedSpeaker'=>$suggestedSpeaker,'partners'=>$partners,'findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
+        return view('livewire.admin.admin-event-multi-participants-component',['findreferenceBrand'=>$findreferenceBrand, 'suggestedSpeaker'=>$suggestedSpeaker,'partners'=>$partners,'findListedTag'=>$findListedTag, 'participants' => $participants,'hastago' => $hastago,'speaker' => $speaker,'sponser' => $sponser, 'searchcat' => $searchcat,'evento'=>$evento, 'pavillion'=>$pavillion])->layout('layouts.eblog');
     }
 }
