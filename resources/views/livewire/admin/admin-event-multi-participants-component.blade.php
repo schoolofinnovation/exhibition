@@ -832,7 +832,8 @@
                 @endif
 
                 @if($formm == 'client')
-                    <div class="container my-5">
+
+                    <div class="my-5">
                         <div class="small"> List meet-up brands, update contacts what we get during expo visit.</div>   
                             
                         <input type="text" wire:model.lazy="" class="form-control" placeholder="search brand">
@@ -940,6 +941,8 @@
                             <button class="btn btn-primary mt-2" type="submit">Submit</button>
                         </form>
                     </div>
+
+                    {{$evento->slug}}
                 @endif
 
                    
@@ -948,7 +951,7 @@
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail',['slug' => $evento->slug])}}">
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail', ['slug' => $evento->slug])}}">
           <span class="handheld-toolbar-icon">
           <i class="ci-filter-alt"></i></span>
           <span class="handheld-toolbar-label">Admin</span>
