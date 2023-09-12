@@ -436,7 +436,8 @@
                                         <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $pav->id, 'formm' => 'image' ])}}">
                                             Add</a>
                                     @else
-                                        <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $pav->slug])}}">
+                                    <!-- <a class="card-img-top d-block overflow-hidden" href="{{route('adminevent.detail',['slug' => $pav->slug])}}"> -->
+                                        <a class="card-img-top d-block overflow-hidden" href="#">
                                         <img src="{{url('public/assets/image/exhibition/'.$pav->image)}}" alt="{{Str::limit($pav->eventname, 24)}}"></a>
                                     @endif
                                 </div>
@@ -951,7 +952,8 @@
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail', ['slug' => $evento->slug])}}">
+      <!-- <a class="d-table-cell handheld-toolbar-item" href="{{route('adminevent.detail', ['slug' => $evento->slug])}}"> -->
+        <a class="d-table-cell handheld-toolbar-item" href="#">
           <span class="handheld-toolbar-icon">
           <i class="ci-filter-alt"></i></span>
           <span class="handheld-toolbar-label">Admin</span>
