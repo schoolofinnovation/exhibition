@@ -318,7 +318,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
     Route::get('/admin/participants/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
 
-    Route::get('/admin/brand/{brand_id}/update/{formm}', AdminEventBrandDetailComponent::class)->name('admin.brandDetail');
+    Route::get('/admin/brand/{brand_id}', AdminEventBrandDetailComponent::class)->name('admin.brandDetail');
     
     //client-data-update
     Route::get('/admin/sub-details/{event_id}/add/{did}/business/{formm}', AdminEventMultiDetailComponent::class)->name('admin.multiSubDetails');
