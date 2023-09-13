@@ -1792,6 +1792,8 @@
                 @endforeach
       @endif
 
+      
+
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
       @if($board == 'job')

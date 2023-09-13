@@ -13,6 +13,7 @@ use App\Models\Partner;
 use App\Models\Pavillion;
 use App\Models\Speaker;
 use App\Models\Sponsership;
+use App\Models\Bcontact;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -420,6 +421,37 @@ class AdminEventMultiParticipantsComponent extends Component
     }
 
 
+public function directbrandBcontact()
+    {
+       $uptedetail = new Brand();
+       $uptedetail->brand_name = $this->brand_name;
+       $uptedetail->brand_logo = $this->brand_logo;
+
+       $uptedetail->organisation = $this->organisation;
+
+       $uptedetail->industry = $this->industry;
+       $uptedetail->user_id = Auth::user()->id;
+       $uptedetail->status = $this->status;
+       $uptedetail->save();
+
+
+       $upted = new Bcontact();
+       $upted->name = $this->name;
+       $upted->designation = $this->designation;
+       $upted->email = $this->email;
+       $upted->phone = $this->phone;
+       $upted->user_id = Auth::user()->id;
+
+       $upted->brand_id = $uptedetail->brand_id;
+
+       $upted->status = $this->status;
+       $upted->admstatus = $this->admstatus;
+       $upted->save();
+        
+       //return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
+      // return redirect()->url()->previous();
+
+    }
    
 
     public function render()

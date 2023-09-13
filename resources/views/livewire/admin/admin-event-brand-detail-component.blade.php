@@ -13,7 +13,7 @@
         <input type="text" class="form-control" placeholder="name" wire:model.lazy="name">
         <input type="text" class="form-control" placeholder="designation" wire:model.lazy="designation">
         <input type="number" class="form-control" placeholder="phone" wire:model.lazy="phone">
-        <input type="text" class="form-control" placeholder="email" wire:model.lazy="email">
+        <input type="email" class="form-control" placeholder="email" wire:model.lazy="email">
         
         <button class="form-control  btn btn-primary" type="submit">Submit</button>
     </form>
@@ -24,7 +24,7 @@
      Contact details 
      </div>
         @foreach ($getContact as $franchise) 
-            <div class="container">
+            <div class="">
                 <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                     <div class="col  pr-0">
                        
