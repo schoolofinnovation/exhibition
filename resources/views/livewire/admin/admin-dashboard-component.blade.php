@@ -921,11 +921,11 @@
         </form>
     </div>
 
-    <div class="container mt-5">
+    <div class="container my-5">
         <div class="fs-md">
         Contact details 
         </div>
-             @foreach ($getContact as $franchise) 
+            @foreach ($getContact as $franchise) 
                 <div class="">
                     <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                         <div class="col  pr-0">
@@ -1927,7 +1927,7 @@
             <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Visitor</span>
           </a>
           
-          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'visitcard'])}}">
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
             <span class="handheld-toolbar-label">Brand</span>
           </a>

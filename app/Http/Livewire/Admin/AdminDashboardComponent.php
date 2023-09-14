@@ -459,41 +459,47 @@ public $brand_id;
 
     //dd($rti);
 
+    public function del($id)
+    {
+       $delee = Bcontact::find($id);
+       $delee->delete();
+    }
+
     public $phone;
     public $industry;
     public $brand_logo; 
+    public $organisation;
 
     public function directbrandBcontact()
     {
        $uptedetail = new Brand();
-       $uptedetail->brand_name = $this->brand_name;
+       $uptedetail->brand_name = trim($this->brand_name);
        $uptedetail->brand_logo = $this->brand_logo;
 
-       $uptedetail->organisation = $this->organisation;
+       $uptedetail->organisation = trim($this->organisation);
 
-       $uptedetail->industry = $this->industry;
+       $uptedetail->industry = trim($this->industry);
        $uptedetail->user_id = Auth::user()->id;
-       $uptedetail->status = $this->status;
+       $uptedetail->status = '1';
        $uptedetail->save();
 
 
        $upted = new Bcontact();
-       $upted->name = $this->name;
-       $upted->designation = $this->designation;
-       $upted->email = $this->email;
+       $upted->name = trim($this->name);
+       $upted->designation = trim($this->designation);
+       $upted->email = trim($this->email);
        $upted->phone = $this->phone;
        $upted->user_id = Auth::user()->id;
 
        $upted->brand_id = $this->brand_id;
 
-       $upted->status = $this->status;
-       $upted->admstatus = $this->admstatus;
+       $upted->status ='1';
+       $upted->admstatus = '1';
        $upted->save();
        
        $this->reset();
-       //return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
-      // return redirect()->url()->previous();
-
+       return redirect()->back();
+      
     }
 
     public function render()
