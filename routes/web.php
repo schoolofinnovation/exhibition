@@ -308,7 +308,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
   //Admin-ADM
   Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group( function () {
     Route::get('/admin/global', AdminLandingComponent::class)->name('admin.global');
-    Route::get('/admin/dashboard/{board}', AdminDashboardComponent::class)->name('admin.dashboard');visitcard
+    Route::get('/admin/dashboard/{board}', AdminDashboardComponent::class)->name('admin.dashboard');
 
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
     Route::get('/admin/event/{event_id}/edit/{board}', AdminEventEditComponent::class)->name('admin.eventEdit');

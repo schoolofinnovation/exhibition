@@ -459,6 +459,10 @@ public $brand_id;
 
     //dd($rti);
 
+    public $phone;
+    public $industry;
+    public $brand_logo; 
+
     public function directbrandBcontact()
     {
        $uptedetail = new Brand();
@@ -485,7 +489,8 @@ public $brand_id;
        $upted->status = $this->status;
        $upted->admstatus = $this->admstatus;
        $upted->save();
-        
+       
+       $this->reset();
        //return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
       // return redirect()->url()->previous();
 
