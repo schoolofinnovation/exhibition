@@ -469,6 +469,7 @@ public $brand_id;
     public $industry;
     public $brand_logo; 
     public $organisation;
+    public $lookingAddFromIMage;
 
     public function directbrandBcontact()
     {
@@ -638,16 +639,23 @@ public $brand_id;
      //   }
       
       }
-      $getContact = Bcontact::where('brand_id', $this->brand_id)->get();
+      $getContact = Bcontact::where('brand_id', $this->brand_id)->orderBy('created_by','desc')->get();
+
       $checkSelected = Usage::get();
       $businessOrder = Lead::orderBy('updated_at','DESC')->get();
+
       $searchTerm = '%'.$this->searchTerm. '%';
               $searchcat = Expo::where('tag','LIKE', $searchTerm)
                           ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
+
+      $searchBrandTerm = '%'.$this->searchBrandTerm. '%';
+      $searchcat = Expo::where('brand_name','LIKE', $searchBrandTerm)
+                  ->where('status','1')->where('type','brand_name')->orderBy('brand_name','ASC')->get();
+
       
-                          $resultAdded = Expo::where('admstatus','1')->get();
-                          //$EventcountWithTag = Denco::
-                          $counteventWithCategory = Denco::where('expo_id', '$resultAdded->id')->count();
+      $resultAdded = Expo::where('admstatus','1')->get();
+      //$EventcountWithTag = Denco::
+      $counteventWithCategory = Denco::where('expo_id', '$resultAdded->id')->count();
 
         return view('livewire.admin.admin-dashboard-component',['getContact'=> $getContact,'checkSelected'=> $checkSelected, 'counteventWithCategory'=> $counteventWithCategory,'resultAdded'=> $resultAdded, 'searchcat'=> $searchcat,'businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
