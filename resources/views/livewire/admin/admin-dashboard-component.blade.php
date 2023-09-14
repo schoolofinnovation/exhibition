@@ -964,17 +964,20 @@
                       </div>
                   @endforeach
           </div>
-        @elseif
-        <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchBrandTerm">
-        <div class="row mb-5 pb-2">
-                          @if(is_null($searchBrandTerm))
 
-                            <div class="container">
-                            Find Some Events
-                            </div>  
+        @else
+           <div class="container mt-5">
+              <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchBrandTerm">
+              
+              <div class="row mb-5 pb-2">
+                @if(is_null($searchBrandTerm))
 
-                          @else
-                          @foreach ($getContact as $franchise) 
+                  <div class="container">
+                    Find Some Events
+                  </div>  
+
+                @else
+                  @foreach ($getContact as $franchise) 
                       <div class="">
                           <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                               <div class="col  pr-0">
@@ -1008,9 +1011,9 @@
                           </div>
                       </div>
                   @endforeach
-                          @endif
-
-                        </div>
+                @endif
+              </div>
+            </div>
         @endif
 
       @endif
