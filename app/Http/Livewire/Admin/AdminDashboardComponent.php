@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
+use App\Models\Bcontact;
 
 
 class AdminDashboardComponent extends Component
@@ -79,6 +80,8 @@ public $rate;
 public $hasttag;
 public $monthly;
 public $howMany;
+
+public $brand_id;
     
     //career
     use WithPagination;
@@ -456,6 +459,38 @@ public $howMany;
 
     //dd($rti);
 
+    public function directbrandBcontact()
+    {
+       $uptedetail = new Brand();
+       $uptedetail->brand_name = $this->brand_name;
+       $uptedetail->brand_logo = $this->brand_logo;
+
+       $uptedetail->organisation = $this->organisation;
+
+       $uptedetail->industry = $this->industry;
+       $uptedetail->user_id = Auth::user()->id;
+       $uptedetail->status = $this->status;
+       $uptedetail->save();
+
+
+       $upted = new Bcontact();
+       $upted->name = $this->name;
+       $upted->designation = $this->designation;
+       $upted->email = $this->email;
+       $upted->phone = $this->phone;
+       $upted->user_id = Auth::user()->id;
+
+       $upted->brand_id = $this->brand_id;
+
+       $upted->status = $this->status;
+       $upted->admstatus = $this->admstatus;
+       $upted->save();
+        
+       //return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
+      // return redirect()->url()->previous();
+
+    }
+
     public function render()
     {
       //current Event
@@ -592,7 +627,7 @@ public $howMany;
      //   }
       
       }
-     
+      $getContact = Bcontact::where('brand_id', $this->brand_id)->get();
       $checkSelected = Usage::get();
       $businessOrder = Lead::orderBy('updated_at','DESC')->get();
       $searchTerm = '%'.$this->searchTerm. '%';
@@ -603,7 +638,7 @@ public $howMany;
                           //$EventcountWithTag = Denco::
                           $counteventWithCategory = Denco::where('expo_id', '$resultAdded->id')->count();
 
-        return view('livewire.admin.admin-dashboard-component',['checkSelected'=> $checkSelected, 'counteventWithCategory'=> $counteventWithCategory,'resultAdded'=> $resultAdded, 'searchcat'=> $searchcat,'businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',['getContact'=> $getContact,'checkSelected'=> $checkSelected, 'counteventWithCategory'=> $counteventWithCategory,'resultAdded'=> $resultAdded, 'searchcat'=> $searchcat,'businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         

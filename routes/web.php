@@ -308,7 +308,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
   //Admin-ADM
   Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group( function () {
     Route::get('/admin/global', AdminLandingComponent::class)->name('admin.global');
-    Route::get('/admin/dashboard/{board}', AdminDashboardComponent::class)->name('admin.dashboard');
+    Route::get('/admin/dashboard/{board}', AdminDashboardComponent::class)->name('admin.dashboard');visitcard
 
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
     Route::get('/admin/event/{event_id}/edit/{board}', AdminEventEditComponent::class)->name('admin.eventEdit');
@@ -318,7 +318,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
     Route::get('/admin/participants/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
 
-    Route::get('/admin/brand/{brand_id}', AdminEventBrandDetailComponent::class)->name('admin.brandDetail');
+    Route::get('/admin/brand/{brand_id}/directory/{formm}', AdminEventBrandDetailComponent::class)->name('admin.brandDetail');
     
     //client-data-update
     Route::get('/admin/sub-details/{event_id}/add/{did}/business/{formm}', AdminEventMultiDetailComponent::class)->name('admin.multiSubDetails');
