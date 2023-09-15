@@ -53,7 +53,9 @@ class AdminClientComponent extends Component
     {
         
         $resulto = Event::limit(5)->get();
-      Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
+        
+        Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
+
         return view('livewire.admin.admin-client-component')->layout('layouts.eblog');
     }
 }
