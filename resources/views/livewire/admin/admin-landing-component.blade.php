@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="col">
-                        <a  href="{{route('admin.dashboard', ['board' => 'organizer'])}}">
+                        <a  href="{{route('admin.dashboard', ['board' => 'question'])}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">Question</div>
                         </a> 
                     </div>

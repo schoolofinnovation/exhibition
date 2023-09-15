@@ -924,7 +924,6 @@
               </form>
           </div>
         
-
           <div class="container my-5">
               <div class="fs-md">
               Contact details 
@@ -978,7 +977,9 @@
 
                 @else
                   @foreach ($searchBrandcat as $franchise) 
-                      <div class="">
+                  {{$franchise -> brand_name}}
+                  {{$franchise -> organisation}}
+                      {{-- <div class="">
                           <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                               <div class="col  pr-0">
                               
@@ -990,7 +991,7 @@
 
                               <div class="col-7  p-0">
                               <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
-                                  {{$franchise->name}} {{$franchise->designation}}</a></div>
+                                  {{$franchise->name}}  <span class="badge badge-primary">{{$franchise->designation}}</span> </a></div>
                               <div class="text-muted fs-sm text-start">
                                   {{$franchise->email}}
                               </div>  
@@ -1009,7 +1010,7 @@
 
                                   </div>
                           </div>
-                      </div>
+                      </div> --}}
                   @endforeach
                 @endif
               </div>

@@ -47,4 +47,12 @@
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
         </form>
     </div>
+
+
+    <!-- mailing -->
+
+    <form wire:submit.prevent="CarryEmail">
+        <input type="text" wire:model = "data">
+        <button class="btn btn-primary" type="submit">submit</button>
+    </form>
 </main>

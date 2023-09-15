@@ -651,7 +651,10 @@ public $brand_id;
 
       $searchBrandTerm = '%'.$this->searchBrandTerm. '%';
       $searchBrandcat = Brand::where('brand_name','LIKE', $searchBrandTerm)
+                  ->orWhere('organisation','LIKE', $searchBrandTerm)
                   ->where('status','1')->orderBy('brand_name','ASC')->get();
+
+                  dd($searchBrandcat);
 
       
       $resultAdded = Expo::where('admstatus','1')->get();

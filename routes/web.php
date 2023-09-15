@@ -331,7 +331,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
     Route::get('/admin/ticket/{event_id}/business/{board}', AdminTicketComponent::class)->name('admincheck.ticket');
 
-    Route::get('/admin/business-mail', AdminClientComponent::class)->name('admin.clientmail');
+    Route::get('/admin/business-mail', AdminClientComponent::class, 'emailSend')->name('admin.clientmail');
 
     //import/export
     //Route::get('/importExportview', [AdminClientComponent::class,'importExportview'])->name('importExportview');
