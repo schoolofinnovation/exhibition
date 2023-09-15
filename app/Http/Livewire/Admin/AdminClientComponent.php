@@ -49,25 +49,14 @@ class AdminClientComponent extends Component
         Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent () );
          
     }
-    public $categry= 'food';
-
-    public function mount( $categry)
-    {
-       $this->categry = $categry;
-    }
+    
 
     public function render()
     {
         $findcategryIDfromExpos = Expo::where('slug', $this->categry)->value('id');
        
-       // $resulto = Event::limit(5)->get();
-        $resulto = DB::table('events')
-           ->join('dencos','dencos.event_id','=','events.id')
-           ->join('expos','expos.id' ,'=','dencos.expo_id')
-           ->select('events.id as EventName','expos.id as Category','events.startdate as EventDate')->where('expos.id', $findcategryIDfromExpos)
-           ->orderBy('events.startdate','ASC')
-           ->get();
-
+        $resulto = Event::limit(5)->get();
+       
         Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
 
         return view('livewire.admin.admin-client-component')->layout('layouts.eblog');
