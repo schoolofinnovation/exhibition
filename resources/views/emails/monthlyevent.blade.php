@@ -9,7 +9,7 @@
 
     <body>
            
-    testing
+    {{$resulto}}
         
     </body>
 </html>

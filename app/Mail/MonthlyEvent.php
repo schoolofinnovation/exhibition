@@ -13,16 +13,16 @@ class MonthlyEvent extends Mailable
 {
     use Queueable, SerializesModels;
    
-   
+   public $resulto;
     
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( $resulto)
     {
-      
+        $this->resulto = $resulto;
       
     }
 
@@ -33,6 +33,7 @@ class MonthlyEvent extends Mailable
      */
     public function build()
     {
+        
         return $this->subject('The Exhibition Network Find Expo for your success')
         ->markdown('emails.monthlyevent');
     }
