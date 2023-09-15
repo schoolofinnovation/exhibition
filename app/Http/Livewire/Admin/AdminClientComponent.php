@@ -43,15 +43,28 @@ class AdminClientComponent extends Component
 
     public function emailSend()
     { 
-      $data = User::limit(5)->get();
-      Mail::to($data->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($data) );
+      $event = User::limit(5)->get();
+      foreach($event as $evento)
+      {
+        Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($evento) );
+      }
+      
+
+      
+     
     }
 
 
     public function render()
     {
-      
-       
+        $evento = User::limit(5)->get();
+        foreach($evento as $event)
+        {
+          Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($event) );
+        }
+        
+        //Mail::to($event->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($event) );
+
         return view('livewire.admin.admin-client-component')->layout('layouts.eblog');
     }
 }

@@ -979,7 +979,7 @@
                   @foreach ($searchBrandcat as $franchise) 
                   {{$franchise -> brand_name}}
                   {{$franchise -> organisation}}
-                      {{-- <div class="">
+                      <div class="">
                           <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                               <div class="col  pr-0">
                               
@@ -1010,7 +1010,7 @@
 
                                   </div>
                           </div>
-                      </div> --}}
+                      </div>
                   @endforeach
                 @endif
               </div>

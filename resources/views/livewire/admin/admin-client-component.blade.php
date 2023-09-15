@@ -55,4 +55,6 @@
         <input type="text" wire:model = "data">
         <button class="btn btn-primary" type="submit">submit</button>
     </form>
+
+    {{$data}}
 </main>
