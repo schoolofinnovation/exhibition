@@ -51,8 +51,9 @@
 
     <!-- mailing -->
 
-    <form wire:submit.prevent="CarryEmail">
-        <input type="text" wire:model = "data">
+    <form wire:submit.prevent="emailSend">
+        <input type="text" wire:model = "email">
+
         <button class="btn btn-primary" type="submit">submit</button>
     </form>
 
