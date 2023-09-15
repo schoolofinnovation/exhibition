@@ -1,5 +1,26 @@
 <main>
+    
+    <!-- set the setup send to all, send to category based , dynamic email  -->
     <div class="container my-5">
+    <div class="col-sm-3">
+        <select class="form-control" type="text"   wire:model.lazy="purposeo"  placeholder="Provide short title of your request">
+            <option >Choose</option>
+            <option value="all">All User</option>
+            <option value="single">Single</option>
+        </select>
+    </div>
+
+    @if($purposeo == 'all')
+
+        <a href=""  class="btn btn-primary" wire:click.prevent="emailSend({{'all'}})">All</a>
+    @elseif($purposeo == 'single')
+    
+        <input type="text" wire:model="email" class="form-control" >
+    @endif
+</div>
+
+
+    <!-- <div class="container my-5">
         <form wire:submit.prevent="sharetoCleint">
                 <div class="row g-1">
                     <div class="col-sm-4">
@@ -46,36 +67,6 @@
 
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
         </form>
-    </div>
-
-
-    <!-- mailing -->
-
-    <form wire:submit.prevent="emailSend">
-        <input type="text" wire:model = "email">
-
-        <button class="btn btn-primary" type="submit">submit</button>
-    </form>
-
-
-
-    // set the setup send to all, send to category based , dynamic email 
-
-    <div class="col-sm-3">
-        <select class="form-control" type="text"   wire:model.lazy="purposeo"  placeholder="Provide short title of your request">
-            <option >Choose</option>
-            <option value="all">All User</option>
-            <option value="single">Single</option>
-        </select>
-    </div>
-
-    @if($purposeo == 'all')
-
-    <a href=""  class="btn btn-primary" wire:click.prevent="emailSend({{'all'}})">All</a>
-    @elseif($purposeo == 'single')
-    
-    <input type="text" wire:model="email" class="form-control">
-    @endif
-
+    </div> -->
 
 </main>
