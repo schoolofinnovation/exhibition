@@ -49,7 +49,12 @@ class AdminClientComponent extends Component
         Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent () );
          
     }
+    public $categry= 'food';
 
+    public function mount( $categry)
+    {
+       $this->categry = $categry;
+    }
 
     public function render()
     {
