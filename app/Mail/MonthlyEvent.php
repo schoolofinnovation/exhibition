@@ -34,7 +34,7 @@ class MonthlyEvent extends Mailable
     public function build()
     {
         
-        return $this->subject('The Exhibition Network Find Expo for your success')
+        return $this->subject ('The Exhibition Network Find Expo for your success')
         ->markdown('emails.monthlyevent');
     }
 }
