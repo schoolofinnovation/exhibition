@@ -57,5 +57,25 @@
         <button class="btn btn-primary" type="submit">submit</button>
     </form>
 
-    {{$data}}
+
+
+    // set the setup send to all, send to category based , dynamic email 
+
+    <div class="col-sm-3">
+        <select class="form-control" type="text"   wire:model.lazy="purposeo"  placeholder="Provide short title of your request">
+            <option >Choose</option>
+            <option value="all">All User</option>
+            <option value="single">Single</option>
+        </select>
+    </div>
+
+    @if($purposeo == 'all')
+
+    <a href=""  class="btn btn-primary" wire:click.prevent="emailSend({{'all'}})">All</a>
+    @elseif($purposeo == 'single')
+    
+    <input type="text" wire:model="email" class="form-control">
+    @endif
+
+
 </main>

@@ -12,12 +12,15 @@ use Livewire\Component;
 use App\Models\Bcontact;
 use App\Models\Expo;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class AdminClientComponent extends Component
 {
+    public $purposeo;
+
     public $name;
-    public $email = 'callslot250@gmail.com';
+    public $email;
     public $phone;
     public $month;
     public $tyevent;
@@ -43,17 +46,41 @@ class AdminClientComponent extends Component
         // session()->flash('message','Thanks, We are sending an email!! '); 
     }
 
-    public function emailSend()
+    public function emailSend($email)
     { 
-      
-        Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent () );
-         
+        if( $this->purposeo == 'all')
+        
+        {
+            $listoi = Bcontact::whereNotNull('email')->limt(2)->get();
+            
+            $mytime = Carbon::today()->format ("Y-m-d");
+            $resulto = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
+            
+            dd('don');
+            foreach($listoi as $emailio)
+            {
+              Mail::to($emailio->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
+            }
+        }
+
+        elseif ($this->purposeo == 'single')
+        {
+            $listoi = $email;
+            $mytime = Carbon::today()->format ("Y-m-d");
+            $resulto = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
+            dd('chota don');
+            Mail::to($listoi->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
+        }
+
+          
+
+        
     }
     
 
     public function render()
     {
-        $findcategryIDfromExpos = Expo::where('slug', $this->categry)->value('id');
+        //$findcategryIDfromExpos = Expo::where('slug', $this->categry)->value('id');
        
         $resulto = Event::limit(5)->get();
        
