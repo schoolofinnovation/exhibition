@@ -35,6 +35,6 @@ class MonthlyEvent extends Mailable
     {
         
         return $this->subject ('Upcoming events relevant to your Industry')
-        ->markdown('emails.monthlyevent');
+        ->markdown('emails.monthlyevent')->layout('layouts.eblog');
     }
 }
