@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Coupon;
 use App\Models\Denco;
@@ -64,6 +65,8 @@ class UserDashboardComponent extends Component
     public $Service=null;
     public $board;
     public $searchTerm;
+
+    public $lookingAddFromIMage;
 
     public function mount()
     {   $this->currentStep = 1;
@@ -267,7 +270,14 @@ class UserDashboardComponent extends Component
         
         $selectedcategory = Denco::where('user_id', Auth::user()->id)->get();
         //dd($today, $evento);
-        return view('livewire.user.user-dashboard-component',['selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
+
+        //visitor -- get Contact of clients
+        $searchBrandTerm = '%'.$this->searchBrandTerm. '%';
+        $searchBrandcat = Brand::where('brand_name','LIKE', $searchBrandTerm)
+                    ->orWhere('organisation','LIKE', $searchBrandTerm)
+                    ->where('status','1')->orderBy('brand_name','ASC')->get();
+
+        return view('livewire.user.user-dashboard-component',['searchBrandcat'=> $searchBrandcat, 'selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
         
     }
 }

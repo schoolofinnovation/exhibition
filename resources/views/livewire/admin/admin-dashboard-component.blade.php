@@ -900,9 +900,9 @@
 
       @if($board == 'visitcard')
           
-      <div class=" container small">
-          <input type="checkbox" value="1" wire:model="lookingAddFromIMage" name="" id=""> Search
-      </div>
+        <div class=" container small">
+            <input type="checkbox" value="1" wire:model="lookingAddFromIMage" name="" id=""> Search
+        </div>
 
         @if($lookingAddFromIMage == 1)
                   <div class="container">
@@ -963,7 +963,6 @@
                   </div>
 
         @else
-
            <div class="container mt-5">
               <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchBrandTerm">
               
@@ -1037,12 +1036,18 @@
                   @else
                   @foreach ($searchBrandcat as $franchiseo) 
                         <div class="">
-                        {{$franchiseo -> brand_name}} > {{$franchiseo -> organisation}}
+                          <div class="fw-light h5 lh-1">{{$franchiseo -> brand_name}}</div>
+                          <div class="small text-muted fw-bold">{{$franchiseo -> organisation}}</div>
+                            
 
                         @php
                           $findBcontact = DB::table('bcontacts')->where('brand_id', $franchiseo -> id)->get();
                         @endphp
 
+                        @if($findBcontact->count() == 0)
+                         <h1>Add Contact</h1>
+                         <small> NO More Reference</small>
+                        @else
                           @foreach($findBcontact as $franchise)
                               <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                   <div class="col  pr-0">
@@ -1075,7 +1080,7 @@
                                   </div>
                               </div>
                           @endforeach
-                          
+                        @endif
                         </div>
                     @endforeach
                   @endif
