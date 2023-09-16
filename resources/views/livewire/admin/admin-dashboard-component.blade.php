@@ -900,15 +900,26 @@
 
       @if($board == 'visitcard')
           
-      <div class="small">
+      <div class=" container small">
           <input type="checkbox" value="1" wire:model="lookingAddFromIMage" name="" id=""> Search
       </div>
 
         @if($lookingAddFromIMage == 1)
-          <div class="container">
-              <div class="fs-md">
-              Update Contact Card
-              </div>
+          
+
+        @else
+           <div class="container mt-5">
+              <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchBrandTerm">
+              
+              <div class="row mb-5 pb-2">
+                @if(is_null($searchBrandcat))
+
+                  <div class="container">
+                    Find Some Events
+                  </div>  
+
+                  <div class="container">
+              <div class="fs-md">Update Contact Card</div>
               <form wire:submit.prevent="directbrandBcontact">
                   <input type="text" class="form-control" placeholder="organisation" wire:model.lazy="organisation">
                   <input type="text" class="form-control" placeholder="brand_name" wire:model.lazy="brand_name">
@@ -963,17 +974,6 @@
                       </div>
                   @endforeach
           </div>
-
-        @else
-           <div class="container mt-5">
-              <input type="text" class="form-control" placeholder="search with ID" wire:model.lazy="searchBrandTerm">
-              
-              <div class="row mb-5 pb-2">
-                @if(is_null($searchBrandTerm))
-
-                  <div class="container">
-                    Find Some Events
-                  </div>  
 
                 @else
                   @foreach ($searchBrandcat as $franchiseo) 

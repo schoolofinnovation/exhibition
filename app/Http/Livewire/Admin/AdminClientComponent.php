@@ -69,11 +69,8 @@ class AdminClientComponent extends Component
             $mytime = Carbon::today()->format ("Y-m-d");
             $resulto = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
            
-            Mail::to($listoi->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
+            Mail::to($listoi)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
         }
-
-          
-
         
     }
     
