@@ -56,7 +56,8 @@ class AdminClientComponent extends Component
             $mytime = Carbon::today()->format ("Y-m-d");
             $resulto = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
             
-          
+         
+            dd($listoi);
             foreach($listoi as $emailio)
             {
               Mail::to($emailio->email)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
@@ -68,7 +69,7 @@ class AdminClientComponent extends Component
             $listoi = $email;
             $mytime = Carbon::today()->format ("Y-m-d");
             $resulto = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
-           
+            dd($listoi);
             Mail::to($listoi)->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
         }
         
@@ -82,6 +83,10 @@ class AdminClientComponent extends Component
         // $resulto = Event::limit(5)->get();
        
         // Mail::to('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
+
+        $mytime = Carbon::today()->format ("Y-m-d");
+        $resulto = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->wheredate('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
+        Mail::to('exhibitionnetwork@gmail.com')->bcc('exhibitionnetwork@gmail.com')->send(new MonthlyEvent ($resulto) );
 
         return view('livewire.admin.admin-client-component')->layout('layouts.eblog');
     }
