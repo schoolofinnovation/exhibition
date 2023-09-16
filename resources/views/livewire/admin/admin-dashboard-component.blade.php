@@ -955,7 +955,7 @@
                                               <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Claim</a> --}}
                                               <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()" wire:click.prevent="del({{$franchise->id}})"> <i class="bi bi-x"></i>
                                              </a>
-                                             
+
                                               <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="detecto({{$franchise->id}})"> 
                                                 <i class="bi bi-plus"></i>
                                               </a>
@@ -1013,8 +1013,9 @@
                                         </div>
 
                                         <div class="col-7  p-0">
-                                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
-                                            {{$franchise->name}} {{$franchise->designation}}</a></div>
+                                        <div class="fs-md fw-normal text-start">
+                                          <a class="text-dark" href="#">{{$franchise->name}} {{$franchise->designation}}</a>
+                                        </div>
                                         <div class="text-muted fs-sm text-start">
                                             {{$franchise->email}}
                                         </div>  
