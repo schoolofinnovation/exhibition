@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
+use App\Models\Bcontact;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,7 +22,7 @@ class AdminBrandComponent extends Component
     {
         $legandary = Brand::find($this->brand_id);
 
-        //$brands = Brand::orderBy('id','DESC')->paginate(5);
-        return view('livewire.admin.admin-brand-component',['legandary'=>$legandary])->layout('layouts.eblog');
+        $brando = Bcontact::whereNull('brand_id')->orderBy('id','DESC')->get();
+        return view('livewire.admin.admin-brand-component',['legandary'=>$legandary,  'brando' => $brando])->layout('layouts.eblog');
     }
 }
