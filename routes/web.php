@@ -315,6 +315,8 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
     Route::get('/admin/multi/{event_id}/detail/{formm}', AdminEventMultipleAddComponent::class)->name('admin.eventMultiEdit');
 
+    //Brand
+    Route::get('/admin/contact/{brand_id}', AdminBrandComponent::class)->name('admin.brand');
 
     Route::get('/admin/participants/{event_id}/add/{formm}', AdminEventMultiParticipantsComponent::class)->name('admin.multipartners');
 
@@ -348,7 +350,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/admin/category/dashboard', AdminCategoryAddComponent::class)->name('admin.addcategories');
     
 
-    Route::get('/admin/brands', AdminBrandComponent::class)->name('admin.brand');
+   
 
     
     Route::get('/admin/users', AdminUserComponent::class)->name('admin.user');

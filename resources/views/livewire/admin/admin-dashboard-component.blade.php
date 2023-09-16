@@ -953,9 +953,12 @@
                                           {{-- <a class="round-circle" href="{{route('event.details',['slug' => $franchise->slug])}}">
                                               <i class="bi bi-chevron-double-right"></i></a> 
                                               <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Claim</a> --}}
-
-                                              <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="del({{$franchise->id}})">Delete</a>
-
+                                              <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()" wire:click.prevent="del({{$franchise->id}})"> <i class="bi bi-x"></i>
+                                             </a>
+                                             
+                                              <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="detecto({{$franchise->id}})"> 
+                                                <i class="bi bi-plus"></i>
+                                              </a>
                                           </div>
                                   </div>
                               </div>
@@ -1025,8 +1028,8 @@
                                             {{-- <a class="round-circle" href="{{route('event.details',['slug' => $franchise->slug])}}">
                                                 <i class="bi bi-chevron-double-right"></i></a> 
                                                 <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Claim</a> --}}
-
-                                                <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="del({{$franchise->id}})">Delete</a>
+                                                <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()" wire:click.prevent="del({{$franchise->id}})"> <i class="bi bi-x"></i>
+                                             </a>
 
                                             </div>
                                     </div>
@@ -1075,8 +1078,11 @@
                                           <i class="bi bi-chevron-double-right"></i></a> 
                                           <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Claim</a> --}}
 
-                                          <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="del({{$franchise->id}})">Delete</a>
-
+                                          <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()" wire:click.prevent="del({{$franchise->id}})"> <i class="bi bi-x"></i>
+                                             </a>
+                                          <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="detecto({{$franchiseo->id}},'update')">
+                                                <i class="bi bi-plus"></i>
+                                              </a>
                                   </div>
                               </div>
                           @endforeach

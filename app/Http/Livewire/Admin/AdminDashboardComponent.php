@@ -38,7 +38,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use App\Models\Bcontact;
-
+use App\Models\Brandemograhic;
 
 class AdminDashboardComponent extends Component
 {
@@ -320,8 +320,6 @@ public $brand_id;
       return redirect()->back();
     }
 
-  
-
     public function added()
     {
        $addmagazine = new Magazine();
@@ -465,6 +463,19 @@ public $brand_id;
        $delee->delete();
     }
 
+    public function detecto($id, $featuretype)
+    {
+       $delee = New Brandemograhic();
+       $delee->brand_id = $id;
+       $delee->user_id = Auth::user()->id;
+       $delee->featuretype = $featuretype;
+       $delee->save();
+       
+       return redirect()->route('admin.brand', ['brand_id' => $id]);
+    }
+
+
+
     public $phone;
     public $industry;
     public $brand_logo; 
@@ -487,20 +498,18 @@ public $brand_id;
 
 
        $upted = new Bcontact();
+       $upted->brand_id = $uptedetail->id ;
        $upted->name = trim($this->name);
        $upted->designation = trim($this->designation);
        $upted->email = trim($this->email);
        $upted->phone = $this->phone;
        $upted->user_id = Auth::user()->id;
-
-       $upted->brand_id = $this->brand_id;
-
        $upted->status ='1';
        $upted->admstatus = '1';
        $upted->save();
        
        $this->reset();
-       return redirect()->back();
+       //return redirect()->back();
       
     }
 

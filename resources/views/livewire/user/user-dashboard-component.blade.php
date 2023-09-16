@@ -1152,7 +1152,10 @@
 
   @endif
 
-
+//featured with user is a organiser or exhibitor or Visitor. if visitor get sales contact or if organiser get business owner references
+<h1>Find Exhibitor</h1>
+<small>Build a big approach</small>
+<a href="route()" class="btn btn-primary form-control">Approach</a>
 
   @if($board == 'ExchangeContact')
    

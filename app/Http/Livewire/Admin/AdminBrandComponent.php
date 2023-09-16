@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class AdminBrandComponent extends Component
 {
     use WithPagination;
+    
     public function render()
     {
         $brands = Brand::orderBy('id','DESC')->paginate(5);
