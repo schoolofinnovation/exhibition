@@ -160,7 +160,7 @@ class AdminEventMultiParticipantsComponent extends Component
 
     public function updateOrganisation()
     {
-        $rti = Str::replace('  ',' ',$this->brand_name);
+        $rti = Str::replace('  ',' ',$this->organisation);
         $ret = explode(",", $rti);
 
         foreach($ret as $tre)

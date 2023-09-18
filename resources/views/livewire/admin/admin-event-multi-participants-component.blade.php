@@ -303,7 +303,7 @@
                     @endif
 
                     <div class="small">
-                        <input type="checkbox" value="1" wire:model="lookingAddorganisation" name="" id=""> Add Participants
+                        <input type="checkbox" value="1" wire:model="lookingAddorganisation" name="" id=""> Add Organisation
                     </div>
 
                     @if($lookingAddorganisation == 1)

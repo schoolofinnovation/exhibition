@@ -11,7 +11,7 @@
            $businessEvent = DB::table('bcontacts')->where('brand_id', $brand)->get();
       @endphp
 
-      @foreach ($getContact as $franchise) 
+      @foreach ($businessEvent as $franchise) 
           <div class="">
               <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                   <div class="col  pr-0">
