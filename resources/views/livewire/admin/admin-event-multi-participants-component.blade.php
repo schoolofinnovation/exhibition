@@ -337,6 +337,37 @@
                                     <a href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Imagedelete({{$participant->id}})"> <i class="bi bi-x me-2"></i> </a>
                                     <img src="{{url('public/assets/image/exhibition/'.$participant->brand_logo)}}" alt="#" width="50px">{{$participant->brand_name}}
                                 </div>
+                                
+                            @endforeach
+
+                            <div class="small">Participants</div>
+                            @foreach ($participants as $participant) 
+                            <div class="container">
+                                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                      <div class="col  pr-0">
+                                         
+                                              <div class="h4 fw-light mb-0"></div> 
+                                              <div class="small text-muted"></div>
+                                           
+                                            
+                                              <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                      </div>
+
+                                      <div class="col-7  p-0">
+                                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                          {{$participant->brand_name}}</a></div>
+                                        <div class="text-muted fs-sm text-start">
+                                        {{$participant->organisation}}
+                                        </div>  
+                                        <div class="text-muted fs-sm text-start"></div>
+                                      </div>
+
+                                      <div class="col-3  p-0">
+                                        <a class="card-img-top d-block overflow-hidden" href="#">
+                                            <img src="{{url('public/assets/image/exhibition/'.$participant->image)}}" alt="{{Str::limit($participant->brand_name, 24)}}"></a>
+                                      </div>
+                                    </div>
+                                  </div>
                             @endforeach
                             <div>@json($checkvalue)</div>
                             
@@ -351,7 +382,7 @@
                                 @endforeach 
                             </select>
                         @else
-                        <small>Please active Sponser plan <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}"> Click</a></small>
+                          <small>Please active Sponser plan <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}"> Click</a></small>
                         @endif
 
                         @if($pavillion->count() > 0)

@@ -153,7 +153,6 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand->status = $this->status;
             $brand->user_id = Auth::user()->id;
             $brand->save();
-            $this->reset();
         }
 
     }
@@ -173,7 +172,7 @@ class AdminEventMultiParticipantsComponent extends Component
             $brand->status = $this->status;
             $brand->user_id = Auth::user()->id;
             $brand->save();
-            $this->reset();
+          
         }
 
     }
