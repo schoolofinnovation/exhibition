@@ -384,15 +384,15 @@
                           <h3 class="accordion-header">
 
                           @if($this->eventype ==  'expo')
-                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->id])}}">
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry_id' => $category->slug])}}">
                                 {{$category->expoindustry}} 
                               </a>
                               @elseif ($this->eventype ==  'award')
-                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $category->id])}}">
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry_id' => $category->slug])}}">
                                 {{$category->expoindustry}}
                               </a>
                               @elseif ($this->eventype ==  'conference')
-                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $category->id])}}">
+                              <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry_id' => $category->slug])}}">
                                 {{$category->expoindustry}}
                               </a>
                           @endif

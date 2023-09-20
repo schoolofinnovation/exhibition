@@ -342,7 +342,7 @@
 
                             <div class="small">Participants</div>
                             @foreach ($participants as $participant) 
-                            <div class="container">
+                                  <div class="container">
                                     <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                       <div class="col  pr-0">
                                          
@@ -350,7 +350,7 @@
                                               <div class="small text-muted"></div>
                                            
                                             
-                                              <a href="{{$link->google()}}"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
+                                              <a href="#"><div class=" round-circle"><i class="bi bi-bookmark"></i></div> </a>
                                       </div>
 
                                       <div class="col-7  p-0">
@@ -368,6 +368,8 @@
                                       </div>
                                     </div>
                                   </div>
+
+                                  
                             @endforeach
                             <div>@json($checkvalue)</div>
                             

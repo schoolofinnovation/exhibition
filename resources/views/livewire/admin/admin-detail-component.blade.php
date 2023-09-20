@@ -40,6 +40,36 @@
         </div>
     </div>
 
+    <!--category-->
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+               
+                <div class="h4 fw-light mb-0"> {{$evento->id}}</div> 
+                <div class="small text-muted">ID</div>
+                <div class="round-circle">{{$evento->level}}</div> 
+                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+            </div>
+
+            <div class="col-7  p-0">
+              <div class="fs-md fw-normal text-start">
+                @foreach($category as $cat)
+                    {{$cat->expo->tag}}
+                @endforeach
+              </div>
+              <div class="text-muted fs-sm text-start">Category</div>
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($category))
+                <a  href="{{route('admin.editcategories',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a  href="{{route('admin.editcategories',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
+
     <div class="container">
       <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
       <div class="col-8 p-0">
@@ -90,44 +120,12 @@
     </div>
 
     <div class="container">
-                <form wire:submit.prevent="withoutHashtag">
-                    <div class="col-7  p-0">
-                          <input type="text" wire:model.lazy="howMany">
-                    </div>
-
-                    <div class="col-3 p-0">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+      <form wire:submit.prevent="withoutHashtag">
+                <input type="text" class="form-control" wire:model.lazy="howMany">
+              <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-    <div class="container my-3">
-        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
-            <div class="col  pr-0">
-               
-                <div class="h4 fw-light mb-0"> {{$evento->id}}</div> 
-                <div class="small text-muted">ID</div>
-                <div class="round-circle">{{$evento->level}}</div> 
-                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
-            </div>
-
-            <div class="col-7  p-0">
-              <div class="fs-md fw-normal text-start">
-                @foreach($category as $cat)
-                    {{$cat->expo->tag}}
-                @endforeach
-              </div>
-              <div class="text-muted fs-sm text-start">Category</div>
-            </div>
-
-            <div class="col-3 p-0">
-               @if(is_null($category))
-                <a  href="{{route('admin.editcategories',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Add</a>
-               @else
-                <a  href="{{route('admin.editcategories',['event_id' => $evento->id])}}" class="btn btn-primary btn-sm">Edit</a>
-               @endif
-            </div>
-        </div>
-    </div>
+    
 
     {{--tag--}}
     <div class="container my-3">
@@ -271,6 +269,9 @@
        
     </div>
 
+
+
+    
     {{--participants--}}
     <div class="container my-3">
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
@@ -364,6 +365,78 @@
             </div>
         </div>
     </div>
+
+    {{--sponsership--}}
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0">{{$sponsership->count()}}</div> 
+               
+                <div class="round-circle" >Spo</div> 
+                            </div>
+
+            <div class="col-7  p-0">
+            
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($evento->organiser))
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'sponsershipdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
+
+    {{--magazine--}}
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0">{{$sponsership->count()}}</div> 
+               
+                <div class="round-circle" >Spo</div> 
+                            </div>
+
+            <div class="col-7  p-0">
+            
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($evento->organiser))
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'sponsershipdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
+
+    {{--membership plans--}}
+    <div class="container my-3">
+        <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
+            <div class="col  pr-0">
+                <div class="h4 fw-light mb-0">{{$sponsership->count()}}</div> 
+               
+                <div class="round-circle" >Spo</div> 
+                            </div>
+
+            <div class="col-7  p-0">
+            
+            </div>
+
+            <div class="col-3 p-0">
+               @if(is_null($evento->organiser))
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'addSponsership' ])}}" class="btn btn-primary btn-sm">Add</a>
+               @else
+                <a href="{{route('admin.multipartners',['event_id' => $evento->id, 'formm' => 'sponsershipdashboard'])}}" class="btn btn-primary btn-sm">Edit</a>
+               @endif
+            </div>
+        </div>
+    </div>
+
+
+
 
     {{--hastags--}}
     <div class="container my-3">

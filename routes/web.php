@@ -148,6 +148,7 @@ use App\Http\Livewire\Admin\AdminEventMultiDetailComponent;
 use App\Http\Livewire\Admin\AdminEventMultiParticipantsComponent;
 use App\Http\Livewire\Admin\AdminEventMultipleAddComponent;
 use App\Http\Livewire\Admin\AdminLandingComponent;
+use App\Http\Livewire\Admin\AdminQuestionComponent;
 use App\Http\Livewire\Admin\MagazineUpgradingComponent;
 use App\Http\Livewire\AwardsComponent;
 use App\Http\Livewire\ExhibitionTimeComponent;
@@ -311,6 +312,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/admin/dashboard/{board}', AdminDashboardComponent::class)->name('admin.dashboard');
 
     Route::get('/admin/event/add', AdminEventAddComponent::class)->name('admin.eventadd');
+    Route::get('/admin/question/add', AdminQuestionComponent::class)->name('admin.questionadd');
     Route::get('/admin/event/{event_id}/edit/{board}', AdminEventEditComponent::class)->name('admin.eventEdit');
 
     Route::get('/admin/multi/{event_id}/detail/{formm}', AdminEventMultipleAddComponent::class)->name('admin.eventMultiEdit');
@@ -329,6 +331,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/admin/magazine/{slug}/addon/{formm}', MagazineUpgradingComponent::class)->name('admin.magazine');
 
     Route::get('/admin/event/{slug}', AdminDetailComponent::class)->name('adminevent.detail');
+
     Route::get('/admin/edit/{event_id}', AdminCategoryEditComponent::class)->name('admin.editcategories');
 
     Route::get('/admin/ticket/{event_id}/business/{board}', AdminTicketComponent::class)->name('admincheck.ticket');

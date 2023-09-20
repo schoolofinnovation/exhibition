@@ -28,7 +28,7 @@
 
                @foreach($finduserdetails as $detailio)
                 <div class=" border-0 d-flex align-items-start py-2 mt-2 border-bottom">
-                    <img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" width="50" alt="{{$detailio->name}}">
+                    {{-- <img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" width="50" alt="{{$detailio->name}}"> --}}
 
                     <div class="ps-3">
                     <div class="d-flex justify-content-between align-items-end mb-2">
