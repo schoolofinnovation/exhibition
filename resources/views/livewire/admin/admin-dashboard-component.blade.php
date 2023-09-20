@@ -1013,13 +1013,13 @@
                                         </div>
 
                                         <div class="col-7  p-0">
-                                        <div class="fs-md fw-normal text-start">
-                                          <a class="text-dark" href="#">{{$franchise->name}} {{$franchise->designation}}</a>
-                                        </div>
-                                        <div class="text-muted fs-sm text-start">
-                                            {{$franchise->email}}
-                                        </div>  
-                                        <div class="text-muted fs-sm text-start">{{$franchise->phone}}</div>
+                                          <div class="fs-md fw-normal text-start">
+                                            <a class="text-dark" href="#">{{$franchise->name}} {{$franchise->designation}}</a>
+                                          </div>
+                                          <div class="text-muted fs-sm text-start">
+                                              {{$franchise->email}}
+                                          </div>  
+                                          <div class="text-muted fs-sm text-start">{{$franchise->phone}}</div>
                                         </div>
 
                                         <div class="col-3  p-0">
@@ -1032,64 +1032,68 @@
                                                 <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()" wire:click.prevent="del({{$franchise->id}})"> <i class="bi bi-x"></i>
                                              </a>
 
-                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
                     </div>
+
                   @else
-                  @foreach ($searchBrandcat as $franchiseo) 
+
+                    @foreach ($searchBrandcat as $franchiseo) 
                         <div class="">
-                          <div class="fw-light h5 lh-1">{{$franchiseo -> brand_name}}</div>
+                          <div class="fw-light h5 mb-0 pb-0">{{$franchiseo -> brand_name}}</div>
                           <div class="small text-muted fw-bold">{{$franchiseo -> organisation}}</div>
                             
+                          @php
+                            $findBcontact = DB::table('bcontacts')->where('brand_id', $franchiseo -> id)->get();
+                          @endphp
 
-                        @php
-                          $findBcontact = DB::table('bcontacts')->where('brand_id', $franchiseo -> id)->get();
-                        @endphp
+                          @if($findBcontact->count() == 0)
+                            <h3 class="fw-light h5 mb-0 pb-0">Add Contact</h3>
+                            <a href="{{route('admin.brandDetail',['brand_id' => $evento->id])}}" class="btn btn-primary btn-sm">NO More Reference</a>
 
-                        @if($findBcontact->count() == 0)
-                         <h1>Add Contact</h1>
-                         <small> NO More Reference</small>
-                        @else
-                          @foreach($findBcontact as $franchise)
-                              <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                  <div class="col  pr-0">
-                                  
-                                      <div class="h4 fw-light mb-0"> 1 </div> 
-                                      <div class="small text-muted">chk</div>
-                                      
-                                      <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                                  </div>
+                          @else
+                            @foreach($findBcontact as $franchise)
+                                <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                    <div class="col  pr-0">
+                                    
+                                        <div class="h4 fw-light mb-0"> 1 </div> 
+                                        <div class="small text-muted">chk</div>
+                                        
+                                        <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                    </div>
 
-                                  <div class="col-7  p-0">
-                                    <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
-                                        {{$franchise->name}}  <span class="badge badge-primary">{{$franchise->designation}}</span> </a></div>
-                                    <div class="text-muted fs-sm text-start">
-                                        {{$franchise->email}}
-                                    </div>  
-                                    <div class="text-muted fs-sm text-start">{{$franchise->phone}}</div>
-                                  </div>
+                                    <div class="col-7  p-0">
+                                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                                          {{$franchise->name}}  <span class="badge badge-primary">{{$franchise->designation}}</span> </a></div>
+                                      <div class="text-muted fs-sm text-start">
+                                          {{$franchise->email}}
+                                      </div>  
+                                      <div class="text-muted fs-sm text-start">{{$franchise->phone}}</div>
+                                    </div>
 
-                                  <div class="col-3  p-0">
-                                      {{--<a class="card-img-top d-block overflow-hidden" href="#">
-                                          <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>--}}
-                                          
-                                      {{-- <a class="round-circle" href="{{route('event.details',['slug' => $franchise->slug])}}">
-                                          <i class="bi bi-chevron-double-right"></i></a> 
-                                          <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Claim</a> --}}
+                                    <div class="col-3  p-0">
+                                        {{--<a class="card-img-top d-block overflow-hidden" href="#">
+                                            <img src="{{url('exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>--}}
+                                            
+                                        {{-- <a class="round-circle" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                            <i class="bi bi-chevron-double-right"></i></a> 
+                                            <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Claim</a> --}}
 
-                                          <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()" wire:click.prevent="del({{$franchise->id}})"> <i class="bi bi-x"></i>
-                                             </a>
-                                          <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="detecto({{$franchiseo->id}},'update')">
-                                                <i class="bi bi-plus"></i>
+                                            <a class="btn btn-primary btn-sm" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()" wire:click.prevent="del({{$franchise->id}})"> <i class="bi bi-x"></i>
                                               </a>
-                                  </div>
-                              </div>
-                          @endforeach
-                        @endif
+                                            <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="detecto({{$franchiseo->id}},'update')">
+                                                  <i class="bi bi-plus"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+                          @endif
                         </div>
+
+                        <hr class="">
                     @endforeach
+
                   @endif
 
                 @endif
