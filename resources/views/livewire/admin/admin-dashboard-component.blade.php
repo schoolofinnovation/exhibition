@@ -1051,7 +1051,7 @@
 
                           @if($findBcontact->count() == 0)
                             <h3 class="fw-light h5 mb-0 pb-0">Add Contact</h3>
-                            <a href="{{route('admin.brandDetail',['brand_id' => $evento->id])}}" class="btn btn-primary btn-sm">NO More Reference</a>
+                            <a href="{{route('admin.brandDetail',['brand_id' => $franchiseo->id])}}" class="btn btn-primary btn-sm">NO More Reference</a>
 
                           @else
                             @foreach($findBcontact as $franchise)
