@@ -35,16 +35,16 @@ class ContactusComponent extends Component
          ]);
     }
 
-    public function sendEmail($contact){
-         $details = [
-            'title' => 'contact us ',
-            'body' => 'thanks for doing'
-         ];
-     Mail::to($contact->email)
-          ->cc('laravel8coi@gmail.com')
-          ->bcc('laravel8coi@gmail.com')
-          ->send(new ContactMail($contact));
-    }
+    // public function sendEmail($contact){
+    //      $details = [
+    //         'title' => 'contact us ',
+    //         'body' => 'thanks for doing'
+    //      ];
+    //  Mail::to($contact->email)
+    //       ->cc('laravel8coi@gmail.com')
+    //       ->bcc('laravel8coi@gmail.com')
+    //       ->send(new ContactMail($contact));
+    // }
 
     public function sendMessage()
     {

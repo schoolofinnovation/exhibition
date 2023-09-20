@@ -354,7 +354,7 @@
                                       </div>
 
                                       <div class="col-7  p-0">
-                                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
                                           {{$participant->brand_name}}</a></div>
                                         <div class="text-muted fs-sm text-start">
                                         {{$participant->organisation}}
