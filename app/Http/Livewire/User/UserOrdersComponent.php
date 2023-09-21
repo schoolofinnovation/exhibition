@@ -27,7 +27,44 @@ class UserOrdersComponent extends Component
       $order->save();
       session()->flash('order_message','Order has been canceled');
     }
+    
+    public $company;
+    public $brand;
+    public $pan;
+    public $email;
+    public $contact;
+    public $address;
+    public $city;
+    public $state;
+    public $country;
+    public $hall;
+    public $stall;
+    public $size;
+    public $TDS;
+    public $total;
 
+    public function contractForm()
+    {
+        $contractformi = new Contractio();
+        $contractformi->company = $this->company;
+        $contractformi->brand = $this->brand;
+        $contractformi->pan = $this->pan;
+        $contractformi->email = $this->email;
+        $contractformi->contact = $this->contact;
+
+        $contractformi->address = $this->address;
+        $contractformi->city = $this->city;
+        $contractformi->state = $this->state;
+        $contractformi->country = $this->country;
+
+        $contractformi->hall = $this->hall;
+        $contractformi->stall = $this->stall;
+        $contractformi->size = $this->size;
+        $contractformi->TDS = $this->TDS;
+        $contractformi->total = $this->total;
+        
+        $contractformi->save();
+    }
 
     public function render()
     {

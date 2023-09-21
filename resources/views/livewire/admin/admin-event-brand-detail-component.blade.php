@@ -1,6 +1,6 @@
 <main>
 
-@if($board == 'visited')
+
          
     <div class="container">
         <div class="fs-md">
@@ -61,7 +61,5 @@
         @endforeach
   </div>
 
-@elseif($board == 'all')
-    
-@endif
+
 </main>

@@ -1,4 +1,4 @@
-@section('page_title','Business Partner')
+@section('page_title','Member')
 
 @section('content_description','Sell Your Business ')
 @section('content_keywords', 'Sell', 'Business', 'expansion')
@@ -24,13 +24,13 @@
             <div class="container">
             <div class="row pt-2">
                   @foreach($brand as $user)
-                <!-- Product-->
-                 <div class="col-sm-1 mb-grid-gutter">
-                    <div class=" rounded-circle flex-shrink-0" style="width: 6.375rem;">
-                          <img class="rounded-circle"src="{{url('Storage/brands/'.$user->image)}}" alt="Createx Studio" href="{{route('franchise.details',['slug' => $user->slug])}}">
+                      <!-- Product-->
+                      <div class="col-sm-1 mb-grid-gutter">
+                          <div class=" rounded-circle flex-shrink-0" style="width: 6.375rem;">
+                                <img class="rounded-circle"src="{{url('public/assets/image/exhibition/'.$user->brand_logo)}}" alt="Createx Studio" href="#">
 
-                    </div>
-                  </div>
+                          </div>
+                        </div>
                   @endforeach
                 </div>
                 </div>
