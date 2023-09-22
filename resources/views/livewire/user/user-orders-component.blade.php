@@ -1,76 +1,43 @@
 <main>
-        <div class="container">
-            <div class="table-responsive fs-md mb-4">
-                <table class="table table-hover mb-0">
-                    <thead>
-                        <tr> 
-                        <th><small>Product</small></th>
-                        <th><small>Total <span class="fw-normal">Subtotal + Disc. + Tax</span></small> </th>                        
-                        <th><small>Status</small></th>
-                        <th>Action</th></tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($userorders as $order)
-                        <tr>
-                            <a href="{{route('user.orderDetails',['order_id'=> $order->id])}}">
-                                <td class="py-1 align-middle"> 
-                                    @foreach($order->orderItems as $test)
-                                    {{$test->franchise->brand_name}}  {{$test->franchise->max_investment}} - {{$test->franchise->min_investment}} lacs <br>
-                                    @endforeach
-                                </td>
-                                <td class="py-1 align-middle"> <strong>{{$order->total}}</strong> | <span class="badge bg-primary"> {{$order->status}}</span>
-                                <div class="fw-normal badge bg-success">{{$order->subtotal}} + {{$order->discount}} + {{$order->tax}}</div> </td>
-                                <td class="py-1 align-middle"> <span class="badge bg-success">{{$order->created_at}}</span></td>
-                            </a>
-                            <td class="py-2 align-middle">
-                                <div class="dropdown">
-                                    <a class="btn-sm btn-primary form-select-sm me-2 dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ucwords(trans($order->status))}}</a>
-                                    <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuLink">
-                                        @if(($order->status) == 'ordered')
-                                          <li><a class="dropdown-item" href="#" wire:click.prevent="cancelOrder({{$order->id}})">Cancel</a></li>
-                                        @endif
-                                        <li><a class="dropdown-item" href="{{route('user.orderDetails',['order_id'=> $order->id])}}"><i class="bi bi-note me-2"></i>Details</a></li>
-                                    </ul>
-                                </div>      
-                            </td>
-                        </tr>
-                        @endforeach          
-                    </tbody>
-                </table>
-            </div>
-            {{$userorders->links('pagination-links')}}
-        </div>
-
+        
 
     <div class="container">
         <form wire:submit.prevent="contractForm">
             <h1>Exhibitor Details</h1>
-            <input type="text" placeholder="owner" class="form-control">
-            <input type="text" class="form-control" placeholder="company" wire:model="organisation">
-            <input type="text" class="form-control" placeholder="brand" wire:model="brand_name">
-            <input type="text" class="form-control" placeholder="pan" wire:model="GST">
-            <input type="text" class="form-control" placeholder="email" wire:model="email">
-            <input type="text" class="form-control" placeholder="contact" wire:model="contact">
+            <input type="text" class="form-control" placeholder="owner" wire:model.lazy="owner">
+
+            <input type="text" class="form-control" placeholder="company" wire:model.lazy="organisation">
+            <input type="text" class="form-control" placeholder="brand" wire:model.lazy="brand_name">
+            <input type="text" class="form-control" placeholder="gst" wire:model.lazy="GST">
+            
+            <input type="text" class="form-control" placeholder="Industry" wire:model.lazy="industry">
+            <input type="text" class="form-control" placeholder="product" wire:model.lazy="product">
+
+            <input type="text" class="form-control" placeholder="email" wire:model.lazy="email">
+            <input type="text" class="form-control" placeholder="contact" wire:model.lazy="phone">
+            
 
             <h1>Address</h1>
-            <input type="text" class="form-control" placeholder="address" wire:model="address">
-            <input type="text" class="form-control" placeholder="city" wire:model="city">
-            <input type="text" class="form-control" placeholder="state" wire:model="state">
-            <input type="text" class="form-control" placeholder="country" wire:model="country">
+            <input type="text" class="form-control" placeholder="address" wire:model.lazy="address">
+            <input type="text" class="form-control" placeholder="city" wire:model.lazy="city">
+            <input type="text" class="form-control" placeholder="state" wire:model.lazy="state">
+            <input type="text" class="form-control" placeholder="country" wire:model.lazy="country">
 
             <h1>Space Details</h1>
-            <input type="text" class="form-control" placeholder="hall" wire:model="hall">
-            <input type="text" class="form-control" placeholder="stall" wire:model="stall">
-            <input type="text" class="form-control" placeholder="size" wire:model="size">
+            <input type="text" class="form-control" placeholder="hall" wire:model.lazy="hall">
+            <input type="text" class="form-control" placeholder="stall" wire:model.lazy="stall">
+            <input type="text" class="form-control" placeholder="size" wire:model.lazy="size">
            
 
             <button class="btn btn-primary form-control" type="submit">Submit</button>
         </form>
     </div>
 
+
+
     <h5>Generate a Contract Form</h5>
     <a href="#" class="btn btn-primary" wire:click="">Share</a>
+
 
     <h1>Calculation</h1> 
     <form wire:submit.prevent="payment">      

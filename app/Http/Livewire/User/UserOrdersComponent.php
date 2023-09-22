@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Contractio;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,11 +29,14 @@ class UserOrdersComponent extends Component
       session()->flash('order_message','Order has been canceled');
     }
     
-    public $company;
-    public $brand;
-    public $pan;
+    public $owner;
+    public $organisation;
+    public $brand_name;
+    public $GST;
+    public $industry;
+    public $product;
     public $email;
-    public $contact;
+    public $phone;
     public $address;
     public $city;
     public $state;
@@ -40,30 +44,61 @@ class UserOrdersComponent extends Component
     public $hall;
     public $stall;
     public $size;
-    public $TDS;
-    public $total;
+
+    public $status;
+    public $admstatus;
+
+    public $formm;
+    
+
+    public function mount()
+    {
+        $this->status = '1';
+        $this->admstatus = '1';
+    }
 
     public function contractForm()
     {
         $contractformi = new Contractio();
-        $contractformi->company = $this->company;
-        $contractformi->brand = $this->brand;
-        $contractformi->pan = $this->pan;
-        $contractformi->email = $this->email;
-        $contractformi->contact = $this->contact;
 
+        $contractformi->owner = $this->owner;
+        $contractformi->organisation = $this->organisation;
+        $contractformi->brand_name = $this->brand_name;
+        $contractformi->GST = $this->GST;
+        $contractformi->industry = $this->industry;
+        $contractformi->product = $this->product;
+        $contractformi->email = $this->email;
+        $contractformi->phone = $this->phone;
         $contractformi->address = $this->address;
         $contractformi->city = $this->city;
         $contractformi->state = $this->state;
         $contractformi->country = $this->country;
-
         $contractformi->hall = $this->hall;
         $contractformi->stall = $this->stall;
         $contractformi->size = $this->size;
-        $contractformi->TDS = $this->TDS;
-        $contractformi->total = $this->total;
+
+        $contractformi->status = $this->status;
+        $contractformi->admstatus = $this->admstatus;
         
+        //$contractformi->brand_id = '1';
+        $contractformi->user_id = Auth::user()->id;
+        //$contractformi->event_id = '2';
+
         $contractformi->save();
+
+        $contractformio = Contractio::find($contractformi->id);
+        $contractformio->featureID = $contractformio->id;
+        $contractformio->save();
+
+        return redirect()->route('space.booking', ['brand_id' => $contractformio->featureID, 'formm' => 'basic' ]);
+        //$this->reset(); /form/{event_slug}/space/{brand_id}/expand-your-business/{formm}
+    }
+
+    public function delete($id)
+    {
+        $contractformio = Contractio::find($id);
+        $contractformio->featureID = $contractformio->id;
+        $contractformio->delete();
     }
 
     public function render()

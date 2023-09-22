@@ -151,6 +151,7 @@ use App\Http\Livewire\Admin\AdminLandingComponent;
 use App\Http\Livewire\Admin\AdminQuestionComponent;
 use App\Http\Livewire\Admin\MagazineUpgradingComponent;
 use App\Http\Livewire\AwardsComponent;
+use App\Http\Livewire\ContractFromComponent;
 use App\Http\Livewire\ExhibitionTimeComponent;
 use App\Http\Livewire\GiftBirthdayComponent;
 use App\Http\Livewire\GiftDateComponent;
@@ -251,6 +252,8 @@ Route::get('/contact/{board?}', ContactComponent::class)->name('contact');
 Route::get('/about-us', AboutComponent::class)->name('about');
 Route::get('/leadership', TeamComponent::class)->name('team');
 
+
+
 //catch lead participants || help to login to get contact details
 Route::get('/exhibit/{board}', ExhibitComponent::class)->name('event.exhibit');
 
@@ -269,6 +272,8 @@ Route::get('/birthday/{board}/tie/{ido}', GiftDateComponent::class)->name('date.
 //track
 Route::get('/COIbusiness',TrackComponent::class)->name('admin.track');
 Route::get('/wishlist', WishlistDetailsComponent::class)->name('franchise.wishlist');
+
+Route::get('/space/{brand_id}/expand-your-business/{formm}', ContractFromComponent::class)->name('space.booking');
 
 //Blog
 Route::get('/blog', BlogComponent::class)->name('blog.Coi');
@@ -294,10 +299,8 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
     Route::get('/user/add-your-business', UserEventClaimComponent::class)->name('user.claim');
     Route::get('/user/business/details', UserEventDetailsComponent::class)->name('user.details');
-    
-
-    Route::get('/user/orders', UserOrdersComponent::class)->name('user.Orders');
-    Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');
+    Route::get('/user/contract_form', UserOrdersComponent::class)->name('user.Orders');
+    //Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
     Route::get('/user/mybrand', MybrandComponent::class)->name('user.mybrand');
     Route::get('/user/blog', UserBlogComponent::class)->name('user.blog');

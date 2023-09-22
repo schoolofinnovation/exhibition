@@ -1054,6 +1054,8 @@
                             <a href="{{route('admin.brandDetail',['brand_id' => $franchiseo->id])}}" class="btn btn-primary btn-sm">NO More Reference</a>
 
                           @else
+
+                          <a href="{{route('admin.brandDetail',['brand_id' => $franchiseo->id])}}" class="btn btn-primary btn-sm">Add</a>
                             @foreach($findBcontact as $franchise)
                                 <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                                     <div class="col  pr-0">

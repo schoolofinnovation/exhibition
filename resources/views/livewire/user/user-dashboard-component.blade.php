@@ -1411,23 +1411,39 @@
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
+
+      @if($board == 'dashboard')
         <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
           <span class="handheld-toolbar-icon">
           <i class="ci-filter-alt"></i></span>
-          <span class="handheld-toolbar-label">Profile</span>
+          <span class="handheld-toolbar-label">B-Profile</span>
         </a>
+
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'editprofile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+          <span class="handheld-toolbar-label">Meet-ups</span>
+        </a>
+
+        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+        <span class="handheld-toolbar-label">Share</span>
+        </a>
+
+        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+          <span class="handheld-toolbar-label">Menu</span>
+        </a>
+
+      @else
 
         <a class="d-table-cell handheld-toolbar-item" href="{{route('user.claim')}}">
           <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
         <span class="handheld-toolbar-label">Add your Event</span></a>
 
-
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-        <span class="handheld-toolbar-label">Advertise</span></a>
         <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
         <span class="handheld-toolbar-label">Business</span></a>
+
         <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
         <span class="handheld-toolbar-label">Partner</span></a>
@@ -1435,16 +1451,8 @@
         <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
           <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
         <span class="handheld-toolbar-label">Create</span></a>
-        
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'editprofile'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
-          <span class="handheld-toolbar-label">Meet-ups</span>
-        </a>
-
-        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
-          <span class="handheld-toolbar-label">Menu</span>
-        </a>
+      
+      @endif
       </div>
     </div>
 

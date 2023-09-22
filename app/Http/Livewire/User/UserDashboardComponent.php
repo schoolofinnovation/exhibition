@@ -66,6 +66,8 @@ class UserDashboardComponent extends Component
     public $board;
     public $searchTerm;
 
+    public $searchBrandTerm;
+
     public $lookingAddFromIMage;
 
     public function mount()
