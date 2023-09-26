@@ -177,12 +177,20 @@
             <span class="handheld-toolbar-label">Exhibition</span>
           </a>
 
-          
-
-          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
-            <span class="handheld-toolbar-label">Menu</span>
-          </a>
+          @if (Auth::check())
+            @if(Auth::user()->utype)
+            <a class="d-table-cell handheld-toolbar-item" data-bs-target="#offcanvasUSR" href="#offcanvasUSR" role="button" aria-controls="offcanvasUSR">
+              <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
+              <span class="handheld-toolbar-label">Menu</span>
+            </a>
+            @elseif(Auth::user()->utype === 'USR')
+            <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
+              <span class="handheld-toolbar-label">Menu</span>
+            </a>
+            @endif
+            @else
+          @endif
       @elseif(Route::currentRouteName() === 'coi.exhibition' )
           <a class="d-table-cell handheld-toolbar-item" href="{{asset('/')}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-border-style"></i></span>

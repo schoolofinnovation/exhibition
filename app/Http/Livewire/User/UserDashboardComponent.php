@@ -70,6 +70,8 @@ class UserDashboardComponent extends Component
 
     public $lookingAddFromIMage;
 
+    public $expand;
+
     public function mount()
     {   $this->currentStep = 1;
         //'user_id'=>'required'
@@ -268,18 +270,23 @@ class UserDashboardComponent extends Component
         $newuser = Want::where('user_id', Auth::user()->id)->get();
 
         $today = Carbon::today()->format('Y-m-d');
+
         $eventoo = Event::whereDate('startdate', $today)->get();
+
+        $userEvent = Event::where('user_id', Auth::user()->id)->get();
         
         $selectedcategory = Denco::where('user_id', Auth::user()->id)->get();
         //dd($today, $evento);
 
+        $userDetails = Brand::where('user_id', Auth::user()->id)->where('dtype','user')->get();
+        
         //visitor -- get Contact of clients
         $searchBrandTerm = '%'.$this->searchBrandTerm. '%';
         $searchBrandcat = Brand::where('brand_name','LIKE', $searchBrandTerm)
                     ->orWhere('organisation','LIKE', $searchBrandTerm)
                     ->where('status','1')->orderBy('brand_name','ASC')->get();
 
-        return view('livewire.user.user-dashboard-component',['searchBrandcat'=> $searchBrandcat, 'selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
+        return view('livewire.user.user-dashboard-component',['userDetails' => $userDetails,'userEvent' => $userEvent, 'searchBrandcat'=> $searchBrandcat, 'selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
         
     }
 }

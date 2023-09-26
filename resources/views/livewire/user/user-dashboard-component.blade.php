@@ -7,7 +7,7 @@
    
 
 
-      {{--<div class="container  ">
+  {{--<div class="container">
         <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
           <div class="col  pr-0">
               @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
@@ -46,410 +46,506 @@
       </div>--}}
 
 
-  @if($board == 'dashboard')   
-  <div class="container d-lg-none">
-      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
-        <div class="d-flex justify-content-between px-0 m-0 lh-1">
-          <span class="fs-sm">Places based on your<br><span class="fw-medium h5">Industry</span></span>
-         
+  @if($board == 'dashboard')
 
-          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-            <ul class="dropdown-menu" width="auto">
-              <li><a class="dropdown-item" href="#">More</a></li>
-              <li><a class="dropdown-item" href="#">Exhibit</a></li>
-              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
-            </ul>
-          </span>
+    @php
+      $usDetails = DB::table('brands')->where('user_id', Auth::user()->id)->where('dtype','user')->pluck('dtype');
+    @endphp
 
-        </div>
-      </div>
+    @if(is_null($usDetails))
 
-    
-    @foreach($eventoo as $evento)
-        <div class="container my-3">
-            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                <div class="col  pr-0">
-                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-                      @else
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-
-                    @endif 
-                    <div class="round-circle">{{$evento->edition}}</div> 
-                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
-                </div>
-
-                <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
-                  <div class="text-muted fs-sm text-start">
-                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @else
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @endif 
-                  </div>  
-                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
-                </div>
-
-                <div class="col-3  p-0">
-                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
-                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
-                </div>
+            <div class="container">
+              Create Business Profile
             </div>
-        </div>
-    @endforeach
-  </div>
 
-  <div class="container d-lg-none">
-      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
-        <div class="d-flex justify-content-between px-0 m-0 lh-1">
-          <span class="fs-sm">Places based on your<br><span class="fw-medium h5">Search</span></span>
-         
+              @if($userDetails->count() == 0)
+                            <div class="container bg-secondary rounded-3 p-4 mb-4">
+                              <div class="d-flex align-items-center">
+                                <img class="rounded" src="#" width="90" alt="#">
+                                <div class="ps-3">
+                                  <button class="btn btn-light btn-shadow btn-sm mb-2" type="button"><i class="ci-loading me-2"></i>Change avatar</button>
+                                  <div class="p mb-0 fs-ms text-muted">update your industry</div>
+                                </div>
+                              </div>
+                            </div>
+              @else
+                          @foreach($userDetails as $eventoi)
+                            <div class="container bg-secondary rounded-3 p-4 mb-4">
+                              <div class="d-flex align-items-center">
+                                <img class="rounded" src="#" width="90" alt="{{$eventoi->brand_name}}">
+                                <div class="ps-3">
+                                  <button class="btn btn-light btn-shadow btn-sm mb-2" type="button"><i class="ci-loading me-2"></i>Change avatar</button>
+                                  <div class="p mb-0 fs-ms text-muted">{{$eventoi->industry}}{{$eventoi->sector}}</div>
+                                </div>
+                              </div>
+                            </div>
+                          @endforeach
+              @endif
+              
+            <div class="container d-lg-none">
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">New Recommended<br><span class="fw-medium h5">Industry</span></span>
+                  
 
-          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-            <ul class="dropdown-menu" width="auto">
-              <li><a class="dropdown-item" href="#">More</a></li>
-              <li><a class="dropdown-item" href="#">Exhibit</a></li>
-              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
-            </ul>
-          </span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
 
-        </div>
-      </div>
-
-    
-    @foreach($eventoo as $evento)
-        <div class="container my-3">
-            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                <div class="col  pr-0">
-                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-                      @else
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-
-                    @endif 
-                    <div class="round-circle">{{$evento->edition}}</div> 
-                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                  </div>
                 </div>
 
-                <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
-                  <div class="text-muted fs-sm text-start">
-                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @else
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @endif 
-                  </div>  
-                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
-                </div>
+              
+              @foreach($eventoo as $evento)
+                  <div class="container my-3">
+                      <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                          <div class="col  pr-0">
+                              @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                @else
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
 
-                <div class="col-3  p-0">
-                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
-                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
-                </div>
+                              @endif 
+                              <div class="round-circle">{{$evento->edition}}</div> 
+                              {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                          </div>
+
+                          <div class="col-7  p-0">
+                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                            <div class="text-muted fs-sm text-start">
+                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @else
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @endif 
+                            </div>  
+                            <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                          </div>
+
+                          <div class="col-3  p-0">
+                          <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                              <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
             </div>
-        </div>
-    @endforeach
-  </div>
 
-  <div class="container d-lg-none">
-      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
-        <div class="d-flex justify-content-between px-0 m-0 lh-1">
-          <span class="fs-sm">Explore more Places you may like<br><span class="fw-medium h5">Search</span></span>
-         
 
-          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-            <ul class="dropdown-menu" width="auto">
-              <li><a class="dropdown-item" href="#">More</a></li>
-              <li><a class="dropdown-item" href="#">Exhibit</a></li>
-              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
-            </ul>
-          </span>
+            <div class="container d-lg-none">
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">New event from Organiser<br><span class="fw-medium h5">Search</span></span>
+                  
 
-        </div>
-      </div>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
 
-    
-    @foreach($eventoo as $evento)
-        <div class="container my-3">
-            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                <div class="col  pr-0">
-                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-                      @else
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-
-                    @endif 
-                    <div class="round-circle">{{$evento->edition}}</div> 
-                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                  </div>
                 </div>
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">Saved Events<br><span class="fw-medium h5">Search</span></span>
+                  
 
-                <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
-                  <div class="text-muted fs-sm text-start">
-                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @else
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @endif 
-                  </div>  
-                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
-                </div>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
 
-                <div class="col-3  p-0">
-                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
-                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                  </div>
                 </div>
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">Create Custom Event alerts<br><span class="fw-medium h5">Search</span></span>
+                  
+
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
+
+                  </div>
+                </div>
+              
+              @foreach($eventoo as $evento)
+                  <div class="container my-3">
+                      <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                          <div class="col  pr-0">
+                              @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                @else
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                              @endif 
+                              <div class="round-circle">{{$evento->edition}}</div> 
+                              {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                          </div>
+
+                          <div class="col-7  p-0">
+                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                            <div class="text-muted fs-sm text-start">
+                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @else
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @endif 
+                            </div>  
+                            <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                          </div>
+
+                          <div class="col-3  p-0">
+                          <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                              <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
             </div>
-        </div>
-    @endforeach
-  </div>
 
-  <div class="container d-lg-none">
-      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
-        <div class="d-flex justify-content-between px-0 m-0 lh-1">
-          <span class="fs-sm">Early Access places<br><span class="fw-medium small">Fresh places from Organizer Searches</span></span>
-         
+      <!-- <div class="container d-lg-none">
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">Explore more Places you may like<br><span class="fw-medium h5">Search</span></span>
+                  
 
-          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-            <ul class="dropdown-menu" width="auto">
-              <li><a class="dropdown-item" href="#">More</a></li>
-              <li><a class="dropdown-item" href="#">Exhibit</a></li>
-              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
-            </ul>
-          </span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
 
-        </div>
-      </div>
-
-    
-    @foreach($eventoo as $evento)
-        <div class="container my-3">
-            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                <div class="col  pr-0">
-                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-                      @else
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-
-                    @endif 
-                    <div class="round-circle">{{$evento->edition}}</div> 
-                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                  </div>
                 </div>
 
-                <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
-                  <div class="text-muted fs-sm text-start">
-                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @else
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @endif 
-                  </div>  
-                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
-                </div>
+              
+              @foreach($eventoo as $evento)
+                  <div class="container my-3">
+                      <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                          <div class="col  pr-0">
+                              @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                @else
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
 
-                <div class="col-3  p-0">
-                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
-                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
-                </div>
+                              @endif 
+                              <div class="round-circle">{{$evento->edition}}</div> 
+                              {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                          </div>
+
+                          <div class="col-7  p-0">
+                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                            <div class="text-muted fs-sm text-start">
+                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @else
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @endif 
+                            </div>  
+                            <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                          </div>
+
+                          <div class="col-3  p-0">
+                          <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                              <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
             </div>
-        </div>
-    @endforeach
-  </div>
 
-  <div class="container d-lg-none">
-      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
-        <div class="d-flex justify-content-between px-0 m-0 lh-1">
-          <span class="fs-sm">Join for Right People<br><span class="fw-medium h5">Top Places</span></span>
-         
+            <div class="container d-lg-none">
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">Early Access places<br><span class="fw-medium small">Fresh places from Organizer Searches</span></span>
+                  
 
-          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-            <ul class="dropdown-menu" width="auto">
-              <li><a class="dropdown-item" href="#">More</a></li>
-              <li><a class="dropdown-item" href="#">Exhibit</a></li>
-              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
-            </ul>
-          </span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
 
-        </div>
-      </div>
-
-    
-    @foreach($eventoo as $evento)
-        <div class="container my-3">
-            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                <div class="col  pr-0">
-                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-                      @else
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-
-                    @endif 
-                    <div class="round-circle">{{$evento->edition}}</div> 
-                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                  </div>
                 </div>
 
-                <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
-                  <div class="text-muted fs-sm text-start">
-                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @else
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @endif 
-                  </div>  
-                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+              
+              @foreach($eventoo as $evento)
+                  <div class="container my-3">
+                      <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                          <div class="col  pr-0">
+                              @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                @else
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                              @endif 
+                              <div class="round-circle">{{$evento->edition}}</div> 
+                              {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                          </div>
+
+                          <div class="col-7  p-0">
+                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                            <div class="text-muted fs-sm text-start">
+                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @else
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @endif 
+                            </div>  
+                            <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                          </div>
+
+                          <div class="col-3  p-0">
+                          <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                              <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+            </div> -->
+
+            <div class="container d-lg-none">
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">Join for Right People<br><span class="fw-medium h5">Top Places</span></span>
+                  
+
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
+
+                  </div>
                 </div>
 
-                <div class="col-3  p-0">
-                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
-                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
-                </div>
+              
+              @foreach($eventoo as $evento)
+                  <div class="container my-3">
+                      <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                          <div class="col  pr-0">
+                              @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                @else
+                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                              @endif 
+                              <div class="round-circle">{{$evento->edition}}</div> 
+                              {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                          </div>
+
+                          <div class="col-7  p-0">
+                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                            <div class="text-muted fs-sm text-start">
+                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @else
+                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                @endif 
+                            </div>  
+                            <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                          </div>
+
+                          <div class="col-3  p-0">
+                          <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                              <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
             </div>
-        </div>
-    @endforeach
-  </div>
 
-  <div class="container d-lg-none">
-      <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
-        <div class="d-flex justify-content-between px-0 m-0 lh-1">
-          <span class="fs-sm">Daily Updates<br><span class="fw-medium h5">Powered By COI</span></span>
-         
+            <div class="container d-lg-none">
+                <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
+                  <div class="d-flex justify-content-between px-0 m-0 lh-1">
+                    <span class="fs-sm">Daily Updates<br><span class="fw-medium h5">Powered By COI</span></span>
+                  
 
-          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-            <ul class="dropdown-menu" width="auto">
-              <li><a class="dropdown-item" href="#">More</a></li>
-              <li><a class="dropdown-item" href="#">Exhibit</a></li>
-              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
-            </ul>
-          </span>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                        <li><a class="dropdown-item" href="#">Exhibit</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Add Event</a></li>        
+                      </ul>
+                    </span>
 
-        </div>
-      </div>
-
-    
-    @foreach($eventoo as $evento)
-        <div class="container my-3">
-            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                <div class="col  pr-0">
-                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-                      @else
-                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-
-                    @endif 
-                    <div class="round-circle">{{$evento->edition}}</div> 
-                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                  </div>
                 </div>
 
-                <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                      {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
-                  <div class="text-muted fs-sm text-start">
-                      @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @else
-                      {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                      @endif 
-                  </div>  
-                  <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
-                </div>
+                @foreach($eventoo as $evento)
+                    <div class="container my-3">
+                        <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                            <div class="col  pr-0">
+                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                  <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                  <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                  @else
+                                  <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                  <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
 
-                <div class="col-3  p-0">
-                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
-                    <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
-                </div>
+                                @endif 
+                                <div class="round-circle">{{$evento->edition}}</div> 
+                                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                            </div>
+
+                            <div class="col-7  p-0">
+                              <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                  {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                              <div class="text-muted fs-sm text-start">
+                                  @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                  {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                  @else
+                                  {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                  @endif 
+                              </div>  
+                              <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                            </div>
+
+                            <div class="col-3  p-0">
+                            <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                <img src="{{url('exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        </div>
-    @endforeach
-  </div>
 
-      <div class="container d-lg-none">
-           <div class="text-dark fw-medium fs-sm">Applicable Offers</div> 
-           
-        <div class=" my-sliderOffers">
-            <ul class="list-unstyled fs-sm  p-2">
-                <li class="d-flex justify-content-between p-0 m-0">
-                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-            </ul>
+                <div class="container d-lg-none">
+                    <div class="text-dark fw-medium fs-sm">Business Tips</div> 
+                    
+                  <div class=" my-sliderOffers">
+                      <ul class="list-unstyled fs-sm  p-2">
+                          <li class="d-flex justify-content-between p-0 m-0">
+                          <span class="text-dark fw-medium fs-sm"> 12 Important business Onboarding Tips for New Events <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                          <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                      </ul>
 
-            <ul class="list-unstyled fs-sm  p-2">
-                <li class="d-flex justify-content-between p-0 m-0">
-                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-            </ul>
+                      <ul class="list-unstyled fs-sm  p-2">
+                          <li class="d-flex justify-content-between p-0 m-0">
+                          <span class="text-dark fw-medium fs-sm">How to Ace big Players battleyards?<br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                          <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                      </ul>
+                    
+                      <ul class="list-unstyled fs-sm  p-2">
+                        <li class="d-flex justify-content-between p-0 m-0">
+                        <span class="text-dark fw-medium fs-sm">How to become Good Place to Exhibit?<br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                        <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                      </ul>
+                  </div>
+
+                </div>
+
+                <div class="container d-lg-none">
+                    <div class="text-dark fw-medium fs-sm">Add Your Event</div> 
+                    
+                  <div class=" my-sliderOffers">
+                      <ul class="list-unstyled fs-sm  p-2">
+                          <li class="d-flex justify-content-between p-0 m-0">
+                          <span class="text-dark fw-medium fs-sm">  <i class="bi bi-plus"></i> <br>
+                          <span class="text-muted fw-light fs-sm">List your Event</span></span>
+                          <span></span></li>
+                      </ul>
+
+                      @foreach($userEvent as $eventoi)
+                        <ul class="list-unstyled fs-sm  p-2">
+                            <li class="d-flex justify-content-between p-0 m-0">
+                            <span class="text-dark fw-medium fs-sm">{{$eventoi->eventname}}<br>
+                            <span class="text-muted fw-light fs-sm">{{$eventoi->city}}</span></span>
+                            <span><a href="" class="btn btn-outline-primary btn-sm bg-light">Open</a></span></li>
+                        </ul>
+                      @endforeach
+                    
+                  </div>
+
+                </div>
+
+                <div class="container d-lg-none">
+                    <div class="text-dark fw-medium fs-sm">Share your Experience</div> 
+                    
+                  <div class=" my-sliderOffers">
+                      <ul class="list-unstyled fs-sm  p-2">
+                          <li class="d-flex justify-content-between p-0 m-0">
+                          <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                          <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Write your Advice</a></span></li>
+                      </ul>
+
+                      
+                  </div>
+
+                </div>
+
+              <div class="container mb-5 pb-5">
+                <h1>70% space booked without any follow-up calls</h1>
+                <small>New places on The Exhibitor Network are booked by directly reaching out to New Brands wihtout any follow-up calls. Learn how you can make the best of this opportunity</small>
+              </div>
+
+    @else
+    <section class="container py-3 py-lg-5 mt-4 mb-3">
+          <div class="text-center mb-5">
+            <p class="col-md-10 col-lg-8 mx-auto fw-normal">Reach your business goals with COI Marketing Solutions.</p>
+            <div class="container">
+                <div class="row row-cols-2 row-cols-lg-6 gy-2 gx-3 g-lg-3">
+                    
           
-            <ul class="list-unstyled fs-sm  p-2">
-              <li class="d-flex justify-content-between p-0 m-0">
-              <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-              <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-            </ul>
-        </div>
+                    <div class="col">
+                        <a  href="#" class="p-3 border rounded border-dark bg-light text-center" value="expand" wire:model="expand">
+                          Expand your Business
+                        </a> 
+                    </div>
 
-      </div>
+                    
+                    <div class="col">
+                        <a  href="#" class="p-3 border rounded border-dark bg-light text-center" value="hire" wire:model="expand">
+                           Hire us Media Buying
+                        </a> 
+                    </div>
 
-      <div class="container d-lg-none">
-           <div class="text-dark fw-medium fs-sm">Add Your Event</div> 
-           
-        <div class=" my-sliderOffers">
-            <ul class="list-unstyled fs-sm  p-2">
-                <li class="d-flex justify-content-between p-0 m-0">
-                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-            </ul>
+                    
+                </div>
+            </div>
 
-            <ul class="list-unstyled fs-sm  p-2">
-                <li class="d-flex justify-content-between p-0 m-0">
-                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-            </ul>
-          
-            <ul class="list-unstyled fs-sm  p-2">
-              <li class="d-flex justify-content-between p-0 m-0">
-              <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-              <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-            </ul>
-        </div>
+            {{$expand}}
+          </div>
+        </section>
+    @endif
 
-      </div>
-
-      <div class="container d-lg-none">
-           <div class="text-dark fw-medium fs-sm">Share your Experience</div> 
-           
-        <div class=" my-sliderOffers">
-            <ul class="list-unstyled fs-sm  p-2">
-                <li class="d-flex justify-content-between p-0 m-0">
-                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Write your Advice</a></span></li>
-            </ul>
-
-            
-        </div>
-
-      </div>
-
-      <h1>70% space booked without any follow-up calls</h1>
-      <small>New places on The Exhibitor Network are booked by directly reaching out to New Brands wihtout any follow-up calls. Learn how you can make the best of this opportunity</small>
   @endif
 
       <!--header-->
@@ -1152,10 +1248,10 @@
 
   @endif
 
-//featured with user is a organiser or exhibitor or Visitor. if visitor get sales contact or if organiser get business owner references
+<!-- featured with user is a organiser or exhibitor or Visitor. if visitor get sales contact or if organiser get business owner references
 <h1>Find Exhibitor</h1>
 <small>Build a big approach</small>
-<a href="route()" class="btn btn-primary form-control">Approach</a>
+<a href="route()" class="btn btn-primary form-control">Approach</a> -->
 
   @if($board == 'ExchangeContact')
    
@@ -1411,48 +1507,47 @@
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
+        @if($board == 'dashboard')
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+            <span class="handheld-toolbar-icon">
+            <i class="bi bi-profile"></i></span>
+            <span class="handheld-toolbar-label">B-Profile</span>
+          </a>
 
-      @if($board == 'dashboard')
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-          <span class="handheld-toolbar-icon">
-          <i class="ci-filter-alt"></i></span>
-          <span class="handheld-toolbar-label">B-Profile</span>
-        </a>
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'editprofile'])}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-meet"></i></span>
+            <span class="handheld-toolbar-label">Meet-ups</span>
+          </a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'editprofile'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
-          <span class="handheld-toolbar-label">Meet-ups</span>
-        </a>
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-share"></i></span>
+          <span class="handheld-toolbar-label">Share</span>
+          </a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-        <span class="handheld-toolbar-label">Share</span>
-        </a>
+          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <span class="handheld-toolbar-icon"><i class=" bi bi-menu"></i></span>
+            <span class="handheld-toolbar-label">Menu</span>
+          </a>
 
-        <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
-          <span class="handheld-toolbar-label">Menu</span>
-        </a>
+         @else
 
-      @else
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.claim')}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+          <span class="handheld-toolbar-label">Add your Event</span></a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.claim')}}">
-          <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
-        <span class="handheld-toolbar-label">Add your Event</span></a>
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+            <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+          <span class="handheld-toolbar-label">Business</span></a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-        <span class="handheld-toolbar-label">Business</span></a>
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+            <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+          <span class="handheld-toolbar-label">Partner</span></a>
 
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-        <span class="handheld-toolbar-label">Partner</span></a>
-
-        <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-          <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-        <span class="handheld-toolbar-label">Create</span></a>
-      
-      @endif
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+            <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+          <span class="handheld-toolbar-label">Create</span></a>
+        
+        @endif
       </div>
     </div>
 
@@ -1471,7 +1566,7 @@
                   "autoplayButtonOutput":false,
                   "autoplayHoverPause": true,
                   "nav": false,
-                  "fixedWidth": 170,
+                  "fixedWidth": 190,
                 },
                 "500": {
                   "items": 3,
