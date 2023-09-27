@@ -39,18 +39,20 @@ class ExhibitComponent extends Component
         ]);
 
         $newEvent = new Lead();
+        $newEvent->name = $this->name;
         $newEvent->email = $this->email;
         $newEvent->phone = $this->phone;
         $newEvent->type = 'business';
         $newEvent->event_id = session()->get('eventID');
 
         //$newEvent->user_id = Auth::user()->id;
-
+        
         $newEvent->status = $this->status;
         $newEvent->admstatus = $this->admstatus;
         $newEvent->save();
 
         $logino = new User();
+        $logino->name = $this->name;
         $logino->email = $this->email;
         $logino->phone = $this->phone;
         $logino->save();

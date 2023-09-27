@@ -23,7 +23,7 @@
         
         <div class="mb-3">
             <label class="form-label" for="review-pros">Phone<span class="text-danger">*</span></label>
-            <input class="form-control" type="phone" required="" wire:model.lazy="phone">
+            <input class="form-control" type="number" required="" wire:model.lazy="phone">
             @error('phone')    
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror

@@ -59,7 +59,7 @@ class LeadOtherComponent extends Component
         $newEvent->admstatus = $this->admstatus;
         $newEvent->save();
         session()->flash('message','Thanks for sharing your review.');
-        return back()->withinput();
+        return redirect()->route('event.exhibit', ['board' => 'thankyou']);
     }
 
     public function render()

@@ -17,12 +17,17 @@
                   <form  wire:submit.prevent="add" >
                     <div class="mb-3">
                       <!-- <label class="form-label" for="recover-email">Enter your email address</label> -->
+                      <input class="form-control" type="name"  wire:model.lazy="name" required="" placeholder="Enter your name">
+                      <div class="invalid-feedback">Please provide valid email address.</div>
+                    </div>
+                    <div class="mb-3">
+                      <!-- <label class="form-label" for="recover-email">Enter your email address</label> -->
                       <input class="form-control" type="email"  wire:model.lazy="email" required="" placeholder="Enter your email address">
                       <div class="invalid-feedback">Please provide valid email address.</div>
                     </div>
                     <div class="mb-3">
                       <!-- <label class="form-label" for="recover-email">Enter your phone</label> -->
-                      <input class="form-control" type="phone"  wire:model.lazy="phone" required="" placeholder="Enter your phone">
+                      <input class="form-control" type="number"  wire:model.lazy="phone" required="" placeholder="Enter your phone">
                       <div class="invalid-feedback">Please provide valid phone.</div>
                     </div>
                     <button class="btn btn-primary" type="submit">Submit</button>
@@ -53,6 +58,12 @@
                 
                   <form  wire:submit.prevent="addTicket" >
                     <div class="mb-3">
+                      <label class="form-label fs-xs " for="recover-email">Your Name</label>
+                      <input class="form-control" type="name"  wire:model.lazy="name" required="" placeholder="Enter your name">
+                      <label class="fs-xs fw-light text-muted" for="recover-email">To access the ticket(s) on other devices, Login with this E-mail</label>
+                      <div class="invalid-feedback">Please provide valid email address.</div>
+                    </div>
+                    <div class="mb-3">
                       <label class="form-label fs-xs " for="recover-email">Your email</label>
                       <input class="form-control" type="email"  wire:model.lazy="email" required="" placeholder="Enter your email address">
                       <label class="fs-xs fw-light text-muted" for="recover-email">To access the ticket(s) on other devices, Login with this E-mail</label>
@@ -60,7 +71,7 @@
                     </div>
                     <div class="mb-3">
                       <label class="form-label fs-xs" for="recover-email">* Mobile Number</label>
-                      <input class="form-control" type="phone"  wire:model.lazy="phone" required="" placeholder="Enter your phone">
+                      <input class="form-control" type="number"  wire:model.lazy="phone" required="" placeholder="Enter your phone">
                       <label class="text-muted fw-light fs-xs" for="recover-email">Your Number will only be used for sending Details.</label>
                       <div class="invalid-feedback">Please provide valid phone.</div>
                     </div>

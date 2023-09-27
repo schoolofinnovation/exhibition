@@ -20,6 +20,8 @@ class LeadComponent extends Component
     public $admstatus;
     public $status;
 
+    public $board;
+
     public function mount($slug , $type)
     {
        $this->slug = $slug;
@@ -58,8 +60,10 @@ class LeadComponent extends Component
         $newEvent->status = $this->status;
         $newEvent->admstatus = $this->admstatus;
         $newEvent->save();
+
         session()->flash('message','Thanks for sharing your review.');
-        return back()->withinput();
+        //return back()->withinput();
+        return redirect()->route('event.exhibit', ['board' => 'thankyou']);
     }
 
     public function render()
