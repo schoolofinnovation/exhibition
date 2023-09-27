@@ -92,23 +92,23 @@ class AdminEventEditComponent extends Component
     public function updateEvent()
     {
         $fattribute = Event::find($this->event_id);
-        $fattribute->eventname =  $this->eventname;
-        $fattribute->slug = $this->slug;
+        $fattribute->eventname =  trim($this->eventname);
+        $fattribute->slug = trim($this->slug);
         $fattribute->eventype =  $this->eventype;
         $fattribute->country =  'india';
-        $fattribute->city =  $this->city;
-        $fattribute->venue =  $this->venue;
-        $fattribute->organizer = $this->organizer;
+        $fattribute->city =  trim($this->city);
+        $fattribute->venue =  trim($this->venue);
+        $fattribute->organizer = trim($this->organizer);
 
-        $fattribute->shtdesc =  $this->shtdesc;
-        $fattribute->tagline =  $this->tagline;
-        $fattribute->desc =  $this->desc;
+        $fattribute->shtdesc =  trim($this->shtdesc);
+        $fattribute->tagline =  trim($this->tagline);
+        $fattribute->desc =  trim($this->desc);
 
-        $fattribute->exhibitors =  $this->exhibitors;
-        $fattribute->auidence =  $this->auidence;
+        $fattribute->exhibitors =  trim($this->exhibitors);
+        $fattribute->auidence =  trim($this->auidence);
       
-        $fattribute->email =  $this->email;
-        $fattribute->phone =  $this->phone;
+        $fattribute->email =  trim($this->email);
+        $fattribute->phone =  trim($this->phone);
 
         $fattribute->edition =  $this->edition;
         $fattribute->startdate =  $this->startdate;
@@ -122,17 +122,17 @@ class AdminEventEditComponent extends Component
     public function updateBasicEvent()
     {
         $fattribute = Event::find($this->event_id);
-        $fattribute->eventname =  $this->eventname;
-        $fattribute->slug = $this->slug;
+        $fattribute->eventname =  trim($this->eventname);
+        $fattribute->slug = trim($this->slug);
         $fattribute->eventype =  $this->eventype;
       
-        $fattribute->city =  $this->city;
-        $fattribute->venue =  $this->venue;
+        $fattribute->city =  trim($this->city);
+        $fattribute->venue =  trim($this->venue);
        
-        $fattribute->exhibitors =  $this->exhibitors;
-        $fattribute->auidence =  $this->auidence;
+        $fattribute->exhibitors =  trim($this->exhibitors);
+        $fattribute->auidence =  trim($this->auidence);
       
-        $fattribute->edition =  $this->edition;
+        $fattribute->edition =  trim($this->edition);
         $fattribute->startdate =  $this->startdate;
         $fattribute->enddate =  $this->enddate;
         $fattribute->country = 'india';

@@ -508,8 +508,7 @@ public $brand_id;
        $upted->admstatus = '1';
        $upted->save();
        
-       $this->reset();
-       //return redirect()->back();
+       return redirect()->back();
       
     }
 

@@ -1799,19 +1799,20 @@
                           @php
                               $to = strtotime($franchise->startdate);
                               $from= strtotime($franchise->enddate);
+                              $category = DB::table('denco')->where('event_id', $franchise->id)->get();
                           @endphp
                           
 
-                          @if ($current < $to && $current < $from)
-                            upcom
-                            @elseif ($current == $to && $current < $from) 
-                                first
-                            @elseif ($current > $to && $current < $from) 
-                                ongoi
-                            @elseif ($current > $to && $current == $from) 
-                              last 
-                            @elseif ($current > $to && $current > $from)
-                              ended
+                            @if ($current < $to && $current < $from)
+                                <span class="text-light">upcom</span>
+                              @elseif ($current == $to && $current < $from) 
+                              <span class="text-light">first</span>
+                              @elseif ($current > $to && $current < $from) 
+                              <span class="text-light">ongoi</span>
+                              @elseif ($current > $to && $current == $from) 
+                              <span class="text-light">last</span>
+                              @elseif ($current > $to && $current > $from)
+                              <span class="text-light">ended</span>
                             @endif
                           </div> 
                           <div class="small text-muted">{{$franchise->id}}</div>
@@ -1820,7 +1821,8 @@
 
                     <div class="col-7  p-0">
                       <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('adminevent.detail',['slug' => $franchise->slug])}}">
-                        {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                        {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a>
+                      </div>
                       <div class="text-muted fs-sm text-start">
                         @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
                           {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
@@ -1828,7 +1830,12 @@
                           {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M y')}}
                         @endif 
                       </div>  
-                      
+
+                      <div>
+                        @foreach($category as $cat)
+                            {{$cat->expo->tag}}
+                        @endforeach 
+                     </div>
                     </div>
 
                     <div class="col-3  p-0">
