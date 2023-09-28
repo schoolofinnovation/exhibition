@@ -1,4 +1,4 @@
-@section('page_title', ('Book your Space'.$event->eventname))'assets/image/exhibition/'.$event->image
+@section('page_title', ('Book your Space '.$event->eventname))'
 @section('page_description', ($event->shtdesc))
 @section('page_keyword',  'The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Event;
 use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -97,6 +98,10 @@ class ExhibitComponent extends Component
     {
     //     $data = session()->all();
     //    dd($data);
-        return view('livewire.exhibit-component');
+
+       $findID = session()->get('eventID');
+       $findevent = Event::where('id', $findID)->get();
+
+        return view('livewire.exhibit-component', ['findevent' => $findevent]);
     }
 }
