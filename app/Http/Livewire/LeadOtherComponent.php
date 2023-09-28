@@ -36,7 +36,7 @@ class LeadOtherComponent extends Component
             'name'=>'required',
             'email'=>'required',
             'city'=>'required',
-            'phone'=>'required',
+            'phone'=>['required','max:12'],
         ]);
 
         $newEvent = new Lead();

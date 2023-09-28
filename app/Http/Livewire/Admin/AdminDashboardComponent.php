@@ -602,7 +602,7 @@ public $brand_id;
       
       //dd($mytime , $ongoingViews);
       
-      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('eventype', 'expo')->where('shtdesc', NULL)->orderBy('startdate','asc')->get();
+      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('shtdesc', NULL)->orderBy('startdate','asc')->get();
       foreach($eventShtdesc as $updatco)
       {
 

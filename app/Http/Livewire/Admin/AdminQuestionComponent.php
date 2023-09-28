@@ -29,6 +29,7 @@ class AdminQuestionComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-question-component');
+        $result = Question::get();
+        return view('livewire.admin.admin-question-component',['result' => $result]);
     }
 }

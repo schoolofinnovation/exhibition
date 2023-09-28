@@ -6,6 +6,7 @@ use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class ExhibitComponent extends Component
@@ -54,6 +55,7 @@ class ExhibitComponent extends Component
         $logino = new User();
         $logino->name = $this->name;
         $logino->email = $this->email;
+        $logino->password = Hash::make($this->email);
         $logino->phone = $this->phone;
         $logino->save();
 
