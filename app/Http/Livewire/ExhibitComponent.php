@@ -100,7 +100,7 @@ class ExhibitComponent extends Component
     //    dd($data);
 
        $findID = session()->get('eventID');
-       $findevent = Event::where('id', $findID)->get();
+       $findevent = Event::where('id', $findID)->first();
 
         return view('livewire.exhibit-component', ['findevent' => $findevent]);
     }
