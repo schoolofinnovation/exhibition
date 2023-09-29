@@ -53,7 +53,7 @@ class EventDetailsComponent extends Component
 
     public function insertEventToSess($id)
     {
-      $event = Event::where('id',$id)->first();
+      $event = Event::where('id', $id)->first();
       $poostKey = 'eventID';
       $eid = $event->id;
       Session()->put ($poostKey , $eid);
