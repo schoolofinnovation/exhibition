@@ -1799,7 +1799,7 @@
                           @php
                               $to = strtotime($franchise->startdate);
                               $from= strtotime($franchise->enddate);
-                              $category = DB::table('denco')->where('event_id', $franchise->id)->get();
+                              $category = DB::table('dencos')->where('event_id', $franchise->id)->get();
                           @endphp
                           
 
@@ -1832,9 +1832,13 @@
                       </div>  
 
                       <div>
-                        @foreach($category as $cat)
-                            {{$cat->expo->tag}}
-                        @endforeach 
+                        @if($category->count() = 0)
+                          no category
+                        @else
+                          @foreach($category as $cat)
+                              {{$cat->expo->tag}}
+                          @endforeach
+                        @endif
                      </div>
                     </div>
 
