@@ -38,7 +38,8 @@ class ExhibitComponent extends Component
     {
         $this->validate([
             'email'=>'required',
-            'phone'=>'required', 
+            'phone'=>'required',
+            'name'=>'required', 
         ]);
 
         $newEvent = new Lead();
@@ -74,7 +75,8 @@ class ExhibitComponent extends Component
     {
         $this->validate([
             'email'=>'required',
-            'phone'=>'required', 
+            'phone'=>'required',
+            'name'=>'required', 
         ]);
 
         $newEvent = new Lead();
