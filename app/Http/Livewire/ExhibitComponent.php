@@ -22,6 +22,7 @@ class ExhibitComponent extends Component
     public $phone;
     public $board;
     public $data;
+    public $name;
 
     public function mount()
     {
@@ -77,6 +78,7 @@ class ExhibitComponent extends Component
         ]);
 
         $newEvent = new Lead();
+        $newEvent->name = $this->name;
         $newEvent->email = $this->email;
         $newEvent->phone = $this->phone;
         $newEvent->type = 'ticket';
@@ -101,9 +103,7 @@ class ExhibitComponent extends Component
 
        $findID = session()->get('eventID');
        $findevent = Event::where('id', $findID)->first();
-       $data = session()->all();
-
-       dd($data, $findevent->eventname);
+       
         return view('livewire.exhibit-component', ['findevent' => $findevent]);
     }
 }

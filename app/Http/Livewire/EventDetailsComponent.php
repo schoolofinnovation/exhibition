@@ -57,7 +57,7 @@ class EventDetailsComponent extends Component
       $poostKey = 'eventID';
       $eid = $event->id;
       Session()->put ($poostKey , $eid);
-      return redirect()->route('event.product',['slug' => $event->slug]);
+      return redirect()->route('event.product', ['slug' => $event->slug]);
     } 
 
 
@@ -66,6 +66,11 @@ class EventDetailsComponent extends Component
     {   
        //$check = Cart::get();
         $event = Event::where('slug', $this->slug)->first();
+
+        $poostKey = 'eventID';
+        $eid = $event->id;
+        Session()->put ($poostKey , $eid);
+
         $postKey = 'post_'.$event->id;
         if(!Session()->has($postKey))
         {
