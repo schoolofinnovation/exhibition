@@ -1832,7 +1832,7 @@
                       </div>  
 
                       <div>
-                        @if($category->count() = 0)
+                        @if($category->count() == 0)
                           no category
                         @else
                           @foreach($category as $cat)

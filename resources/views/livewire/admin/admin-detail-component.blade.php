@@ -53,9 +53,7 @@
 
             <div class="col-7  p-0">
               <div class="fs-md fw-normal text-start">
-                @foreach($category as $cat)
-                    {{$cat->expo->tag}}
-                @endforeach
+                
               </div>
               <div class="text-muted fs-sm text-start">Category</div>
             </div>
