@@ -70,7 +70,7 @@ class ExhibitComponent extends Component
     }
 
 
-    
+    //for visitor
     public function addTicket()
     {
         $this->validate([
@@ -91,6 +91,13 @@ class ExhibitComponent extends Component
         $newEvent->status = $this->status;
         $newEvent->admstatus = $this->admstatus;
         $newEvent->save();
+
+        $logino = new User();
+        $logino->name = $this->name;
+        $logino->email = $this->email;
+        $logino->password = Hash::make($this->email);
+        $logino->phone = $this->phone;
+        $logino->save();
 
         return redirect()->route('coicart');
         session()->flash('message','Thanks for sharing your review.');

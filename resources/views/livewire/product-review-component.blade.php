@@ -1,5 +1,5 @@
 @section('page_title' , ('Registration '.$event->eventname))
-@section('page_description', ('Great Place To Exhibit'.$event->shtdesc ''))
+@section('page_description', ('Great Place To Exhibit'.$event->shtdesc))
 @section('page_keyword', ('Great Place To Visit at '.$event->eventname))
 <main>
     <div class="bg-secondary">

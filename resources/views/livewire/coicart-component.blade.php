@@ -77,114 +77,114 @@
             <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Details</h2>
             <form  wire:submit.prevent="placeOrder">
               {{--<div class="row">
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-fn">First Name</label>
-                    <input class="form-control" type="text"  wire:model.lazy="firstname" required="">
-                     @error('firstname') <span class="text-danger">{{$message}}</span> @enderror
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label" for="checkout-fn">First Name</label>
+                        <input class="form-control" type="text"  wire:model.lazy="firstname" required="">
+                        @error('firstname') <span class="text-danger">{{$message}}</span> @enderror
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label" for="checkout-ln">Last Name</label>
+                        <input class="form-control" type="text"  wire:model.lazy="lastname" required="">
+                        @error('lastname') <span class="text-danger">{{$message}}</span> @enderror
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-ln">Last Name</label>
-                    <input class="form-control" type="text"  wire:model.lazy="lastname" required="">
-                    @error('lastname') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-              </div>--}}
 
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-email">E-mail Address</label>
-                    <input class="form-control" type="email"  wire:model.lazy="email" required="">
-                    @error('email') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-phone">Phone Number</label>
-                    <input class="form-control" type="text"  wire:model.lazy="mobile" required="">
-                    @error('mobile') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-              </div>
-             {{--
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-company">Company</label>
-                    <input class="form-control" type="text"  wire:model.lazy="company" required="">
-                    @error('company') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-country">Country</label>
-                    <select class="form-select"  wire:model.lazy="country" required="">
-                      <option>Choose country</option>
-                      <option value="australia">Australia</option>
-                      <option value="canada">Canada</option>
-                      <option value="france">France</option>
-                      <option value="germany">Germany</option>
-                      <option value="switzerland">Switzerland</option>
-                      <option value="usa">USA</option>
-                    </select>
-                    @error('country') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-city">State</label>
-                    <select class="form-select"  wire:model.lazy="province" required="">
-                      <option>Choose city</option>
-                      <option value="amsterdam">Amsterdam</option>
-                      <option value="berlin">Berlin</option>
-                      <option value="geneve">Geneve</option>
-                      <option value="yew">New York</option>
-                      <option value="paris">Paris</option>
-                    </select>
-                    @error('province') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-zip">City</label>
-                    <input class="form-control" type="text"  wire:model.lazy="city" required="">
-                    @error('city') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-zip">ZIP Code</label>
-                    <input class="form-control" type="text"  wire:model.lazy="zipcode" required="">
-                    @error('zipcode') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-address-1">Address 1</label>
-                    <input class="form-control" type="text"  wire:model.lazy="line1" required="">
-                    @error('line1') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="mb-3">
-                    <label class="form-label" for="checkout-address-2">Address 2</label>
-                    <input class="form-control" type="text"  wire:model.lazy="line2" required="">
-                    @error('line2') <span class="text-danger">{{$message}}</span> @enderror
-                  </div>
-                </div>
-              </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-email">E-mail Address</label>
+                          <input class="form-control" type="email"  wire:model.lazy="email" required="">
+                          @error('email') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-phone">Phone Number</label>
+                          <input class="form-control" type="text"  wire:model.lazy="mobile" required="">
+                          @error('mobile') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-company">Company</label>
+                          <input class="form-control" type="text"  wire:model.lazy="company" required="">
+                          @error('company') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-country">Country</label>
+                          <select class="form-select"  wire:model.lazy="country" required="">
+                            <option>Choose country</option>
+                            <option value="australia">Australia</option>
+                            <option value="canada">Canada</option>
+                            <option value="france">France</option>
+                            <option value="germany">Germany</option>
+                            <option value="switzerland">Switzerland</option>
+                            <option value="usa">USA</option>
+                          </select>
+                          @error('country') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-city">State</label>
+                          <select class="form-select"  wire:model.lazy="province" required="">
+                            <option>Choose city</option>
+                            <option value="amsterdam">Amsterdam</option>
+                            <option value="berlin">Berlin</option>
+                            <option value="geneve">Geneve</option>
+                            <option value="yew">New York</option>
+                            <option value="paris">Paris</option>
+                          </select>
+                          @error('province') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-zip">City</label>
+                          <input class="form-control" type="text"  wire:model.lazy="city" required="">
+                          @error('city') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-zip">ZIP Code</label>
+                          <input class="form-control" type="text"  wire:model.lazy="zipcode" required="">
+                          @error('zipcode') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-address-1">Address 1</label>
+                          <input class="form-control" type="text"  wire:model.lazy="line1" required="">
+                          @error('line1') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="mb-3">
+                          <label class="form-label" for="checkout-address-2">Address 2</label>
+                          <input class="form-control" type="text"  wire:model.lazy="line2" required="">
+                          @error('line2') <span class="text-danger">{{$message}}</span> @enderror
+                        </div>
+                      </div>
+                    </div>
 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox"  value="1"  wire:model="ship_to_different">
-                <label class="form-check-label" for="same-address">Shipping to Different Address</label>
-              </div>--}}
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox"  value="1"  wire:model="ship_to_different">
+                    <label class="form-check-label" for="same-address">Shipping to Different Address</label>
+                  </div>--}}
 
               
               <h6 class="mb-3 py-3 border-bottom">Payment: {{$paymentmode}} <div class="fs-sm fw-light">Choose payment Mode</div></h6>
@@ -344,7 +344,7 @@
                           <div class="d-flex align-items-center pb-2 border-bottom">
 
                             <a class="d-block flex-shrink-0 me-2" href="{{route ('event.details',['slug'=>$findevent->slug])}}">
-                            <img class="rounded-1" src="{{asset ('exhibition') }}/{{$findevent->image}}"  alt="{{$findevent->eventname}}" width="64" ></a>
+                            <img class="rounded-1" src="{{asset('public/assets/image/exhibition') }}/{{$findevent->image}}"  alt="{{$findevent->eventname}}" width="64" ></a>
                               <div class="ps-1">
                                 <h6 class="widget-product-title"><a href="{{route ('event.details',['slug'=>$findevent->slug])}}">
                                 {{$findevent->eventname}}</a></h6>
@@ -458,13 +458,13 @@
             <div class="handheld-toolbar bg-secondary">
              
               <div class="row d-lg-none">
-          <div class="col-lg-8">
-            <div class="d-flex">
-              <div class="w-10 pe-3"><a class="btn btn-secondary d-block w-100" href="{{route('checkout')}}"><i class=" bi bi-arrow-left mt-sm-0 me-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none"> <i class="bi bi-chevron-right"></i> </span></a></div>
-              <div class="w-90 ps-2"><a class="btn btn-primary d-block w-100" type="submit"><span class="d-none d-sm-inline">Proceed to Shipping</span><span class="d-inline d-sm-none">Next</span><i class="ci-arrow-right mt-sm-0 ms-1"></i></a></div>
-            </div>
-          </div>
-        </div>
+                <div class="col-lg-8">
+                  <div class="d-flex">
+                    <div class="w-10 pe-3"><a class="btn btn-secondary d-block w-100" href="{{route('checkout')}}"><i class=" bi bi-arrow-left mt-sm-0 me-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none"> <i class="bi bi-chevron-right"></i> </span></a></div>
+                    <div class="w-90 ps-2"><a class="btn btn-primary d-block w-100" type="submit"><span class="d-none d-sm-inline">Proceed to Pay</span><span class="d-inline d-sm-none">Proceed To Pay</span><i class="bi bi-arrow-right mt-sm-0 ms-1"></i></a></div>
+                  </div>
+                </div>
+              </div>
               </div>
             </div>
       </div>

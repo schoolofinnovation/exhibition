@@ -66,8 +66,8 @@
                     <div class="mb-3">
                       <label class="form-label fs-xs " for="recover-email">Your Name</label>
                       <input class="form-control" type="name"  wire:model.lazy="name" required="" placeholder="Enter your name">
-                      <label class="fs-xs fw-light text-muted" for="recover-email">To access the ticket(s) on other devices, Login with this E-mail</label>
-                      <div class="invalid-feedback">Please provide valid email address.</div>
+                      <label class="fs-xs fw-light text-muted" for="recover-email">Easy to Approach</label>
+                      <div class="invalid-feedback">Please provide name.</div>
                     </div>
                     <div class="mb-3">
                       <label class="form-label fs-xs " for="recover-email">Your email</label>
