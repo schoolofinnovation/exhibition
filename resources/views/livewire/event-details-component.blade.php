@@ -1474,7 +1474,7 @@
             //url
             let postUrl = encodeURI(document.location.href);
             let postTitle = encodeURI('{{$event->eventname}}');
-
+            let postIMage = encodeURI('{{$event->eventname}}');
           
            
             gmailbtn.setAttribute("href",'https://mail.gmail.com/mail/?view=cm&su=${postTitle}&body=${postUrl}');

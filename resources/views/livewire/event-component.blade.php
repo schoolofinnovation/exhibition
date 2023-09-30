@@ -356,8 +356,6 @@
       });
     </script>
 
-  
-
     <script>
       var slider = tns({
         "container": '.my-Slider7',            
