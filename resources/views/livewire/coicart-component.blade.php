@@ -37,9 +37,10 @@
                 <div class="step-label"><i class="ci-check-circle"></i>Review</div></a>
             </div>-->
 
-          <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          <!-- <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
             <h1 class="h3 text-light mb-0">Details</h1>
-          </div>
+          </div> -->
+
         </div>
       </div>
 
@@ -187,7 +188,7 @@
                   </div>--}}
 
               
-              <h6 class="mb-3 py-3 border-bottom">Payment: {{$paymentmode}} <div class="fs-sm fw-light">Choose payment Mode</div></h6>
+              {{-- <h6 class="mb-3 py-3 border-bottom">Payment: {{$paymentmode}} <div class="fs-sm fw-light">Choose payment Mode</div></h6>
 
               
               <div class="form-check">
@@ -294,7 +295,7 @@
                   
                   
                 </div>
-              @endif
+              @endif --}}
 
               @if($paymentmode == "card")
                   <!-- Payment methods accordion-->
@@ -319,6 +320,7 @@
                 
                 
               @endif
+
               <!-- Navigation (desktop)-->
               <div class="d-none d-lg-flex pt-4 mt-3">
                 <div class="w-50 pe-3"><a class="btn btn-secondary d-block w-100" href="{{route('checkout')}}">
@@ -417,7 +419,7 @@
                           @endif
 
                               <li class="d-flex justify-content-between align-items-center"><span class="me-2">Subtotal :</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['subtotal']}}</span></li>
-                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Shipping</span><span class="text-end"><small></small> Free Shipping</span></li>
+                              <!-- <li class="d-flex justify-content-between align-items-center"><span class="me-2">Shipping</span><span class="text-end"><small></small> Free Shipping</span></li> -->
                               <li class="d-flex justify-content-between align-items-center"><span class="me-2">Taxes : ({{config('cart.tax')}}%)</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['tax']}}</span></li>
                           </ul>
                         <h3 class="fw-normal text-center my-4">Rs. {{Session::get('checkout')['total']}}</h3>

@@ -63,12 +63,15 @@
                                 </div>
 
                                 <div class="col-3">
-                                  <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">
-                                  
-                                      Add
-                                  
-                                  </a>
-                                 
+                                  @if(Session::get('cart')['name'] == $edy->code)
+                                    <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">
+                                        Added
+                                    </a>
+                                  @else
+                                    <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">
+                                        Add
+                                    </a>
+                                  @endif                             
                                 </div>
 
                             </div>
