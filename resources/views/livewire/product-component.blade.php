@@ -61,17 +61,13 @@
                                   <div class="fs-xs fw-lighter lh-1">{{$edy->desc}}</div>
                                   <div class="fs-xs fw-normal"><i class="bi bi-currency-rupee"></i>{{$edy->price}}</div>
                                 </div>
-
+{{Session::get('cart')['name']}}
                                 <div class="col-3">
-                                  @if(Session::get('cart')['name'] == $edy->code)
-                                    <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">
-                                        Added
-                                    </a>
-                                  @else
+                                 
                                     <a href="" class="btn btn-sm btn-outline-primary" wire:click.prevent="store({{$edy->id}},'{{$edy->code}}',{{$edy->price}})">
                                         Add
                                     </a>
-                                  @endif                             
+                                                          
                                 </div>
 
                             </div>

@@ -75,7 +75,7 @@
             </div>--}}
 
             <!-- Shipping address-->
-            <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Details</h2>
+            <!-- <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Details</h2> -->
             <form  wire:submit.prevent="placeOrder">
               {{--<div class="row">
                     <div class="col-sm-6">
