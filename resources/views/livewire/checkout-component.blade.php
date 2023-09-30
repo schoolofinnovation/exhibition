@@ -51,8 +51,7 @@
           </section>
                     @php
                       $data = session()->get('eventID');  
-                      $findevent = DB::table('events')->where('id', $data)->first()
-
+                      $findevent = DB::table('events')->where('id', $data)->first();
                     @endphp
 
           <!-- Sidebar-->

@@ -1,6 +1,6 @@
     
     @section('page_title','Business Opportunity')
-    @section('page_description','Job')
+    @section('page_description','Great Exhibtion to Visit')
     @section('page_keywords', 'Council, Innovation, sell your business, market, expand your franchise, buy a brand licenese,  business_design, business_strategy, business_design_sprint, innovation_accelerator, product_service, go_to_market, entrepreneur_residence, strategy_sprint, creative')
     <main>     
 
@@ -407,7 +407,15 @@
 
                     @if(Session::has('checkout'))
                           <ul class="list-unstyled fs-sm pt-3 pb-2 border-bottom">   
-                              <li class="d-flex justify-content-between align-items-center"><span class="me-2">Discount : ({{session::get('coupon')['code']}}) </span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['discount']}}</span></li>
+                          @if(Session::get('checkout')['discount'] == 0)
+                              
+                          @else
+                              <li class="d-flex justify-content-between align-items-center">
+                                  <span class="me-2">Discount : ({{Session::get('coupon')['code']}}) </span>
+                                  <span class="text-end"><small>Rs.</small> {{Session::get('checkout')['discount']}}</span>
+                              </li>
+                          @endif
+
                               <li class="d-flex justify-content-between align-items-center"><span class="me-2">Subtotal :</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['subtotal']}}</span></li>
                               <li class="d-flex justify-content-between align-items-center"><span class="me-2">Shipping</span><span class="text-end"><small></small> Free Shipping</span></li>
                               <li class="d-flex justify-content-between align-items-center"><span class="me-2">Taxes : ({{config('cart.tax')}}%)</span><span class="text-end"><small>Rs.</small> {{Session::get('checkout')['tax']}}</span></li>

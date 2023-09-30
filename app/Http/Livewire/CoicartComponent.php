@@ -280,12 +280,13 @@ class CoicartComponent extends Component
 
     public function verifyForCheckout()
     {
-        if(!Auth::check())
-        {
-            return redirect()->route('login');
-        }
-
-        elseif ($this->thankyou)
+        // if(!Auth::check())
+        // {
+        //     return redirect()->route('login');
+        // }
+        // else
+        
+        if ($this->thankyou)
         {
             return redirect()->route('thankyou');
         }
@@ -298,8 +299,8 @@ class CoicartComponent extends Component
 
     public function render()
     {
-        $data = session()->all();
-        dd($data);
+        //$data = session()->all();
+        //dd($data);
         $this->verifyForCheckout();
         return view('livewire.coicart-component')->layout('layouts.eblog');
     }
