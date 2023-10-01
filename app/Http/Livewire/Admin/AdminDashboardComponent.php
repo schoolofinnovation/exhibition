@@ -181,6 +181,14 @@ public $brand_id;
       session()->flash('message',' Status Successfully Changed');
     } 
 
+
+    public function DeleteCallingStatus($id)
+    {
+      $opTios = Lead::find($id);
+      $opTios->delete();
+    }
+
+
     public function optioDelete($id)
     {   $opTio = Optio::find($id);
         $opTio->delete();

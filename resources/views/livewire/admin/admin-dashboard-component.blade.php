@@ -1875,7 +1875,12 @@
                 </div>
 
                 <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="">
+                  <div class="fs-md fw-normal text-start">
+                    <a class="text-dark" href="">
+                      {{$evento->name}}</a></div>
+
+                      <div class="fs-md fw-normal text-start">
+                    <a class="text-dark" href="">
                       {{$evento->phone}}</a></div>
                   <div class="text-muted fs-sm text-start">
                       {{$evento->email}} <br>
@@ -1912,6 +1917,7 @@
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'callback')">callback</a></li>
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'ringing')">Ringing</a></li>
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'Not')">Not</a></li>
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="DeleteCallingStatus({{$evento->id}})">Delete</a></li>
                       </ul>
 
                     </span>
