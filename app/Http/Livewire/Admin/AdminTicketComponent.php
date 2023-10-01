@@ -179,8 +179,10 @@ class AdminTicketComponent extends Component
 
         $ticketsfeatured = Ticket::where('admstatus','1')->where('status','0')->where('type','featured')->orderBy('updated_at','DESC')->get();
         $ticketssponsored = Ticket::where('admstatus','1')->where('status','0')->where('type','sponsored')->orderBy('updated_at','DESC')->get();
+       
         $ticketsBasic = Ticket::where('admstatus','1')->where('status','0')->where('type','basic')->orderBy('id','DESC')->get();
         $ticketsActive = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $evento->id)->orderBy('saleprice','DESC')->get();
+        
         $ticketsDeactive = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $evento->id)->where('expiry_date', $todaydate)->where('expiry_time', $timerty)->get();
 
         

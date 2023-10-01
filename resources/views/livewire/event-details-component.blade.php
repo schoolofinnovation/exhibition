@@ -22,7 +22,7 @@
                     
                       <div class="col-lg-3 col-md-6 col-sm-8 px-1 d-none d-sm-block">
                           <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
-                              <img src="{{url('assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
+                              <img src="{{url('public/assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
                           </a>
                       </div>
 
@@ -326,28 +326,28 @@
             <div class="container d-none d-sm-block">
               <ul class="list-unstyled fs-sm  py-4">     
                 <li class="d-flex justify-content-between p-0 m-0">
-                
-                    <span> <span class="badge bg-primary">{{$event->edition}}th</span>
-                      <span class="h3"> {{$event->eventname}}</span> <br>
-                      @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
-                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
-                      @else
-                        {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M, Y')}}
-                      @endif 
-                      
-                      <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}} 
-                    </span>
-
+                    <span class="col bg-light mb-0">
+                      <span class="badge bg-primary mt-0">{{$event->edition}}th</span>
+                        <h3 class="mb-0">{{$event->eventname}}</h3>
+                          
+                          @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                            {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
+                          @else
+                            {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M, Y')}}
+                          @endif 
+                          
+                          <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}
+                      </span>
                     <span>
-                    @if( $event->businessrevenue == 'visitor' )       
-                        @if( $ticketOrExhibit != 0 )
-                          <a class="btn btn-primary btn-sm" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
-                            @elseif( $ticketOrExhibit == 0 )
-                          <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                        @if( $event->businessrevenue == 'visitor' )       
+                            @if( $ticketOrExhibit != 0 )
+                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
+                                @elseif( $ticketOrExhibit == 0 )
+                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                            @endif
+                          @else
+                            <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
                         @endif
-                      @else
-                        <a class="btn btn-primary btn-sm" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
-                    @endif
                     </span>
                   
                     
@@ -357,6 +357,49 @@
                   {{($event->shortdesc)}} | @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
                 </li>
               </ul>
+
+              <!-- <ul class="list-unstyled fs-sm  py-4">     
+                <li class="d-flex justify-content-between p-0 m-0">
+                <div class="col-lg-3 col-md-4 col-sm-4 bg-secondary">
+                  <span class="badge bg-primary mt-0">Participate</span>
+                  <span class="h3"> Professional Beauty Mumbai</span>
+                    <div class="row">
+                      <div>
+                        
+                      </div>
+                        
+                    </div>
+
+                    
+                    
+
+                     
+                    
+                </div>
+                
+                
+                
+                    <span> 
+                      
+                    <span class="badge bg-primary"> th</span>
+
+                      <span class="h3"> Professional Beauty Mumbai</span> <br>
+                                              Mon, 02  - Tue, 03 Oct, 2023
+                       
+                      
+                      <i class="bi bi-geo-alt-fill"></i> Bombay Exhibition Centre, NESCO, Mumbai,  India 
+                    </span>
+                
+                    <span>
+                                            <a class="btn btn-primary btn-sm" type="button" href="http://127.0.0.1:8000/exhibit/business"> Book your Space </a>
+                                        </span>
+                  
+                    
+                </li>
+                <li><hr class="mt-md-2 mb-2"></li>
+                <li class="p1 fw-light">
+                   |  | 1 days | Rs. 700.00 Onwards                 </li>
+              </ul> -->
             </div> 
 
             <!--share hidden-->
@@ -547,7 +590,7 @@
                       </ul>
                 
                   <h5 class="mb-3">Understanding Expo</h5>
-                  <p class="fs-sm mb-3 mb-lg-4 pb-2">{{$event->desc}}</p>
+                  <p class="fs-sm mb-3 mb-lg-4 pb-2">{{$event->shtdesc}}</p>
                   <span class="badge rounded-pill bg-primary">Participants</span>
                   <h5 class="mb-3">Pavillion</h5>
 
@@ -571,67 +614,67 @@
                         </div>
                         
                         <div class="row">
-                        <!-- Card -->
-                        <div class=" col-4 card border-0 px-0 hover-overlay shadow-1-strong">
-                          <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
-                          <div class="mask text-light">
-                            <h5 class="card-title">Special Pavillions</h5>
-                            <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                          <!-- Card -->
+                          <div class=" col-4 card border-0 px-0 hover-overlay shadow-1-strong">
+                            <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
+                            <div class="mask text-light">
+                              <h5 class="card-title">Special Pavillions</h5>
+                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                            </div>
                           </div>
-                        </div>
 
-                        <!-- Card -->
-                        <div class="col-4 card border-0 px-0">
-                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                          <div class="card-body">
-                            <h5 class="card-title">Country Pavillions</h5>
-                            <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                          <!-- Card -->
+                          <div class="col-4 card border-0 px-0">
+                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Country Pavillions</h5>
+                              <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
+                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                            </div>
                           </div>
-                        </div>
 
-                        <!-- Card -->
-                        <div class="col-4 card border-0 px-0">
-                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                          <div class="card-body">
-                            <h5 class="card-title">Partner Pavillions</h5>
-                            <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                          <!-- Card -->
+                          <div class="col-4 card border-0 px-0">
+                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Partner Pavillions</h5>
+                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                            </div>
                           </div>
-                        </div>
                     
                       
 
-                        <!-- Card -->
-                        <div class="col-4 card border-0 px-0">
-                          <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
-                          <div class="card-body">
-                            <h5 class="card-title">Organisations Pavillions</h5>
-                            <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                          <!-- Card -->
+                          <div class="col-4 card border-0 px-0">
+                            <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Organisations Pavillions</h5>
+                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                            </div>
                           </div>
-                        </div>
 
-                        <!-- Card -->
-                        <div class="col-4 card border-0 px-0">
-                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                          <div class="card-body">
-                            <h5 class="card-title">Country Pavillions</h5>
-                            <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                          <!-- Card -->
+                          <div class="col-4 card border-0 px-0">
+                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Country Pavillions</h5>
+                              <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
+                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                            </div>
                           </div>
-                        </div>
 
-                        <!-- Card -->
-                        <div class="col-4 card border-0 px-0">
-                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                          <div class="card-body">
-                            <h5 class="card-title">Partner Pavillions</h5>
-                            <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                          <!-- Card -->
+                          <div class="col-4 card border-0 px-0">
+                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Partner Pavillions</h5>
+                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                            </div>
                           </div>
-                        </div>
                     </div>
 
 
