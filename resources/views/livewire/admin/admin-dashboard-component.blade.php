@@ -1833,10 +1833,19 @@
 
                       <div>
                         @if($category->count() == 0)
-                          no category
+                       
+                            <a href="{{route('admin.editcategories',['event_id' => $evento->id])}}" class="badge bg-primary mt-0">
+                              no category</a>
+                        
                         @else
                           @foreach($category as $cat)
-                              {{$cat->expo->tag}}
+                             
+                              @php
+                                  $categ = DB::table('expos')->where('id', $cat->expo_id)->get();
+                              @endphp
+                              @foreach($categ as $ficateg)
+                              <span class="badge bg-primary mt-0">{{$ficateg->tag}}</span>
+                              @endforeach
                           @endforeach
                         @endif
                      </div>
