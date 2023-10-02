@@ -93,7 +93,7 @@ class AdminTicketComponent extends Component
         $newTicket->status = $this->status;
         $newTicket->admstatus = $this->admstatus;
          
-        dd($newTicket->desc);
+        //dd($newTicket->desc);
         
         $newTicket->save();
         
@@ -151,7 +151,7 @@ class AdminTicketComponent extends Component
     {
         $string = ' xyz ';
         $testing = Str ::trim ($string);
-        dd($testing);
+        //dd($testing);
     }
 
 

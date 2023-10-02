@@ -1599,10 +1599,10 @@
 
       @if($board == 'viewso')
 
-        <div class="d-table table-layout-fixed w-100"> 
+          <div class="d-table table-layout-fixed w-100"> 
   
           {{--<div>{{$descRankingViews->pluck('view_count')->sum()}} T.Views</div>
-          <div>R.Event/{{$descRankingViews->count()}}T.event</div>--}}
+                <div>R.Event/{{$descRankingViews->count()}}T.event</div>--}}
                   <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" 
                   href="{{route('admin.dashboard',['board' => 'event'])}}">
                     <span class="handheld-toolbar-icon">
@@ -1623,9 +1623,6 @@
                   </a>
           </div>
        
-          
-
-          
             @foreach( $upcomingViews as $franchise)
                 <div class="container">
                         
@@ -1752,8 +1749,6 @@
 
                 </div>
             @endforeach
-
-         
 
             @foreach( $descRankingViews as $franchise)
                 <div class="container">
@@ -2042,7 +2037,53 @@
                 @endforeach
       @endif
 
-      
+      @if($board == 'ticketPlan')
+         <div class="container">
+           
+            @foreach($ticket as $franchise )
+                <div class="container  ">
+                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                        <div class="col  pr-0">
+                           
+                              <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->start_date)->format('d')}}</div> 
+                              <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->start_date)->format('M')}} </div>
+                          
+                            
+                            <div class="round-circle">
+                              <i class="bi bi-bookmark"></i>
+                            </div> 
+                        </div>
+
+                        <div class="col-7  p-0">
+                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                            {{ucwords(trans(Str::limit($franchise->package, 100)))}}</a></div>
+                        <div class="text-muted fs-sm text-start">
+                            @if(Carbon\Carbon::parse ($franchise->start_date)->format('M') != Carbon\Carbon::parse ($franchise->expiry_date)->format('M'))
+                            {{Carbon\Carbon::parse ($franchise->start_date)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->expiry_date)->format('D, d M')}}
+                            @else
+                            {{Carbon\Carbon::parse ($franchise->start_date)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->expiry_date)->format('D, d M')}}
+                            @endif 
+                        </div>  
+                        <div class="text-muted fs-sm text-start">{{$franchise->type}}</div>
+                        </div>
+
+                        <div class="col-3  p-0">
+                          
+
+                            <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                              <ul class="dropdown-menu" width="auto">
+                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Active</a></li>    
+                                <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">DeActive</a></li>
+                              </ul>
+                            </span>
+                            </div>
+                    </div>
+                </div>
+            @endforeach
+
+         </div>
+      @endif
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">

@@ -87,6 +87,12 @@
                         </a> 
                     </div>
 
+                    <div class="col">
+                        <a  href="{{route('admin.dashboard', ['board' => 'ticketPlan'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Plan</div>
+                        </a> 
+                    </div>
+
                     
                 </div>
             </div>
