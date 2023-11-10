@@ -97,10 +97,8 @@ Main START -->
 					{{$mag -> s_desc}}
 				</p>
 			
-				@php
-				 $mago = json_decode ($mag->desc)
-				@endphp
-					@foreach($mago as $graph)
+				
+					@foreach(json_decode ($mag->desc) as $graph)
 						<p>{{$graph}}</p>
 					@endforeach
 				

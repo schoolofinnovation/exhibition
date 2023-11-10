@@ -6,7 +6,7 @@
                 <div class="row row-cols-2 row-cols-lg-6 gy-2 gx-3 g-lg-3">
                     <div class="col">
                         <a  href="{{route('admin.dashboard', ['board' => 'event'])}}">
-                           <div class="p-3 border rounded border-dark bg-light text-center"> {{$eventd->count()}}Event</div>
+                           <div class="p-3 border rounded border-dark bg-light text-center"> {{$eventd->count()}} Event</div>
                         </a> 
                     </div>
                     <div class="col">

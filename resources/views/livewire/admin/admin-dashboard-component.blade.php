@@ -1888,10 +1888,12 @@
                   
                       <div class="p fw-light mb-0">{{$evento->type}}</div> 
                       <div class="small text-muted">{{$evento->id}}</div>
-                    
-                   
-                        <div class="round-circle">1</div> 
-                
+                    @php
+                        $eventName = DB::table('events')->where('id', $evento->event_id)->pluck('eventname');
+                    @endphp
+                     @foreach($eventName as $evet)
+                     {{$evet}}
+                     @endforeach
                     
                 </div>
 
