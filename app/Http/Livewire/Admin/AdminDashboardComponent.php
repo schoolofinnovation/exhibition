@@ -559,7 +559,7 @@ public $brand_id;
       //total event
       $events = Event::count();
   
-      $monthwise = Event::whereYear('startdate', '2023' )->where('status','1')->where('admstatus','1')->whereMonth('startdate', $this->month)->orderBy('startdate','ASC')->get();
+      $monthwise = Event::where('status','1')->where('admstatus','1')->whereMonth('startdate', $this->month)->orderBy('startdate','ASC')->get();
       
       $mythreemonth = Carbon::now()->addDays(90)->format("Y-m-d");
 
