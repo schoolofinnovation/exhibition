@@ -575,7 +575,7 @@ public $brand_id;
       $searchCat = Event::Where('eventname','LIKE', $searchTerm)->where('status','1')->orderBy('eventname','ASC')->get();
       $searchId = Event::Where('id','LIKE', $findID)->where('status','1')->orderBy('eventname','ASC')->get();
      
-      $blogfindo = Mag::orderBy('created_at','desc')->get();
+      $blogfindo = Mag::orderBy('updated_at','desc')->get();
 
       $findInspection = Event::where('inspection','1')->get();
 

@@ -42,8 +42,10 @@ class AdminBlogComponent extends Component
         $blog = new Mag();
         $blog->tittle = $this->tittle;
         $blog->slug = $this->slug;
-        $blogdesc = explode(",,",$this->desc);
+
+        $blogdesc = explode("  ",$this->desc);
         $blog->desc = json_encode($blogdesc);
+
         $blog->s_desc = $this->s_desc;
         $blog->user_id = Auth::user()->id;
         $blog->type = $this->type;

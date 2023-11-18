@@ -392,7 +392,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
   
     //blog
     //post all new  post
-    Route::get('/admin/blog/{blog_id}/update/{board}', BlogDashboardComponent::class)->name('admin.blogdashboard');
+    Route::get('/admin/blog/{blog_id}/update/{board}', ad::class)->name('admin.blogdashboard');
     //using for Add
     Route::get('/admin/blog/add/business/{board}', AdminBlogComponent::class)->name('admin.blogpost');
 
