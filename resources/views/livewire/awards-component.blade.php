@@ -6,12 +6,17 @@
     @if($board == 'add-your-event')
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">
-                <p>Find your Event</p>
+                <p class="bold">Find your Event <br>
+                    <span class="small lh-0"> Plan your upcoming right place to approch right people at right time</span></p>
+                
 
                 <div class="col-lg-8 col-sm-7">
                 <input type="text" class="form-control" placeholder="Search your Event..." wire:model.lazy="searchTerm">
+
+                <button class="btn btn-primary form-control mt-1" type="submit"> Search</button>
+                <!-- <div class="col-lg-4 col-sm-5"><a  class="btn btn-primary">Search</a></div> -->
                 </div>
-                <div class="col-lg-4 col-sm-5"><a  class="btn btn-primary">Search</a></div>
+                
             </div>
         </div>
     

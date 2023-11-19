@@ -3,7 +3,8 @@
 @section('page_keyword', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers.  Manage, sell event tickets and promote your event on exhbition.org.in, exhibition')
 
 <main>    
-          <section class="container bg-faded-info py-5 mt-0">
+  <!--bg-faded-info-->
+          <section class="container  py-5 mt-0">
             <div class=" rounded-3 py-5" >
               <div class="row align-items-center ">
 
@@ -16,7 +17,7 @@
                       {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
                         <div class="mb-1 display-1"> Great starts here.</div>
                         <p class=" fw-light lh-1 mt-5">Join our movement to Make India a Great Place To Business</p>
-                        <a class="btn btn-outline-primary mt-2" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Connect Us<i class="bi bi-chevron-right fs-ms ms-1"></i></a>
+                        <a class="btn btn-outline-primary mt-2" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Search Right Place<i class="bi bi-chevron-right fs-ms ms-1"></i></a>
 
                       </div>
 
