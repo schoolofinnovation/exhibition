@@ -7,7 +7,7 @@
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">
                 <p class="bold">Find your Event <br>
-                    <span class="small lh-0"> Plan your upcoming right place to approch right people at right time</span></p>
+                    <span class="small lh-1"> Plan your upcoming right place to approch right people at right time</span></p>
                 
 
                 <div class="col-lg-8 col-sm-7">
