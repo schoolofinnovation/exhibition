@@ -525,14 +525,14 @@
                     
           
                     <div class="col">
-                        <a  href="#" class="p-3 border rounded border-dark bg-light text-center" value="expand" wire:model="expand">
+                        <a  href="#" class="p-3 border rounded border-dark bg-light text-center" value="expand" wire:model.lazy="expand">
                           Expand your Business
                         </a> 
                     </div>
 
                     
                     <div class="col">
-                        <a  href="#" class="p-3 border rounded border-dark bg-light text-center" value="hire" wire:model="expand">
+                        <a  href="#" class="p-3 border rounded border-dark bg-light text-center" value="hire" wire:model.lazy="expand">
                            Hire us Media Buying
                         </a> 
                     </div>
@@ -1151,8 +1151,8 @@
 
     <div class="container mb-5">
       <div class="row">  
-        <a href="http://" class="">Done</a>
-        <a href="http://" class="">Export</a>
+        <a href="http://" class=" col fs-xs text-left">Done</a>
+        <a href="{{route('user.dashboard', ['board' => 'edit'])}}" class=" col fs-xs text-right">Edit</a>
       </div>  
     
       <div class="text-center">
@@ -1160,27 +1160,27 @@
         <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
         <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
         <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
-          <i class="ci-twitter"></i>
+          <i class="bi bi-twitter"></i>
         </a>
         <a href="#" class="btn-social bs-messenger bs-outline bs-sm">
-          <i class="ci-messenger"></i>
+          <i class="bi bi-messenger"></i>
         </a>
         <a href="#" class="btn-social bs-pinterest bs-outline bs-sm">
-          <i class="ci-pinterest"></i>
+          <i class="bi bi-pinterest"></i>
         </a>
         <a href="#" class="btn-social bs-linkedin bs-outline bs-sm">
-          <i class="ci-linkedin"></i>
+          <i class="bi bi-linkedin"></i>
         </a>
       </div>
 
       <div class="row my-3 ">
-        <div class=" col fs-xs text-center">mobile</div>
-        <div class=" col fs-xs text-center">call</div>
-        <div class=" col fs-xs text-center">whats App</div>
-        <div class=" col fs-xs text-center">mail</div>
+        <div class=" col fs-xs text-center"><i class="bi bi-mobile"></i>mobile</div>
+        <div class=" col fs-xs text-center"> <i class="bi bi-call"></i> call</div>
+        <div class=" col fs-xs text-center"> <i class="bi bi-whatsApp"></i> whatsApp</div>
+        <div class=" col fs-xs text-center"> <i class="bi bi-mail"></i> mail</div>
       </div>
 
-      <div class="card ">
+      <div class="card">
         <div class="card-body">
           <ul class="list-unstyled mb-0">
             <li class="d-flex pb-3 border-bottom">
@@ -1209,23 +1209,25 @@
       </div>
       
     </div>
-    <div class="container mb-5">
-      <form wire:submit.prevent="userDetail">
-        <input type="text" class="form-control mb-1" wire:model="name" placeholder="name">
-        <input type="text" class="form-control mb-1" wire:model="designation" placeholder="designation">
-        <input type="text" class="form-control mb-1" wire:model="organisation" placeholder="organisation">
-        <input type="text" class="form-control mb-1" wire:model="gst" placeholder="gst">
-        <input type="text" class="form-control mb-1" wire:model="address" placeholder="address">
-        <input type="text" class="form-control mb-1" wire:model="email" placeholder="email">
-        <input type="text" class="form-control mb-1" wire:model="phone" placeholder="phone">
-        <button type="submit" class="form-control btn btn-primary">Submit</button>
-      </form>
-    </div>
   @endif
-
+  
+  @if( $board == 'edit')
+      <div class="container my-5">
+        <form wire:submit.prevent="userDetail">
+          <input type="text" class="form-control mb-1" wire:model="name" placeholder="name">
+          <input type="text" class="form-control mb-1" wire:model="designation" placeholder="designation">
+          <input type="text" class="form-control mb-1" wire:model="organisation" placeholder="organisation">
+          <input type="text" class="form-control mb-1" wire:model="gst" placeholder="gst">
+          <input type="text" class="form-control mb-1" wire:model="address" placeholder="address">
+          <input type="text" class="form-control mb-1" wire:model="email" placeholder="email">
+          <input type="text" class="form-control mb-1" wire:model="phone" placeholder="phone">
+          <button type="submit" class="mb-5 form-control btn btn-primary">Submit</button>
+        </form>
+      </div>
+    @endif
   @if($board == 'SaveContact')
    
-  <div class=" container text-center mt-4">
+    <div class=" container text-center mt-4">
       <img src="path-to-image" class="d-inline-block rounded-circle mb-3" width="96" alt="Amanda Gallaher">
       <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
       <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>

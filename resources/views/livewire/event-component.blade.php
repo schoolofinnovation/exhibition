@@ -251,6 +251,8 @@
         <!--Trending conference-->
           @livewire('conference-component')
 
+          @livewire('trending-dealer-distribution-component')
+          
         <!--Trending Magazine-->
           @livewire('trending-magazine-component')
        
