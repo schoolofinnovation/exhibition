@@ -152,6 +152,7 @@ use App\Http\Livewire\Admin\AdminQuestionComponent;
 use App\Http\Livewire\Admin\MagazineUpgradingComponent;
 use App\Http\Livewire\AwardsComponent;
 use App\Http\Livewire\ContractFromComponent;
+use App\Http\Livewire\EventSearchComponent;
 use App\Http\Livewire\ExhibitionTimeComponent;
 use App\Http\Livewire\GiftBirthdayComponent;
 use App\Http\Livewire\GiftDateComponent;
@@ -220,6 +221,8 @@ Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
 Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
 Route::get('/{slug}/reviews', AwardComponent::class)->name('business.award');
 
+
+
 //magazine Detail
 Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazine');
 
@@ -227,7 +230,20 @@ Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazin
 Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
 Route::get('/schedule/{eventype}/{time}', ExhibitionTimeComponent::class)->name('coi.exhibitiontime');
 
-Route::get('/exhibition/{eventype}/{categry}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
+Route::get('/upcoming/{eventype}/{categry}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
+
+
+//as per upcoming venue 
+Route::get('/upcoming/{venue}', EventSearchComponent::class)->name('search.venue');
+
+//as per upcoming country
+Route::get('/upcoming/{country}', EventSearchComponent::class)->name('search.country');
+
+//as per upcoming location
+Route::get('/upcoming/{state}', EventSearchComponent::class)->name('search.state');
+
+
+
 
 Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
 Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');

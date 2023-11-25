@@ -24,6 +24,7 @@
          $findSlug = $findupdated->pluck('slug');
          $findSl = $findupdated->pluck('updated_at');
       @endphp
+      
       @foreach ($findupdated as $sitemapo)
       <url>
          <loc>{{url('/exhibition/expo/'.$sitemapo->slug)}}</loc>
