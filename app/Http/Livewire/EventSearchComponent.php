@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class EventSearchComponent extends Component
@@ -22,6 +23,7 @@ class EventSearchComponent extends Component
     {
         $searchVenue = Event::where('city', $this->venue)->get();
 
+        $mytime = Carbon::now();
         // if($this->sorting =='date'){
         //     $franchises = Event::orderBy('created_at','DESC')->paginate($this->pagesize); 
         // }
@@ -35,6 +37,6 @@ class EventSearchComponent extends Component
         //     $franchises = Event::paginate($this->pagesize); 
         // }
         //dd($searchVenue);
-        return view('livewire.event-search-component',['searchVenue' => $searchVenue]);
+        return view('livewire.event-search-component',['searchVenue' => $searchVenue, 'mytime' => $mytime])->layout('layouts.eblog');
     }
 }
