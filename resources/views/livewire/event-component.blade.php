@@ -436,11 +436,7 @@
         "autoplayButtonOutput":false
       });
     </script>
-
-   
     
-    
-
     <script>
       var slider = tns({
         "container": '.tagse',            
@@ -467,10 +463,4 @@
       });
     </script>
 
-   
-    
-  
-    
-    
-   
 @endpush

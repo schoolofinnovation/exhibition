@@ -12,12 +12,15 @@ class EventSearchComponent extends Component
     public $city;
     public $country;
 
-    public function mount()
+    public function mount($venue)
     {
-        $this->venue = 'delhi';
+        $this->venue = $venue;
         $this->city = 'delhi';
         $this->country = 'india';
     }
+
+
+   
 
     public function render()
     {
