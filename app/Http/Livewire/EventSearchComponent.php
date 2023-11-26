@@ -21,7 +21,8 @@ class EventSearchComponent extends Component
 
     public function render()
     {
-        $searchVenue = Event::where('city', $this->venue)->where('status', '1')->where('admstatus', '1')->get();
+        $mytime = Carbon::now();
+        $searchVenue = Event::where('enddate', '<', $mytime)->where('city', $this->venue)->where('status', '1')->where('admstatus', '1')->orderBy('startdate','desc')->get();
 
         $mytime = Carbon::now();
         // if($this->sorting =='date'){
@@ -36,7 +37,7 @@ class EventSearchComponent extends Component
         // else{
         //     $franchises = Event::paginate($this->pagesize); 
         // }
-        //dd($searchVenue);
+        dd($mytime);
         return view('livewire.event-search-component',['searchVenue' => $searchVenue, 'mytime' => $mytime])->layout('layouts.eblog');
     }
 }
