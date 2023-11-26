@@ -37,7 +37,7 @@ class EventSearchComponent extends Component
         // else{
         //     $franchises = Event::paginate($this->pagesize); 
         // }
-        dd($mytime);
+        //dd($mytime);
         return view('livewire.event-search-component',['searchVenue' => $searchVenue, 'mytime' => $mytime])->layout('layouts.eblog');
     }
 }
