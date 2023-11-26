@@ -21,7 +21,7 @@ class EventSearchComponent extends Component
 
     public function render()
     {
-        $searchVenue = Event::where('city', $this->venue)->get();
+        $searchVenue = Event::where('city', $this->venue)->where('status', '1')->where('admstatus', '1')->get();
 
         $mytime = Carbon::now();
         // if($this->sorting =='date'){
