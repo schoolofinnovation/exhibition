@@ -75,13 +75,7 @@
 
                                           @endif 
                                           @php 
-                                            $from = DateTime::createFromFormat('Y-m-d', ($franchise->startdate));
-                                            $to = DateTime::createFromFormat('Y-m-d', ($franchise->enddate));
-                                            $name = $franchise->eventname;
-                                            $venue = $franchise->venue;
-                                            $city = $franchise->city;
-                                            $country = $franchise->country;
-                                            $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                            
                                             
                                           @endphp
                                             
@@ -120,13 +114,7 @@
 
                                           @endif 
                                           @php 
-                                            $from = DateTime::createFromFormat('Y-m-d', ($franchise->startdate));
-                                            $to = DateTime::createFromFormat('Y-m-d', ($franchise->enddate));
-                                            $name = $franchise->eventname;
-                                            $venue = $franchise->venue;
-                                            $city = $franchise->city;
-                                            $country = $franchise->country;
-                                            $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                            
                                             
                                           @endphp
                                             
@@ -165,13 +153,7 @@
 
                                           @endif 
                                           @php 
-                                            $from = DateTime::createFromFormat('Y-m-d', ($franchise->startdate));
-                                            $to = DateTime::createFromFormat('Y-m-d', ($franchise->enddate));
-                                            $name = $franchise->eventname;
-                                            $venue = $franchise->venue;
-                                            $city = $franchise->city;
-                                            $country = $franchise->country;
-                                            $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                            
                                             
                                           @endphp
                                             
@@ -210,13 +192,7 @@
 
                                           @endif 
                                           @php 
-                                            $from = DateTime::createFromFormat('Y-m-d', ($franchise->startdate));
-                                            $to = DateTime::createFromFormat('Y-m-d', ($franchise->enddate));
-                                            $name = $franchise->eventname;
-                                            $venue = $franchise->venue;
-                                            $city = $franchise->city;
-                                            $country = $franchise->country;
-                                            $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                            
                                             
                                           @endphp
                                             
@@ -255,13 +231,7 @@
 
                                           @endif 
                                           @php 
-                                            $from = DateTime::createFromFormat('Y-m-d', ($franchise->startdate));
-                                            $to = DateTime::createFromFormat('Y-m-d', ($franchise->enddate));
-                                            $name = $franchise->eventname;
-                                            $venue = $franchise->venue;
-                                            $city = $franchise->city;
-                                            $country = $franchise->country;
-                                            $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                            
                                             
                                           @endphp
                                             
@@ -304,13 +274,7 @@
 
                                           @endif 
                                           @php 
-                                            $from = DateTime::createFromFormat('Y-m-d', ($franchise->startdate));
-                                            $to = DateTime::createFromFormat('Y-m-d', ($franchise->enddate));
-                                            $name = $franchise->eventname;
-                                            $venue = $franchise->venue;
-                                            $city = $franchise->city;
-                                            $country = $franchise->country;
-                                            $link = Link::create($name, $from , $to)->description($name)->address($venue, $city, $country);
+                                            
                                             
                                           @endphp
                                             
