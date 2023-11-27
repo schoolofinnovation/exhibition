@@ -464,6 +464,60 @@ public $brand_id;
        }
     }
 
+    public function CreateAutoDesc($id)
+    {  
+
+       $eventShtdesc = Event::find($id);
+    foreach($eventShtdesc as $updatco)
+      {
+
+        $statementID = Event::find($updatco->id);
+        
+        $statementEventName = trim($statementID->eventname); 
+        $statementEventVenue = trim($statementID->venue); 
+        $statementEventCity = trim($statementID->city); 
+        $statementEventType= trim($statementID->eventype); 
+        $statementEventTagline = trim($statementID->tagline); 
+        $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)->format('D,d M Y')); 
+        $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('D,d M Y'));
+        
+        $findCategory = Denco::where('event_id', $statementID)->get();
+        $getCategory = trim($findCategory->expo->tag);
+
+    
+        $mytime = Carbon::today()->format("Y-m-d");
+        $mymonth = Carbon::now()->addDays(30)->format("m");
+
+         //three months prior
+         //$during =  'Join us at upcoming [exhibtion_type] [Exhibition Title], held from [Exhibtion start date] to [Exhibition End Date] at [Exhibtiion Venue]. Get your ticket now and be a part of the [tag] industry event.';
+
+         //post Expo timer with dates
+         //$end =  'Download business directory exhibition and find reference for expand your business. Share your reviews and rate your experience.';
+
+         //post Expo timer with dates $statementEventName.''.$statementEventName 'public/exhibition/'.$eventoi->image
+         $start = 'The '. $statementEventTagline. 'premier Great Place to Exhibit certify ' .$statementEventType.' for ' .$getCategory.' industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your registration now and be a part of the industry event.';
+         
+         //$visited = User::find($id);
+          $statementID = Event::find($updatco->id);
+          $statementID->shtdesc = $start;
+          $statementID->save();
+
+     //  if($mytime < $statementEventStartDate )
+     //   {
+     //     $rti = Str::replace('exhibtion_type','$statementEventType', $start);
+     //   }
+     //   elseif ($mytime < $statementEventStartDate )
+     //   {
+     //     $rti = Str::replace(' ','', $during);
+     //   }
+     //   elseif ($mytime > $statementEventEndDate )
+     //   {
+     //     $rti = Str::replace(' ','', $end);
+     //   }
+      
+      }
+    }
+
     //dd($rti);
 
     public function del($id)
@@ -582,7 +636,6 @@ public $brand_id;
       //category_dashboard
 
       $categ = Expo::where('admstatus', '1')->paginate(5);
-
       $nEwComment = Comment::orderBy('created_at', 'desc')->get();
 
       //magazine
@@ -591,8 +644,6 @@ public $brand_id;
 
       $hastago = Hashtag::get();
       $descRankingViews = Event::where('view_count','>','0')->orderBy('view_count','desc')->get();
-
-      
       $current = strtotime(Carbon::now());
       
       $mytime = Carbon::now()->format("H:i:s");
@@ -604,59 +655,14 @@ public $brand_id;
         $savedata->save();
       }
     
-
       $mytime = Carbon::now()->format("Y-m-d");
-
       $upcomingViews = Event::where('view_count','>','0')->whereDate('startdate','>', $mytime)->whereDate('enddate','>', $mytime)->orderBy('updated_at','desc')->get();
       
       //dd($mytime , $ongoingViews);
       
-      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('shtdesc', NULL)->orderBy('startdate','asc')->get();
-      foreach($eventShtdesc as $updatco)
-      {
-
-        $statementID = Event::find($updatco->id);
-        
-        $statementEventName = trim($statementID->eventname); 
-        $statementEventVenue = trim($statementID->venue); 
-        $statementEventCity = trim($statementID->city); 
-        $statementEventType= trim($statementID->eventype); 
-        $statementEventTagline = trim($statementID->tagline); 
-        $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)->format('D,d M Y')); 
-        $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('D,d M Y'));
-        
-
-        $mytime = Carbon::today()->format("Y-m-d");
-        $mymonth = Carbon::now()->addDays(30)->format("m");
-
-         //three months prior
-         //$during =  'Join us at upcoming [exhibtion_type] [Exhibition Title], held from [Exhibtion start date] to [Exhibition End Date] at [Exhibtiion Venue]. Get your ticket now and be a part of the [tag] industry event.';
-
-         //post Expo timer with dates
-         //$end =  'Download business directory exhibition and find reference for expand your business. Share your reviews and rate your experience.';
-
-         //post Expo timer with dates $statementEventName.''.$statementEventName 'public/exhibition/'.$eventoi->image
-         $start = 'The '. $statementEventTagline. 'premier business event for industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your ticket now and be a part of the industry event.';
-         
-         //$visited = User::find($id);
-          $statementID = Event::find($updatco->id);
-          $statementID->shtdesc = $start;
-          $statementID->save();
-
-     //  if($mytime < $statementEventStartDate )
-     //   {
-     //     $rti = Str::replace('exhibtion_type','$statementEventType', $start);
-     //   }
-     //   elseif ($mytime < $statementEventStartDate )
-     //   {
-     //     $rti = Str::replace(' ','', $during);
-     //   }
-     //   elseif ($mytime > $statementEventEndDate )
-     //   {
-     //     $rti = Str::replace(' ','', $end);
-     //   }
+      $eventShtdesc = Event::get();
+      //$shortEventSHTdesc =  Str::length($eventShtdesc->shtdesc);
       
-      }
       $getContact = Bcontact::where('brand_id', $this->brand_id)->orderBy('created_at','desc')->get();
 
       $checkSelected = Usage::get();
