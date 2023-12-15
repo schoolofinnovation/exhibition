@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="d-flex badgese">
+      <div class="d-flex dealercategories">
        
 
         @foreach( $getnamecategoryresult as $categ) 
@@ -34,7 +34,7 @@
       </div>
       
       
-      <div class="row g-0 py-0 mx-n2 my-Slider3"> 
+      <div class="row g-0 py-0 mx-n2 dealerslider"> 
         {{-- px-2 mb-1 --}}
         @foreach($evento as $eventoi)
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
@@ -130,7 +130,7 @@
 @push('scripts')
     <script>
       var slider = tns({
-        "container": '.badgese',   
+        "container": '.dealercategories',   
         
         "responsive": {
           "300": {
@@ -157,9 +157,9 @@
       });
     </script>
 
-    <script>11
+    <script>
       var slider = tns({
-        "container": '.my-Slider3',          
+        "container": '.dealerslider',          
         "responsive": {
           "300": {
             "items": 2,
