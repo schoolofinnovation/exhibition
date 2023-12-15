@@ -162,6 +162,7 @@ use App\Http\Livewire\Seller\SellerSponsershipComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserEventClaimComponent;
 use App\Http\Livewire\User\UserEventDetailsComponent;
+use App\Http\Livewire\User\UserExhibitorVisitorComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserProfileComponent;
@@ -324,6 +325,9 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/user/blog', UserBlogComponent::class)->name('user.blog');
     Route::get('/user/account', UserAccountComponent::class)->name('user.account');
     Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
+
+    //latest link
+    Route::get('/user/{exhibitor}/{expo}', UserExhibitorVisitorComponent::class)->name('exhibitor.Visitor');
   });
 
     

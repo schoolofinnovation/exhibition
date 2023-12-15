@@ -74,15 +74,43 @@
     <script src="{{asset('js/lg-video.min.js')}}"></script>
     <!-- Main theme script-->
     <script src="{{asset('js/theme.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>  
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "url": "https://exhibition.org.in",
-      "logo": "https://exhibition.org.in/image/Yoyo.png"
+      "logo": "https://exhibition.org.in/image/Yoyo.png",
+      
+
+
+      "name": "The Exhibition Network",
+      "description":"find Great Place to Exhibit.",
+      "email":"team@exhibition.org.in",
+      "telephone":"+91-999-185-6776",
+      
+      "foundingDate":"2001-12-18",
+
+      "numberOfEmployees":{
+      "@type":"QuantitiveValue",
+      "minValue": 100,
+      "maxValue": 499,
+      },
+
+      ""
+      "address":{
+        "@type" :"PostalAddress",
+        "streetAddress":"",
+        "addressLocality":"",
+        "addressCountry":"",
+        "addressRegion":"",
+        "postalCode:"",
+      },
+
     }
     </script>
+
    @livewireScripts
    @stack('scripts')
 
