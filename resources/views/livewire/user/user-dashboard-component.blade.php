@@ -1166,11 +1166,11 @@
         <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
           <i class="bi bi-twitter"></i>
         </a>
-        <a href="#" class="btn-social bs-messenger bs-outline bs-sm">
-          <i class="bi bi-messenger"></i>
+        <a href="#" class="btn-social bs-slack bs-outline bs-sm">
+          <i class="bi bi-slack"></i>
         </a>
-        <a href="#" class="btn-social bs-pinterest bs-outline bs-sm">
-          <i class="bi bi-pinterest"></i>
+        <a href="#" class="btn-social bs-team bs-outline bs-sm">
+          <i class="bi bi-team"></i>
         </a>
         <a href="#" class="btn-social bs-linkedin bs-outline bs-sm">
           <i class="bi bi-linkedin"></i>
@@ -1194,18 +1194,24 @@
                 <a href="#" class="d-block text-heading fs-sm">769, Industrial Dr, West Chicago, IL 60185, USA</a>
               </div>
             </li>
-            <li class="d-flex pt-2 pb-3 border-bottom">
-              <i class="ci-phone fs-lg mt-2 mb-0 text-primary"></i>
-              <div class="ps-3">
-                <span class="fs-ms text-muted">Call us</span>
-                <a href="tel:{{Auth::user()->phone}}" class="d-block text-heading fs-sm">{{Auth::user()->phone}}</a>
-              </div>
-            </li>
+            
+            @if(Auth::user()->phone->count() = 0)
+                 Ask for Edit
+            @else
+              <li class="d-flex pt-2 pb-3 border-bottom">
+                <i class="ci-phone fs-lg mt-2 mb-0 text-primary"></i>
+                <div class="ps-3">
+                  <span class="fs-ms text-muted">Call us</span>
+                  <a href="tel:{{Auth::user()->phone}}" class="d-block text-heading fs-sm">{{Auth::user()->phone}}</a>
+                </div>
+              </li>
+            @endif
+            
             <li class="d-flex pt-2m">
               <i class="ci-mail fs-lg mt-2 mb-0 text-primary"></i>
               <div class="ps-3">
                 <span class="fs-ms text-muted">Write us</span>
-                <a href="mailto:{{Auth::user()->name}}" class="d-block text-heading fs-sm">{{Auth::user()->name}}</a>
+                <a href="mailto:{{Auth::user()->email}}" class="d-block text-heading fs-sm">{{Auth::user()->email}}</a>
               </div>
             </li>
           </ul>
@@ -1583,8 +1589,8 @@
           <span class="handheld-toolbar-label">Partner</span></a>
 
           <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-            <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
-          <span class="handheld-toolbar-label">Create</span></a>
+            <span class="handheld-toolbar-icon"><i class="bi bi-menu"></i></span>
+          <span class="handheld-toolbar-label">Menu</span></a>
         
         @endif
       </div>
