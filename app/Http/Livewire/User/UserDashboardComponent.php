@@ -287,7 +287,7 @@ class UserDashboardComponent extends Component
                     ->orWhere('organisation','LIKE', $searchBrandTerm)
                     ->where('status','1')->orderBy('brand_name','ASC')->get();
 
-                    $userinfo = User::where('user_id', Auth::user()->id)->get();
+                    $userinfo = User::where('id', Auth::user()->id)->get();
 
         return view('livewire.user.user-dashboard-component',['userinfo' => $userinfo,'userDetails' => $userDetails,'userEvent' => $userEvent, 'searchBrandcat'=> $searchBrandcat, 'selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
         

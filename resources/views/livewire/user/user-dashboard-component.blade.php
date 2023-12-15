@@ -1160,7 +1160,7 @@
 
       <div class="text-center">
         <img src="{{Auth::user()->profile_photo_url}}" class="d-inline-block rounded-circle mb-3" width="96" alt="{{Auth::user()->name}}">
-        <h6 class="pt-1 mb-1">{{$userinfo -> name}}</h6>
+        <h6 class="pt-1 mb-1">{{Auth::user()->name}}</h6>
         <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
 
         <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
@@ -1178,10 +1178,10 @@
       </div>
 
       <div class="row my-3 ">
-        <div class=" col fs-xs text-center"><i class="bi bi-telephone"></i>mobile</div>
-        <div class=" col fs-xs text-center"> <i class="bi bi-linkedin"></i>Linkedin</div>
-        <div class=" col fs-xs text-center"> <i class="bi bi-whatsapp"></i> whatsApp</div>
-        <div class=" col fs-xs text-center"> <i class="bi bi-envelope"></i> mail</div>
+        <div class=" col fs-md text-center"><i class="bi bi-telephone"></i>mobile</div>
+        <div class=" col fs-md text-center"> <i class="bi bi-linkedin"></i>Linkedin</div>
+        <div class=" col fs-md text-center"> <i class="bi bi-whatsapp"></i> whatsApp</div>
+        <div class=" col fs-md text-center"> <i class="bi bi-envelope"></i> mail</div>
       </div>
 
       <div class="card">
@@ -1198,14 +1198,14 @@
               <i class="ci-phone fs-lg mt-2 mb-0 text-primary"></i>
               <div class="ps-3">
                 <span class="fs-ms text-muted">Call us</span>
-                <a href="tel:+184725276533" class="d-block text-heading fs-sm">+1 (847) 252 765 33</a>
+                <a href="tel:{{Auth::user()->phone}}" class="d-block text-heading fs-sm">{{Auth::user()->phone}}</a>
               </div>
             </li>
             <li class="d-flex pt-2m">
               <i class="ci-mail fs-lg mt-2 mb-0 text-primary"></i>
               <div class="ps-3">
                 <span class="fs-ms text-muted">Write us</span>
-                <a href="mailto:{{$userinfo->email}}" class="d-block text-heading fs-sm">{{$userinfo->email}}</a>
+                <a href="mailto:{{Auth::user()->name}}" class="d-block text-heading fs-sm">{{Auth::user()->name}}</a>
               </div>
             </li>
           </ul>
@@ -1571,11 +1571,11 @@
          @else
 
           <a class="d-table-cell handheld-toolbar-item" href="{{route('user.claim')}}">
-            <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-plus"></i></span>
           <span class="handheld-toolbar-label">Add your Event</span></a>
 
           <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
-            <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-briefcase"></i></span>
           <span class="handheld-toolbar-label">Business</span></a>
 
           <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
