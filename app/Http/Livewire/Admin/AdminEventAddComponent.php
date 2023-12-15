@@ -63,7 +63,7 @@ class AdminEventAddComponent extends Component
         $event->enddate = $this->enddate;
         $event->venue = trim($this->venue);
         $event->city = trim($this->city);
-        $event->country =  'india';
+        $event->country = trim($this->country);
         $event->organizer = $this->organizer;
         $event->email = $this->email;
         $event->phone = $this->phone;

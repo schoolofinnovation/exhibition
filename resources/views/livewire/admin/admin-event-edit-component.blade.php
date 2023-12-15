@@ -65,6 +65,12 @@
                         <input class="form-control" type="text" placeholder="Event City" wire:model="city" required="">
                         @error('city'){{ $message}}@enderror
                         </div>
+
+                        <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">country</label>
+                        <input class="form-control" type="text" placeholder="Event City" wire:model="country" required="">
+                        @error('country'){{ $message}}@enderror
+                        </div>
                         
                         <div class="col-sm-2">
                             <label class="form-label" for="cf-name">Visitor</label>

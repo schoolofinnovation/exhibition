@@ -42,6 +42,7 @@ class AdminEventEditComponent extends Component
 
     public $eventype;
     public $city;
+    public $country;
     public $venue;
 
     public $board;
@@ -50,8 +51,6 @@ class AdminEventEditComponent extends Component
     public $admstatus;
     public $user_id;
     public $reference;
-
-    public $country;
 
     public $eventkhaname;
 
@@ -69,6 +68,7 @@ class AdminEventEditComponent extends Component
         $this->eventype = $fattribute->eventype;
        
         $this->city = $fattribute->city;
+        $this->country = $fattribute->country;
         $this->venue = $fattribute->venue;
 
         $this->startdate = $fattribute->startdate;
@@ -95,7 +95,7 @@ class AdminEventEditComponent extends Component
         $fattribute->eventname =  trim($this->eventname);
         $fattribute->slug = trim($this->slug);
         $fattribute->eventype =  $this->eventype;
-        $fattribute->country =  'india';
+        $fattribute->country =  trim($this->country);
         $fattribute->city =  trim($this->city);
         $fattribute->venue =  trim($this->venue);
         $fattribute->organizer = trim($this->organizer);
@@ -127,6 +127,7 @@ class AdminEventEditComponent extends Component
         $fattribute->eventype =  $this->eventype;
       
         $fattribute->city =  trim($this->city);
+        $fattribute->country =  trim($this->country);
         $fattribute->venue =  trim($this->venue);
        
         $fattribute->exhibitors =  trim($this->exhibitors);
@@ -156,7 +157,7 @@ class AdminEventEditComponent extends Component
 
           $doublse->eventype = $this->eventype;
           $doublse->city =  trim($this->city);
-          $doublse->country =  'india';
+          $doublse->country =  trim($this->country);
           $doublse->venue =  trim($this->venue);
           $doublse->exhibitors =  $this->exhibitors;
           $doublse->auidence =  $this->auidence;

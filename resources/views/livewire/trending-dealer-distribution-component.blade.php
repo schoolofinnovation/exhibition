@@ -1,5 +1,6 @@
 <main>
-<section class="container pt-2" id="exhibit"> 
+  @if($evento->count() > 3)
+    <section class="container pt-2" id="exhibit"> 
       <div class="list-unstyled pt-2 pb-0 px-0 pl-0">
         <div class="d-flex justify-content-between px-0 m-0 lh-1">
           <span class="fs-sm"> Expand <br><span class="fw-medium h5">Dealer Distribution</span></span>
@@ -16,7 +17,7 @@
         </div>
       </div>
 
-      <div class="d-flex dealercategories">
+      {{-- <div class="d-flex dealercategories">
        
 
         @foreach( $getnamecategoryresult as $categ) 
@@ -31,9 +32,8 @@
           @endforeach
 
         @endforeach
-      </div>
-      
-      
+      </div> --}}
+            
       <div class="row g-0 py-0 mx-n2 dealerslider"> 
         {{-- px-2 mb-1 --}}
         @foreach($evento as $eventoi)
@@ -122,41 +122,12 @@
           </div>
         @endforeach
       </div>
-
-      
     </section>
+  @endif
 </main>
 
 @push('scripts')
-    <script>
-      var slider = tns({
-        "container": '.dealercategories',   
-        
-        "responsive": {
-          "300": {
-            "items": 3,
-            "controls": false,
-            "fixedWidth": 100,
-            "mouseDrag": true,
-            "autoplay": false,
-            "autoplayButtonOutput": false,
-            "autoplayHoverPause": true,
-          },
-          "500": {
-            "items": 1,
-            "nav": false,
-            "controls": false,
-            "autoplayHoverPause": true,
-            "autoplay": false,
-            "autoplayButtonOutput": false,
-            "fixedWidth": 100,
-          },
-          
-        },
-        "autoplayButtonOutput":false
-      });
-    </script>
-
+    
     <script>
       var slider = tns({
         "container": '.dealerslider',          

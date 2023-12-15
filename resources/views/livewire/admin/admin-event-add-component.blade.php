@@ -20,11 +20,12 @@
                     <select class="form-control" type="text"   wire:model.lazy="eventype"  id="seniority"  placeholder="Provide short title of your request">
                         <option selected>Choose</option>
                         <option value="award">Award</option>
-                        <option value="conference">Conference</option>
+                        <option value="conference">Conference, Forum, Seminar</option>
                         <option value="expo">Exhibition</option>
                         <option value="festival">Festival</option>
                         <option value="network">Network</option>
-                        </select>
+                        <option value="dealer">Dealer Distribution</option>
+                    </select>
                         @error('eventype') <div class="invalid-feedback"> {{$message}} </div> @enderror
                     </div>
 
@@ -60,9 +61,15 @@
                     </div>
 
                     <div class="col-sm-2">
-                    <label class="form-label" for="cf-name">City</label>
-                    <input class="form-control" type="text" placeholder="Event City" wire:model.lazy="city" >
-                    @error('city'){{ $message}}@enderror
+                        <label class="form-label" for="cf-name">City</label>
+                        <input class="form-control" type="text" placeholder="City" wire:model.lazy="city" >
+                        @error('city'){{ $message}}@enderror
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Country</label>
+                        <input class="form-control" type="text" placeholder="Country" wire:model.lazy="Country" >
+                        @error('country'){{ $message}}@enderror
                     </div>
                     
                     <div class="col-sm-2">

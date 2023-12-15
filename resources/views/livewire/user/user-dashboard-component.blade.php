@@ -1154,11 +1154,15 @@
         <a href="http://" class=" col fs-xs text-left">Done</a>
         <a href="{{route('user.dashboard', ['board' => 'edit'])}}" class=" col fs-xs text-right">Edit</a>
       </div>  
-    
+      <!-- <div class="rounded-circle">
+              <img class="rounded-circle" src="{{Auth::user()->profile_photo_url}}" alt="{{Auth::user()->name}}" style="max-width: 50%;">
+            </div> -->
+
       <div class="text-center">
-        <img src="path-to-image" class="d-inline-block rounded-circle mb-3" width="96" alt="Amanda Gallaher">
-        <h6 class="pt-1 mb-1">Amanda Gallaher</h6>
+        <img src="{{Auth::user()->profile_photo_url}}" class="d-inline-block rounded-circle mb-3" width="96" alt="{{Auth::user()->name}}">
+        <h6 class="pt-1 mb-1">{{$userinfo -> name}}</h6>
         <p class="fs-sm text-muted">Chief of Marketing at Company Ltd.</p>
+
         <a href="#" class="btn-social bs-twitter bs-outline bs-sm">
           <i class="bi bi-twitter"></i>
         </a>
@@ -1174,10 +1178,10 @@
       </div>
 
       <div class="row my-3 ">
-        <div class=" col fs-xs text-center"><i class="bi bi-mobile"></i>mobile</div>
-        <div class=" col fs-xs text-center"> <i class="bi bi-call"></i> call</div>
-        <div class=" col fs-xs text-center"> <i class="bi bi-whatsApp"></i> whatsApp</div>
-        <div class=" col fs-xs text-center"> <i class="bi bi-mail"></i> mail</div>
+        <div class=" col fs-xs text-center"><i class="bi bi-telephone"></i>mobile</div>
+        <div class=" col fs-xs text-center"> <i class="bi bi-linkedin"></i>Linkedin</div>
+        <div class=" col fs-xs text-center"> <i class="bi bi-whatsapp"></i> whatsApp</div>
+        <div class=" col fs-xs text-center"> <i class="bi bi-envelope"></i> mail</div>
       </div>
 
       <div class="card">
@@ -1201,7 +1205,7 @@
               <i class="ci-mail fs-lg mt-2 mb-0 text-primary"></i>
               <div class="ps-3">
                 <span class="fs-ms text-muted">Write us</span>
-                <a href="mailto:email@example.com" class="d-block text-heading fs-sm">email@example.com</a>
+                <a href="mailto:{{$userinfo->email}}" class="d-block text-heading fs-sm">{{$userinfo->email}}</a>
               </div>
             </li>
           </ul>
@@ -1211,7 +1215,7 @@
     </div>
   @endif
   
-  @if( $board == 'edit')
+    @if( $board == 'edit')
       <div class="container my-5">
         <form wire:submit.prevent="userDetail">
           <input type="text" class="form-control mb-1" wire:model="name" placeholder="name">
@@ -1225,6 +1229,7 @@
         </form>
       </div>
     @endif
+
   @if($board == 'SaveContact')
    
     <div class=" container text-center mt-4">
