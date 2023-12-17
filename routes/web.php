@@ -163,6 +163,7 @@ use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserEventClaimComponent;
 use App\Http\Livewire\User\UserEventDetailsComponent;
 use App\Http\Livewire\User\UserExhibitorVisitorComponent;
+use App\Http\Livewire\User\UserLandingComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserProfileComponent;
@@ -328,6 +329,10 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
     //latest link
     Route::get('/user/{exhibitor}/{expo}', UserExhibitorVisitorComponent::class)->name('exhibitor.Visitor');
+
+    Route::get('/user/{trackcustomer}', UserLandingComponent::class)->name('partner.magazine');
+
+
   });
 
     
