@@ -11437,6 +11437,7 @@ dt {
                           <div id="product-35287" class="post-35287 product type-product status-publish has-post-thumbnail product_cat-ecommerce-retail first instock downloadable shipping-taxable purchasable product-type-simple">
                               <div class="feature-screenshot">
                                     <div class="" data-columns="4" style="opacity: 1; transition: opacity .25s ease-in-out;">
+
                                       <div data-thumb="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" 
                                         class="woocommerce-product-gallery__image">
                                         <a href="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-3-1200x900.jpg">
@@ -11533,7 +11534,8 @@ dt {
                                   <ul class="nav sub-nav sub-nav--has-border" role="tablist">
                                       <li class="nav-item"><a class="nav-link sub-nav-link active" data-toggle="tab" href="#description-tab" role="tab">Description</a></li>
                                       <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#reviews-tab" role="tab">Reviews</a></li>
-                                      <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#changelog-tab" role="tab">Changelog</a></li>
+                                      <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#changelog-tab" role="tab">Print Facts</a></li>
+                                      <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#changelog-tab" role="tab">Advertise</a></li>
                                   </ul>
                                   <ul class="d-none list-social justify-content-end">
                                       <li class="list-social__item">Share:</li>
@@ -11573,27 +11575,29 @@ dt {
                                         </div>
                                       </div>
                                     
+
+
                                       <div class="theme-description">
-                                          <p><strong>Cartzilla</strong>{{$magazine->desc}}</p>
+                                          <p><strong>Magazine Focus</strong>{{$magazine->desc}}</p>
                                           <h2>{{$magazine->name}} Features</h2>
 
                                           <ul>
                                           <li>Mono Brand Store</li>
                                           </ul>
 
-                                          <h2>UI Components</h2>
+                                          <h2>Circulation By Industries</h2>
                                           <p>Please see the list of available UI components <a href="#">here</a>. &nbsp;</p>
                                           
-                                          <h2>Documentation</h2>
+                                          <h2>Readership</h2>
                                           <p>Need help to get started?&nbsp; Please follow the link below: <a href="#">Link to online documentation</a> &nbsp;</p>
                                           
-                                          <h2>Sketch file included</h2>
+                                          <h2>Geographical Reach</h2>
                                           <p>Sketch file with mockups of some core pages is included in the download package.</p>
                                          
-                                          <h2>Free updates and support</h2>
+                                          <h2>Free Advertise and support</h2>
                                           <p><strong>Free Updates:</strong> With the purchase of this template you are entitled to lifetime free rupdates. <strong>Support:</strong> Our team will be happy to help you with any issues or answer any questions 24/7. Email address for support&nbsp;inquiry:&nbsp;<a href="mailto:support@createx.studio">support@createx.studio</a> We normally reply within 24-48 hours. &nbsp;</p>
                                           
-                                          <h2>Customization services</h2>
+                                          <h2>Customization Services</h2>
                                           <p>Need help with Cartzilla customization?&nbsp;Reach us out at&nbsp;<a href="#">contact@createx.studio</a> Our Team will be happy to bring your ideas to life. &nbsp;</p>
                                           
                                           <h2>Copyrighted images</h2>
@@ -12012,11 +12016,16 @@ dt {
                               </div>
                             </div>
                           </form>
+
+
+
                           <form action="#" method="POST" class=" btn-block">
                               <input type="hidden" js-license-type="license_type" name="license_type" value="Standard License">
                               <input type="hidden" name="add-to-cart" value="35287">
-                              <button type="submit" class="btn btn-brand btn-block btn-checkout"> <span class="btn-text">Add to cart</span></button>
+                              <button type="submit" class="btn btn-brand btn-block btn-checkout"> 
+                                <span class="btn-text">Add to cart</span></button>
                           </form>
+
                           <a class="btn btn-outline-brand btn-block mb-4 ml-0" target="_blank" href="#">Live preview</a>
                           <div class="theme-purchases">
                               <div class="theme-purchases__item">
@@ -12042,6 +12051,8 @@ dt {
                                   </div>
                               </div>
                           </div>
+
+
                           <div class="theme-description__list">
                                               <div class="theme-description__list__item"><span class="theme-description__item__title">Bootstrap</span><span>v5.2.3</span></div>
                                           <div class="theme-description__list__item"><span class="theme-description__item__title">Released</span><span>4 years ago</span></div>
@@ -12069,8 +12080,8 @@ dt {
                   <div class="theme-cards-holder mt-5 pt-5" style="border-top: 1px solid #D5DCE5; border-bottom-width: 0; margin-bottom: -60px;">
                     <div class="theme-cards__heading">
                         <div>
-                          <h5 class="theme-cards__title">E-Commerce &amp; Retail Themes</h5>
-                          <p class="text-gray-soft">Related themes in the same category.</p>
+                          <h5 class="theme-cards__title">Related Exhibition</h5>
+                          <p class="text-gray-soft">Related Exhibition in the same category.</p>
                         </div>
                             <a class="theme-cards__heading__button btn btn-outline-brand btn-sm" href="#">View All</a>
                     </div>
