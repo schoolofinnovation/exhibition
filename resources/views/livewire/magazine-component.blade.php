@@ -11433,18 +11433,24 @@ dt {
               </div>
                   <h1 class="d-none d-lg-block mb-3">{{$magazine->name}}</h1>
                   <div class="row">
+
+                  <a class="card-img-top d-block overflow-hidden" href="{{route('business.magazine', ['slug' => $magazine->slug])}}">
+                      <img src="{{url('public/assets/image/exhibition/'.$magazine->image)}}" class="img-thumbnail" alt="$magazine->name">
+                    </a>
+
+
                       <div class="col-lg-8 mb-md-0 mb-3">
                           <div id="product-35287" class="post-35287 product type-product status-publish has-post-thumbnail product_cat-ecommerce-retail first instock downloadable shipping-taxable purchasable product-type-simple">
                               <div class="feature-screenshot">
                                     <div class="" data-columns="4" style="opacity: 1; transition: opacity .25s ease-in-out;">
 
-                                      <div data-thumb="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" 
+                                      <div data-thumb="{{url('public/assets/image/exhibition/'.$magazine->image)}}" 
                                         class="woocommerce-product-gallery__image">
                                         <a href="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-3-1200x900.jpg">
                                           <img width="1200" height="900" src="{{url('public/assets/image/exhibition/'.$magazine->image)}}"
                                           class="attachment-large_crop size-large_crop" alt="" title="screenshot" data-caption="" 
-                                          data-src="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg" 
-                                          data-large_image="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-1200x900.jpg"
+                                          data-src="{{url('public/assets/image/exhibition/'.$magazine->image)}}" 
+                                          data-large_image="{{url('public/assets/image/exhibition/'.$magazine->image)}}"
                                           data-large_image_width="1200" data-large_image_height="900" 
                                           srcset="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-540x405.jpg 540w" sizes="(max-width: 1200px) 100vw, 1200px">
                                           </a>
@@ -11532,10 +11538,10 @@ dt {
 
                               <div class="d-flex justify-content-between align-items-center has-border">
                                   <ul class="nav sub-nav sub-nav--has-border" role="tablist">
-                                      <li class="nav-item"><a class="nav-link sub-nav-link active" data-toggle="tab" href="#description-tab" role="tab">Description</a></li>
+                                      <li class="nav-item"><a class="nav-link sub-nav-link active" data-toggle="tab" href="#description-tab" role="tab">Print Facts</a></li>
+                                      <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#changelog-tab" role="tab">Description</a></li>
+                                      <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#advertise-tab" role="tab">Advertise</a></li>
                                       <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#reviews-tab" role="tab">Reviews</a></li>
-                                      <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#changelog-tab" role="tab">Print Facts</a></li>
-                                      <li class="nav-item"><a class="nav-link sub-nav-link" data-toggle="tab" href="#changelog-tab" role="tab">Advertise</a></li>
                                   </ul>
                                   <ul class="d-none list-social justify-content-end">
                                       <li class="list-social__item">Share:</li>
@@ -11571,18 +11577,16 @@ dt {
                                         </div>
                                         <div class="theme-description__list__item align-items-center">
                                           <span class="theme-description__item__title">Questions?</span>
-                                          <a class="btn btn-xs btn-outline-brand" href="mailto:support@createx.studio" target="_blank">Contact Seller</a>
+                                          <a class="btn btn-xs btn-outline-brand" href="mailto:team@exhibition.org.in" target="_blank">Contact Us</a>
                                         </div>
                                       </div>
-                                    
-
 
                                       <div class="theme-description">
                                           <p><strong>Magazine Focus</strong>{{$magazine->desc}}</p>
                                           <h2>{{$magazine->name}} Features</h2>
 
                                           <ul>
-                                          <li>Mono Brand Store</li>
+                                              <li>Mono Brand Store</li>
                                           </ul>
 
                                           <h2>Circulation By Industries</h2>
@@ -11595,10 +11599,12 @@ dt {
                                           <p>Sketch file with mockups of some core pages is included in the download package.</p>
                                          
                                           <h2>Free Advertise and support</h2>
-                                          <p><strong>Free Updates:</strong> With the purchase of this template you are entitled to lifetime free rupdates. <strong>Support:</strong> Our team will be happy to help you with any issues or answer any questions 24/7. Email address for support&nbsp;inquiry:&nbsp;<a href="mailto:support@createx.studio">support@createx.studio</a> We normally reply within 24-48 hours. &nbsp;</p>
+                                          <p><strong>Free Updates:</strong> With the purchase of The Exhibition Network Membership, you are entitled to lifetime free updates. <strong>Support:</strong> Our team will be happy to help you with any issues or answer any questions 24/7. Email address for support&nbsp;inquiry:&nbsp;<a href="mailto:team@exhibition.org.in">team@exhibition.org.in</a>
+                                           We normally reply within 24-48 hours. &nbsp;</p>
                                           
                                           <h2>Customization Services</h2>
-                                          <p>Need help with Cartzilla customization?&nbsp;Reach us out at&nbsp;<a href="#">contact@createx.studio</a> Our Team will be happy to bring your ideas to life. &nbsp;</p>
+                                          <p>Maximize your business potential with our monthly free advertising and support. From social media shoutouts to featured blog posts, we offer diverse pormotional avenues. Engage with our community, enjoy priority support, and showcase your success indedicated spotlights. Collaborate on events and webinars to amplify your expertise, and benefit frmom cross-pormotions within our network. Join us for a dynamic partnership that propels your brand to new heights.
+                                            Need help with The Exhibition Network customization?&nbsp;Reach us out at&nbsp;<a href="mailto:team@exhibition.org.in">team@exhibition.org.in</a> Our Team will be happy to bring your ideas to life. &nbsp;</p>
                                           
                                           <h2>Copyrighted images</h2>
                                           <p>Most of the demo images are included in the download package. But some images like brand logos, products are pixelated due to copyright restrictions. &nbsp;</p>
@@ -12031,7 +12037,9 @@ dt {
                               <div class="theme-purchases__item">
                                   <a class="theme-purchases__item__inner text-center" data-toggle="tab" href="#reviews-tab" role="tab" js-handle="review-toggler">
                                       <ul class="rating justify-content-center">
-                                          <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>
+                                          <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>
+                                          <li class="rating__item rating__item--active"></li>
+                                          <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>
                                       </ul>
 
                                       <p>4.71/5 (21 reviews)</p>
@@ -12096,70 +12104,32 @@ dt {
                                             <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=92316">Live preview</a>
                                         </div>
                                         <div class="theme-card__footer">
-                                            <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="https://themes.getbootstrap.com/product/finder-directory-listings-template-ui-kit/">Finder – Directory &amp; Listings Template + UI Kit</a>
-                                                <p class="theme-card__info">
-                                                    </p><ul class="prod_cats_list"><li><a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a></li></ul>                <p></p>
+                                            <div class="theme-card__footer__item">
+                                              <a class="theme-card__title mr-1" href="https://themes.getbootstrap.com/product/finder-directory-listings-template-ui-kit/">Finder – Directory &amp; Listings Template + UI Kit</a>
+                                                <p class="theme-card__info"></p>
+                                                  <ul class="prod_cats_list">
+                                                    <li>
+                                                      <a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a>
+                                                    </li>
+                                                  </ul>                
+                                                <p></p>
                                             </div>
+
                                             <div class="theme-card__footer__item">
                                                 <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
 
                                                 <ul class="rating">
-                                                    <li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li><li class="rating__item rating__item--active"></li>                </ul>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>
+                                                    <li class="rating__item rating__item--active"></li>                
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                
-                                <li class="col-md-4 col-6">
-                                    <div class="theme-card">
-                                        <div class="theme-card__body">
-                                            <a class="d-block" href="https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/">
-                                                <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/FreshCart-eCommerce-HTML-Template-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2022/07/FreshCart-eCommerce-HTML-Template-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
-
-                                            <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="https://themes.getbootstrap.com/preview/?theme_id=113886">Live preview</a>
-                                        </div>
-                                        <div class="theme-card__footer">
-                                            <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="https://themes.getbootstrap.com/product/freshcart-ecommerce-html-template/">FreshCart – eCommerce HTML Template</a>
-                                                <p class="theme-card__info">
-                                                    </p><ul class="prod_cats_list"><li><a href="https://themes.getbootstrap.com/product-category/ecommerce-retail/">E-Commerce &amp; Retail</a></li></ul>                <p></p>
-                                            </div>
-                                            <div class="theme-card__footer__item">
-                                                <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
-
-                                                <ul class="rating">
-                                                    <li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li><li class="rating__item "></li>                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="col-md-4 col-6">
-                                    <div class="theme-card">
-                                        <div class="theme-card__body">
-                                            <a class="d-block" href="#">
-                                                <img width="400" height="300" src="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/Booking-Multipurpose-Online-Booking-Theme-400x300.jpg" class="theme-card__img wp-post-image" alt="" srcset="https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2022/10/Booking-Multipurpose-Online-Booking-Theme-540x405.jpg 540w" sizes="(max-width: 400px) 100vw, 400px">            </a>
-
-                                            <a class="theme-card__body__overlay btn btn-brand btn-sm" target="_blank" href="#">Live preview</a>
-                                        </div>
-                                        <div class="theme-card__footer">
-                                            <div class="theme-card__footer__item"><a class="theme-card__title mr-1" href="#">Booking – Multipurpose Booking and Directory Theme</a>
-                                                <p class="theme-card__info">
-                                                    </p><ul class="prod_cats_list"><li><a href="#">E-Commerce &amp; Retail</a></li></ul>                <p></p>
-                                            </div>
-                                            <div class="theme-card__footer__item">
-                                                <p class="theme-card__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>49.00</span></p>
-
-                                                  <ul class="rating">
-                                                    <li class="rating__item rating__item--active"></li>
-                                                    <li class="rating__item rating__item--active"></li>
-                                                    <li class="rating__item rating__item--active"></li>
-                                                    <li class="rating__item rating__item--active"></li>
-                                                    <li class="rating__item rating__item--active"></li>
-                                                  </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                              
                         </ul>
                   </div>
             </main>
