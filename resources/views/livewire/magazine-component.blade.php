@@ -11446,13 +11446,20 @@ dt {
 
                                       <div data-thumb="{{url('public/assets/image/exhibition/'.$magazine->image)}}" 
                                         class="woocommerce-product-gallery__image">
-                                        <a href="./Cartzilla – Multipurpose eCommerce Template - Bootstrap Themes_files/screenshot-3-1200x900.jpg">
+                                        <a href="#">
                                           <img width="1200" height="900" src="{{url('public/assets/image/exhibition/'.$magazine->image)}}"
                                           class="attachment-large_crop size-large_crop" alt="" title="screenshot" data-caption="" 
                                           data-src="{{url('public/assets/image/exhibition/'.$magazine->image)}}" 
                                           data-large_image="{{url('public/assets/image/exhibition/'.$magazine->image)}}"
                                           data-large_image_width="1200" data-large_image_height="900" 
-                                          srcset="https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3.jpg 1200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-800x600.jpg 800w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-768x576.jpg 768w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-600x450.jpg 600w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-200x150.jpg 200w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-400x300.jpg 400w, https://themes.getbootstrap.com/wp-content/uploads/2019/10/screenshot-3-540x405.jpg 540w" sizes="(max-width: 1200px) 100vw, 1200px">
+                                          srcset="{{url('public/assets/image/exhibition/'.$magazine->image)}} 1200w, 
+                                          {{url('public/assets/image/exhibition/'.$magazine->image)}} 800w, 
+                                          {{url('public/assets/image/exhibition/'.$magazine->image)}} 768w, 
+                                          {{url('public/assets/image/exhibition/'.$magazine->image)}} 600w, 
+                                          {{url('public/assets/image/exhibition/'.$magazine->image)}} 200w, 
+                                          {{url('public/assets/image/exhibition/'.$magazine->image)}} 400w, 
+                                          {{url('public/assets/image/exhibition/'.$magazine->image)}} 540w" 
+                                          sizes="(max-width: 1200px) 100vw, 1200px">
                                           </a>
                                       </div>
                                     </div>

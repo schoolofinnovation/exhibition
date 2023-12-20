@@ -316,6 +316,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
   //User
   Route::middleware(['auth:sanctum', 'verified'])->group( function () {
     Route::get('/user/dashboard/{board}', UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('/user/{trackcustomer}', UserLandingComponent::class)->name('partner.magazine');
 
     Route::get('/user/add-your-business', UserEventClaimComponent::class)->name('user.claim');
     Route::get('/user/business/details', UserEventDetailsComponent::class)->name('user.details');
@@ -330,7 +331,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     //latest link
     Route::get('/user/{exhibitor}/{expo}', UserExhibitorVisitorComponent::class)->name('exhibitor.Visitor');
 
-    Route::get('/user/{trackcustomer}', UserLandingComponent::class)->name('partner.magazine');
+   
 
 
   });

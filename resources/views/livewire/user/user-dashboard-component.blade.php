@@ -1347,10 +1347,10 @@
   @endif   
 
     <div class="container">
-
-      Select your event, create product QR Link. Get formatted form your visitor.
+<small>Select your event, create product QR Link. Get formatted form your visitor.</small>
       
-      <a href="" class="btn btn-primary">Generate QR</a>
+      
+      <a href="{{route('partner.magazine',['trackcustomer' => 'add-magazine'])}}" class="btn btn-primary btn-sm">Generate QR</a>
      
     </div>
 
