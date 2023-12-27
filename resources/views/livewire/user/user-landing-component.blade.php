@@ -50,27 +50,27 @@
     @endif
 
     @if($trackcustomer == 'add-magazine')     
-    <div class="container">
-        <small class="mt-3 mb-4 fw-bold">List your Business Magazine</small>
-        <form wire:submit.prevent="added">
-            <input type="text" class="form-control mb-1"  placeholder = "name"  wire:model.lazy="name" >
-            <input type="text" class="form-control mb-1"  placeholder = "type"  wire:model.lazy="type" >
-            <input type="text" class="form-control mb-1"  placeholder = "subscriber"  wire:model.lazy="subscriber" >
-            <textarea type="text" class="form-control mb-1"  placeholder = "desc" rows="3" wire:model.lazy="desc" > </textarea>
-            <input type="text" class="form-control mb-1"  placeholder = "frequency"  wire:model.lazy="frequency" >
-            <button class="btn btn-primary mt-2" type="submit">Submit</button>
-        </form>
-    </div>
+        <div class="container">
+            <small class="mt-3 mb-4 fw-bold">List your Business Magazine</small>
+            <form wire:submit.prevent="added">
+                <input type="text" class="form-control mb-1"  placeholder = "name"  wire:model.lazy="name" >
+                <input type="text" class="form-control mb-1"  placeholder = "type"  wire:model.lazy="type" >
+                <input type="text" class="form-control mb-1"  placeholder = "subscriber"  wire:model.lazy="subscriber" >
+                <textarea type="text" class="form-control mb-1"  placeholder = "desc" rows="3" wire:model.lazy="desc" > </textarea>
+                <input type="text" class="form-control mb-1"  placeholder = "frequency"  wire:model.lazy="frequency" >
+                <button class="btn btn-primary mt-2" type="submit">Submit</button>
+            </form>
+        </div>
     @endif
 
     @if($trackcustomer == 'image-magazine')
-    <div class="container">
-    <small class="mt-3 mb-4 fw-bold">Update Magazine Cover</small>
-        <form wire:submit.prevent = "image">
-        <input type="file" class="form-control mb-1"  placeholder = "image"  wire:model="image" >
-        <div class="btn btn-primary form-control mb-1">Submit</div>
-        </form>
-    </div>
+        <div class="container">
+            <small class="mt-3 mb-4 fw-bold">Update Magazine Cover</small>
+            <form wire:submit.prevent = "image">
+            <input type="file" class="form-control mb-1"  placeholder = "image"  wire:model="image" >
+            <div class="btn btn-primary form-control mb-1">Submit</div>
+            </form>
+        </div>
     @endif
 
     @if($trackcustomer == 'print-facts')
@@ -78,9 +78,25 @@
             <small class="mt-3 mb-4 fw-bold">Add Print Facts</small>
             <form wire:submit.prevent="printedfacts">
                 <input type="text" class="form-control mb-1"  placeholder = "released"  wire:model.lazy="released" >
-                <input type="text" class="form-control mb-1"  placeholder = "updated"  wire:model.lazy="updated" >
+                <input type="text" class="form-control mb-1"  placeholder = "frequency"  wire:model.lazy="updated" >
                 <input type="text" class="form-control mb-1"  placeholder = "version" wire:model.lazy="version" >
-                <input type="text" class="form-control mb-1"  placeholder = "category"  wire:model.lazy="category" >
+
+                
+
+                <div class="col-sm-4 mb-2 pb-2">
+                        <label class="form-label" >Brand</label>
+                          <div class="input-group">
+                            <select class="form-control" placeholder = "category"  wire:model.lazy="category">
+                            <option selected >Choose...</option>  
+                                @foreach ($tryin as $cat)
+                                    <option value="{{$cat->id}}" >{{$cat->tag}}</option>
+                                @endforeach
+                            </select>
+                          </div>
+                          <span class="text-danger">@error( 'brand_name' ){{ $message}}@enderror</span>
+                      </div>
+
+                
                 <button class="btn btn-primary mt-2" type="submit">Submit</button>
             </form>
         </div>
@@ -100,6 +116,17 @@
     @endif
 
 
+    @if($trackcustomer == 'event')       
+        <!--<div class="small">Distribution Audience</div>
+                <form wire:submit.prevent ="businessAudience">
+                        <input type="text" wire:model.lazy = "email" placeholder="email">
+                </form> -->
+
+        <div class="small">Upcoming Exhibition, where you are going to participate? May be/ May be Not?</div>
+            <form wire:submit.prevent="chooseEvent">
+
+            </form>
+    @endif
 
         <section class="container py-3 py-lg-5 mt-4 mb-3">
           <div class="text-center mb-5">
@@ -157,20 +184,7 @@
             </form>
 
 
-    @if($trackcustomer == 'event')
-                //choose or select 
-                <!-- <div class="small">Distribution Audience</div>
-                    <form wire:submit.prevent="businessAudience">
-                            <input type="text" wire:model.lazy = "email" placeholder="email">
-                    </form> -->
-
-                //choose or select
-                <div class="small">Upcoming Exhibition, where you are going to participate? May be/ May be Not?</div>
-                <form wire:submit.prevent="chooseEvent">
-
-                </form>
-
-    @endif
+    
 
             <div class="small">When going to print?</div>
             <form wire:submit.prevent="date">

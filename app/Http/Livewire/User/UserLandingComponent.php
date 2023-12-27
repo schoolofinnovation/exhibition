@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\bcontact;
+use App\Models\Expo;
 use App\Models\Magazine;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -79,6 +80,8 @@ class UserLandingComponent extends Component
        $magazineDetails->save();
     }
 
+
+
     public function updatecontact()
     {
        $magazineDetails = new bcontact();
@@ -103,7 +106,8 @@ class UserLandingComponent extends Component
         $updateemail = Auth::user()->email;
         $updatename = Auth::user()->name;
 
+        $tryin = Expo::where('type','expo')->where('admstatus',1)->get();
         
-        return view('livewire.user.user-landing-component', ['updatephone' => $updatephone,'updateemail' => $updateemail,'updatename' => $updatename,'magazine' => $magazine]);
+        return view('livewire.user.user-landing-component', ['tryin' => $tryin,'updatephone' => $updatephone,'updateemail' => $updateemail,'updatename' => $updatename,'magazine' => $magazine]);
     }
 }
