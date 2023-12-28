@@ -276,10 +276,10 @@
             <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Inquiry</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('user.claim')}}">
+          <a class="d-table-cell handheld-toolbar-item {{'user/add-your-business' == request()->path() ? 'active' : '' }}" href="{{route('user.claim')}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
-            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Event</span>
+            <span class="handheld-toolbar-label {{'user/add-your-business' == request()->path() ? 'active' : '' }}">Event</span>
           </a>
           
           <a class="d-table-cell handheld-toolbar-item" href="{{route('partner.magazine',['trackcustomer' => 'business'])}}">
