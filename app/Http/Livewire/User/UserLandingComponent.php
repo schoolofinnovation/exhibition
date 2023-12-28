@@ -106,7 +106,7 @@ class UserLandingComponent extends Component
         $updateemail = Auth::user()->email;
         $updatename = Auth::user()->name;
 
-        $tryin = Expo::where('type','expo')->where('admstatus',1)->get();
+        $tryin = Expo::where('type','tag')->where('admstatus', 1)->get();
         
         return view('livewire.user.user-landing-component', ['tryin' => $tryin,'updatephone' => $updatephone,'updateemail' => $updateemail,'updatename' => $updatename,'magazine' => $magazine]);
     }

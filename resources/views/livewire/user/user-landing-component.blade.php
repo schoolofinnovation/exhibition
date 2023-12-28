@@ -84,7 +84,7 @@
                 
 
                 <div class="col-sm-4 mb-2 pb-2">
-                        <label class="form-label" >Brand</label>
+                        <label class="form-label" >Category</label>
                           <div class="input-group">
                             <select class="form-control" placeholder = "category"  wire:model.lazy="category">
                             <option selected >Choose...</option>  
@@ -93,7 +93,7 @@
                                 @endforeach
                             </select>
                           </div>
-                          <span class="text-danger">@error( 'brand_name' ){{ $message}}@enderror</span>
+                          <span class="text-danger">@error( 'category' ){{ $message}}@enderror</span>
                       </div>
 
                 

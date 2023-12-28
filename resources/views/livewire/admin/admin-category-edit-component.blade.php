@@ -5,15 +5,15 @@
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">
                 <p >Let's Create Event Together</p>
-                <small">{{$evento->eventname}}</small>
-      
+                <small class="fw-bold">{{$evento->eventname}}</small>
+      <br>
                 @foreach($selectedcategory as $catego)
                     @if($catego->admstatus == '1')
-                        <a class="badge  border-1 text-right border-dark bg-primary text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
+                         adm <a class="badge  border-1 text-right border-dark bg-primary text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
                         {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
                         </a>
                     @else
-                        <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
+                        admnot <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="eventdelete({{$catego->id}})">
                         {{$catego->expo->tag}} <i class="bi bi-x me-2"></i>
                         </a>
                     @endif
@@ -24,6 +24,8 @@
                     <input type="text" class="form-control" placeholder="Search your Category..." wire:model.lazy="searchTerm">
                 </div>
                 <a  class="col-lg-4  form-control col-sm-5 btn btn-primary">Search</a>
+
+
             </div>
         
             @if(is_null($searchTerm))
