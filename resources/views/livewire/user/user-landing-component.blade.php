@@ -247,6 +247,10 @@
         @endif
 
 
+       
+        
+
+        
 
 
 
@@ -272,7 +276,7 @@
             <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Inquiry</span>
           </a>
 
-          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('partner.magazine',['trackcustomer' => 'event'])}}">
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('user.claim')}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
             <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Event</span>

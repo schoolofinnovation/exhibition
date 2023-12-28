@@ -319,6 +319,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/user/{trackcustomer}', UserLandingComponent::class)->name('partner.magazine');
 
     Route::get('/user/add-your-business', UserEventClaimComponent::class)->name('user.claim');
+    
     Route::get('/user/business/details', UserEventDetailsComponent::class)->name('user.details');
     Route::get('/user/contract_form', UserOrdersComponent::class)->name('user.Orders');
     //Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderDetails');

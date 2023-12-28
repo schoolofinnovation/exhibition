@@ -52,7 +52,22 @@ class UserEventClaimComponent extends Component
         $claiming->event_id =  $id;
         $claiming->status = '1';
         $claiming->admstatus = '0';
-       
+        $claiming->type = 'magazine';
+        $claiming->save();
+    }
+
+    public function declaimer($id)
+    {
+
+            //    dd($id);
+            //     $findEvent = Event::find($id)->first();
+
+        $claiming = New Usage();
+        $claiming->user_id = Auth::user()->id;
+        $claiming->event_id =  $id;
+        $claiming->status = '0';
+        $claiming->admstatus = '0';
+        $claiming->type = 'magazine';
         $claiming->save();
     }
 

@@ -56,18 +56,18 @@
                                         
                                     <!-- <a class="round-circle" href="#">
                                         <i class="bi bi-chevron-double-right"></i></a>  -->
-                                    @if($franchise->status == "1" ||  $franchise->admstatus == "0")
+                                    <!-- @if($franchise->status == "1" ||  $franchise->admstatus == "0")
                                         <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Review</a>
                                     @elseif($franchise->status == "1" ||  $franchise->admstatus == "1")
                                         <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Activate</a>
                                     @elseif($franchise->status == "0" ||  $franchise->admstatus == "1")
                                         <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Re-Claim</a>
-                                    @endif
+                                    @endif -->
 
-                                    @if($franchise->admstatus == '1')
-                                    <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Review</a>
+                                    @if($franchise->status == '1')
+                                    <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Add</a>
                                     @else
-                                    <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="claimer({{$franchise->id}})" >Activate</a>
+                                    <a class="btn btn-primary btn-sm" href="#" wire:click.prevent="declaimer({{$franchise->id}})" >Remove</a>
                                     @endif
 
                                     </div>
