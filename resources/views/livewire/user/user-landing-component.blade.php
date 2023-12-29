@@ -128,7 +128,7 @@
             </form>
     @endif
 
-        <section class="container py-3 py-lg-5 mt-4 mb-3">
+        <!-- <section class="container py-3 py-lg-5 mt-4 mb-3">
           <div class="text-center mb-5">
           <p class="col-md-10 col-lg-8 mx-auto fw-normal">Reach your business goals with Marketing Solutions.</p>
             <div class="container">
@@ -148,7 +148,7 @@
                     </div>
 
 
-                    <!-- <div class="col">
+                     <div class="col">
                         <a  href="{{route('admin.dashboard', ['board' => 'createhashtagss'])}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">Expand your Business</div>
                         </a> 
@@ -158,7 +158,7 @@
                         <a  href="{{route('admin.dashboard', ['board' => 'createhashtagss'])}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">Hire us Media Buying</div>
                         </a> 
-                    </div> -->
+                    </div>
                     
                     <div class="h4">Expand your Business</div>
                     <div class="smalll">Reach your business goals with Marketing Solutions.</div>
@@ -167,11 +167,11 @@
                 </div>
             </div>
           </div>
-        </section>
+        </section> -->
 
 
 
-            <form wire:submit.prevent="addMagazine">
+            <!-- <form wire:submit.prevent="addMagazine">
                 <input type="text" class="form-control" wire:model.lazy = "magazineName" placeholder="Magazine Name">
                 <input type="text" class="form-control" wire:model.lazy = "brandName" placeholder="Brand">
                 <input type="text" class="form-control" wire:model.lazy = "RNI" placeholder="RNI">
@@ -189,7 +189,7 @@
             <div class="small">When going to print?</div>
             <form wire:submit.prevent="date">
                 <input type="text" class="form-control" wire:model.lazy = "date" placeholder="Print Date">
-            </form>
+            </form> -->
 
 
 
