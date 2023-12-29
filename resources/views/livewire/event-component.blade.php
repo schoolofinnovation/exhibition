@@ -1,5 +1,5 @@
 @section('page_title', 'The Exhibition Network')
-@section('page_description', 'Introducing Great Place To Business India First Ever Event Publishing Platform.')
+@section('page_description', 'world leading fastest Introducing Great Exhibition To Exhibit Business India First Ever Event Publishing Platform.')
 @section('page_keyword', 'World largest business event platform, find all upcoming events, business conferences, exhibition2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers.  Manage, sell event tickets and promote your event on exhbition.org.in, exhibition')
 
 <main>    
@@ -121,6 +121,11 @@
                   
                 </div>
 
+
+<div class="input-group">
+  <input type="text"class="form-control" placeholder="">
+  <button class="btn btn-primary"></button>
+</div>
               </div>
             </div>
           </section>

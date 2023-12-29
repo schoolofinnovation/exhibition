@@ -211,10 +211,17 @@
             @endif
 
             @if($board == "doubling")
-                <form wire:submit.prevent = "doubleing">   
-                    <input type="text" wire:model.lazy = "eventkhaname">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <form wire:submit.prevent = "doubleing">  
+                    <div class="input-group"> 
+                        <input type="text" wire:model.lazy = "eventkhaname" class="form-control" placeholder="Add Relative Event">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                 </form>
+
+               
+                @foreach($relativeevent as $eventi)
+                  {{$eventi}}
+                @endforeach
             @endif
         </div>
 

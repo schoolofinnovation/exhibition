@@ -193,7 +193,8 @@ class AdminEventEditComponent extends Component
         $pavillion = Expo::get();
         $searchtag = Expo::get();
 
-        
-        return view('livewire.admin.admin-event-edit-component',['evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
+        $relativeevent = Event::where('reference', $evento->reference)->get();
+
+        return view('livewire.admin.admin-event-edit-component',['relativeevent' => $relativeevent, 'evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
     }
 }
