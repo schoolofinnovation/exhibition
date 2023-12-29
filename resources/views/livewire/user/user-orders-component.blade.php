@@ -34,7 +34,6 @@
     </div>
 
 
-
     <h5>Generate a Contract Form</h5>
     <a href="#" class="btn btn-primary" wire:click="">Share</a>
 

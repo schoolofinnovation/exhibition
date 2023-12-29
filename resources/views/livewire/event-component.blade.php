@@ -121,11 +121,21 @@
                   
                 </div>
 
+                <!-- Search -->
+                <div class="widget">
+                  <!-- <h3 class="widget-title">Generate QR</h3> -->
+                  <form action="" class="subscription-form validate">
+                    <div class="input-group flex-nowrap">
+                      <i class="bi bi-envelope position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                      <input type="text" class="form-control rounded-start"  name="search" placeholder="Search" required>
+                      <button class="btn btn-primary" type="submit" name=""> Search</button>
+                    </div>
 
-<div class="input-group">
-  <input type="text"class="form-control" placeholder="">
-  <button class="btn btn-primary"></button>
-</div>
+                    <div class="form-text">*Search your potential Industry Events</div>
+                    <div class="subscription-status"></div>
+                  </form>
+                </div>
+
               </div>
             </div>
           </section>

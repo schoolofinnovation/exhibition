@@ -1350,226 +1350,191 @@
       <a href="{{route('partner.magazine',['trackcustomer' => 'add-magazine'])}}" class="btn btn-primary btn-sm">Generate QR</a>
 
 
-    <div class="widget">
-      <h3 class="widget-title">Generate QR</h3>
-      <form action="" class="subscription-form validate">
-        <div class="input-group flex-nowrap">
-          <i class="bi bi-envelope position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-          <input type="text" class="form-control rounded-start"  name="search" placeholder="Search" required>
-          <button class="btn btn-primary" type="submit" name=""> Search</button>
-        </div>
-
-        <div class="form-text">*Search your potential Industry Events</div>
-        <div class="subscription-status"></div>
-      </form>
-    </div>
-
-    <div class="widget">
-      <h3 class="widget-title">Your Industry</h3>
-      <a href="" class="btn-tag me-2 mb-2">#ser</a>
-      <a href="" class="btn-tag me-2 mb-2">#ser</a>
-      <a href="" class="btn-tag me-2 mb-2">#ser</a>
-      <a href="" class="btn-tag me-2 mb-2">#ser</a>
-      <a href="" class="btn-tag me-2 mb-2">#ser</a>
-      <a href="" class="btn-tag me-2 mb-2 active">#business</a>
-    </div>
-
-    <div class="widget">
-      <div class="widget-title">Featured</h3>
-
-       <div class="d-flex align-items-center pb-2 border-bottom">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
+      <div class="widget">
+        <h3 class="widget-title">Generate QR</h3>
+        <form action="" class="subscription-form validate">
+          <div class="input-group flex-nowrap">
+            <i class="bi bi-envelope position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+            <input type="text" class="form-control rounded-start"  name="search" placeholder="Search" required>
+            <button class="btn btn-primary" type="submit" name=""> Search</button>
           </div>
-        </div>
-       </div>
 
-       <div class="d-flex align-items-center pb-2 border-bottom">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
-          </div>
-        </div>
-       </div>
-
-       <div class="d-flex align-items-center pb-2 ">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
-          </div>
-        </div>
-       </div>
-    </div>
-
-    <div class="widget">
-      <div class="widget-title">Featured</h3>
-
-      <div>
-       <div class="d-flex align-items-center">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="64">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
-          </div>
-        </div>
-       </div>
+          <div class="form-text">*Search your potential Industry Events</div>
+          <div class="subscription-status"></div>
+        </form>
       </div>
 
-      <div>
-       <div class="d-flex align-items-center">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="64">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
-          </div>
-        </div>
-       </div>
-      </div>
-       
-      <div>
-       <div class="d-flex align-items-center">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="64">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
-          </div>
-        </div>
-       </div>
+      <div class="widget">
+        <h3 class="widget-title">Your Industry</h3>
+        <a href="" class="btn-tag me-2 mb-2">#ser</a>
+        <a href="" class="btn-tag me-2 mb-2">#ser</a>
+        <a href="" class="btn-tag me-2 mb-2">#ser</a>
+        <a href="" class="btn-tag me-2 mb-2">#ser</a>
+        <a href="" class="btn-tag me-2 mb-2">#ser</a>
+        <a href="" class="btn-tag me-2 mb-2 active">#business</a>
       </div>
 
-    </div>
+      <div class="widget">
+        <div class="widget-title">Featured</h3>
 
-
-    <div class="widget widget-cart">
-      <h3 class="widget-title">Plan</h3>
-
-
-      <div style="max-height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
-      
-        <!--item-->
-          <div class="widget-cart-item pb-2 border-bottom">
-            <button class="btn-close text-danger" type="button" aria-label="Remove">
-              <span aria-hidden="true"> &times;</span>
-            </button>
-              <div class="d-flex align-items-center">
-                <a href="" class="flex-shrink-0">
-                  <img src="" alt=""width="64">
-                </a>
-                <div class="ps-2">
-                  <h6 class="widget-product-title"><a href="">test</a></h6>
-                  <div class="widget-product-meta">
-                    <span class="text-accent me-2"> test<small>cjec</small></span>
-                  </div>
-                </div>
-              </div>
-          </div>
-        
-        <!--item-->
-          <div class="widget-cart-item pb-2 border-bottom">
-            <button class="btn-close text-danger" type="button" aria-label="Remove">
-              <span aria-hidden="true"> &times;</span>
-            </button>
-              <div class="d-flex align-items-center">
-                <a href="" class="flex-shrink-0">
-                  <img src="" alt=""width="64">
-                </a>
-                <div class="ps-2">
-                  <h6 class="widget-product-title"><a href="">test</a></h6>
-                  <div class="widget-product-meta">
-                    <span class="text-accent me-2"> test<small>cjec</small></span>
-                  </div>
-                </div>
-              </div>
-          </div>
-        
-        <!--item-->
-          <div class="widget-cart-item pb-2 border-bottom">
-            <button class="btn-close text-danger" type="button" aria-label="Remove">
-              <span aria-hidden="true"> &times;</span>
-            </button>
-              <div class="d-flex align-items-center">
-                <a href="" class="flex-shrink-0">
-                  <img src="" alt=""width="64">
-                </a>
-                <div class="ps-2">
-                  <h6 class="widget-product-title"><a href="">test</a></h6>
-                  <div class="widget-product-meta">
-                    <span class="text-accent me-2"> test<small>cjec</small></span>
-                    <span class="text-muted">X 1</span>
-                  </div>
-                </div>
-              </div>
-          </div>
-      </div>
-
-
-          <!-- footer -->
-          <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-            <div class="fs-sm me-2 py-2">
-              <span class="text-muted">Subtotal:</span>
-              <span class="text-accent fs-base ms-1">$265 <small>00</small></span>
-            </div>
-            <a href="" class="btn btn-outline-secondary btn-sm">Expand Cart <i class=" bi bi-chevron-right ms-1 me-n1"></i></a>
-          </div>
-
-          <a href="" class="btn btn-primary btn-sm d-block w-100">
-            <i class="bi bi-card me-2 fs-base align-middle"></i> Checkout
+        <div class="d-flex align-items-center pb-2 border-bottom">
+          <a href="" class="flex-shrink-0">
+            <img src="" alt=""width="">
           </a>
-
-      <div>
-       
-      </div>
-
-      <div>
-       <div class="d-flex align-items-center">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="64">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
+          <div class="ps-2">
+            <h6 class="widget-product-title"><a href="">test</a></h6>
+            <div class="widget-product-meta">
+              <span class="text-accent me-2"> test<small>cjec</small></span>
+            </div>
           </div>
         </div>
-       </div>
-      </div>
-       
-      <div>
-       <div class="d-flex align-items-center">
-        <a href="" class="flex-shrink-0">
-          <img src="" alt=""width="64">
-        </a>
-        <div class="ps-2">
-          <h6 class="widget-product-title"><a href="">test</a></h6>
-          <div class="widget-product-meta">
-            <span class="text-accent me-2"> test<small>cjec</small></span>
+
+        <div class="d-flex align-items-center pb-2 border-bottom">
+          <a href="" class="flex-shrink-0">
+            <img src="" alt=""width="">
+          </a>
+          <div class="ps-2">
+            <h6 class="widget-product-title"><a href="">test</a></h6>
+            <div class="widget-product-meta">
+              <span class="text-accent me-2"> test<small>cjec</small></span>
+            </div>
           </div>
         </div>
-       </div>
+
+        <div class="d-flex align-items-center pb-2 ">
+          <a href="" class="flex-shrink-0">
+            <img src="" alt=""width="">
+          </a>
+          <div class="ps-2">
+            <h6 class="widget-product-title"><a href="">test</a></h6>
+            <div class="widget-product-meta">
+              <span class="text-accent me-2"> test<small>cjec</small></span>
+            </div>
+          </div>
+        </div>
       </div>
-      
+
+      <div class="widget">
+        <div class="widget-title">Featured</h3>
+
+        <div>
+        <div class="d-flex align-items-center">
+          <a href="" class="flex-shrink-0">
+            <img src="" alt=""width="64">
+          </a>
+          <div class="ps-2">
+            <h6 class="widget-product-title"><a href="">test</a></h6>
+            <div class="widget-product-meta">
+              <span class="text-accent me-2"> test<small>cjec</small></span>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div>
+        <div class="d-flex align-items-center">
+          <a href="" class="flex-shrink-0">
+            <img src="" alt=""width="64">
+          </a>
+          <div class="ps-2">
+            <h6 class="widget-product-title"><a href="">test</a></h6>
+            <div class="widget-product-meta">
+              <span class="text-accent me-2"> test<small>cjec</small></span>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+        <div>
+        <div class="d-flex align-items-center">
+          <a href="" class="flex-shrink-0">
+            <img src="" alt=""width="64">
+          </a>
+          <div class="ps-2">
+            <h6 class="widget-product-title"><a href="">test</a></h6>
+            <div class="widget-product-meta">
+              <span class="text-accent me-2"> test<small>cjec</small></span>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+      <div class="widget widget-cart">
+        <h3 class="widget-title">Plan</h3>
+        <div style="max-height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
+        
+          <!--item-->
+            <div class="widget-cart-item pb-2 border-bottom">
+              <button class="btn-close text-danger" type="button" aria-label="Remove">
+                <span aria-hidden="true"> &times;</span>
+              </button>
+                <div class="d-flex align-items-center">
+                  <a href="" class="flex-shrink-0">
+                    <img src="" alt=""width="64">
+                  </a>
+                  <div class="ps-2">
+                    <h6 class="widget-product-title"><a href="">test</a></h6>
+                    <div class="widget-product-meta">
+                      <span class="text-accent me-2"> test<small>cjec</small></span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          
+          <!--item-->
+            <div class="widget-cart-item pb-2 border-bottom">
+              <button class="btn-close text-danger" type="button" aria-label="Remove">
+                <span aria-hidden="true"> &times;</span>
+              </button>
+                <div class="d-flex align-items-center">
+                  <a href="" class="flex-shrink-0">
+                    <img src="" alt=""width="64">
+                  </a>
+                  <div class="ps-2">
+                    <h6 class="widget-product-title"><a href="">test</a></h6>
+                    <div class="widget-product-meta">
+                      <span class="text-accent me-2"> test<small>cjec</small></span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          
+          <!--item-->
+            <div class="widget-cart-item pb-2 border-bottom">
+              <button class="btn-close text-danger" type="button" aria-label="Remove">
+                <span aria-hidden="true"> &times;</span>
+              </button>
+                <div class="d-flex align-items-center">
+                  <a href="" class="flex-shrink-0">
+                    <img src="" alt=""width="64">
+                  </a>
+                  <div class="ps-2">
+                    <h6 class="widget-product-title"><a href="">test</a></h6>
+                    <div class="widget-product-meta">
+                      <span class="text-accent me-2"> test<small>cjec</small></span>
+                      <span class="text-muted">X 1</span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
+          <div class="fs-sm me-2 py-2">
+            <span class="text-muted">Subtotal:</span>
+            <span class="text-accent fs-base ms-1">$265 <small>00</small></span>
+          </div>
+          <a href="" class="btn btn-outline-secondary btn-sm">Expand Cart <i class=" bi bi-chevron-right ms-1 me-n1"></i></a>
+        </div>
+
+        <a href="" class="btn btn-primary btn-sm d-block w-100">
+          <i class="bi bi-card me-2 fs-base align-middle"></i> Checkout
+        </a>
+      <div>
+       
     </div>
 
 
@@ -1866,6 +1831,11 @@
           <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-share"></i></span>
           <span class="handheld-toolbar-label">Share</span>
+          </a>
+
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('user.dashboard', ['board' => 'profile'])}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-share"></i></span>
+          <span class="handheld-toolbar-label">Membership</span>
           </a>
 
           <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
