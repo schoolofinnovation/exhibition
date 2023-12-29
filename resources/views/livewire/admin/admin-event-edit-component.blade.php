@@ -222,45 +222,132 @@
 
                
                 @foreach($relativeevent as $evento)
-                    <div class=" mb-2">
-                        <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                            <div class="col  pr-0">
-                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                                <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
-                                @else
-                                <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
-                                <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
 
-                                @endif 
-                                <div class="round-circle">{{$evento->edition}}</div> 
-                                <div class="round-circle fs-xs">{{Carbon\Carbon::parse ($evento->startdate)->format('Y')}}</div> 
-                                {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
-                            </div>
+                    @if(is_null($evento->admstatus))
+                        <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')" class="btn btn-primary btn-sm">Awaiting</a>
+                        <div class=" mb-2">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                    @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
 
-                            <div class="col-7  p-0">
-                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
-                                {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
-                            <div class="text-muted fs-sm text-start">
-                                @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
-                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                                @else
-                                {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
-                                @endif 
-                            </div>  
-                            <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
-                            </div>
+                                    @endif 
+                                    <div class="round-circle">{{$evento->edition}}</div> 
+                                    <div class="round-circle fs-xs">{{Carbon\Carbon::parse ($evento->startdate)->format('Y')}}</div> 
+                                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                                </div>
 
-                            <div class="col-3  p-0">
-                                @if(is_null($evento->image))
-                                    <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
-                                @else
-                                <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">
-                                <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
-                                @endif
+                                <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                    {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                    @else
+                                    {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                    @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                    @if(is_null($evento->image))
+                                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
+                                    @else
+                                    <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">
+                                    <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @elseif($evento->admstatus == 1)
+                        <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'0')" class="btn btn-primary btn-sm">Deactive</a>
+                        <div class=" mb-2">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                    @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                                    @endif 
+                                    <div class="round-circle">{{$evento->edition}}</div> 
+                                    <div class="round-circle fs-xs">{{Carbon\Carbon::parse ($evento->startdate)->format('Y')}}</div> 
+                                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                                </div>
+
+                                <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                    {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                    @else
+                                    {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                    @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                    @if(is_null($evento->image))
+                                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
+                                    @else
+                                    <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">
+                                    <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <a href="#" wire:click.prevent="updateEventstatus({{$evento->id}},'1')" class="btn btn-primary btn-sm">Active</a>
+                        <div class=" mb-2">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+                                    @else
+                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($evento->startdate)->format('d')}}</div> 
+                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
+
+                                    @endif 
+                                    <div class="round-circle">{{$evento->edition}}</div> 
+                                    <div class="round-circle fs-xs">{{Carbon\Carbon::parse ($evento->startdate)->format('Y')}}</div> 
+                                    {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
+                                </div>
+
+                                <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="{{route('event.details',['slug' => $evento->slug])}}">
+                                    {{ucwords(trans(Str::limit($evento->eventname, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                    @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($evento->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                    @else
+                                    {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
+                                    @endif 
+                                </div>  
+                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                    @if(is_null($evento->image))
+                                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">Add</a>
+                                    @else
+                                    <a class="card-img-top d-block overflow-hidden" href="{{route('admin.eventMultiEdit',['event_id' => $evento->id, 'formm' => 'image' ])}}">
+                                    <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                 @endforeach
             @endif
         </div>
