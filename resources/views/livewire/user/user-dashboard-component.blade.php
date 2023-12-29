@@ -1564,7 +1564,7 @@
          List your Magazine
         </h5>
         <p  class="card-text fs-sm text-muted"> Add more details about your event</p>
-        <a href="" class="btn btn-sm btn-primary">Add</a>
+        <a href="{{route('partner.magazine',['trackcustomer' => 'add-magazine'])}}" class="btn btn-sm btn-primary">Add</a>
       </div>
     </div>
 
