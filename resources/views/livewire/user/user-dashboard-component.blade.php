@@ -517,7 +517,7 @@
               </div>
 
     @else
-        <section class="container py-3 py-lg-5 mt-4 mb-3">
+        <!-- <section class="container py-3 py-lg-5 mt-4 mb-3">
           <div class="text-center mb-5">
             <p class="col-md-10 col-lg-8 mx-auto fw-normal">Reach your business goals with COI Marketing Solutions.</p>
             <div class="container">
@@ -543,7 +543,7 @@
 
             {{$expand}}
           </div>
-        </section>
+        </section> -->
 
 
     @endif
@@ -1346,24 +1346,26 @@
   @endif   
 
     <div class="container">
-      <small class="lh-1">Select your event, create product QR Link. Get formatted form your visitor.</small> <br>
+      <!-- <small class="lh-1">Select your event, create product QR Link. Get formatted form your visitor.</small> <br> -->
       <a href="{{route('partner.magazine',['trackcustomer' => 'add-magazine'])}}" class="btn btn-primary btn-sm">Generate QR</a>
 
 
+      <!-- search -->
       <div class="widget">
-        <h3 class="widget-title">Generate QR</h3>
+        <!-- <h3 class="widget-title">Search</h6> -->
         <form action="" class="subscription-form validate">
           <div class="input-group flex-nowrap">
-            <i class="bi bi-envelope position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+            <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
             <input type="text" class="form-control rounded-start"  name="search" placeholder="Search" required>
             <button class="btn btn-primary" type="submit" name=""> Search</button>
           </div>
 
-          <div class="form-text">*Search your potential Industry Events</div>
+          <div class="form-text">*Search your potential upcoming Industry Events</div>
           <div class="subscription-status"></div>
         </form>
       </div>
 
+      <!-- industry -->
       <div class="widget">
         <h3 class="widget-title">Your Industry</h3>
         <a href="" class="btn-tag me-2 mb-2">#ser</a>
@@ -1415,7 +1417,7 @@
       </div>
 
       <div class="widget">
-        <div class="widget-title">Featured</h3>
+        <div class="widget-title">Basic Membership</h3>
 
         <div>
         <div class="d-flex align-items-center">
@@ -1423,7 +1425,7 @@
             <img src="" alt=""width="64">
           </a>
           <div class="ps-2">
-            <h6 class="widget-product-title"><a href="">test</a></h6>
+            <h6 class="widget-product-title"><a href="">One-time Registration Fee:$50</a></h6>
             <div class="widget-product-meta">
               <span class="text-accent me-2"> test<small>cjec</small></span>
             </div>
@@ -1461,8 +1463,9 @@
 
       </div>
 
+      <!-- membership -->
       <div class="widget widget-cart">
-        <h3 class="widget-title">Plan</h3>
+        <h3 class="widget-title">Membership</h3>
         <div style="max-height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
         
           <!--item-->
@@ -1537,58 +1540,64 @@
        
     </div>
 
-
+    <!-- Event -->
     <div class="card border-0 shadow mb-3">
       <div class="card-header">
-        Your Events
+        Post your Event
       </div>
       <div class="card-body">
         <h5 class="card-title">
-         List your Events
+         Your Events
         </h5>
         <p  class="card-text fs-sm text-muted"> list your magazine potential space, at right time, right place with right people  </p>
         <a href="" class="btn btn-sm btn-primary">Add</a>
       </div>
     </div>
 
+    <!-- magazine -->
     <div class="card border-0 shadow mb-3">
       <div class="card-header">
-        Your Magazine
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">
-         List your Magazine
-        </h5>
-        <p  class="card-text fs-sm text-muted"> list your magazine potential space, at right time, right place with right people  </p>
-        <a href="" class="btn btn-sm btn-primary">Add</a>
-      </div>
-    </div>
-
-    <div class="card border-0 shadow mb-3">
-      <div class="card-header">
-        Your Magazine
+         Create a showcase magazine
       </div>
       <div class="card-body">
         <h5 class="card-title">
          List your Magazine
         </h5>
-        <p  class="card-text fs-sm text-muted"> list your magazine potential space, at right time, right place with right people  </p>
+        <p  class="card-text fs-sm text-muted"> Add more details about your event</p>
         <a href="" class="btn btn-sm btn-primary">Add</a>
       </div>
     </div>
 
+
+    <!-- email Campaign -->
     <div class="card border-0 shadow mb-3">
       <div class="card-header">
-        Your Magazine
+      Post an Email
       </div>
       <div class="card-body">
-        <h5 class="card-title">
-         List your Magazine
-        </h5>
-        <p  class="card-text fs-sm text-muted"> list your magazine potential space, at right time, right place with right people  </p>
+        <h5 class="card-title">Email Campaign</h5>
+        <p  class="card-text fs-sm text-muted">reach more, Our Data, Your Customer</p>
         <a href="" class="btn btn-sm btn-primary">Add</a>
       </div>
     </div>
+
+    create
+
+    start an event
+    share content to connect with your followers
+    
+    Create an event
+    Host an event to grow your pages community
+
+    Post a free job
+    reach more qualified applicants
+
+    create an Ad
+    Generate leads, drive website traffic, and build brand awareness
+
+    create a showcase page
+    Add more details about your event
+
 
     </div>
 
