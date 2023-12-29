@@ -12,7 +12,8 @@
                   <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($evento->startdate)->format('M')}} </div>
 
                 @endif 
-                <div class="round-circle">{{$evento->edition}}</div> 
+                <div class="round-circle">{{$evento->edition}}</div>
+                <div class="round-circle">{{Carbon\Carbon::parse ($evento->startdate)->format('Y')}}</div> 
                 {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
             </div>
 
@@ -121,8 +122,10 @@
 
     <div class="container">
       <form wire:submit.prevent="withoutHashtag">
-                <input type="text" class="form-control" wire:model.lazy="howMany">
-              <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="input-group my-2">
+                  <input type="text" class="form-control" wire:model.lazy="howMany">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </form>
     </div>
     

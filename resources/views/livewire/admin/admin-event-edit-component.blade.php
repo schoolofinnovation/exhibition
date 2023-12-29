@@ -212,9 +212,9 @@
 
             @if($board == "doubling")
 
-               <small class="fw-bold mb-4">{{$evento->eventname}} </small>
+               <small class="fw-bold">{{$evento->eventname}} </small>
                 <form wire:submit.prevent = "doubleing">  
-                    <div class="input-group"> 
+                    <div class="input-group my-2"> 
                         <input type="text" wire:model.lazy = "eventkhaname" class="form-control" placeholder="Add Relative Event">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -234,7 +234,7 @@
 
                                 @endif 
                                 <div class="round-circle">{{$evento->edition}}</div> 
-                                <div class="round-circle fs-xs">{{Carbon\Carbon::parse ($evento->startdate)->format('y')}}</div> 
+                                <div class="round-circle fs-xs">{{Carbon\Carbon::parse ($evento->startdate)->format('Y')}}</div> 
                                 {{--<a class="btn btn-primary btn-sm" href="{{$link->google()}}">Add to Calender</a>--}}
                             </div>
 
