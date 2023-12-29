@@ -17,7 +17,7 @@
                       {{--<h5 class="mt-4 mb-1 text-body fw-light">Free</h5>--}}
                         <div class="mb-1 display-1"> Great starts here.</div>
                         <p class=" fw-light lh-1 mt-5">Join our movement to Make India a Great Place To Business</p>
-                        <a class="btn btn-outline-primary mt-2" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Search Right Place<i class="bi bi-chevron-right fs-ms ms-1"></i></a>
+                        <!-- <a class="btn btn-outline-primary mt-2" href="{{route('coievent.add',['board' => 'add-your-event'])}}">Search Right Place<i class="bi bi-chevron-right fs-ms ms-1"></i></a> -->
 
                       </div>
 
@@ -126,8 +126,8 @@
                   <!-- <h3 class="widget-title">Generate QR</h3> -->
                   <form action="" class="subscription-form validate">
                     <div class="input-group flex-nowrap">
-                      <i class="bi bi-envelope position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                      <input type="text" class="form-control rounded-start"  name="search" placeholder="Search" required>
+                      <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                      <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" required>
                       <button class="btn btn-primary" type="submit" name=""> Search</button>
                     </div>
 
