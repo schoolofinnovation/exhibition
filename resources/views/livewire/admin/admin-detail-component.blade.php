@@ -605,6 +605,7 @@
                 <div class="round-circle fs-xs">Reviews</div> 
             </div>
 
+            
             <form wire:submit.prevent="tryingfaker">
                 <div class="col-7  p-0">
                       <input type="text" wire:model.lazy="howMany">
