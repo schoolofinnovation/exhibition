@@ -123,7 +123,7 @@
     <div class="container">
       <form wire:submit.prevent="withoutHashtag">
         <div class="input-group my-2">
-                  <input type="text" class="form-control" wire:model.lazy="howMany">
+                  <input type="text" class="form-control" wire:model.lazy="howMany" placeholder="Add Comment Count">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
@@ -554,8 +554,14 @@
     </div>
 
     <div class="container">
-      create a unique ID
-      <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
+      <!-- create a unique ID
+      <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a> -->
+
+      <div class="input-group my-2">
+        <input type="text" class="form-control" placeholder="create a unique ID">
+        <a href="#" class="btn btn-primary" wire:click.prevent="updateIDstatus({{$evento->id}})">ID</a>
+      </div>
+      
     </div>
   
     {{--doubling--}}
@@ -599,21 +605,13 @@
       
         <div class="row text-center p-1 gx-0 gy-1 mb-1  shadow-sm  border rounded border-1">
             <div class="col  pr-0">
-                <div class="fs-md fw-light mb-0"> 
-                {{$EventCountRate->count()}}
-                </div> 
-                <div class="round-circle fs-xs">Reviews</div> 
+                <div class="fs-md fw-light mb-0"> {{$EventCountRate->count()}}  <small> Reviews</small></div> 
             </div>
-
-            
             <form wire:submit.prevent="tryingfaker">
-                <div class="col-7  p-0">
-                      <input type="text" wire:model.lazy="howMany">
-                </div>
-
-                <div class="col-3 p-0">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                    <div class="input-group my-2">
+                      <input type="text" class="form-control" wire:model.lazy="howMany">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
             </form>
         </div>
     </div>
