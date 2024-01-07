@@ -32,10 +32,10 @@ class AwardDetailsComponent extends Component
 
     public $type_event;
     
-    public function mount($slug, $type_event)
+    public function mount($slug)
     {
        $this->slug = $slug;
-       $this->type_event = $type_event;
+     
     }
 
     public function post( Request $request, $slug)
@@ -151,7 +151,7 @@ class AwardDetailsComponent extends Component
          $current = strtotime(Carbon::now());
          $to = strtotime($event->startdate);
          $from= strtotime($event->enddate);
-         
+
         return view('livewire.award-details-component',['sponserbrand'=> $sponserbrand, 'to'=> $to, 'from'=> $from,'current'=> $current, 'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
         'commentedRates' => $commentedRates,
         'detailProductprice' => $detailProductprice,
