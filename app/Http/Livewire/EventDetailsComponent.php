@@ -32,10 +32,10 @@ class EventDetailsComponent extends Component
 
     public $type_event;
     
-    public function mount($slug, $type_event)
+    public function mount($slug)
     {
        $this->slug = $slug;
-       $this->type_event = $type_event;
+      
     }
 
     

@@ -421,22 +421,24 @@
 
             <!--Overview-->
             <!--Speakers-->
-            <div class="text-stat">
-                <img src="path-to-image" class="d-inline-block rounded mb-3" width="96" alt="">
-                <h6 class="pt-1 mb-1">William Simth</h6>
-                <p class="fs-sm text-muted">CEO, Co-founder at company ltd </p>
-                <a href="" class="btn-social bs-facebook bs-sm">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="" class="btn-social bs-facebook bs-sm">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="" class="btn-social bs-facebook bs-sm">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="" class="btn-social bs-facebook bs-sm">
-                    <i class="bi bi-facebook"></i>
-                </a>
+            <div class="container">
+                <div class="text-stat">
+                    <img src="path-to-image" class="d-inline-block rounded mb-3" width="96" alt="">
+                    <h6 class="pt-1 mb-1">William Simth</h6>
+                    <p class="fs-sm text-muted">CEO, Co-founder at company ltd </p>
+                    <a href="" class="btn-social bs-facebook bs-sm">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="" class="btn-social bs-facebook bs-sm">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="" class="btn-social bs-facebook bs-sm">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="" class="btn-social bs-facebook bs-sm">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </div>
             </div>
             <!--Key-->
             <div class="container">
@@ -470,36 +472,36 @@
             </div>
             <!--Who-->
             <!--Questions-->
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne"> Accordion Item #1</button>
-                    </h2>
-                    <div class="accordion-collapse  collapse show" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushExample">
-                      <div class="accordion-body">
-                        Answers
-                      </div>
+
+            <div class="container">
+                <h4>FAQ</h4>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                                Accordion Item #1
+                            </button>
+                        </h2>
+                        <div class="accordion-collapse  collapse" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushExample">
+                        <div class="accordion-body">
+                            Answers
+                        </div>
+                        </div>
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne"> Accordion Item #1</button>
-                    </h2>
-                    <div class="accordion-collapse  collapse show" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushExample">
-                      <div class="accordion-body">
-                        Answers
-                      </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapsetwo">
+                                Questions #2
+                            </button>
+                        </h2>
+                        <div class="accordion-collapse  collapse" id="flush-collapseTwo" aria-labelledby="flush-headingTwo" data-bs-parent="#accordianFlushExample">
+                        <div class="accordion-body">
+                            Answers
+                        </div>
+                        </div>
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne"> Accordion Item #1</button>
-                    </h2>
-                    <div class="accordion-collapse  collapse show" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushExample">
-                      <div class="accordion-body">
-                        Answers
-                      </div>
-                    </div>
+                    
                 </div>
             </div>
             <!--Contact-->

@@ -24,10 +24,10 @@
             <!--Award-->
             <div class="row g-0 py-0 mx-n2 my-Slider5">
               @foreach($awardo as $eventoi)
-                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('event.details',['slug' => $eventoi->slug])}}">
+                <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-1" href="{{route('award.details',['slug' => $eventoi->slug])}}">
                   <div class="card product-card">
                     
-                    <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
+                    <a class="card-img-top d-block overflow-hidden" href="{{route('award.details',['slug' => $eventoi->slug])}}">
                       <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" alt="{{$eventoi -> eventname}}"></a>
 
                     <div class="card-body p-1">
@@ -39,7 +39,7 @@
                             <i class="bi bi-shield-check" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="certified" aria-label="certified">
                               <i class="bi bi-lightning-fill" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="upcoming" aria-label="upcoming"></i></i></small>
                             <div class="product-title fs-sm h3 mb-0">
-                            <a href="{{route('event.details',['slug' => $eventoi->slug])}}">{{ucwords(trans($eventoi -> eventname))}}
+                            <a href="{{route('award.details',['slug' => $eventoi->slug])}}">{{ucwords(trans($eventoi -> eventname))}}
                               </a></div>
                           </div>
 
