@@ -150,6 +150,7 @@ use App\Http\Livewire\Admin\AdminEventMultipleAddComponent;
 use App\Http\Livewire\Admin\AdminLandingComponent;
 use App\Http\Livewire\Admin\AdminQuestionComponent;
 use App\Http\Livewire\Admin\MagazineUpgradingComponent;
+use App\Http\Livewire\AwardDetailsComponent;
 use App\Http\Livewire\AwardsComponent;
 use App\Http\Livewire\ContractFromComponent;
 use App\Http\Livewire\EventSearchComponent;
@@ -218,6 +219,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
 Route::get('/ex/{slug}', EventDetailsComponent::class)->name('event.details');
+Route::get('/award/{slug}', AwardDetailsComponent::class)->name('award.details');
 
 //reviews 
 Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');

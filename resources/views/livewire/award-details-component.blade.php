@@ -227,11 +227,16 @@
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Understanding</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Speakers</a></li>
                     @if(count($eventbrand) > 0)
-                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Key Discussion</a></li>
                     @endif
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Agenda</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Who Should Attend</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Previous Edition</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Award</a></li>
                     <!-- <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li>  comment-->
                 </ul>
             </section>
@@ -412,6 +417,95 @@
                   <i class="bi bi-share"></i>
                   <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
             </div>
+
+
+            <!--Overview-->
+            <!--Speakers-->
+            <div class="text-stat">
+                <img src="path-to-image" class="d-inline-block rounded mb-3" width="96" alt="">
+                <h6 class="pt-1 mb-1">William Simth</h6>
+                <p class="fs-sm text-muted">CEO, Co-founder at company ltd </p>
+                <a href="" class="btn-social bs-facebook bs-sm">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="" class="btn-social bs-facebook bs-sm">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="" class="btn-social bs-facebook bs-sm">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="" class="btn-social bs-facebook bs-sm">
+                    <i class="bi bi-facebook"></i>
+                </a>
+            </div>
+            <!--Key-->
+            <div class="container">
+            <h4>Key Discussion</h4>    
+                <div class="card border-0 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Card Title</h5>
+                        <p class="card-text fs-sm text-muted">Some quick example</p>
+                        <a href="" class="btn btn-primary btn-sm">Go Somewhere</a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card Title</h5>
+                        <p class="card-text fs-sm text-muted">Some quick example</p>
+                        <a href="" class="btn btn-primary btn-sm">Go Somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <!--Agenda-->
+
+            <div class="card border-0 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text fs-sm text-muted">Some quick example</p>
+                    <a href="" class="btn btn-primary btn-sm">Go Somewhere</a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text fs-sm text-muted">Some quick example</p>
+                    <a href="" class="btn btn-primary btn-sm">Go Somewhere</a>
+                </div>
+            </div>
+            <!--Who-->
+            <!--Questions-->
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne"> Accordion Item #1</button>
+                    </h2>
+                    <div class="accordion-collapse  collapse show" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushExample">
+                      <div class="accordion-body">
+                        Answers
+                      </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne"> Accordion Item #1</button>
+                    </h2>
+                    <div class="accordion-collapse  collapse show" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushExample">
+                      <div class="accordion-body">
+                        Answers
+                      </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne"> Accordion Item #1</button>
+                    </h2>
+                    <div class="accordion-collapse  collapse show" id="flush-collapseOne" aria-labelledby="flush-headingOne" data-bs-parent="#accordianFlushExample">
+                      <div class="accordion-body">
+                        Answers
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <!--Contact-->
+            <!--Previous-->
+            <!--Award-->
+
 
             <!-- pavillion -->
             <div class="container mt-4 d-lg-none">

@@ -8,21 +8,21 @@ use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Franchise;
 use App\Models\Pavillion;
+use App\Models\Ticket;
+use App\Models\Viewso;
+use Spatie\CalendarLinks\Link;
+
+use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Http\Request;
 use App\Models\Rate;
 use App\Models\Speaker;
 use App\Models\Sponsership;
-use App\Models\Ticket;
-use App\Models\Viewso;
 use Carbon\Carbon;
-use Livewire\Component;
-use Livewire\WithPagination;
-use Spatie\CalendarLinks\Link;
 use DateTime;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
-class EventDetailsComponent extends Component
+class AwardDetailsComponent extends Component
 {
     public $slug;
     public $eventname;
@@ -37,8 +37,6 @@ class EventDetailsComponent extends Component
        $this->slug = $slug;
        $this->type_event = $type_event;
     }
-
-    
 
     public function post( Request $request, $slug)
     {
@@ -65,9 +63,10 @@ class EventDetailsComponent extends Component
 
 
     use WithPagination;
+
     public function render()
-    {   
-       //$check = Cart::get();
+    {
+        //$check = Cart::get();
         $event = Event::where('slug', $this->slug)->first();
 
         $poostKey = 'eventID';
@@ -120,7 +119,6 @@ class EventDetailsComponent extends Component
         {
           $productPrice = Ticket::where('admstatus','1')->where('status','1')->where('event_id', $event -> id)->where('expiry_date', '>=' , $currentDate)->where('expiry_time', '>=' , $currentTime)->min('price');
         }
-        
 
         //$franchises = Franchise::paginate(4);
         $awarde = Award::select('type')->groupBy('type')->orderBy('type','asc')->get();
@@ -128,9 +126,6 @@ class EventDetailsComponent extends Component
         $sponSer = Sponsership::where('admstatus','0')->where('status','1')->get();
         $premium = Franchise::where('status', 'active')->where('featured','premium')->limit(1);
         $pavillion = Pavillion::where('event_id',$event->id)->get();
-
-        
-
 
           if (Auth::check()) 
         {
@@ -156,35 +151,20 @@ class EventDetailsComponent extends Component
          $current = strtotime(Carbon::now());
          $to = strtotime($event->startdate);
          $from= strtotime($event->enddate);
-
-         //$Createkeywords = $event->eventname ;
-        // dd($Createkeywords);
-        
-         // $startdate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-27 00:00:00');
          
-         //$enddate = Carbon::createFromFormat('Y-m-d H:s:i', '2023-07-29 00:00:00');
-
-         //$subtract = ( $todate - $fromdate);
-         //$diffinhours = $enddate ->diffInHours($startdate);
-         //$getodata = abs($subtract/3600);
-         
-         //$testi = strtotime($checkCommentop);
-
-         //dd($fromdate, $todate, $checkCommentop );
-        return view('livewire.event-details-component',[ 'sponserbrand'=> $sponserbrand, 'to'=> $to, 'from'=> $from,'current'=> $current, 'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
-                                                        'commentedRates' => $commentedRates,
-                                                        'detailProductprice' => $detailProductprice,
-                                                        'pavillion'=>$pavillion,'category'=>$category,
-                                                        'rating'=> $rating,
-                                                        'rate'=> $rate,
-                                                        'productPrice' => $productPrice,
-                                                        'link' => $link,
-                                                        'premium'=> $premium,
-                                                        'event' => $event,
-                                                        'sponSer' => $sponSer,
-                                                        'speaker' => $speaker,
-                                                        'awarde' => $awarde,
-                                                        'ticketOrExhibit' => $ticketOrExhibit
-                                                      ])->layout('layouts.eblog');
+        return view('livewire.award-details-component',['sponserbrand'=> $sponserbrand, 'to'=> $to, 'from'=> $from,'current'=> $current, 'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
+        'commentedRates' => $commentedRates,
+        'detailProductprice' => $detailProductprice,
+        'pavillion'=>$pavillion,'category'=>$category,
+        'rating'=> $rating,
+        'rate'=> $rate,
+        'productPrice' => $productPrice,
+        'link' => $link,
+        'premium'=> $premium,
+        'event' => $event,
+        'sponSer' => $sponSer,
+        'speaker' => $speaker,
+        'awarde' => $awarde,
+        'ticketOrExhibit' => $ticketOrExhibit]);
     }
 }
