@@ -465,12 +465,12 @@ public $start;
        }
     }
 
+    public $nowtime;
     public function CreateAutoDesc($id)
     {  
 
         $statementID = Event::find($id);
         $statementEventName = trim($statementID->eventname); 
-       
         $statementEventVenue = trim($statementID->venue); 
         $statementEventCity = trim($statementID->city); 
         $statementEventType= trim($statementID->eventype); 
@@ -479,10 +479,10 @@ public $start;
         $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('D,d M Y'));
         
         $findCategory = Denco::where('event_id', $statementID)->get();
-        $getCategory = trim('tesing');
+        $getCategory = trim($findCategory->expo->tag);
 
         $mytime = Carbon::today()->format("Y-m-d");
-        $mymonth = Carbon::now()->addDays(30)->format("m");
+        $mymonth = Carbon::now()->addDays(3)->format("Y-m-d");
 
          //three months prior
          //$during =  'Join us at upcoming [exhibtion_type] [Exhibition Title], held from [Exhibtion start date] to [Exhibition End Date] at [Exhibtiion Venue]. Get your ticket now and be a part of the [tag] industry event.';
@@ -495,23 +495,31 @@ public $start;
          
          //$visited = User::find($id);
          $statementIoD = $statementID;
-         $statementIoD->shtdesc = $start;
+         $statementIoD->shtdesc = trim($start);
          $statementIoD->save();
-          dd( 'done');
-     //  if($mytime < $statementEventStartDate )
-     //   {
-     //     $rti = Str::replace('exhibtion_type','$statementEventType', $start);
-     //   }
-     //   elseif ($mytime < $statementEventStartDate )
-     //   {
-     //     $rti = Str::replace(' ','', $during);
-     //   }
-     //   elseif ($mytime > $statementEventEndDate )
-     //   {
-     //     $rti = Str::replace(' ','', $end);
-     //   }
+
+      //    $myytime = Carbon::today()->format('D,d M Y');
+      //    $findstartdate = Carbon::($statementID->startdate)->format('D,d M Y');
+      //    $mymonth = Carbon::now()->addDays(3)->format("Y-m-d");
+          
+      //    //between($statementEventStartDate, $statementEventEndDate)
+      // if( $myytime  = $statementEventStartDate)
+      //  {
+      //    //$rti = Str::replace('exhibtion_type','$statementEventType', $start);
+      //    $result = 'exhibition is awaiting to close deal'.$statementEventStartDate.'';
+
+      //  }
+      //  elseif ($myytime < $statementEventStartDate )
+      //  {
+      //    //$rti = Str::replace(' ','', $during);
+      //    $result = 'advertise with us, book space upcoming expo';
+      //  }
+      //  elseif ($myytime > $statementEventEndDate )
+      //  {
+      //     $result = 'event has been closed find visitor list '.$statementEventEndDate.'';
+      //  }
       
-      
+      // dd($myytime) ;
     }
 
    
@@ -532,8 +540,6 @@ public $start;
        
        return redirect()->route('admin.brand', ['brand_id' => $id]);
     }
-
-
 
     public $phone;
     public $industry;
