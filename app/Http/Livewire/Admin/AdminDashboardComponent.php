@@ -49,7 +49,7 @@ class AdminDashboardComponent extends Component
   public $emaill;
   public $searchTerm;
   public $findIDs = null;
-  //public $shtdesc;
+  public $shtdesc;
 
   public $name;
   public $contact;
@@ -83,6 +83,7 @@ public $monthly;
 public $howMany;
 
 public $brand_id;
+public $start;
     
     //career
     use WithPagination;
@@ -467,13 +468,9 @@ public $brand_id;
     public function CreateAutoDesc($id)
     {  
 
-       $eventShtdesc = Event::find($id);
-    foreach($eventShtdesc as $updatco)
-      {
-
-        $statementID = Event::find($updatco->id);
-        
+        $statementID = Event::find($id);
         $statementEventName = trim($statementID->eventname); 
+       
         $statementEventVenue = trim($statementID->venue); 
         $statementEventCity = trim($statementID->city); 
         $statementEventType= trim($statementID->eventype); 
@@ -482,9 +479,8 @@ public $brand_id;
         $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('D,d M Y'));
         
         $findCategory = Denco::where('event_id', $statementID)->get();
-        $getCategory = trim($findCategory->expo->tag);
+        $getCategory = trim('tesing');
 
-    
         $mytime = Carbon::today()->format("Y-m-d");
         $mymonth = Carbon::now()->addDays(30)->format("m");
 
@@ -495,13 +491,13 @@ public $brand_id;
          //$end =  'Download business directory exhibition and find reference for expand your business. Share your reviews and rate your experience.';
 
          //post Expo timer with dates $statementEventName.''.$statementEventName 'public/exhibition/'.$eventoi->image
-         $start = 'The '. $statementEventTagline. 'premier Great Exhibition to Exhibit certify ' .$statementEventType.' for ' .$getCategory.' industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your registration now and be a part of the industry event.';
+        $start = 'The '. $statementEventTagline. ' premier Great Exhibition to Exhibit certify ' .$statementEventType.' for ' .$getCategory.' industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your registration now and be a part of the industry event.';
          
          //$visited = User::find($id);
-          $statementIoD = $statementID->id;
-          $statementIoD->shtdesc = $start;
-          $statementIoD->save();
-
+         $statementIoD = $statementID;
+         $statementIoD->shtdesc = $start;
+         $statementIoD->save();
+          dd( 'done');
      //  if($mytime < $statementEventStartDate )
      //   {
      //     $rti = Str::replace('exhibtion_type','$statementEventType', $start);
@@ -515,10 +511,10 @@ public $brand_id;
      //     $rti = Str::replace(' ','', $end);
      //   }
       
-      }
+      
     }
 
-    //dd($rti);
+   
 
     public function del($id)
     {
