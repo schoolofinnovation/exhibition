@@ -495,12 +495,12 @@ public $brand_id;
          //$end =  'Download business directory exhibition and find reference for expand your business. Share your reviews and rate your experience.';
 
          //post Expo timer with dates $statementEventName.''.$statementEventName 'public/exhibition/'.$eventoi->image
-         $start = 'The '. $statementEventTagline. 'premier Great Place to Exhibit certify ' .$statementEventType.' for ' .$getCategory.' industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your registration now and be a part of the industry event.';
+         $start = 'The '. $statementEventTagline. 'premier Great Exhibition to Exhibit certify ' .$statementEventType.' for ' .$getCategory.' industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your registration now and be a part of the industry event.';
          
          //$visited = User::find($id);
-          $statementID = Event::find($updatco->id);
-          $statementID->shtdesc = $start;
-          $statementID->save();
+          $statementIoD = $statementID->id;
+          $statementIoD->shtdesc = $start;
+          $statementIoD->save();
 
      //  if($mytime < $statementEventStartDate )
      //   {
@@ -660,7 +660,7 @@ public $brand_id;
       
       //dd($mytime , $ongoingViews);
       
-      $eventShtdesc = Event::get();
+      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('shtdesc', '=', NULL)->orderBy('startdate','asc')->get();
       //$shortEventSHTdesc =  Str::length($eventShtdesc->shtdesc);
       
       $getContact = Bcontact::where('brand_id', $this->brand_id)->orderBy('created_at','desc')->get();

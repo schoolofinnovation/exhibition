@@ -82,7 +82,7 @@
       "@type": "Organization",
       "url": "https://exhibition.org.in",
       "logo": "https://exhibition.org.in/image/Yoyo.png",
-      
+      "image": "https://exhibition.org.in/image/Yoyo.png",
 
 
       "name": "The Exhibition Network",
@@ -101,12 +101,12 @@
       
       "address":{
         "@type" :"PostalAddress",
-        "streetAddress":"",
-        "addressLocality":"",
-        "addressCountry":"",
-        "addressRegion":"",
-        "postalCode:"",
-      },
+        "streetAddress":"regal Building,69, connaught cir, connaught place",
+        "addressLocality":"connaught place",
+        "addressCountry":"IN",
+        "addressRegion":"Delhi",
+        "postalCode":"110001"
+      }
 
     }
     </script>

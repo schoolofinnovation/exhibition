@@ -226,7 +226,6 @@ Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
 Route::get('/{slug}/reviews', AwardComponent::class)->name('business.award');
 
 
-
 //magazine Detail
 Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazine');
 

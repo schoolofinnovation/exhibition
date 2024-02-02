@@ -68,7 +68,7 @@
 
                     <div class="col-sm-2">
                         <label class="form-label" for="cf-name">Country</label>
-                        <input class="form-control" type="text" placeholder="Country" wire:model.lazy="Country" >
+                        <input class="form-control" type="text" placeholder="Country" wire:model.lazy="country" >
                         @error('country'){{ $message}}@enderror
                     </div>
                     
