@@ -468,8 +468,7 @@ public $start;
     public $nowtime;
     public function CreateAutoDesc($id)
     {  
-
-        $statementID = Event::find($id);
+        $statementID = Event::find($id)->first();
         $statementEventName = trim($statementID->eventname); 
         $statementEventVenue = trim($statementID->venue); 
         $statementEventCity = trim($statementID->city); 
@@ -478,8 +477,11 @@ public $start;
         $statementEventStartDate = trim(Carbon::parse ($statementID->startdate)->format('D,d M Y')); 
         $statementEventEndDate = trim(Carbon::parse ($statementID->enddate)->format('D,d M Y'));
         
-        $findCategory = Denco::where('event_id', $statementID)->get();
-        $getCategory = trim($findCategory->expo->tag);
+        $findCategory = Denco::where('event_id', $statementID->id)->first();
+        if(empty($findCategory))
+          { $getCategory = trim('Great Exhibition To Exhibit');}
+        else
+          { $getCategory = trim($findCategory->expo->tag);}
 
         $mytime = Carbon::today()->format("Y-m-d");
         $mymonth = Carbon::now()->addDays(3)->format("Y-m-d");
@@ -493,10 +495,12 @@ public $start;
          //post Expo timer with dates $statementEventName.''.$statementEventName 'public/exhibition/'.$eventoi->image
         $start = 'The '. $statementEventTagline. ' premier Great Exhibition to Exhibit certify ' .$statementEventType.' for ' .$getCategory.' industry professionals, entrepreneurs, and companies. Join us at upcoming ' .$statementEventType.' '.$statementEventName. ' held from ' .$statementEventStartDate. ' to '. $statementEventEndDate. ' at ' .$statementEventVenue.' '. $statementEventCity.' India. Discover new opportunities for collaboration, showcase your products or services and network with key players in your sector. Get your registration now and be a part of the industry event.';
          
-         //$visited = User::find($id);
-         $statementIoD = $statementID;
-         $statementIoD->shtdesc = trim($start);
-         $statementIoD->save();
+        //$visited = User::find($id);
+        $statementIoD = $statementID;
+        $statementIoD->shtdesc = trim($start);
+        $statementIoD->save();
+
+         
 
       //    $myytime = Carbon::today()->format('D,d M Y');
       //    $findstartdate = Carbon::($statementID->startdate)->format('D,d M Y');
@@ -522,7 +526,6 @@ public $start;
       // dd($myytime) ;
     }
 
-   
 
     public function del($id)
     {
@@ -662,8 +665,8 @@ public $start;
       
       //dd($mytime , $ongoingViews);
       
-      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('shtdesc', '=', NULL)->orderBy('startdate','asc')->get();
-      //$shortEventSHTdesc =  Str::length($eventShtdesc->shtdesc);
+      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('shtdesc', '=', NULL)->where(DB::raw('LENGTH(shtdesc)'), '<', '30')->orderBy('startdate','asc')->get();
+    
       
       $getContact = Bcontact::where('brand_id', $this->brand_id)->orderBy('created_at','desc')->get();
 
@@ -685,7 +688,7 @@ public $start;
 
       $ticket = Ticket::get();
 
-        return view('livewire.admin.admin-dashboard-component',['ticket' => $ticket, 'getContact'=> $getContact,'checkSelected'=> $checkSelected, 'counteventWithCategory'=> $counteventWithCategory,'resultAdded'=> $resultAdded, 'searchcat'=> $searchcat, 'searchBrandcat'=> $searchBrandcat,'businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
+        return view('livewire.admin.admin-dashboard-component',[  'ticket' => $ticket, 'getContact'=> $getContact,'checkSelected'=> $checkSelected, 'counteventWithCategory'=> $counteventWithCategory,'resultAdded'=> $resultAdded, 'searchcat'=> $searchcat, 'searchBrandcat'=> $searchBrandcat,'businessOrder' => $businessOrder,'upcomingViews' => $upcomingViews, 'current'=>$current, 'mytime' => $mytime,'descRankingViews' => $descRankingViews,'eventShtdesc' => $eventShtdesc, 'hastago' => $hastago, 'visitors' => $visitors,'magazine' => $magazine, 'nEwComment' => $nEwComment,'findInspection' => $findInspection,'blogfindo' => $blogfindo,'searchId' => $searchId,'expireplan' => $expireplan,'searchCat' => $searchCat,'mymonth' => $mymonth,'monthwise' => $monthwise,'eventthreemonth' => $eventthreemonth,'eventmonth' => $eventmonth,'eventweek' => $eventweek, 'eventomorrow'=>$eventomorrow, 'evento'=>$evento,'optios'=>$optios,'orders'=>$orders,'coupons'=>$coupons,'events'=>$events,'expoaward'=>$expoaward,'fattributes'=>$fattributes,'jobs'=>$jobs,'franchises'=>$franchises,'resume'=>$resume,'users'=>$users,
         'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount,
         ])->layout('layouts.admin');
         
