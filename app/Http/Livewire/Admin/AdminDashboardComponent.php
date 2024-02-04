@@ -590,14 +590,15 @@ public $start;
         foreach($multiimage as $key => $imageso)
         {
             $brand = new Photo();
-            $bran = Event::find($this ->event_id);
-            $brand->event_id = $bran->id;
+            //$bran = Event::find($this ->event_id);
+            //$brand->event_id = $bran->id;
 
             $newimage = Carbon::now()->timestamp. $key. '.'. $multiimage[$key]->extension();
             $multiimage[$key]->storeAs('exhibition', $newimage);
             $brand->brand_lgo = $newimage;
 
             $brand->status = $this->status;
+            $brand->admstatus = $this->admstatus;
             $brand->user_id = Auth::user()->id;
             $brand->save();
         }
