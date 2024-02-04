@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Hashtag;
+use App\Models\Photo;
 use App\Models\Sector;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -203,8 +204,9 @@ class AdminEventMultipleAddComponent extends Component
         $cat = Category::get();
         $sec = Sector::get();
         $pavillion = Expo::get();
+        $photos = Photo::get();
         $searchtag = Expo::get();
-        return view('livewire.admin.admin-event-multiple-add-component',['evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
+        return view('livewire.admin.admin-event-multiple-add-component',['photos'=>$photos,'evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
         
     }
 }

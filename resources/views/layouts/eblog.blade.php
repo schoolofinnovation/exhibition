@@ -95,7 +95,7 @@
       "numberOfEmployees":{
       "@type":"QuantitiveValue",
       "minValue": 100,
-      "maxValue": 499,
+      "maxValue": 499
       },
 
       

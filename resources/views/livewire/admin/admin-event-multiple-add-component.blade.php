@@ -140,8 +140,17 @@
                             <input class="form-control" type="file"   wire:model.lazy="image" required="">
                             @error('image'){{ $message}}@enderror
                         </div>
-                        <button class="btn btn-primary mt-2" type="submit">Submit</button>
-                </form>  
+                        <button class=" form-control btn btn-primary mt-2" type="submit">Submit</button>
+                </form> 
+
+                <hr>
+
+                @foreach($photos as $imgo)
+                <div class="container">
+                    <img src="{{asset('storage/exhibition/'.$imgo->image)}}" alt="">
+                </div>
+                @endforeach
+
             @endif
 
             @if($formm == 'tag')

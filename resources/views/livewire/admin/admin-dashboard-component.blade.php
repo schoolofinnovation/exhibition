@@ -1603,6 +1603,22 @@
 
       @endif
 
+      @if($board == 'multiple_images')
+        <div class="my-3">
+          <div class="small">
+              <input type="checkbox" value="1" wire:model="lookingAddImage" > Add Images
+          </div>
+         
+              <form wire:submit.prevent="multiImage">
+              <label class="form-label">Upload Multi Image<span class="text-danger">*</span></label> 
+                  <input type="file" class="form-control" placeholder="multiple Image" wire:model="brand_lgo"  multiple="multiple">
+                  <button class="btn btn-primary btn-shadow d-block w-100 mt-2"  type="submit">Submit</button>
+                    </form>    
+        </div>
+      @endif
+
+
+
       @if($board == 'viewso')
 
           <div class="d-table table-layout-fixed w-100"> 

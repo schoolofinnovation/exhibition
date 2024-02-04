@@ -39,6 +39,7 @@ use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use App\Models\Bcontact;
 use App\Models\Brandemograhic;
+use App\Models\Photo;
 use App\Models\Ticket;
 
 class AdminDashboardComponent extends Component
@@ -468,7 +469,7 @@ public $start;
     public $nowtime;
     public function CreateAutoDesc($id)
     {  
-        $statementID = Event::find($id)->first();
+        $statementID = Event::find($id);
         $statementEventName = trim($statementID->eventname); 
         $statementEventVenue = trim($statementID->venue); 
         $statementEventCity = trim($statementID->city); 
@@ -580,6 +581,28 @@ public $start;
       
     }
 
+    public $brand_lgo = [];
+    public function multiImage()
+    {
+        $multiimage = $this->brand_lgo;
+
+        foreach($multiimage as $key => $imageso)
+        {
+            $brand = new Photo();
+            $bran = Event::find($this ->event_id);
+            $brand->event_id = $bran->id;
+
+            $newimage = Carbon::now()->timestamp. $key. '.'. $multiimage[$key]->extension();
+            $multiimage[$key]->storeAs('exhibition', $newimage);
+            $brand->brand_lgo = $newimage;
+
+            $brand->status = $this->status;
+            $brand->user_id = Auth::user()->id;
+            $brand->save();
+        }
+
+    }
+
     public function render()
     {
       //current Event
@@ -665,7 +688,7 @@ public $start;
       
       //dd($mytime , $ongoingViews);
       
-      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('shtdesc', '=', NULL)->where(DB::raw('LENGTH(shtdesc)'), '<', '30')->orderBy('startdate','asc')->get();
+      $eventShtdesc = Event::where('status','1')->where('admstatus','1')->where('shtdesc', '=', NULL)->orWhere(DB::raw('CHAR_LENGTH(shtdesc)'), '<', '30')->orderBy('startdate','asc')->get();
     
       
       $getContact = Bcontact::where('brand_id', $this->brand_id)->orderBy('created_at','desc')->get();

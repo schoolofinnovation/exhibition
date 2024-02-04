@@ -86,7 +86,7 @@ class AdminEventAddComponent extends Component
         $event->save();
 
         //$this->sendEmail($event);
-        $this->reset();
+       // $this->reset();
         session()->flash('message','Thanks, Your details has been uploaded.'); 
         return redirect()->route('admin.dashboard', ['board' => 'event']);
     }
