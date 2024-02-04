@@ -147,7 +147,7 @@
 
                 @foreach($photos as $imgo)
                 <div class="container">
-                    <img src="{{asset('storage/exhibition/'.$imgo->image)}}" alt="">
+                    <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt="">
                 </div>
                 @endforeach
 

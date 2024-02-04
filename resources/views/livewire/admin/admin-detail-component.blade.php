@@ -80,8 +80,8 @@
             Last update: <br class="text-primary">{{$evento->updated_at}}</a>
         </div>
         
-            @if(is_null($evento->created_at))
-              <div class="text-muted fs-sm text-start">Created by: <br>Admin</div>
+            @if(empty($evento->created_at))
+            <a href="#" wire:click.prevent="updateCreate({{$evento->id}})" class="btn btn-primary btn-sm">Create</a>
             @else
               <div class="text-muted fs-sm text-start">
                 

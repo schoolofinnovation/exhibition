@@ -85,6 +85,14 @@ class AdminDetailComponent extends Component
       session()->flash('message',' Status Successfully Changed');
     } 
 
+    public function updateCreate($id) 
+    {
+      $eVent = Event::find($id);
+      $eVent->created_at = Carbon::today();
+      $eVent->save();
+      session()->flash('message',' Status Successfully Changed');
+    } 
+
     public function EventLink($id, $webo) 
     {
       $eVent = Event::find($id);
