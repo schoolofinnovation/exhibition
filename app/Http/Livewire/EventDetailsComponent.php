@@ -29,6 +29,7 @@ class EventDetailsComponent extends Component
     public $event_id;
     public $avgrating;
     public $productExpiryDate;
+    public $optional = 'detials';
 
     public $type_event;
     

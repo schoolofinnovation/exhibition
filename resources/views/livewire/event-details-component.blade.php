@@ -227,10 +227,10 @@
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link px-1 active" href="{{route('event.details',['optional' => details])}}" data-bs-toggle="tab" role="tab">Understanding</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="{{route('event.details',['optional' => reviews])}}" data-bs-toggle="tab" role="tab">Advertise</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 active" href="{{route('event.details',['slug' => $this->slug ,'optional' => 'details'])}}" data-bs-toggle="tab" role="tab">Understanding</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="{{route('event.details',['slug' => $this->slug , 'optional' => 'reviews'])}}" data-bs-toggle="tab" role="tab">Advertise</a></li>
                     @if(count($eventbrand) > 0) 
-                    <li class="nav-item"><a class="nav-link px-1" href="{{route('event.details', ['optional' => exhibitor])}}" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="{{route('event.details', ['slug' => $this->slug , 'optional' => 'exhibitor'])}}" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
                     @endif
                     <!-- <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li>  comment-->
                 </ul>
@@ -1049,11 +1049,11 @@
                         
                       </div>
                     </section>
-            @else($optional == 'reviews')
+            @elseif($optional == 'reviews')
 
               <h1>Find exhibtior with us</h1>
 
-            @else($optional == 'exhibitor')
+            @elseif($optional == 'exhibitor')
 
               <h1>Find exhibtior with us</h1>
             
