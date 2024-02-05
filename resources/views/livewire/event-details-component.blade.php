@@ -227,827 +227,837 @@
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Understanding</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Advertise</a></li>
-                    @if(count($eventbrand) > 0)
-                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 active" href="{{route('event.details',['optional' => details])}}" data-bs-toggle="tab" role="tab">Understanding</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="{{route('event.details',['optional' => reviews])}}" data-bs-toggle="tab" role="tab">Advertise</a></li>
+                    @if(count($eventbrand) > 0) 
+                    <li class="nav-item"><a class="nav-link px-1" href="{{route('event.details', ['optional' => exhibitor])}}" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
                     @endif
                     <!-- <li class="nav-item"><a class="nav-link px-1" href="#startups" data-bs-toggle="tab" role="tab">Startup</a></li>  comment-->
                 </ul>
             </section>
     
-            <!--details-->
-            <div class="container d-lg-none">
-                    <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
-                      <div class="star-rating me-2"><i class="bi bi-star-filled text-accent me-1"></i>
-                      <span class="fs-md fw-bold">77% </span><span class="d-inline-block align-middle fs-sm"> 58K rating</span></div>        
-                    </div>-->
-                    
-                      @if($commentedRates->count() > 0)
-                        <div class="col-lg-4 col-md-5 pt-2 pb-0">
-                            <a class="star-rating me-2 pb-2" href="{{route('business.award', ['slug'=> $event->slug])}}"> 
-                           
-                                  <i class = "bi bi-star-filled text-accent me-1"></i>
-                                    <span class="fs-md fw-bold">
-                                    <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
-                                    <span class="d-inline-block align-middle fs-xs"> {{$commentedRates->count()}} Reviews</span>
+
+            @if( $optional == 'details')
+                    <!--details-->
+                    <div class="container d-lg-none">
+                            <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
+                              <div class="star-rating me-2"><i class="bi bi-star-filled text-accent me-1"></i>
+                              <span class="fs-md fw-bold">77% </span><span class="d-inline-block align-middle fs-sm"> 58K rating</span></div>        
+                            </div>-->
+                            
+                              @if($commentedRates->count() > 0)
+                                <div class="col-lg-4 col-md-5 pt-2 pb-0">
+                                    <a class="star-rating me-2 pb-2" href="{{route('business.award', ['slug'=> $event->slug])}}"> 
+                                  
+                                          <i class = "bi bi-star-filled text-accent me-1"></i>
+                                            <span class="fs-md fw-bold">
+                                            <i class="bi bi-star-fill text-primary me-1"></i> {{round($commentedRates->avg('rate') , 1)}}/10 </span>
+                                            <span class="d-inline-block align-middle fs-xs"> {{$commentedRates->count()}} Reviews</span>
+                                        
+                                              <i class="bi bi-chevron-right fs-xs text-primary me-1"></i>
+                                    </a>        
+                                </div>
+                              @endif
+                          
+                            <ul class="list-unstyled  bg-secondary py-1">
+                                  @if(Auth::check())
+                                    @php
+                                        $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
+                                        $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
+                                        $checkCommentop = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->value('rate');
+                                    @endphp
+
+                                    @if(count($checkComment) > '0')
+                                      <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                                        <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                                        <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkCommentop}}/10</a></span>
+                                      </li>
+                                    @else
+                                      <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                                        <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                                        <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm"> Rate Now</a></span>
+                                      </li>
+                                    @endif
+
+                                  @else
+                                      <li class="d-flex justify-content-between px-2 m-0 lh-1">
+                                        <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
+                                        <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Rate Now</a></span>
+                                      </li>
+                                  @endif
+                            </ul>
+                            <!-- 
+                              <div class="d-flex badgeseTag">
+                                @foreach($category as $cat)
+                                  <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                                @endforeach
+                              </div>
+
+                            <span class="badge bg-secondary fs-sm">
+                            
+
+                              @if ($current < $to && $current < $from)
+                                  upcoming
+                              @elseif ($current == $to && $current < $from) 
+                                  first
+                              @elseif ($current > $to && $current < $from) 
+                                  ongoing
+                              @elseif ($current > $to && $current == $from) 
+                                last 
+                              @elseif ($current > $to && $current > $from)
+                                ended
+                              @endif
+
                                 
-                                      <i class="bi bi-chevron-right fs-xs text-primary me-1"></i>
-                            </a>        
-                        </div>
-                      @endif
-                   
-                    <ul class="list-unstyled  bg-secondary py-1">
-                          @if(Auth::check())
-                            @php
-                                $find = DB::table('rates')->where('user_id', Auth::user()->id)->get();
-                                $checkComment = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->get();
-                                $checkCommentop = DB::table('rates')->where('user_id', Auth::user()->id)->where('event_id', $findEvent)->value('rate');
-                            @endphp
+                            </span> -->
 
-                            @if(count($checkComment) > '0')
-                              <li class="d-flex justify-content-between px-2 m-0 lh-1">
-                                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">{{$checkCommentop}}/10</a></span>
-                              </li>
-                            @else
-                              <li class="d-flex justify-content-between px-2 m-0 lh-1">
-                                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm"> Rate Now</a></span>
-                              </li>
-                            @endif
-
-                          @else
-                              <li class="d-flex justify-content-between px-2 m-0 lh-1">
-                                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-xs">Your ratings matter</span></span>
-                                <span><a href="{{route('coi.ratenow',['slug' => $event->slug])}}" class="btn btn-outline-primary btn-sm ">Rate Now</a></span>
-                              </li>
-                          @endif
-                    </ul>
-                    <!-- 
-                      <div class="d-flex badgeseTag">
-                        @foreach($category as $cat)
-                          <span class="badge border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
-                        @endforeach
-                      </div>
-
-                    <span class="badge bg-secondary fs-sm">
-                     
-
-                       @if ($current < $to && $current < $from)
-                          upcoming
-                       @elseif ($current == $to && $current < $from) 
-                          first
-                       @elseif ($current > $to && $current < $from) 
-                          ongoing
-                       @elseif ($current > $to && $current == $from) 
-                         last 
-                       @elseif ($current > $to && $current > $from)
-                         ended
-                       @endif
-
-                        
-                    </span> -->
-
-                   
-                    <div>
-                      @if($event->exhibitors != null) <span class="fs-xs fw-bold"> + {{$event->exhibitors}}</span> <span class="fs-xs fw-normal">Exhibitors</span>  @endif |
-                       @if($event->exhibitors != null) <span class="fs-xs fw-bold">+ {{$event->auidence}}</span> <span class="fs-xs fw-normal"> Visitors </span>@endif
-                      {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
-                      <div class="fs-lg fw-bolder"> {{Str::limit($event->eventname,289)}}</div>
-
-                      <p class="fs-md fw-bold mt-0"> {{Str::limit($event->tagline,289)}}</p>
-                      <div class="fs-xs fw-normal pb-2 pt-0">{{Str::limit($event->shtdesc,289)}}</div> 
-                      <!-- 170 -->
-                    </div>
-
-            </div>  
-
-            <div class="container d-none d-sm-block">
-              <ul class="list-unstyled fs-sm  py-4">     
-                <li class="d-flex justify-content-between p-0 m-0">
-                    <span class="col bg-light mb-0">
-                      <span class="badge bg-primary mt-0">{{$event->edition}}th</span>
-                        <h3 class="mb-0">{{$event->eventname}}</h3>
                           
-                          @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
-                            {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
-                          @else
-                            {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M, Y')}}
-                          @endif 
+                            <div>
+                              @if($event->exhibitors != null) <span class="fs-xs fw-bold"> + {{$event->exhibitors}}</span> <span class="fs-xs fw-normal">Exhibitors</span>  @endif |
+                              @if($event->exhibitors != null) <span class="fs-xs fw-bold">+ {{$event->auidence}}</span> <span class="fs-xs fw-normal"> Visitors </span>@endif
+                              {{Carbon\Carbon::parse($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days
+                              <div class="fs-lg fw-bolder"> {{Str::limit($event->eventname,289)}}</div>
+
+                              <p class="fs-md fw-bold mt-0"> {{Str::limit($event->tagline,289)}}</p>
+                              <div class="fs-xs fw-normal pb-2 pt-0">{{Str::limit($event->shtdesc,289)}}</div> 
+                              <!-- 170 -->
+                            </div>
+
+                    </div>  
+
+                    <div class="container d-none d-sm-block">
+                      <ul class="list-unstyled fs-sm  py-4">     
+                        <li class="d-flex justify-content-between p-0 m-0">
+                            <span class="col bg-light mb-0">
+                              <span class="badge bg-primary mt-0">{{$event->edition}}th</span>
+                                <h3 class="mb-0">{{$event->eventname}}</h3>
+                                  
+                                  @if(Carbon\Carbon::parse ($event->startdate)->format('M') != Carbon\Carbon::parse ($event->enddate)->format('M'))
+                                    {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M y')}}
+                                  @else
+                                    {{Carbon\Carbon::parse ($event->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($event->enddate)->format('D, d M, Y')}}
+                                  @endif 
+                                  
+                                  <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}
+                              </span>
+                            <span>
+                                @if( $event->businessrevenue == 'visitor' )       
+                                    @if( $ticketOrExhibit != 0 )
+                                      <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
+                                        @elseif( $ticketOrExhibit == 0 )
+                                      <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                                    @endif
+                                  @else
+                                    <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                                @endif
+                            </span>
                           
-                          <i class="bi bi-geo-alt-fill"></i> {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}
-                      </span>
-                    <span>
-                        @if( $event->businessrevenue == 'visitor' )       
-                            @if( $ticketOrExhibit != 0 )
-                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
-                                @elseif( $ticketOrExhibit == 0 )
-                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
-                            @endif
-                          @else
-                            <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
-                        @endif
-                    </span>
-                  
-                    
-                </li>
-                <li><hr class="mt-md-2 mb-2"></li>
-                <li class="p1 fw-light">
-                  {{($event->shortdesc)}} | @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
-                </li>
-              </ul>
-
-              <!-- <ul class="list-unstyled fs-sm  py-4">     
-                <li class="d-flex justify-content-between p-0 m-0">
-                <div class="col-lg-3 col-md-4 col-sm-4 bg-secondary">
-                  <span class="badge bg-primary mt-0">Participate</span>
-                  <span class="h3"> Professional Beauty Mumbai</span>
-                    <div class="row">
-                      <div>
-                        
-                      </div>
-                        
-                    </div>
-
-                    
-                    
-
-                     
-                    
-                </div>
-                
-                
-                
-                    <span> 
-                      
-                    <span class="badge bg-primary"> th</span>
-
-                      <span class="h3"> Professional Beauty Mumbai</span> <br>
-                                              Mon, 02  - Tue, 03 Oct, 2023
-                       
-                      
-                      <i class="bi bi-geo-alt-fill"></i> Bombay Exhibition Centre, NESCO, Mumbai,  India 
-                    </span>
-                
-                    <span>
-                                            <a class="btn btn-primary btn-sm" type="button" href="http://127.0.0.1:8000/exhibit/business"> Book your Space </a>
-                                        </span>
-                  
-                    
-                </li>
-                <li><hr class="mt-md-2 mb-2"></li>
-                <li class="p1 fw-light">
-                   |  | 1 days | Rs. 700.00 Onwards                 </li>
-              </ul> -->
-            </div> 
-
-            <!--share hidden-->
-            <div class="d-none">            
-                  <a href="#" id="gmail-btn">gmail</a>
-                  <a href="#" id="facebook-btn">facebook</a>
-                  <a href="#" id="twitter-btn">twitter</a>
-                  <a href="#" id="linkedin-btn">linkedin</a>
-                  <a href="#" id="whatsapp-btn">whatsapp</a> 
-                  <i class="bi bi-share"></i>
-                  <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
-            </div>
-
-            <!-- pavillion -->
-            <div class="container mt-4 d-lg-none">
-              <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
-              
-              <div class=" card-group locationhours">
-                @foreach( $pavillion as $pavo)
-                <div class="card border-0">
-                  <img src="https://source.unsplash.com/1600x900/?{{$pavo -> pavillion_name}}, office" class="card-img-top" alt="Card image">
-                  <div class="card-body">
-                    <h5 class="card-title">{{$pavo -> pavillion_name}}</h5>
-                    <p class="card-text fs-sm text-muted">{{$pavo -> desc}}</p>
-                        <p class="fs-xs"> <span class="fs-xs fw-bold">Hours:</span> 10:00 - 11:00  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
-                        <p class="fs-xs"> <span class="fs-xs fw-bold">Closed:</span> 10:00 - 11:00 {{Carbon\Carbon::parse ($event->enddate)->format('D, d M')}}</p> 
-                    <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
-                    <div class="d-flex badgeseTag">
-                          @foreach($category as $cat)
-                            <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
-                          @endforeach
-                        </div>
-                  </div>
-                </div>
-                @endforeach
-
-                <div class="card border-0">
-                  <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                  <div class="card-body">
-                    <h5 class="card-title">Pavillion</h5>
-                    <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-                        closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-                        <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
-                        <div class="d-flex badgeseTag">
-                          @foreach($category as $cat)
-                            <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
-                          @endforeach
-                        </div>
-                  </div>
-                </div>
-                  <!-- 
-                    <ul class="list-unstyled fs-sm  p-2">
-                        <li class="d-flex justify-content-between p-0 m-0">
-                            <span class="text-dark fw-medium fs-sm">  Pavillion <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                            <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span>
-
-                            Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-                            closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
-
-                            <div class="d-flex badgeseTag">
-                              @foreach($category as $cat)
-                                <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
-                              @endforeach
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul class="list-unstyled fs-sm  p-2">
-                        <li class="d-flex justify-content-between p-0 m-0">
-                        <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                        <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                    </ul>
-                  
-                    <ul class="list-unstyled fs-sm  p-2">
-                      <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                      <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
-                    </ul> 
-                  -->
-              </div>
-
-            </div>
-            <hr class="mt-md-2 mb-2">
-
-            <!--participants-->  
-            <section class="container py-4 py-md-5 my-2 d-none d-sm-block">
-              <div class="row text-center text-sm-start">
-                <div class="col-lg-3 col-md-4 col-sm-4 bg-secondary">
-                  <span class="badge bg-primary mt-3">Participate</span>
-                    <h5 class="mb-3">Nominate</h5>
-                    <div class="row">
-                      <div>
-                        <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                          <li>Bespoke B2B forums that connect you with the people you really want to meet. </li>
-                          <li>Our business partnered space events include participation in live Q&A and polls, plus access to the community where you can network with other attendees.</li>
-                          <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'award' ])}}" class="btn btn-outline-primary btn-sm bg-light">Nominate a Speaker</a></li>
-                        </ul>
-                      </div>
-                        <div>
-                          <h5 class="mb-3">Business Directory</h5>
-                          <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                            <li>List business directory to educate with your business potential</li>
-                            <li> <a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'directory' ])}}" class="btn btn-sm btn-primary">Expand your business</a> </li>
-                          </ul>
-                        </div>
-                    </div>
-                    <h5 class="mb-3">Attend a Space event</h5>
-                    
-                    <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                      <li>Attend a Space event near you featuring live speakers and Talk business owners, sparking conversation and connections.</li>
-                      <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'find' ])}}" class="btn btn-outline-primary btn-sm bg-light">Find an event near you</a></li>
-                      
-                    </ul>
-                    <h5 class="mb-3">Share this event</h5>
-                    <!-- Wishlist + Sharing-->
-                      <div class="  d-flex flex-wrap justify-content-between align-items-center border-top pt-3">
-                        
-                        <!--<div class="py-0"><i class="ci-share-alt fs-lg align-middle text-muted me-2"></i>
-                          <a class="btn-social bs-outline bs-facebook bs-sm ms-2" href="#"><i class="ci-facebook"></i></a>
-                          <a class="btn-social bs-outline bs-twitter bs-sm ms-2" href="#"><i class="ci-twitter"></i></a>
-                          <a class="btn-social bs-outline bs-pinterest bs-sm ms-2" href="#"><i class="ci-pinterest"></i></a>
-                          <a class="btn-social bs-outline bs-instagram bs-sm ms-2" href="#"><i class="ci-instagram"></i></a>
-                        </div>-->
-
-                        <div class="mb-1">
-                            <a class="btn-social bs-dark bs-twitter ms-2 mb-2" target="_blank" href="https://twitter.com/coi_Innovation"><i class="bi bi-twitter"></i></a>
-                            <a class="btn-social bs-dark bs-facebook ms-2 mb-2" target="_blank" href="www.facebook.com"><i class="bi bi-facebook"></i></a>
-                            <a class="btn-social bs-dark bs-instagram ms-2 mb-2" target="_blank" href="https://in.pinterest.com/CouncilofInnovation/_saved/"><i class="bi bi-instagram"></i></a>
-                            <a class="btn-social bs-dark bs-youtube ms-2 mb-2" target="_blank" href="https://www.youtube.com/channel/UCFq3khqbTIecQxeqj1GscFA"><i class=" bi bi-youtube"></i></a>
-                            <a class="btn-social bs-dark bs-linkedin ms-2 mb-2" target="_blank" href=""><i class=" bi bi-linkedin"></i></a>
-                        </div>
-                      </div>
-
-                      <h5 class="mb-3">Programme for People and Planet</h5>
-                      <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                            <li>Inspiring collective and meaningful action to address the world's most critical Challenges and opportunities.</li>
-                          <li>
-                            <div class="card ">
-                            <div class="expo_Initiat">
-                                <div class="card-body ">
-                                  <h5 class="card-title">Sustainability District</h5>
-                                  <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                                </div>
-
-                                <div class="card-body">
-                                  <h5 class="card-title">Mobility District</h5>
-                                  <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                                </div>
-
-                                <div class="card-body">
-                                  <h5 class="card-title">Opportunity District</h5>
-                                  <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                  <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                                </div>                  
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-8">
-                
-                    
-                    <ul class="list-unstyled fs-sm bg-secondary p-2">
-                  <div class="fw-bold"> Click on interested to stay updated about this event.</div>
-                      <li class="d-flex justify-content-between p-0 m-0">
-                      <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
-                      
-
-                    
-                      {{--@if( $rate == $event->id)
-                      
-                      <button class="btn btn-sm btn-outline-primary" type="button" > 
-                      {{$rating}} /10</button>
-
-                      @else
-                          <div class="py-2 me-2"> 
-                            <button class="btn btn-sm btn-outline-primary" type="button" ><i class="bi bi-star fs-lg me-2"></i> 
-                            <a href="{{route('coi.ratenow',['slug' => $event->slug])}}">Rate Now</a> </button>
-                          </div>
-                      @endif--}}
-                      
-                      </li>
-                      </ul>
-                
-                  <h5 class="mb-3">Understanding Expo</h5>
-                  <p class="fs-sm mb-3 mb-lg-4 pb-2">{{$event->shtdesc}}</p>
-                  <span class="badge rounded-pill bg-primary">Participants</span>
-                  <h5 class="mb-3">Pavillion</h5>
-
-                  <!-- Card group -->
-                    
-
-                        <!-- Card -->
-                        <div class="row">
-                          @foreach($pavillion as $pav)
-                            <div class="col-4 card border-0 px-2">
-                              <img src="{{url('assets/image/exhibition/'.$pav->image)}}" class="card-img-top" alt="Card image">
                             
-                              <div class="card-image-overlay" >
-                                <h5 class="card-title text-light">{{$pav -> pavillion_name}}</h5>
-                                <p class="card-text fs-sm text-muted text-light">{{ $pav -> desc}}</p>
+                        </li>
+                        <li><hr class="mt-md-2 mb-2"></li>
+                        <li class="p1 fw-light">
+                          {{($event->shortdesc)}} | @if($event->exhibitors != null)| + {{$event->exhibitors}} Exhibitors @endif | {{Carbon\Carbon::parse ($event->startdate)->diffInDays(Carbon\Carbon::parse ($event->enddate))}} days @if($productPrice != null)| Rs. {{$productPrice}} Onwards @endif
+                        </li>
+                      </ul>
+
+                      <!-- <ul class="list-unstyled fs-sm  py-4">     
+                        <li class="d-flex justify-content-between p-0 m-0">
+                        <div class="col-lg-3 col-md-4 col-sm-4 bg-secondary">
+                          <span class="badge bg-primary mt-0">Participate</span>
+                          <span class="h3"> Professional Beauty Mumbai</span>
+                            <div class="row">
+                              <div>
+                                
+                              </div>
+                                
+                            </div>
+
+                            
+                            
+
+                            
+                            
+                        </div>
+                        
+                        
+                        
+                            <span> 
                               
-                                <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary text-light">Learn more</a>
-                              </div>
-                            </div>
-                          @endforeach
-                        </div>
+                            <span class="badge bg-primary"> th</span>
+
+                              <span class="h3"> Professional Beauty Mumbai</span> <br>
+                                                      Mon, 02  - Tue, 03 Oct, 2023
+                              
+                              
+                              <i class="bi bi-geo-alt-fill"></i> Bombay Exhibition Centre, NESCO, Mumbai,  India 
+                            </span>
                         
-                        <div class="row">
-                          <!-- Card -->
-                          <div class=" col-4 card border-0 px-0 hover-overlay shadow-1-strong">
-                            <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
-                            <div class="mask text-light">
-                              <h5 class="card-title">Special Pavillions</h5>
-                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
-                            </div>
-                          </div>
-
-                          <!-- Card -->
-                          <div class="col-4 card border-0 px-0">
-                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                            <div class="card-body">
-                              <h5 class="card-title">Country Pavillions</h5>
-                              <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
-                            </div>
-                          </div>
-
-                          <!-- Card -->
-                          <div class="col-4 card border-0 px-0">
-                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                            <div class="card-body">
-                              <h5 class="card-title">Partner Pavillions</h5>
-                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
-                            </div>
-                          </div>
-                    
-                      
-
-                          <!-- Card -->
-                          <div class="col-4 card border-0 px-0">
-                            <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
-                            <div class="card-body">
-                              <h5 class="card-title">Organisations Pavillions</h5>
-                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
-                            </div>
-                          </div>
-
-                          <!-- Card -->
-                          <div class="col-4 card border-0 px-0">
-                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                            <div class="card-body">
-                              <h5 class="card-title">Country Pavillions</h5>
-                              <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
-                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
-                            </div>
-                          </div>
-
-                          <!-- Card -->
-                          <div class="col-4 card border-0 px-0">
-                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                            <div class="card-body">
-                              <h5 class="card-title">Partner Pavillions</h5>
-                              <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                              <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
-                            </div>
-                          </div>
-                    </div>
-
-
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-4  bg-secondary">
-                  <h5 class="m-3 fs-sm fw-light">Contactless Ticketing & Fast-track Entry with M-ticket. <span class="fw-bold text-primary">Learn How</span></h5>
-                  <div class="row">
-                    <div>
-                    <h5 class="mb-3">Start-ups</h5>
-                      
-                      <ul class="list-unstyled fs-sm bg-secondary p-2">
-                          <li class="d-flex justify-content-between p-0 m-0">
-                          <span class="text-dark fw-medium fs-sm">  Book direct with us. <br><span class="text-muted fw-light fs-xs" style ="line-height: 1;">and avail a special discount<br> of 25% along with special benefits. </span></span>
-                          <span><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'startup' ])}}" class="btn btn-outline-primary btn-sm bg-light"> BOOK NOW</a></span></li>
-                    </ul>
-                    </div>
-                    <!--<div>
-                      <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                        <li>Height: 7.8 in / 19.8 cm</li>
-                        <li>Weight: 7.58 oz / 215 g</li>
-                        <li>Form factor: On ear</li>
-                      </ul>
-                    </div>-->
-                  </div>
-                  <h5 class="mb-3">Meet-ups</h5>
-                  <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                    <li class="m-3 fs-sm fw-light">Conducts exhibitions, one-to-one meetings and discussions, experiences delivering maximum engagement.</li>
-                    <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'meet' ])}}" class="btn btn-outline-primary btn-sm bg-light">BOOK NOW</a></li>
-                  </ul>
-                  <h5 class="mb-3">Partner with Space</h5>
-                  <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                    <li class="m-3 fs-sm fw-light">When you support the Space program, you enable our efforts to empower and grow the global Space community of volunteers.</li>
-                    <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'partner' ])}}" class="btn btn-outline-primary btn-sm bg-light">Partner with Space</a></li>
-                  </ul>
-
-                  <h5 class="mb-3">Expo Initiatives</h5>
-                  <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
-                    <li class="my-3 fs-sm fw-light">Togethor with people from across the world, we are creating meaningful impact through a range of Expo programmes and initiatives. </li>
-                    <li><!-- No image -->
-                      <div class="card ">
-                        <div class="expo_Initiatives">
-                              <div class="card-body ">
-                                <h5 class="card-title">Expo live</h5>
-                                <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                              </div>
-
-                              <div class="card-body">
-                                <h5 class="card-title">Global Best Practice Programme</h5>
-                                <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                              </div>
-
-                              <div class="card-body">
-                                <h5 class="card-title">Sustainability at Expo</h5>
-                                <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                              </div>
-
-                              <div class="card-body">
-                                <h5 class="card-title">World Majlis</h5>
-                                <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
-                              </div>
-                        </div>
-                      </div>
-                    </li>
-                    
-                  </ul>
-
-            
-
-
-                </div>
-              </div>
-            </section>
-
-            <!-- Product description + Reviews + Comments-->
-            <section class="container mb-4 mb-lg-5">
-              <div class="tab-content pt-2">
-
-                {{-- Product details tab
-                <div class="tab-pane fade show active" id="details" role="tabpanel">
-                  <div class="row">
-                    <div class="col-lg-8">
-                    
-                      
-                      <p class="fs-md"> {{Str::limit($event->desc,289)}}...</p>
-
-                      <h3 class="h5 pt-2">Main features</h3>
-                      <ul class="fs-md">
-                        <li>Nemo enim ipsam voluptatem quia voluptas sit</li>
-                        <li>Ut enim ad minima veniam, quis nostrum exercitationem</li>
-                        <li>Duis aute irure dolor in reprehenderit in voluptate</li>
-                        <li>At vero eos et accusamus et iusto odio dignissimos</li>
-                        <li>Omnis voluptas assumenda est omnis dolor</li>
-                        <li>Quis autem vel eum iure reprehenderit qui in ea voluptate</li>
-                      </ul>
-                    </div>
-                  </div>
-
-            
-
-                </div>--}}
-
-                <!-- Reviews tab-->
-                <div class="tab-pane fade" id="reviews" role="tabpanel">
-                  <!-- Reviews-->
-                  <div class="row pt-2 pb-3">
-                    <div class="col-lg-4 col-md-5">
-
-                      <h3 class="h4 mb-4">74 Reviews</h3>
-                      <div class="star-rating me-2"><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star fs-sm text-muted me-1"></i></div><span class="d-inline-block align-middle">4.1 Overall rating</span>
-                      <p class="pt-3 fs-sm text-muted">58 out of 74 (77%)<br>Customers recommended this product</p>
-                    </div>
-                  {{-- <div class="col-lg-8 col-md-7">
-                          <div class="d-flex align-items-center mb-2">
-                            <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">5</span><i class="ci-star-filled fs-xs ms-1"></i></div>
-                            <div class="w-100">
-                              <div class="progress" style="height: 4px;">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div><span class="text-muted ms-3">43</span>
-                          </div>
-                          <div class="d-flex align-items-center mb-2">
-                            <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">4</span><i class="ci-star-filled fs-xs ms-1"></i></div>
-                            <div class="w-100">
-                              <div class="progress" style="height: 4px;">
-                                <div class="progress-bar" role="progressbar" style="width: 27%; background-color: #a7e453;" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div><span class="text-muted ms-3">16</span>
-                          </div>
-                          <div class="d-flex align-items-center mb-2">
-                            <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">3</span><i class="ci-star-filled fs-xs ms-1"></i></div>
-                            <div class="w-100">
-                              <div class="progress" style="height: 4px;">
-                                <div class="progress-bar" role="progressbar" style="width: 17%; background-color: #ffda75;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div><span class="text-muted ms-3">9</span>
-                          </div>
-                          <div class="d-flex align-items-center mb-2">
-                            <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">2</span><i class="ci-star-filled fs-xs ms-1"></i></div>
-                            <div class="w-100">
-                              <div class="progress" style="height: 4px;">
-                                <div class="progress-bar" role="progressbar" style="width: 9%; background-color: #fea569;" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div><span class="text-muted ms-3">4</span>
-                          </div>
-                          <div class="d-flex align-items-center">
-                            <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">1</span><i class="ci-star-filled fs-xs ms-1"></i></div>
-                            <div class="w-100">
-                              <div class="progress" style="height: 4px;">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 4%;" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div><span class="text-muted ms-3">2</span>
-                          </div>
-                    </div>--}}
-                  </div>
-                  <hr class="mt-4 mb-3">
-                  <div class="row py-4">
-                    <!-- Reviews list-->
-                    <div class="col-md-7">
-                      <div class="d-flex justify-content-end pb-4">
-                        <div class="d-flex align-items-center flex-nowrap">
-                          <label class="fs-sm text-muted text-nowrap me-2 d-none d-sm-block" for="sort-reviews">Sort by:</label>
-                          <select class="form-select form-select-sm" id="sort-reviews">
-                            <option>Newest</option>
-                            <option>Oldest</option>
-                            <option>Popular</option>
-                            <option>High rating</option>
-                            <option>Low rating</option>
-                          </select>
-                        </div>
-                      </div>
-                      <!-- Review-->
-                      <div class="product-review pb-4 mb-4 border-bottom">
-                        <div class="d-flex mb-3">
-                          <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="#" width="50" alt="Rafael Marquez">
-                            <div class="ps-3">
-                              <h6 class="fs-sm mb-0">Rafael Marquez</h6><span class="fs-ms text-muted">June 28, 2019</span>
-                            </div>
-                          </div>
-                          <div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                            <div class="fs-ms text-muted">83% of users found this review helpful</div>
-                          </div>
-                        </div>
-                        <p class="fs-md mb-2">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...</p>
-                        <ul class="list-unstyled fs-ms pt-1">
-                          <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi, tempora</li>
-                          <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae, quis autem</li>
-                        </ul>
-                        <div class="text-nowrap">
-                          <button class="btn-like" type="button">15</button>
-                          <button class="btn-dislike" type="button">3</button>
-                        </div>
-                      </div>
-                      <!-- Review-->
-                      <div class="product-review pb-4 mb-4 border-bottom">
-                        <div class="d-flex mb-3">
-                          <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="#" width="50" alt="Barbara Palson">
-                            <div class="ps-3">
-                              <h6 class="fs-sm mb-0">Barbara Palson</h6><span class="fs-ms text-muted">May 17, 2019</span>
-                            </div>
-                          </div>
-                          <div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
-                            </div>
-                            <div class="fs-ms text-muted">99% of users found this review helpful</div>
-                          </div>
-                        </div>
-                        <p class="fs-md mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <ul class="list-unstyled fs-ms pt-1">
-                          <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi, tempora</li>
-                          <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae, quis autem</li>
-                        </ul>
-                        <div class="text-nowrap">
-                          <button class="btn-like" type="button">34</button>
-                          <button class="btn-dislike" type="button">1</button>
-                        </div>
-                      </div>
-                      <!-- Review-->
-                      <div class="product-review pb-4 mb-4 border-bottom">
-                        <div class="d-flex mb-3">
-                          <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="#" width="50" alt="Daniel Adams">
-                            <div class="ps-3">
-                              <h6 class="fs-sm mb-0">Daniel Adams</h6><span class="fs-ms text-muted">May 8, 2019</span>
-                            </div>
-                          </div>
-                          <div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                            <div class="fs-ms text-muted">75% of users found this review helpful</div>
-                          </div>
-                        </div>
-                        <p class="fs-md mb-2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.</p>
-                        <ul class="list-unstyled fs-ms pt-1">
-                          <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi</li>
-                          <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae,  quis autem, voluptatem sequ</li>
-                        </ul>
-                        <div class="text-nowrap">
-                          <button class="btn-like" type="button">26</button>
-                          <button class="btn-dislike" type="button">9</button>
-                        </div>
-                      </div>
-                      <div class="text-center">
-                        <button class="btn btn-outline-accent" type="button"><i class="ci-reload me-2"></i>Load more reviews</button>
-                      </div>
-                    </div>
-                    <!-- Leave review form-->
-                    
-                  </div>
-                </div>
-
-                <!-- Comments tab-->
-                  <div class="tab-pane show" id="comments" role="tabpanel">
-                    <div class="row">
-                      <div class="col-lg-8">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                              <h6 class="fs-md mb-0">Top reviews</h6>
-                              <a class="nav-link-style fs-xs fw-normal text-primary" href="#"> 203K
-                              reviews<i class="bi bi-chevron-right me-2"></i></a>
-                        </div>
-        
-                        <div class="fs-xs fw-normal">Summary of 203K reviews.</div> 
-                        <div class="d-flex  badgses">
-                        
-                                <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2911</span></div>
-                                <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2912</span></div>
-                                <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2913</span></div>
-                        
-                        </div>
-
-                      <div class="d-flex abced gx-2">
-                      
-                      @foreach($commentedRates  as $comment)
-                        <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
-                          <img class="rounded-circle" src="#" width="50" alt="">
-        
-                          <div class="ps-0">
-                            <div class="d-flex justify-content-between align-items-end mb-2">
-                              <p class="fs-md mb-0">{{$comment->hasttag}}</p>
-                              <a class="nav-link-style fs-sm fw-medium" href="#">
-                                <i class="bi bi-star me-2"></i>{{$comment->rate}}/10</a>
-                            </div>
-
-                            <h4 class="fs-md mb-3">{{$comment->opinion}}</h4>
+                            <span>
+                                                    <a class="btn btn-primary btn-sm" type="button" href="http://127.0.0.1:8000/exhibit/business"> Book your Space </a>
+                                                </span>
+                          
                             
-                            <div class="d-flex justify-content-between align-items-center">
-                              <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
-                              <span class="fs-ms text-muted">{{Carbon\Carbon::parse ($comment->updated_at)->format('Y-m-d')}}<i class=" bi bi-share align-middle me-2"></i></span>
-                            </div>
+                        </li>
+                        <li><hr class="mt-md-2 mb-2"></li>
+                        <li class="p1 fw-light">
+                          |  | 1 days | Rs. 700.00 Onwards                 </li>
+                      </ul> -->
+                    </div> 
+
+                    <!--share hidden-->
+                    <div class="d-none">            
+                          <a href="#" id="gmail-btn">gmail</a>
+                          <a href="#" id="facebook-btn">facebook</a>
+                          <a href="#" id="twitter-btn">twitter</a>
+                          <a href="#" id="linkedin-btn">linkedin</a>
+                          <a href="#" id="whatsapp-btn">whatsapp</a> 
+                          <i class="bi bi-share"></i>
+                          <a href="#" id="shareBtn" class="btn btn-primary btn-sm mx-2"><i class="bi bi-share"></i></a>
+                    </div>
+
+                    <!-- pavillion -->
+                    <div class="container mt-4 d-lg-none">
+                      <div class="text-dark fw-bold fs-md">Locations & Hours</div> 
+                      
+                      <div class=" card-group locationhours">
+                        @foreach( $pavillion as $pavo)
+                        <div class="card border-0">
+                          <img src="https://source.unsplash.com/1600x900/?{{$pavo -> pavillion_name}}, office" class="card-img-top" alt="Card image">
+                          <div class="card-body">
+                            <h5 class="card-title">{{$pavo -> pavillion_name}}</h5>
+                            <p class="card-text fs-sm text-muted">{{$pavo -> desc}}</p>
+                                <p class="fs-xs"> <span class="fs-xs fw-bold">Hours:</span> 10:00 - 11:00  {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}</p> 
+                                <p class="fs-xs"> <span class="fs-xs fw-bold">Closed:</span> 10:00 - 11:00 {{Carbon\Carbon::parse ($event->enddate)->format('D, d M')}}</p> 
+                            <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
+                            <div class="d-flex badgeseTag">
+                                  @foreach($category as $cat)
+                                    <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                                  @endforeach
+                                </div>
                           </div>
                         </div>
-                      @endforeach
+                        @endforeach
+
+                        <div class="card border-0">
+                          <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                          <div class="card-body">
+                            <h5 class="card-title">Pavillion</h5>
+                            <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                                closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                                <!-- <a href="#" class="btn btn-sm btn-primary">Go somewhere</a> -->
+                                <div class="d-flex badgeseTag">
+                                  @foreach($category as $cat)
+                                    <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                                  @endforeach
+                                </div>
+                          </div>
+                        </div>
+                          <!-- 
+                            <ul class="list-unstyled fs-sm  p-2">
+                                <li class="d-flex justify-content-between p-0 m-0">
+                                    <span class="text-dark fw-medium fs-sm">  Pavillion <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                                    <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span>
+
+                                    Hours: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+                                    closed: {{Carbon\Carbon::parse ($event->startdate)->format('D, d M')}}
+
+                                    <div class="d-flex badgeseTag">
+                                      @foreach($category as $cat)
+                                        <span class="badge badge-accent border border-1 text-right border-dark text-dark mr-1">{{$cat->expo->tag}}</span>
+                                      @endforeach
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="list-unstyled fs-sm  p-2">
+                                <li class="d-flex justify-content-between p-0 m-0">
+                                <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                                <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                            </ul>
+                          
+                            <ul class="list-unstyled fs-sm  p-2">
+                              <li class="d-flex justify-content-between p-0 m-0">
+                              <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                              <span><a href="" class="btn btn-outline-primary btn-sm bg-light"> Offer</a></span></li>
+                            </ul> 
+                          -->
                       </div>
 
+                    </div>
+                    <hr class="mt-md-2 mb-2">
+
+                    <!--participants-->  
+                    <section class="container py-4 py-md-5 my-2 d-none d-sm-block">
+                      <div class="row text-center text-sm-start">
+                        <div class="col-lg-3 col-md-4 col-sm-4 bg-secondary">
+                          <span class="badge bg-primary mt-3">Participate</span>
+                            <h5 class="mb-3">Nominate</h5>
+                            <div class="row">
+                              <div>
+                                <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                                  <li>Bespoke B2B forums that connect you with the people you really want to meet. </li>
+                                  <li>Our business partnered space events include participation in live Q&A and polls, plus access to the community where you can network with other attendees.</li>
+                                  <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'award' ])}}" class="btn btn-outline-primary btn-sm bg-light">Nominate a Speaker</a></li>
+                                </ul>
+                              </div>
+                                <div>
+                                  <h5 class="mb-3">Business Directory</h5>
+                                  <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                                    <li>List business directory to educate with your business potential</li>
+                                    <li> <a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'directory' ])}}" class="btn btn-sm btn-primary">Expand your business</a> </li>
+                                  </ul>
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Attend a Space event</h5>
+                            
+                            <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                              <li>Attend a Space event near you featuring live speakers and Talk business owners, sparking conversation and connections.</li>
+                              <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'find' ])}}" class="btn btn-outline-primary btn-sm bg-light">Find an event near you</a></li>
+                              
+                            </ul>
+                            <h5 class="mb-3">Share this event</h5>
+                            <!-- Wishlist + Sharing-->
+                              <div class="  d-flex flex-wrap justify-content-between align-items-center border-top pt-3">
+                                
+                                <!--<div class="py-0"><i class="ci-share-alt fs-lg align-middle text-muted me-2"></i>
+                                  <a class="btn-social bs-outline bs-facebook bs-sm ms-2" href="#"><i class="ci-facebook"></i></a>
+                                  <a class="btn-social bs-outline bs-twitter bs-sm ms-2" href="#"><i class="ci-twitter"></i></a>
+                                  <a class="btn-social bs-outline bs-pinterest bs-sm ms-2" href="#"><i class="ci-pinterest"></i></a>
+                                  <a class="btn-social bs-outline bs-instagram bs-sm ms-2" href="#"><i class="ci-instagram"></i></a>
+                                </div>-->
+
+                                <div class="mb-1">
+                                    <a class="btn-social bs-dark bs-twitter ms-2 mb-2" target="_blank" href="https://twitter.com/coi_Innovation"><i class="bi bi-twitter"></i></a>
+                                    <a class="btn-social bs-dark bs-facebook ms-2 mb-2" target="_blank" href="www.facebook.com"><i class="bi bi-facebook"></i></a>
+                                    <a class="btn-social bs-dark bs-instagram ms-2 mb-2" target="_blank" href="https://in.pinterest.com/CouncilofInnovation/_saved/"><i class="bi bi-instagram"></i></a>
+                                    <a class="btn-social bs-dark bs-youtube ms-2 mb-2" target="_blank" href="https://www.youtube.com/channel/UCFq3khqbTIecQxeqj1GscFA"><i class=" bi bi-youtube"></i></a>
+                                    <a class="btn-social bs-dark bs-linkedin ms-2 mb-2" target="_blank" href=""><i class=" bi bi-linkedin"></i></a>
+                                </div>
+                              </div>
+
+                              <h5 class="mb-3">Programme for People and Planet</h5>
+                              <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                                    <li>Inspiring collective and meaningful action to address the world's most critical Challenges and opportunities.</li>
+                                  <li>
+                                    <div class="card ">
+                                    <div class="expo_Initiat">
+                                        <div class="card-body ">
+                                          <h5 class="card-title">Sustainability District</h5>
+                                          <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                        </div>
+
+                                        <div class="card-body">
+                                          <h5 class="card-title">Mobility District</h5>
+                                          <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                        </div>
+
+                                        <div class="card-body">
+                                          <h5 class="card-title">Opportunity District</h5>
+                                          <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                        </div>                  
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-8">
+                        
+                            
+                            <ul class="list-unstyled fs-sm bg-secondary p-2">
+                          <div class="fw-bold"> Click on interested to stay updated about this event.</div>
+                              <li class="d-flex justify-content-between p-0 m-0">
+                              <span class="text-dark fw-medium fs-sm">  Add your rating & review <br><span class="text-muted fw-light fs-sm">Your ratings matter</span></span>
+                              
+
+                            
+                              {{--@if( $rate == $event->id)
+                              
+                              <button class="btn btn-sm btn-outline-primary" type="button" > 
+                              {{$rating}} /10</button>
+
+                              @else
+                                  <div class="py-2 me-2"> 
+                                    <button class="btn btn-sm btn-outline-primary" type="button" ><i class="bi bi-star fs-lg me-2"></i> 
+                                    <a href="{{route('coi.ratenow',['slug' => $event->slug])}}">Rate Now</a> </button>
+                                  </div>
+                              @endif--}}
+                              
+                              </li>
+                              </ul>
+                        
+                          <h5 class="mb-3">Understanding Expo</h5>
+                          <p class="fs-sm mb-3 mb-lg-4 pb-2">{{$event->shtdesc}}</p>
+                          <span class="badge rounded-pill bg-primary">Participants</span>
+                          <h5 class="mb-3">Pavillion</h5>
+
+                          <!-- Card group -->
+                            
+
+                                <!-- Card -->
+                                <div class="row">
+                                  @foreach($pavillion as $pav)
+                                    <div class="col-4 card border-0 px-2">
+                                      <img src="{{url('assets/image/exhibition/'.$pav->image)}}" class="card-img-top" alt="Card image">
+                                    
+                                      <div class="card-image-overlay" >
+                                        <h5 class="card-title text-light">{{$pav -> pavillion_name}}</h5>
+                                        <p class="card-text fs-sm text-muted text-light">{{ $pav -> desc}}</p>
+                                      
+                                        <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary text-light">Learn more</a>
+                                      </div>
+                                    </div>
+                                  @endforeach
+                                </div>
+                                
+                                <div class="row">
+                                  <!-- Card -->
+                                  <div class=" col-4 card border-0 px-0 hover-overlay shadow-1-strong">
+                                    <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
+                                    <div class="mask text-light">
+                                      <h5 class="card-title">Special Pavillions</h5>
+                                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                                    </div>
+                                  </div>
+
+                                  <!-- Card -->
+                                  <div class="col-4 card border-0 px-0">
+                                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Country Pavillions</h5>
+                                      <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
+                                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                                    </div>
+                                  </div>
+
+                                  <!-- Card -->
+                                  <div class="col-4 card border-0 px-0">
+                                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Partner Pavillions</h5>
+                                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                                    </div>
+                                  </div>
+                            
+                              
+
+                                  <!-- Card -->
+                                  <div class="col-4 card border-0 px-0">
+                                    <img src="image/banner-sm01.png" class="card-img-top" alt="Card image">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Organisations Pavillions</h5>
+                                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                                    </div>
+                                  </div>
+
+                                  <!-- Card -->
+                                  <div class="col-4 card border-0 px-0">
+                                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Country Pavillions</h5>
+                                      <p class="card-text fs-sm text-muted">This card has supporting text below as a natural lead-in to additional content.</p>
+                                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                                    </div>
+                                  </div>
+
+                                  <!-- Card -->
+                                  <div class="col-4 card border-0 px-0">
+                                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Partner Pavillions</h5>
+                                      <p class="card-text fs-sm text-muted">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                      <a href="{{route('lead.business', ['slug' => $event->slug])}}" class="text-primary">Learn more</a>
+                                    </div>
+                                  </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-4  bg-secondary">
+                          <h5 class="m-3 fs-sm fw-light">Contactless Ticketing & Fast-track Entry with M-ticket. <span class="fw-bold text-primary">Learn How</span></h5>
+                          <div class="row">
+                            <div>
+                            <h5 class="mb-3">Start-ups</h5>
+                              
+                              <ul class="list-unstyled fs-sm bg-secondary p-2">
+                                  <li class="d-flex justify-content-between p-0 m-0">
+                                  <span class="text-dark fw-medium fs-sm">  Book direct with us. <br><span class="text-muted fw-light fs-xs" style ="line-height: 1;">and avail a special discount<br> of 25% along with special benefits. </span></span>
+                                  <span><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'startup' ])}}" class="btn btn-outline-primary btn-sm bg-light"> BOOK NOW</a></span></li>
+                            </ul>
+                            </div>
+                            <!--<div>
+                              <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                                <li>Height: 7.8 in / 19.8 cm</li>
+                                <li>Weight: 7.58 oz / 215 g</li>
+                                <li>Form factor: On ear</li>
+                              </ul>
+                            </div>-->
+                          </div>
+                          <h5 class="mb-3">Meet-ups</h5>
+                          <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                            <li class="m-3 fs-sm fw-light">Conducts exhibitions, one-to-one meetings and discussions, experiences delivering maximum engagement.</li>
+                            <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'meet' ])}}" class="btn btn-outline-primary btn-sm bg-light">BOOK NOW</a></li>
+                          </ul>
+                          <h5 class="mb-3">Partner with Space</h5>
+                          <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                            <li class="m-3 fs-sm fw-light">When you support the Space program, you enable our efforts to empower and grow the global Space community of volunteers.</li>
+                            <li><a href="{{route('lead.business.other',['slug' => $event->slug, 'type'=> 'partner' ])}}" class="btn btn-outline-primary btn-sm bg-light">Partner with Space</a></li>
+                          </ul>
+
+                          <h5 class="mb-3">Expo Initiatives</h5>
+                          <ul class="list-unstyled fs-sm mb-3 mb-lg-4 pb-1">
+                            <li class="my-3 fs-sm fw-light">Togethor with people from across the world, we are creating meaningful impact through a range of Expo programmes and initiatives. </li>
+                            <li><!-- No image -->
+                              <div class="card ">
+                                <div class="expo_Initiatives">
+                                      <div class="card-body ">
+                                        <h5 class="card-title">Expo live</h5>
+                                        <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                      </div>
+
+                                      <div class="card-body">
+                                        <h5 class="card-title">Global Best Practice Programme</h5>
+                                        <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                      </div>
+
+                                      <div class="card-body">
+                                        <h5 class="card-title">Sustainability at Expo</h5>
+                                        <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                      </div>
+
+                                      <div class="card-body">
+                                        <h5 class="card-title">World Majlis</h5>
+                                        <p class="card-text fs-sm text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="btn btn-sm btn-primary">Go somewhere</a>
+                                      </div>
+                                </div>
+                              </div>
+                            </li>
+                            
+                          </ul>
+
+                    
+
+
+                        </div>
                       </div>
-                    </div>
-                  </div>
-              </div>
-            </section>
+                    </section>
 
-            <div class="container text-center">
-              <small class="text-primary fs-sm fw-normal">Right Place, Right Time, Right People</small>
-              <h1 class="text-center fw-bold display-3 lh-1">Market Leaders Rely on Great Place To Business</h1>
-            </div> 
+                    <!-- Product description + Reviews + Comments-->
+                    <section class="container mb-4 mb-lg-5">
+                      <div class="tab-content pt-2">
 
-            <!-- copy Card group sec_last-->
-            <section class="container py-5">
-              <!-- Card group -->
-              <div class="card-group">
+                        {{-- Product details tab
+                        <div class="tab-pane fade show active" id="details" role="tabpanel">
+                          <div class="row">
+                            <div class="col-lg-8">
+                            
+                              
+                              <p class="fs-md"> {{Str::limit($event->desc,289)}}...</p>
 
-                  <!-- Card -->
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?discussion, initiatives" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Reflections on {{$event->eventname}} Brand Collection and Business cultural Property Brands Opportunities.  </h5>
-                      <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
-                      <a href="#" class="text-primary fw-bold">Read More</a>
-                    </div>
-                  </div>
+                              <h3 class="h5 pt-2">Main features</h3>
+                              <ul class="fs-md">
+                                <li>Nemo enim ipsam voluptatem quia voluptas sit</li>
+                                <li>Ut enim ad minima veniam, quis nostrum exercitationem</li>
+                                <li>Duis aute irure dolor in reprehenderit in voluptate</li>
+                                <li>At vero eos et accusamus et iusto odio dignissimos</li>
+                                <li>Omnis voluptas assumenda est omnis dolor</li>
+                                <li>Quis autem vel eum iure reprehenderit qui in ea voluptate</li>
+                              </ul>
+                            </div>
+                          </div>
 
-                  
+                    
 
-                  <!-- Card -->
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?brand, studio" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Backdoor brand Studio</h5>
-                      <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
-                      <a href="#" class="text-primary fw-bold">Learn more</a>
-                    </div>
-                  </div>
+                        </div>--}}
 
-                   <!-- Card -->
-                   <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?visit, exhibition" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Plan to {{$event->eventname}}</h5>
-                      <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('M d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
-                      <a href="#" class="text-primary fw-bold">Plan your visit</a>
-                    </div>
-                  </div>
+                        <!-- Reviews tab-->
+                        <div class="tab-pane fade" id="reviews" role="tabpanel">
+                          <!-- Reviews-->
+                          <div class="row pt-2 pb-3">
+                            <div class="col-lg-4 col-md-5">
+
+                              <h3 class="h4 mb-4">74 Reviews</h3>
+                              <div class="star-rating me-2"><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star-filled fs-sm text-accent me-1"></i><i class="ci-star fs-sm text-muted me-1"></i></div><span class="d-inline-block align-middle">4.1 Overall rating</span>
+                              <p class="pt-3 fs-sm text-muted">58 out of 74 (77%)<br>Customers recommended this product</p>
+                            </div>
+                          {{-- <div class="col-lg-8 col-md-7">
+                                  <div class="d-flex align-items-center mb-2">
+                                    <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">5</span><i class="ci-star-filled fs-xs ms-1"></i></div>
+                                    <div class="w-100">
+                                      <div class="progress" style="height: 4px;">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                      </div>
+                                    </div><span class="text-muted ms-3">43</span>
+                                  </div>
+                                  <div class="d-flex align-items-center mb-2">
+                                    <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">4</span><i class="ci-star-filled fs-xs ms-1"></i></div>
+                                    <div class="w-100">
+                                      <div class="progress" style="height: 4px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 27%; background-color: #a7e453;" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100"></div>
+                                      </div>
+                                    </div><span class="text-muted ms-3">16</span>
+                                  </div>
+                                  <div class="d-flex align-items-center mb-2">
+                                    <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">3</span><i class="ci-star-filled fs-xs ms-1"></i></div>
+                                    <div class="w-100">
+                                      <div class="progress" style="height: 4px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 17%; background-color: #ffda75;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"></div>
+                                      </div>
+                                    </div><span class="text-muted ms-3">9</span>
+                                  </div>
+                                  <div class="d-flex align-items-center mb-2">
+                                    <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">2</span><i class="ci-star-filled fs-xs ms-1"></i></div>
+                                    <div class="w-100">
+                                      <div class="progress" style="height: 4px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 9%; background-color: #fea569;" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
+                                      </div>
+                                    </div><span class="text-muted ms-3">4</span>
+                                  </div>
+                                  <div class="d-flex align-items-center">
+                                    <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">1</span><i class="ci-star-filled fs-xs ms-1"></i></div>
+                                    <div class="w-100">
+                                      <div class="progress" style="height: 4px;">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 4%;" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100"></div>
+                                      </div>
+                                    </div><span class="text-muted ms-3">2</span>
+                                  </div>
+                            </div>--}}
+                          </div>
+                          <hr class="mt-4 mb-3">
+                          <div class="row py-4">
+                            <!-- Reviews list-->
+                            <div class="col-md-7">
+                              <div class="d-flex justify-content-end pb-4">
+                                <div class="d-flex align-items-center flex-nowrap">
+                                  <label class="fs-sm text-muted text-nowrap me-2 d-none d-sm-block" for="sort-reviews">Sort by:</label>
+                                  <select class="form-select form-select-sm" id="sort-reviews">
+                                    <option>Newest</option>
+                                    <option>Oldest</option>
+                                    <option>Popular</option>
+                                    <option>High rating</option>
+                                    <option>Low rating</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <!-- Review-->
+                              <div class="product-review pb-4 mb-4 border-bottom">
+                                <div class="d-flex mb-3">
+                                  <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="#" width="50" alt="Rafael Marquez">
+                                    <div class="ps-3">
+                                      <h6 class="fs-sm mb-0">Rafael Marquez</h6><span class="fs-ms text-muted">June 28, 2019</span>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                                    </div>
+                                    <div class="fs-ms text-muted">83% of users found this review helpful</div>
+                                  </div>
+                                </div>
+                                <p class="fs-md mb-2">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...</p>
+                                <ul class="list-unstyled fs-ms pt-1">
+                                  <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi, tempora</li>
+                                  <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae, quis autem</li>
+                                </ul>
+                                <div class="text-nowrap">
+                                  <button class="btn-like" type="button">15</button>
+                                  <button class="btn-dislike" type="button">3</button>
+                                </div>
+                              </div>
+                              <!-- Review-->
+                              <div class="product-review pb-4 mb-4 border-bottom">
+                                <div class="d-flex mb-3">
+                                  <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="#" width="50" alt="Barbara Palson">
+                                    <div class="ps-3">
+                                      <h6 class="fs-sm mb-0">Barbara Palson</h6><span class="fs-ms text-muted">May 17, 2019</span>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                                    </div>
+                                    <div class="fs-ms text-muted">99% of users found this review helpful</div>
+                                  </div>
+                                </div>
+                                <p class="fs-md mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <ul class="list-unstyled fs-ms pt-1">
+                                  <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi, tempora</li>
+                                  <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae, quis autem</li>
+                                </ul>
+                                <div class="text-nowrap">
+                                  <button class="btn-like" type="button">34</button>
+                                  <button class="btn-dislike" type="button">1</button>
+                                </div>
+                              </div>
+                              <!-- Review-->
+                              <div class="product-review pb-4 mb-4 border-bottom">
+                                <div class="d-flex mb-3">
+                                  <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="#" width="50" alt="Daniel Adams">
+                                    <div class="ps-3">
+                                      <h6 class="fs-sm mb-0">Daniel Adams</h6><span class="fs-ms text-muted">May 8, 2019</span>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
+                                    </div>
+                                    <div class="fs-ms text-muted">75% of users found this review helpful</div>
+                                  </div>
+                                </div>
+                                <p class="fs-md mb-2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.</p>
+                                <ul class="list-unstyled fs-ms pt-1">
+                                  <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi</li>
+                                  <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae,  quis autem, voluptatem sequ</li>
+                                </ul>
+                                <div class="text-nowrap">
+                                  <button class="btn-like" type="button">26</button>
+                                  <button class="btn-dislike" type="button">9</button>
+                                </div>
+                              </div>
+                              <div class="text-center">
+                                <button class="btn btn-outline-accent" type="button"><i class="ci-reload me-2"></i>Load more reviews</button>
+                              </div>
+                            </div>
+                            <!-- Leave review form-->
+                            
+                          </div>
+                        </div>
+
+                        <!-- Comments tab-->
+                          <div class="tab-pane show" id="comments" role="tabpanel">
+                            <div class="row">
+                              <div class="col-lg-8">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                      <h6 class="fs-md mb-0">Top reviews</h6>
+                                      <a class="nav-link-style fs-xs fw-normal text-primary" href="#"> 203K
+                                      reviews<i class="bi bi-chevron-right me-2"></i></a>
+                                </div>
+                
+                                <div class="fs-xs fw-normal">Summary of 203K reviews.</div> 
+                                <div class="d-flex  badgses">
+                                
+                                        <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2911</span></div>
+                                        <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2912</span></div>
+                                        <div class="badge border-1 text-dark mr-1"> #blockbuster  <span class="">2913</span></div>
+                                
+                                </div>
+
+                              <div class="d-flex abced gx-2">
+                              
+                              @foreach($commentedRates  as $comment)
+                                <div class=" border-1 d-flex align-items-end py-2 mx-2 border-bottom rounded shadow-sm">
+                                  <img class="rounded-circle" src="#" width="50" alt="">
+                
+                                  <div class="ps-0">
+                                    <div class="d-flex justify-content-between align-items-end mb-2">
+                                      <p class="fs-md mb-0">{{$comment->hasttag}}</p>
+                                      <a class="nav-link-style fs-sm fw-medium" href="#">
+                                        <i class="bi bi-star me-2"></i>{{$comment->rate}}/10</a>
+                                    </div>
+
+                                    <h4 class="fs-md mb-3">{{$comment->opinion}}</h4>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                      <span class="fs-ms text-muted">9 <i class=" bi bi-hand-thumbs-up align-middle me-2"></i>12 <i class=" bi bi-hand-thumbs-down align-middle me-2"></i></span>
+                                      <span class="fs-ms text-muted">{{Carbon\Carbon::parse ($comment->updated_at)->format('Y-m-d')}}<i class=" bi bi-share align-middle me-2"></i></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              @endforeach
+                              </div>
+
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </section>
+
+                    <div class="container text-center">
+                      <small class="text-primary fs-sm fw-normal">Right Place, Right Time, Right People</small>
+                      <h1 class="text-center fw-bold display-3 lh-1">Market Leaders Rely on Great Place To Business</h1>
+                    </div> 
+
+                    <!-- copy Card group sec_last-->
+                    <section class="container py-5">
+                      <!-- Card group -->
+                      <div class="card-group">
+
+                          <!-- Card -->
+                          <div class="card border-0">
+                            <img src="https://source.unsplash.com/1600x900/?discussion, initiatives" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Reflections on {{$event->eventname}} Brand Collection and Business cultural Property Brands Opportunities.  </h5>
+                              <p class="card-text fs-sm text-muted">{{$event->eventname}} director reflects on current discussions about business property, provides background on the collection, and previews several important initiatives.</p>
+                              <a href="#" class="text-primary fw-bold">Read More</a>
+                            </div>
+                          </div>
+
+                          
+
+                          <!-- Card -->
+                          <div class="card border-0">
+                            <img src="https://source.unsplash.com/1600x900/?brand, studio" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Backdoor brand Studio</h5>
+                              <p class="card-text fs-sm text-muted">The Exhibition Network families, join us Saturday, to celebrate the opening of our new drop-in discovery and play space for new start business ideas. </p>
+                              <a href="#" class="text-primary fw-bold">Learn more</a>
+                            </div>
+                          </div>
+
+                          <!-- Card -->
+                          <div class="card border-0">
+                            <img src="https://source.unsplash.com/1600x900/?visit, exhibition" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Plan to {{$event->eventname}}</h5>
+                              <p class="card-text fs-sm text-muted">Through {{Carbon\Carbon::parse ($event->startdate)->format('M d ')}}, visit to the {{$event->eventname}} enjoy service on the {{ucwords(trans($event->venue))}}, {{ucwords(trans($event->city))}}, {{ucwords(trans($event->country))}}. </p>
+                              <a href="#" class="text-primary fw-bold">Plan your visit</a>
+                            </div>
+                          </div>
 
 
-                   <!-- Card -->
-                   <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Membership, benefits" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Membership at The Exhibition Network</h5>
-                      <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
-                      <a href="#" class="text-primary fw-bold">See the benefits</a>
-                    </div>
-                  </div>
+                          <!-- Card -->
+                          <div class="card border-0">
+                            <img src="https://source.unsplash.com/1600x900/?Membership, benefits" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">Membership at The Exhibition Network</h5>
+                              <p class="card-text fs-sm text-muted">The Network Members enjoy a rich variety of specialized benefits- from free guest passes to Member Preview Days for new exhibitons -all while supporting our mission.</p>
+                              <a href="#" class="text-primary fw-bold">See the benefits</a>
+                            </div>
+                          </div>
 
-                  <!-- Card -->
-                  <div class="card border-0">
-                    <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">New at {{$event->eventname}}</h5>
-                      <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
-                      <a href="#" class="text-primary  fs-sm fw-bold">Go somewhere</a>
-                    </div>
-                  </div>
+                          <!-- Card -->
+                          <div class="card border-0">
+                            <img src="https://source.unsplash.com/1600x900/?Switzerland, office" class="card-img-top" alt="Card image">
+                            <div class="card-body">
+                              <h5 class="card-title">New at {{$event->eventname}}</h5>
+                              <p class="card-text fs-sm text-muted">Discover our newest business-inspired business designs, including publishing the brand, Search new opportunities, assess your business and many more..</p>
+                              <a href="#" class="text-primary  fs-sm fw-bold">Go somewhere</a>
+                            </div>
+                          </div>
 
 
-                 
-              </div>
-            </section>
+                        
+                      </div>
+                    </section>
+            @else($optional == 'reviews')
+
+              <h1>Find exhibtior with us</h1>
+
+            @else($optional == 'exhibitor')
+
+              <h1>Find exhibtior with us</h1>
             
+            @endif
 
                     <!-- copy Card group sec_last-->
                       <!-- <section class="container py-5">

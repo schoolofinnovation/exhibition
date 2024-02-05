@@ -174,9 +174,7 @@ class AdminEventMultipleAddComponent extends Component
     public function updateShtdesc()
     {
         $fattribute = Event::find($this->event_id);
-        
         $fattribute->shtdesc =  $this->shtdesc;
-        
         $fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
         return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
