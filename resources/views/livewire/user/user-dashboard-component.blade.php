@@ -1368,12 +1368,14 @@
       <!-- industry -->
       <div class="widget">
         <h3 class="widget-title">Your Industry   <a href="{{route('user.category')}}" class="btn btn-primary btn-sm">Choose</a> </h3>
+        
         <a href="" class="btn-tag me-2 mb-2">#ser</a>
         <a href="" class="btn-tag me-2 mb-2">#ser</a>
         <a href="" class="btn-tag me-2 mb-2">#ser</a>
         <a href="" class="btn-tag me-2 mb-2">#ser</a>
         <a href="" class="btn-tag me-2 mb-2">#ser</a>
         <a href="" class="btn-tag me-2 mb-2 active">#business</a>
+        
       </div>
 
       <div class="widget">

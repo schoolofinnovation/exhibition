@@ -6,6 +6,7 @@ use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -21,15 +22,15 @@ class UserEventCategoryComponent extends Component
     public $slug;
     public $status;
 
-    public function mount($event_id)
-    {
-        $fattribute = Event::find($event_id);
-        //dd($fattribute);
-        $this->event_id = $fattribute->id;
-        $this->expo_id = $fattribute->expo_id;
-        $this->type = 'tag';
-        $this->status = '1';
-    }
+    // public function mount($event_id)
+    // {
+    //     $fattribute = Event::find($event_id);
+    //     //dd($fattribute);
+    //     $this->event_id = $fattribute->id;
+    //     $this->expo_id = $fattribute->expo_id;
+    //     $this->type = 'tag';
+    //     $this->status = '1';
+    // }
 
 
     public function updateEvent()
@@ -40,16 +41,15 @@ class UserEventCategoryComponent extends Component
         foreach($tryi as $trey)
         {
             $fattribute = new Denco();
-            $fattribut = Event::find($this->event_id);
+            $fattribut = Auth::user()->id;
             $fattribute->expo_id = trim($trey);
-            $fattribute->event_id = $fattribut->id;
+            $fattribute->user_id = $fattribut->id;
             $fattribute->save();
         }
         
         //dd($sectry, $expoo, $tryi);
-       
         session()->flash('message','Event has been updated succesfully!!');
-        return redirect()->route('adminevent.detail', ['slug' => $fattribute->event->slug]);
+        return redirect()->route('user.dashboard');
     }
 
     //$previous = url()->previous();
