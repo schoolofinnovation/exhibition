@@ -1,7 +1,7 @@
 @section('page_title','Dashboard')
 
 <main>
-    @if($trend == 'category')
+    @if($trends == 'category')
         <div class="container my-5 mx-auto">
             <div class="container mx-auto my-5"> 
                 <div class=" d-flex row">
@@ -70,7 +70,7 @@
         </div>
     @endif
 
-    @if($trend == 'event')
+    @if($trends == 'event')
         <div class="row mb-5 pb-2">
             @foreach ($blogfindo as $franchise) 
                 <div class="container  ">

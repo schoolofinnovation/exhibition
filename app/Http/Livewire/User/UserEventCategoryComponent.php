@@ -23,6 +23,8 @@ class UserEventCategoryComponent extends Component
     public $type;
     public $slug;
     public $status;
+    public $trends;
+
 
     // public function mount($event_id)
     // {
@@ -111,6 +113,6 @@ class UserEventCategoryComponent extends Component
         $nowdate = Carbon::now()->format('Y-M-d');
         $blogfindo = Event::where('enddate','>', $nowdate)->where('status','1')->where('admstatus','1')->get();
 
-        return view('livewire.user.user-event-category-component', ['blogfindo' => $blogfindo,'findAdminStatus' => $findAdminStatus, 'selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat]);
+        return view('livewire.user.user-event-category-component', ['blogfindo' => $blogfindo,'findAdminStatus' => $findAdminStatus, 'selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat])->layout('layouts.eblog');
     }
 }
