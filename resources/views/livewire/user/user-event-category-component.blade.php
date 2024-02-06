@@ -5,7 +5,7 @@
         <div class="container mx-auto my-5"> 
             <div class=" d-flex row">
                 <p >Let's Create Event Together</p>
-                <small class="fw-bold">{{$evento->eventname}}</small>
+                <small class="fw-bold">name</small>
       <br>
                 @foreach($selectedcategory as $catego)
                     @if($catego->admstatus == '1')

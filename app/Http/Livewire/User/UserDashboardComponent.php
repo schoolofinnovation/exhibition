@@ -289,7 +289,10 @@ class UserDashboardComponent extends Component
 
                     $userinfo = User::where('id', Auth::user()->id)->get();
 
-        return view('livewire.user.user-dashboard-component',['userinfo' => $userinfo,'userDetails' => $userDetails,'userEvent' => $userEvent, 'searchBrandcat'=> $searchBrandcat, 'selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
+        //updating the sections 06feb2024
+        $userCategory = Denco::where('user_id', Auth::user()->id)->get();            
+
+        return view('livewire.user.user-dashboard-component',['userCategory' => $userCategory,'userinfo' => $userinfo,'userDetails' => $userDetails,'userEvent' => $userEvent, 'searchBrandcat'=> $searchBrandcat, 'selectedcategory'=> $selectedcategory,'eventoo'=> $eventoo,'appliedapplication' => $appliedapplication, 'infos' => $infos,'newuser' => $newuser,'abc' => $abc])->layout('layouts.app');
         
     }
 }

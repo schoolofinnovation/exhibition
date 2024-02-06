@@ -43,7 +43,7 @@ class UserEventCategoryComponent extends Component
             $fattribute = new Denco();
             $fattribut = Auth::user()->id;
             $fattribute->expo_id = trim($trey);
-            $fattribute->user_id = $fattribut->id;
+            $fattribute->user_id = $fattribut;
             $fattribute->save();
         }
         
