@@ -1365,7 +1365,7 @@
       <div class="widget">
            <a href="{{route('user.category',['trends' => 'category'])}}" class="fw-sm"><h3 class="widget-title">Your Industry </h3> add</a>
         @foreach($userCategory as $categor)
-        <a href="#" wire:click.prevent="insertEventToSess({{$categor->Category}})"  class="btn-tag me-2 mb-2">#{{$categor->expo->tag}}</a>
+        <a href="#" wire:click.prevent="insertEventToSess({{$categor->id}})"  class="btn-tag me-2 mb-2">#{{$categor->expo->tag}}</a>
         @endforeach
         <a href="" class="btn-tag me-2 mb-2 active">#business</a>
       </div>
