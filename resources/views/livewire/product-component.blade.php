@@ -94,7 +94,8 @@
                           <div class="bg-secondary position-bottom d-none d-sm-block">
                             <div class="container  bg-secondary">
                               <div class="d-flex  justify-content-between py-2 px-2">
-                                <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->subtotal()}} <br>
+                                <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i>
+                                {{Cart::instance('cart')->subtotal()}} <br>
                                   @if(Cart::instance('cart')->count()>0)
                                     <span class=" fw-normal fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>
                                     @else
@@ -134,7 +135,7 @@
                         <div class="container">
                           <div class="d-flex justify-content-between py-2 px-2">
                             <div class="text-dark fw-medium fs-sm pl-3 lh-3">  <i class="bi bi-currency-rupee"></i>{{Cart::instance('cart')->subtotal()}} <br>
-                            @if(Cart::instance('cart')->count()>0)
+                                @if(Cart::instance('cart')->count()>0)
                                   <span class=" fw-normal fs-xs">{{Cart::instance('cart')->count()}} Ticket</span>
                                   @else
                                   <span class=" fw-light fs-xs">Onwards</span>
