@@ -5,6 +5,7 @@ namespace App\Http\Livewire\User;
 use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
+use App\Models\Usage;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -83,6 +84,19 @@ class UserEventCategoryComponent extends Component
         $job->delete();
         session()->flash('message','info has been deleted Successfully');
     }
+
+    //choose event to plan visit/exhibit
+    public function claimer($id)
+    {
+        $claiming = New Usage();
+        $claiming->user_id = Auth::user()->id;
+        $claiming->event_id =  $id;
+        $claiming->status = '1';
+        $claiming->admstatus = '0';
+        $claiming->type = 'event';
+        $claiming->save();
+    }
+
 
     public function render()
     {

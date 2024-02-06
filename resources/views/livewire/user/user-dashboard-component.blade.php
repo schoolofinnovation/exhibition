@@ -1363,7 +1363,7 @@
 
       <!-- industry -->
       <div class="widget">
-           <a href="{{route('user.category')}}" class="fw-sm"><h3 class="widget-title">Your Industry </h3> add</a>
+           <a href="{{route('user.category',['trends' => 'category'])}}" class="fw-sm"><h3 class="widget-title">Your Industry </h3> add</a>
         @foreach($userCategory as $categor)
         <a href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})"  class="btn-tag me-2 mb-2">#{{$categor->expo->tag}}</a>
         @endforeach
@@ -1374,6 +1374,7 @@
       <div class="widget">
         <h3 class="widget-title">Plan your Event <small>add</small></h3>
 
+        <a href="{{route('user.category',['trends' => 'event'])}}" class="btn btn-primary btn-sm">ADD</a>
         <div class="d-flex align-items-center pb-2 border-bottom">
           <a href="" class="flex-shrink-0">
             <img src="" alt=""width="">

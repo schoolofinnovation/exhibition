@@ -292,6 +292,7 @@ class UserDashboardComponent extends Component
         $claiming->type = 'event';
         $claiming->save();
     }
+    
     public function render()
     {
         $appliedapplication = Order::where('user_id', Auth::user()->id)->count();
