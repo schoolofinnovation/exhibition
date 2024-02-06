@@ -85,8 +85,8 @@ class UserEventCategoryComponent extends Component
 
     public function render()
     {
-        $evento = User::find($this->event_id);
-        $selectedcategory = Denco::where('event_id', $evento->id)->get();
+        $evento = Auth::user()->id;
+        $selectedcategory = Denco::where('user_id', Auth::user()->id)->get();
         $searchTerm = '%'.$this->searchTerm. '%';
         $searchcat = Expo::where('tag','LIKE', $searchTerm)
                     ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
