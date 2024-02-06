@@ -1346,10 +1346,6 @@
   @endif   
 
     <div class="container">
-      <!-- <small class="lh-1">Select your event, create product QR Link. Get formatted form your visitor.</small> <br> -->
-      <a href="{{route('partner.magazine',['trackcustomer' => 'add-magazine'])}}" class="btn btn-primary btn-sm">Generate QR</a>
-
-
       <!-- search -->
       <div class="widget">
         <!-- <h3 class="widget-title">Search</h6> -->
@@ -1367,15 +1363,16 @@
 
       <!-- industry -->
       <div class="widget">
-        <h3 class="widget-title">Your Industry   <a href="{{route('user.category')}}" class="btn btn-primary btn-sm">Choose</a> </h3>
+           <a href="{{route('user.category')}}" class="fw-sm"><h3 class="widget-title">Your Industry </h3> add</a>
         @foreach($userCategory as $categor)
-        <a href="#"  class="btn-tag me-2 mb-2">#{{$categor->expo->tag}}</a>
+        <a href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})"  class="btn-tag me-2 mb-2">#{{$categor->expo->tag}}</a>
         @endforeach
         <a href="" class="btn-tag me-2 mb-2 active">#business</a>
       </div>
 
+      <!-- Plan your Event -->
       <div class="widget">
-        <div class="widget-title">Featured</h3>
+        <h3 class="widget-title">Plan your Event <small>add</small></h3>
 
         <div class="d-flex align-items-center pb-2 border-bottom">
           <a href="" class="flex-shrink-0">
@@ -1389,30 +1386,10 @@
           </div>
         </div>
 
-        <div class="d-flex align-items-center pb-2 border-bottom">
-          <a href="" class="flex-shrink-0">
-            <img src="" alt=""width="">
-          </a>
-          <div class="ps-2">
-            <h6 class="widget-product-title"><a href="">test</a></h6>
-            <div class="widget-product-meta">
-              <span class="text-accent me-2"> test<small>cjec</small></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="d-flex align-items-center pb-2 ">
-          <a href="" class="flex-shrink-0">
-            <img src="" alt=""width="">
-          </a>
-          <div class="ps-2">
-            <h6 class="widget-product-title"><a href="">test</a></h6>
-            <div class="widget-product-meta">
-              <span class="text-accent me-2"> test<small>cjec</small></span>
-            </div>
-          </div>
-        </div>
       </div>
+
+      <!-- <small class="lh-1">Select your event, create product QR Link. Get formatted form your visitor.</small> <br> -->
+      <a href="{{route('partner.magazine',['trackcustomer' => 'add-magazine'])}}" class="btn btn-primary btn-sm">Generate QR</a>
 
       <div class="widget">
         <div class="widget-title">Basic Membership</h3>

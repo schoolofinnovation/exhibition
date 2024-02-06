@@ -6,6 +6,7 @@ use App\Models\Denco;
 use App\Models\Event;
 use App\Models\Expo;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -93,7 +94,9 @@ class UserEventCategoryComponent extends Component
         $expoon = Expo::where('type','tag')->get();
 
         $findAdminStatus = Expo::where('admstatus','1')->get();
+        $nowdate = Carbon::now()->format('Y-M-d');
+        $blogfindo = Event::where('enddate','>', $nowdate)->where('status','1')->where('admstatus','1')->get();
 
-        return view('livewire.user.user-event-category-component', ['findAdminStatus' => $findAdminStatus, 'selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat]);
+        return view('livewire.user.user-event-category-component', ['blogfindo' => $blogfindo,'findAdminStatus' => $findAdminStatus, 'selectedcategory' => $selectedcategory, 'evento' => $evento,'expoon' => $expoon, 'searchcat' => $searchcat]);
     }
 }

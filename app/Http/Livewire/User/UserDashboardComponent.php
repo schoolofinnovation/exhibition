@@ -18,6 +18,7 @@ use App\Models\Shop;
 use App\Models\Sprofile;
 use App\Models\Usage;
 use App\Models\User;
+use App\Models\Viewso;
 use App\Models\Want;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -263,6 +264,34 @@ class UserDashboardComponent extends Component
         session()->flash('message','info has been deleted Successfully');
     }
 
+    //industry to all list of event
+    public function insertEventToSess($id)
+    {
+      $event = Expo::where('id', $id)->first();
+      $evento = new Viewso();
+      if (Auth::check()) 
+        { $evento->user_id = Auth::user()->id; }
+      else
+      { $evento->user_id = NULL ; }
+
+      $evento->view_count = '1';
+      $evento->requestedPage = url()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $event->slug]);
+      $evento->redirecTlink = url()->current();
+      $evento->save();
+      return redirect()->route ('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $event->slug]);
+    } 
+
+    //choose event to plan visit/exhibit
+    public function claimer($id)
+    {
+        $claiming = New Usage();
+        $claiming->user_id = Auth::user()->id;
+        $claiming->event_id =  $id;
+        $claiming->status = '1';
+        $claiming->admstatus = '0';
+        $claiming->type = 'event';
+        $claiming->save();
+    }
     public function render()
     {
         $appliedapplication = Order::where('user_id', Auth::user()->id)->count();

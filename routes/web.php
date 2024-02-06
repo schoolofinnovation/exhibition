@@ -319,7 +319,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
   //User
   Route::middleware(['auth:sanctum', 'verified'])->group( function () {
     Route::get('/user/dashboard/{board}', UserDashboardComponent::class)->name('user.dashboard');
-    Route::get('/user/category', UserEventCategoryComponent::class)->name('user.category');
+    Route::get('/user/{trends}', UserEventCategoryComponent::class)->name('user.category');
 
     Route::get('/user/{trackcustomer}', UserLandingComponent::class)->name('partner.magazine');
 
