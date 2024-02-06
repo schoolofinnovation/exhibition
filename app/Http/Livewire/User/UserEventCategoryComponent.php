@@ -26,15 +26,16 @@ class UserEventCategoryComponent extends Component
     public $trends;
 
 
-    // public function mount($event_id)
-    // {
-    //     $fattribute = Event::find($event_id);
-    //     //dd($fattribute);
-    //     $this->event_id = $fattribute->id;
-    //     $this->expo_id = $fattribute->expo_id;
-    //     $this->type = 'tag';
-    //     $this->status = '1';
-    // }
+    public function mount($trends)
+    {
+       // $fattribute = Event::find($event_id);
+        //dd($fattribute);
+        // $this->event_id = $fattribute->id;
+        // $this->expo_id = $fattribute->expo_id;
+        // $this->type = 'tag';
+        // $this->status = '1';
+        $this->trends = $trends;
+    }
 
 
     public function updateEvent()

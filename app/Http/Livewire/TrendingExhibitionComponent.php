@@ -15,8 +15,6 @@ class TrendingExhibitionComponent extends Component
 {
     public $board;
 
-    user
-
     public function render()
     {
         $current = strtotime(Carbon::today());
