@@ -29,17 +29,21 @@ class EventDetailsComponent extends Component
     public $event_id;
     public $avgrating;
     public $productExpiryDate;
-    public $optional = 'detials';
+    public $optional;
 
     public $type_event;
     
     public function mount($slug)
     {
        $this->slug = $slug;
+      // $this->optional = $optional;
       
     }
 
-    
+    public function index($optional = 'details')
+    {
+      $this->optional = $optional;
+    }
 
     public function post( Request $request, $slug)
     {

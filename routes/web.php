@@ -218,7 +218,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 //Start
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
-Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class)->name('event.details');
+Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class, 'index')->name('event.details');
 Route::get('/award/{slug}', AwardDetailsComponent::class)->name('award.details');
 
 //reviews 
