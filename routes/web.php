@@ -161,6 +161,7 @@ use App\Http\Livewire\GoogleComponent;
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
 
 use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\User\UserEventCategoryComponent;
 use App\Http\Livewire\User\UserEventClaimComponent;
 use App\Http\Livewire\User\UserEventDetailsComponent;
 use App\Http\Livewire\User\UserExhibitorVisitorComponent;
@@ -218,7 +219,8 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 //Start
 Route::get('/', EventComponent::class)->name('business.exhibition');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
-Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class, 'index')->name('event.details');
+Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class)->name('event.details');
+//Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class, 'index')->name('event.details');
 Route::get('/award/{slug}', AwardDetailsComponent::class)->name('award.details');
 
 //reviews 
@@ -317,6 +319,8 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
   //User
   Route::middleware(['auth:sanctum', 'verified'])->group( function () {
     Route::get('/user/dashboard/{board}', UserDashboardComponent::class)->name('user.dashboard');
+    Route::get('/user/category', UserEventCategoryComponent::class)->name('user.category');
+
     Route::get('/user/{trackcustomer}', UserLandingComponent::class)->name('partner.magazine');
 
     Route::get('/user/magazine/add-your-business', UserEventClaimComponent::class)->name('user.claim');

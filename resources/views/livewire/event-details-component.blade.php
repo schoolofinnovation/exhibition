@@ -228,7 +228,8 @@
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Understanding</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="{{route('business.exhibition')}}" data-bs-toggle="tab" role="tab">Advertise</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#advertise" data-bs-toggle="tab" role="tab">Advertise</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Exhibitor</a></li>
                     @if(count($eventbrand) > 0) 
                     <li class="nav-item"><a class="nav-link px-1" href="{{route('event.details', ['slug' => $this->slug , 'optional' => 'exhibitor'])}}" data-bs-toggle="tab" role="tab">Exhibitors</a></li>
                     @endif
@@ -237,7 +238,7 @@
             </section>
     
 
-            @if( $optional == 'details')
+            
                     <!--details-->
                     <div class="container d-lg-none">
                             <!--<div class="col-lg-4 col-md-5 pt-2 pb-0">
@@ -1049,15 +1050,7 @@
                         
                       </div>
                     </section>
-            @elseif($optional == 'reviews')
-
-              <h1>Find exhibtior with us</h1>
-
-            @elseif($optional == 'exhibitor')
-
-              <h1>Find exhibtior with us</h1>
             
-            @endif
 
                     <!-- copy Card group sec_last-->
                       <!-- <section class="container py-5">

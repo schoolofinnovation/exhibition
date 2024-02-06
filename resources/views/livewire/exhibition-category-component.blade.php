@@ -561,6 +561,7 @@
         </div>
       </div>
 
+      <!-- Filter -->
       <div class="offcanvas offcanvas-start" tabindex="-1" id="shopsidebar" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
         
               <div class="offcanvas-header align-items-center shadow-sm">
@@ -598,6 +599,7 @@
             
       </div>
 
+       <!-- for menu -->
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="width: 380px;">
         
         <div class="offcanvas-header">
