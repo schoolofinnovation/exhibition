@@ -14,6 +14,16 @@ use Livewire\Component;
 class TrendingExhibitionComponent extends Component
 {
     public $board;
+    
+    public function insertEventToSess($id)
+    {
+      $event = Event::where('id', $id)->first();
+      $poostKey = 'eventID';
+      $eid = $event->id;
+      Session()->put ($poostKey , $eid);
+      return redirect()->route('event.product', ['slug' => $event->slug]);
+    } 
+
 
     public function render()
     {

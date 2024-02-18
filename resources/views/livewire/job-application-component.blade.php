@@ -9,7 +9,7 @@
           @if($currentStep == 1)
             <p class="fs-sm text-muted pb-2">If you want to be part of our team please submit you CV using the form below:</p>
 
-              <form class=" row g-4" wire:submit.prevent="add"  >   
+              <form class=" row gx-2 gy-2" wire:submit.prevent="add"  >   
                 <div class="col-sm-6">
                   <input class="form-control" type="text" placeholder="Your name"  wire:model="name" >
                   <span class="text-danger">@error( 'name' ){{ $message}}@enderror</span>
@@ -30,9 +30,9 @@
                   <span class="text-danger">@error( 'resume' ){{ $message}}@enderror</span>
                 </div>
                                      
-                <div class="form-check  col-12">
-                          <input class="form-check-input" type="checkbox" value="" id="terms">
-                          <label class="form-check-label" for="flexCheckDefault">
+                <div class="  col-12">
+                          <input class="form-check-input  " type="checkbox" value="" id="terms">
+                          <label class="form-check-label " for="flexCheckDefault">
                           You must agree with our <a href="#"> Terms & Conditions</a>
                           </label><br>
                           <span class="text-danger">@error( 'terms' ){{ $message}}@enderror</span>

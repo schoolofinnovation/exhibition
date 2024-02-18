@@ -23,11 +23,11 @@
           @php
             $findcountevent = DB::table('expos')->where('id', $categ->Category)->where('admstatus',1)->get();
           @endphp
-       
+          <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">All</a>
         
           @foreach($findcountevent as $finderlo)
-              <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
-              {{ucwords(trans($finderlo->tag))}}  {{$categ->total}}</a>
+              <a class="badge  border-1 text-left border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
+              {{ucwords(trans($finderlo->tag))}}</a>
           @endforeach
 
         @endforeach
@@ -41,8 +41,7 @@
             <div class="card product-card">
               
               <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
-              <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" alt=""> 
-              </a>
+              <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" alt=""> </a>
 
               <div class="card-body p-1">
                 <div class="d-flex justify-content-between">
