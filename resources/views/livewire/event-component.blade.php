@@ -11,7 +11,7 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
 
                 <div class="col-md-4">
                   <div class="row my-Slider4">
-                      <div class="px-4 pe-sm-0 ps-sm-5"><span class="text-primary">Right Place, Right Time, Right People</span>
+                      <div class="px-4 pe-sm-0 ps-sm-5 "><span class=" fs-xs text-primary">Right Place, Right Time, Right People</span>
                         
                       <!-- <span class="badge bg-danger">Free</span> -->
                       
@@ -132,7 +132,7 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                       <button class="btn btn-primary" type="submit" name=""> Search</button>
                     </div>
 
-                    <div class="form-text">*Join our movement <br> Make India a Great Place To Business</div>
+                    <div class=" fs-xs form-text">*Join our movement <br> Make India a Great Place To Business</div>
                     <div class="subscription-status"></div>
                   </form>
                 </div>
