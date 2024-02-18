@@ -31,7 +31,7 @@ class EventComponent extends Component
     {   
         $industry = Category::get();
         $mytime = Carbon::today()->format("Y-m-d");
-        $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->get();
+        $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
         
         $newlead = Event::where('admstatus','1')->where('status','1')->where('eventype','award')->latest()->paginate(1);
 

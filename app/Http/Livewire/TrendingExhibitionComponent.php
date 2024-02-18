@@ -17,7 +17,7 @@ class TrendingExhibitionComponent extends Component
 
     public function insertEventToSess($id)
     {
-      $event = Event::where('id', $id)->first();
+      $event = Event::find($id)->first();
       $poostKey = 'eventID';
       $eid = $id;
       Session()->put ($poostKey , $eid);
