@@ -51,11 +51,7 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                         <a class="btn btn-accent" href="">Get Free COI Page <i class="bi bi-arrow-right fs-ms ms-1"></i></a>
                       </div>--}}
                   </div>
-                </div>
-                
-                <div class=" col-md-8 d-none d-sm-block pr-5">
-                  <!-- Search -->
-                  <div class="widget">
+                  <div class="widget d-none d-lg-block ">
                     <!-- <h3 class="widget-title">Generate QR</h3> -->
                     <form action="" class="subscription-form validate">
                       <div class="input-group flex-nowrap">
@@ -68,6 +64,11 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                       <div class="subscription-status"></div>
                     </form>
                   </div>
+                </div>
+                
+                <div class=" col-md-8 d-none d-sm-block pr-5">
+                  
+                  
                   <div class="d-flex my-Slider1">
                         <!-- Product-->
                       @foreach ($evento as $franchise)
@@ -137,7 +138,7 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                   
                  
                 </div>
-
+                
                 
 
               </div>

@@ -26,7 +26,7 @@
           
         
           @foreach($findcountevent as $finderlo)
-              <a class="badge  border-1 text-left border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">
+              <a class="badge  border-1 text-left border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$finderlo->id}})">
               {{ucwords(trans($finderlo->tag))}}</a>
           @endforeach
 
