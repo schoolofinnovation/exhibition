@@ -54,6 +54,20 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                 </div>
                 
                 <div class=" col-md-8 d-none d-sm-block pr-5">
+                  <!-- Search -->
+                  <div class="widget">
+                    <!-- <h3 class="widget-title">Generate QR</h3> -->
+                    <form action="" class="subscription-form validate">
+                      <div class="input-group flex-nowrap">
+                        <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                        <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" required>
+                        <button class="btn btn-primary" type="submit" name=""> Search</button>
+                      </div>
+
+                      <div class=" fs-xs form-text">*Join our movement <br> Make India a Great Place To Business</div>
+                      <div class="subscription-status"></div>
+                    </form>
+                  </div>
                   <div class="d-flex my-Slider1">
                         <!-- Product-->
                       @foreach ($evento as $franchise)
@@ -121,20 +135,7 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                     @endforeach
                   </div>
                   
-                  <!-- Search -->
-                  <div class="widget">
-                    <!-- <h3 class="widget-title">Generate QR</h3> -->
-                    <form action="" class="subscription-form validate">
-                      <div class="input-group flex-nowrap">
-                        <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                        <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" required>
-                        <button class="btn btn-primary" type="submit" name=""> Search</button>
-                      </div>
-
-                      <div class=" fs-xs form-text">*Join our movement <br> Make India a Great Place To Business</div>
-                      <div class="subscription-status"></div>
-                    </form>
-                  </div>
+                 
                 </div>
 
                 
