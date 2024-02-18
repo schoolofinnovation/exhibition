@@ -18,12 +18,12 @@
 
       <div class="d-flex badgese">
        
-
+      <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess(5555000)">All</a>
         @foreach( $getnamecategoryresult as $categ) 
           @php
             $findcountevent = DB::table('expos')->where('id', $categ->Category)->where('admstatus',1)->get();
           @endphp
-          <a class="badge  border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">All</a>
+          
         
           @foreach($findcountevent as $finderlo)
               <a class="badge  border-1 text-left border-dark text-dark mr-1" href="#" wire:click.prevent="insertEventToSess({{$categ->Category}})">

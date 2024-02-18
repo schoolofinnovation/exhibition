@@ -21,9 +21,9 @@
                     <div class="row gy-0 ">
                     
                       <div class="col-lg-3 col-md-6 col-sm-8 px-1 d-none d-sm-block">
-                          <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
+                          <!-- <a class="card-img-top d-block overflow-hidden"  href="{{route('event.product',['slug' => $event->slug])}}">
                               <img src="{{url('public/assets/image/exhibition/'.$event->image)}}" alt="{{Str::limit($event->eventname, 24)}}">
-                          </a>
+                          </a> -->
                       </div>
 
                       <div class="col-lg-3 col-md-6 col-sm-8  border border-white border-1 px-3 py-5 ">

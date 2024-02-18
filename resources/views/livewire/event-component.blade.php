@@ -1,5 +1,5 @@
-@section('page_title', 'The Exhibition Network')
-@section('page_description', 'Discover India Premier event publishing platform, showcasing the best upcoming exhibitions, conferences, trade shows, global seminars, networking meets and providing a platform for organizers to  exhibit their remarkable events.')
+@section('page_title', 'Find Great Exhibition To Exhibit')
+@section('page_description', 'Discover India premier event publishing platform, showcasing the best upcoming exhibitions, conferences, trade shows, global seminars, networking meets and providing a platform for organizers to  exhibit their remarkable events.')
 @section('page_keyword', 'Great Place to Exhibit, find right place, find right time, find right people, World largest business event platform, find all upcoming events, business conferences, exhibition 2024, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers.  Manage, sell event tickets and promote your event on exhbition.org.in, exhibition')
 
 <main>    
@@ -104,8 +104,9 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                                 <div class="product-title h3 fs-sm mb-0">
                                   <a href="{{route('event.details',['slug' => $franchise->slug])}}" class="fw-normal">{{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a>
                                 </div>
-                                <span class=" fs-sm fw-light">{{ucfirst(trans($franchise -> venue))}}</span>
-                                <div class=" fs-sm fw-light">{{ucfirst(trans($franchise -> city))}}</div>
+                                
+                                <!-- <div class=" fs-sm fw-light"><span class=" fs-sm fw-light">{{ucfirst(trans($franchise -> venue))}}</span>
+                                {{ucfirst(trans($franchise -> city))}}</div> -->
                                 </div>
                             </div>
                           </div>
@@ -120,22 +121,23 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
                     @endforeach
                   </div>
                   
+                  <!-- Search -->
+                  <div class="widget">
+                    <!-- <h3 class="widget-title">Generate QR</h3> -->
+                    <form action="" class="subscription-form validate">
+                      <div class="input-group flex-nowrap">
+                        <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                        <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" required>
+                        <button class="btn btn-primary" type="submit" name=""> Search</button>
+                      </div>
+
+                      <div class=" fs-xs form-text">*Join our movement <br> Make India a Great Place To Business</div>
+                      <div class="subscription-status"></div>
+                    </form>
+                  </div>
                 </div>
 
-                <!-- Search -->
-                <div class="widget">
-                  <!-- <h3 class="widget-title">Generate QR</h3> -->
-                  <form action="" class="subscription-form validate">
-                    <div class="input-group flex-nowrap">
-                      <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                      <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" required>
-                      <button class="btn btn-primary" type="submit" name=""> Search</button>
-                    </div>
-
-                    <div class=" fs-xs form-text">*Join our movement <br> Make India a Great Place To Business</div>
-                    <div class="subscription-status"></div>
-                  </form>
-                </div>
+                
 
               </div>
             </div>
