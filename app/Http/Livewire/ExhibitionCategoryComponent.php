@@ -22,14 +22,17 @@ class ExhibitionCategoryComponent extends Component
     public  $sorting;
     //public  $category_slug;
     public $board;
+    public $time;
+    
 
-    public function mount($eventype, $categry)
+    public function mount($eventype, $categry,$time)
     {
        $this->categry = $categry;
        $this->eventype = $eventype;
        $this->sorting="default";
        $this->pagesize= 24;
        //$this->categ= $categ;
+       $this->time = $time;
     }
 
     public function store($event_id,$event_eventname,$event_eventype)

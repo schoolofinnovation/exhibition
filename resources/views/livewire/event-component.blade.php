@@ -101,7 +101,7 @@ World leading fastest Introducing Great Exhibition To Exhibit Business India Fir
 
                   <div class="d-flex my-Slider2">
                     <!-- Product-->
-                    @foreach ($evento as $franchise)
+                    @foreach ($eventD as $franchise)
                       <div class="col-lg-3 col-md-4 col-sm-6 pr-1 mb-4">
                         <div class="card product-card">
                           <div class="card-body py-2">

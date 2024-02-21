@@ -32,7 +32,7 @@ class EventComponent extends Component
         $industry = Category::get();
         $mytime = Carbon::today()->format("Y-m-d");
         $evento = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>=' , $mytime)->orderBy('startdate','ASC')->limit(10)->get();
-        
+        $eventD = Event::where('admstatus','1')->where('status','1')->where('eventype','expo')->where('startdate', '>=' , $mytime)->orderBy('startdate','DESC')->limit(10)->get();
         $newlead = Event::where('admstatus','1')->where('status','1')->where('eventype','award')->latest()->paginate(1);
 
         //$test = Franchise::where('id', '202')->get();
@@ -49,6 +49,6 @@ class EventComponent extends Component
         $finder = Expo::where('admstatus','1')->where('status','1')->get();
 
         
-        return view('livewire.event-component', ['finder' => $finder, 'newlead'=>$newlead,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
+        return view('livewire.event-component', ['eventD'=> $eventD,'finder' => $finder, 'newlead'=>$newlead,'industry'=>$industry,'evento'=>$evento])->layout('layouts.eblog');
     }
 }
