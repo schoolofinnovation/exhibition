@@ -71,13 +71,13 @@
 
                     <div class="col">
                         <a  href="{{route('admin.dashboard', ['board' => 'bulkReview'])}}">
-                           <div class="p-3 border rounded border-dark bg-light text-center">Bulk Review</div>
+                           <div class="p-3 border rounded border-dark bg-light text-center">Reviews</div>
                         </a> 
                     </div>
 
                     <div class="col">
                         <a  href="{{route('admin.dashboard', ['board' => 'organizer'])}}">
-                           <div class="p-3 border rounded border-dark bg-light text-center">Org Req</div>
+                           <div class="p-3 border rounded border-dark bg-light text-center">Organiser</div>
                         </a> 
                     </div>
 

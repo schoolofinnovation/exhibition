@@ -273,21 +273,19 @@ Route::get('/contact/{board}', ContactComponent::class)->name('contact');
 Route::get('/about-us', AboutComponent::class)->name('about');
 Route::get('/leadership', TeamComponent::class)->name('team');
 
+//catch exhibition data
+Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');
 
 
 //catch lead participants || help to login to get contact details
 Route::get('/exhibit/{board}', ExhibitComponent::class)->name('event.exhibit');
 
-
-//catch exhibition data
-Route::get('/add-your-event/{board}', AwardsComponent::class)->name('coievent.add');
-
-
 //lead-re-check
 Route::get('/coi/expand-your-business/{slug}', LeadComponent::class)->name('lead.business');
 Route::get('/coi/sell-your-business/{slug}/{type}', LeadOtherComponent::class)->name('lead.business.other');
 
-//trying
+
+//trying//promotion
 Route::get('/birthday', GiftBirthdayComponent::class)->name('gift.business');
 Route::get('/birthday/{board}/tie/{ido}', GiftDateComponent::class)->name('date.business');
 
@@ -296,7 +294,7 @@ Route::get('/birthday/{board}/tie/{ido}', GiftDateComponent::class)->name('date.
 Route::get('/COIbusiness', TrackComponent::class)->name('admin.track');
 Route::get('/wishlist', WishlistDetailsComponent::class)->name('franchise.wishlist');
 
-Route::get('/space/{brand_id}/expand-your-business/{formm}', ContractFromComponent::class)->name('space.booking');
+Route::get('/exhibition/{brand_id}/expand-your-business/{formm}', ContractFromComponent::class)->name('space.booking');
 
 //Blog
 Route::get('/blog', BlogComponent::class)->name('blog.Coi');
@@ -385,7 +383,6 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     
 
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
-
     Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
     Route::get('/admin/category/dashboard', AdminCategoryAddComponent::class)->name('admin.addcategories');
     

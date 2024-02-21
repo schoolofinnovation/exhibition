@@ -15,15 +15,30 @@ class TrendingExhibitionComponent extends Component
 {
     public $board;
 
+    // public function insertEventToSess($id)
+    // {
+    //   $event = Event::find($id)->first();
+    //   $poostKey = 'eventID';
+    //   $eid = $id;
+    //   Session()->put ($poostKey , $eid);
+    //   return redirect()->route('event.product', ['slug' => $event->slug]);
+    // } 
+
     public function insertEventToSess($id)
     {
-      $event = Event::find($id)->first();
-      $poostKey = 'eventID';
-      $eid = $id;
-      Session()->put ($poostKey , $eid);
-      return redirect()->route('event.product', ['slug' => $event->slug]);
-    } 
+      $event = Expo::where('id', $id)->first();
+      $evento = new Viewso();
+      if (Auth::check()) 
+        { $evento->user_id = Auth::user()->id; }
+      else
+      { $evento->user_id = NULL ; }
 
+      $evento->view_count = '1';
+      $evento->requestedPage = url()->route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $event->slug]);
+      $evento->redirecTlink = url()->current();
+      $evento->save();
+      return redirect()->route ('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $event->slug]);
+    } 
 
     public function render()
     {
