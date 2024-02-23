@@ -675,12 +675,12 @@
                 <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle ps-lg-0" href="" data-bs-toggle="dropdown">
-                      <i class=" bi bi-list align-middle mt-n1 me-2"></i>Departments</a>
+                      <i class=" bi bi-list align-middle mt-n1 me-2"></i>Industry</a>
                       <ul class="dropdown-menu">
                       @foreach ($catego as $category)
                        
                           <li class="dropdown mega-dropdown">
-                              <a class="dropdown-item" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $category->slug])}}">
+                              <a class="dropdown-item" href="{{route('coi.exhibitioncategory',['time' => 'upcoming','eventype' => 'exhibition', 'categry' => $category->slug])}}">
                               <i class=" opacity-60 fs-lg mt-n1 me-2"></i> {{ucwords(trans($category->expoindustry))}}</a>
                               
 

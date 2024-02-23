@@ -36,5 +36,108 @@
 
       </div>
 
-      
+
+      home
+      Category
+      Tags
+      Menu
+
+      <div class="handheld-toolbar">
+        <div class="d-table table-layout-fixed w-100">
+          <!-- @if($board == 'job')
+            <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
+              <span class="handheld-toolbar-icon">
+              <i class="ci-filter-alt"></i></span>
+              <span class="handheld-toolbar-label">Job</span>
+            </a>
+            
+            <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobCreate')}}">
+              <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
+              <span class="handheld-toolbar-label">Add</span>
+            </a>
+          @elseif($board == 'magazine')
+            <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'magazine'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label">Magazine</span>
+              </a>
+              
+              <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">
+                <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
+                <span class="handheld-toolbar-label">Add</span>
+              </a>
+          @elseif($board == 'blog')
+
+              <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/blog' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'blog'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label {{'admin/dashboard/blog' == request()->path() ? 'active' : '' }}">Blog</span>
+              </a>
+              
+              <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.blogpost',[ 'board' => 'addBlog' ])}}">
+                <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                <span class="handheld-toolbar-label">Add</span>
+              </a>
+
+          @elseif($board == 'event')
+              
+              <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Event</span>
+              </a>
+              
+              <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
+                <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                <span class="handheld-toolbar-label">Add</span>
+              </a>
+          
+          @elseif($board == 'visitor')
+              <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Visitor</span>
+              </a>
+              
+              <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
+                <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                <span class="handheld-toolbar-label">Add</span>
+              </a>
+          @elseif($board == 'client')
+              <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Visitor</span>
+              </a>
+              
+              <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
+                <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+                <span class="handheld-toolbar-label">Brand</span>
+              </a>
+          @endif -->
+
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Home</span>
+              </a>
+
+              <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Category</span>
+              </a>
+
+              <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                <span class="handheld-toolbar-icon">
+                <i class="ci-filter-alt"></i></span>
+                <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Tag</span>
+              </a>
+
+          <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+            <span class="handheld-toolbar-label">Menu</span>
+          </a>
+        </div>
+      </div>
     </main>

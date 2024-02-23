@@ -25,7 +25,7 @@ class ExhibitionCategoryComponent extends Component
     public $time;
     
 
-    public function mount($eventype, $categry,$time)
+    public function mount($eventype, $categry, $time)
     {
        $this->categry = $categry;
        $this->eventype = $eventype;
@@ -66,6 +66,8 @@ class ExhibitionCategoryComponent extends Component
     public function render()
     {
         
+
+        
         $findcategryIDfromExpos = Expo::where('slug', $this->categry)->value('id');
         //dd( $this->categry, $findcategryIDfromExpos->id );
 
@@ -94,17 +96,12 @@ class ExhibitionCategoryComponent extends Component
            ->orderBy('events.startdate','ASC')
            ->get();
 
-          
-
-
         //    $result = DB::table('events')
         //    ->join('dencos','dencos.event_id','=','events.id')
         //    ->join('expos','expos.id' ,'=','dencos.expo_id')
         //    ->select('events.eventname as EventName','expos.tag as Category','events.startdate as EventDate')
         //    ->orderBy('events.startdate','ASC')
         //    ->get();
-
-           
 
         //    $categoryresult = DB::table('events')
         //    ->join('dencos','dencos.event_id','=','events.id')
