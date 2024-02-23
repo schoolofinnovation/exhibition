@@ -235,7 +235,7 @@ Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazin
 Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
 Route::get('/schedule/{eventype}/{time}', ExhibitionTimeComponent::class)->name('coi.exhibitiontime');
 
-Route::get('/{time}/{eventype}/{categry}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
+Route::get('find/{time}/{eventype}/{categry}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 
 
 //as per upcoming venue 
@@ -246,9 +246,6 @@ Route::get('/greatplace/{country}', EventSearchComponent::class)->name('search.c
 
 //as per upcoming location
 Route::get('/greatplace/{state}', EventSearchComponent::class)->name('search.state');
-
-
-
 
 Route::get('/pass/{slug}', ProductComponent::class)->name('event.product');
 Route::get('/pass/es/{slug}/ticket', ProductReviewComponent::class)->name('event.productreview');
@@ -288,7 +285,6 @@ Route::get('/coi/sell-your-business/{slug}/{type}', LeadOtherComponent::class)->
 //trying//promotion
 Route::get('/birthday', GiftBirthdayComponent::class)->name('gift.business');
 Route::get('/birthday/{board}/tie/{ido}', GiftDateComponent::class)->name('date.business');
-
 
 //track
 Route::get('/COIbusiness', TrackComponent::class)->name('admin.track');
