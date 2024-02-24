@@ -1921,8 +1921,7 @@
 
                      @foreach($eventdetails as $evet)
                      {{$evet}}
-                     <a class="card-img-top d-block overflow-hidden" href="">
-                          <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt="{{Str::limit($evet->name, 24)}}"></a>
+                    
                      @endforeach
                     
                 </div>
