@@ -1928,14 +1928,14 @@
                 </div>
 
                 <div class="col-7  p-0">
-                  <div class="fs-md fw-normal text-start">
+                  <div class="fs-sm fw-normal text-start">
                     <a class="text-dark" href="">
                       {{$evento->name}}</a></div>
 
-                      <div class="fs-md fw-normal text-start">
+                      <div class="fs-sm fw-normal text-start">
                     <a class="text-dark" href="">
                       {{$evento->phone}}</a></div>
-                  <div class="text-muted fs-sm text-start">
+                  <div class="text-muted fs-xs text-start">
                       {{$evento->email}} <br>
                     
                       <span class="fs-xs bg-success">{{ $evento->created_at->format('D d M  H:m')}}</span>
