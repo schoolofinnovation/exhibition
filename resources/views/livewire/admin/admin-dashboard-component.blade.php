@@ -1915,15 +1915,19 @@
                   
                       <div class="p fw-light mb-0">{{$evento->type}}</div> 
                       <div class="small text-muted">{{$evento->id}}</div>
-                    @php
-                        $eventdetails = DB::table('events')->where('id', $evento->event_id)->get();
-                    @endphp
+                    @if($evento->event_id == 'null' )
 
-                     @foreach($eventdetails as $evet)
-                     {{$evet}}
-                     <a class="card-img-top d-block overflow-hidden" href="">
-                          <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt=""></a>
-                     @endforeach
+                    @else
+                        @php
+                            $eventdetails = DB::table('events')->where('id', $evento->event_id)->get();
+                        @endphp
+
+                        @foreach($eventdetails as $evet)
+                        
+                          <a class="card-img-top d-block overflow-hidden" href="">
+                              <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt="{{$evet->eventname}}"></a>
+                        @endforeach
+                    @endif
                     
                 </div>
 
