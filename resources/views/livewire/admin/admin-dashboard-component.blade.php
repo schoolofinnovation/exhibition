@@ -1911,10 +1911,10 @@
         @foreach ($businessOrder as $evento)
           <div class="container my-3">
             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                <div class="col  pr-0">
+                <div class="col-3  p-0">
                   
-                      <div class="p fw-light mb-0">{{$evento->type}}</div> 
-                      <div class="small text-muted">{{$evento->id}}</div>
+                      <!-- <div class="p fw-light mb-0">{{$evento->type}}</div> 
+                      <div class="small text-muted">{{$evento->id}}</div> -->
                     @if($evento->event_id == 'null' )
 
                     @else
@@ -1924,8 +1924,10 @@
 
                         @foreach($eventdetails as $evet)
                         
-                          <a class="card-img-top d-block overflow-hidden" href="">
-                              <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt="{{$evet->eventname}}"></a>
+                          <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $evet->slug])}}">
+                              <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt="{{Str::limit($evet->eventname, 24)}}"></a>
+
+                              
                         @endforeach
                     @endif
                     

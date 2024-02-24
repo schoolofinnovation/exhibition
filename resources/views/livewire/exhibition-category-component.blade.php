@@ -31,7 +31,7 @@
               
             <div class="mb-4 mb-lg-5">
               <!-- Nav tabs-->
-              <ul class="nav nav-tabs nav-fill mb-1" role="tablist">
+              <ul class="nav nav-tabs nav-fill mb-0" role="tablist">
                 <li class="nav-item border-bottom"><a class="nav-link px-1 active fs-sm" href="#details" data-bs-toggle="tab" role="tab">Browse</a></li>
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab"> Saved Events</a></li>
               </ul>
