@@ -1916,10 +1916,13 @@
                       <div class="p fw-light mb-0">{{$evento->type}}</div> 
                       <div class="small text-muted">{{$evento->id}}</div>
                     @php
-                        $eventName = DB::table('events')->where('id', $evento->event_id)->pluck('eventname');
+                        $eventdetails = DB::table('events')->where('id', $evento->event_id)->first();
                     @endphp
-                     @foreach($eventName as $evet)
+
+                     @foreach($eventdetails as $evet)
                      {{$evet}}
+                     <a class="card-img-top d-block overflow-hidden" href="">
+                          <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt="{{Str::limit($evet->name, 24)}}"></a>
                      @endforeach
                     
                 </div>
@@ -1962,6 +1965,7 @@
                      @endif
                     
                       <ul class="dropdown-menu" width="auto">
+                      <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'interest')">Email</a></li>
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'interest')">Interest</a></li>
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'check')">Check</a></li>
                         <li><a class="dropdown-item" href="#" wire:click.prevent="updateCallingStatus({{$evento->id}}, 'callback')">callback</a></li>
