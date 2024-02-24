@@ -1920,9 +1920,9 @@
                     @endphp
 
                      @foreach($eventdetails as $evet)
-                     
+                     {{$evet}}
                      <a class="card-img-top d-block overflow-hidden" href="">
-                          <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt="{{$evet->name}}"></a>
+                          <img src="{{url('public/assets/image/exhibition/'.$evet->image)}}" alt=""></a>
                      @endforeach
                     
                 </div>
