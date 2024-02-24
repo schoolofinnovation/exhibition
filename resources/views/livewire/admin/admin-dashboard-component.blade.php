@@ -1916,7 +1916,7 @@
                       <div class="p fw-light mb-0">{{$evento->type}}</div> 
                       <div class="small text-muted">{{$evento->id}}</div>
                     @php
-                        $eventdetails = DB::table('events')->where('id', $evento->event_id)->first();
+                        $eventdetails = DB::table('events')->where('id', $evento->id)->first();
                     @endphp
 
                      @foreach($eventdetails as $evet)
