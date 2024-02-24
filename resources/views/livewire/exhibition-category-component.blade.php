@@ -36,20 +36,21 @@
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab"> Saved Events</a></li>
               </ul>
 
-                <div class="d-flex badgese pb-2">
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
-                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
-                </div>
-
+                
                 <div class="tab-content pt-1">
                 
                     <!-- Product details tab-->
                     <div class="tab-pane fade show active" id="details" role="tabpanel">
+                    <div class="d-flex badgese pb-2">
+                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
+                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
+                      <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
+                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
+                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
+                      <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
+                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
+                    </div>
+
                       <!-- details test tickets-->
                       @php
                             $witems = Cart::instance('wishlist')->content()->pluck('id'); 
@@ -1085,15 +1086,20 @@
                           <span class="handheld-toolbar-label">Brand</span>
                         </a>
                     @endif
-                    <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
-                          <span class="handheld-toolbar-icon">
-                          <i class="ci-filter-alt"></i></span>
-                          <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Tag</span>
-                        </a>
                         
                         <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
                           <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
                           <span class="handheld-toolbar-label">Date</span>
+                        </a>
+                        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                          <span class="handheld-toolbar-icon">
+                          <i class="ci-filter-alt"></i></span>
+                          <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Location</span>
+                        </a>
+                        
+                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
+                          <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+                          <span class="handheld-toolbar-label">Venue</span>
                         </a>
                   
                   <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
