@@ -972,7 +972,7 @@
                 <button class="btn-close ms-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               
-                <div class="d-flex badgese pb-2">
+                <div class="d-flex badgeose pb-2">
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
@@ -1085,10 +1085,16 @@
                           <span class="handheld-toolbar-label">Brand</span>
                         </a>
                     @endif
-                  <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                    <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
-                    <span class="handheld-toolbar-label">Menu</span>
-                  </a>
+                    <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                          <span class="handheld-toolbar-icon">
+                          <i class="ci-filter-alt"></i></span>
+                          <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Tag</span>
+                        </a>
+                        
+                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
+                          <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+                          <span class="handheld-toolbar-label">Date</span>
+                        </a>
                   
                   <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                     <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
@@ -1204,6 +1210,36 @@
       <script>
         var slider = tns({
           "container": '.badgese',   
+          
+          "responsive": {
+            "300": {
+              "items": 3,
+              "controls": false,
+              "fixedWidth": 100,
+              "mouseDrag": true,
+              "autoplay": false,
+              "autoplayButtonOutput": false,
+              "autoplayHoverPause": true,
+            },
+            "500": {
+              "items": 1,
+              "nav": false,
+              "controls": false,
+              "autoplayHoverPause": true,
+              "autoplay": false,
+              "autoplayButtonOutput": false,
+              "fixedWidth": 100,
+            },
+            
+          },
+          "autoplayButtonOutput":false
+        });
+      </script>
+
+
+<script>
+        var slider = tns({
+          "container": '.badgeose',   
           
           "responsive": {
             "300": {
