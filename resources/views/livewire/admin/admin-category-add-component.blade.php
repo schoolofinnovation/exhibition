@@ -37,10 +37,40 @@
       </div>
 
 
-      home
-      Category
-      Tags
-      Menu
+
+
+
+      <!-- //panel for industry Heads -->
+       
+      <div class="container">
+      <h5>Industry <a href="" class="btn btn-primary btn sm"> <i class="bi bi-pencil"></i></a> </h5>
+        @foreach($industryhead as $headcategories)
+          <div>
+            {{$headcategories -> industry}}  <a href="" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
+
+               <div>
+                  <span class="badge bg-primary mt-0">Testing</span>
+                  <span class="badge bg-primary mt-0">Add</span>
+                </div>
+            <div>
+            <a href="{{route('admin.categories', ['boardd' => 'addsubcategory'])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
+              <a href="" class="btn btn-primary btn sm">Active</a>
+              <a href="" class="btn btn-primary btn sm">De-Active</a>
+            </div>
+          </div>
+
+          <hr>
+        @endforeach
+      </div>
+
+      @if($board == 'add-subcategory')
+        <div class="container">Add Sub-category</div>
+        <div>testing</div>
+      @elseif($board == 'job')
+      @endif
+
+
+
 
       <div class="handheld-toolbar">
         <div class="d-table table-layout-fixed w-100">

@@ -36,7 +36,7 @@
                 <li class="nav-item border-bottom"><a class="nav-link px-1 fs-sm" href="#reviews" data-bs-toggle="tab" role="tab"> Saved Events</a></li>
               </ul>
 
-                <!-- <div class="d-flex badgese pb-2">
+                <div class="d-flex badgese pb-2">
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
@@ -44,7 +44,7 @@
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
                   <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
-                </div> -->
+                </div>
 
                 <div class="tab-content pt-1">
                 
@@ -298,10 +298,12 @@
                 
                     <!-- Reviews tab-->
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
-                      <div class="row text-center">
-                        <i class="bi bi-bookmark"></i>
-                        <p>Saving an event will add it to this tab so that you can find it later</p>
-                        <a href="" class="btn btn-primary text-capitalize">return to search results</a>
+                      <div class="container">
+                        <div class="row text-center">
+                          <i class="bi bi-bookmark"></i>
+                          <p>Saving an event will add it to this tab so that you can find it later</p>
+                          <a href="" class="btn btn-primary text-capitalize">return to search results</a>
+                        </div>
                       </div>
                     </div>
 
@@ -485,103 +487,103 @@
                               @elseif ($mytime == $franchise->startdate  && $mytime < $franchise->enddate)
                               <div class="col-md-4 col-sm-6 px-2 mb-4">
 
-<div class="card product-card"> <!--<span class="badge bg-danger badge-shadow">Sale</span>-->
-  <div class="product-card-actions d-flex align-items-center">
-    <a class="btn-action nav-link-style me-2" href=""><i class="bi bi-shuffle me-1"></i>Compare</a>
-      @if($witems->contains($franchise->id))
-          <button class="btn-wishlist btn-sm" type="button" href="" wire:click.prevent="removefromWishlist({{$franchise->id}})" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
-          <i class=" bi bi-heart-fill"></i></button>
-      @else
-          <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
-          <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->eventname}}', 1)">
-            <i class=" bi bi-heart"></i></a></button>
-      @endif
-  </div>
-
-  <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
-  <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
-  
-  <div class="card-body py-2">
-        <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->slug])}}">
-          </a>
-          {{--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->brand_name, 24)}}</a></h3>--}}
-    
-      <div class="d-flex justify-content-between">
-        <div class="product-price"><h3 class="product-title fs-sm">
-          <a href="{{route('event.details',['slug' => $franchise->slug])}}"><strong>{{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</strong></a></h3></div>
-        <div class="star-rating align-center">
-        <!--untitled-1 line 558 -574-->
+      <div class="card product-card"> <!--<span class="badge bg-danger badge-shadow">Sale</span>-->
+        <div class="product-card-actions d-flex align-items-center">
+          <a class="btn-action nav-link-style me-2" href=""><i class="bi bi-shuffle me-1"></i>Compare</a>
+            @if($witems->contains($franchise->id))
+                <button class="btn-wishlist btn-sm" type="button" href="" wire:click.prevent="removefromWishlist({{$franchise->id}})" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
+                <i class=" bi bi-heart-fill"></i></button>
+            @else
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to wishlist" aria-label="Add to wishlist">
+                <a href="#" wire:click.prevent="addtoWishlist({{$franchise->id}},'{{$franchise->eventname}}', 1)">
+                  <i class=" bi bi-heart"></i></a></button>
+            @endif
         </div>
-      </div>
 
-          <div class="d-flex justify-content-between">
-            <div class="product-price"><span class="text">
-            <small> <i class="bi bi-calendar3"></i>
-            @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y ')}}
-              @else
-                {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y')}}
-              @endif 
-            </small></span>
-              <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
+        <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $franchise->slug])}}">
+        <img src="{{url('public/assets/image/exhibition/'.$franchise->image)}}" alt="{{Str::limit($franchise->eventname, 24)}}"></a>
+        
+        <div class="card-body py-2">
+              <a class="product-meta d-block fs-xs pb-1" href="{{route('event.details',['slug' => $franchise->slug])}}">
+                </a>
+                {{--<h3 class="product-title fs-sm"><a href="">{{Str::limit($franchise->brand_name, 24)}}</a></h3>--}}
+          
+            <div class="d-flex justify-content-between">
+              <div class="product-price"><h3 class="product-title fs-sm">
+                <a href="{{route('event.details',['slug' => $franchise->slug])}}"><strong>{{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</strong></a></h3></div>
+              <div class="star-rating align-center">
+              <!--untitled-1 line 558 -574-->
+              </div>
             </div>
-            
-            <div class="star-rating">
-            <span class="text">
-            <small></small></span>
+
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text">
+                  <small> <i class="bi bi-calendar3"></i>
+                  @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y ')}}
+                    @else
+                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M Y')}}
+                    @endif 
+                  </small></span>
+                    <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
+                  </div>
+                  
+                  <div class="star-rating">
+                  <span class="text">
+                  <small></small></span>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text">
+                  <small><i class="bi bi-geo-alt-fill fs-sm"></i>{{$franchise -> venue}}, {{$franchise -> city}}</small></span>
+                    <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
+                  </div>
+
+                  
+                  <div class="star-rating">
+                  <span class="text">
+                  <small></small></span>
+                  </div>
+                </div>
+        </div>
+
+        <div class="card-body card-body-hidden">
+          <div class="text-center pb-2">
+            <!--<div class="form-check form-option form-check-inline mb-2">
+              <input class="form-check-input" type="radio" name="color1" id="white" checked="">
+              <label class="form-option-label rounded-circle" for="white"><span class="form-option-color rounded-circle" style="background-color: #eaeaeb;"></span></label>
             </div>
+            <div class="form-check form-option form-check-inline mb-2">
+              <input class="form-check-input" type="radio" name="color1" id="blue">
+              <label class="form-option-label rounded-circle" for="blue"><span class="form-option-color rounded-circle" style="background-color: #d1dceb;"></span></label>
+            </div>
+            <div class="form-check form-option form-check-inline mb-2">
+              <input class="form-check-input" type="radio" name="color1" id="yellow">
+              <label class="form-option-label rounded-circle" for="yellow"><span class="form-option-color rounded-circle" style="background-color: #f4e6a2;"></span></label>
+            </div>
+            <div class="form-check form-option form-check-inline mb-2">
+              <input class="form-check-input" type="radio" name="color1" id="pink">
+              <label class="form-option-label rounded-circle" for="pink"><span class="form-option-color rounded-circle" style="background-color: #f3dcff;"></span></label>
+            </div>-->
           </div>
 
-          <div class="d-flex justify-content-between">
-            <div class="product-price"><span class="text">
-            <small><i class="bi bi-geo-alt-fill fs-sm"></i>{{$franchise -> venue}}, {{$franchise -> city}}</small></span>
-              <!--<del class="fs-sm text-muted">38.<small>50</small></del>-->
-            </div>
-
+          <div class="d-flex mb-2">
             
-            <div class="star-rating">
-            <span class="text">
-            <small></small></span>
+            <a class=" text-center btn btn-primary btn-sm mx-1" type="button" href="{{route('event.details',['slug' => $franchise->slug])}}"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a></li>
+            <a class=" text-center btn btn-primary btn-sm mx-1" type="button" 
+            href="#" wire:click.prevent="store({{$franchise->id}},'{{$franchise->eventname}}', 1)">
+            <i class=" bi bi-cart fs-sm me-1"></i>Apply</a></li>
+            
             </div>
-          </div>
-  </div>
+            <div class="text-center"><a class="nav-link-style fs-ms" href="{{route('event.details',['slug' => $franchise->slug])}}" data-bs-toggle="modal"><i class=" bi bi-eye align-middle me-1"></i>Contact details</a></div> 
+        
+        </div>
 
-  <div class="card-body card-body-hidden">
-    <div class="text-center pb-2">
-      <!--<div class="form-check form-option form-check-inline mb-2">
-        <input class="form-check-input" type="radio" name="color1" id="white" checked="">
-        <label class="form-option-label rounded-circle" for="white"><span class="form-option-color rounded-circle" style="background-color: #eaeaeb;"></span></label>
       </div>
-      <div class="form-check form-option form-check-inline mb-2">
-        <input class="form-check-input" type="radio" name="color1" id="blue">
-        <label class="form-option-label rounded-circle" for="blue"><span class="form-option-color rounded-circle" style="background-color: #d1dceb;"></span></label>
-      </div>
-      <div class="form-check form-option form-check-inline mb-2">
-        <input class="form-check-input" type="radio" name="color1" id="yellow">
-        <label class="form-option-label rounded-circle" for="yellow"><span class="form-option-color rounded-circle" style="background-color: #f4e6a2;"></span></label>
-      </div>
-      <div class="form-check form-option form-check-inline mb-2">
-        <input class="form-check-input" type="radio" name="color1" id="pink">
-        <label class="form-option-label rounded-circle" for="pink"><span class="form-option-color rounded-circle" style="background-color: #f3dcff;"></span></label>
-      </div>-->
-    </div>
 
-    <div class="d-flex mb-2">
-      
-      <a class=" text-center btn btn-primary btn-sm mx-1" type="button" href="{{route('event.details',['slug' => $franchise->slug])}}"><i class=" bi bi-brush fs-sm me-1"></i>Know More</a></li>
-      <a class=" text-center btn btn-primary btn-sm mx-1" type="button" 
-      href="#" wire:click.prevent="store({{$franchise->id}},'{{$franchise->eventname}}', 1)">
-      <i class=" bi bi-cart fs-sm me-1"></i>Apply</a></li>
-      
+      <hr class="d-sm-none">
       </div>
-      <div class="text-center"><a class="nav-link-style fs-ms" href="{{route('event.details',['slug' => $franchise->slug])}}" data-bs-toggle="modal"><i class=" bi bi-eye align-middle me-1"></i>Contact details</a></div> 
-  
-  </div>
-
-</div>
-
-<hr class="d-sm-none">
-</div>
                               @elseif ($mytime > $franchise->startdate  && $mytime < $franchise->enddate)
                               <div class="col-md-4 col-sm-6 px-2 mb-4">
 
@@ -969,32 +971,130 @@
                 <h2 class="h5 mb-0">{{$this->eventype}}</h2>
                 <button class="btn-close ms-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
+              
+                <div class="d-flex badgese pb-2">
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
+                  <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
+                </div>
 
               <div class="offcanvas-body py-grid-gutter px-lg-grid-gutter">
                 <!-- Categories-->
-                <div class="widget widget-categories mb-4 pb-4 border-bottom">
-                  <h3 class="widget-title d-none d-sm-block">{{$this->eventype}}</h3>
-                  <div class="accordion mt-n1" id="shop-categories" wire:model="categ" >
-                      @foreach ($catego as $category)
-                        <!-- Shoes-->
-                        <div class="accordion-item">
-                          <h3 class="accordion-header">
-                              @if($this->eventype ==  'expo')
-                                  <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $category->slug])}}">
-                                    {{$category->expoindustry}}
-                                  </a>
-                                  @elseif ($this->eventype ==  'award')
-                                  <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry' => $category->slug])}}">
-                                    {{$category->expoindustry}}
-                                  </a>
-                                  @elseif ($this->eventype ==  'conference')
-                                  <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry' => $category->slug])}}">
-                                    {{$category->expoindustry}}
-                                  </a>
-                              @endif
-                        </div>
-                      @endforeach
+                  <div class="widget widget-categories mb-4 pb-4 border-bottom">
+                    <h3 class="widget-title d-none d-sm-block">{{$this->eventype}}</h3>
+                    <div class="accordion mt-n1" id="shop-categories" wire:model="categ" >
+                        @foreach ($catego as $category)
+                          <!-- Shoes-->
+                          <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                @if($this->eventype ==  'expo')
+                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $category->slug])}}">
+                                      {{$category->expoindustry}}
+                                    </a>
+                                    @elseif ($this->eventype ==  'award')
+                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry' => $category->slug])}}">
+                                      {{$category->expoindustry}}
+                                    </a>
+                                    @elseif ($this->eventype ==  'conference')
+                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry' => $category->slug])}}">
+                                      {{$category->expoindustry}}
+                                    </a>
+                                @endif
+                          </div>
+                        @endforeach
+                    </div>
                   </div>
+              </div>
+
+             
+
+              <div class="handheld-toolbar">
+                <div class="d-table table-layout-fixed w-100">
+                    @if($board == 'job')
+                      <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'job'])}}">
+                        <span class="handheld-toolbar-icon">
+                        <i class="ci-filter-alt"></i></span>
+                        <span class="handheld-toolbar-label">Job</span>
+                      </a>
+                      
+                      <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.jobCreate')}}">
+                        <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
+                        <span class="handheld-toolbar-label">Add</span>
+                      </a>
+                    @elseif($board == 'magazine')
+                      <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'magazine'])}}">
+                          <span class="handheld-toolbar-icon">
+                          <i class="ci-filter-alt"></i></span>
+                          <span class="handheld-toolbar-label">Magazine</span>
+                        </a>
+                        
+                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">
+                          <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
+                          <span class="handheld-toolbar-label">Add</span>
+                        </a>
+                    @elseif($board == 'blog')
+
+                        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/blog' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'blog'])}}">
+                          <span class="handheld-toolbar-icon">
+                          <i class="ci-filter-alt"></i></span>
+                          <span class="handheld-toolbar-label {{'admin/dashboard/blog' == request()->path() ? 'active' : '' }}">Blog</span>
+                        </a>
+                        
+                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.blogpost',[ 'board' => 'addBlog' ])}}">
+                          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                          <span class="handheld-toolbar-label">Add</span>
+                        </a>
+
+                    @elseif($board == 'event')
+                        
+                        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                          <span class="handheld-toolbar-icon">
+                          <i class="ci-filter-alt"></i></span>
+                          <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Event</span>
+                        </a>
+                        
+                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
+                          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                          <span class="handheld-toolbar-label">Add</span>
+                        </a>
+                    
+                    @elseif($board == 'visitor')
+                        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                          <span class="handheld-toolbar-icon">
+                          <i class="ci-filter-alt"></i></span>
+                          <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Visitor</span>
+                        </a>
+                        
+                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.eventadd')}}">
+                          <span class="handheld-toolbar-icon"><i class="ci-cart"></i></span>
+                          <span class="handheld-toolbar-label">Add</span>
+                        </a>
+                    @elseif($board == 'client')
+                        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+                          <span class="handheld-toolbar-icon">
+                          <i class="ci-filter-alt"></i></span>
+                          <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Visitor</span>
+                        </a>
+                        
+                        <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
+                          <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+                          <span class="handheld-toolbar-label">Brand</span>
+                        </a>
+                    @endif
+                  <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
+                    <span class="handheld-toolbar-label">Menu</span>
+                  </a>
+                  
+                  <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    <span class="handheld-toolbar-icon"><i class=" bi bi-heart"></i></span>
+                    <span class="handheld-toolbar-label">Menu</span>
+                  </a>
+
                 </div>
               </div>
             

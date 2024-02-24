@@ -235,7 +235,7 @@ Route::get('/magazine/{slug}', MagazineComponent::class)->name('business.magazin
 Route::get('/space/{eventype}', ExhibitionComponent::class)->name('coi.exhibition');
 Route::get('/schedule/{eventype}/{time}', ExhibitionTimeComponent::class)->name('coi.exhibitiontime');
 
-Route::get('find/{time}/{eventype}/{categry}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
+Route::get('/find/{time}/{eventype}/{categry}', ExhibitionCategoryComponent::class)->name('coi.exhibitioncategory');
 
 
 //as per upcoming venue 
@@ -379,7 +379,10 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     
 
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
-    Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
+
+
+  // sub categor
+    Route::get('/admin/categories/update/{board}', AdminCategoryComponent::class)->name('admin.categories');
     Route::get('/admin/category/dashboard', AdminCategoryAddComponent::class)->name('admin.addcategories');
     
 

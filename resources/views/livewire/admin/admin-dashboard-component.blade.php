@@ -1883,7 +1883,7 @@
                                   $categ = DB::table('expos')->where('id', $cat->expo_id)->get();
                               @endphp
                               @foreach($categ as $ficateg)
-                              <span class="badge bg-primary mt-0">{{$ficateg->tag}}</span>
+                               <span class="badge bg-primary mt-0">{{$ficateg->tag}}</span>
                               @endforeach
                           @endforeach
                         @endif

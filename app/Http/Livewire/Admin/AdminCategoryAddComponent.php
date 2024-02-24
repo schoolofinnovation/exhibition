@@ -26,6 +26,7 @@ class AdminCategoryAddComponent extends Component
     public $c_desc;
     public $icon;
     public $searchTerm;
+    public $board;
 
     public function mount()
     {
@@ -102,6 +103,10 @@ class AdminCategoryAddComponent extends Component
         //$EventcountWithTag = Denco::
         $counteventWithCategory = Denco::where('expo_id', '$resultAdded->id')->count();
 
-        return view('livewire.admin.admin-category-add-component', ['counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');
+
+        //for panel
+        $industryhead = Category::get();
+
+        return view('livewire.admin.admin-category-add-component', ['industryhead' => $industryhead, 'counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');
     }
 }

@@ -10,9 +10,18 @@ use Livewire\WithPagination;
 
 class AdminCategoryComponent extends Component
 {
+    public $board;
     use WithPagination;
+
+    public function mount($board)
+    {
+        $this->board = $board;
+       
+    }
+
     public function render()
     {
+        //dd($this->board);
         //group
        $categ = Category::orderBy('updated_at','DESC')->paginate(10); 
        $catcount = Category::withcount('sector')->get();
