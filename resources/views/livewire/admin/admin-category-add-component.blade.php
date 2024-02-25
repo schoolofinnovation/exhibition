@@ -55,7 +55,7 @@
                   <span class="badge bg-primary mt-0">Add</span>
                 </div>
             <div>
-            <a href="{{route('admin.categories', ['boardd' => 'addsubcategory'])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
+            <a href="{{route('admin.categories', ['board' => 'addsubcategory'])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
               <a href="" class="btn btn-primary btn sm">Active</a>
               <a href="" class="btn btn-primary btn sm">De-Active</a>
             </div>
