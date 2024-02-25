@@ -12,7 +12,7 @@
 
      
       @if($board == 'addsubcategory')
-      <div class="page-title-overlap bg-dark pt-4">
+        <div class="page-title-overlap bg-dark pt-4">
           <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
             <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
               <nav aria-label="breadcrumb">
@@ -32,10 +32,8 @@
         <div class="container pb-5 mb-2 mb-md-4">
           <div class="row">
 
-            <!-- Sidebar-->
-          {{--@livewire('admin.admin-aside-component')--}}
-
-
+              <!-- Sidebar-->
+              {{--@livewire('admin.admin-aside-component')--}}
           
               <!-- Content  -->
               <section class="col-lg-12 col-md-6">
@@ -261,5 +259,10 @@
         
       @endif
 
+
+      <form action="">
+        <input type="text">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
      
 </main>

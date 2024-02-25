@@ -382,9 +382,9 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
 
 
   // sub categor
-    Route::get('/admin/categories/update/{board}', AdminCategoryComponent::class)->name('admin.categories');
-    Route::get('/admin/category/dashboard', AdminCategoryAddComponent::class)->name('admin.addcategories');
     
+    Route::get('/admin/dashboard/category', AdminCategoryAddComponent::class)->name('admin.addcategories');
+    //Route::get('/admin/sub-category/{board}', AdminCategoryComponent::class)->name('admin.categories');
 
    
 

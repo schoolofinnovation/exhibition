@@ -41,15 +41,15 @@
                 
                     <!-- Product details tab-->
                     <div class="tab-pane fade show active" id="details" role="tabpanel">
-                    <div class="d-flex badgese pb-2">
-                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
-                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
-                      <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
-                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
-                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
-                      <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
-                      <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
-                    </div>
+                      <div class="d-flex badgese pb-2">
+                        <span class="badge border border-1 text-right border-dark text-dark mr-1">Today</span>
+                        <span class="badge border border-1 text-right border-dark text-dark mr-1">Tomorrow</span>
+                        <span class="badge border border-1 text-right border-dark text-dark mr-1">This weekend</span>
+                        <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Week</span>
+                        <span class="badge border border-1 text-right border-dark text-dark mr-1">Next weekend</span>
+                        <span class="badge border border-1 text-right border-dark text-dark mr-1">This Month</span>
+                        <span class="badge border border-1 text-right border-dark text-dark mr-1">Next Month</span>
+                      </div>
 
                       <!-- details test tickets-->
                       @php
@@ -992,7 +992,7 @@
                           <!-- Shoes-->
                           <div class="accordion-item">
                             <h3 class="accordion-header">
-                                @if($this->eventype ==  'expo')
+                                @if($this->eventype ==  'exhibition')
                                     <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $category->slug])}}">
                                       {{$category->expoindustry}}
                                     </a>
@@ -1011,7 +1011,6 @@
                   </div>
               </div>
 
-             
 
               <div class="handheld-toolbar">
                 <div class="d-table table-layout-fixed w-100">
@@ -1242,8 +1241,7 @@
         });
       </script>
 
-
-<script>
+      <script>
         var slider = tns({
           "container": '.badgeose',   
           
