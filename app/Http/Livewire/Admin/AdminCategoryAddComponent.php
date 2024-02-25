@@ -6,6 +6,7 @@ use App\Models\Cag;
 use App\Models\Category;
 use App\Models\Denco;
 use App\Models\Expo;
+use App\Models\Indsec;
 use App\Models\Sector;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -106,7 +107,8 @@ class AdminCategoryAddComponent extends Component
 
         //for panel
         $industryhead = Category::get();
+        $subcategory = Indsec::get();
 
-        return view('livewire.admin.admin-category-add-component', ['industryhead' => $industryhead, 'counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');
+        return view('livewire.admin.admin-category-add-component', ['subcategory' => $subcategory,'industryhead' => $industryhead, 'counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');
     }
 }
