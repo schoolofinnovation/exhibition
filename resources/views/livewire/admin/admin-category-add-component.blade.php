@@ -2,8 +2,7 @@
     <main> 
 
 
-      <div>testing</div>
-      <div class="container">
+       <div class="container">
         <div class="col-lg-8 col-sm-7 ">
             <input type="text" class="form-control" placeholder="Search your Category..." wire:model.lazy="searchTerm">
             <a  class="btn btn-primary">Search</a>
@@ -56,7 +55,7 @@
                   <span class="badge bg-primary mt-0">Add</span>
                 </div>
             <div>
-            <a href="" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
+            <a href="{{route('admin.categories', ['boardd' => 'addsubcategory'])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
               <a href="" class="btn btn-primary btn sm">Active</a>
               <a href="" class="btn btn-primary btn sm">De-Active</a>
             </div>

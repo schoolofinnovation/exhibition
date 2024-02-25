@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="col">
-                        <a  href="{{route('admin.addcategories')}}">
+                        <a  href="{{route('all.category')}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">Category</div>
                         </a> 
                     </div>
