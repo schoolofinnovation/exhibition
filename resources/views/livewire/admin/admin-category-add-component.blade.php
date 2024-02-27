@@ -47,9 +47,9 @@
       <div class="container">
       <h5>Industry <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
         @foreach($industryhead as $headcategories)
-          <div>
+          <div class="text-accent">
             {{$headcategories -> industry}}  <a href="" class=""><i class="bi bi-pencil"></i></a>
-
+            <hr>
                <div>
                 @foreach($subcategory as $findo)
                   <span class="badge bg-primary mt-0">Testing</span>

@@ -10,12 +10,19 @@ use Livewire\WithPagination;
 
 class AdminCategoryComponent extends Component
 {
-    public $board;
+    public $board = 'testing';
     use WithPagination;
 
-    public function mount($board)
+    public function mount($board = null)
     {
+        if(!$board)
+        {
         $this->board = $board;
+        }
+        else
+        {
+            $this->board = $board;
+        }
        
     }
 
