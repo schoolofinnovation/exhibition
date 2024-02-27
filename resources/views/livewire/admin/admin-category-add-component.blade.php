@@ -46,9 +46,9 @@
        
       <div class="container">
         <h5>Industry <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
-        @foreach($industryhead as $headcategories)
+       
           <div class="text-accent">
-            {{$headcategories -> industry}}  <a href="" class=""><i class="bi bi-pencil"></i></a>
+             <a href="" class=""><i class="bi bi-pencil"></i></a>
             <hr>
                <div>
                 @foreach($subcategory as $findo)
@@ -66,14 +66,14 @@
 
             <div>
             <a href="{{route('admin.categories')}}" class="btn btn-primary btn sm">testing<i class="bi bi-pencil"></i></a>
-            <a href="{{route('admin.categories', ['board' => 'addsubcategory', 'category' => $headcategories -> industry])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
+            <a href="{{route('admin.categories', ['board' => 'addsubcategory', 'category' => $headcategories -> slug])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
               <a href="" class="btn btn-primary btn sm">Active</a>
               <a href="" class="btn btn-primary btn sm">De-Active</a>
             </div>
           </div>
 
           <hr>
-        @endforeach
+       
       </div>
 
       @if($board == 'addsubcategory')

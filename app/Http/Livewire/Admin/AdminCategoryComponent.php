@@ -7,6 +7,7 @@ use App\Models\Expo;
 use App\Models\Indsec;
 use App\Models\Sector;
 use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -14,12 +15,33 @@ class AdminCategoryComponent extends Component
 {
     public $board;
     public $category;
+
+    public $category_id;
+    public $subtag_id;
+    public $user_id;
+    public $status;
+    public $admstatus;
+    
     use WithPagination;
 
-    public function mount($board , $category )
+    public function mount($board = null , $category = null)
     {
           $this->board = $board;
           $this->category = $category;
+          $this->status = '1';
+          $this->admstatus = '1';
+    }
+
+    public function categoryaddedtoheadcategory($id)
+    {   $job = Expo::find($id);
+        $job->category_id = Category:: find($this->category);
+        $job->subtag_id = $id;
+        $job->user_id = Auth::user()->id;
+        $job->status = $this->status;
+        $job->admstatus = $this->admstatus;
+        dd($job);
+        $job->save();
+        session()->flash('message','info has been deleted Successfully');
     }
 
     public function render()
