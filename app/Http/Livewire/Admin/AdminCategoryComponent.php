@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Category;
+use App\Models\Expo;
+use App\Models\Indsec;
 use App\Models\Sector;
 use App\Models\Service;
 use Livewire\Component;
@@ -10,20 +12,14 @@ use Livewire\WithPagination;
 
 class AdminCategoryComponent extends Component
 {
-    public $board = 'testing';
+    public $board;
+    public $category;
     use WithPagination;
 
-    public function mount($board = null)
+    public function mount($board , $category )
     {
-        if(!$board)
-        {
-        $this->board = $board;
-        }
-        else
-        {
-            $this->board = $board;
-        }
-       
+          $this->board = $board;
+          $this->category = $category;
     }
 
     public function render()
@@ -40,7 +36,11 @@ class AdminCategoryComponent extends Component
        $sectorr = Sector::orderBy('sector','asc')->paginate(5);
        $business = Service::paginate(5);
 
-        return view('livewire.admin.admin-category-component',['categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount])->layout('layouts.eblog');
+
+       $industryhead = Category::get();
+       $subcategory = Indsec::get();
+       $resultAdded = Expo::where('admstatus','1')->get();
+        return view('livewire.admin.admin-category-component',['resultAdded' => $resultAdded,'subcategory' => $subcategory,'industryhead' => $industryhead,'categories'=>$categories,'service'=>$service,'category'=>$category,'sectorr'=>$sectorr,'business'=>$business,'sector'=>$sector,'categ'=>$categ,'catcount'=>$catcount])->layout('layouts.eblog');
        
     }
 }

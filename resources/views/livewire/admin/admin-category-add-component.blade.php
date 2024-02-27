@@ -45,7 +45,7 @@
       <!-- //panel for industry Heads -->
        
       <div class="container">
-      <h5>Industry <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
+        <h5>Industry <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
         @foreach($industryhead as $headcategories)
           <div class="text-accent">
             {{$headcategories -> industry}}  <a href="" class=""><i class="bi bi-pencil"></i></a>
@@ -65,7 +65,8 @@
                 </div>
 
             <div>
-            <a href="{{route('admin.categories', ['board' => 'addsubcategory'])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
+            <a href="{{route('admin.categories')}}" class="btn btn-primary btn sm">testing<i class="bi bi-pencil"></i></a>
+            <a href="{{route('admin.categories', ['board' => 'addsubcategory', 'category' => $headcategories -> industry])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
               <a href="" class="btn btn-primary btn sm">Active</a>
               <a href="" class="btn btn-primary btn sm">De-Active</a>
             </div>
@@ -75,7 +76,7 @@
         @endforeach
       </div>
 
-      @if($board == 'add-subcategory')
+      @if($board == 'addsubcategory')
         <div class="container">Add Sub-category</div>
         <div>testing</div>
       @elseif($board == 'job')

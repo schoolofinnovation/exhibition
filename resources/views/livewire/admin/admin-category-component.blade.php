@@ -12,7 +12,61 @@
 
      
       @if($board == 'addsubcategory')
-        <div class="page-title-overlap bg-dark pt-4">
+      <div class="container">
+        <h5>{{$this->category}} <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
+        @foreach($industryhead as $headcategories)
+          <div class="text-accent">
+          {{$this->category}}  <a href="" class=""><i class="bi bi-pencil"></i></a>
+            <hr>
+               <div>
+                @foreach($subcategory as $findo)
+                  <span class="badge bg-primary mt-0">Testing</span>
+                  <span class="badge bg-primary mt-0"><i class="bi bi-plus me-2"></i></span>
+
+                  <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+                  onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+                  wire:click.prevent="eventdelete({{$findo->id}})">
+                  {{$findo -> tag}} {{$findcountevent}}<i class="bi bi-x me-2"></i>
+                    </a>
+                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
+                @endforeach
+                </div>
+
+            <div>
+              <h5>Select Sub Category</h5>
+              <hr>
+              <div class=" border-0">
+                @foreach($resultAdded as $resultAdd)
+                  @php
+                    $findcountevent = DB::table('dencos')->where('expo_id', $resultAdd->id)->count()
+                  @endphp
+
+                    
+                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+                    onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+                    wire:click.prevent="eventdelete({{$resultAdd->id}})">
+                    {{$resultAdd -> tag}} {{$findcountevent}}<i class="bi bi-x me-2"></i>
+                      </a>
+                @endforeach
+              </div>
+            </div>
+          </div>
+
+          <hr>
+        @endforeach
+      </div>
+
+      @if($board == 'addsubcategory')
+        <div class="container">Add Sub-category</div>
+        <div>testing</div>
+      @elseif($board == 'job')
+      @endif
+
+
+
+
+      @elseif($board == 'edit')
+      <div class="page-title-overlap bg-dark pt-4">
           <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
             <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
               <nav aria-label="breadcrumb">
@@ -255,8 +309,6 @@
               </section>
             </div>
         </div> 
-      @elseif($board == 'edit')
-        
       @endif
 
 
