@@ -33,13 +33,14 @@ class AdminCategoryComponent extends Component
     }
 
     public function categoryaddedtoheadcategory($id)
-    {   $job = Expo::find($id);
-        $job->category_id = Category:: find($this->category);
+    {   //$jobo = Expo::find($id);
+        $job = new Indsec();
+        $job->category_id = Category:: where('slug', $this->category)->value('id');
         $job->subtag_id = $id;
         $job->user_id = Auth::user()->id;
         $job->status = $this->status;
         $job->admstatus = $this->admstatus;
-        dd($job);
+        //dd($job);
         $job->save();
         session()->flash('message','info has been deleted Successfully');
     }

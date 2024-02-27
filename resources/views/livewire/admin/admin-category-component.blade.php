@@ -14,22 +14,20 @@
       @if($board == 'addsubcategory')
       <div class="container">
         <h5>{{$this->category}} <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
-        @foreach($industryhead as $headcategories)
+        
           <div class="text-accent">
-          {{$this->category}}  <a href="" class=""><i class="bi bi-pencil"></i></a>
+            {{$this->category}}  <a href="" class=""><i class="bi bi-pencil"></i></a>
             <hr>
                <div>
                 @foreach($subcategory as $findo)
-                  <span class="badge bg-primary mt-0">Testing</span>
-                  <span class="badge bg-primary mt-0"><i class="bi bi-plus me-2"></i></span>
-
-                  <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+                  <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
                   onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
                   wire:click.prevent="eventdelete({{$findo->id}})">
-                  {{$findo -> tag}} {{$findcountevent}}<i class="bi bi-x me-2"></i>
+                  {{$findo -> subtag_id}} <i class="bi bi-x me-2"></i>
                     </a>
-                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
+                    
                 @endforeach
+                <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
                 </div>
 
             <div>
@@ -38,28 +36,20 @@
               <hr>
               <div class=" border-0">
                 @foreach($resultAdded as $resultAdd)
-                  @php
-                    $findcountevent = DB::table('dencos')->where('expo_id', $resultAdd->id)->count()
-                  @endphp
-
-                    
-                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
-                    onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
-                    wire:click.prevent="categoryaddedtoheadcategory({{$resultAdd->id}})">
-                    {{$resultAdd -> tag}} {{$findcountevent}}<i class="bi bi-x me-2"></i>
-                      </a>
+                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="categoryaddedtoheadcategory({{$resultAdd->id}})">
+                    {{$resultAdd -> tag}}</a>
                 @endforeach
               </div>
             </div>
           </div>
 
           <hr>
-        @endforeach
+        
       </div>
 
       @if($board == 'addsubcategory')
         <div class="container">Add Sub-category</div>
-        <div>testing</div>
+       
       @elseif($board == 'job')
       @endif
 
@@ -313,9 +303,6 @@
       @endif
 
 
-      <form action="">
-        <input type="text">
-        <button type="submit" class="btn btn-primary">Add</button>
-      </form>
+    
      
 </main>

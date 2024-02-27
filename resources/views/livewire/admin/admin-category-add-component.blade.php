@@ -46,7 +46,7 @@
        
       <div class="container">
         <h5>Industry <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
-       
+        @foreach($industryhead as $headcategories)
           <div class="text-accent">
              <a href="" class=""><i class="bi bi-pencil"></i></a>
             <hr>
@@ -73,7 +73,7 @@
           </div>
 
           <hr>
-       
+        @endforeach
       </div>
 
       @if($board == 'addsubcategory')
