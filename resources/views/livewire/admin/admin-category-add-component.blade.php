@@ -48,20 +48,27 @@
         <h5>Industry <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
         @foreach($industryhead as $headcategories)
           <div class="text-accent">
-             <a href="" class=""><i class="bi bi-pencil"></i></a>
+          <h5>{{$headcategories->industry}} <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
+          <a href="" class=""><i class="bi bi-pencil"></i></a>
             <hr>
                <div>
                 @foreach($subcategory as $findo)
-                  <span class="badge bg-primary mt-0">Testing</span>
-                  <span class="badge bg-primary mt-0"><i class="bi bi-plus me-2"></i></span>
+                  
+                  
 
                   <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
                   onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
                   wire:click.prevent="eventdelete({{$findo->id}})">
                   {{$findo -> tag}} {{$findcountevent}}<i class="bi bi-x me-2"></i>
                     </a>
+                    @php
+                       $findsubcat = Expo::where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
+                    @endphp
+
+                    {{$findsubcat}}
                     <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
                 @endforeach
+                <span class="badge bg-primary mt-0"><i class="bi bi-plus me-2"></i></span>
                 </div>
 
             <div>

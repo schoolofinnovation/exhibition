@@ -16,18 +16,24 @@
         <h5>{{$this->category}} <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
         
           <div class="text-accent">
-            {{$this->category}}  <a href="" class=""><i class="bi bi-pencil"></i></a>
-            <hr>
+            
                <div>
-                @foreach($subcategory as $findo)
-                  <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
-                  onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
-                  wire:click.prevent="eventdelete({{$findo->id}})">
-                  {{$findo -> subtag_id}} <i class="bi bi-x me-2"></i>
-                    </a>
+                  @foreach($subcategory as $findo)
+                    <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+                    onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+                    wire:click.prevent="eventdelete({{$findo->id}})">
+
+                    @php
+                       $findsubcat = Expo::where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
+                    @endphp
+
+                    {{$findsubcat}}
                     
-                @endforeach
-                <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
+                    <i class="bi bi-x me-2"></i>
+                      </a>
+                      
+                  @endforeach
+                  <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
                 </div>
 
             <div>

@@ -45,6 +45,12 @@ class AdminCategoryComponent extends Component
         session()->flash('message','info has been deleted Successfully');
     }
 
+    public function eventdelete($id)
+    { 
+        $job = Indsec::find($id);
+        $job->delete();
+    }
+
     public function render()
     {
         //dd($this->board);
