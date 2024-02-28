@@ -62,7 +62,7 @@
                   {{$findo -> tag}} {{$findcountevent}}<i class="bi bi-x me-2"></i>
                     </a>
                     @php
-                       $findsubcat = Expo::where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
+                       $findsubcat = DB::table('expos')->where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
                     @endphp
 
                     {{$findsubcat}}
