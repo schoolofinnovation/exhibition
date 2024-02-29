@@ -75,8 +75,9 @@
        
       @elseif($board == 'newcategory')
         <div class="container">
+          <h3>Add New Category</h3>
           <form wire:submit.prevent="newcategory">
-            <input type="text" class="form-input" wire:model.lazy="industry">
+            <input type="text" class="form-input" wire:model.lazy="industryo>
             <button class=" btn btn-primary form-input" type="submit">Submit</button>
           </form>  
         </div>

@@ -23,6 +23,7 @@ class AdminCategoryComponent extends Component
     public $status;
     public $admstatus;
 
+    public $industro;
     public $industry;
     public $slug;
     
@@ -32,6 +33,7 @@ class AdminCategoryComponent extends Component
     {
           $this->board = $board;
           $this->category = $category;
+          $this->industry = Category:: where('slug', $this->category)->value('industry');
           $this->status = '1';
           $this->admstatus = '1';
     }
@@ -59,15 +61,15 @@ class AdminCategoryComponent extends Component
     public function newcategory()
     {
       $updatecategory = new Category();
-      $updatecategory->industry = $this->industry;
+      $updatecategory->industry = $this->industro;
       $updatecategory->slug = Str::slug($updatecategory->industry,'-');
       $updatecategory->save();
     }
 
-    public function updatecategory($id)
+    public function updatecategory()
     {
       //$updatecategory = Category::get();
-      $updatecategory = new Category();
+      $updatecategory = Category::find($this->industry);
       $updatecategory->industry = $this->industry;
       $updatecategory->slug = Str::slug($updatecategory->industry,'-');
       $updatecategory->save();
