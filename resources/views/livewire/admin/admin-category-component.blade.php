@@ -57,6 +57,20 @@
           <input type="text" class="form-input" wire:model.lazy="howMany">
           <button class=" btn btn-primary form-input" type="submit">Submit</button>
         </form>
+
+        <hr>
+            @foreach($subcategory as $findo)
+              <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+              onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+              wire:click.prevent="eventdelete({{$findo->id}})">
+
+                @php
+                  $findsubcat =DB::table('expos')->where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
+                @endphp
+
+              {{$findsubcat}}<i class="bi bi-x me-2"></i></a>
+                
+            @endforeach
       </div>
        
       @elseif($board == 'job')
