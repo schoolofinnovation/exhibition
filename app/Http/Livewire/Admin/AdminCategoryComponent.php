@@ -8,6 +8,7 @@ use App\Models\Indsec;
 use App\Models\Sector;
 use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,6 +22,9 @@ class AdminCategoryComponent extends Component
     public $user_id;
     public $status;
     public $admstatus;
+
+    public $industry;
+    public $slug;
     
     use WithPagination;
 
@@ -51,12 +55,22 @@ class AdminCategoryComponent extends Component
         $job->delete();
     }
 
+
+    public function newcategory()
+    {
+      $updatecategory = new Category();
+      $updatecategory->industry = $this->industry;
+      $updatecategory->slug = Str::slug($updatecategory->industry,'-');
+      $updatecategory->save();
+    }
+
     public function updatecategory($id)
     {
-      $updatecategory = Category::get();
-      $updatecategory->industry = Category::get();
-      $updatecategory->slug = Category::get();
-
+      //$updatecategory = Category::get();
+      $updatecategory = new Category();
+      $updatecategory->industry = $this->industry;
+      $updatecategory->slug = Str::slug($updatecategory->industry,'-');
+      $updatecategory->save();
     }
 
     public function render()

@@ -54,7 +54,7 @@
       <div class="container">
         <h4>{{$this->category}}</h4>
         <form wire:submit.prevent="updatecategory">
-          <input type="text" class="form-input" wire:model.lazy="howMany">
+          <input type="text" class="form-input" wire:model.lazy="industry">
           <button class=" btn btn-primary form-input" type="submit">Submit</button>
         </form>
 
@@ -73,7 +73,13 @@
             @endforeach
       </div>
        
-      @elseif($board == 'job')
+      @elseif($board == 'newcategory')
+        <div class="container">
+          <form wire:submit.prevent="newcategory">
+            <input type="text" class="form-input" wire:model.lazy="industry">
+            <button class=" btn btn-primary form-input" type="submit">Submit</button>
+          </form>  
+        </div>
       @endif
 
 
