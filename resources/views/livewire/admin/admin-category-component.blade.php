@@ -12,49 +12,52 @@
 
      
       @if($board == 'addsubcategory')
-      <div class="container">
-        <h5>{{$this->category}} <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
-        
-          <div class="text-accent">
-            
-               <div>
-                  @foreach($subcategory as $findo)
-                    <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
-                    onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
-                    wire:click.prevent="eventdelete({{$findo->id}})">
+        <div class="container">
+          <h5>{{$this->category}} <a href="" class=""> <i class="bi bi-pencil"></i></a> </h5>
+          
+            <div class="text-accent">
+              
+                <div>
+                    @foreach($subcategory as $findo)
+                      <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+                      onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+                      wire:click.prevent="eventdelete({{$findo->id}})">
 
-                    @php
-                       $findsubcat =DB::table('expos')->where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
-                    @endphp
+                        @php
+                          $findsubcat =DB::table('expos')->where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
+                        @endphp
 
-                    {{$findsubcat}}
-                    
-                    <i class="bi bi-x me-2"></i>
-                      </a>
-                      
+                      {{$findsubcat}}<i class="bi bi-x me-2"></i></a>
+                        
+                    @endforeach
+                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
+                  </div>
+
+              <div>
+
+                <h5>Select Sub Category</h5>
+                <hr>
+                <div class=" border-0">
+                  @foreach($resultAdded as $resultAdd)
+                      <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="categoryaddedtoheadcategory({{$resultAdd->id}})">
+                      {{$resultAdd -> tag}}</a>
                   @endforeach
-                  <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
                 </div>
-
-            <div>
-
-              <h5>Select Sub Category</h5>
-              <hr>
-              <div class=" border-0">
-                @foreach($resultAdded as $resultAdd)
-                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="categoryaddedtoheadcategory({{$resultAdd->id}})">
-                    {{$resultAdd -> tag}}</a>
-                @endforeach
               </div>
             </div>
-          </div>
 
-          <hr>
-        
+            <hr>
+          
+        </div>
+      @elseif($board == 'addcategory')
+
+      <div class="container">
+        <h4>{{$this->category}}</h4>
+        <form wire:submit.prevent="updatecategory">
+          <input type="text" class="form-input" wire:model.lazy="howMany">
+          <button class=" btn btn-primary form-input" type="submit">Submit</button>
+        </form>
       </div>
-
-      @if($board == 'addsubcategory')
-        <div class="container">Add Sub-category</div>
        
       @elseif($board == 'job')
       @endif

@@ -51,6 +51,14 @@ class AdminCategoryComponent extends Component
         $job->delete();
     }
 
+    public function updatecategory($id)
+    {
+      $updatecategory = Category::get();
+      $updatecategory->industry = Category::get();
+      $updatecategory->slug = Category::get();
+
+    }
+
     public function render()
     {
         //dd($this->board);
