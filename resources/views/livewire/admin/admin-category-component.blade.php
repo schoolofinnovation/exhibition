@@ -18,7 +18,11 @@
             <div class="text-accent">
               
                 <div>
-                    @foreach($subcategory as $findo)
+                @php 
+                  $findsubcateory = DB::table('indsecs')->where('category_id', $headcategories->id )->get();
+                @endphp
+
+                    @foreach($findsubcateory as $findo)
                       <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
                       onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
                       wire:click.prevent="eventdelete({{$findo->id}})">
@@ -59,7 +63,11 @@
         </form>
 
         <hr>
-            @foreach($subcategory as $findo)
+        @php 
+                  $findsubcateory = DB::table('indsecs')->where('category_id', $headcategories->id )->get();
+                @endphp
+
+            @foreach($findsubcateory as $findo)
               <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
               onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
               wire:click.prevent="eventdelete({{$findo->id}})">

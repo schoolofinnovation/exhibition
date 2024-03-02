@@ -44,7 +44,7 @@
 
       <!-- //panel for industry Heads -->
        
-      <div class="container">
+      <div class="container mb-5 pb-5">
         <h5>Industry <a href="{{route('admin.categories', ['board' => 'newcategory'])}}" class=""> <i class="bi bi-pencil"></i></a> </h5>
         @foreach($industryhead as $headcategories)
           <div class="text-accent">
