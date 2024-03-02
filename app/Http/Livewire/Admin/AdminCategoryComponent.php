@@ -33,7 +33,8 @@ class AdminCategoryComponent extends Component
     {
           $this->board = $board;
           $this->category = $category;
-          $this->industry = Category:: where('slug', $this->category)->value('industry');
+          $industrydefinio = Category:: where('slug', $this->category)->get();
+          $this->industry = $industrydefinio->industry;
           $this->status = '1';
           $this->admstatus = '1';
     }
@@ -63,6 +64,7 @@ class AdminCategoryComponent extends Component
       $updatecategory->industry = $this->industryo;
       $updatecategory->slug = Str::slug($updatecategory->industry,'-');
       $updatecategory->save();
+      return redirect()->route('all.category');
     }
 
     public function updatecategory()
@@ -72,6 +74,7 @@ class AdminCategoryComponent extends Component
       $updatecategory->industry = $this->industry;
       $updatecategory->slug = Str::slug($updatecategory->industry,'-');
       $updatecategory->save();
+      return redirect()->route('all.category');
     }
 
     public function render()
