@@ -33,7 +33,7 @@ class AdminCategoryComponent extends Component
     {
           $this->board = $board;
           $this->category = $category;
-          $industrydefinio = Category:: where('slug', $this->category)->get();
+          $industrydefinio = Category:: where('slug', $this->category)->first();
           $this->industry = $industrydefinio->industry;
           $this->status = '1';
           $this->admstatus = '1';
