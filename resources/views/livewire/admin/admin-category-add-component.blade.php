@@ -52,26 +52,29 @@
              <a href="{{route('admin.categories', ['board' => 'addcategory', 'category' => $headcategories -> slug])}}" class=""> <i class="bi bi-pencil"></i></a> </h5>
             <hr>
                <div>
-                @foreach($subcategory as $findo)
-                  <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
-                  onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
-                  wire:click.prevent="eventdelete({{$findo->id}})">
-                 
-                    @php
-                       $findsubcat = DB::table('expos')->where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
-                    @endphp
+                @php 
+                  $findsubcateory = DB::table('indsecs')->where('category_id', $headcategories->id )->get();
+                @endphp
+                  @foreach($findsubcateory as $findo)
+                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" 
+                    onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+                    wire:click.prevent="eventdelete({{$findo->id}})">
+                  
+                      @php
+                        $findsubcat = DB::table('expos')->where('id', $findo -> subtag_id )->where('type','tag')->value('tag');
+                      @endphp
 
-                    {{$findsubcat}} {{$findcountevent}}<i class="bi bi-x me-2"></i></a>
-                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
-                @endforeach
-                <span class="badge bg-primary mt-0"><i class="bi bi-plus me-2"></i></span>
+                      {{$findsubcat}} {{$findcountevent}}<i class="bi bi-x me-2"></i></a>
+                      
+                  @endforeach
+                  <a class="badge bg-primary m-0 border-1 text-right border-dark text-dark mr-1" href="{{route('admin.categories', ['board' => 'addsubcategory', 'category' => $headcategories -> slug])}}" ><i class="bi bi-plus me-2"></i></a>
                 </div>
 
             <div>
-            <a href="{{route('admin.categories')}}" class="btn btn-primary btn sm">testing<i class="bi bi-pencil"></i></a>
+            <!-- <a href="{{route('admin.categories')}}" class="btn btn-primary btn sm">testing<i class="bi bi-pencil"></i></a>
             <a href="{{route('admin.categories', ['board' => 'addsubcategory', 'category' => $headcategories -> slug])}}" class="btn btn-primary btn sm"><i class="bi bi-pencil"></i></a>
               <a href="" class="btn btn-primary btn sm">Active</a>
-              <a href="" class="btn btn-primary btn sm">De-Active</a>
+              <a href="" class="btn btn-primary btn sm">De-Active</a> -->
             </div>
           </div>
 
