@@ -19,7 +19,8 @@
               
                 <div>
                 @php 
-                  $findsubcateory = DB::table('indsecs')->where('category_id', $headcategories->id )->get();
+                  $findIndustry = DB::table('categories')->where('slug',$this->category)->value('id');
+                  $findsubcateory = DB::table('indsecs')->where('category_id', $findIndustry )->get();
                 @endphp
 
                     @foreach($findsubcateory as $findo)
@@ -63,8 +64,9 @@
         </form>
 
         <hr>
-        @php 
-                  $findsubcateory = DB::table('indsecs')->where('category_id', $headcategories->id )->get();
+                @php 
+                  $findIndustry = DB::table('categories')->where('slug',$this->category)->value('id');
+                  $findsubcateory = DB::table('indsecs')->where('category_id', $findIndustry )->get();
                 @endphp
 
             @foreach($findsubcateory as $findo)
