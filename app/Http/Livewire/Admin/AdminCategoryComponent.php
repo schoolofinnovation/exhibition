@@ -23,7 +23,7 @@ class AdminCategoryComponent extends Component
     public $status;
     public $admstatus;
 
-    public $industro;
+    public $industryo;
     public $industry;
     public $slug;
     
@@ -60,7 +60,7 @@ class AdminCategoryComponent extends Component
     public function newcategory()
     {
       $updatecategory = new Category();
-      $updatecategory->industry = $this->industro;
+      $updatecategory->industry = $this->industryo;
       $updatecategory->slug = Str::slug($updatecategory->industry,'-');
       $updatecategory->save();
     }
