@@ -12,7 +12,7 @@
    @foreach ($postie as $sitemap)
       <url>
          <loc>{{url('/rating/'.$sitemap->slug)}}</loc>
-         <priority>1.0</priority>
+         <priority>0.3</priority>
          <lastmod>{{gmdate('Y-m-d\TH:i:s\Z',strtotime($sitemap->updated_at))}}</lastmod>
          <changefreq>daily</changefreq>
       </url>
@@ -28,7 +28,7 @@
       @foreach ($findupdated as $sitemapo)
       <url>
          <loc>{{url('/exhibition/expo/'.$sitemapo->slug)}}</loc>
-         <priority>1.0</priority>
+         <priority>0.4</priority>
          <lastmod>{{gmdate('Y-m-d\TH:i:s\Z',strtotime($sitemapo->updated_at))}}</lastmod>
          <changefreq>daily</changefreq>
       </url>

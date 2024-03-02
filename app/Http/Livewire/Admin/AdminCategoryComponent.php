@@ -57,7 +57,6 @@ class AdminCategoryComponent extends Component
         $job->delete();
     }
 
-
     public function newcategory()
     {
       $updatecategory = new Category();

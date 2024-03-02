@@ -30,7 +30,7 @@
                       {{$findsubcat}}<i class="bi bi-x me-2"></i></a>
                         
                     @endforeach
-                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#" wire:click.prevent="eventdelete({{$findo->id}})"><i class="bi bi-plus me-2"></i></a>
+                    <a class="badge bg-success m-0 border-1 text-right border-dark text-dark mr-1" href="#"><i class="bi bi-plus me-2"></i></a>
                   </div>
 
               <div>
