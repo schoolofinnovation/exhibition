@@ -993,15 +993,15 @@
                           <div class="accordion-item">
                             <h3 class="accordion-header">
                                 @if($this->eventype ==  'exhibition')
-                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'expo', 'categry' => $category->slug])}}">
+                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['time' => 'upcoming','eventype' => 'expo', 'categry' => $category->slug])}}">
                                       {{$category->expoindustry}}
                                     </a>
                                     @elseif ($this->eventype ==  'award')
-                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'award', 'categry' => $category->slug])}}">
+                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['time' => 'upcoming','eventype' => 'award', 'categry' => $category->slug])}}">
                                       {{$category->expoindustry}}
                                     </a>
                                     @elseif ($this->eventype ==  'conference')
-                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['eventype' => 'conference', 'categry' => $category->slug])}}">
+                                    <a class="accordion-button" href="{{route('coi.exhibitioncategory',['time' => 'upcoming','eventype' => 'conference', 'categry' => $category->slug])}}">
                                       {{$category->expoindustry}}
                                     </a>
                                 @endif

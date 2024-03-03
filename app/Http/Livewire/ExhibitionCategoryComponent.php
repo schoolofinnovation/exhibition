@@ -25,7 +25,7 @@ class ExhibitionCategoryComponent extends Component
     public $time;
     
 
-    public function mount($eventype, $categry, $time)
+    public function mount($eventype = null, $categry = null , $time = null)
     {
        $this->categry = $categry;
        $this->eventype = $eventype;
