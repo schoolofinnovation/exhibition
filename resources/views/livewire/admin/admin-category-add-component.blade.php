@@ -49,8 +49,10 @@
         @foreach($industryhead as $headcategories)
           <div class="text-accent">
           <h5>{{$headcategories->industry}}
-             <a href="{{route('admin.categories', ['board' => 'addcategory', 'category' => $headcategories -> slug])}}" class=""> <i class="bi bi-pencil"></i></a> </h5>
-            <hr>
+             <a href="{{route('admin.categories', ['board' => 'addcategory', 'category' => $headcategories -> slug])}}" class=""> <i class="bi bi-pencil"></i></a>
+             <a href="#"  onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  
+                    wire:click.prevent="categorydelete({{$headcategories->id}})" class=""> <i class="bi bi-x"></i></a> </h5>
+             <hr>
                <div>
                 @php 
                   $findsubcateory = DB::table('indsecs')->where('category_id', $headcategories->id )->get();
@@ -79,6 +81,12 @@
           </div>
 
           <hr>
+        @endforeach
+      </div>
+
+      <div class="container">
+        @foreach($catego as $industryout)
+          <a href="#" wire:click.prevent="copycategory({{$industryout->id}})">{{$industryout->expoindustry}}</a>
         @endforeach
       </div>
 

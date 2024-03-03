@@ -90,7 +90,23 @@ class AdminCategoryAddComponent extends Component
         session()->flash('message','info has been deleted Successfully');
     }
 
+    
+    public function categorydelete($id)
+    {   $job = Category::find($id);
+        $job->delete();
+        session()->flash('message','info has been deleted Successfully');
+    }
 
+    public function copycategory($id)
+    {
+      $findo = Expo::find($id);
+      $industrysave = new Category();
+      $industrysave->industry = $findo->expoindustry;
+      $industrysave->slug = Str::slug($industrysave->industry,'-');
+      $industrysave->status = 'active';
+      $industrysave->save();
+
+    }
     public function render()
     {
         $searchTerm = '%'.$this->searchTerm. '%';
@@ -109,6 +125,8 @@ class AdminCategoryAddComponent extends Component
         $industryhead = Category::get();
         $subcategory = Indsec::get();
 
-        return view('livewire.admin.admin-category-add-component', ['subcategory' => $subcategory,'industryhead' => $industryhead, 'counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');
+        $catego = Expo::where('type','expo')->orderBy('expoindustry','ASC')->get();
+
+        return view('livewire.admin.admin-category-add-component', ['catego'=>$catego, 'subcategory' => $subcategory,'industryhead' => $industryhead, 'counteventWithCategory' => $counteventWithCategory, 'resultAdded' => $resultAdded, 'searchcat'=> $searchcat,'categor'=> $categor])->layout('layouts.admin');
     }
 }
