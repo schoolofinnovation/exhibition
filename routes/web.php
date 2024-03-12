@@ -429,7 +429,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
    // Route::get('/admin/blog/category/add', BlogCategoryEditCompopnent::class)->name('admin.blogadd');
    //event--add--status--list--edit
    //Order_details
-   Route::get('/admin/order/{order_id}',AdminOrderDetailsComponent::class)->name('admin.orderdetails');
+   Route::get('/admin/order/{order_id}', AdminOrderDetailsComponent::class)->name('admin.orderdetails');
   });
 
    //Master-MSR

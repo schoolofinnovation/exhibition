@@ -17,7 +17,7 @@
                   <div class = "fw-bold text-dark pb-2 lh-1">Exhibition</div> 
                 </div>
               
-                ``<div class="container pt-4 mb-3 mb-lg-0 ">
+                <div class="container pt-4 mb-3 mb-lg-0 ">
                     <div class="row gy-0 ">
                     
                       <div class="col-lg-3 col-md-6 col-sm-8 px-1 d-none d-sm-block">

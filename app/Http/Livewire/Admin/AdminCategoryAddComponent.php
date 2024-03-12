@@ -90,7 +90,6 @@ class AdminCategoryAddComponent extends Component
         session()->flash('message','info has been deleted Successfully');
     }
 
-    
     public function categorydelete($id)
     {   $job = Category::find($id);
         $job->delete();

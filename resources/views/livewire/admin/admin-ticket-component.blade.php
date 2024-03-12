@@ -276,4 +276,16 @@
               </div>
             </form>
       @endif
+
+      @if($board == 'add-nomination')
+
+       <form action="">
+        <input type="text" placeholder="type" class="form-control" wire:model.lazy="type">
+        <input type="text" placeholder="desc" class="form-control" wire:model.lazy="desc">
+        <input type="text" placeholder="price" class="form-control" wire:model.lazy="price">
+        <input type="text" placeholder="package" class="form-control" wire:model.lazy="package">
+        <input type="text" placeholder="awardname" class="form-control" wire:model.lazy="awardname">
+        <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Submit</button>
+       </form>
+      @endif
 </main>
