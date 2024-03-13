@@ -222,6 +222,27 @@
 
                     <button class="btn btn-primary mt-2" type="submit">Submit</button>
                 </form>
+
+                <!-- select organiser -->
+                <form wire:submit.prevent="addorganisation">
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <label class="form-label" for="seniority">Find Organiser</label>
+                                <select class="form-control" type="text" wire:model.lazy="brand_id"  placeholder="Provide short title of your request">
+                                <option >Choose</option>
+                                    @foreach($organizer as $organiserowner)
+                                        <option value="{{$organiserowner -> id}}">{{$organiserowner -> brand_name}}</option>
+                                    @endforeach                        
+                                </select>
+                                @error('brand_id') <div class="invalid-feedback"> {{$message}} </div> @enderror
+                            </div>
+
+                        </div>
+
+                    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                </form>
+                
             @endif
 
             @if($formm == 'magazine')

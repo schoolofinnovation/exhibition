@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\Expo;
@@ -195,6 +196,15 @@ class AdminEventMultipleAddComponent extends Component
     }
 
 
+    public function addorganisation($id)
+    {
+        $fattribute = Event::find($id);
+        $fattribute->brand_id =  $this->brand_id;
+        $fattribute->save();
+        session()->flash('message','Event has been updated succesfully!!');
+        return redirect()->route('adminevent.detail', ['slug' => $fattribute->slug]);
+    }
+
     public function render()
     {
         $evento = Event::find($this->event_id);
@@ -204,7 +214,10 @@ class AdminEventMultipleAddComponent extends Component
         $pavillion = Expo::get();
         $photos = Photo::get();
         $searchtag = Expo::get();
-        return view('livewire.admin.admin-event-multiple-add-component',['photos'=>$photos,'evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
+
+        $organizer = Brand::where('dtype','organiser')->get();
+
+        return view('livewire.admin.admin-event-multiple-add-component',['organizer'=>$organizer,'photos'=>$photos,'evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
         
     }
 }
