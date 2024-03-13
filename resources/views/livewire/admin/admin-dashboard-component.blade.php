@@ -2023,7 +2023,7 @@
           <div class="container">
             <div class="fw-bold mb-0 lh-0 pb-0">Requested Event</div>
             <div class="lh-0 mt-0 small">customize as your business</div>
-        </div>
+          </div>
                 @foreach ($checkSelected as $fibder) 
 
                     @php
@@ -2077,13 +2077,14 @@
       @endif
 
       @if($board == 'new-organiser')
+      <div class="container">
         <h3>Add Organiser</h3>
         <form wire:submit.prevent="organiser">
           <hr class="my-2">
             <div class="row">
                 <div class="col-sm-4">
                     <label class="form-label" for="cf-name">Organizer</label>
-                    <input class="form-control" type="text" placeholder="Organizer"   wire:model.lazy="organizer" >
+                    <input class="form-control" type="text" placeholder="Organizer"   wire:model.lazy="brand_name" >
                     @error( 'organizer' ){{ $message}}@enderror
                 </div>
                 <div class="col-sm-4">
@@ -2100,6 +2101,7 @@
             </div>
             <button class="btn btn-primary mt-2" type="submit">Submit</button>
         </form>
+      </div>
       @endif
 
 
@@ -2237,13 +2239,13 @@
             <span class="handheld-toolbar-label">Brand</span>
           </a>
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'new-organiser'])}}">
-            <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-plus"></i></span>
             <span class="handheld-toolbar-label">Organiser</span>
           </a>
       @endif
 
         <a class="d-table-cell handheld-toolbar-item" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          <span class="handheld-toolbar-icon"><i class="ci-heart"></i></span>
+          <span class="handheld-toolbar-icon"><i class="bi bi-list"></i></span>
           <span class="handheld-toolbar-label">Menu</span>
         </a>
 

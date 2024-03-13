@@ -605,6 +605,8 @@ public $start;
 
     }
 
+   
+
     public function organiser()
     {
       $eventorganiser = new Brand();
@@ -613,18 +615,20 @@ public $start;
       $eventorganiser->dtype = 'organiser'; 
       $eventorganiser->save();
 
+      $organiserdetails = new Bcontact();
+      //$organiserdetails->name = trim($this->name);
+      //$organiserdetails->designation = trim($this->designation);
+      $organiserdetails->phone = trim($this->phone);
+      $organiserdetails->email = trim($this->email);
+      $organiserdetails->status = '1';
+      $organiserdetails->admstatus = '1';
+      $organiserdetails->user_id = Auth::user()->id;
+      $organiserdetails->brand_id = $eventorganiser->id;
+      $organiserdetails->save();
+
     }
 
-      // $organiserdetails = new Bcontact();
-      // $organiserdetails->name = trim($this->name);
-      // $organiserdetails->designation = trim($this->designation);
-      // $organiserdetails->phone = trim($this->phone);
-      // $organiserdetails->email = trim($this->email);
-      // $organiserdetails->status = '1';
-      // $organiserdetails->admstatus = '1';
-      // $organiserdetails->user_id = Auth::user()->id;
-      // $organiserdetails->brand_id = $eventorganiser->id;
-      // $organiserdetails->save();
+      
 
     public function render()
     {
