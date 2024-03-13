@@ -2076,6 +2076,33 @@
                 @endforeach
       @endif
 
+      @if($board == 'new-organiser')
+        <h3>Add Organiser</h3>
+        <form wire:submit.prevent="organiser">
+          <hr class="my-2">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label class="form-label" for="cf-name">Organizer</label>
+                    <input class="form-control" type="text" placeholder="Organizer"   wire:model.lazy="organizer" >
+                    @error( 'organizer' ){{ $message}}@enderror
+                </div>
+                <div class="col-sm-4">
+                    <label class="form-label" for="cf-name">Email</label>
+                    <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="email" >
+                    @error( 'email' ){{ $message}}@enderror
+                </div>
+
+                <div class="col-sm-4">
+                    <label class="form-label" for="cf-name">Phone</label>
+                    <input class="form-control" type="number" placeholder="Your Phone"   wire:model.lazy="phone" >
+                    @error( 'phone' ){{ $message}}@enderror
+                </div>
+            </div>
+            <button class="btn btn-primary mt-2" type="submit">Submit</button>
+        </form>
+      @endif
+
+
       @if($board == 'ticketPlan')
          <div class="container">
            
@@ -2123,6 +2150,8 @@
 
          </div>
       @endif
+
+
 
     <div class="handheld-toolbar">
       <div class="d-table table-layout-fixed w-100">
@@ -2195,6 +2224,21 @@
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
             <span class="handheld-toolbar-label">Brand</span>
+          </a>
+      @elseif($board == 'organizer')
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'event'])}}">
+            <span class="handheld-toolbar-icon">
+            <i class="ci-filter-alt"></i></span>
+            <span class="handheld-toolbar-label {{'admin/dashboard/event' == request()->path() ? 'active' : '' }}">Visitor</span>
+          </a>
+          
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'visitcard'])}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+            <span class="handheld-toolbar-label">Brand</span>
+          </a>
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'new-organiser'])}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-add"></i></span>
+            <span class="handheld-toolbar-label">Organiser</span>
           </a>
       @endif
 

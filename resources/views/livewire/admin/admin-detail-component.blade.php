@@ -558,7 +558,7 @@
               <div class="col  pr-0">
                   <div class="h4 fw-light mb-0"></div> 
                 
-                  <a class="round-circle" href="{{route('admincheck.ticket',['event_id' => $evento->id, 'board' => 'dashboard'])}}" >Ticket</a> 
+                  <a class="round-circle" href="{{route('admincheck.ticket',['event_id' => $evento->id, 'board' => 'dashboard'])}}" >Nomination Category</a> 
                   
               </div>
 
