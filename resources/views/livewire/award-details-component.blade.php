@@ -1456,6 +1456,10 @@
 
             </div>
 
+             <!-- Creators-->
+              @livewire('trending-creator-component')
+        
+
             <!--footer-->
             @if($event->eventype == 'award')
               <div class="handheld-toolbar bg-secondary">
