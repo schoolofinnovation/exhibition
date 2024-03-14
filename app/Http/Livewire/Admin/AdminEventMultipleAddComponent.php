@@ -215,9 +215,11 @@ class AdminEventMultipleAddComponent extends Component
         $photos = Photo::get();
         $searchtag = Expo::get();
 
-        $organizer = Brand::where('dtype','organiser')->get();
+        $findoorganizer = Brand::where('dtype','organiser')->get();
 
-        return view('livewire.admin.admin-event-multiple-add-component',['organizer'=>$organizer,'photos'=>$photos,'evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
+       // dd($organizer);
+
+        return view('livewire.admin.admin-event-multiple-add-component',['findoorganizer'=>$findoorganizer,'photos'=>$photos,'evento'=>$evento, 'searchtag'=>$searchtag,'pavillion'=>$pavillion,'sec'=>$sec,'cat'=>$cat])->layout('layouts.admin');
         
     }
 }

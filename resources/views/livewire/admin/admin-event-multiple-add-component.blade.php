@@ -231,8 +231,8 @@
                                 <label class="form-label" for="seniority">Find Organiser</label>
                                 <select class="form-control" type="text" wire:model.lazy="brand_id"  placeholder="Provide short title of your request">
                                 <option >Choose</option>
-                                    @foreach($organizer as $organiserowner)
-                                        <option value="{{$organiserowner -> id}}">{{$organiserowner -> brand_name}}</option>
+                                    @foreach($findoorganizer as $organiserowner)
+                                        <option value="{{$organiserowner->id}}">{{$organiserowner->brand_name}}</option>
                                     @endforeach                        
                                 </select>
                                 @error('brand_id') <div class="invalid-feedback"> {{$message}} </div> @enderror
