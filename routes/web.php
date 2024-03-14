@@ -158,6 +158,7 @@ use App\Http\Livewire\ExhibitionTimeComponent;
 use App\Http\Livewire\GiftBirthdayComponent;
 use App\Http\Livewire\GiftDateComponent;
 use App\Http\Livewire\GoogleComponent;
+use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\Seller\SellerSponsershipComponent;
 
 use App\Http\Livewire\ThankyouComponent;
@@ -218,6 +219,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 //Start
 Route::get('/', EventComponent::class)->name('business.exhibition');
+Route::get('/search', SearchComponent::class)->name('search.events');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
 Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class)->name('event.details');
 //Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class, 'index')->name('event.details');
@@ -381,7 +383,7 @@ Route::any('/google/callback', [GoogleComponent::class, 'callbackFromGoogle'])->
     Route::get('/admin/franchises/edit/{franchise_id}', AdminFranchiseEditComponent::class)->name('admin.editfranchise');
 
 
-  // sub categor
+    // sub categor
     
     Route::get('/admin/category', AdminCategoryAddComponent::class)->name('all.category');
     Route::get('/admin/sub-category/{board?}/{category?}', AdminCategoryComponent::class)->name('admin.categories');
