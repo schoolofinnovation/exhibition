@@ -19,7 +19,7 @@ class SearchComponent extends Component
         $searchTerm = '%'.$this->searchTerm. '%';
 
         $saveSearchTerm = new Viewso();
-        $saveSearchTerm->search = $searchTerm;
+        $saveSearchTerm->search = $this->searchTerm;
         if (Auth::check()) 
         { $saveSearchTerm->user_id = Auth::user()->id; }
         else
