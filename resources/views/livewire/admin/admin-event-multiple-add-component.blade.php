@@ -240,9 +240,14 @@
 
                         </div>
 
-                    <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                    <button class=" form-control btn btn-primary mt-2" type="submit">Submit</button>
                 </form>
                 
+                    <div class="col">
+                        <a href="{{route('admin.dashboard', ['board' => 'new-organiser'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Add Organiser</div>
+                        </a> 
+                    </div>
             @endif
 
             @if($formm == 'magazine')

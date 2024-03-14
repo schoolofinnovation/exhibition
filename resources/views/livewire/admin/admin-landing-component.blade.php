@@ -81,7 +81,7 @@
                         </a> 
                     </div>
                     <div class="col">
-                        <a  href="{{route('admin.dashboard', ['board' => 'new-organiser'])}}">
+                        <a href="{{route('admin.dashboard', ['board' => 'new-organiser'])}}">
                            <div class="p-3 border rounded border-dark bg-light text-center">Add Organiser</div>
                         </a> 
                     </div>
