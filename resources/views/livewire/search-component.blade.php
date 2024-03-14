@@ -1,8 +1,13 @@
 <main>
 
-<div class="container">
-                        <input type="text" class="form-control" placeholder="search" wire:model.lazy="searchTerm">
-                        
+                    <div class="container mt-5">
+                        <!-- <input type="text" class="form-control" placeholder="search" > -->
+
+                        <div class="input-group flex-nowrap">
+                          <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                          <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" wire:model.lazy="searchTerm">
+                          <button class="btn btn-primary" type="submit" name=""> Search</button>
+                        </div>
                         <div class="row mb-5 pb-2">
                           @if(is_null($searchTerm))
 
@@ -51,20 +56,22 @@
                             @endforeach
                           @endif
                         </div>
-                        </div>
+                    </div>
 
                         <section class="container py-3 py-lg-5 mt-4 mb-3">
-          <div class="text-center mb-5">
-            <p class="col-md-10 col-lg-8 mx-auto fw-normal">Reach your business goals with COI Marketing Solutions.</p>
-            <div class="container">
-                <div class="row row-cols-2 row-cols-lg-6 gy-2 gx-3 g-lg-3">
-                    <div class="col">
-                        <a  href="#">
-                           <div class="p-3 border rounded border-dark bg-light text-center">category</div>
-                        </a> 
-                    </div>
-                </div>
-            </div>
-          </div>
-        </section>
+                            <div class="text-center mb-5">
+                                <p class="col-md-10 col-lg-8 mx-auto fw-normal">Reach your business goals with COI Marketing Solutions.</p>
+                                <div class="container">
+                                    <div class="row row-cols-2 row-cols-lg-6 gy-2 gx-3 g-lg-3">
+                                        @foreach($allcategory as $category )
+                                            <div class="col">
+                                                <a  href="{{route('coi.exhibitioncategory',['time' => 'upcoming', 'eventype' => 'exhibition', 'categry' => $category->slug])}}">
+                                                    <div class="p-3 border rounded border-dark bg-light text-center">{{$category -> industry}}</div>
+                                                </a> 
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 </main>
