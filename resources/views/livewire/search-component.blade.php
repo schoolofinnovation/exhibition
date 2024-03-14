@@ -2,12 +2,14 @@
 
                     <div class="container mt-5">
                         <!-- <input type="text" class="form-control" placeholder="search" > -->
+                        <form action="" wire:submit.prevent="searchbackup">
+                            <div class="input-group flex-nowrap">
+                            <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                            <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" wire:model.lazy="searchTerm">
+                            <button class="btn btn-primary" type="submit" name=""> Search</button>
+                            </div>
+                        </form>
 
-                        <div class="input-group flex-nowrap">
-                          <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                          <input type="text" class="form-control rounded-start"  name="search" placeholder="Find your Right Place" wire:model.lazy="searchTerm">
-                          <button class="btn btn-primary" type="submit" name=""> Search</button>
-                        </div>
                         <div class="row mb-5 pb-2">
                           @if(is_null($searchTerm))
 

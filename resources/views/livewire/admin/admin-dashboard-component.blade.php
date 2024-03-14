@@ -798,6 +798,15 @@
     @endif
 <!--event stop--> 
 
+
+      @if($board == 'findSearch')
+        @foreach($findSearch as $searcho)
+         {{$searcho->search}}
+         <hr>
+        @endforeach
+      @endif
+
+
 <!-- Start Cleint-->
       @if($board == 'client')
         <!-- <div class="container">

@@ -13,18 +13,24 @@ class SearchComponent extends Component
 {
     public $searchTerm;
 
-    
-    public function render()
+    public function searchbackup()
     {
-        $searchTerm = '%'.$this->searchTerm. '%';
-
         $saveSearchTerm = new Viewso();
         $saveSearchTerm->search = $this->searchTerm;
         if (Auth::check()) 
         { $saveSearchTerm->user_id = Auth::user()->id; }
         else
         { $saveSearchTerm->user_id = NULL ; }
+
+       
         $saveSearchTerm->save();
+    }
+    
+    public function render()
+    {
+        $searchTerm = '%'.$this->searchTerm. '%';
+
+        
 
 
         $searchcat = Expo::where('tag','LIKE', $searchTerm)

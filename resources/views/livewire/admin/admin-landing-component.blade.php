@@ -15,6 +15,11 @@
                         </a> 
                     </div>
                     <div class="col">
+                        <a  href="{{route('admin.dashboard', ['board' => 'findSearch'])}}">
+                           <div class="p-3 border rounded border-dark bg-light text-center">Searched</div>
+                        </a> 
+                    </div>
+                    <div class="col">
                          <a href="{{route('admin.dashboard', ['board' => 'job'])}}">
                             <div class="p-3 border rounded border-dark bg-light text-center">Job</div>
                         </a> 
@@ -117,6 +122,8 @@
                            {{$event->count()}} Event</div>
                         </a> 
                     </div>
+                    
+                    
 
                     <div class="col">
                          <a href="{{route('admin.dashboard', ['board' => 'job'])}}">
