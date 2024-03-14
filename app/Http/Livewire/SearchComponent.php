@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\Event;
 use App\Models\Expo;
 use App\Models\Viewso;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,7 @@ class SearchComponent extends Component
         ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
 
         $allcategory = Category::get();
-        return view('livewire.search-component',['searchcat' => $searchcat , 'allcategory' => $allcategory]);
+        $searchCat = Event::Where('eventname','LIKE', $searchTerm)->where('status','1')->orderBy('eventname','ASC')->get();
+        return view('livewire.search-component',['searchCat' => $searchCat ,'searchcat' => $searchcat , 'allcategory' => $allcategory]);
     }
 }
