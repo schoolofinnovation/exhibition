@@ -3,7 +3,7 @@
                 <div class="list-unstyled pt-2 pb-1 px-0 pl-0">
                     <div class="d-flex justify-content-between px-0 m-0 lh-1">
                     <span class="fs-sm"> Trending<br><span class="fw-medium h5">Awards</span></span>
-                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nominate</a>
                       <ul class="dropdown-menu" width="auto">
                         <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'award'])}}">More</a></li>
                         <li><a class="dropdown-item" href="#">Nominate</a></li>

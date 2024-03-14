@@ -5,7 +5,7 @@
           <span class="fs-sm"> Explore<br><span class="fw-medium h5">Exhibition</span></span>
          
 
-          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Add</a>
             <ul class="dropdown-menu" width="auto">
               <li><a class="dropdown-item" href="{{route('coi.exhibition', ['eventype' => 'expo'])}}">More</a></li>
               <li><a class="dropdown-item" href="#">Exhibit</a></li>
