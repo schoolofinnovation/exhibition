@@ -2028,10 +2028,10 @@
       @endif
 
       @if($board == 'organizer')
-          <div class="container">
+          <div class="container mb-5">
             <div class="fw-bold mb-0 lh-0 pb-0">Requested Event</div>
             <div class="lh-0 mt-0 small">customize as your business</div>
-          </div>
+          
                 @foreach ($checkSelected as $fibder) 
 
                     @php
@@ -2084,7 +2084,7 @@
                 @endforeach
 
                 @php
-                    $findOrganiser = DB::table('brands')->where('dtype','organiser')->get();
+                    $findOrganiser = DB::table('brands')->where('dtype','organiser')->orderBy('brand_name','ASC')->get();
                 @endphp
 
                 @foreach($findOrganiser as $franchise )
@@ -2120,7 +2120,7 @@
                         </div>
                     </div>
                 @endforeach
-
+          </div>
       @endif
 
       @if($board == 'new-organiser')
@@ -2153,7 +2153,7 @@
       @php
         $findoorganizer = DB::table('brands')->where('dtype','organiser')->orderBy('brand_name','ASC')->get();
       @endphp
-      <div class="col-sm-3">
+      <div class="container">
           <label class="form-label" for="seniority">Find Organiser</label>
           <select class="form-control" type="text" placeholder="Provide short title of your request">
           <option >Choose</option>

@@ -64,7 +64,7 @@
                             <div class="text-center mb-5">
                                 <p class="col-md-10 col-lg-8 mx-auto fw-normal">Reach your business goals with COI Marketing Solutions.</p>
                                 <div class="container">
-                                    <div class="row row-cols-2 row-cols-lg-6 gy-2 gx-3 g-lg-3">
+                                    <div class="row row-cols-3 row-cols-lg-6 gy-2 gx-3 g-lg-3">
                                         @foreach($allcategory as $category )
                                             <div class="col">
                                                 <a  href="{{route('coi.exhibitioncategory',['time' => 'upcoming', 'eventype' => 'exhibition', 'categry' => $category->slug])}}">
