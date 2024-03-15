@@ -215,7 +215,7 @@ class AdminEventMultipleAddComponent extends Component
         $photos = Photo::get();
         $searchtag = Expo::get();
 
-        $findoorganizer = Brand::where('dtype','organiser')->get();
+        $findoorganizer = Brand::where('dtype','organiser')->orderBy('brand_name','ASC')->get();
 
        // dd($organizer);
 

@@ -2082,6 +2082,49 @@
                     @endforeach
 
                 @endforeach
+
+                
+
+                    @php
+                        
+                        $findOrganiser = DB::table('Brand')->whereNotNull('dtype')->get();
+                    @endphp
+
+                    @foreach($findOrganiser as $franchise )
+                        <div class="container  ">
+                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                <div class="col  pr-0">
+                                    
+                                    <div class="h4 fw-light mb-0"> Te</div> 
+                                    <div class="small text-muted text-capitalize">DEc</div>
+                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                </div>
+
+                                <div class="col-7  p-0">
+                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                                    {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
+                                <div class="text-muted fs-sm text-start">
+                                    
+                                </div>  
+                                <div class="text-muted fs-sm text-start"></div>
+                                </div>
+
+                                <div class="col-3  p-0">
+                                   
+
+                                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                                      <ul class="dropdown-menu" width="auto">
+                                        <li><a class="dropdown-item" href="#">Reject</a></li>
+                                        <!-- <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Accept</a></li>     -->
+
+                                      </ul>
+                                    </span>
+                                    </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+               
       @endif
 
       @if($board == 'new-organiser')
