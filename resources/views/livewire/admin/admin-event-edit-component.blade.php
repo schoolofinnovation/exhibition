@@ -228,7 +228,7 @@
                     </div>
                  </form>
                
-
+                @if(!is_null($relativeevent))
                  @foreach($relativeevent as $evento)
                  <div class="container my-3">
                     <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
@@ -267,8 +267,8 @@
                             <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->eventname, 24)}}"></a>
                             @endif
                         </div>
+                        </div>
                     </div>
-                </div>
                  @endforeach
                 
             @endif
