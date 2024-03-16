@@ -196,9 +196,9 @@ class AdminEventMultipleAddComponent extends Component
     }
 
 
-    public function addorganisation($id)
+    public function addorganisation()
     {
-        $fattribute = Event::find($id);
+        $fattribute = Event::find($this->event_id);
         $fattribute->brand_id =  $this->brand_id;
         $fattribute->save();
         session()->flash('message','Event has been updated succesfully!!');
