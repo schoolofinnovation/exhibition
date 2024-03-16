@@ -196,6 +196,7 @@ class AdminEventMultipleAddComponent extends Component
     }
 
 
+    public $brand_id;
     public function addorganisation()
     {
         $fattribute = Event::find($this->event_id);

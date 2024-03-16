@@ -185,6 +185,14 @@ class AdminEventEditComponent extends Component
        }
 
 
+    public function editReference()
+    {
+      $referencefattribute = Event::find($this->event_id);
+      $referencefattribute->reference = $this->reference;
+      $referencefattribute->save();
+      return redirect()->route('adminevent.detail', ['slug' => $this->slug]);
+    }
+
     public function render()
     {
         $evento = Event::find($this->event_id);

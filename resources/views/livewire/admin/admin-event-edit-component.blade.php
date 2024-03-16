@@ -213,13 +213,20 @@
             @if($board == "doubling")
 
                <small class="fw-bold">{{$evento->eventname}} </small>
+              
                 <form wire:submit.prevent = "doubleing">  
                     <div class="input-group my-2"> 
                         <input type="text" wire:model.lazy = "eventkhaname" class="form-control" placeholder="Add Relative Event">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
-
+              
+                <form wire:submit.prevent = "editReference">
+                    <div class="input-group my-2"> 
+                        <input type="text" wire:model.lazy = "reference" class="form-control" placeholder="add reference">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                 </form>
                
                 
             @endif
