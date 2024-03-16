@@ -528,7 +528,7 @@ public $start;
       
       // dd($myytime) ;
     }
-    
+
     public function del($id)
     {
        $delee = Bcontact::find($id);
@@ -637,6 +637,26 @@ public $start;
       return redirect()->route('admin.dashboard',['board' => 'organizer']);
     }
 
+    
+   
+    public function mUltiorganiser()
+    {
+        //$rti = Str::replace('  ',' ', $this->organisation);
+        $ret = explode(",", $this->organisation);
+
+      foreach($ret as $tre)
+      {
+        $brand = new Brand();
+
+        // $eventorganiser->brand_name = trim($this->brand_name);
+        // $eventorganiser->slug =  Str::slug ($this->brand_name,'-');
+
+        $brand->organisation = trim($tre);
+        $brand->slug = str::slug($tre,'-');
+        $brand->dtype = 'organiser'; 
+        $brand->save();
+      }
+    }
       
 
     public function render()

@@ -2153,18 +2153,60 @@
           </form>
         </div>
 
+
+        <!-- Multi-organiser -->
+          <form wire:submit.prevent="mUltiorganiser">
+            <hr class="my-2">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <label class="form-label" for="cf-name">Organizer</label>
+                      <input class="form-control" type="text" placeholder="organisation"  wire:model.lazy="organisation" >
+                      @error( 'organisation' ){{ $message}}@enderror
+                  </div>
+              <button class="btn btn-primary mt-2" type="submit">Submit</button>
+          </form>
+
+          Udan media communications private ltd,Aakar Exhibition Pvt Ltd,Altius Auto Solution Pvt Ltd,Asian Business Exhibitions and Conferences Ltd,Association Dental Industry and trade of India,Beatroots Expo and Publications LLP,Businesslive Trade Fairs,Buy shell Interactions Private Limited,Department of Telecommunications,Exhibition India Pvt Ltd,Exhobuzz Pvt Ltd,FICCI,Government of India,IDEX Events Private Limited,Informa Markets India Private Ltd,Koelnmesse Ya tradefair Pvt ltd,Manch Communications Pvt Ltd,Medexpert Business Consultants Pvt Ltd,Messe Dusseldorf india Pvt ltd,Messe Frankfurt Trade Fairs India Pvt ltd,Messe Stuttgart India Private Ltd,Mex Exhibtions Pvt Ltd,Ministry of Communications ,Nexus Exhibition Private Limited,NNS Events and Exhibitions Pvt Ltd,Nuernbergmesse India Pvt Ltd,Reed Exhibitions India,Reed Triune Exhibition Pvt Ltd,Relx India Private Limited,RM Education Asia Services Private Limited,S S Exhibition and Media Pvt ld,Star gems And jewellery Expo,The All India Plastics Manufactures Association,The Committee For the International Commission On Large Dams (INCOLD),The Toys Association of India,Toredo Fairs India Pvt ltd,Venus Care,Water Today Pvt Ltd,Zak Trade Fairs and Exhibitions Pvt ltd,Zion Exhibitions India LLP,
+
+
+
+
         @php
-          $findoorganizer = DB::table('brands')->where('dtype','organiser')->orderBy('brand_name','ASC')->get();
+          $findoorganizer = DB::table('brands')->where('dtype','organiser')->latest('brand_name')->get();
         @endphp
-        <div class="container">
-            <label class="form-label" for="seniority">Find Organiser</label>
-            <select class="form-control" type="text" placeholder="Provide short title of your request">
-                <option>Choose</option>
-                @foreach($findoorganizer as $organiserowner)
-                    <option value="{{$organiserowner->id}}">{{$organiserowner->brand_name}}</option>
-                @endforeach                        
-            </select>
-        </div>
+        
+            @foreach($findoorganizer as $franchise )
+                <div class="container  ">
+                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                        <div class="col  pr-0">
+                            
+                            <div class="h4 fw-light mb-0"> Te</div> 
+                            <div class="small text-muted text-capitalize">DEc</div>
+                            <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                        </div>
+
+                        <div class="col-7  p-0">
+                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                            {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
+                        <div class="text-muted fs-sm text-start">
+                            
+                        </div>  
+                        <div class="text-muted fs-sm text-start"></div>
+                        </div>
+
+                        <div class="col-3  p-0">
+                            
+
+                            <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                              <ul class="dropdown-menu" width="auto">
+                                <li><a class="dropdown-item" href="#" wire:click.prevent="delorganiser({{$franchise->id}})">Delete</a></li>
+                                <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">contact</a></li>
+                              </ul>
+                            </span>
+                            </div>
+                    </div>
+                </div>
+            @endforeach
       @endif
 
 
@@ -2306,7 +2348,7 @@
             <span class="handheld-toolbar-label">Organiser</span>
           </a>
       @elseif($board == 'new-organiser')
-          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'organiser'])}}">
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'organizer'])}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-plus"></i></span>
             <span class="handheld-toolbar-label">Organiser</span>
           </a>
