@@ -14,7 +14,7 @@
                           @if(is_null($searchTerm))
 
                             <div class="container">
-                            Find Some Events
+                               Expand your Business Reach with us.
                             </div>  
 
                           @else
@@ -62,13 +62,13 @@
 
                         <section class="container py-3 py-lg-5 mt-4 mb-3">
                             <div class="text-center mb-5">
-                                <p class="col-md-10 col-lg-8 mx-auto fw-normal">Reach your business goals with COI Marketing Solutions.</p>
+                                <p class="col-md-10 col-lg-8 mx-auto fw-bold">Industry</p>
                                 <div class="container">
-                                    <div class="row row-cols-3 row-cols-lg-6 gy-2 gx-3 g-lg-3">
+                                    <div class="row row-cols-3 row-cols-lg-6 gy-2 gx-1 g-lg-3">
                                         @foreach($allcategory as $category )
                                             <div class="col">
                                                 <a  href="{{route('coi.exhibitioncategory',['time' => 'upcoming', 'eventype' => 'exhibition', 'categry' => $category->slug])}}">
-                                                    <div class="p-3 border rounded border-dark bg-light text-center">{{$category -> industry}}</div>
+                                                    <div class="p-3 border rounded border-dark bg-light text-center text-dark fs-sm">{{$category -> industry}}</div>
                                                 </a> 
                                             </div>
                                         @endforeach

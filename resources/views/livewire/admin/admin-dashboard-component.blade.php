@@ -2151,10 +2151,8 @@
               </div>
               <button class="btn btn-primary mt-2" type="submit">Submit</button>
           </form>
-        </div>
 
-
-        <!-- Multi-organiser -->
+          <!-- Multi-organiser -->
           <form wire:submit.prevent="mUltiorganiser">
             <hr class="my-2">
               <div class="row">
@@ -2165,12 +2163,8 @@
                   </div>
               <button class="btn btn-primary mt-2" type="submit">Submit</button>
           </form>
-
-          Udan media communications private ltd,Aakar Exhibition Pvt Ltd,Altius Auto Solution Pvt Ltd,Asian Business Exhibitions and Conferences Ltd,Association Dental Industry and trade of India,Beatroots Expo and Publications LLP,Businesslive Trade Fairs,Buy shell Interactions Private Limited,Department of Telecommunications,Exhibition India Pvt Ltd,Exhobuzz Pvt Ltd,FICCI,Government of India,IDEX Events Private Limited,Informa Markets India Private Ltd,Koelnmesse Ya tradefair Pvt ltd,Manch Communications Pvt Ltd,Medexpert Business Consultants Pvt Ltd,Messe Dusseldorf india Pvt ltd,Messe Frankfurt Trade Fairs India Pvt ltd,Messe Stuttgart India Private Ltd,Mex Exhibtions Pvt Ltd,Ministry of Communications ,Nexus Exhibition Private Limited,NNS Events and Exhibitions Pvt Ltd,Nuernbergmesse India Pvt Ltd,Reed Exhibitions India,Reed Triune Exhibition Pvt Ltd,Relx India Private Limited,RM Education Asia Services Private Limited,S S Exhibition and Media Pvt ld,Star gems And jewellery Expo,The All India Plastics Manufactures Association,The Committee For the International Commission On Large Dams (INCOLD),The Toys Association of India,Toredo Fairs India Pvt ltd,Venus Care,Water Today Pvt Ltd,Zak Trade Fairs and Exhibitions Pvt ltd,Zion Exhibitions India LLP,
-
-
-
-
+        </div>
+        
         @php
           $findoorganizer = DB::table('brands')->where('dtype','organiser')->latest('brand_name')->get();
         @endphp
