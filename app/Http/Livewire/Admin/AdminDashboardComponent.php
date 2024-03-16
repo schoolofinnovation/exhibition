@@ -528,13 +528,19 @@ public $start;
       
       // dd($myytime) ;
     }
-
-
+    
     public function del($id)
     {
        $delee = Bcontact::find($id);
        $delee->delete();
     }
+
+    public function delorganiser($id)
+    {
+       $delee = Brand::find($id);
+       $delee->delete();
+    }
+    
 
     public function detecto($id, $featuretype)
     {
@@ -628,8 +634,7 @@ public $start;
       $organiserdetails->brand_id = $eventorganiser->id;
       $organiserdetails->save();
 
-      return back();
-
+      return redirect()->route('admin.dashboard',['board' => 'organizer']);
     }
 
       

@@ -1630,8 +1630,6 @@
         </div>
       @endif
 
-
-
       @if($board == 'viewso')
 
           <div class="d-table table-layout-fixed w-100"> 
@@ -2028,141 +2026,145 @@
       @endif
 
       @if($board == 'organizer')
-          <div class="container mb-5">
-            <div class="fw-bold mb-0 lh-0 pb-0">Requested Event</div>
-            <div class="lh-0 mt-0 small">customize as your business</div>
-          
-                @foreach ($checkSelected as $fibder) 
+          <div class="mb-5">
+            @if($board == 'requested')
+              <div class="fw-bold mb-0 lh-0 pb-0">Requested Event</div>
+              <div class="lh-0 mt-0 small">customize as your business</div>
+            
+                  @foreach ($checkSelected as $fibder) 
 
-                    @php
-                    $franchiseo = DB::table('events')->where('id' , $fibder -> event_id)->get();
-                    @endphp
+                      @php
+                      $franchiseo = DB::table('events')->where('id' , $fibder -> event_id)->get();
+                      @endphp
 
-                    @foreach($franchiseo as $franchise )
-                        <div class="container  ">
-                            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                                <div class="col  pr-0">
-                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
-                                    @else
-                                    <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
-                                    <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                      @foreach($franchiseo as $franchise )
+                          <div class="container  ">
+                              <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                                  <div class="col  pr-0">
+                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
+                                      @else
+                                      <div class="h4 fw-light mb-0"> {{Carbon\Carbon::parse ($franchise->startdate)->format('d')}}</div> 
+                                      <div class="small text-muted text-capitalize">{{Carbon\Carbon::parse ($franchise->startdate)->format('M')}} </div>
 
-                                    @endif 
-                                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                                </div>
+                                      @endif 
+                                      <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                                  </div>
 
-                                <div class="col-7  p-0">
-                                <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
-                                    {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
-                                <div class="text-muted fs-sm text-start">
-                                    @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
-                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                    @else
-                                    {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
-                                    @endif 
-                                </div>  
-                                <div class="text-muted fs-sm text-start"></div>
-                                </div>
+                                  <div class="col-7  p-0">
+                                  <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                                      {{ucwords(trans(Str::limit($franchise->eventname, 24)))}}</a></div>
+                                  <div class="text-muted fs-sm text-start">
+                                      @if(Carbon\Carbon::parse ($franchise->startdate)->format('M') != Carbon\Carbon::parse ($franchise->enddate)->format('M'))
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d M')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                      @else
+                                      {{Carbon\Carbon::parse ($franchise->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($franchise->enddate)->format('D, d M')}}
+                                      @endif 
+                                  </div>  
+                                  <div class="text-muted fs-sm text-start"></div>
+                                  </div>
 
-                                <div class="col-3  p-0">
-                                   
+                                  <div class="col-3  p-0">
+                                    
 
-                                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-                                      <ul class="dropdown-menu" width="auto">
-                                        <li><a class="dropdown-item" href="#">Reject</a></li>
-                                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Accept</a></li>    
+                                      <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                                        <ul class="dropdown-menu" width="auto">
+                                          <li><a class="dropdown-item" href="#">Reject</a></li>
+                                          <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Accept</a></li>    
 
-                                      </ul>
-                                    </span>
-                                    </div>
-                            </div>
-                        </div>
-                    @endforeach
+                                        </ul>
+                                      </span>
+                                      </div>
+                              </div>
+                          </div>
+                      @endforeach
 
-                @endforeach
+                  @endforeach
 
-                @php
-                    $findOrganiser = DB::table('brands')->where('dtype','organiser')->orderBy('brand_name','ASC')->get();
-                @endphp
+            @elseif($board == 'organizer')
+              <div class="fw-bold mb-0 lh-0 pb-0">Organiser</div>
+              <div class="lh-0 mt-0 small">Find Organiser</div>
 
-                @foreach($findOrganiser as $franchise )
-                    <div class="container  ">
-                        <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                            <div class="col  pr-0">
-                                
-                                <div class="h4 fw-light mb-0"> Te</div> 
-                                <div class="small text-muted text-capitalize">DEc</div>
-                                <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                            </div>
+                  @php
+                      $findOrganiser = DB::table('brands')->where('dtype','organiser')->orderBy('brand_name','ASC')->get();
+                  @endphp
 
-                            <div class="col-7  p-0">
-                            <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
-                                {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
-                            <div class="text-muted fs-sm text-start">
-                                
-                            </div>  
-                            <div class="text-muted fs-sm text-start"></div>
-                            </div>
+                  @foreach($findOrganiser as $franchise )
+                      <div class="container  ">
+                          <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                              <div class="col  pr-0">
+                                  
+                                  <div class="h4 fw-light mb-0"> Te</div> 
+                                  <div class="small text-muted text-capitalize">DEc</div>
+                                  <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                              </div>
 
-                            <div class="col-3  p-0">
-                                
+                              <div class="col-7  p-0">
+                              <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                                  {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
+                              <div class="text-muted fs-sm text-start">
+                                  
+                              </div>  
+                              <div class="text-muted fs-sm text-start"></div>
+                              </div>
 
-                                <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-                                  <ul class="dropdown-menu" width="auto">
-                                    <li><a class="dropdown-item" href="#">Reject</a></li>
-                                    <!-- <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">Accept</a></li>     -->
+                              <div class="col-3  p-0">
+                                  
 
-                                  </ul>
-                                </span>
-                                </div>
-                        </div>
-                    </div>
-                @endforeach
+                                  <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                                    <ul class="dropdown-menu" width="auto">
+                                      <li><a class="dropdown-item" href="#" wire:click.prevent="delorganiser({{$franchise->id}})">Delete</a></li>
+                                      <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">contact</a></li>
+                                    </ul>
+                                  </span>
+                                  </div>
+                          </div>
+                      </div>
+                  @endforeach
+            @endif
           </div>
       @endif
 
       @if($board == 'new-organiser')
-      <div class="container">
-        <h3>Add Organiser</h3>
-        <form wire:submit.prevent="organiser">
-          <hr class="my-2">
-            <div class="row">
-                <div class="col-sm-4">
-                    <label class="form-label" for="cf-name">Organizer</label>
-                    <input class="form-control" type="text" placeholder="Organizer"   wire:model.lazy="brand_name" >
-                    @error( 'organizer' ){{ $message}}@enderror
-                </div>
-                <div class="col-sm-4">
-                    <label class="form-label" for="cf-name">Email</label>
-                    <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="email" >
-                    @error( 'email' ){{ $message}}@enderror
-                </div>
+        <div class="container">
+          <h3>Add Organiser</h3>
+          <form wire:submit.prevent="organiser">
+            <hr class="my-2">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <label class="form-label" for="cf-name">Organizer</label>
+                      <input class="form-control" type="text" placeholder="Organizer"   wire:model.lazy="brand_name" >
+                      @error( 'organizer' ){{ $message}}@enderror
+                  </div>
+                  <div class="col-sm-4">
+                      <label class="form-label" for="cf-name">Email</label>
+                      <input class="form-control" type="email" placeholder="Your email"   wire:model.lazy="email" >
+                      @error( 'email' ){{ $message}}@enderror
+                  </div>
 
-                <div class="col-sm-4">
-                    <label class="form-label" for="cf-name">Phone</label>
-                    <input class="form-control" type="number" placeholder="Your Phone"   wire:model.lazy="phone" >
-                    @error( 'phone' ){{ $message}}@enderror
-                </div>
-            </div>
-            <button class="btn btn-primary mt-2" type="submit">Submit</button>
-        </form>
-      </div>
+                  <div class="col-sm-4">
+                      <label class="form-label" for="cf-name">Phone</label>
+                      <input class="form-control" type="number" placeholder="Your Phone"   wire:model.lazy="phone" >
+                      @error( 'phone' ){{ $message}}@enderror
+                  </div>
+              </div>
+              <button class="btn btn-primary mt-2" type="submit">Submit</button>
+          </form>
+        </div>
 
-      @php
-        $findoorganizer = DB::table('brands')->where('dtype','organiser')->orderBy('brand_name','ASC')->get();
-      @endphp
-      <div class="container">
-          <label class="form-label" for="seniority">Find Organiser</label>
-          <select class="form-control" type="text" placeholder="Provide short title of your request">
-          <option >Choose</option>
-              @foreach($findoorganizer as $organiserowner)
-                  <option value="{{$organiserowner->id}}">{{$organiserowner->brand_name}}</option>
-              @endforeach                        
-          </select>
-         
-      </div>
+        @php
+          $findoorganizer = DB::table('brands')->where('dtype','organiser')->orderBy('brand_name','ASC')->get();
+        @endphp
+        <div class="container">
+            <label class="form-label" for="seniority">Find Organiser</label>
+            <select class="form-control" type="text" placeholder="Provide short title of your request">
+                <option>Choose</option>
+                @foreach($findoorganizer as $organiserowner)
+                    <option value="{{$organiserowner->id}}">{{$organiserowner->brand_name}}</option>
+                @endforeach                        
+            </select>
+        </div>
       @endif
 
 
@@ -2300,6 +2302,11 @@
             <span class="handheld-toolbar-label">Brand</span>
           </a>
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'new-organiser'])}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi-plus"></i></span>
+            <span class="handheld-toolbar-label">Organiser</span>
+          </a>
+      @elseif($board == 'new-organiser')
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard', ['board' => 'organiser'])}}">
             <span class="handheld-toolbar-icon"><i class="bi bi-plus"></i></span>
             <span class="handheld-toolbar-label">Organiser</span>
           </a>
