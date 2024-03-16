@@ -651,7 +651,7 @@ public $start;
         // $eventorganiser->brand_name = trim($this->brand_name);
         // $eventorganiser->slug =  Str::slug ($this->brand_name,'-');
 
-        $brand->organisation = trim($tre);
+        $brand->brand_name = trim($tre);
         $brand->slug = str::slug($tre,'-');
         $brand->dtype = 'organiser'; 
         $brand->save();
