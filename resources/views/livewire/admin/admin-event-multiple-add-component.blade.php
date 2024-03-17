@@ -136,7 +136,7 @@
             @if($formm == 'image')
                 <form  wire:submit.prevent="dateImage">
                     <div class="col-sm-2">
-                        <label class="form-label" for="cf-name">Image</label>
+                        <label class="form-label" for="cf-name"> {{$eventoi->eventname}} Image</label>
                         <input class="form-control" type="file"   wire:model.lazy="image" required="">
                         @error('image'){{ $message}}@enderror
                     </div>
@@ -144,18 +144,20 @@
                 </form> 
 
                 <hr class="mt-5">
+                <a class="card-img-top d-block overflow-hidden" href="{{route('event.details',['slug' => $eventoi->slug])}}">
+              <img src="{{url('public/assets/image/exhibition/'.$eventoi->image)}}" alt=""> </a>
 
                 @foreach($photos as $imgo)
                     <div class="container">
                         <div class="row row-cols-3 row-cols-lg-6 gy-2 gx-1 g-lg-3"> 
-                           <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt="" href="" wire:click.prevent="adDphoto({{$imgo->brand_lgo}})">
-                           <a href="" wire:click.prevent="delphoto({{$imgo->id}})"><i class="bi bi-x"></i> </a>
+                            <div class="col">
+                                <a href="#" wire:click.prevent="adDphoto({{$imgo->brand_lgo}})">
+                                    <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt=""></a>
+                                <a href="" wire:click.prevent="delphoto({{$imgo->id}})"><i class="bi bi-x"></i> </a>
+                           </div>
                         </div>
                     </div>
                 @endforeach
-
-                @foreach($photos as $imgo) {{$imgo}} @endforeach
-
             @endif
 
             @if($formm == 'tag')
