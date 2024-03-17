@@ -228,7 +228,7 @@
                     </div>
                  </form>
                
-                @if(is_null($relativeevent->reference))
+                @if(is_null($evento->reference))
                 @else
                  @foreach($relativeevent as $evento)
                     <div class=" my-3">
