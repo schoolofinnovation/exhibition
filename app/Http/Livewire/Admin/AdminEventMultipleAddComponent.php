@@ -145,15 +145,13 @@ class AdminEventMultipleAddComponent extends Component
         $delee->delete();
       }
 
-    public function adDphoto($brand_lgo)
+    public function adDphoto($id)
     { 
-
-        
-        //$findphoto = Photo::find($id);
+        $findphoto = Photo::find($id);
         $updatephoto = Event::find($this->event_id);
-        dd($brand_lgo, $updatephoto);
-        $updatephoto->image = $brand_lgo;
+        $updatephoto->image = $findphoto->brand_lgo;
         $updatephoto->save();
+        return redirect()->route('adminevent.detail', ['slug' => $updatephoto->slug]);
     }
 
     public function updateWeb()
