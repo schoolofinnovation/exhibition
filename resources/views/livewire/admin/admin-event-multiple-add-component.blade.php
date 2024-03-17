@@ -143,11 +143,12 @@
                     <button class=" form-control btn btn-primary mt-2" type="submit">Submit</button>
                 </form> 
 
-                <hr>
+                <hr class="mt-5">
 
                 @foreach($photos as $imgo)
                     <div class="container">
-                        <a href="" wire:click.prevent="adDphoto({{$imgo->id}})">
+                                    <div class="row row-cols-3 row-cols-lg-6 gy-2 gx-1 g-lg-3">
+                        <a href="" wire:click.prevent="adDphoto({{$imgo->brand_lgo}})">
                           <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt="">
                         </a>
                         

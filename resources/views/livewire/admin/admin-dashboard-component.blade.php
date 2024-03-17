@@ -2149,7 +2149,7 @@
                       @error( 'phone' ){{ $message}}@enderror
                   </div>
               </div>
-              <button class="btn btn-primary mt-2" type="submit">Submit</button>
+              <button class="btn btn-primary mt-2 form-control" type="submit">Submit</button>
           </form>
 
           <!-- Multi-organiser -->
@@ -2161,7 +2161,7 @@
                       <input class="form-control" type="text" placeholder="organisation"  wire:model.lazy="organisation" >
                       @error( 'organisation' ){{ $message}}@enderror
                   </div>
-                <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                <button class="btn btn-primary mt-2 form-control" type="submit">Submit</button>
               </div>
           </form>
 
@@ -2170,40 +2170,37 @@
           @endphp
       
           @foreach($findoorganizer as $franchise )
-              <div class="container  ">
-                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                      <div class="col  pr-0">
-                          
-                          <div class="h4 fw-light mb-0"> Te</div> 
-                          <div class="small text-muted text-capitalize">DEc</div>
-                          <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                      </div>
+            <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                <div class="col  pr-0">
+                    
+                    <div class="h4 fw-light mb-0"> Te</div> 
+                    <div class="small text-muted text-capitalize">DEc</div>
+                    <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                </div>
 
-                      <div class="col-7  p-0">
-                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
-                          {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
-                      <div class="text-muted fs-sm text-start">
-                          
-                      </div>  
-                      <div class="text-muted fs-sm text-start"></div>
-                      </div>
+                <div class="col-7  p-0">
+                <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                    {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
+                <div class="text-muted fs-sm text-start">
+                    
+                </div>  
+                <div class="text-muted fs-sm text-start"></div>
+                </div>
 
-                      <div class="col-3  p-0">
-                          
+                <div class="col-3  p-0">
+                    
 
-                          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-                            <ul class="dropdown-menu" width="auto">
-                              <li><a class="dropdown-item" href="#" wire:click.prevent="delorganiser({{$franchise->id}})">Delete</a></li>
-                              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">contact</a></li>
-                            </ul>
-                          </span>
-                          </div>
-                  </div>
-              </div>
+                    <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                      <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#" wire:click.prevent="delorganiser({{$franchise->id}})">Delete</a></li>
+                        <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">contact</a></li>
+                      </ul>
+                    </span>
+                    </div>
+            </div>
           @endforeach
         </div>
       @endif
-
 
       @if($board == 'ticketPlan')
          <div class="container">
