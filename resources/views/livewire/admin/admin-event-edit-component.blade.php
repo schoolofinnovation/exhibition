@@ -228,9 +228,9 @@
                     </div>
                  </form>
                
-                @if($relativeevent->count() > '0')
+                @if(!is_null($relativeevent))
                  @foreach($relativeevent as $evento)
-                    <div class="container my-3">
+                    <div class=" my-3">
                         <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
                             <div class="col  pr-0">
                                 @if(Carbon\Carbon::parse ($evento->startdate)->format('M') != Carbon\Carbon::parse ($evento->enddate)->format('M'))
@@ -257,7 +257,7 @@
                                     {{Carbon\Carbon::parse ($evento->startdate)->format('D, d ')}} - {{Carbon\Carbon::parse ($evento->enddate)->format('D, d M')}}
                                     @endif 
                                 </div>  
-                                <div class="text-muted fs-sm text-start">{{ucfirst(trans($evento -> venue))}}, {{ucfirst(trans($evento -> city))}}</div>
+                                <div class="text-muted fs-sm text-start">{{ucfirst(trans(!empty($evento -> venue) ? ($evento -> venue) : 'NO venue'))}}, {{ucfirst(trans(!empty($evento -> city) ? ($evento -> city) : 'nocity'))}}</div>
                             </div>
 
                             <div class="col-3  p-0">
