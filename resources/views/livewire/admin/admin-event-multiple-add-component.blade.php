@@ -147,14 +147,14 @@
 
                 @foreach($photos as $imgo)
                     <div class="container">
-                                    <div class="row row-cols-3 row-cols-lg-6 gy-2 gx-1 g-lg-3">
-                        <a href="" wire:click.prevent="adDphoto({{$imgo->brand_lgo}})">
-                          <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt="">
-                        </a>
-                        
-                        <a href="" wire:click.prevent="delphoto({{$imgo->id}})"><i class="bi bi-x"></i> </a>
+                        <div class="row row-cols-3 row-cols-lg-6 gy-2 gx-1 g-lg-3"> 
+                           <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt="" href="" wire:click.prevent="adDphoto({{$imgo->brand_lgo}})">
+                           <a href="" wire:click.prevent="delphoto({{$imgo->id}})"><i class="bi bi-x"></i> </a>
+                        </div>
                     </div>
                 @endforeach
+
+                @foreach($photos as $imgo) {{$imgo}} @endforeach
 
             @endif
 
