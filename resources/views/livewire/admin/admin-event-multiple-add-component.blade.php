@@ -152,6 +152,8 @@
                                 <a href="#" wire:click.prevent="adDphoto({{$imgo->brand_lgo}})">
                                     <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt=""></a>
                                 <a href="" wire:click.prevent="delphoto({{$imgo->id}})"><i class="bi bi-x"></i> </a>
+
+                                <a href="" class="btn btn-primary" wire:click.prevent="adDphoto({{$imgo->brand_lgo}})"> Testing</a>
                            </div>
                         </div>
                     </div>

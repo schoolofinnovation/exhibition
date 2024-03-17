@@ -228,10 +228,10 @@
                     </div>
                  </form>
                
-                @if($evento->reference == "null")
+                <!-- @if($evento->reference == "null")
                  {{$evento->reference}}
                 @else
-                {{$evento->reference}}
+                {{$evento->reference}}{{!empty($evento -> reference) ? ($evento -> reference) : 'NO venue'}} -->
                     @foreach($relativeevent as $evento)
                         <div class=" my-3">
                             <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
@@ -274,7 +274,7 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
+                <!-- @endif -->
             @endif
         </div>
 
