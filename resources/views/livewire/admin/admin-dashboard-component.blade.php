@@ -2161,12 +2161,12 @@
                       <input class="form-control" type="text" placeholder="organisation"  wire:model.lazy="organisation" >
                       @error( 'organisation' ){{ $message}}@enderror
                   </div>
-                <button class="btn btn-primary mt-2 form-control" type="submit">Submit</button>
               </div>
+              <button class="btn btn-primary mt-2 form-control" type="submit">Submit</button>
           </form>
 
           @php
-            $findoorganizer = DB::table('brands')->where('dtype','organiser')->latest('brand_name')->get();
+            $findoorganizer = DB::table('brands')->where('dtype','organiser')->orderBy('created_at', 'desc')->get();
           @endphp
       
           @foreach($findoorganizer as $franchise )
