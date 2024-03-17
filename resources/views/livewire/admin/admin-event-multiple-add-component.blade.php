@@ -135,20 +135,24 @@
 
             @if($formm == 'image')
                 <form  wire:submit.prevent="dateImage">
-                        <div class="col-sm-2">
-                            <label class="form-label" for="cf-name">Image</label>
-                            <input class="form-control" type="file"   wire:model.lazy="image" required="">
-                            @error('image'){{ $message}}@enderror
-                        </div>
-                        <button class=" form-control btn btn-primary mt-2" type="submit">Submit</button>
+                    <div class="col-sm-2">
+                        <label class="form-label" for="cf-name">Image</label>
+                        <input class="form-control" type="file"   wire:model.lazy="image" required="">
+                        @error('image'){{ $message}}@enderror
+                    </div>
+                    <button class=" form-control btn btn-primary mt-2" type="submit">Submit</button>
                 </form> 
 
                 <hr>
 
                 @foreach($photos as $imgo)
-                <div class="container">
-                    <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt="">
-                </div>
+                    <div class="container">
+                        <a href="" wire:click.prevent="adDphoto({{$imgo->id}})">
+                          <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}"  width="50%" alt="">
+                        </a>
+                        
+                        <a href="" wire:click.prevent="delphoto({{$imgo->id}})"><i class="bi bi-x"></i> </a>
+                    </div>
                 @endforeach
 
             @endif

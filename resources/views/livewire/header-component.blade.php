@@ -644,10 +644,6 @@
                                   </div>
                                   <div class="col-10 mb-1 small fw-lighter ">View commonly asked Queries Chat</div>
                                 </a>
-                              
-                                
-                              
-
                             </div>
                               
                         </div>

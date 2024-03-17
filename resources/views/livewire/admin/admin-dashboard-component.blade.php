@@ -1613,20 +1613,19 @@
 
       @if($board == 'multiple_images')
         <div class=" container my-3">
-          
-         
-              <form wire:submit.prevent="multiImage">
-              <label class="form-label">Upload Multi Image<span class="text-danger">*</span></label> 
-                  <input type="file" class="form-control" placeholder="multiple Image" wire:model="brand_lgo"  multiple="multiple">
-                  <button class="btn btn-primary btn-shadow d-block w-100 mt-2"  type="submit">Submit</button>
-                    </form>  
+          <form wire:submit.prevent="multiImage">
+            <label class="form-label">Upload Multi Image<span class="text-danger">*</span></label> 
+              <input type="file" class="form-control" placeholder="multiple Image" wire:model="brand_lgo"  multiple="multiple">
+              <button class="btn btn-primary btn-shadow d-block w-100 mt-2"  type="submit">Submit</button>
+          </form>  
 
-                    <hr> find Images
-                     @foreach($photos as $imgo)
-                <div class="container">
-                    <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}" width="50%" alt="">
-                </div>
-                @endforeach  
+          <hr> find Images
+            @foreach($photos as $imgo)
+              <div class="container">
+                  <img src="{{url('public/assets/image/exhibition/'.$imgo->brand_lgo)}}" width="50%" alt="">
+                  <a href="" wire:click.prevent="delphoto({{$imgo->id}})"><i class="bi bi-x"></i> </a>
+              </div>
+            @endforeach  
         </div>
       @endif
 
@@ -2129,6 +2128,7 @@
       @if($board == 'new-organiser')
         <div class="container">
           <h3>Add Organiser</h3>
+
           <form wire:submit.prevent="organiser">
             <hr class="my-2">
               <div class="row">
@@ -2161,46 +2161,47 @@
                       <input class="form-control" type="text" placeholder="organisation"  wire:model.lazy="organisation" >
                       @error( 'organisation' ){{ $message}}@enderror
                   </div>
-              <button class="btn btn-primary mt-2" type="submit">Submit</button>
+                <button class="btn btn-primary mt-2" type="submit">Submit</button>
+              </div>
           </form>
+
+          @php
+            $findoorganizer = DB::table('brands')->where('dtype','organiser')->latest('brand_name')->get();
+          @endphp
+      
+          @foreach($findoorganizer as $franchise )
+              <div class="container  ">
+                  <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
+                      <div class="col  pr-0">
+                          
+                          <div class="h4 fw-light mb-0"> Te</div> 
+                          <div class="small text-muted text-capitalize">DEc</div>
+                          <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
+                      </div>
+
+                      <div class="col-7  p-0">
+                      <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
+                          {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
+                      <div class="text-muted fs-sm text-start">
+                          
+                      </div>  
+                      <div class="text-muted fs-sm text-start"></div>
+                      </div>
+
+                      <div class="col-3  p-0">
+                          
+
+                          <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
+                            <ul class="dropdown-menu" width="auto">
+                              <li><a class="dropdown-item" href="#" wire:click.prevent="delorganiser({{$franchise->id}})">Delete</a></li>
+                              <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">contact</a></li>
+                            </ul>
+                          </span>
+                          </div>
+                  </div>
+              </div>
+          @endforeach
         </div>
-        
-        @php
-          $findoorganizer = DB::table('brands')->where('dtype','organiser')->latest('brand_name')->get();
-        @endphp
-        
-            @foreach($findoorganizer as $franchise )
-                <div class="container  ">
-                    <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
-                        <div class="col  pr-0">
-                            
-                            <div class="h4 fw-light mb-0"> Te</div> 
-                            <div class="small text-muted text-capitalize">DEc</div>
-                            <div class="round-circle" ><i class="bi bi-bookmark"></i></div> 
-                        </div>
-
-                        <div class="col-7  p-0">
-                        <div class="fs-md fw-normal text-start"><a class="text-dark" href="#">
-                            {{ucwords(trans(Str::limit($franchise->brand_name, 24)))}}</a></div>
-                        <div class="text-muted fs-sm text-start">
-                            
-                        </div>  
-                        <div class="text-muted fs-sm text-start"></div>
-                        </div>
-
-                        <div class="col-3  p-0">
-                            
-
-                            <span><a href="" class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">All</a>
-                              <ul class="dropdown-menu" width="auto">
-                                <li><a class="dropdown-item" href="#" wire:click.prevent="delorganiser({{$franchise->id}})">Delete</a></li>
-                                <li><a class="dropdown-item" href="{{route('coievent.add', ['board' => 'add-your-event'])}}">contact</a></li>
-                              </ul>
-                            </span>
-                            </div>
-                    </div>
-                </div>
-            @endforeach
       @endif
 
 

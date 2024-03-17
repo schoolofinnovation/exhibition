@@ -658,6 +658,11 @@ public $start;
       }
     }
       
+      public function delphoto($id)
+      {
+        $delee = Photo::find($id);
+        $delee->delete();
+      }
 
     public function render()
     {
