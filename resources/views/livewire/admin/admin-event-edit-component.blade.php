@@ -228,7 +228,8 @@
                     </div>
                  </form>
                
-                @if(!is_null($relativeevent))
+                @if(is_null($relativeevent->reference))
+                @else
                  @foreach($relativeevent as $evento)
                     <div class=" my-3">
                         <div class="row text-center p-1 gx-0 mb-1  shadow-sm  border rounded border-1">
