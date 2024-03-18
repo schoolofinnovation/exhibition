@@ -226,9 +226,9 @@
             {{$this->tabi}}
 
             <div class="container">
-              <a href="{{route('award.details',,['tabi' => 'overview'])}}">overview</a>
-              <a href="{{route('award.details',,['tabi' => 'speaker'])}}">speaker</a>
-              <a href="{{route('award.details',,['tabi' => 'keyo'])}}">keyo</a>
+              <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'overview'])}}">overview</a>
+              <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'speaker'])}}">speaker</a>
+              <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'keyo'])}}">keyo</a>
             </div>
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
