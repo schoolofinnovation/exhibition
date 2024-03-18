@@ -1371,12 +1371,13 @@
 
                 <div class="col-3  p-0">
                     @if(is_null($evento->image))
-                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine',['slug' => $evento->slug, 'formm' => 'image' ])}}">Add</a>
+                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine', ['slug' => $evento->slug, 'formm' => 'image'])}}">Add</a>
                         <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Magazinedelete({{$evento->id}})">  <i class="bi bi-x"></i> </a>
                         @else
-                      <a class="card-img-top d-block overflow-hidden" href="">
-                      <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}" href="{{route('admin.magazine',['slug' => $evento->slug, 'formm' => 'image' ])}}"></a>
-                      <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Magazinedelete({{$evento->id}})">  <i class="bi bi-x"></i> </a>
+                        <a class="card-img-top d-block overflow-hidden" href="{{route('admin.magazine', ['slug' => $evento->slug, 'formm' => 'image'])}}">
+                          <img src="{{url('public/assets/image/exhibition/'.$evento->image)}}" alt="{{Str::limit($evento->name, 24)}}">
+                        </a>
+                        <a class="card-img-top d-block overflow-hidden" href="#" onclick="confirm('Are you sure, You want to delete this Entity?') || event.stopImmediatePropagation()"  wire:click.prevent="Magazinedelete({{$evento->id}})">  <i class="bi bi-x"></i> </a>
                     @endif
                 </div>
             </div>
@@ -2282,15 +2283,15 @@
       @elseif($board == 'magazine')
           <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'magazine'])}}">
             <span class="handheld-toolbar-icon">
-            <i class="ci-filter-alt"></i></span>
+            <i class="bi bi-book"></i></span>
             <span class="handheld-toolbar-label">Magazine</span>
           </a>
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'new-organiser'])}}">
-            <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-building"></i></span>
             <span class="handheld-toolbar-label">Organisation</span>
           </a>
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">
-            <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
+            <span class="handheld-toolbar-icon"><i class="bi bi-plus"></i></span>
             <span class="handheld-toolbar-label">Add</span>
           </a>
       @elseif($board == 'blog')

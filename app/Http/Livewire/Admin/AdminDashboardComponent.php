@@ -87,6 +87,8 @@ public $howMany;
 
 public $brand_id;
 public $start;
+
+public $dtype;
     
     //career
     use WithPagination;

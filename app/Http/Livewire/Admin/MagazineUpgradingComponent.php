@@ -57,7 +57,7 @@ class MagazineUpgradingComponent extends Component
     public function adDphoto($id)
     { 
         $findphoto = Photo::find($id);
-        $updatephoto = Event::find($this->event_id);
+        $updatephoto = Magazine::find($this->event_id);
         $updatephoto->image = $findphoto->brand_lgo;
         $updatephoto->save();
         return redirect()->route('adminevent.detail', ['slug' => $updatephoto->slug]);
