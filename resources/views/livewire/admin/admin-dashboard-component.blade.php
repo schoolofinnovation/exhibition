@@ -1340,10 +1340,12 @@
       @endif
 <!--Stop blog-->
 
-      @if($board == "magazine")
+      @if($board == 'magazine')
         <div class="container">
           <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">List Magazine</a>
+          <!-- dont require -->
           <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'image-magazine'])}}">Image</a>
+          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'organiser'])}}">Organiser</a>
         </div>
         
         @foreach ($magazine as $evento)
@@ -2161,6 +2163,18 @@
                       <input class="form-control" type="text" placeholder="organisation"  wire:model.lazy="organisation" >
                       @error( 'organisation' ){{ $message}}@enderror
                   </div>
+
+                  
+
+                  <div class="col-sm-3">
+                            <label class="form-label" for="seniority">Type</label>
+                            <select class="form-control" type="text"   wire:model.lazy="dtype"  placeholder="Provide short title of your request">
+                                <option >Choose</option>
+                                <option value="organiser">organiser</option>
+                                <option value="magazine">Magazine</option>
+                            </select>
+                            @error('dtype') <div class="invalid-feedback"> {{$message}} </div> @enderror
+                  </div>
               </div>
               <button class="btn btn-primary mt-2 form-control" type="submit">Submit</button>
           </form>
@@ -2266,12 +2280,15 @@
           <span class="handheld-toolbar-label">Add</span>
         </a>
       @elseif($board == 'magazine')
-        <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'magazine'])}}">
+          <a class="d-table-cell handheld-toolbar-item {{'admin/dashboard/job' == request()->path() ? 'active' : '' }}" href="{{route('admin.dashboard',['board' => 'magazine'])}}">
             <span class="handheld-toolbar-icon">
             <i class="ci-filter-alt"></i></span>
             <span class="handheld-toolbar-label">Magazine</span>
           </a>
-          
+          <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'new-organiser'])}}">
+            <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
+            <span class="handheld-toolbar-label">Organisation</span>
+          </a>
           <a class="d-table-cell handheld-toolbar-item" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">
             <span class="handheld-toolbar-icon"><i class="bi bi"></i></span>
             <span class="handheld-toolbar-label">Add</span>

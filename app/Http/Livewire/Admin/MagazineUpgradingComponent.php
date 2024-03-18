@@ -2,10 +2,14 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Brand;
+use App\Models\Event;
 use App\Models\Magazine;
+use App\Models\Photo;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class MagazineUpgradingComponent extends Component
 {
@@ -34,10 +38,35 @@ class MagazineUpgradingComponent extends Component
         return redirect()->route('admin.dashboard', ['board' => 'magazine']);
     }
 
+    public function createOrganiser()
+    {
+        $eventorganiser = new Brand();
+        $eventorganiser->brand_name = trim($this->brand_name);
+        $eventorganiser->organisation = trim($this->brand_name);
+        $eventorganiser->slug =  Str::slug ($this->brand_name,'-');
+        $eventorganiser->dtype = 'magazine'; 
+        $eventorganiser->save();
+    }
+
+    public function delphoto($id)
+      {
+        $delee = Photo::find($id);
+        $delee->delete();
+      }
+
+    public function adDphoto($id)
+    { 
+        $findphoto = Photo::find($id);
+        $updatephoto = Event::find($this->event_id);
+        $updatephoto->image = $findphoto->brand_lgo;
+        $updatephoto->save();
+        return redirect()->route('adminevent.detail', ['slug' => $updatephoto->slug]);
+    }
+
 
     public function render()
     {
-
-        return view('livewire.admin.magazine-upgrading-component');
+        $photos = Photo::get();
+        return view('livewire.admin.magazine-upgrading-component',['photos'=> $photos]);
     }
 }

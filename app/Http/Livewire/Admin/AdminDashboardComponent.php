@@ -637,8 +637,6 @@ public $start;
       return redirect()->route('admin.dashboard',['board' => 'organizer']);
     }
 
-    
-   
     public function mUltiorganiser()
     {
         //$rti = Str::replace('  ',' ', $this->organisation);
@@ -658,11 +656,11 @@ public $start;
       }
     }
       
-      public function delphoto($id)
-      {
-        $delee = Photo::find($id);
-        $delee->delete();
-      }
+    public function delphoto($id)
+    {
+      $delee = Photo::find($id);
+      $delee->delete();
+    }
 
     public function render()
     {
