@@ -46,6 +46,7 @@ class MagazineUpgradingComponent extends Component
         $eventorganiser->slug =  Str::slug ($this->brand_name,'-');
         $eventorganiser->dtype = 'magazine'; 
         $eventorganiser->save();
+        return redirect()->route('admin.dashboard', ['board' => 'magazine']);
     }
 
     public function delphoto($id)
@@ -57,10 +58,10 @@ class MagazineUpgradingComponent extends Component
     public function adDphoto($id)
     { 
         $findphoto = Photo::find($id);
-        $updatephoto = Magazine::find($this->event_id);
+        $updatephoto = Magazine::where('slug', $this->slug)->first();
         $updatephoto->image = $findphoto->brand_lgo;
         $updatephoto->save();
-        return redirect()->route('adminevent.detail', ['slug' => $updatephoto->slug]);
+        return redirect()->route('admin.dashboard', ['board' => 'magazine']);
     }
 
 

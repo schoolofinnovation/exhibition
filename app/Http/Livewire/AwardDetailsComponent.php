@@ -29,13 +29,13 @@ class AwardDetailsComponent extends Component
     public $event_id;
     public $avgrating;
     public $productExpiryDate;
-
+    public $tabi; 
     public $type_event;
     
-    public function mount($slug)
+    public function mount($slug, $tabi = null)
     {
        $this->slug = $slug;
-     
+       $this->tabi = $tabi;
     }
 
     public function post( Request $request, $slug)

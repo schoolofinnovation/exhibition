@@ -223,7 +223,13 @@
                 </div>
               </div>
             </section>
+            {{$this->tabi}}
 
+            <div class="container">
+              <a href="{{route('award.details',,['tabi' => 'overview'])}}">overview</a>
+              <a href="{{route('award.details',,['tabi' => 'speaker'])}}">speaker</a>
+              <a href="{{route('award.details',,['tabi' => 'keyo'])}}">keyo</a>
+            </div>
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
@@ -346,12 +352,12 @@
                     <span>
                         @if( $event->businessrevenue == 'visitor' )       
                             @if( $ticketOrExhibit != 0 )
-                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Book your Tickets </a>
+                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.product',['slug' => $event->slug])}}"> Attend </a>
                                 @elseif( $ticketOrExhibit == 0 )
-                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                              <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Nominate </a>
                             @endif
                           @else
-                            <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Book your Space </a>
+                            <a class="btn btn-primary btn-sm mt-5" type="button" href="{{route('event.exhibit', ['board' => 'business'])}}"> Nominate </a>
                         @endif
                     </span>
                   

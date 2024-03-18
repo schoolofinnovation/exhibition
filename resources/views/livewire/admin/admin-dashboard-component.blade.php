@@ -1343,9 +1343,6 @@
       @if($board == 'magazine')
         <div class="container">
           <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'add-magazine'])}}">List Magazine</a>
-          <!-- dont require -->
-          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'image-magazine'])}}">Image</a>
-          <a class="btn btn-primary" href="{{route('admin.dashboard',['board' => 'organiser'])}}">Organiser</a>
         </div>
         
         @foreach ($magazine as $evento)
@@ -1395,7 +1392,19 @@
              <input type="text" class="form-control mb-1"  placeholder = "subscriber"  wire:model.lazy="subscriber" >
              <textarea type="text" class="form-control mb-1"  placeholder = "desc" rows="3" wire:model.lazy="desc" > </textarea>
              <input type="text" class="form-control mb-1"  placeholder = "frequency"  wire:model.lazy="frequency" >
-             <button class="btn btn-primary mt-2" type="submit">Submit</button>
+
+             <div class="col-sm-3">
+                  <label class="form-label" for="seniority">Find Organiser</label>
+                  <select class="form-control" type="text" wire:model.lazy="brand_id"  placeholder="Provide short title of your request">
+                  <option >Choose</option>
+                      @foreach($findoorganizer as $organiserowner)
+                          <option value="{{$organiserowner->id}}">{{$organiserowner->brand_name}}</option>
+                      @endforeach                        
+                  </select>
+                  @error('brand_id') <div class="invalid-feedback"> {{$message}} </div> @enderror
+              </div>
+
+             <button class="btn btn-primary form-control mt-2" type="submit">Submit</button>
             </form>
         </div>
       @endif

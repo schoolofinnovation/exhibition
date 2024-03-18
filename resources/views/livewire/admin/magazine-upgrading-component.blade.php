@@ -31,23 +31,7 @@
 
 
 
-        @if($formm == 'organiser')
-            <div class="my-5">
-                <form  wire:submit.prevent="createOrganiser">
-                        <div class="col-sm-6 col-md-12">
-                            <label class="form-label" for="cf-name">Organiser</label>
-                            <input class="form-control" type="text" wire:model.lazy="organiser" required="">
-                            @error('organiser'){{ $message}}@enderror
-                        </div>
-                        <div class="col-sm-6 col-md-12">
-                            <label class="form-label" for="cf-name">Organiser</label>
-                            <input class="form-control" type="text" wire:model.lazy="organiser" required="">
-                            @error('organiser'){{ $message}}@enderror
-                        </div>
-                        <button class="btn btn-primary mt-2 form-control" type="submit">Submit</button>
-                </form>
-            </div>
-        @endif
+        
 
     </div>
 </main>

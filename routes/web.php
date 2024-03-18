@@ -223,7 +223,8 @@ Route::get('/search', SearchComponent::class)->name('search.events');
 Route::get('/conference', ConferenceComponent::class)->name('coi.conference');
 Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class)->name('event.details');
 //Route::get('/ex/{slug}/{optional?}', EventDetailsComponent::class, 'index')->name('event.details');
-Route::get('/award/{slug}', AwardDetailsComponent::class)->name('award.details');
+
+Route::get('/award/{slug}/{tabi?}', AwardDetailsComponent::class)->name('award.details');
 
 //reviews 
 Route::get('/rating/{slug}', EventRateNowComponent::class)->name('coi.ratenow');
