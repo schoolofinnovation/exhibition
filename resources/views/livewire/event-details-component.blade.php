@@ -224,9 +224,6 @@
               </div>
             </section>
 
-
-            <a href="{{route('event.details', ['slug' => $this->slug , 'optional' => 'exhibitor'])}}">Testing</a>
-
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">

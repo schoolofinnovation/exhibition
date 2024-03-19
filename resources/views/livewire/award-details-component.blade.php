@@ -110,7 +110,10 @@
               </section>
 
             
-            <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-0 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
+            <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-0 pb-5 pt-md-7 pb-md-10" 
+            style="#">
+            <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-0 pb-5 pt-md-7 pb-md-10" 
+            style="background-image: url('{{asset('/image/test.jpg')}}');">
             
               <div class="container  mb-lg-0 bg-primary">
 
