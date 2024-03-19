@@ -68,7 +68,7 @@ class AwardDetailsComponent extends Component
     public function withoutrefreshgetvalue($tabio)
     {
       $this->tabio = $tabio;
-      dd($this->tabio);
+      //dd($this->tabio);
     }
 
     public function render()
@@ -158,8 +158,13 @@ class AwardDetailsComponent extends Component
          $current = strtotime(Carbon::now());
          $to = strtotime($event->startdate);
          $from= strtotime($event->enddate);
+         $findvalue = $this->tabio;
 
-        return view('livewire.award-details-component',['sponserbrand'=> $sponserbrand, 'to'=> $to, 'from'=> $from,'current'=> $current, 'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
+        $speker = Speaker::where('admstatus','1')->where('status','1')->where('entity','speaker')->get();
+        $network = Speaker::where('admstatus','1')->where('status','1')->where('entity','network')->get();
+        $social = Speaker::where('admstatus','1')->where('status','1')->where('entity','social')->get();
+
+        return view('livewire.award-details-component',[ 'speker' =>$speker,  'network' => $network,'social' => $social,   'findvalue'=> $findvalue,'sponserbrand'=> $sponserbrand, 'to'=> $to, 'from'=> $from,'current'=> $current, 'eventbrand'=>$eventbrand, 'findEvent'=>$findEvent,'rateRating' => $rateRating,
         'commentedRates' => $commentedRates,
         'detailProductprice' => $detailProductprice,
         'pavillion'=>$pavillion,'category'=>$category,

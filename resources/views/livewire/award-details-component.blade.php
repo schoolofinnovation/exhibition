@@ -3,8 +3,10 @@
 @section('page_keyword',  'The Exhibition Network, Exhibition, World largest business event platform, find all upcoming events, business conferences, exhibition 2023, trade shows, global seminars, networking meets and workshops. Browse and connect with visitors attending, participating exhibitors and view profiles of speakers and organizers. Manage, sell event tickets and promote your event on exhbition.org.in')
 
     <main>
-            <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
-              style="background-image: url('{{('/image/test.jpg')}}')">
+            <!-- <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
+              style="background-image: url('{{('/image/test.jpg')}}')"> -->
+              <section class="d-none d-sm-block position-relative bg-position-top-center bg-repeat-0 pt-5 pb-5 pt-md-7 pb-md-9" 
+                style="#">
                 
                 <div class=" product-available   text-center bg-primary" style="right: 1.75rem; top: 7.25%; position: absolute;padding-top: 0.425rem; padding-left: 0.625rem; padding-right: 1rem;
                   padding-bottom: 0.425rem;
@@ -105,7 +107,7 @@
                     </div>
 
                   </div>
-            </section>
+              </section>
 
             
             <section class=" d-lg-none bg-position-top-center bg-repeat-0 pt-0 pb-5 pt-md-7 pb-md-10" style="background-image: url('{{asset('/image/test.jpg')}}');">
@@ -229,24 +231,17 @@
               <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'overview'])}}">overview</a>
               <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'speaker'])}}">speaker</a>
               <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'keyo'])}}">keyo</a>
-              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'keyo'}})')">keyo</a>
-               <!-- wire:click.prevent="claimer({{$franchise->id}})" -->
             </div>
 
-            <div class="container">
-              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'overview'}})')">overview</a>
-              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'speaker'}})')">speaker</a>
-              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'keyo'}})')">keyo</a>
-               <!-- wire:click.prevent="claimer({{$franchise->id}})" -->
-            </div>
+            
 
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link px-1 active" href="#details" data-bs-toggle="tab" role="tab">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link px-1" href="#reviews" data-bs-toggle="tab" role="tab">Speakers</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 active" href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'overview'])}}" data-bs-toggle="tab" role="tab">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'speaker'])}}" data-bs-toggle="tab" role="tab">Speakers</a></li>
                     @if(count($eventbrand) > 0)
-                    <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Key Discussion</a></li>
+                    <li class="nav-item"><a class="nav-link px-1" href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'speaker'])}}" data-bs-toggle="tab" role="tab">Key Discussion</a></li>
                     @endif
                     <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Agenda</a></li>
                     <li class="nav-item"><a class="nav-link px-1" href="#exhibitor" data-bs-toggle="tab" role="tab">Who Should Attend</a></li>
@@ -422,6 +417,9 @@
                    |  | 1 days | Rs. 700.00 Onwards                 </li>
               </ul> -->
             </div> 
+
+
+            
 
             <!--share hidden-->
             <div class="d-none">            
@@ -1359,6 +1357,54 @@
             </section>
            @endif
 
+
+
+           <section class="container">
+                <h1>Award Jury</h1>
+           </section>
+
+           <section class="container">
+                <h1>Got Good Design?</h1>
+           </section>
+
+           <section class="container">
+                <h1>Exhibition</h1>
+                <p class="text-center">
+                  A Design Award Exhibtiion, organized shortly after results announcement at The Exhibition Network, India, and later moved to several countries and cities, marks the grand opening of a new edition of the annual design competition. The design exhibition provides aan opportunity for architects, designers and business to showcase their latest products, projects and services the design trends for the year.
+                </p>
+           </section>
+
+           <section class="container">
+                <h1>Design Prize</h1>
+                <p class="text-center">
+                  A Design Prize is the highest prize awarded in design industry with a specific aim of promoting, advertising and acknowledging good design worldwide. The A Design Prize includes public relations and publicity services in addition to the award trophy, certificate, yearbook and of course the winner logo which laureates could use to differentiate and add further value their award-winning products, projects and services.  
+                </p>
+           </section>
+
+           <section class="container">
+                <h1>Award Categories</h1>
+                <p class="text-center">
+                  A Design Prize is the highest prize awarded in design industry with a specific aim of promoting, advertising and acknowledging good design worldwide. The A Design Prize includes public relations and publicity services in addition to the award trophy, certificate, yearbook and of course the winner logo which laureates could use to differentiate and add further value their award-winning products, projects and services.  
+                </p>
+           </section>
+
+           <section class="container">
+                <h1>News</h1>
+                <p class="text-center">
+                  Results will be Announced to public on April 15,2024. Visit our winners' page on April 15, 2024 to see the worlds' leading designs, ideas, trends and concepts in 2024.  
+                </p>
+           </section>
+
+           <section class="container">
+                <h1>Registrations Open</h1>
+                <p class="text-center">
+                  Registration to A Design Award & Competition 2023-2024 period is now open. Register and upload your design today to know how good your design is get a complimentary preliminary score.  
+                </p>
+           </section>
+
+
+
+
             <section class="container py-5">
             <div class="text-dark text-center fw-bold fs-md display-3">Our Offerings</div>
               <div class="text-dark text-center fw-bold fs-md h5">More to Explore</div>
@@ -1473,7 +1519,107 @@
             </div>
 
              <!-- Creators-->
-              @livewire('trending-creator-component')
+             <main>
+        <section class="container pt-2 pb-5 pb-md-3">
+            <!--<h2 class="h3 mb-4 pb-2">Top Creators</h2>-->
+                <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-1 mb-1">  
+                  <div class="fs-sm" >Business Community
+                  
+                      <h4 class="mb-0 me-2">Speaker</h4>
+                      
+                  </div>
+                    <!--<div class="pt-3">
+                      <a class="btn btn-outline-primary btn-sm" href="#listexpo"> 
+                        Connect <i class="bi bi-caret-down-fill ms-1 me-n1"></i></a>
+                    </div>-->
+
+                      <div class="pt-3">
+                        <a class="btn btn-outline-primary btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          All
+                        </a>
+
+                        <ul class="dropdown-menu" width="auto">
+                        <li><a class="dropdown-item" href="#">More</a></li>
+                          <li><a class="dropdown-item" href="#">Speaker</a></li>
+                          <li><a class="dropdown-item" href="#">Subscribe</a></li>
+                        </ul>
+                      </div>
+                </div>
+
+              <div class="row my-Slider23">
+
+                <!-- Bestsellers-->
+                <div class="col-md-4 col-sm-6 mb-2 py-1">
+                  <div class="widget">
+                    <!--<h3 class="widget-title fw-bolder">Network</h3>-->
+                  
+                    @foreach ($network as $franchise)
+                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center position-relative">
+                          
+                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}"  width="17%"  alt="Avatar">
+                          <div class="ms-2">
+                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
+                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                          <!--<span class="fs-xs text-muted">730 followers</span>-->
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary ms-2">Vote</button>
+                      </div>
+                      
+                    @endforeach
+                  </div>
+                </div>
+
+                <!-- New arrivals-->
+                <div class="col-md-4 col-sm-6 mb-2 py-3">
+                  <div class="widget">
+                    <!--<h3 class="widget-title fw-bolder">Speaker</h3>-->
+                    @foreach ($speker as $franchise)
+                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center position-relative">
+                          
+                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
+                          <div class="ms-2">
+                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="#">{{$franchise->name}}</a></h4>
+                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="#">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                            <!--<span class="fs-xs text-muted">730 followers</span>-->
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary ms-2">Vote</button>
+                      </div>
+                      
+                    @endforeach
+                  </div>
+                </div>
+
+                <!-- Top rated-->
+                <div class="col-md-4 col-sm-6 mb-2 py-3">
+                  <div class="widget">
+                    <!--<h3 class="widget-title fw-bolder">Social</h3>-->
+                    @foreach ($social as $franchise)
+                      <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center position-relative">
+                          
+                          <img class="rounded-circle ms-2" src="{{url('public/speaker/'.$franchise->image)}}" width="17%"  alt="Avatar">
+                          <div class="ms-2">
+                            <h4 class="mb-1 fs-base text-body"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->name}}</a></h4>
+                            <h5 class="mb-1 fs-xs"><a class="nav-link-style stretched-link" href="nft-vendor.html">{{$franchise->website}} {{$franchise->organisation}}</a></h5>
+                            <!--<span class="fs-xs text-muted">730 followers</span>-->
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary ms-2">Vote</button>
+                      </div>
+                      
+                    @endforeach
+                  </div>
+                </div>
+
+              </div>
+        </section>
+
+
+
         
 
             <!--footer-->
@@ -1553,10 +1699,7 @@
 
             @endif
 
-            <!-- brand -->
-            <div class="container">
-              
-            </div>
+            
     </main>
 
     @push('scripts')
@@ -2133,6 +2276,35 @@
               "autoplayButtonOutput":false
             });
           </script>
+
+@push('scripts')
+    <script>
+      var slider = tns({
+        "container": '.my-Slider23',            
+        "responsive": {
+          "300": {
+            "items": 1,
+            "controls": false,
+            "mouseDrag": true,
+            "autoplay": false,
+
+            "autoplayButtonOutput":false,
+            "autoplayHoverPause": true,
+          },
+          "500": {
+            "items": 3,
+            "nav": false,
+            "controls": false,
+            "autoplayHoverPause": true,
+            "autoplay":false,
+            "autoplayButtonOutput":false
+          },
+          
+        },
+        "autoplayButtonOutput":false
+      });
+    </script>
+@endpush
         
     @endpush
 
