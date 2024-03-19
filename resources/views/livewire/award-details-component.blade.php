@@ -229,7 +229,17 @@
               <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'overview'])}}">overview</a>
               <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'speaker'])}}">speaker</a>
               <a href="{{route('award.details',[ 'slug' => $event->slug,'tabi' => 'keyo'])}}">keyo</a>
+              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'keyo'}})')">keyo</a>
+               <!-- wire:click.prevent="claimer({{$franchise->id}})" -->
             </div>
+
+            <div class="container">
+              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'overview'}})')">overview</a>
+              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'speaker'}})')">speaker</a>
+              <a href="#" wire:click = "$emit('withoutrefreshgetvalue({{'keyo'}})')">keyo</a>
+               <!-- wire:click.prevent="claimer({{$franchise->id}})" -->
+            </div>
+
             <!-- slider at next header-->  
             <section class="container d-lg-none ">
                 <ul class="nav nav-tabs" role="tablist">

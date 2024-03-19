@@ -64,6 +64,13 @@ class AwardDetailsComponent extends Component
 
     use WithPagination;
 
+    public $tabio;
+    public function withoutrefreshgetvalue($tabio)
+    {
+      $this->tabio = $tabio;
+      dd($this->tabio);
+    }
+
     public function render()
     {
         //$check = Cart::get();
@@ -165,6 +172,6 @@ class AwardDetailsComponent extends Component
         'sponSer' => $sponSer,
         'speaker' => $speaker,
         'awarde' => $awarde,
-        'ticketOrExhibit' => $ticketOrExhibit]);
+        'ticketOrExhibit' => $ticketOrExhibit])->layout('layouts.eblog');
     }
 }
