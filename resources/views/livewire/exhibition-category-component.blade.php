@@ -4,6 +4,9 @@
 
     <main>
       <!--google-->
+
+
+      {{$exhibition}}
         <div class="bg-secondary d-lg-none">
           <div class=" container">
             <div class="row ">

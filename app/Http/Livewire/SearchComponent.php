@@ -30,9 +30,6 @@ class SearchComponent extends Component
     {
         $searchTerm = '%'.$this->searchTerm. '%';
 
-        
-
-
         $searchcat = Expo::where('tag','LIKE', $searchTerm)
         ->where('status','1')->where('type','tag')->orderBy('tag','ASC')->get();
 

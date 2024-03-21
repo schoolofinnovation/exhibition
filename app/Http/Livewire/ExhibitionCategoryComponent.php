@@ -66,8 +66,6 @@ class ExhibitionCategoryComponent extends Component
     public function render()
     {
         
-
-        
         $findcategryIDfromExpos = Expo::where('slug', $this->categry)->value('id');
         //dd( $this->categry, $findcategryIDfromExpos->id );
 
